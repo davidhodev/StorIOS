@@ -1,0 +1,6 @@
+framework module Pods_StorTests {
+  umbrella header "Pods-StorTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
