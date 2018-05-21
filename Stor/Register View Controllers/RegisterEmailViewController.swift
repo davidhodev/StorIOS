@@ -1,5 +1,5 @@
 //
-//  CreateNameViewController.swift
+//  RegisterEmailViewController.swift
 //  Stor
 //
 //  Created by David Ho on 5/21/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateNameViewController: UIViewController {
+class RegisterEmailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
