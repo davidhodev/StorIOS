@@ -12,6 +12,7 @@
 		DB4B5E9320B339A30050F66E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB4B5E9220B339A20050F66E /* GoogleService-Info.plist */; };
 		DB4B5E9820B3474D0050F66E /* RegisterEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4B5E9720B3474D0050F66E /* RegisterEmailViewController.swift */; };
 		DB4B5E9E20B34E7C0050F66E /* dosis in Resources */ = {isa = PBXBuildFile; fileRef = DB4B5E9D20B34E7C0050F66E /* dosis */; };
+		DB4B5EA020B351C20050F66E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4B5E9F20B351C20050F66E /* LoginViewController.swift */; };
 		DBE905DF20924BAE000F13DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905DE20924BAE000F13DB /* AppDelegate.swift */; };
 		DBE905E120924BAE000F13DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905E020924BAE000F13DB /* ViewController.swift */; };
 		DBE905E420924BAE000F13DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE905E220924BAE000F13DB /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		DB4B5E9220B339A20050F66E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB4B5E9720B3474D0050F66E /* RegisterEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterEmailViewController.swift; sourceTree = "<group>"; };
 		DB4B5E9D20B34E7C0050F66E /* dosis */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dosis; sourceTree = "<group>"; };
+		DB4B5E9F20B351C20050F66E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DBE905DB20924BAE000F13DB /* Stor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE905DE20924BAE000F13DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DBE905E020924BAE000F13DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		DBE905DD20924BAE000F13DB /* Stor */ = {
 			isa = PBXGroup;
 			children = (
+				DB4B5E9F20B351C20050F66E /* LoginViewController.swift */,
 				DB4B5E9620B346F50050F66E /* Register View Controllers */,
 				DBE905DE20924BAE000F13DB /* AppDelegate.swift */,
 				DBE905E020924BAE000F13DB /* ViewController.swift */,
@@ -409,6 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB4B5EA020B351C20050F66E /* LoginViewController.swift in Sources */,
 				DBE905E120924BAE000F13DB /* ViewController.swift in Sources */,
 				DBE905DF20924BAE000F13DB /* AppDelegate.swift in Sources */,
 				DB4B5E9820B3474D0050F66E /* RegisterEmailViewController.swift in Sources */,
