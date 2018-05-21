@@ -18,22 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bitmap" translatesAutoresizingMaskIntoConstraints="NO" id="Mzu-fN-lOT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="570"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fill7Copy6" translatesAutoresizingMaskIntoConstraints="NO" id="GuC-Oz-65f">
-                                <rect key="frame" x="0.0" y="392" width="375" height="390"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fill7Copy5" translatesAutoresizingMaskIntoConstraints="NO" id="Ewx-2T-GRO">
-                                <rect key="frame" x="0.0" y="0.0" width="308" height="295"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fill7Copy2" translatesAutoresizingMaskIntoConstraints="NO" id="rge-XS-zmc">
-                                <rect key="frame" x="0.0" y="0.0" width="170" height="215"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="03r-Xq-jXf">
                                 <rect key="frame" x="138" y="0.0" width="0.0" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -48,10 +32,4 @@
             <point key="canvasLocation" x="52" y="374.6305418719212"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="bitmap" width="375" height="570"/>
-        <image name="fill7Copy2" width="171" height="216"/>
-        <image name="fill7Copy5" width="308" height="292"/>
-        <image name="fill7Copy6" width="375" height="440"/>
-    </resources>
 </document>

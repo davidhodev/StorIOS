@@ -7,6 +7,7 @@ target 'Stor' do
 
   # Pods for Stor
 	pod 'Firebase/Core'
+	pod ‘Firebase/Database’
 
   target 'StorTests' do
     inherit! :search_paths
