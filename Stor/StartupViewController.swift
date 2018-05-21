@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  StartupViewController.swift
 //  Stor
 //
 //  Created by David Ho on 5/21/18.
@@ -9,21 +9,8 @@
 import UIKit
 import FirebaseAuth
 
-class LoginViewController: UIViewController {
-    
-    @IBOutlet weak var emailText: UITextField!
-    @IBOutlet weak var passwordText: UITextField!
-    
-    // Action when Login Button Pressed
-    @IBAction func loginButton(_ sender: Any) {
-        self.login()
-        emailText.text = ""
-        passwordText.text = ""
-    }
-    
-    
-    
-    
+class StartupViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,18 +22,8 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //Making a login function
-    func login(){
-        Auth.auth().signIn(withEmail: emailText.text!, password: passwordText.text!, completion: {
-            user, error in
-            if error != nil {
-                print("The password is incorrect")
-            }
-            else{
-                print("Successfully logged in")
-            }
-        })
-    }
+
+    
 
     /*
     // MARK: - Navigation
