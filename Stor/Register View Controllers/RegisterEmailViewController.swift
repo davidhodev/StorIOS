@@ -75,8 +75,6 @@ class RegisterEmailViewController: UIViewController {
                         print("Incorrect password")
                         self.passwordRegisterText.backgroundColor = UIColor.red
                         
-                
-                        
                     case .emailAlreadyInUse: // Account Already exists with that email
                         print("account alrady exists")
                         self.emailRegisterText.backgroundColor = UIColor.red

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -62,14 +62,20 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Bd-4gJ">
-                                <rect key="frame" x="33" y="392" width="177" height="149"/>
+                                <rect key="frame" x="33" y="353" width="177" height="188"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="-8" maxX="0.0" maxY="-26"/>
                                 <state key="normal" image="Create Account Button"/>
+                                <connections>
+                                    <action selector="CreateAccountButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Ml-3K-M9o"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qs-I5-R9x">
                                 <rect key="frame" x="240" y="317" width="96" height="143"/>
                                 <inset key="imageEdgeInsets" minX="-19" minY="-16" maxX="-18" maxY="-36"/>
                                 <state key="normal" image="Login Via Email Button"/>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tUU-Z3-fZG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -82,7 +88,6 @@
                             <constraint firstItem="ED4-zM-ayk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7Gd-C6-Sj8"/>
                             <constraint firstItem="SVY-4y-3W8" firstAttribute="top" secondItem="Wfv-UE-5VY" secondAttribute="bottom" constant="-177" id="Brf-xb-4l1"/>
                             <constraint firstItem="U2q-m4-Bqu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="38" id="CRc-Wz-K3h"/>
-                            <constraint firstItem="Mfd-Bd-4gJ" firstAttribute="top" secondItem="bCr-SF-GRd" secondAttribute="bottom" constant="-178" id="Ewp-5W-AY7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RMt-69-iis" secondAttribute="trailing" constant="205" id="Fdy-Jd-OPl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="ED4-zM-ayk" secondAttribute="top" constant="57" id="INE-Rn-DGw"/>
                             <constraint firstItem="RMt-69-iis" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="314" id="IOQ-VL-wQQ"/>
@@ -120,7 +125,7 @@
         <!--Login View Controller-->
         <scene sceneID="XWQ-hU-ipA">
             <objects>
-                <viewController id="XAM-Zf-Y7V" customClass="LoginViewController" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="XAM-Zf-Y7V" customClass="LoginViewController" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yIu-Gf-y7Y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,7 +168,7 @@
         <!--Register Email View Controller-->
         <scene sceneID="k3l-h1-JPL">
             <objects>
-                <viewController id="JuW-DP-JnX" customClass="RegisterEmailViewController" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterEmailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JuW-DP-JnX" customClass="RegisterEmailViewController" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yVb-IX-rsz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
