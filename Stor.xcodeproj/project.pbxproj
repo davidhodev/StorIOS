@@ -49,6 +49,7 @@
 		83BDF3AB5601AEFA4206A668 /* Pods_StorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C530B0B3D761ADC198DC431 /* Pods-StorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorUITests/Pods-StorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1E7F08C17DB4E0B3B6B7EEE /* Pods-StorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorTests/Pods-StorTests.release.xcconfig"; sourceTree = "<group>"; };
+		DB3EE96E20B4B1D700CC4174 /* Stor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stor.entitlements; sourceTree = "<group>"; };
 		DB4B5E9220B339A20050F66E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB4B5E9720B3474D0050F66E /* RegisterEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterEmailViewController.swift; sourceTree = "<group>"; };
 		DB4B5E9D20B34E7C0050F66E /* dosis */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dosis; sourceTree = "<group>"; };
@@ -157,6 +158,7 @@
 		DBE905DD20924BAE000F13DB /* Stor */ = {
 			isa = PBXGroup;
 			children = (
+				DB3EE96E20B4B1D700CC4174 /* Stor.entitlements */,
 				DB4B5E9620B346F50050F66E /* Register View Controllers */,
 				DB59552820B49F4D001E1AF0 /* MapViewController.swift */,
 				DBE905DE20924BAE000F13DB /* AppDelegate.swift */,
@@ -272,6 +274,11 @@
 					DBE905DA20924BAE000F13DB = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					DBE905EE20924BAE000F13DB = {
 						CreatedOnToolsVersion = 9.2;
@@ -600,6 +607,7 @@
 			baseConfigurationReference = 18F4FB721B7B5B1C7D1493B0 /* Pods-Stor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Stor/Stor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KDHJP5BFNR;
 				INFOPLIST_FILE = Stor/Info.plist;
@@ -616,6 +624,7 @@
 			baseConfigurationReference = 4E5B7ADF60FD9AF861F2989D /* Pods-Stor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Stor/Stor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KDHJP5BFNR;
 				INFOPLIST_FILE = Stor/Info.plist;
