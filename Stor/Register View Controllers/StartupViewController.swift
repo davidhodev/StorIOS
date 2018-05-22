@@ -17,17 +17,17 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
     @IBOutlet weak var createAccountButton: UIButton!
     
     // Create Button Function
-    @IBAction func CreateAccountButtonPressed(_ sender: Any) {
+    @IBAction func CreateAccountButtonPressed(_ sender: UIButton) {
         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let createAccount:RegisterEmailViewController = storyboard.instantiateViewController(withIdentifier:"RegisterEmailViewController") as! RegisterEmailViewController
-        self.present(createAccount, animated: true, completion: nil)
+        self.navigationController?.pushViewController(createAccount, animated: true)
     }
-    
-    // Login Button Function
+ 
+    // Login Button Func tion
     @IBAction func loginButtonPressed(_ sender: Any) {
         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let loginPage:LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        self.present(loginPage, animated: true, completion: nil)
+        self.navigationController?.pushViewController(loginPage, animated: true)
     }
     
     //When Facebook Button Pressed
@@ -101,7 +101,31 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
             performSegue(withIdentifier: "toMapSegue", sender: nil)
         }
     }
+<<<<<<< HEAD
+    // Override viewWillAppear
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+=======
 
     
+<<<<<<< HEAD
+=======
+    
+>>>>>>> f20299630077ee330eaf39b085af278e5717f1fd
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+>>>>>>> 47e8727b13d1e07f808bf113b44841b4e32f2124
 
 }

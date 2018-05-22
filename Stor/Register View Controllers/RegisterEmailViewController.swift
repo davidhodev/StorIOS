@@ -22,6 +22,13 @@ class RegisterEmailViewController: UIViewController {
     @IBAction func registerButton(_ sender: Any) {
         self.register()
     }
+    // takes you back to the front page
+    @IBAction func registrationBackButton(_ sender: UIButton) {
+        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let goToHomePage:StartupViewController = storyboard.instantiateViewController(withIdentifier:"StartupViewController") as! StartupViewController
+        self.navigationController?.pushViewController(goToHomePage, animated: true)
+    }
+    
     
     
     override func viewDidLoad() {
@@ -103,3 +110,4 @@ class RegisterEmailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+

@@ -14,11 +14,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     
-    //Action when Back Button Pressed
+    //Takes you to create Account
     @IBAction func backButtonPressed(_ sender: UIButton) {
         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let backButtonPressed:StartupViewController = storyboard.instantiateViewController(withIdentifier:"StartupViewController") as! StartupViewController
-        self.present(backButtonPressed, animated: true, completion: nil)
+        let goToAccountPage:RegisterEmailViewController = storyboard.instantiateViewController(withIdentifier:"RegisterEmailViewController") as! RegisterEmailViewController
+        self.navigationController?.pushViewController(goToAccountPage, animated: true)
     }
     
     // Action when Login Button Pressed
@@ -41,6 +41,7 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+
     //Making a login function
     func login(){
         print ("=========test=========")
