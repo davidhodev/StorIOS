@@ -58,11 +58,7 @@
                                 <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Bd-4gJ">
-<<<<<<< HEAD
                                 <rect key="frame" x="33" y="392" width="177" height="188"/>
-=======
-                                <rect key="frame" x="33" y="353" width="177" height="188"/>
->>>>>>> 81da610a9bbfc36f755a13da86853ad5e0bf9173
                                 <inset key="imageEdgeInsets" minX="0.0" minY="-8" maxX="0.0" maxY="-26"/>
                                 <state key="normal" image="Create Account Button"/>
                                 <connections>
