@@ -17,6 +17,68 @@
             endingLineNumber = "15"
             landmarkName = "LoginViewController"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Stor.LoginViewController.passwordText.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITextField&gt;"
+                  moduleName = "Stor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Jack/Desktop/Stor/Stor/LoginViewController.swift"
+                  timestampString = "548643419.17187"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "79">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Stor.LoginViewController.passwordText.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITextField&gt;"
+                  moduleName = "Stor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Jack/Desktop/Stor/Stor/LoginViewController.swift"
+                  timestampString = "548643419.173681"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "90">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Stor.LoginViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; Stor.LoginViewController"
+                  moduleName = "Stor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Jack/Desktop/Stor/Stor/LoginViewController.swift"
+                  timestampString = "548643419.17536"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "251">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Stor.LoginViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;Stor.LoginViewController&gt;"
+                  moduleName = "Stor"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Jack/Desktop/Stor/Stor/LoginViewController.swift"
+                  timestampString = "548643419.177048"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "173">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

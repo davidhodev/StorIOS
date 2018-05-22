@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JuW-DP-JnX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -54,21 +54,20 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ED4-zM-ayk">
                                 <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="or" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="12W-6e-X3U">
-                                <rect key="frame" x="181" y="561" width="15" height="20"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="or" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="12W-6e-X3U">
+                                <rect key="frame" x="180" y="559" width="15" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Bd-4gJ">
-                                <rect key="frame" x="73" y="392" width="137" height="149"/>
-                                <inset key="imageEdgeInsets" minX="-33" minY="-8" maxX="-33" maxY="-26"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Bd-4gJ">
+                                <rect key="frame" x="33" y="392" width="177" height="149"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="-8" maxX="0.0" maxY="-26"/>
                                 <state key="normal" image="Create Account Button"/>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qs-I5-R9x">
-                                <rect key="frame" x="240" y="343" width="96" height="105"/>
+                                <rect key="frame" x="240" y="317" width="96" height="143"/>
                                 <inset key="imageEdgeInsets" minX="-19" minY="-16" maxX="-18" maxY="-36"/>
                                 <state key="normal" image="Login Via Email Button"/>
                             </button>
@@ -83,18 +82,17 @@
                             <constraint firstItem="ED4-zM-ayk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7Gd-C6-Sj8"/>
                             <constraint firstItem="SVY-4y-3W8" firstAttribute="top" secondItem="Wfv-UE-5VY" secondAttribute="bottom" constant="-177" id="Brf-xb-4l1"/>
                             <constraint firstItem="U2q-m4-Bqu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="38" id="CRc-Wz-K3h"/>
-                            <constraint firstItem="Mfd-Bd-4gJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="73" id="Ca3-5o-yBZ"/>
                             <constraint firstItem="Mfd-Bd-4gJ" firstAttribute="top" secondItem="bCr-SF-GRd" secondAttribute="bottom" constant="-178" id="Ewp-5W-AY7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RMt-69-iis" secondAttribute="trailing" constant="205" id="Fdy-Jd-OPl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="ED4-zM-ayk" secondAttribute="top" constant="57" id="INE-Rn-DGw"/>
                             <constraint firstItem="RMt-69-iis" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="314" id="IOQ-VL-wQQ"/>
                             <constraint firstItem="bCr-SF-GRd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="OVa-cB-dOw"/>
-                            <constraint firstItem="x4l-sX-uDH" firstAttribute="top" secondItem="0Qs-I5-R9x" secondAttribute="bottom" constant="-76" id="PoO-NP-MtD"/>
                             <constraint firstItem="Wfv-UE-5VY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RiW-zo-R7m"/>
                             <constraint firstItem="x4l-sX-uDH" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="STG-vB-fnd"/>
                             <constraint firstItem="x4l-sX-uDH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Sqb-aZ-YFm"/>
+                            <constraint firstItem="12W-6e-X3U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="180" id="XdI-At-nTH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="12W-6e-X3U" secondAttribute="trailing" constant="180" id="cDd-t1-wgh"/>
                             <constraint firstItem="RMt-69-iis" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="chV-PD-Bbq"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mfd-Bd-4gJ" secondAttribute="trailing" constant="165" id="dhD-Ih-Yac"/>
                             <constraint firstItem="x4l-sX-uDH" firstAttribute="top" secondItem="bCr-SF-GRd" secondAttribute="bottom" constant="-198" id="dz2-5M-eXH"/>
                             <constraint firstItem="0Qs-I5-R9x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="240" id="hCt-re-a4T"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RMt-69-iis" secondAttribute="bottom" constant="120" id="hSm-Ec-Kcb"/>
@@ -103,8 +101,10 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="uGy-bx-NSJ" secondAttribute="top" constant="43" id="kRa-tL-xDF"/>
                             <constraint firstItem="uGy-bx-NSJ" firstAttribute="leading" secondItem="ED4-zM-ayk" secondAttribute="trailing" constant="-35" id="nem-WB-q7q"/>
                             <constraint firstItem="bCr-SF-GRd" firstAttribute="top" secondItem="Wfv-UE-5VY" secondAttribute="bottom" constant="-296" id="qdh-p3-9fK"/>
-                            <constraint firstItem="0Qs-I5-R9x" firstAttribute="top" secondItem="bCr-SF-GRd" secondAttribute="bottom" constant="-227" id="qjJ-Du-iBJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="bCr-SF-GRd" secondAttribute="top" constant="44" id="rIh-ab-SYV"/>
+                            <constraint firstItem="x4l-sX-uDH" firstAttribute="top" secondItem="12W-6e-X3U" secondAttribute="bottom" constant="-208" id="ueI-hw-lkX"/>
+                            <constraint firstItem="0Qs-I5-R9x" firstAttribute="leading" secondItem="Mfd-Bd-4gJ" secondAttribute="trailing" constant="30" id="vg7-3t-4OG"/>
+                            <constraint firstItem="x4l-sX-uDH" firstAttribute="top" secondItem="0Qs-I5-R9x" secondAttribute="bottom" constant="-88" id="vlM-jp-2di"/>
                             <constraint firstItem="Wfv-UE-5VY" firstAttribute="leading" secondItem="SVY-4y-3W8" secondAttribute="trailing" constant="-238" id="xt3-Lf-ebI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
