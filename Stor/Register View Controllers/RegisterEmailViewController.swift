@@ -39,52 +39,59 @@ class RegisterEmailViewController: UIViewController {
 
     // Register Function
     func register(){
-        var saveData = true
-        Auth.auth().createUser(withEmail: emailRegisterText.text!, password: passwordRegisterText.text!, completion:{
-            user,error in
-            print(error)
-            
-            //Error Handling
-            if let errCode = AuthErrorCode(rawValue: error!._code) {
+        guard let nameVerify = nameRegisterText.text else {return}
+        guard let emailVerify = emailRegisterText.text else {return}
+        guard let passwordVerify = passwordRegisterText.text else {return}
+        guard let phoneVerify = phoneRegisterText.text else {return}
+        
+        
+        Auth.auth().createUser(withEmail: emailVerify, password: passwordVerify){ user,error in
+            if (error == nil && user != nil){
+                let registerDataValues = ["name": nameVerify, "email": emailVerify, "password": passwordVerify, "phone":phoneVerify]
                 
-                switch errCode {
-                case .invalidEmail:
-                    print("Invalid email")
-                    saveData = false
-                case .invalidPhoneNumber:
-                    print("Incorrect password")
-                    saveData = false
-                case .accountExistsWithDifferentCredential:
-                    print("account alrady exists")
-                    saveData = false
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                let userReference = databaseReference.child("Users").child((user?.uid)!)
+                userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
+                    if err != nil{
+                        print(err)
+                        return
+                    }
+                    print("User successfully saved to FIREBASE!")
+                })
+            }
+//        //Error Handling
+            if (error != nil){
+                if let errCode = AuthErrorCode(rawValue: error!._code) {
+                    switch errCode {
+                    case .invalidEmail: // E-mail is not in email format
+                        print("Invalid email")
+                        self.emailRegisterText.backgroundColor = UIColor.red
+                        
+                    case .weakPassword: //Weak Password, must be at least 6 characters long
+                        print("Weak Password")
+                        self.passwordRegisterText.backgroundColor =  UIColor.red
+                        
+                    case .invalidPhoneNumber: // Phone number is not a valid phone number
+                        print("Incorrect password")
+                        self.passwordRegisterText.backgroundColor = UIColor.red
+                        
+                
+                        
+                    case .emailAlreadyInUse: // Account Already exists with that email
+                        print("account alrady exists")
+                        self.emailRegisterText.backgroundColor = UIColor.red
+                        
                 default:
                     print("Create User Error: \(error)")
                 }
             }
-                // Correct Password
-            else{
-                print("Successfully registered")
+            
+                //Other Fields for Database in Registration
             }
-        })
-        
-        print (saveData)
-        if (saveData == true){
-            //Other Fields for Database in Registration
-            let registerDataValues = ["name": nameRegisterText.text, "email": emailRegisterText.text, "password": passwordRegisterText.text, "phone":phoneRegisterText.text]
-            
-            
-            
-            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
-            let userReference = databaseReference.child("Users").child(nameRegisterText.text!)
-            userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
-                if err != nil{
-                    print(err)
-                    return
-                }
-                 print("User successfully saved to FIREBASE!")
-            })
         }
     }
+}
+    
     
     
     
@@ -98,5 +105,3 @@ class RegisterEmailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-}
