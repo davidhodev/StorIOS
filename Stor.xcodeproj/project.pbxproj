@@ -11,6 +11,7 @@
 		DB4B5E9820B3474D0050F66E /* RegisterEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4B5E9720B3474D0050F66E /* RegisterEmailViewController.swift */; };
 		DB4B5E9E20B34E7C0050F66E /* dosis in Resources */ = {isa = PBXBuildFile; fileRef = DB4B5E9D20B34E7C0050F66E /* dosis */; };
 		DB4B5EA020B351C20050F66E /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4B5E9F20B351C20050F66E /* StartupViewController.swift */; };
+		DB59552920B49F4D001E1AF0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB59552820B49F4D001E1AF0 /* MapViewController.swift */; };
 		DBD8FD3320B3791100776FAB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD8FD3220B3791100776FAB /* LoginViewController.swift */; };
 		DBE905DF20924BAE000F13DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905DE20924BAE000F13DB /* AppDelegate.swift */; };
 		DBE905E120924BAE000F13DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905E020924BAE000F13DB /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 		DBE905E920924BAE000F13DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE905E720924BAE000F13DB /* LaunchScreen.storyboard */; };
 		DBE905F420924BAE000F13DB /* StorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905F320924BAE000F13DB /* StorTests.swift */; };
 		DBE905FF20924BAE000F13DB /* StorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905FE20924BAE000F13DB /* StorUITests.swift */; };
+		DBEA86DF20B4981F00727FCD /* Pods_Stor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEA86E020B4981F00727FCD /* Pods_Stor.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,7 @@
 		DB4B5E9720B3474D0050F66E /* RegisterEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterEmailViewController.swift; sourceTree = "<group>"; };
 		DB4B5E9D20B34E7C0050F66E /* dosis */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dosis; sourceTree = "<group>"; };
 		DB4B5E9F20B351C20050F66E /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
+		DB59552820B49F4D001E1AF0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DBD8FD3220B3791100776FAB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DBE905DB20924BAE000F13DB /* Stor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE905DE20924BAE000F13DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +65,7 @@
 		DBE905FA20924BAE000F13DB /* StorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE905FE20924BAE000F13DB /* StorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorUITests.swift; sourceTree = "<group>"; };
 		DBE9060020924BAE000F13DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBEA86E020B4981F00727FCD /* Pods_Stor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Stor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D320C59051F760CD54268B /* Pods-StorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StorUITests/Pods-StorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBEA86DF20B4981F00727FCD /* Pods_Stor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,7 +111,9 @@
 		DB4B5E9620B346F50050F66E /* Register View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DB4B5E9F20B351C20050F66E /* StartupViewController.swift */,
 				DB4B5E9720B3474D0050F66E /* RegisterEmailViewController.swift */,
+				DBD8FD3220B3791100776FAB /* LoginViewController.swift */,
 			);
 			path = "Register View Controllers";
 			sourceTree = "<group>";
@@ -127,6 +134,7 @@
 				DBE905FD20924BAE000F13DB /* StorUITests */,
 				DBE905DC20924BAE000F13DB /* Products */,
 				463FF3A502192F9F404F1AD7 /* Pods */,
+				DBEA86DE20B4981F00727FCD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -143,9 +151,8 @@
 		DBE905DD20924BAE000F13DB /* Stor */ = {
 			isa = PBXGroup;
 			children = (
-				DB4B5E9F20B351C20050F66E /* StartupViewController.swift */,
-				DBD8FD3220B3791100776FAB /* LoginViewController.swift */,
 				DB4B5E9620B346F50050F66E /* Register View Controllers */,
+				DB59552820B49F4D001E1AF0 /* MapViewController.swift */,
 				DBE905DE20924BAE000F13DB /* AppDelegate.swift */,
 				DBE905E020924BAE000F13DB /* ViewController.swift */,
 				DBE905E220924BAE000F13DB /* Main.storyboard */,
@@ -174,6 +181,14 @@
 				DBE9060020924BAE000F13DB /* Info.plist */,
 			);
 			path = StorUITests;
+			sourceTree = "<group>";
+		};
+		DBEA86DE20B4981F00727FCD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DBEA86E020B4981F00727FCD /* Pods_Stor.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB4B5EA020B351C20050F66E /* StartupViewController.swift in Sources */,
+				DB59552920B49F4D001E1AF0 /* MapViewController.swift in Sources */,
 				DBE905E120924BAE000F13DB /* ViewController.swift in Sources */,
 				DBE905DF20924BAE000F13DB /* AppDelegate.swift in Sources */,
 				DBD8FD3320B3791100776FAB /* LoginViewController.swift in Sources */,

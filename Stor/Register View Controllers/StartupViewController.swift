@@ -41,6 +41,12 @@ class StartupViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // Override viewDidAppear
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
 
     
 
