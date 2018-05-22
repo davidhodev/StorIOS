@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FBSDKLoginKit
 
 class StartupViewController: UIViewController {
 
@@ -45,7 +46,9 @@ class StartupViewController: UIViewController {
     // Override viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        if let user = Auth.auth().currentUser{
+            performSegue(withIdentifier: "toMapSegue", sender: nil)
+        }
     }
 
     
