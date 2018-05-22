@@ -77,6 +77,9 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="11" maxX="0.0" maxY="-29"/>
                                 <state key="normal" image="Rectangle 3 Copy 2"/>
+                                <connections>
+                                    <action selector="googleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xVi-62-J2N"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akH-Mg-Kph">
                                 <rect key="frame" x="20" y="583" width="334" height="82"/>
@@ -104,25 +107,25 @@
                                 <rect key="frame" x="90" y="701" width="18" height="18"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8m-XB-JUI">
-                                <rect key="frame" x="181" y="563" width="13" height="21"/>
+                                <rect key="frame" x="181.33333333333334" y="563" width="13" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue with Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WG4-BU-pwD">
-                                <rect key="frame" x="123.66666666666669" y="624" width="145" height="21"/>
+                                <rect key="frame" x="123.66666666666667" y="624" width="144.33333333333331" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue with Google" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8K-tK-xLs">
-                                <rect key="frame" x="123.99999999999999" y="701" width="144.66666666666663" height="21"/>
+                                <rect key="frame" x="124" y="701" width="144" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By tapping any of the buttons I agree to The Terms &amp; Conditions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qe-td-WDg">
-                                <rect key="frame" x="43.666666666666657" y="760" width="287.66666666666674" height="16"/>
+                                <rect key="frame" x="44" y="760" width="287.66666666666669" height="15.333333333333371"/>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="12"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

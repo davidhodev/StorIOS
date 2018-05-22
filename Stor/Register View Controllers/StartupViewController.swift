@@ -9,8 +9,9 @@
 import UIKit
 import FirebaseAuth
 import FBSDKLoginKit
+import GoogleSignIn
 
-class StartupViewController: UIViewController {
+class StartupViewController: UIViewController, GIDSignInUIDelegate{
 
     // Instantiate create account button
     @IBOutlet weak var createAccountButton: UIButton!
@@ -34,6 +35,11 @@ class StartupViewController: UIViewController {
         handleFacebookButton()
     }
     
+    // When Google Button Pressed
+    @IBAction func googleButton(_ sender: Any) {
+        handleGoogleButton()
+    }
+    
     
     func handleFacebookButton(){
         FBSDKLoginManager().logIn(withReadPermissions: ["email", "public_profile"], from: self){ (result, error) in
@@ -54,23 +60,31 @@ class StartupViewController: UIViewController {
                     return
                 }
                 print ("Logged in With Facebook!")
+                //Get Facebook Info
+                FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start{ (connection, result, err) in
+                    if (err != nil){
+                        print("Could not get graph request")
+                        return
+                    }
+                    print(result)
+                }
                 self.viewDidLoad()
                 
             })
             
-            FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start{ (connection, result, err) in
-                if (err != nil){
-                    print("Could not get graph request")
-                    return
-                }
-                print(result)
-            }
+            
         }
+    }
+    
+    // Google button press function
+    func handleGoogleButton(){
+        GIDSignIn.sharedInstance().signIn()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        GIDSignIn.sharedInstance().uiDelegate = self
         // Do any additional setup after loading the view.
     }
 
@@ -89,16 +103,5 @@ class StartupViewController: UIViewController {
     }
 
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
