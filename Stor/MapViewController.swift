@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Firebase
 
 class MapViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        try! Auth.auth().signOut()
+        self.dismiss(animated: true, completion: nil)
         // Do any additional setup after loading the view.
     }
 

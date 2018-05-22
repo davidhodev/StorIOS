@@ -74,7 +74,7 @@ class LoginViewController: UIViewController {
             // Correct Password
             else{
                 print("Successfully logged in")
-            
+                self.dismiss(animated: true, completion: nil)
             }
         }
     }
