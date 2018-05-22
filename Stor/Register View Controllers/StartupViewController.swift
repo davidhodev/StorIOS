@@ -29,7 +29,44 @@ class StartupViewController: UIViewController {
         self.present(loginPage, animated: true, completion: nil)
     }
     
+    //When Facebook Button Pressed
+    @IBAction func facebookButton(_ sender: Any) {
+        handleFacebookButton()
+    }
     
+    
+    func handleFacebookButton(){
+        FBSDKLoginManager().logIn(withReadPermissions: ["email", "public_profile"], from: self){ (result, error) in
+            if (error != nil){
+                print("Facebook Login Error", error)
+                return
+                
+            }
+            
+            //Getting Facebook Credentials
+            let fbAccessToken = FBSDKAccessToken.current()
+            guard let accessTokenString = fbAccessToken?.tokenString else { return }
+                
+            let credentials = FacebookAuthProvider.credential(withAccessToken: (fbAccessToken?.tokenString)!)
+            Auth.auth().signIn(with: credentials, completion: { (user, error) in
+                if (error != nil){
+                    print ("Facebook login went wrong")
+                    return
+                }
+                print ("Logged in With Facebook!")
+                self.viewDidLoad()
+                
+            })
+            
+            FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start{ (connection, result, err) in
+                if (err != nil){
+                    print("Could not get graph request")
+                    return
+                }
+                print(result)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +88,7 @@ class StartupViewController: UIViewController {
         }
     }
 
+    
     
 
     /*
