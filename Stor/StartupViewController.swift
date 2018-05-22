@@ -20,7 +20,7 @@ class StartupViewController: UIViewController {
         let createAccount:RegisterEmailViewController = storyboard.instantiateViewController(withIdentifier:"RegisterEmailViewController") as! RegisterEmailViewController
         self.present(createAccount, animated: true, completion: nil)
     }
-    
+ 
     // Login Button Function
     @IBAction func loginButtonPressed(_ sender: Any) {
         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

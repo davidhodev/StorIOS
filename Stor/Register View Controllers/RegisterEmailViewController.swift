@@ -23,6 +23,10 @@ class RegisterEmailViewController: UIViewController {
         self.register()
     }
     
+    @IBAction func registrationBackButton(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "toStartupViewController", sender: nil)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

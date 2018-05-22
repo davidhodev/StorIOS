@@ -137,6 +137,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Rrf-8q-THr"/>
                     <connections>
                         <outlet property="createAccountButton" destination="Mfd-Bd-4gJ" id="58P-Uv-rsa"/>
                     </connections>
@@ -252,6 +253,14 @@
                                     <action selector="registerButton:" destination="JuW-DP-JnX" eventType="touchUpInside" id="jQE-g2-g9z"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1py-ab-JN3">
+                                <rect key="frame" x="57" y="433" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="registrationBackButton:" destination="JuW-DP-JnX" eventType="touchUpInside" id="MXx-lU-yR6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="Mnv-VT-Gle"/>
@@ -261,6 +270,7 @@
                         <outlet property="nameRegisterText" destination="GV0-8O-Ghi" id="ykh-cl-T2m"/>
                         <outlet property="passwordRegisterText" destination="nwz-fj-J1B" id="bL8-tD-IJk"/>
                         <outlet property="phoneRegisterText" destination="HcB-9S-kuw" id="N0d-X3-TsL"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="toStartupViewController" id="Yfp-we-qFP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Avf-uI-LH6" userLabel="First Responder" sceneMemberID="firstResponder"/>
