@@ -30,7 +30,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="570"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy6" translatesAutoresizingMaskIntoConstraints="NO" id="x4l-sX-uDH">
-                                <rect key="frame" x="0.0" y="372" width="375" height="440"/>
+                                <rect key="frame" x="0.0" y="376" width="375" height="475"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="475" id="YBg-ah-okZ"/>
+                                </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy5" translatesAutoresizingMaskIntoConstraints="NO" id="Wfv-UE-5VY">
                                 <rect key="frame" x="0.0" y="4" width="310" height="292"/>
@@ -54,22 +57,38 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ED4-zM-ayk">
                                 <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Bd-4gJ">
+                                <rect key="frame" x="33" y="392" width="177" height="188"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="-8" maxX="0.0" maxY="-26"/>
+                                <state key="normal" image="Create Account Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qs-I5-R9x">
+                                <rect key="frame" x="240" y="321" width="96" height="143"/>
+                                <inset key="imageEdgeInsets" minX="-19" minY="-16" maxX="-18" maxY="-36"/>
+                                <state key="normal" image="Login Via Email Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUJ-UK-wuz">
+                                <rect key="frame" x="-6.3333333333333428" y="667" width="388.33333333333337" height="82"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="82" id="sD9-Fi-w5p"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="11" maxX="-52" maxY="-29"/>
+                                <state key="normal" title="Button" image="Rectangle 3 Copy 2"/>
+                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="or" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="12W-6e-X3U">
-                                <rect key="frame" x="180" y="559" width="15" height="21"/>
+                                <rect key="frame" x="178.66666666666666" y="563" width="18" height="21"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Bd-4gJ">
-                                <rect key="frame" x="33" y="392" width="177" height="149"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="-8" maxX="0.0" maxY="-26"/>
-                                <state key="normal" image="Create Account Button"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qs-I5-R9x">
-                                <rect key="frame" x="240" y="317" width="96" height="143"/>
-                                <inset key="imageEdgeInsets" minX="-19" minY="-16" maxX="-18" maxY="-36"/>
-                                <state key="normal" image="Login Via Email Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akH-Mg-Kph">
+                                <rect key="frame" x="-7" y="592" width="388.33333333333331" height="82"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="82" id="h7I-xj-KYb"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="11" maxX="-52" maxY="-29"/>
+                                <state key="normal" title="Button" image="Rectangle 3 Copy 2"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -77,23 +96,27 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Wfv-UE-5VY" secondAttribute="trailing" constant="65" id="15s-VW-MA3"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U2q-m4-Bqu" secondAttribute="trailing" id="2hd-MU-FNb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="U2q-m4-Bqu" secondAttribute="bottom" constant="373" id="36X-76-iAu"/>
-                            <constraint firstItem="x4l-sX-uDH" firstAttribute="top" secondItem="Mfd-Bd-4gJ" secondAttribute="bottom" constant="-169" id="3ii-7H-UOT"/>
+                            <constraint firstItem="0Qs-I5-R9x" firstAttribute="leading" secondItem="Mfd-Bd-4gJ" secondAttribute="trailing" constant="30" id="3UK-9T-xr0"/>
+                            <constraint firstItem="x4l-sX-uDH" firstAttribute="top" secondItem="Mfd-Bd-4gJ" secondAttribute="bottom" constant="-204" id="4Tk-Ga-W6j"/>
+                            <constraint firstItem="x4l-sX-uDH" firstAttribute="top" secondItem="0Qs-I5-R9x" secondAttribute="bottom" constant="-88" id="6zO-wn-0nk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Qs-I5-R9x" secondAttribute="trailing" constant="39" id="77f-L9-gL0"/>
                             <constraint firstItem="ED4-zM-ayk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7Gd-C6-Sj8"/>
                             <constraint firstItem="SVY-4y-3W8" firstAttribute="top" secondItem="Wfv-UE-5VY" secondAttribute="bottom" constant="-177" id="Brf-xb-4l1"/>
                             <constraint firstItem="U2q-m4-Bqu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="38" id="CRc-Wz-K3h"/>
-                            <constraint firstItem="Mfd-Bd-4gJ" firstAttribute="top" secondItem="bCr-SF-GRd" secondAttribute="bottom" constant="-178" id="Ewp-5W-AY7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RMt-69-iis" secondAttribute="trailing" constant="205" id="Fdy-Jd-OPl"/>
+                            <constraint firstItem="12W-6e-X3U" firstAttribute="top" secondItem="Mfd-Bd-4gJ" secondAttribute="bottom" constant="-17" id="Hr7-I2-LDp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="ED4-zM-ayk" secondAttribute="top" constant="57" id="INE-Rn-DGw"/>
                             <constraint firstItem="RMt-69-iis" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="314" id="IOQ-VL-wQQ"/>
+                            <constraint firstItem="gUJ-UK-wuz" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="LgI-vw-IPv"/>
                             <constraint firstItem="bCr-SF-GRd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="OVa-cB-dOw"/>
                             <constraint firstItem="Wfv-UE-5VY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="RiW-zo-R7m"/>
+                            <constraint firstItem="12W-6e-X3U" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="S5i-5p-SI5"/>
                             <constraint firstItem="x4l-sX-uDH" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="STG-vB-fnd"/>
                             <constraint firstItem="x4l-sX-uDH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="Sqb-aZ-YFm"/>
-                            <constraint firstItem="12W-6e-X3U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="180" id="XdI-At-nTH"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="12W-6e-X3U" secondAttribute="trailing" constant="180" id="cDd-t1-wgh"/>
                             <constraint firstItem="RMt-69-iis" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="chV-PD-Bbq"/>
-                            <constraint firstItem="x4l-sX-uDH" firstAttribute="top" secondItem="bCr-SF-GRd" secondAttribute="bottom" constant="-198" id="dz2-5M-eXH"/>
+                            <constraint firstItem="akH-Mg-Kph" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="eX9-Rf-Bp8"/>
+                            <constraint firstItem="gUJ-UK-wuz" firstAttribute="top" secondItem="akH-Mg-Kph" secondAttribute="bottom" constant="-7" id="eji-Qt-Q7c"/>
+                            <constraint firstItem="gUJ-UK-wuz" firstAttribute="top" secondItem="x4l-sX-uDH" secondAttribute="bottom" constant="-184" id="fiQ-XH-MKw"/>
                             <constraint firstItem="0Qs-I5-R9x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="240" id="hCt-re-a4T"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RMt-69-iis" secondAttribute="bottom" constant="120" id="hSm-Ec-Kcb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uGy-bx-NSJ" secondAttribute="bottom" constant="684" id="hYc-UQ-J06"/>
@@ -101,10 +124,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="uGy-bx-NSJ" secondAttribute="top" constant="43" id="kRa-tL-xDF"/>
                             <constraint firstItem="uGy-bx-NSJ" firstAttribute="leading" secondItem="ED4-zM-ayk" secondAttribute="trailing" constant="-35" id="nem-WB-q7q"/>
                             <constraint firstItem="bCr-SF-GRd" firstAttribute="top" secondItem="Wfv-UE-5VY" secondAttribute="bottom" constant="-296" id="qdh-p3-9fK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gUJ-UK-wuz" secondAttribute="bottom" constant="29" id="rBI-5W-W6n"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="bCr-SF-GRd" secondAttribute="top" constant="44" id="rIh-ab-SYV"/>
-                            <constraint firstItem="x4l-sX-uDH" firstAttribute="top" secondItem="12W-6e-X3U" secondAttribute="bottom" constant="-208" id="ueI-hw-lkX"/>
-                            <constraint firstItem="0Qs-I5-R9x" firstAttribute="leading" secondItem="Mfd-Bd-4gJ" secondAttribute="trailing" constant="30" id="vg7-3t-4OG"/>
-                            <constraint firstItem="x4l-sX-uDH" firstAttribute="top" secondItem="0Qs-I5-R9x" secondAttribute="bottom" constant="-88" id="vlM-jp-2di"/>
+                            <constraint firstItem="x4l-sX-uDH" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="73" id="ugw-hQ-lFs"/>
                             <constraint firstItem="Wfv-UE-5VY" firstAttribute="leading" secondItem="SVY-4y-3W8" secondAttribute="trailing" constant="-238" id="xt3-Lf-ebI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -237,6 +259,7 @@
         <image name="Fill 7 Copy 2" width="171" height="216"/>
         <image name="Login Via Email Button" width="135" height="143"/>
         <image name="Logo Copy" width="199" height="124"/>
+        <image name="Rectangle 3 Copy 2" width="334" height="100"/>
         <image name="bitmap" width="375" height="570"/>
         <image name="fill7Copy" width="171" height="302"/>
         <image name="fill7Copy4" width="169" height="93"/>
