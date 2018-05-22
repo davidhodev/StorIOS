@@ -49,6 +49,7 @@ class RegisterEmailViewController: UIViewController {
         guard let phoneVerify = phoneRegisterText.text else {return}
         
         
+        // Creates User from Firebase
         Auth.auth().createUser(withEmail: emailVerify, password: passwordVerify){ user,error in
             if (error == nil && user != nil){
                 let registerDataValues = ["name": nameVerify, "email": emailVerify, "password": passwordVerify, "phone":phoneVerify]
@@ -62,8 +63,9 @@ class RegisterEmailViewController: UIViewController {
                     }
                     print("User successfully saved to FIREBASE!")
                 })
+                self.dismiss(animated: true, completion: nil)
             }
-//        //Error Handling
+        //Error Handling
             if (error != nil){
                 if let errCode = AuthErrorCode(rawValue: error!._code) {
                     switch errCode {
@@ -83,12 +85,10 @@ class RegisterEmailViewController: UIViewController {
                         print("account alrady exists")
                         self.emailRegisterText.backgroundColor = UIColor.red
                         
-                default:
-                    print("Create User Error: \(error)")
+                    default:
+                        print("Create User Error: \(error)")
+                    }
                 }
-            }
-            
-                //Other Fields for Database in Registration
             }
         }
     }
