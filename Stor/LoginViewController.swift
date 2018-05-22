@@ -17,8 +17,7 @@ class LoginViewController: UIViewController {
     // Action when Login Button Pressed
     @IBAction func loginButton(_ sender: Any) {
         self.login()
-        emailText.text = ""
-        passwordText.text = ""
+        
     }
     
     
@@ -37,11 +36,35 @@ class LoginViewController: UIViewController {
     
     //Making a login function
     func login(){
+        print ("=========test=========")
         Auth.auth().signIn(withEmail: emailText.text!, password: passwordText.text!, completion: {
             user, error in
-            if error != nil {
-                print("The password is incorrect")
+            
+            // Error Handling
+            if let errCode = AuthErrorCode(rawValue: error!._code) {
+                
+                switch errCode {
+                case .userNotFound:
+                    print("No Email Found")
+                    self.emailText.backgroundColor = UIColor.red // RED BACKGROUND COLOR
+                    self.emailText.text = ""
+                    self.passwordText.text = ""
+                case .invalidEmail:
+                    print("Invalid email")
+                    self.emailText.backgroundColor = UIColor.red // RED BACKGROUND COLOR
+                    self.emailText.text = ""
+                    self.passwordText.text = ""
+                case .wrongPassword:
+                    print("Incorrect password")
+                    self.passwordText.backgroundColor = UIColor.red // RED BACKGROUND COLOR
+                    self.emailText.text = ""
+                    self.passwordText.text = ""
+                default:
+                    print("Create User Error: \(error)")
+                }
             }
+                
+            // Correct Password
             else{
                 print("Successfully logged in")
             }
