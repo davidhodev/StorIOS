@@ -11,6 +11,9 @@ import FirebaseAuth
 
 class StartupViewController: UIViewController {
 
+    // Instantiate create account button
+    @IBOutlet weak var createAccountButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
