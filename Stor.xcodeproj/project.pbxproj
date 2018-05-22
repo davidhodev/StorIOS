@@ -19,6 +19,7 @@
 		DBE905E920924BAE000F13DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE905E720924BAE000F13DB /* LaunchScreen.storyboard */; };
 		DBE905F420924BAE000F13DB /* StorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905F320924BAE000F13DB /* StorTests.swift */; };
 		DBE905FF20924BAE000F13DB /* StorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905FE20924BAE000F13DB /* StorUITests.swift */; };
+		DBEA86DF20B4981F00727FCD /* Pods_Stor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEA86E020B4981F00727FCD /* Pods_Stor.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		DBE905FA20924BAE000F13DB /* StorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE905FE20924BAE000F13DB /* StorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorUITests.swift; sourceTree = "<group>"; };
 		DBE9060020924BAE000F13DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBEA86E020B4981F00727FCD /* Pods_Stor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Stor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3D320C59051F760CD54268B /* Pods-StorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StorUITests/Pods-StorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBEA86DF20B4981F00727FCD /* Pods_Stor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +130,7 @@
 				DBE905FD20924BAE000F13DB /* StorUITests */,
 				DBE905DC20924BAE000F13DB /* Products */,
 				463FF3A502192F9F404F1AD7 /* Pods */,
+				DBEA86DE20B4981F00727FCD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,6 +178,14 @@
 				DBE9060020924BAE000F13DB /* Info.plist */,
 			);
 			path = StorUITests;
+			sourceTree = "<group>";
+		};
+		DBEA86DE20B4981F00727FCD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DBEA86E020B4981F00727FCD /* Pods_Stor.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
