@@ -14,6 +14,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     
+    //Action when Back Button Pressed
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let backButtonPressed:StartupViewController = storyboard.instantiateViewController(withIdentifier:"StartupViewController") as! StartupViewController
+        self.present(backButtonPressed, animated: true, completion: nil)
+    }
+    
     // Action when Login Button Pressed
     @IBAction func loginButton(_ sender: Any) {
         self.login()
