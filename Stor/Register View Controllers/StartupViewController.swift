@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FBSDKLoginKit
 
 class StartupViewController: UIViewController {
 
@@ -15,17 +16,17 @@ class StartupViewController: UIViewController {
     @IBOutlet weak var createAccountButton: UIButton!
     
     // Create Button Function
-    @IBAction func CreateAccountButtonPressed(_ sender: Any) {
+    @IBAction func CreateAccountButtonPressed(_ sender: UIButton) {
         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let createAccount:RegisterEmailViewController = storyboard.instantiateViewController(withIdentifier:"RegisterEmailViewController") as! RegisterEmailViewController
-        self.present(createAccount, animated: true, completion: nil)
+        self.navigationController?.pushViewController(createAccount, animated: true)
     }
  
-    // Login Button Function
+    // Login Button Func tion
     @IBAction func loginButtonPressed(_ sender: Any) {
         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let loginPage:LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        self.present(loginPage, animated: true, completion: nil)
+        self.navigationController?.pushViewController(loginPage, animated: true)
     }
     
     
@@ -49,8 +50,13 @@ class StartupViewController: UIViewController {
             performSegue(withIdentifier: "toMapSegue", sender: nil)
         }
     }
-
-    
+    // Override viewWillAppear
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide the navigation bar on the this view controller
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
 
     /*
     // MARK: - Navigation
