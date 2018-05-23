@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 import FBSDKCoreKit
 import FBSDKLoginKit
 import GoogleSignIn
@@ -61,6 +62,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
                 return
             }
             else{ print("Google Firebase Success!", user?.uid)
+                
+                let fullName = user?.displayName
+                let email = user?.email
+                let profilePic = user?.photoURL
+                let phone = user?.phoneNumber
+                let profilePicString = profilePic?.absoluteString
+                
+                if let user = Auth.auth().currentUser{
+                    let registerDataValues = ["name": fullName, "email": email, "password": user.uid, "phone":phone, "profile Picture": profilePicString]
+                    let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                    let userReference = databaseReference.root.child("Users").child((user.uid))
+                    
+                    userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
+                        if err != nil{
+                            print(err)
+                            return
+                        }
+                        print("User successfully saved to FIREBASE!")
+                    })
+                }
                 if let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MapViewController") as? MapViewController {
                     if let window = self.window, let rootViewController = window.rootViewController {
                         var currentController = rootViewController

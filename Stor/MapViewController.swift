@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
+import FBSDKLoginKit
 
 class MapViewController: UIViewController {
     
@@ -19,8 +21,13 @@ class MapViewController: UIViewController {
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
         try!  Auth.auth().signOut()
+        GIDSignIn.sharedInstance().signOut()
+        let manager = FBSDKLoginManager()
+        manager.logOut()
+        
         print("signed out")
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popToRootViewController(animated: true)
+//        self.dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
