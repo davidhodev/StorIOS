@@ -10,9 +10,11 @@ import UIKit
 import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
+import GoogleSignIn
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
 
     var window: UIWindow?
 
@@ -26,14 +28,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Installing Firebase
         FirebaseApp.configure()
         
+        //Installing Google
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = self
+
         return true
     }
     
-    // Facebook SDK function
+    // Facebook and Google SDK function
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        let handle = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        GIDSignIn.sharedInstance().handle(url,sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
+        
+    
+        return handle
+        
     }
 
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error{
+            print("Failed to log in to Google", error)
+            return
+        }
+        
+        guard let idToken = user.authentication.idToken else {return}
+        guard let accessToken = user.authentication.accessToken else {return}
+        let credentials = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: accessToken)
+        
+        Auth.auth().signIn(with: credentials, completion: {
+            (user,error) in
+            if let error = error {
+                print ("Failed to make a Firebase account with Google")
+                return
+            }
+            else{ print("Google Firebase Success!", user?.uid)
+                
+            }
+        })
+        print("Succesfully logged into Google", user)
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

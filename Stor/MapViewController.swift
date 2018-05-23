@@ -11,13 +11,19 @@ import FirebaseAuth
 
 class MapViewController: UIViewController {
 
+    @IBAction func logoutButtonPressed(_ sender: Any) {
+        try!  Auth.auth().signOut()
+        print("signed out")
+        self.dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        try! Auth.auth().signOut()
-        self.dismiss(animated: true, completion: nil)
+        
         // Do any additional setup after loading the view.
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

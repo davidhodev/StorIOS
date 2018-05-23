@@ -14,6 +14,7 @@ target 'Stor' do
 	pod 'FBSDKShareKit'
 	pod 'FBSDKLoginKit'
 
+	pod 'GoogleSignIn'
 
   target 'StorTests' do
     inherit! :search_paths
