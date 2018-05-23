@@ -75,7 +75,10 @@ class LoginViewController: UIViewController {
             // Correct Password
             else{
                 print("Successfully logged in")
-                self.dismiss(animated: true, completion: nil)
+                let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let goToMapFromLogin:MapViewController = storyboard.instantiateViewController(withIdentifier:"MapViewController") as! MapViewController
+                self.navigationController?.pushViewController(goToMapFromLogin, animated: true)
+
             }
         }
     }
