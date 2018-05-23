@@ -20,15 +20,16 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
     // Create Button Function
     @IBAction func CreateAccountButtonPressed(_ sender: UIButton) {
         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let createAccount:RegisterEmailViewController = storyboard.instantiateViewController(withIdentifier:"RegisterEmailViewController") as! RegisterEmailViewController
-        self.navigationController?.pushViewController(createAccount, animated: true)
+        let goToAccountPage:RegisterEmailViewController = storyboard.instantiateViewController(withIdentifier:"RegisterEmailViewController") as! RegisterEmailViewController
+        self.navigationController?.pushViewController(goToAccountPage, animated: true)
     }
  
     // Login Button Func tion
     @IBAction func loginButtonPressed(_ sender: Any) {
+        print("Login button")
         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let loginPage:LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        self.navigationController?.pushViewController(loginPage, animated: true)
+        self.navigationController?.pushViewController(loginPage, animated: false)
     }
     
     //When Facebook Button Pressed
@@ -38,9 +39,7 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
     
     // When Google Button Pressed
     @IBAction func googleButton(_ sender: Any) {
-        handleGoogleButton{ () -> () in
-            print(123)
-        }
+        handleGoogleButton()
     }
     
     
@@ -49,7 +48,6 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
             if (error != nil){
                 print("Facebook Login Error", error)
                 return
-                
             }
             
             //Getting Facebook Credentials
@@ -73,16 +71,13 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
                     self.viewDidAppear(true)
                 }
             })
-            
         }
     }
     
     // Google button press function
-    func handleGoogleButton(handleComplete:(() -> ())){
+    func handleGoogleButton(){
         GIDSignIn.sharedInstance().signIn()
-        handleComplete()
-        print(456)
-        
+        viewDidAppear(true)
     }
     
     
@@ -91,6 +86,7 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance().uiDelegate = self
+
         // Do any additional setup after loading the view.
     }
 

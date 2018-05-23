@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    39dc92b0210efc1711c65da5b6bcd3cc029b25ac
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,9 +34,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy5" translatesAutoresizingMaskIntoConstraints="NO" id="Wfv-UE-5VY">
-
-                                <rect key="frame" x="0.0" y="0.0" width="310" height="292"/>
-
+                                <rect key="frame" x="0.0" y="44" width="310" height="292"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy" translatesAutoresizingMaskIntoConstraints="NO" id="RMt-69-iis">
                                 <rect key="frame" x="0.0" y="402" width="170" height="256"/>
@@ -50,8 +46,7 @@
                                 <rect key="frame" x="224" y="126" width="151" height="279"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo Copy" translatesAutoresizingMaskIntoConstraints="NO" id="SVY-4y-3W8">
-                                <rect key="frame" x="51" y="115" width="187" height="114"/>
-
+                                <rect key="frame" x="51" y="159" width="187" height="114"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="114" id="EbN-Uc-3Ao"/>
                                     <constraint firstAttribute="width" constant="187" id="nUP-Il-rH9"/>
@@ -119,9 +114,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue with Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WG4-BU-pwD">
-
                                 <rect key="frame" x="123.66666666666669" y="626" width="145" height="21"/>
-
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                 <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -279,48 +272,9 @@
                                         <fragment content="here">
                                             <attributes>
                                                 <color key="NSColor" red="0.16034999999999999" green="0.14701" blue="0.34179999999999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <font key="NSFont" size="16" name="Dosis-SemiBold"/>
+                                                <font key="NSFont" metaFont="system" size="16"/>
                                                 <real key="NSKern" value="0.40000000000000002"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                    <tabStops>
-                                                        <textTab alignment="left" location="28">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="56">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="84">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="112">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="140">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="168">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="196">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="224">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="252">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="280">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="308">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="336">
-                                                            <options/>
-                                                        </textTab>
-                                                    </tabStops>
-                                                </paragraphStyle>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                 <integer key="NSUnderline" value="1"/>
                                                 <color key="NSUnderlineColor" red="0.16034999999999999" green="0.14701" blue="0.34179999999999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </attributes>
