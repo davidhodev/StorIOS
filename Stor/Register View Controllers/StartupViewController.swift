@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 import FBSDKLoginKit
 import GoogleSignIn
 
@@ -86,18 +87,53 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
                     return
                 }
                 print ("Logged in With Facebook!")
+                
+                
                 //Get Facebook Info
-                FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email"]).start{ (connection, result, err) in
-                    if (err != nil){
-                        print("Could not get graph request")
-                        return
-                    }
-                    print(result)
-                    self.viewDidAppear(true)
-                }
+                self.getFacebookInfo()
+                self.viewDidAppear(true)
             })
         }
     }
+    
+    // Get Facebook Info Func
+    func getFacebookInfo(){
+        var fbName = ""
+        var fbEmail = ""
+        var fbPhoto = ""
+        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email, picture.type(large)"]).start{ (connection, result, err) in
+            if (err != nil){
+                print("Could not get graph request")
+                return
+            }
+            print("FBRESULT", result)
+            
+            let info = result as! [String : AnyObject]
+            if let name = info["name"] as? String{
+                fbName = name
+            }
+            if let email = info["email"] as? String{
+                fbEmail = email
+            }
+            if let photo = info["picture"] as? NSDictionary, let fbData = photo["data"] as? NSDictionary, let fbPhotoUrl = fbData["url"] as? String{
+                fbPhoto = fbPhotoUrl
+            }
+            if let user = Auth.auth().currentUser{
+                let registerDataValues = ["name": fbName, "email": fbEmail, "password": user.uid, "phone":"phoneVerify", "profilePicture": fbPhoto]
+                    
+                    let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                    let userReference = databaseReference.child("Users").child((user.uid))
+                    userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
+                        if err != nil{
+                            print(err)
+                            return
+                        }
+                        print("User successfully saved to FIREBASE!")
+                    })
+                }
+        }
+    }
+    
     
     // Google button press function
     func handleGoogleButton(){
