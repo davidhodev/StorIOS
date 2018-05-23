@@ -444,6 +444,15 @@
                                     <action selector="logoutButtonPressed:" destination="dx9-Au-IeG" eventType="touchUpInside" id="grO-IZ-uNO"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vlf-7K-17q">
+                                <rect key="frame" x="321" y="748" width="36" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
+                                <state key="normal" title="Menu"/>
+                                <connections>
+                                    <action selector="menuButton:" destination="dx9-Au-IeG" eventType="touchUpInside" id="Mt3-Wm-65e"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="gao-4W-ZjZ"/>
@@ -452,6 +461,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ij5-G9-FKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4186.3999999999996" y="34.729064039408868"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="k1C-86-8Os">
+            <objects>
+                <viewController storyboardIdentifier="MenuViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J4d-Ec-R3O" customClass="MenuViewController" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xaM-lh-8Jp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aoK-JP-7VU">
+                                <rect key="frame" x="0.0" y="39" width="375" height="734"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOq-nf-FMU">
+                                        <rect key="frame" x="300" y="570" width="30" height="57"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="35"/>
+                                        <state key="normal" title="x">
+                                            <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="aoK-JP-7VU" firstAttribute="centerX" secondItem="xaM-lh-8Jp" secondAttribute="centerX" id="F23-DF-7Fj"/>
+                            <constraint firstItem="aoK-JP-7VU" firstAttribute="leading" secondItem="9m8-e5-cAL" secondAttribute="leading" id="My4-hx-E22"/>
+                            <constraint firstItem="9m8-e5-cAL" firstAttribute="bottom" secondItem="aoK-JP-7VU" secondAttribute="bottom" id="PcI-rM-deN"/>
+                            <constraint firstItem="aoK-JP-7VU" firstAttribute="top" secondItem="9m8-e5-cAL" secondAttribute="top" id="PqW-I5-pI5"/>
+                            <constraint firstItem="9m8-e5-cAL" firstAttribute="trailing" secondItem="aoK-JP-7VU" secondAttribute="trailing" id="yvA-p8-AaL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9m8-e5-cAL"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kPk-3W-dro" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5119.1999999999998" y="44.334975369458128"/>
         </scene>
         <!--Register Email View Controller-->
         <scene sceneID="k3l-h1-JPL">

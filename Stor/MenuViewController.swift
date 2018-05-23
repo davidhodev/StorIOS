@@ -1,35 +1,21 @@
 //
-//  MapViewController.swift
+//  MenuViewController.swift
 //  Stor
 //
-//  Created by David Ho on 5/22/18.
+//  Created by Cole Feldman on 5/23/18.
 //  Copyright © 2018 David Ho. All rights reserved.
 //
 
 import UIKit
-import FirebaseAuth
 
-class MapViewController: UIViewController {
-    
-    //menu button function to bring out pop up
-    @IBAction func menuButton(_ sender: UIButton) {
-        let popUpMenu = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! UIPopoverPresentationController
-        
-    }
-    
-    @IBAction func logoutButtonPressed(_ sender: Any) {
-        try!  Auth.auth().signOut()
-        print("signed out")
-        self.dismiss(animated: true, completion: nil)
-    }
+class MenuViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
