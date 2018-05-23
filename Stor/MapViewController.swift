@@ -7,10 +7,15 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
 
 class MapViewController: UIViewController {
 
+    @IBAction func logoutButtonPressed(_ sender: Any) {
+        try!  Auth.auth().signOut()
+        print("signed out")
+        self.dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,8 +23,6 @@ class MapViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        try! Auth.auth().signOut()
-        self.dismiss(animated: true, completion: nil)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -61,7 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
                 print ("Failed to make a Firebase account with Google")
                 return
             }
-            else{ print("Google Firebase Success!", user?.uid)}
+            else{ print("Google Firebase Success!", user?.uid)
+                
+            }
         })
         print("Succesfully logged into Google", user)
     }

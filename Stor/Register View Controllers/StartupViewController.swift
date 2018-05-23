@@ -79,6 +79,7 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
     // Google button press function
     func handleGoogleButton(){
         GIDSignIn.sharedInstance().signIn()
+        self.viewDidLoad()
         
     }
     
