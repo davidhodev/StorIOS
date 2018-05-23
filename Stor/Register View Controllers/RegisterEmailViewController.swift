@@ -24,9 +24,10 @@ class RegisterEmailViewController: UIViewController {
     }
     // takes you back to the front page
     @IBAction func registrationBackButton(_ sender: UIButton) {
-        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let goToHomePage:StartupViewController = storyboard.instantiateViewController(withIdentifier:"StartupViewController") as! StartupViewController
-        self.navigationController?.pushViewController(goToHomePage, animated: true)
+        //let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        //let goToHomePage:StartupViewController = storyboard.instantiateViewController(withIdentifier:"StartupViewController") as! StartupViewController
+        //self.navigationController?.pushViewController(goToHomePage, animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     

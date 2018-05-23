@@ -9,9 +9,10 @@
 import UIKit
 
 class TermsViewController: UIViewController {
-  //  @IBAction func homeButton(_ sender: UIButton) {
-       // self.navigationController?.popToRootViewController(animated: true)
-    //}
+    
+    @IBAction func backButton(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

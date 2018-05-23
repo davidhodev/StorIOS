@@ -247,7 +247,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Back"/>
                                                 <connections>
-                                                    <action selector="Home:" destination="Dpa-w6-m5y" eventType="touchUpInside" id="ryM-wu-F1s"/>
+                                                    <action selector="backButton:" destination="Dpa-w6-m5y" eventType="touchUpInside" id="iSV-S3-CZw"/>
                                                 </connections>
                                             </button>
                                         </subviews>
