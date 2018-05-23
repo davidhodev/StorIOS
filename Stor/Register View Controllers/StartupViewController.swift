@@ -101,7 +101,7 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
             performSegue(withIdentifier: "toMapSegue", sender: nil)
         }
     }
-<<<<<<< HEAD
+
     // Override viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -109,23 +109,5 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-=======
-
-    
-<<<<<<< HEAD
-=======
-    
->>>>>>> f20299630077ee330eaf39b085af278e5717f1fd
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
->>>>>>> 47e8727b13d1e07f808bf113b44841b4e32f2124
 
 }

@@ -254,11 +254,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDD-gG-bq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< HEAD
             <point key="canvasLocation" x="2087.1999999999998" y="34.729064039408868"/>
-=======
-            <point key="canvasLocation" x="1485.5999999999999" y="34.729064039408868"/>
->>>>>>> f20299630077ee330eaf39b085af278e5717f1fd
         </scene>
         <!--Map View Controller-->
         <scene sceneID="JOO-uD-wlg">
