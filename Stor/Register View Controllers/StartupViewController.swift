@@ -11,6 +11,7 @@ import FirebaseAuth
 import FBSDKLoginKit
 import GoogleSignIn
 
+
 class StartupViewController: UIViewController, GIDSignInUIDelegate{
 
     // Instantiate create account button
@@ -37,7 +38,9 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
     
     // When Google Button Pressed
     @IBAction func googleButton(_ sender: Any) {
-        handleGoogleButton()
+        handleGoogleButton{ () -> () in
+            print(123)
+        }
     }
     
     
@@ -67,21 +70,23 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
                         return
                     }
                     print(result)
+                    self.viewDidAppear(true)
                 }
-                self.viewDidLoad()
-                
             })
-            
             
         }
     }
     
     // Google button press function
-    func handleGoogleButton(){
+    func handleGoogleButton(handleComplete:(() -> ())){
         GIDSignIn.sharedInstance().signIn()
-        self.viewDidLoad()
+        handleComplete()
+        print(456)
         
     }
+    
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,9 +108,11 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
         }
     }
 
+
     // Override viewWillAppear
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        GIDSignIn.sharedInstance().uiDelegate = self
         
         // Hide the navigation bar on the this view controller
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
