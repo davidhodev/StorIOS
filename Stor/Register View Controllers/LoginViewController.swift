@@ -15,11 +15,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordText: UITextField!
     
     //Takes you to create Account
-    @IBAction func backButtonPressed(_ sender: UIButton) {
-        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let goToAccountPage:RegisterEmailViewController = storyboard.instantiateViewController(withIdentifier:"RegisterEmailViewController") as! RegisterEmailViewController
-        self.navigationController?.pushViewController(goToAccountPage, animated: true)
+    @IBAction func homeButton(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
+    
     
     // Action when Login Button Pressed
     @IBAction func loginButton(_ sender: Any) {
