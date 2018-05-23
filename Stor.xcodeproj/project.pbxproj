@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B0B7B137B763384068CFD08 /* Pods_StorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83BDF3AB5601AEFA4206A668 /* Pods_StorTests.framework */; };
+		574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574FC7BE20B5F484001AE44F /* TermsViewController.swift */; };
 		D1947A535ADA1F3F00BCE349 /* Pods_StorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBFB92A62876BD03C1FEC207 /* Pods_StorUITests.framework */; };
 		DB4B5E9320B339A30050F66E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB4B5E9220B339A20050F66E /* GoogleService-Info.plist */; };
 		DB4B5E9820B3474D0050F66E /* RegisterEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4B5E9720B3474D0050F66E /* RegisterEmailViewController.swift */; };
@@ -48,6 +49,7 @@
 		18F4FB721B7B5B1C7D1493B0 /* Pods-Stor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stor/Pods-Stor.debug.xcconfig"; sourceTree = "<group>"; };
 		20873EB433166AE1F0854C26 /* Pods-StorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StorTests/Pods-StorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E5B7ADF60FD9AF861F2989D /* Pods-Stor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stor/Pods-Stor.release.xcconfig"; sourceTree = "<group>"; };
+		574FC7BE20B5F484001AE44F /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		83BDF3AB5601AEFA4206A668 /* Pods_StorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C530B0B3D761ADC198DC431 /* Pods-StorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorUITests/Pods-StorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1E7F08C17DB4E0B3B6B7EEE /* Pods-StorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorTests/Pods-StorTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				DB3EE96E20B4B1D700CC4174 /* Stor.entitlements */,
 				DB4B5E9620B346F50050F66E /* Register View Controllers */,
 				DB59552820B49F4D001E1AF0 /* MapViewController.swift */,
+				574FC7BE20B5F484001AE44F /* TermsViewController.swift */,
 				DBE905DE20924BAE000F13DB /* AppDelegate.swift */,
 				DBE905E020924BAE000F13DB /* ViewController.swift */,
 				DBE905E220924BAE000F13DB /* Main.storyboard */,
@@ -464,6 +467,7 @@
 				DBE905DF20924BAE000F13DB /* AppDelegate.swift in Sources */,
 				DBD8FD3320B3791100776FAB /* LoginViewController.swift in Sources */,
 				DB4B5E9820B3474D0050F66E /* RegisterEmailViewController.swift in Sources */,
+				574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

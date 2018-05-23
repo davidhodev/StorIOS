@@ -47,6 +47,15 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
     }
     
 
+//    terms and conditions button function
+    @IBAction func termsButtonPressed(_ sender: UIButton?) {
+        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let termsPage: TermsViewController = storyboard.instantiateViewController(withIdentifier: "TermsViewController") as! TermsViewController
+        self.navigationController?.pushViewController(termsPage, animated: true)
+    }
+    
+    
+    
     
     //When Facebook Button Pressed
     @IBAction func facebookButton(_ sender: Any) {

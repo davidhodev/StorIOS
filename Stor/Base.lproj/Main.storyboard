@@ -129,11 +129,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qe-td-WDg">
-
-                                <rect key="frame" x="34" y="762" width="179.66666666666666" height="14.333333333333371"/>
-=======
                                 <rect key="frame" x="45.666666666666671" y="762" width="164.66666666666663" height="14"/>
->>>>>>> 702b6bc01306f1bf7b347dfc962f31b7682beb72
                                 <attributedString key="attributedText">
                                     <fragment content="By tapping any of the buttons I agree to ">
                                         <attributes>
@@ -145,15 +141,13 @@
                                 <color key="highlightedColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <button opaque="NO" alpha="0.20000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Stb-V6-Mz7">
-
-                                <rect key="frame" x="216" y="756" width="130" height="27"/>
+                                <rect key="frame" x="213.66666666666663" y="755" width="130" height="28"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="The Terms and Conditions.">
                                             <attributes>
                                                 <color key="NSBackgroundColor" red="0.16034999999999999" green="0.14701" blue="0.34179999999999999" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="NSColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-
                                                 <font key="NSFont" size="12" name="Dosis-Regular"/>
                                                 <real key="NSKern" value="0.40000000000000002"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
@@ -163,6 +157,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="termsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iPf-hy-9NV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -231,10 +228,10 @@
             </objects>
             <point key="canvasLocation" x="1954.4000000000001" y="34.729064039408868"/>
         </scene>
-        <!--Termsand Conditions-->
+        <!--Terms View Controller-->
         <scene sceneID="Lod-MY-l7W">
             <objects>
-                <viewController storyboardIdentifier="Terms and Conditions" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dpa-w6-m5y" customClass="TermsandConditions" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TermsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Dpa-w6-m5y" customClass="TermsViewController" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CKI-XM-MxM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1250"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -244,6 +241,16 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9dn-mQ-VmH">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="1250"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bes-av-Hwm">
+                                                <rect key="frame" x="170" y="190" width="34" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Back"/>
+                                                <connections>
+                                                    <action selector="Home:" destination="Dpa-w6-m5y" eventType="touchUpInside" id="ryM-wu-F1s"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1250" id="fhR-m3-iyE"/>
@@ -341,11 +348,8 @@
                                 <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UTL-Mb-MU0">
+                            <button opaque="NO" contentMode="scaleAspectFit" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UTL-Mb-MU0">
                                 <rect key="frame" x="212" y="647" width="31" height="32"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="here">
@@ -353,46 +357,7 @@
                                                 <color key="NSColor" red="0.16034999999999999" green="0.14701" blue="0.34179999999999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <font key="NSFont" size="16" name="Dosis-Regular"/>
                                                 <real key="NSKern" value="0.40000000000000002"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                    <tabStops>
-                                                        <textTab alignment="left" location="28">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="56">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="84">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="112">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="140">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="168">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="196">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="224">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="252">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="280">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="308">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="336">
-                                                            <options/>
-                                                        </textTab>
-                                                    </tabStops>
-                                                </paragraphStyle>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                 <integer key="NSUnderline" value="1"/>
                                                 <color key="NSUnderlineColor" red="0.16034999999999999" green="0.14701" blue="0.34179999999999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </attributes>
