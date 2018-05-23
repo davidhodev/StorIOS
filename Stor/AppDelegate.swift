@@ -61,10 +61,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
                 return
             }
             else{ print("Google Firebase Success!", user?.uid)
+                if let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MapViewController") as? MapViewController {
+                    if let window = self.window, let rootViewController = window.rootViewController {
+                        var currentController = rootViewController
+                        while let presentedController = currentController.presentedViewController {
+                            currentController = presentedController
+                        }
+                        currentController.present(controller, animated: true, completion: nil)
+                    }
+                }
             }
         })
         print("Succesfully logged into Google", user)
-
         
     }
         

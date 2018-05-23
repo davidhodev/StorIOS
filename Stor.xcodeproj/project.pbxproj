@@ -14,6 +14,8 @@
 		DB4B5E9E20B34E7C0050F66E /* dosis in Resources */ = {isa = PBXBuildFile; fileRef = DB4B5E9D20B34E7C0050F66E /* dosis */; };
 		DB4B5EA020B351C20050F66E /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4B5E9F20B351C20050F66E /* StartupViewController.swift */; };
 		DB59552920B49F4D001E1AF0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB59552820B49F4D001E1AF0 /* MapViewController.swift */; };
+		DB756FE620B5305F00E12D77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905DE20924BAE000F13DB /* AppDelegate.swift */; };
+		DB756FE720B5306600E12D77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905DE20924BAE000F13DB /* AppDelegate.swift */; };
 		DBD8FD3320B3791100776FAB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD8FD3220B3791100776FAB /* LoginViewController.swift */; };
 		DBE905DF20924BAE000F13DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905DE20924BAE000F13DB /* AppDelegate.swift */; };
 		DBE905E120924BAE000F13DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905E020924BAE000F13DB /* ViewController.swift */; };
@@ -469,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB756FE620B5305F00E12D77 /* AppDelegate.swift in Sources */,
 				DBE905F420924BAE000F13DB /* StorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,6 +480,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB756FE720B5306600E12D77 /* AppDelegate.swift in Sources */,
 				DBE905FF20924BAE000F13DB /* StorUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
