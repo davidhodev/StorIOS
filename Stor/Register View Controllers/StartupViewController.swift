@@ -32,6 +32,22 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
         self.navigationController?.pushViewController(loginPage, animated: true)
     }
     
+    // Help? Button Function
+    // change from Google to our FAQ
+    @IBAction func helpButtonPressed(_ sender: UIButton) {
+    
+    openUrl(urlStr: "http://www.google.com")
+    }
+
+    func openUrl(urlStr:String!) {
+    
+    if let url = NSURL(string:urlStr) {
+        UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        }
+    }
+    
+
+    
     //When Facebook Button Pressed
     @IBAction func facebookButton(_ sender: Any) {
         handleFacebookButton()
