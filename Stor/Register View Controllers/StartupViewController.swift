@@ -24,13 +24,29 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
         self.navigationController?.pushViewController(goToAccountPage, animated: true)
     }
  
-    // Login Button Func tion
+    // Login Button Function
     @IBAction func loginButtonPressed(_ sender: Any) {
-        print("Login button")
+        //print("Login button")
         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let loginPage:LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
-        self.navigationController?.pushViewController(loginPage, animated: false)
+        self.navigationController?.pushViewController(loginPage, animated: true)
     }
+    
+    // Help? Button Function
+    // change from Google to our FAQ
+    @IBAction func helpButtonPressed(_ sender: UIButton) {
+    
+    openUrl(urlStr: "http://www.google.com")
+    }
+
+    func openUrl(urlStr:String!) {
+    
+    if let url = NSURL(string:urlStr) {
+        UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        }
+    }
+    
+
     
     //When Facebook Button Pressed
     @IBAction func facebookButton(_ sender: Any) {
@@ -110,8 +126,6 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
         super.viewWillAppear(animated)
         GIDSignIn.sharedInstance().uiDelegate = self
         
-        // Hide the navigation bar on the this view controller
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
 }
