@@ -88,7 +88,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let region = MKCoordinateRegion(center: center, span: span)
         
         storMapKit.setRegion(region, animated: true)
-
+        storMapKit.showsUserLocation = true
     }
 
 
