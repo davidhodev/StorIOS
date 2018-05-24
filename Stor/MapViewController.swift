@@ -17,11 +17,45 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var storMapKit: MKMapView!
     
+    // instantiate the View
+    @IBOutlet var popMenu: UIView!
+    
+    // exit button
+    @IBAction func exitMenu(_ sender: UIButton) {
+        animateOut()
+    }
+    // menu animation
+    func animateIn() {
+        self.view.addSubview(popMenu)
+        popMenu.center = self.view.center
+        popMenu.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+        popMenu.alpha = 0
+        UIView.animate(withDuration: 0.3){
+            self.popMenu.alpha = 1
+            self.popMenu.transform = CGAffineTransform.identity
+        }
+    }
+    
+    //menu exit animation
+    func animateOut() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.popMenu.transform = CGAffineTransform.init(scaleX:1, y: 1)
+            self.popMenu.alpha = 0
+        }) {(success: Bool) in
+                self.popMenu.removeFromSuperview()
+            }
+    }
+    
+    // menu button
+    @IBAction func goToMenu(_ sender: UIButton) {
+        animateIn()
+    }
+    
+    
     let locationManager = CLLocationManager()
     
     //menu button function to bring out pop up
     @IBAction func menuButton(_ sender: UIButton) {
-        let popUpMenu = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! UIPopoverPresentationController
         
     }
     
@@ -40,8 +74,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        // Do any additional setup after loading the view.
+        
     }
+    
+    
+
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
