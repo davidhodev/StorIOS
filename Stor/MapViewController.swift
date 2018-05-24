@@ -10,8 +10,14 @@ import UIKit
 import FirebaseAuth
 import GoogleSignIn
 import FBSDKLoginKit
+import MapKit
+import CoreLocation
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, CLLocationManagerDelegate {
+    
+    @IBOutlet weak var storMapKit: MKMapView!
+    
+    let locationManager = CLLocationManager()
     
     //menu button function to bring out pop up
     @IBAction func menuButton(_ sender: UIButton) {
@@ -31,12 +37,24 @@ class MapViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         // Do any additional setup after loading the view.
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let location = locations[0]
+        let center = location.coordinate
+        let span = MKCoordinateSpanMake(0.01, 0.01) //WHERE WE CHANGE THE SPAN OF MAP
+        let region = MKCoordinateRegion(center: center, span: span)
+        
+        storMapKit.setRegion(region, animated: true)
 
-    override func viewDidAppear(_ animated: Bool) {
     }
+
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
