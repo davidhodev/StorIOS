@@ -122,15 +122,19 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
                 let registerDataValues = ["name": fbName, "email": fbEmail, "password": user.uid, "phone":"phoneVerify", "profilePicture": fbPhoto]
                     
                     let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
-                    let userReference = databaseReference.child("Users").child((user.uid))
+                    let userReference = databaseReference.root.child("Users").child((user.uid))
+                
+                print("FB DATABASE REFERENCE", databaseReference)
+                print("FB USER REFERENCE", userReference)
+                
                     userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
                         if err != nil{
                             print(err)
                             return
                         }
                         print("User successfully saved to FIREBASE!")
-                    })
-                }
+                })
+            }
         }
     }
     
