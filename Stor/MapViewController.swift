@@ -31,7 +31,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         popMenu.transform = CGAffineTransform.init(scaleX: 1, y: 1)
         popMenu.alpha = 0
         UIView.animate(withDuration: 0.3){
-            self.popMenu.alpha = 1
+            self.popMenu.alpha = 0.75
             self.popMenu.transform = CGAffineTransform.identity
         }
     }

@@ -503,7 +503,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ij5-G9-FKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="XSB-o5-v6t">
+                <view opaque="NO" alpha="0.55000000000000004" contentMode="scaleToFill" id="XSB-o5-v6t">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -532,7 +532,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="0.86275858270000005" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="0.86275858274647887" colorSpace="custom" customColorSpace="sRGB"/>
                     <viewLayoutGuide key="safeArea" id="tAs-4D-dYs"/>
                 </view>
