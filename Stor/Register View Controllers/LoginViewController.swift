@@ -9,7 +9,21 @@
 import UIKit
 import FirebaseAuth
 
+extension UIImageView {
+    func setImageColor(color: UIColor) {
+        let templateImage = self.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        self.image = templateImage
+        self.tintColor = color
+    }
+}
+
 class LoginViewController: UIViewController {
+    
+    // instantiate eye button paramter
+    var iconClick : Bool!
+    
+    //change color animation function
+
     
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
@@ -20,7 +34,16 @@ class LoginViewController: UIViewController {
     @IBAction func homeButton(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
-    
+    // button function to switch security of text
+    @IBAction func revealText(_ sender: UIButton) {
+        if(iconClick == true) {
+            passwordText.isSecureTextEntry = false
+            iconClick = false
+        } else {
+            passwordText.isSecureTextEntry = true
+            iconClick = true
+        }
+    }
     
     // Action when Login Button Pressed
     @IBAction func loginButton(_ sender: Any) {
@@ -29,6 +52,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        iconClick = true
 
         // Do any additional setup after loading the view.
     }
