@@ -19,15 +19,15 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
     @IBOutlet weak var createAccountButton: UIButton!
     
     // Create Button Function
-    @IBAction func CreateAccountButtonPressed(_ sender: UIButton) {
-        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+    
+    @IBAction func createAccountButton(_ sender: UIButton) {
+    let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let goToAccountPage:RegisterEmailViewController = storyboard.instantiateViewController(withIdentifier:"RegisterEmailViewController") as! RegisterEmailViewController
         self.navigationController?.pushViewController(goToAccountPage, animated: true)
     }
  
     // Login Button Function
-    @IBAction func loginButtonPressed(_ sender: Any) {
-        //print("Login button")
+    @IBAction func loginButton(_ sender: UIButton) {
         let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let loginPage:LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         self.navigationController?.pushViewController(loginPage, animated: true)
