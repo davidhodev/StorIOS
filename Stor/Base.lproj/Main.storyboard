@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JuW-DP-JnX">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -132,11 +132,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qe-td-WDg">
-                                <rect key="frame" x="-17" y="762" width="227.66666666666666" height="14.333333333333371"/>
+                                <rect key="frame" x="31" y="762" width="179.66666666666666" height="15.333333333333371"/>
                                 <attributedString key="attributedText">
                                     <fragment content="By tapping any of the buttons I agree to ">
                                         <attributes>
-                                            <font key="NSFont" metaFont="cellTitle"/>
+                                            <font key="NSFont" size="12" name="Dosis-Regular"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -144,14 +144,14 @@
                                 <color key="highlightedColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <button opaque="NO" alpha="0.20000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Stb-V6-Mz7">
-                                <rect key="frame" x="213.66666666666663" y="755" width="162" height="28"/>
+                                <rect key="frame" x="213.66666666666663" y="755" width="130" height="28"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="The Terms and Conditions.">
                                             <attributes>
                                                 <color key="NSBackgroundColor" red="0.16034999999999999" green="0.14701" blue="0.34179999999999999" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="NSColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                <font key="NSFont" size="12" name="Dosis-Regular"/>
                                                 <real key="NSKern" value="0.40000000000000002"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                 <integer key="NSUnderline" value="1"/>
@@ -547,17 +547,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bitmap" translatesAutoresizingMaskIntoConstraints="NO" id="MWZ-xa-Wdm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitmap" translatesAutoresizingMaskIntoConstraints="NO" id="bCw-cS-a9K">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="570"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fill7Copy5" translatesAutoresizingMaskIntoConstraints="NO" id="aWb-NV-XkT">
-                                <rect key="frame" x="0.0" y="0.0" width="270" height="220"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bitmap1" translatesAutoresizingMaskIntoConstraints="NO" id="9Rs-gq-spG">
+                                <rect key="frame" x="0.0" y="447" width="375" height="367"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fill7Copy6" translatesAutoresizingMaskIntoConstraints="NO" id="Of6-xO-4o4">
-                                <rect key="frame" x="0.0" y="97" width="375" height="409"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 5CA" translatesAutoresizingMaskIntoConstraints="NO" id="4bX-nX-NHM">
+                                <rect key="frame" x="0.0" y="0.0" width="306" height="192"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CA Hex" translatesAutoresizingMaskIntoConstraints="NO" id="HbH-Xq-cqG">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GV0-8O-Ghi">
                                 <rect key="frame" x="51" y="261" width="272" height="30"/>
@@ -603,8 +603,32 @@
                                     <action selector="registrationBackButton:" destination="JuW-DP-JnX" eventType="touchUpInside" id="MXx-lU-yR6"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo Copy Small" translatesAutoresizingMaskIntoConstraints="NO" id="FVJ-qr-hAv">
+                                <rect key="frame" x="63" y="58" width="134" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="134" id="QIp-Gj-SfF"/>
+                                    <constraint firstAttribute="height" constant="85" id="t46-eX-1H9"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9Rs-gq-spG" firstAttribute="width" secondItem="yVb-IX-rsz" secondAttribute="width" id="8kN-bS-QyI"/>
+                            <constraint firstItem="bCw-cS-a9K" firstAttribute="centerX" secondItem="Mnv-VT-Gle" secondAttribute="centerX" id="WAA-x1-3Yn"/>
+                            <constraint firstItem="Mnv-VT-Gle" firstAttribute="top" secondItem="bCw-cS-a9K" secondAttribute="top" constant="44" id="XtT-Lz-DUr"/>
+                            <constraint firstItem="9Rs-gq-spG" firstAttribute="bottom" secondItem="Mnv-VT-Gle" secondAttribute="bottom" constant="36" id="YDQ-9s-mEE"/>
+                            <constraint firstItem="9Rs-gq-spG" firstAttribute="centerX" secondItem="Mnv-VT-Gle" secondAttribute="centerX" id="aNt-TO-yQ0"/>
+                            <constraint firstItem="4bX-nX-NHM" firstAttribute="leading" secondItem="FVJ-qr-hAv" secondAttribute="trailing" constant="-197" id="aqi-kn-c5x"/>
+                            <constraint firstItem="HbH-Xq-cqG" firstAttribute="centerX" secondItem="Mnv-VT-Gle" secondAttribute="centerX" id="bwi-NQ-YJZ"/>
+                            <constraint firstItem="bCw-cS-a9K" firstAttribute="top" secondItem="4bX-nX-NHM" secondAttribute="bottom" constant="-192" id="fXz-KN-l3D"/>
+                            <constraint firstItem="FVJ-qr-hAv" firstAttribute="top" secondItem="4bX-nX-NHM" secondAttribute="bottom" constant="-134" id="h37-Dw-YdL"/>
+                            <constraint firstItem="HbH-Xq-cqG" firstAttribute="width" secondItem="yVb-IX-rsz" secondAttribute="width" id="k6g-mV-RtU"/>
+                            <constraint firstItem="bCw-cS-a9K" firstAttribute="width" secondItem="yVb-IX-rsz" secondAttribute="width" id="lfw-SY-Row"/>
+                            <constraint firstItem="Mnv-VT-Gle" firstAttribute="top" secondItem="HbH-Xq-cqG" secondAttribute="top" id="otR-6E-jPC"/>
+                            <constraint firstItem="Mnv-VT-Gle" firstAttribute="trailing" secondItem="4bX-nX-NHM" secondAttribute="trailing" constant="69" id="pnQ-LS-zGY"/>
+                            <constraint firstItem="4bX-nX-NHM" firstAttribute="leading" secondItem="Mnv-VT-Gle" secondAttribute="leading" id="yZj-jz-73H"/>
+                            <constraint firstItem="Mnv-VT-Gle" firstAttribute="bottom" secondItem="HbH-Xq-cqG" secondAttribute="bottom" id="zx1-Vt-SK0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Mnv-VT-Gle"/>
                     </view>
                     <connections>
@@ -616,7 +640,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Avf-uI-LH6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="755.9113300492611"/>
+            <point key="canvasLocation" x="3808.8000000000002" y="822.41379310344826"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hRq-tN-qLN">
@@ -638,16 +662,19 @@
     </scenes>
     <resources>
         <image name="Bitmap1" width="375" height="367"/>
+        <image name="CA Hex" width="375" height="720"/>
         <image name="Combined Shape1" width="15" height="12"/>
         <image name="Combined Shape2" width="14" height="15"/>
         <image name="Create Account Button" width="177" height="188"/>
         <image name="Fill 7 Copy 2" width="171" height="216"/>
+        <image name="Fill 7 Copy 5CA" width="308" height="192"/>
         <image name="Fill 7 Copy 6" width="375" height="593"/>
         <image name="Group 3" width="100" height="103"/>
         <image name="Home Icon" width="100" height="103"/>
         <image name="Line 2" width="303" height="2"/>
         <image name="Login Via Email Button" width="135" height="143"/>
         <image name="Logo Copy" width="199" height="124"/>
+        <image name="Logo Copy Small" width="135" height="85"/>
         <image name="Rectangle 3 Blue" width="321" height="100"/>
         <image name="Rectangle 3 Copy 2" width="334" height="100"/>
         <image name="bitmap" width="375" height="570"/>
