@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YuB-7d-Ikb">
+>>>>>>> 1720e57310731cc04171f15419b07d14ba980246
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -28,7 +32,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bitmap" translatesAutoresizingMaskIntoConstraints="NO" id="bCr-SF-GRd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="570"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="570"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy6" translatesAutoresizingMaskIntoConstraints="NO" id="x4l-sX-uDH">
                                 <rect key="frame" x="0.0" y="376" width="375" height="475"/>
@@ -37,33 +41,33 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy5" translatesAutoresizingMaskIntoConstraints="NO" id="Wfv-UE-5VY">
-                                <rect key="frame" x="0.0" y="0.0" width="310" height="292"/>
+                                <rect key="frame" x="0.0" y="44" width="310" height="292"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy" translatesAutoresizingMaskIntoConstraints="NO" id="RMt-69-iis">
-                                <rect key="frame" x="0.0" y="358" width="170" height="300"/>
+                                <rect key="frame" x="0.0" y="402" width="170" height="256"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy4" translatesAutoresizingMaskIntoConstraints="NO" id="uGy-bx-NSJ">
-                                <rect key="frame" x="136" y="1" width="169" height="93"/>
+                                <rect key="frame" x="136" y="45" width="169" height="49"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy5_2" translatesAutoresizingMaskIntoConstraints="NO" id="U2q-m4-Bqu">
-                                <rect key="frame" x="224" y="82" width="151" height="323"/>
+                                <rect key="frame" x="224" y="126" width="151" height="279"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo Copy" translatesAutoresizingMaskIntoConstraints="NO" id="SVY-4y-3W8">
-                                <rect key="frame" x="51.666666666666657" y="115" width="187" height="114"/>
+                                <rect key="frame" x="51.666666666666657" y="159" width="187" height="114"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="114" id="EbN-Uc-3Ao"/>
                                     <constraint firstAttribute="width" constant="187" id="nUP-Il-rH9"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ED4-zM-ayk">
-                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
+                                <rect key="frame" x="0.0" y="31" width="171" height="216"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Bd-4gJ">
                                 <rect key="frame" x="33.666666666666657" y="392" width="177" height="188"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="-8" maxX="0.0" maxY="-26"/>
                                 <state key="normal" image="Create Account Button"/>
                                 <connections>
-                                    <action selector="CreateAccountButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Ml-3K-M9o"/>
+                                    <action selector="createAccountButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HTP-QU-COn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qs-I5-R9x">
@@ -71,7 +75,7 @@
                                 <inset key="imageEdgeInsets" minX="-19" minY="-16" maxX="-18" maxY="-36"/>
                                 <state key="normal" image="Login Via Email Button"/>
                                 <connections>
-                                    <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tUU-Z3-fZG"/>
+                                    <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eq9-0g-NJc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUJ-UK-wuz">
@@ -223,13 +227,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="Rrf-8q-THr"/>
                     <connections>
-                        <outlet property="createAccountButton" destination="Mfd-Bd-4gJ" id="58P-Uv-rsa"/>
                         <segue destination="dx9-Au-IeG" kind="show" identifier="toMapSegue" id="8l6-d4-ob1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1926" y="35"/>
+            <point key="canvasLocation" x="2868" y="34.729064039408868"/>
         </scene>
         <!--Terms View Controller-->
         <scene sceneID="Lod-MY-l7W">
@@ -401,6 +404,12 @@
                                     <action selector="homeButton:" destination="XAM-Zf-Y7V" eventType="touchUpInside" id="YmC-H7-nkB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEQ-9q-55h">
+                                <rect key="frame" x="26" y="446" width="33" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="lock"/>
+                                <state key="normal" title="Lock"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -464,7 +473,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pDD-gG-bq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3086" y="-52"/>
+            <point key="canvasLocation" x="4028" y="-52.463054187192121"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="JOO-uD-wlg">
@@ -532,7 +541,7 @@
                     <viewLayoutGuide key="safeArea" id="tAs-4D-dYs"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="4186.3999999999996" y="34.729064039408868"/>
+            <point key="canvasLocation" x="5128.8000000000002" y="34.729064039408868"/>
         </scene>
         <!--Register Email View Controller-->
         <scene sceneID="k3l-h1-JPL">
@@ -614,21 +623,22 @@
             <point key="canvasLocation" x="32.799999999999997" y="755.9113300492611"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="UlF-jF-SkD">
+        <scene sceneID="DKp-TC-Tc7">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Pv5-xv-iLZ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YuB-7d-Ikb" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Kba-Fb-aml">
+                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lyl-N6-lUg">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gqG-vp-gto"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="4vu-CF-E0W"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jhQ-XQ-3rV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hlf-9e-SRh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="34.729064039408868"/>
+            <point key="canvasLocation" x="1925.5999999999999" y="34.729064039408868"/>
         </scene>
     </scenes>
     <resources>

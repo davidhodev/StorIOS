@@ -11,6 +11,8 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     
@@ -23,11 +25,7 @@ class LoginViewController: UIViewController {
     // Action when Login Button Pressed
     @IBAction func loginButton(_ sender: Any) {
         self.login()
-        
     }
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +41,15 @@ class LoginViewController: UIViewController {
 
     //Making a login function
     func login(){
-        print ("=========test=========")
+        
+        //Activity Indicator
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+        
         Auth.auth().signIn(withEmail: emailText.text!, password: passwordText.text!){
             user, error in
             if (error != nil){
@@ -73,12 +79,14 @@ class LoginViewController: UIViewController {
             }
             // Correct Password
             else{
+                self.activityIndicator.stopAnimating()
                 print("Successfully logged in")
                 let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let goToMapFromLogin:MapViewController = storyboard.instantiateViewController(withIdentifier:"MapViewController") as! MapViewController
                 self.navigationController?.pushViewController(goToMapFromLogin, animated: true)
 
             }
+            self.activityIndicator.stopAnimating()
         }
     }
 
