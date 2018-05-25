@@ -64,7 +64,7 @@ class RegisterEmailViewController: UIViewController {
                     }
                     print("User successfully saved to FIREBASE!")
                 })
-                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popToRootViewController(animated: true)
             }
         //Error Handling
             if (error != nil){
