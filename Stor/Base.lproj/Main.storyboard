@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
-=======
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JuW-DP-JnX">
->>>>>>> e3c349c786c497e7e20f5403417f13c2c33a1219
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -364,7 +360,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" restorationIdentifier="passwordLine" translatesAutoresizingMaskIntoConstraints="NO" id="ti7-gu-uLF" userLabel="Password Line">
                                 <rect key="frame" x="72" y="490" width="303" height="2"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Combined Shape1" translatesAutoresizingMaskIntoConstraints="NO" id="2ii-93-c2G">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="Letter Image" translatesAutoresizingMaskIntoConstraints="NO" id="2ii-93-c2G">
                                 <rect key="frame" x="73" y="384" width="15" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="KsP-OR-Osj"/>
@@ -377,7 +373,7 @@
                                 <color key="textColor" red="0.26666666666666666" green="0.47058823529411764" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Combined Shape2" translatesAutoresizingMaskIntoConstraints="NO" id="KA9-wF-1S1">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KA9-wF-1S1">
                                 <rect key="frame" x="73" y="458" width="14" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="7Fn-3N-GOc"/>
@@ -479,8 +475,10 @@
                     </view>
                     <connections>
                         <outlet property="emailText" destination="xqj-cX-hdI" id="kLZ-Hf-fwJ"/>
+                        <outlet property="letterImage" destination="2ii-93-c2G" id="cBq-8t-Ylb"/>
                         <outlet property="line1Image" destination="fK0-aX-7hg" id="tM1-6J-DPJ"/>
                         <outlet property="line2Image" destination="ti7-gu-uLF" id="nH1-Ag-pB7"/>
+                        <outlet property="lockImage" destination="KA9-wF-1S1" id="rPI-Ic-OCH"/>
                         <outlet property="passwordText" destination="2xr-E7-XX3" id="lZE-V3-9rL"/>
                     </connections>
                 </viewController>
@@ -646,7 +644,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="P4G-xz-ODq">
-                                <rect key="frame" x="0.0" y="-55" width="171" height="101"/>
+                                <rect key="frame" x="0.0" y="-55" width="173" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="101" id="XiM-pS-Ieg"/>
                                 </constraints>
@@ -811,7 +809,7 @@
         <image name="Combined Shape2" width="14" height="15"/>
         <image name="Combined Shape3" width="18" height="13"/>
         <image name="Create Account Button" width="177" height="188"/>
-        <image name="Fill 7 Copy 2" width="171" height="216"/>
+        <image name="Fill 7 Copy 2" width="173" height="85"/>
         <image name="Fill 7 Copy 5CA" width="308" height="192"/>
         <image name="Fill 7 Copy 6" width="375" height="593"/>
         <image name="Group 3" width="100" height="103"/>
