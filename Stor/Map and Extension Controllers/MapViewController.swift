@@ -44,12 +44,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 globalVariablesViewController.username = (dictionary["name"] as? String)!
                 globalVariablesViewController.profilePicString = (dictionary["profilePicture"] as? String)!
             }
-            
-            
-            
-            print("PLEASE WORK")
         }, withCancel: nil)
-
         
     }
     
