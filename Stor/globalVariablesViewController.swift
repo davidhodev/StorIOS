@@ -11,5 +11,5 @@ import UIKit
 class globalVariablesViewController: UIViewController {
 
     static var username = String()
-
+    static var profilePicString = String()
 }

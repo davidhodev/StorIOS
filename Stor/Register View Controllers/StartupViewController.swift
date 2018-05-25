@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 import FBSDKLoginKit
 import GoogleSignIn
 
@@ -115,9 +116,17 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
             if let email = info["email"] as? String{
                 fbEmail = email
             }
+            
             if let photo = info["picture"] as? NSDictionary, let fbData = photo["data"] as? NSDictionary, let fbPhotoUrl = fbData["url"] as? String{
                 fbPhoto = fbPhotoUrl
             }
+            let fbUrl = URL(string:fbPhoto)
+//            var actualFBImage = UIImage()
+//            if let finalFbPhoto = try? Data(contentsOf: fbUrl!)
+//            {
+//                actualFBImage = UIImage(data: finalFbPhoto)
+//            }
+            
             if let user = Auth.auth().currentUser{
                 let registerDataValues = ["name": fbName, "email": fbEmail, "password": user.uid, "phone":"phoneVerify", "profilePicture": fbPhoto]
                     
