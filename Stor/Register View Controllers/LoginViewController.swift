@@ -41,6 +41,17 @@ class LoginViewController: UIViewController {
             iconClick = true
         }
     }
+    // Forgot email/password button hyperlink
+    @IBAction func forgotCode(_ sender: UIButton) {
+        openUrl(urlStr: "http://www.google.com")
+    }
+    
+    func openUrl(urlStr:String!) {
+        
+        if let url = NSURL(string:urlStr) {
+            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        }
+    }
     
     // Action when Login Button Pressed
     @IBAction func loginButton(_ sender: Any) {
@@ -84,7 +95,7 @@ class LoginViewController: UIViewController {
                     case .userNotFound:
                         print("No Email Found")
                         // switches email bar to red
-                        self.emailText.attributedPlaceholder = NSAttributedString(string: "Email Address", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
+                        self.emailText.attributedPlaceholder = NSAttributedString(string: "Email Not Found", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
                         // removes text
                         self.emailText.text = ""
                         self.passwordText.text = ""
@@ -98,7 +109,7 @@ class LoginViewController: UIViewController {
                     case .invalidEmail:
                         // switches placeholder to red
                         print("Invalid email")
-                        self.emailText.attributedPlaceholder = NSAttributedString(string: "Email Address", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
+                        self.emailText.attributedPlaceholder = NSAttributedString(string: "Invalid Email Address", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
                         // removes text
                         self.emailText.text = ""
                         self.passwordText.text = ""
@@ -112,7 +123,7 @@ class LoginViewController: UIViewController {
                     case .wrongPassword:
                         print("Incorrect password")
                         // sets placeholder red
-                        self.passwordText.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
+                        self.passwordText.attributedPlaceholder = NSAttributedString(string: "Invalid Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
                         //removes text
                         self.emailText.text = ""
                         self.passwordText.text = ""
