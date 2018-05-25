@@ -42,7 +42,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             
             if let dictionary = snapshot.value as? [String:Any] {
                 globalVariablesViewController.username = (dictionary["name"] as? String)!
+                globalVariablesViewController.profilePicString = (dictionary["profilePicture"] as? String)!
             }
+            
+            
             
             print("PLEASE WORK")
         }, withCancel: nil)
