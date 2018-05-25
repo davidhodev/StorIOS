@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2B0B7B137B763384068CFD08 /* Pods_StorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83BDF3AB5601AEFA4206A668 /* Pods_StorTests.framework */; };
 		574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574FC7BE20B5F484001AE44F /* TermsViewController.swift */; };
-		574FC7C120B6289F001AE44F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574FC7C020B6289F001AE44F /* MenuViewController.swift */; };
+		576A007420B7798100F2174D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576A007320B7798100F2174D /* MenuViewController.swift */; };
 		D1947A535ADA1F3F00BCE349 /* Pods_StorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBFB92A62876BD03C1FEC207 /* Pods_StorUITests.framework */; };
 		DB4B5E9320B339A30050F66E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB4B5E9220B339A20050F66E /* GoogleService-Info.plist */; };
 		DB4B5E9820B3474D0050F66E /* RegisterEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4B5E9720B3474D0050F66E /* RegisterEmailViewController.swift */; };
@@ -27,6 +27,7 @@
 		DBE905F420924BAE000F13DB /* StorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905F320924BAE000F13DB /* StorTests.swift */; };
 		DBE905FF20924BAE000F13DB /* StorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905FE20924BAE000F13DB /* StorUITests.swift */; };
 		DBEA86DF20B4981F00727FCD /* Pods_Stor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEA86E020B4981F00727FCD /* Pods_Stor.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		DBF8BCBE20B7887D0080EEF5 /* globalVariablesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8BCBD20B7887D0080EEF5 /* globalVariablesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +52,7 @@
 		20873EB433166AE1F0854C26 /* Pods-StorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StorTests/Pods-StorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E5B7ADF60FD9AF861F2989D /* Pods-Stor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stor/Pods-Stor.release.xcconfig"; sourceTree = "<group>"; };
 		574FC7BE20B5F484001AE44F /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
-		574FC7C020B6289F001AE44F /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		576A007320B7798100F2174D /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		83BDF3AB5601AEFA4206A668 /* Pods_StorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C530B0B3D761ADC198DC431 /* Pods-StorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorUITests/Pods-StorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1E7F08C17DB4E0B3B6B7EEE /* Pods-StorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorTests/Pods-StorTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,6 +77,7 @@
 		DBE905FE20924BAE000F13DB /* StorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorUITests.swift; sourceTree = "<group>"; };
 		DBE9060020924BAE000F13DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBEA86E020B4981F00727FCD /* Pods_Stor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Stor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBF8BCBD20B7887D0080EEF5 /* globalVariablesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globalVariablesViewController.swift; sourceTree = "<group>"; };
 		E3D320C59051F760CD54268B /* Pods-StorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StorUITests/Pods-StorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FBFB92A62876BD03C1FEC207 /* Pods_StorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -164,14 +166,15 @@
 		DBE905DD20924BAE000F13DB /* Stor */ = {
 			isa = PBXGroup;
 			children = (
+				DBF8BCBD20B7887D0080EEF5 /* globalVariablesViewController.swift */,
 				DB3EE96E20B4B1D700CC4174 /* Stor.entitlements */,
 				DB4B5E9620B346F50050F66E /* Register View Controllers */,
 				DB59552820B49F4D001E1AF0 /* MapViewController.swift */,
+				576A007320B7798100F2174D /* MenuViewController.swift */,
 				574FC7BE20B5F484001AE44F /* TermsViewController.swift */,
 				DBE905DE20924BAE000F13DB /* AppDelegate.swift */,
 				DBE905E020924BAE000F13DB /* ViewController.swift */,
 				DBE905E220924BAE000F13DB /* Main.storyboard */,
-				574FC7C020B6289F001AE44F /* MenuViewController.swift */,
 				DBE905E520924BAE000F13DB /* Assets.xcassets */,
 				DBE905E720924BAE000F13DB /* LaunchScreen.storyboard */,
 				DBE905EA20924BAE000F13DB /* Info.plist */,
@@ -471,7 +474,8 @@
 				DBD8FD3320B3791100776FAB /* LoginViewController.swift in Sources */,
 				DB4B5E9820B3474D0050F66E /* RegisterEmailViewController.swift in Sources */,
 				574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */,
-				574FC7C120B6289F001AE44F /* MenuViewController.swift in Sources */,
+				DBF8BCBE20B7887D0080EEF5 /* globalVariablesViewController.swift in Sources */,
+				576A007420B7798100F2174D /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

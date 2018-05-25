@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 import GoogleSignIn
 import FBSDKLoginKit
 import MapKit
@@ -17,47 +18,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var storMapKit: MKMapView!
     
-    // instantiate the View
-    @IBOutlet var popMenu: UIView!
-    
-    // exit button
-    @IBAction func exitMenu(_ sender: UIButton) {
-        animateOut()
-    }
-    // menu animation
-    func animateIn() {
-        self.view.addSubview(popMenu)
-        popMenu.center = self.view.center
-        popMenu.transform = CGAffineTransform.init(scaleX: 1, y: 1)
-        popMenu.alpha = 0
-        UIView.animate(withDuration: 0.3){
-            self.popMenu.alpha = 0.75
-            self.popMenu.transform = CGAffineTransform.identity
-        }
-    }
-    
-    //menu exit animation
-    func animateOut() {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.popMenu.transform = CGAffineTransform.init(scaleX:1, y: 1)
-            self.popMenu.alpha = 0
-        }) {(success: Bool) in
-                self.popMenu.removeFromSuperview()
-            }
-    }
-    
-    // menu button
-    @IBAction func goToMenu(_ sender: UIButton) {
-        animateIn()
-    }
-    
-    
     let locationManager = CLLocationManager()
     
-    //menu button function to bring out pop up
-    @IBAction func menuButton(_ sender: UIButton) {
-        
-    }
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
         try!  Auth.auth().signOut()
@@ -75,10 +37,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
-    }
-    
-    
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("Users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String:Any] {
+                globalVariablesViewController.username = (dictionary["name"] as? String)!
+            }
+            
+            print("PLEASE WORK")
+        }, withCancel: nil)
 
+        
+    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
