@@ -20,7 +20,6 @@
 		DB756FE720B5306600E12D77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905DE20924BAE000F13DB /* AppDelegate.swift */; };
 		DBD8FD3320B3791100776FAB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD8FD3220B3791100776FAB /* LoginViewController.swift */; };
 		DBE905DF20924BAE000F13DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905DE20924BAE000F13DB /* AppDelegate.swift */; };
-		DBE905E120924BAE000F13DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905E020924BAE000F13DB /* ViewController.swift */; };
 		DBE905E420924BAE000F13DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE905E220924BAE000F13DB /* Main.storyboard */; };
 		DBE905E620924BAE000F13DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBE905E520924BAE000F13DB /* Assets.xcassets */; };
 		DBE905E920924BAE000F13DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE905E720924BAE000F13DB /* LaunchScreen.storyboard */; };
@@ -64,7 +63,6 @@
 		DBD8FD3220B3791100776FAB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DBE905DB20924BAE000F13DB /* Stor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE905DE20924BAE000F13DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DBE905E020924BAE000F13DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DBE905E320924BAE000F13DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DBE905E520924BAE000F13DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBE905E820924BAE000F13DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -121,6 +119,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		57874CA020B78529001F7B3F /* Map and Extension Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				576A007320B7798100F2174D /* MenuViewController.swift */,
+				DB59552820B49F4D001E1AF0 /* MapViewController.swift */,
+			);
+			path = "Map and Extension Controllers";
+			sourceTree = "<group>";
+		};
 		DB4B5E9620B346F50050F66E /* Register View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,11 +173,9 @@
 			children = (
 				DB3EE96E20B4B1D700CC4174 /* Stor.entitlements */,
 				DB4B5E9620B346F50050F66E /* Register View Controllers */,
-				DB59552820B49F4D001E1AF0 /* MapViewController.swift */,
-				576A007320B7798100F2174D /* MenuViewController.swift */,
+				57874CA020B78529001F7B3F /* Map and Extension Controllers */,
 				574FC7BE20B5F484001AE44F /* TermsViewController.swift */,
 				DBE905DE20924BAE000F13DB /* AppDelegate.swift */,
-				DBE905E020924BAE000F13DB /* ViewController.swift */,
 				DBE905E220924BAE000F13DB /* Main.storyboard */,
 				DBE905E520924BAE000F13DB /* Assets.xcassets */,
 				DBE905E720924BAE000F13DB /* LaunchScreen.storyboard */,
@@ -466,7 +471,6 @@
 			files = (
 				DB4B5EA020B351C20050F66E /* StartupViewController.swift in Sources */,
 				DB59552920B49F4D001E1AF0 /* MapViewController.swift in Sources */,
-				DBE905E120924BAE000F13DB /* ViewController.swift in Sources */,
 				DBE905DF20924BAE000F13DB /* AppDelegate.swift in Sources */,
 				DBD8FD3320B3791100776FAB /* LoginViewController.swift in Sources */,
 				DB4B5E9820B3474D0050F66E /* RegisterEmailViewController.swift in Sources */,
