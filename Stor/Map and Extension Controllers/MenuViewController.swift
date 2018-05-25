@@ -70,7 +70,7 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                         let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
                         let userReference = databaseReference.root.child("Users").child((user.uid))
                         print(userReference)
-                        userReference.updateChildValues(["profilePicture": updatedURL], withCompletionBlock: {(err, registerDataValues) in
+                        userReference.updateChildValues(["profilePicture": updatedURL?.absoluteString], withCompletionBlock: {(err, registerDataValues) in
                             if err != nil{
                                 print(err)
                                 return
