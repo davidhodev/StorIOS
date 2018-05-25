@@ -41,6 +41,17 @@ class LoginViewController: UIViewController {
             iconClick = true
         }
     }
+    // Forgot email/password button hyperlink
+    @IBAction func forgotCode(_ sender: UIButton) {
+        openUrl(urlStr: "http://www.google.com")
+    }
+    
+    func openUrl(urlStr:String!) {
+        
+        if let url = NSURL(string:urlStr) {
+            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        }
+    }
     
     // Action when Login Button Pressed
     @IBAction func loginButton(_ sender: Any) {
