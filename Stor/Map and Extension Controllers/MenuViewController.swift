@@ -22,10 +22,12 @@ class MenuViewController: UIViewController {
         self.nameLabel.text = globalVariablesViewController.username
 
 
-        // Do any additional setup after loading the view.
+        //Do any additional setup after loading the view.
     }
     
-
+    @IBOutlet var profileImageView: UIImageView!
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
