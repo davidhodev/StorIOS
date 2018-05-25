@@ -27,6 +27,7 @@
 		DBE905F420924BAE000F13DB /* StorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905F320924BAE000F13DB /* StorTests.swift */; };
 		DBE905FF20924BAE000F13DB /* StorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905FE20924BAE000F13DB /* StorUITests.swift */; };
 		DBEA86DF20B4981F00727FCD /* Pods_Stor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEA86E020B4981F00727FCD /* Pods_Stor.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		DBF8BCBE20B7887D0080EEF5 /* globalVariablesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8BCBD20B7887D0080EEF5 /* globalVariablesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		DBE905FE20924BAE000F13DB /* StorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorUITests.swift; sourceTree = "<group>"; };
 		DBE9060020924BAE000F13DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBEA86E020B4981F00727FCD /* Pods_Stor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Stor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBF8BCBD20B7887D0080EEF5 /* globalVariablesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globalVariablesViewController.swift; sourceTree = "<group>"; };
 		E3D320C59051F760CD54268B /* Pods-StorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StorUITests/Pods-StorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FBFB92A62876BD03C1FEC207 /* Pods_StorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -164,6 +166,7 @@
 		DBE905DD20924BAE000F13DB /* Stor */ = {
 			isa = PBXGroup;
 			children = (
+				DBF8BCBD20B7887D0080EEF5 /* globalVariablesViewController.swift */,
 				DB3EE96E20B4B1D700CC4174 /* Stor.entitlements */,
 				DB4B5E9620B346F50050F66E /* Register View Controllers */,
 				DB59552820B49F4D001E1AF0 /* MapViewController.swift */,
@@ -471,6 +474,7 @@
 				DBD8FD3320B3791100776FAB /* LoginViewController.swift in Sources */,
 				DB4B5E9820B3474D0050F66E /* RegisterEmailViewController.swift in Sources */,
 				574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */,
+				DBF8BCBE20B7887D0080EEF5 /* globalVariablesViewController.swift in Sources */,
 				576A007420B7798100F2174D /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

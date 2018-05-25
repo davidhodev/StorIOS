@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 import GoogleSignIn
 import FBSDKLoginKit
 import MapKit
@@ -35,6 +36,17 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("Users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String:Any] {
+                globalVariablesViewController.username = (dictionary["name"] as? String)!
+            }
+            
+            print("PLEASE WORK")
+        }, withCancel: nil)
+
         
     }
     
