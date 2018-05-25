@@ -9,19 +9,14 @@
 import UIKit
 import FirebaseAuth
 
-extension UIImageView {
-    func setImageColor(color: UIColor) {
-        let templateImage = self.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-        self.image = templateImage
-        self.tintColor = color
-    }
-}
-
 class LoginViewController: UIViewController {
     
+    //instantiate password line
+    @IBOutlet weak var line2Image: UIImageView!
+    //instantiate email line
+    @IBOutlet weak var line1Image: UIImageView!
     // instantiate eye button paramter
     var iconClick : Bool!
-    
     //change color animation function
 
     
@@ -53,7 +48,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         iconClick = true
-
+        line1Image.image = UIImage.init(named: "Line 2")
+        line2Image.image = UIImage.init(named: "Line 2")
         // Do any additional setup after loading the view.
     }
 
@@ -83,19 +79,22 @@ class LoginViewController: UIViewController {
                     switch errCode {
                     case .userNotFound:
                         print("No Email Found")
-                        self.emailText.backgroundColor = UIColor.red // RED BACKGROUND COLOR
+                         self.emailText.attributedPlaceholder = NSAttributedString(string: "Email Address", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
                         self.emailText.text = ""
                         self.passwordText.text = ""
+                        self.line1Image.image = UIImage.init(named: "Line 2Red")
                     case .invalidEmail:
                         print("Invalid email")
-                        self.emailText.backgroundColor = UIColor.red // RED BACKGROUND COLOR
+                        self.emailText.attributedPlaceholder = NSAttributedString(string: "Email Address", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
                         self.emailText.text = ""
                         self.passwordText.text = ""
+                        self.line1Image.image = UIImage.init(named: "Line 2Red")
                     case .wrongPassword:
                         print("Incorrect password")
-                        self.passwordText.backgroundColor = UIColor.red // RED BACKGROUND COLOR
+                        self.passwordText.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
                         self.emailText.text = ""
                         self.passwordText.text = ""
+                        self.line2Image.image = UIImage.init(named: "Line 2Red")
                     default:
                         print("Create User Error: \(error)")
                     }
