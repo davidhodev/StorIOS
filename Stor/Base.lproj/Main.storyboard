@@ -624,7 +624,7 @@
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="nwz-fj-J1B">
+                            <textField opaque="NO" contentMode="scaleAspectFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="nwz-fj-J1B">
                                 <rect key="frame" x="106" y="468" width="233" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="233" id="5W2-xw-4kP"/>
@@ -634,7 +634,7 @@
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="HcB-9S-kuw">
+                            <textField opaque="NO" contentMode="scaleAspectFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="HcB-9S-kuw">
                                 <rect key="frame" x="106" y="402" width="233" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="55a-cw-uH0"/>
@@ -667,13 +667,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line 2" translatesAutoresizingMaskIntoConstraints="NO" id="vYb-Sh-FVo" userLabel="Line Name">
                                 <rect key="frame" x="72" y="300" width="303" height="2"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line 2" translatesAutoresizingMaskIntoConstraints="NO" id="QEu-rr-968" userLabel="Line Email">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QEu-rr-968" userLabel="Line Email">
                                 <rect key="frame" x="72" y="370" width="303" height="2"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line 2" translatesAutoresizingMaskIntoConstraints="NO" id="nxp-dk-2ve" userLabel="Line Phone Number">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nxp-dk-2ve" userLabel="Line Phone Number">
                                 <rect key="frame" x="73" y="440" width="303" height="2"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line 2" translatesAutoresizingMaskIntoConstraints="NO" id="IJt-0O-GAu" userLabel="Line Password">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IJt-0O-GAu" userLabel="Line Password">
                                 <rect key="frame" x="73" y="510" width="303" height="2"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Name Card Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Hpu-7y-dk9">
@@ -683,17 +683,17 @@
                                     <constraint firstAttribute="width" constant="18" id="p3B-KL-en5"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Combined Shape1" translatesAutoresizingMaskIntoConstraints="NO" id="WJ5-Z3-Mo6">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WJ5-Z3-Mo6">
                                 <rect key="frame" x="77" y="345" width="15" height="12"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phone Icon" translatesAutoresizingMaskIntoConstraints="NO" id="TsK-Ym-ReJ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TsK-Ym-ReJ">
                                 <rect key="frame" x="77" y="409" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="YQW-EL-QYm"/>
                                     <constraint firstAttribute="height" constant="15" id="ZzC-H6-m8B"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Combined Shape2" translatesAutoresizingMaskIntoConstraints="NO" id="2W8-G5-vfi">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2W8-G5-vfi">
                                 <rect key="frame" x="78" y="475" width="14" height="15"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Create Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndl-Jx-dmH">
@@ -789,9 +789,15 @@
                         <viewLayoutGuide key="safeArea" id="Mnv-VT-Gle"/>
                     </view>
                     <connections>
+                        <outlet property="emailPicture" destination="WJ5-Z3-Mo6" id="3XD-QY-GIT"/>
                         <outlet property="emailRegisterText" destination="Mj6-rt-3UN" id="hKk-aM-Ek0"/>
+                        <outlet property="lineEmail" destination="QEu-rr-968" id="ZwB-SW-8NV"/>
+                        <outlet property="linePassword" destination="IJt-0O-GAu" id="gAi-A7-Sdz"/>
+                        <outlet property="linePhone" destination="nxp-dk-2ve" id="v64-9G-3bC"/>
                         <outlet property="nameRegisterText" destination="GV0-8O-Ghi" id="ykh-cl-T2m"/>
+                        <outlet property="passwordPicture" destination="2W8-G5-vfi" id="frO-JL-1YU"/>
                         <outlet property="passwordRegisterText" destination="nwz-fj-J1B" id="bL8-tD-IJk"/>
+                        <outlet property="phonePicture" destination="TsK-Ym-ReJ" id="e8l-6C-rjR"/>
                         <outlet property="phoneRegisterText" destination="HcB-9S-kuw" id="N0d-X3-TsL"/>
                     </connections>
                 </viewController>
@@ -820,8 +826,6 @@
     <resources>
         <image name="Bitmap1" width="375" height="367"/>
         <image name="CA Hex" width="375" height="720"/>
-        <image name="Combined Shape1" width="15" height="12"/>
-        <image name="Combined Shape2" width="14" height="15"/>
         <image name="Combined Shape3-1" width="18" height="13"/>
         <image name="Create Account Button" width="177" height="188"/>
         <image name="Fill 7 Copy 2" width="173" height="85"/>
@@ -835,7 +839,6 @@
         <image name="Logo Copy" width="199" height="124"/>
         <image name="Logo Copy Small" width="135" height="85"/>
         <image name="Name Card Icon" width="20" height="17"/>
-        <image name="Phone Icon" width="17" height="17"/>
         <image name="Rectangle 3 Blue" width="321" height="100"/>
         <image name="Rectangle 3 Copy 2" width="334" height="100"/>
         <image name="bitmap" width="375" height="570"/>
