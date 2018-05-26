@@ -41,15 +41,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         
         let uid = Auth.auth().currentUser?.uid
         Database.database().reference().child("Users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
-            
+
             if let dictionary = snapshot.value as? [String:Any] {
                 globalVariablesViewController.username = (dictionary["name"] as? String)!
                 globalVariablesViewController.profilePicString = (dictionary["profilePicture"] as? String)!
             }
         }, withCancel: nil)
-        
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations[0]

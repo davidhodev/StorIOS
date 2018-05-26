@@ -65,12 +65,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
                 
                 let fullName = user?.displayName
                 let email = user?.email
-                let profilePic = user?.photoURL
+                let profilePic = GIDSignIn.sharedInstance().currentUser.profile.imageURL(withDimension: 400).absoluteString
                 let phone = user?.phoneNumber
-                let profilePicString = profilePic?.absoluteString
                 
                 if let user = Auth.auth().currentUser{
-                    let registerDataValues = ["name": fullName, "email": email, "password": user.uid, "phone":phone, "profile Picture": profilePicString]
+                    let registerDataValues = ["name": fullName, "email": email, "password": user.uid, "phone":phone, "profilePicture": profilePic]
                     let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
                     let userReference = databaseReference.root.child("Users").child((user.uid))
                     
