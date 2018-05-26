@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 let profileImageCache = NSCache<AnyObject, AnyObject>()
 
@@ -20,6 +22,16 @@ extension UIImageView{
         }
         
         
+        
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("Users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String:Any] {
+                globalVariablesViewController.username = (dictionary["name"] as? String)!
+                globalVariablesViewController.profilePicString = (dictionary["profilePicture"] as? String)!
+            }
+        }, withCancel: nil)
+        
         if let imageURL = URL(string: globalVariablesViewController.profilePicString){
             globalVariablesViewController.profilePicData = NSData(contentsOf: imageURL) as Data!
             
@@ -30,4 +42,6 @@ extension UIImageView{
         }
     }
 }
+
+
 

@@ -135,11 +135,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qe-td-WDg">
-                                <rect key="frame" x="59.666666666666657" y="762" width="150" height="12.666666666666629"/>
+                                <rect key="frame" x="15.333333333333329" y="762" width="194.33333333333337" height="12"/>
                                 <attributedString key="attributedText">
                                     <fragment content="By tapping any of the buttons I agree to ">
                                         <attributes>
-                                            <font key="NSFont" size="10" name="Dosis-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="10"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -154,7 +154,7 @@
                                             <attributes>
                                                 <color key="NSBackgroundColor" red="0.16034999999999999" green="0.14701" blue="0.34179999999999999" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="NSColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <font key="NSFont" size="10" name="Dosis-Regular"/>
+                                                <font key="NSFont" metaFont="system" size="10"/>
                                                 <real key="NSKern" value="0.40000000000000002"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                 <integer key="NSUnderline" value="1"/>
@@ -511,14 +511,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WX0-KF-kZz">
-                                <rect key="frame" x="148" y="182" width="162" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <action selector="logoutButtonPressed:" destination="dx9-Au-IeG" eventType="touchUpInside" id="grO-IZ-uNO"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhx-9f-mvD">
                                 <rect key="frame" x="16" y="675" width="100" height="103"/>
                                 <constraints>
@@ -528,6 +520,22 @@
                                 <state key="normal" image="Button Menu"/>
                                 <connections>
                                     <segue destination="rUo-Oy-5Qv" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="AEV-Qj-qdP"/>
+                                </connections>
+                            </button>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cxl-sC-XNq">
+                                <rect key="frame" x="0.0" y="92" width="375" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dx9-Au-IeG" id="9Do-Ab-jLT"/>
+                                </connections>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WX0-KF-kZz">
+                                <rect key="frame" x="148" y="191" width="162" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutButtonPressed:" destination="dx9-Au-IeG" eventType="touchUpInside" id="grO-IZ-uNO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -540,10 +548,20 @@
                         <viewLayoutGuide key="safeArea" id="gao-4W-ZjZ"/>
                     </view>
                     <connections>
+                        <outlet property="searchDisplayController" destination="50n-e0-9Fd" id="LOJ-qh-3tl"/>
+                        <outlet property="searchXan" destination="Cxl-sC-XNq" id="iYP-xi-ZN5"/>
                         <outlet property="storMapKit" destination="Otr-Yf-2jY" id="zXs-R4-din"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ij5-G9-FKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="50n-e0-9Fd">
+                    <connections>
+                        <outlet property="delegate" destination="dx9-Au-IeG" id="eRz-lU-5c9"/>
+                        <outlet property="searchContentsController" destination="dx9-Au-IeG" id="8tl-5I-Aiu"/>
+                        <outlet property="searchResultsDataSource" destination="dx9-Au-IeG" id="sjk-Dd-fTU"/>
+                        <outlet property="searchResultsDelegate" destination="dx9-Au-IeG" id="gHg-XP-sG6"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="7013.6000000000004" y="34.729064039408868"/>
         </scene>
@@ -748,8 +766,8 @@
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="nwz-fj-J1B">
-                                <rect key="frame" x="106" y="477" width="233" height="30"/>
+                            <textField opaque="NO" contentMode="scaleAspectFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="nwz-fj-J1B">
+                                <rect key="frame" x="106" y="468" width="233" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="233" id="5W2-xw-4kP"/>
                                     <constraint firstAttribute="height" constant="30" id="UbL-q8-Lqu"/>
@@ -758,8 +776,8 @@
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="HcB-9S-kuw">
-                                <rect key="frame" x="106" y="407" width="233" height="30"/>
+                            <textField opaque="NO" contentMode="scaleAspectFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="HcB-9S-kuw">
+                                <rect key="frame" x="106" y="402" width="233" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="55a-cw-uH0"/>
                                     <constraint firstAttribute="width" constant="233" id="chC-Cx-hW4"/>
@@ -791,13 +809,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line 2" translatesAutoresizingMaskIntoConstraints="NO" id="vYb-Sh-FVo" userLabel="Line Name">
                                 <rect key="frame" x="72" y="300" width="303" height="2"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line 2" translatesAutoresizingMaskIntoConstraints="NO" id="QEu-rr-968" userLabel="Line Email">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QEu-rr-968" userLabel="Line Email">
                                 <rect key="frame" x="72" y="370" width="303" height="2"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line 2" translatesAutoresizingMaskIntoConstraints="NO" id="nxp-dk-2ve" userLabel="Line Phone Number">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nxp-dk-2ve" userLabel="Line Phone Number">
                                 <rect key="frame" x="73" y="440" width="303" height="2"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line 2" translatesAutoresizingMaskIntoConstraints="NO" id="IJt-0O-GAu" userLabel="Line Password">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IJt-0O-GAu" userLabel="Line Password">
                                 <rect key="frame" x="73" y="510" width="303" height="2"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Name Card Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Hpu-7y-dk9">
@@ -807,18 +825,18 @@
                                     <constraint firstAttribute="width" constant="18" id="p3B-KL-en5"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Combined Shape1" translatesAutoresizingMaskIntoConstraints="NO" id="WJ5-Z3-Mo6">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WJ5-Z3-Mo6">
                                 <rect key="frame" x="77" y="345" width="15" height="12"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phone Icon" translatesAutoresizingMaskIntoConstraints="NO" id="TsK-Ym-ReJ">
-                                <rect key="frame" x="77" y="414" width="15" height="15"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TsK-Ym-ReJ">
+                                <rect key="frame" x="77" y="409" width="15" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="15" id="YQW-EL-QYm"/>
                                     <constraint firstAttribute="height" constant="15" id="ZzC-H6-m8B"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Combined Shape2" translatesAutoresizingMaskIntoConstraints="NO" id="2W8-G5-vfi">
-                                <rect key="frame" x="78" y="484" width="14" height="15"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2W8-G5-vfi">
+                                <rect key="frame" x="78" y="475" width="14" height="15"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Create Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndl-Jx-dmH">
                                 <rect key="frame" x="74" y="195" width="174" height="38"/>
@@ -913,9 +931,15 @@
                         <viewLayoutGuide key="safeArea" id="Mnv-VT-Gle"/>
                     </view>
                     <connections>
+                        <outlet property="emailPicture" destination="WJ5-Z3-Mo6" id="3XD-QY-GIT"/>
                         <outlet property="emailRegisterText" destination="Mj6-rt-3UN" id="hKk-aM-Ek0"/>
+                        <outlet property="lineEmail" destination="QEu-rr-968" id="ZwB-SW-8NV"/>
+                        <outlet property="linePassword" destination="IJt-0O-GAu" id="gAi-A7-Sdz"/>
+                        <outlet property="linePhone" destination="nxp-dk-2ve" id="v64-9G-3bC"/>
                         <outlet property="nameRegisterText" destination="GV0-8O-Ghi" id="ykh-cl-T2m"/>
+                        <outlet property="passwordPicture" destination="2W8-G5-vfi" id="frO-JL-1YU"/>
                         <outlet property="passwordRegisterText" destination="nwz-fj-J1B" id="bL8-tD-IJk"/>
+                        <outlet property="phonePicture" destination="TsK-Ym-ReJ" id="e8l-6C-rjR"/>
                         <outlet property="phoneRegisterText" destination="HcB-9S-kuw" id="N0d-X3-TsL"/>
                     </connections>
                 </viewController>
@@ -946,8 +970,6 @@
         <image name="Blue x button" width="100" height="95"/>
         <image name="Button Menu" width="100" height="103"/>
         <image name="CA Hex" width="375" height="720"/>
-        <image name="Combined Shape1" width="15" height="12"/>
-        <image name="Combined Shape2" width="14" height="15"/>
         <image name="Combined Shape3-1" width="18" height="13"/>
         <image name="Create Account Button" width="177" height="188"/>
         <image name="Fill 7 Copy 2" width="171" height="216"/>
@@ -966,7 +988,6 @@
         <image name="My Storage Button" width="100" height="98"/>
         <image name="Name Card Icon" width="20" height="17"/>
         <image name="Payment Button" width="100" height="103"/>
-        <image name="Phone Icon" width="17" height="17"/>
         <image name="Provider Button" width="100" height="103"/>
         <image name="Rectangle 3 Blue" width="321" height="100"/>
         <image name="Rectangle 3 Copy 2" width="334" height="100"/>
