@@ -14,11 +14,13 @@ import FBSDKLoginKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var storMapKit: MKMapView!
+    @IBOutlet weak var searchXan: UISearchBar!
     
     let locationManager = CLLocationManager()
+    
     
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
@@ -42,11 +44,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             
             if let dictionary = snapshot.value as? [String:Any] {
                 globalVariablesViewController.username = (dictionary["name"] as? String)!
+                globalVariablesViewController.profilePicString = (dictionary["profilePicture"] as? String)!
             }
-            
-            print("PLEASE WORK")
         }, withCancel: nil)
-
         
     }
     
@@ -65,6 +65,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // Search Bar Function
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let searchRequest = MKLocalSearchRequest()
+        searchRequest.naturalLanguageQuery = searchXan.text
+        
+        let activeSearch = MKLocalSearch(request: searchRequest)
+        activeSearch.start { (response, error) in
+            let latitude = response?.boundingRegion.center.latitude
+            let longitude = response?.boundingRegion.center.longitude
+            
+            let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
+            let span = MKCoordinateSpanMake(0.1, 0.1)
+            let region = MKCoordinateRegionMake(coordinate, span)
+            self.storMapKit.setRegion(region, animated: true)
+            
+        }
     }
     
 

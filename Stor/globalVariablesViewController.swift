@@ -12,4 +12,5 @@ class globalVariablesViewController: UIViewController {
 
     static var username = String()
     static var profilePicString = String()
+    static var profilePicData = Data()
 }

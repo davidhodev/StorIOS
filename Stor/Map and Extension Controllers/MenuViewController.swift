@@ -23,12 +23,18 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.viewDidLoad()
         print("Test1")
         self.nameLabel.text = globalVariablesViewController.username
-        profileImage.image = UIImage.init(named: "facebook")
+        profileImage.contentMode = .scaleAspectFill
+        profileImage.layer.cornerRadius = 20
+        profileImage.layer.masksToBounds = true
         profileImage.isUserInteractionEnabled = true
         profileImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectImageView)))
         
 
         //Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        profileImage.loadProfilePicture()
     }
     
     // What happens when Image is Pressed
@@ -52,8 +58,8 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         if let selectedImageFinal = selectedImage{
             profileImage.image = selectedImageFinal
         }
-        
-        let storageRef = Storage.storage().reference().child("myImage.png")
+        let imageUniqueID = NSUUID().uuidString
+        let storageRef = Storage.storage().reference().child("UserProfileImages").child("\(imageUniqueID).png")
         if let uploadData = UIImagePNGRepresentation(profileImage.image!){
             storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                 if (error != nil){

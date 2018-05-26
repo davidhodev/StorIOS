@@ -16,6 +16,7 @@
 		DB4B5E9E20B34E7C0050F66E /* dosis in Resources */ = {isa = PBXBuildFile; fileRef = DB4B5E9D20B34E7C0050F66E /* dosis */; };
 		DB4B5EA020B351C20050F66E /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4B5E9F20B351C20050F66E /* StartupViewController.swift */; };
 		DB59552920B49F4D001E1AF0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB59552820B49F4D001E1AF0 /* MapViewController.swift */; };
+		DB6B0EF720B8C7DB000CC1D9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B0EF620B8C7DB000CC1D9 /* Extensions.swift */; };
 		DB756FE620B5305F00E12D77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905DE20924BAE000F13DB /* AppDelegate.swift */; };
 		DB756FE720B5306600E12D77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905DE20924BAE000F13DB /* AppDelegate.swift */; };
 		DBD8FD3320B3791100776FAB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD8FD3220B3791100776FAB /* LoginViewController.swift */; };
@@ -61,6 +62,7 @@
 		DB4B5E9D20B34E7C0050F66E /* dosis */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dosis; sourceTree = "<group>"; };
 		DB4B5E9F20B351C20050F66E /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
 		DB59552820B49F4D001E1AF0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		DB6B0EF620B8C7DB000CC1D9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DBD8FD3220B3791100776FAB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DBE905DB20924BAE000F13DB /* Stor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE905DE20924BAE000F13DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +150,14 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		DB6B0EF520B8C7C2000CC1D9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DB6B0EF620B8C7DB000CC1D9 /* Extensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		DBE905D220924BAE000F13DB = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +183,7 @@
 		DBE905DD20924BAE000F13DB /* Stor */ = {
 			isa = PBXGroup;
 			children = (
+				DB6B0EF520B8C7C2000CC1D9 /* Extension */,
 				DBF8BCBD20B7887D0080EEF5 /* globalVariablesViewController.swift */,
 				DB3EE96E20B4B1D700CC4174 /* Stor.entitlements */,
 				DB4B5E9620B346F50050F66E /* Register View Controllers */,
@@ -473,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB4B5EA020B351C20050F66E /* StartupViewController.swift in Sources */,
+				DB6B0EF720B8C7DB000CC1D9 /* Extensions.swift in Sources */,
 				DB59552920B49F4D001E1AF0 /* MapViewController.swift in Sources */,
 				DBE905DF20924BAE000F13DB /* AppDelegate.swift in Sources */,
 				DBD8FD3320B3791100776FAB /* LoginViewController.swift in Sources */,
