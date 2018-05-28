@@ -51,9 +51,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         }, withCancel: nil)
         
         // Show Annotations
-        let myCoordinate = CLLocationCoordinate2DMake(34.142530, -118.398898)
-        myPin = Annotations(title: "Test1", subtitle: " Hello this is a test of the subtitle without Firebase", address: "test", coordinate: myCoordinate)
-        storMapKit.addAnnotation(myPin)
         fetchProviders()
         
     }
@@ -65,7 +62,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         let region = MKCoordinateRegion(center: center, span: span)
         
         self.storMapKit.showsPointsOfInterest = false
-        storMapKit.setRegion(region, animated: false)
+        storMapKit.setRegion(region, animated: true)
         storMapKit.showsUserLocation = true
     }
     
@@ -94,7 +91,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
             let longitude = response?.boundingRegion.center.longitude
             
             let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
-            let span = MKCoordinateSpanMake(0.1, 0.1)
+            let span = MKCoordinateSpanMake(0.05, 0.05)
             let region = MKCoordinateRegionMake(coordinate, span)
             self.storMapKit.setRegion(region, animated: true)
             
