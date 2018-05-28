@@ -507,14 +507,28 @@
                     <view key="view" contentMode="scaleToFill" id="M4F-ZV-9Ri">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1050"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Settings Hex W" translatesAutoresizingMaskIntoConstraints="NO" id="kDi-uZ-21K">
+                                <rect key="frame" x="0.0" y="208" width="375" height="842"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="842" id="YHt-cd-yVq"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kDi-uZ-21K" firstAttribute="leading" secondItem="j8O-lx-sek" secondAttribute="leading" id="Py6-qN-TeQ"/>
+                            <constraint firstItem="kDi-uZ-21K" firstAttribute="bottom" secondItem="j8O-lx-sek" secondAttribute="bottom" constant="34" id="hi8-yF-Kgq"/>
+                            <constraint firstItem="j8O-lx-sek" firstAttribute="trailing" secondItem="kDi-uZ-21K" secondAttribute="trailing" id="kv2-3J-T1U"/>
+                            <constraint firstItem="kDi-uZ-21K" firstAttribute="centerX" secondItem="j8O-lx-sek" secondAttribute="centerX" id="oJL-eG-Bav"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="j8O-lx-sek"/>
                     </view>
                     <size key="freeformSize" width="375" height="1050"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAw-mh-PVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7014" y="-768"/>
+            <point key="canvasLocation" x="7013.6000000000004" y="-768.4729064039409"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="JOO-uD-wlg">
@@ -539,9 +553,10 @@
                                     <segue destination="rUo-Oy-5Qv" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="AEV-Qj-qdP"/>
                                 </connections>
                             </button>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cxl-sC-XNq">
-                                <rect key="frame" x="0.0" y="92" width="375" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <searchBar contentMode="redraw" fixedFrame="YES" text="" translatesAutoresizingMaskIntoConstraints="NO" id="Cxl-sC-XNq">
+                                <rect key="frame" x="16" y="43" width="343" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <offsetWrapper key="searchFieldBackgroundPositionAdjustment" horizontal="0.0" vertical="0.0"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="dx9-Au-IeG" id="9Do-Ab-jLT"/>
@@ -1103,6 +1118,7 @@
         <image name="Rectangle 3 Blue" width="321" height="100"/>
         <image name="Rectangle 3 Copy 2" width="334" height="100"/>
         <image name="Settings Button" width="100" height="103"/>
+        <image name="Settings Hex W" width="375" height="862"/>
         <image name="Star" width="15" height="14"/>
         <image name="bitmap" width="375" height="570"/>
         <image name="facebook" width="16" height="16"/>
