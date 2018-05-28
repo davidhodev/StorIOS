@@ -12,6 +12,7 @@ import FirebaseAuth
 import FirebaseStorage
 import Firebase
 
+
 class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var profileImage: UIImageView!
@@ -21,13 +22,36 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         print("Test1")
         self.nameLabel.text = globalVariablesViewController.username
+        
+        //Hexagon SHape
+//        let lineWidth = CGFloat(7.0)
+//        let rect = CGRect(x: 10.0, y: 10.0, width: 150, height: 150)
+//        let sides = 6
+//
+//        let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 15.0, rotationOffset: CGFloat(.pi / 2.0))
+//
+//        let borderLayer = CAShapeLayer()
+//        borderLayer.frame = CGRect(x : 0.0, y : 0.0, width : path.bounds.width + lineWidth, height : path.bounds.height + lineWidth)
+//        borderLayer.path = path.cgPath
+//        borderLayer.lineWidth = lineWidth
+//        borderLayer.lineJoin = kCALineJoinRound
+//        borderLayer.lineCap = kCALineCapRound
+//        borderLayer.strokeColor = UIColor.black.cgColor
+//        borderLayer.fillColor = UIColor.white.cgColor
+//
+//        let hexagon = createImage(layer: borderLayer)
+        
+       // profileImage.image = hexagon
+        
         profileImage.contentMode = .scaleAspectFill
         profileImage.layer.cornerRadius = 20
         profileImage.layer.masksToBounds = true
         profileImage.isUserInteractionEnabled = true
         profileImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectImageView)))
+        
         
 
         //Do any additional setup after loading the view.
@@ -36,6 +60,8 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewDidAppear(_ animated: Bool) {
         profileImage.loadProfilePicture()
     }
+    
+    // Creating Hexagon Shape for Profile Picture
     
     // What happens when Image is Pressed
     @objc func handleSelectImageView(){

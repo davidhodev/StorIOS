@@ -505,15 +505,16 @@
             <objects>
                 <viewController storyboardIdentifier="SettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DsK-YZ-9L7" customClass="SettingsViewController" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M4F-ZV-9Ri">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1050"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="MLF-RS-h46"/>
+                        <viewLayoutGuide key="safeArea" id="j8O-lx-sek"/>
                     </view>
+                    <size key="freeformSize" width="375" height="1050"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DAw-mh-PVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7014" y="-638"/>
+            <point key="canvasLocation" x="7014" y="-768"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="JOO-uD-wlg">
