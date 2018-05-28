@@ -14,12 +14,13 @@ import FBSDKLoginKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var storMapKit: MKMapView!
     @IBOutlet weak var searchXan: UISearchBar!
     
     let locationManager = CLLocationManager()
+    var myPin:Annotations!
     
     
     
@@ -31,8 +32,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         
         print("signed out")
         self.navigationController?.popToRootViewController(animated: true)
-//        self.dismiss(animated: true, completion: nil)
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
@@ -47,17 +49,32 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
                 globalVariablesViewController.profilePicString = (dictionary["profilePicture"] as? String)!
             }
         }, withCancel: nil)
+        
+        // Show Annotations
+        let myCoordinate = CLLocationCoordinate2DMake(34.142530, -118.398898)
+        myPin = Annotations(title: "Test1", subtitle: " Hello this is a test of the subtitle without Firebase", coordinate: myCoordinate)
+        storMapKit.addAnnotation(myPin)
+        fetchProviders()
+        
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        let location = locations[0]
-        let center = location.coordinate
+        let center = self.storMapKit.userLocation.coordinate
         let span = MKCoordinateSpanMake(0.01, 0.01) //WHERE WE CHANGE THE SPAN OF MAP
         let region = MKCoordinateRegion(center: center, span: span)
         
-        storMapKit.setRegion(region, animated: true)
+        self.storMapKit.showsPointsOfInterest = false
+        storMapKit.setRegion(region, animated: false)
         storMapKit.showsUserLocation = true
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotationView = MKAnnotationView(annotation: myPin, reuseIdentifier: "TESTPIN1")
+//        annotationView.image = UIImage(named: "")
+//        let transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+//        annotationView.transform = transform
+        return annotationView
     }
 
 
@@ -84,15 +101,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Getting Providers Info from database
+    func fetchProviders(){
+        print("estyy")
+        Database.database().reference().child("Providers").observe(.childAdded, with: { (snapshot) in
+            print(snapshot)
+        }, withCancel: nil)
     }
-    */
+    
+    
+
 
 }

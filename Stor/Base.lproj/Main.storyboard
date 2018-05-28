@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -46,7 +46,7 @@
                                 <rect key="frame" x="0.0" y="358" width="170" height="300"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy4" translatesAutoresizingMaskIntoConstraints="NO" id="uGy-bx-NSJ">
-                                <rect key="frame" x="136" y="1" width="169" height="93"/>
+                                <rect key="frame" x="138" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy5_2" translatesAutoresizingMaskIntoConstraints="NO" id="U2q-m4-Bqu">
                                 <rect key="frame" x="224" y="82" width="151" height="323"/>
@@ -59,7 +59,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ED4-zM-ayk">
-                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
+                                <rect key="frame" x="0.0" y="-13" width="173" height="85"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Bd-4gJ">
                                 <rect key="frame" x="33.666666666666657" y="392" width="177" height="188"/>
@@ -311,7 +311,7 @@
                                 <rect key="frame" x="136" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ZcF-jB-fyb">
-                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
+                                <rect key="frame" x="0.0" y="-13" width="171" height="85"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo Copy" translatesAutoresizingMaskIntoConstraints="NO" id="iUg-vp-lcF">
                                 <rect key="frame" x="51" y="115" width="187" height="114"/>
@@ -499,6 +499,21 @@
             </objects>
             <point key="canvasLocation" x="5912.8000000000002" y="-52.463054187192121"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="UPi-oI-6lt">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DsK-YZ-9L7" customClass="SettingsViewController" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M4F-ZV-9Ri">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="MLF-RS-h46"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DAw-mh-PVp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7014" y="-638"/>
+        </scene>
         <!--Map View Controller-->
         <scene sceneID="JOO-uD-wlg">
             <objects>
@@ -591,15 +606,8 @@
                                     <action selector="exitButton:" destination="rUo-Oy-5Qv" eventType="touchUpInside" id="PJ6-bK-R4a"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65d-x7-rRS">
-                                <rect key="frame" x="35" y="227" width="279" height="108"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="50"/>
-                                <color key="textColor" red="0.94195238114599433" green="0.97042010490712283" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ii9-ZF-bid">
-                                <rect key="frame" x="54" y="112" width="115" height="87"/>
+                                <rect key="frame" x="103" y="112" width="66" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Settings Button" translatesAutoresizingMaskIntoConstraints="NO" id="HOg-eP-cjb">
@@ -680,6 +688,13 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                 <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65d-x7-rRS">
+                                <rect key="frame" x="186" y="89" width="279" height="108"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="18"/>
+                                <color key="textColor" red="0.94195238114599433" green="0.97042010490712283" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -801,7 +816,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="P4G-xz-ODq">
-                                <rect key="frame" x="0.0" y="-55" width="171" height="101"/>
+                                <rect key="frame" x="0.0" y="-55" width="173" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="101" id="XiM-pS-Ieg"/>
                                 </constraints>
@@ -972,7 +987,7 @@
         <image name="CA Hex" width="375" height="720"/>
         <image name="Combined Shape3-1" width="18" height="13"/>
         <image name="Create Account Button" width="177" height="188"/>
-        <image name="Fill 7 Copy 2" width="171" height="216"/>
+        <image name="Fill 7 Copy 2" width="173" height="85"/>
         <image name="Fill 7 Copy 5CA" width="308" height="192"/>
         <image name="Fill 7 Copy 6" width="375" height="593"/>
         <image name="Forgot button" width="128" height="51"/>
