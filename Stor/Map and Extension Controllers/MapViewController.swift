@@ -21,7 +21,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     
     let locationManager = CLLocationManager()
     var myPin:Annotations!
-    
+    var providers = [Annotations]()
     
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
@@ -52,7 +52,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         
         // Show Annotations
         let myCoordinate = CLLocationCoordinate2DMake(34.142530, -118.398898)
-        myPin = Annotations(title: "Test1", subtitle: " Hello this is a test of the subtitle without Firebase", coordinate: myCoordinate)
+        myPin = Annotations(title: "Test1", subtitle: " Hello this is a test of the subtitle without Firebase", address: "test", coordinate: myCoordinate)
         storMapKit.addAnnotation(myPin)
         fetchProviders()
         
@@ -104,12 +104,27 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     // Getting Providers Info from database
     func fetchProviders(){
         print("estyy")
+        print("PROVIDER FOUND")
         Database.database().reference().child("Providers").observe(.childAdded, with: { (snapshot) in
             print(snapshot)
+            if let dictionary = snapshot.value as? [String: Any]{
+                let providerAddress = (dictionary["Address"] as! String)
+                let geocoder = CLGeocoder()
+                geocoder.geocodeAddressString(providerAddress, completionHandler: { (placemarks, error) in
+                    guard
+                    let placemarks = placemarks,
+                    let location = placemarks.first?.location
+                    else {
+                        print("NO LOCATION FOUND")
+                        return
+                    }
+                    let provider = Annotations(title: dictionary["Title"] as! String, subtitle: dictionary["Subtitle"] as! String, address: dictionary["Address"] as! String, coordinate: location.coordinate)
+                    self.storMapKit.addAnnotation(provider)
+                    
+                }
+            )
+            }
         }, withCancel: nil)
     }
-    
-    
-
 
 }
