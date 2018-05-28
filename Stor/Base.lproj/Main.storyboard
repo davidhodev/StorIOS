@@ -17,9 +17,6 @@
         <array key="Dosis-Regular.otf">
             <string>Dosis-Regular</string>
         </array>
-        <array key="Dosis-SemiBold.otf">
-            <string>Dosis-SemiBold</string>
-        </array>
     </customFonts>
     <scenes>
         <!--Startup View Controller-->
@@ -117,7 +114,7 @@
                                 <rect key="frame" x="89.666666666666671" y="701" width="18" height="18"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8m-XB-JUI">
-                                <rect key="frame" x="181" y="563" width="13" height="20.333333333333371"/>
+                                <rect key="frame" x="181.33333333333334" y="563" width="13" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                 <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -135,26 +132,30 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qe-td-WDg">
-                                <rect key="frame" x="15.333333333333329" y="762" width="194.33333333333337" height="12"/>
+                                <rect key="frame" x="60" y="762" width="150" height="12"/>
                                 <attributedString key="attributedText">
                                     <fragment content="By tapping any of the buttons I agree to ">
                                         <attributes>
-                                            <font key="NSFont" metaFont="system" size="10"/>
+                                            <font key="NSFont" size="10" name="Dosis-Regular"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
                                 <color key="highlightedColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
-                            <button opaque="NO" alpha="0.20000000000000001" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Stb-V6-Mz7">
-                                <rect key="frame" x="213.66666666666652" y="754" width="110" height="28"/>
+                            <button opaque="NO" alpha="0.20000000000000001" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Stb-V6-Mz7">
+                                <rect key="frame" x="213" y="754" width="110" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="Vc8-cp-Zki"/>
+                                    <constraint firstAttribute="height" constant="29" id="ZIu-SV-FtK"/>
+                                </constraints>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="The Terms and Conditions.">
                                             <attributes>
                                                 <color key="NSBackgroundColor" red="0.16034999999999999" green="0.14701" blue="0.34179999999999999" alpha="0.0" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <color key="NSColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                <font key="NSFont" metaFont="system" size="10"/>
+                                                <font key="NSFont" size="10" name="Dosis-Regular"/>
                                                 <real key="NSKern" value="0.40000000000000002"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                 <integer key="NSUnderline" value="1"/>
@@ -231,7 +232,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4807" y="35"/>
+            <point key="canvasLocation" x="4805.6000000000004" y="34.729064039408868"/>
         </scene>
         <!--Terms View Controller-->
         <scene sceneID="Lod-MY-l7W">
@@ -591,6 +592,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Menu Blue Hex" translatesAutoresizingMaskIntoConstraints="NO" id="aNB-ko-3eO">
                                 <rect key="frame" x="57" y="0.0" width="318" height="393"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy5_2" translatesAutoresizingMaskIntoConstraints="NO" id="rQh-4J-irW">
+                                <rect key="frame" x="224" y="200" width="151" height="325"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Menu White Hex" translatesAutoresizingMaskIntoConstraints="NO" id="y4r-fy-yiL">
                                 <rect key="frame" x="0.0" y="297" width="375" height="515"/>
                                 <constraints>
@@ -606,9 +610,25 @@
                                     <action selector="exitButton:" destination="rUo-Oy-5Qv" eventType="touchUpInside" id="PJ6-bK-R4a"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ii9-ZF-bid">
-                                <rect key="frame" x="103" y="112" width="66" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Menu Hex 1" translatesAutoresizingMaskIntoConstraints="NO" id="eSo-y4-4tI">
+                                <rect key="frame" x="0.0" y="-4" width="173" height="207"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65d-x7-rRS">
+                                <rect key="frame" x="134" y="181" width="192" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="dQz-7o-d9N"/>
+                                    <constraint firstAttribute="width" constant="192" id="vC1-Fg-qLG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="24"/>
+                                <color key="textColor" red="0.94195238114599433" green="0.97042010490712283" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ii9-ZF-bid">
+                                <rect key="frame" x="33" y="150" width="86" height="93"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="86" id="Wck-Xn-G3b"/>
+                                    <constraint firstAttribute="height" constant="93" id="vrV-Dw-vMY"/>
+                                </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Settings Button" translatesAutoresizingMaskIntoConstraints="NO" id="HOg-eP-cjb">
                                 <rect key="frame" x="26" y="351" width="100" height="103"/>
@@ -690,11 +710,141 @@
                                 <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65d-x7-rRS">
-                                <rect key="frame" x="186" y="89" width="279" height="108"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="18"/>
-                                <color key="textColor" red="0.94195238114599433" green="0.97042010490712283" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FAM-eA-Ffr">
+                                <rect key="frame" x="259" y="380" width="100" height="103"/>
+                                <state key="normal" image="Group 3"/>
+                            </button>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="elM-tc-mA7">
+                                <rect key="frame" x="294" y="69" width="30" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="hgl-o7-5Ng"/>
+                                    <constraint firstAttribute="height" constant="28" id="tuF-Ce-KEy"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Legal">
+                                            <attributes>
+                                                <color key="NSColor" red="0.99999000000000005" green="0.99999000000000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <font key="NSFont" size="12" name="Dosis-Light"/>
+                                                <real key="NSKern" value="0.0"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                    <tabStops>
+                                                        <textTab alignment="left" location="28">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="56">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="84">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="112">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="140">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="168">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="196">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="224">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="252">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="280">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="308">
+                                                            <options/>
+                                                        </textTab>
+                                                        <textTab alignment="left" location="336">
+                                                            <options/>
+                                                        </textTab>
+                                                    </tabStops>
+                                                </paragraphStyle>
+                                                <integer key="NSUnderline" value="1"/>
+                                                <color key="NSUnderlineColor" red="0.99999000000000005" green="0.99999000000000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Nd-jQ-abW" userLabel="legal version">
+                                <rect key="frame" x="294" y="92" width="30" height="16"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="V. 1.1">
+                                        <attributes>
+                                            <color key="NSColor" red="0.99999000000000005" green="0.99999000000000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <font key="NSFont" size="12" name="Dosis-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="28">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="56">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="84">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="112">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="140">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="168">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="196">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="224">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="252">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="280">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="308">
+                                                        <options/>
+                                                    </textTab>
+                                                    <textTab alignment="left" location="336">
+                                                        <options/>
+                                                    </textTab>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Menu Hex 2" translatesAutoresizingMaskIntoConstraints="NO" id="PbC-YC-bgS">
+                                <rect key="frame" x="140" y="-20" width="167" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="167" id="Y9R-hz-9sL"/>
+                                    <constraint firstAttribute="height" constant="128" id="vbT-pW-iCK"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Star" translatesAutoresizingMaskIntoConstraints="NO" id="CI1-tL-Ltb">
+                                <rect key="frame" x="134" y="215" width="12" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="12" id="Iw2-BI-wOe"/>
+                                    <constraint firstAttribute="height" constant="12" id="WXX-ri-rbb"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbH-YX-jcu">
+                                <rect key="frame" x="149" y="212" width="35" height="18"/>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="14"/>
+                                <color key="textColor" red="0.99999000000000005" green="0.99999000000000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -702,32 +852,53 @@
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dhp-ow-yS3" firstAttribute="top" secondItem="rLp-Pm-w3a" secondAttribute="bottom" constant="-53" id="17q-6i-8I3"/>
+                            <constraint firstItem="65d-x7-rRS" firstAttribute="centerY" secondItem="Ii9-ZF-bid" secondAttribute="centerY" id="5SO-iJ-hCj"/>
                             <constraint firstItem="XTM-rj-Cm6" firstAttribute="leading" secondItem="y4r-fy-yiL" secondAttribute="trailing" constant="-116" id="658-mH-58P"/>
                             <constraint firstItem="iaa-IZ-JHD" firstAttribute="trailing" secondItem="y4r-fy-yiL" secondAttribute="trailing" id="6Vf-Bj-1kv"/>
                             <constraint firstItem="GuZ-YQ-Jp4" firstAttribute="top" secondItem="cXe-3W-wf1" secondAttribute="bottom" constant="-24" id="7LB-iq-G8s"/>
                             <constraint firstItem="cXe-3W-wf1" firstAttribute="top" secondItem="B5b-6H-izD" secondAttribute="bottom" constant="-22" id="7gV-QS-2Qp"/>
                             <constraint firstItem="cXe-3W-wf1" firstAttribute="top" secondItem="cZL-QE-iXO" secondAttribute="bottom" constant="-51" id="AX3-xt-DkA"/>
+                            <constraint firstItem="eSo-y4-4tI" firstAttribute="top" secondItem="PbC-YC-bgS" secondAttribute="bottom" constant="-112" id="B7N-oz-D3b"/>
+                            <constraint firstItem="65d-x7-rRS" firstAttribute="leading" secondItem="Ii9-ZF-bid" secondAttribute="trailing" constant="15" id="BOo-g4-Yuu"/>
                             <constraint firstItem="y4r-fy-yiL" firstAttribute="leading" secondItem="iaa-IZ-JHD" secondAttribute="leading" id="CCt-4g-jXc"/>
+                            <constraint firstItem="PbC-YC-bgS" firstAttribute="leading" secondItem="eSo-y4-4tI" secondAttribute="trailing" constant="-33" id="CPz-tD-6dJ"/>
                             <constraint firstItem="dhp-ow-yS3" firstAttribute="top" secondItem="GuZ-YQ-Jp4" secondAttribute="bottom" constant="-24" id="E89-zW-LBF"/>
                             <constraint firstItem="HOg-eP-cjb" firstAttribute="top" secondItem="NPQ-ms-YW6" secondAttribute="bottom" constant="-51" id="HzA-oV-V3k"/>
+                            <constraint firstItem="elM-tc-mA7" firstAttribute="top" secondItem="iaa-IZ-JHD" secondAttribute="top" constant="25" id="K31-Fv-2Mx"/>
                             <constraint firstItem="y4r-fy-yiL" firstAttribute="bottom" secondItem="iaa-IZ-JHD" secondAttribute="bottom" constant="34" id="Myb-jS-BR6"/>
+                            <constraint firstItem="EbH-YX-jcu" firstAttribute="leading" secondItem="CI1-tL-Ltb" secondAttribute="trailing" constant="3" id="OfR-nJ-8Um"/>
                             <constraint firstItem="HOg-eP-cjb" firstAttribute="leading" secondItem="iaa-IZ-JHD" secondAttribute="leading" constant="26" id="PWL-SV-Izz"/>
                             <constraint firstItem="XTM-rj-Cm6" firstAttribute="top" secondItem="y4r-fy-yiL" secondAttribute="bottom" constant="-142" id="Rdj-7z-8aO"/>
                             <constraint firstItem="B5b-6H-izD" firstAttribute="leading" secondItem="iaa-IZ-JHD" secondAttribute="leading" constant="26" id="T1M-OD-Ruf"/>
+                            <constraint firstItem="Ii9-ZF-bid" firstAttribute="top" secondItem="eSo-y4-4tI" secondAttribute="bottom" constant="-53" id="Tgh-ta-O9D"/>
+                            <constraint firstItem="6Nd-jQ-abW" firstAttribute="leading" secondItem="elM-tc-mA7" secondAttribute="leading" id="Um2-mN-RX0"/>
+                            <constraint firstItem="6Nd-jQ-abW" firstAttribute="width" relation="greaterThanOrEqual" secondItem="elM-tc-mA7" secondAttribute="width" id="Wxh-m2-Llk"/>
+                            <constraint firstItem="CI1-tL-Ltb" firstAttribute="leading" secondItem="65d-x7-rRS" secondAttribute="leading" id="YNq-wu-ifV"/>
+                            <constraint firstItem="iaa-IZ-JHD" firstAttribute="trailing" secondItem="rQh-4J-irW" secondAttribute="trailing" id="Ylm-Ao-gqW"/>
+                            <constraint firstItem="FAM-eA-Ffr" firstAttribute="centerX" secondItem="XTM-rj-Cm6" secondAttribute="centerX" id="ZFh-R6-8nQ"/>
+                            <constraint firstItem="EbH-YX-jcu" firstAttribute="centerY" secondItem="CI1-tL-Ltb" secondAttribute="centerY" id="ZLt-4G-jcS"/>
                             <constraint firstItem="aUe-Hx-QMe" firstAttribute="leading" secondItem="B5b-6H-izD" secondAttribute="trailing" constant="-6" id="b5m-Pr-ASH"/>
+                            <constraint firstItem="y4r-fy-yiL" firstAttribute="top" secondItem="FAM-eA-Ffr" secondAttribute="bottom" constant="-186" id="bcO-Vn-nez"/>
                             <constraint firstItem="9B8-9H-nDm" firstAttribute="leading" secondItem="GuZ-YQ-Jp4" secondAttribute="trailing" constant="-6" id="cH7-Uc-y9c"/>
+                            <constraint firstItem="eSo-y4-4tI" firstAttribute="leading" secondItem="iaa-IZ-JHD" secondAttribute="leading" id="ciB-iS-7Kv"/>
+                            <constraint firstItem="Ii9-ZF-bid" firstAttribute="centerX" secondItem="HOg-eP-cjb" secondAttribute="centerX" id="csr-O0-1S3"/>
                             <constraint firstItem="rLp-Pm-w3a" firstAttribute="leading" secondItem="dhp-ow-yS3" secondAttribute="trailing" constant="-6" id="cu7-P4-EeM"/>
                             <constraint firstItem="GuZ-YQ-Jp4" firstAttribute="top" secondItem="9B8-9H-nDm" secondAttribute="bottom" constant="-54" id="dNv-F9-arQ"/>
                             <constraint firstItem="dhp-ow-yS3" firstAttribute="top" secondItem="XTM-rj-Cm6" secondAttribute="bottom" constant="-95" id="eQN-XQ-03h"/>
+                            <constraint firstItem="Ii9-ZF-bid" firstAttribute="top" secondItem="aNB-ko-3eO" secondAttribute="bottom" constant="-243" id="fBc-II-LO5"/>
                             <constraint firstItem="NPQ-ms-YW6" firstAttribute="leading" secondItem="HOg-eP-cjb" secondAttribute="trailing" constant="-3" id="fnU-SV-Tfe"/>
                             <constraint firstItem="cZL-QE-iXO" firstAttribute="leading" secondItem="cXe-3W-wf1" secondAttribute="trailing" constant="-6" id="hOW-Ys-rGz"/>
                             <constraint firstItem="iaa-IZ-JHD" firstAttribute="trailing" secondItem="aNB-ko-3eO" secondAttribute="trailing" id="hZC-Lp-8Gi"/>
+                            <constraint firstItem="y4r-fy-yiL" firstAttribute="top" secondItem="rQh-4J-irW" secondAttribute="bottom" constant="-228" id="iSa-Qz-FvN"/>
                             <constraint firstItem="GuZ-YQ-Jp4" firstAttribute="leading" secondItem="iaa-IZ-JHD" secondAttribute="leading" constant="26" id="j4F-AI-equ"/>
                             <constraint firstItem="B5b-6H-izD" firstAttribute="top" secondItem="HOg-eP-cjb" secondAttribute="bottom" constant="-23" id="mLO-Cp-R1I"/>
+                            <constraint firstItem="elM-tc-mA7" firstAttribute="centerX" secondItem="FAM-eA-Ffr" secondAttribute="centerX" id="p98-Aw-jpn"/>
+                            <constraint firstItem="CI1-tL-Ltb" firstAttribute="top" secondItem="65d-x7-rRS" secondAttribute="bottom" constant="3" id="rfH-Lt-tpS"/>
                             <constraint firstItem="cXe-3W-wf1" firstAttribute="leading" secondItem="iaa-IZ-JHD" secondAttribute="leading" constant="26" id="v4y-E2-vRX"/>
                             <constraint firstItem="y4r-fy-yiL" firstAttribute="top" secondItem="aNB-ko-3eO" secondAttribute="bottom" constant="-96" id="vEP-Z7-Mxf"/>
                             <constraint firstItem="B5b-6H-izD" firstAttribute="top" secondItem="aUe-Hx-QMe" secondAttribute="bottom" constant="-52" id="wbO-vj-C2C"/>
                             <constraint firstItem="dhp-ow-yS3" firstAttribute="leading" secondItem="iaa-IZ-JHD" secondAttribute="leading" constant="26" id="zab-UT-pzy"/>
+                            <constraint firstItem="6Nd-jQ-abW" firstAttribute="top" secondItem="elM-tc-mA7" secondAttribute="bottom" constant="-5" id="zhm-GZ-4Bc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iaa-IZ-JHD"/>
                     </view>
@@ -854,7 +1025,7 @@
                                 <rect key="frame" x="78" y="475" width="14" height="15"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Create Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndl-Jx-dmH">
-                                <rect key="frame" x="74" y="195" width="174" height="38"/>
+                                <rect key="frame" x="73.999999999999986" y="195" width="173.66666666666663" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="cRd-Mu-fiS"/>
                                 </constraints>
@@ -875,7 +1046,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAW-R5-1qf">
-                                <rect key="frame" x="106" y="564" width="270" height="31"/>
+                                <rect key="frame" x="106" y="564.33333333333337" width="270" height="30.666666666666629"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="270" id="N40-d6-cx4"/>
                                 </constraints>
@@ -999,6 +1170,8 @@
         <image name="Logo Copy" width="199" height="124"/>
         <image name="Logo Copy Small" width="135" height="85"/>
         <image name="Menu Blue Hex" width="318" height="408"/>
+        <image name="Menu Hex 1" width="173" height="207"/>
+        <image name="Menu Hex 2" width="169" height="89"/>
         <image name="Menu White Hex" width="375" height="515"/>
         <image name="My Storage Button" width="100" height="98"/>
         <image name="Name Card Icon" width="20" height="17"/>
@@ -1007,6 +1180,7 @@
         <image name="Rectangle 3 Blue" width="321" height="100"/>
         <image name="Rectangle 3 Copy 2" width="334" height="100"/>
         <image name="Settings Button" width="100" height="103"/>
+        <image name="Star" width="15" height="14"/>
         <image name="bitmap" width="375" height="570"/>
         <image name="facebook" width="16" height="16"/>
         <image name="fill7Copy" width="171" height="302"/>
