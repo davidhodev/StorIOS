@@ -118,14 +118,10 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
             }
             
             if let photo = info["picture"] as? NSDictionary, let fbData = photo["data"] as? NSDictionary, let fbPhotoUrl = fbData["url"] as? String{
+                print(fbData)
                 fbPhoto = fbPhotoUrl
             }
             let fbUrl = URL(string:fbPhoto)
-//            var actualFBImage = UIImage()
-//            if let finalFbPhoto = try? Data(contentsOf: fbUrl!)
-//            {
-//                actualFBImage = UIImage(data: finalFbPhoto)
-//            }
             
             if let user = Auth.auth().currentUser{
                 let registerDataValues = ["name": fbName, "email": fbEmail, "password": user.uid, "phone":"phoneVerify", "profilePicture": fbPhoto]
