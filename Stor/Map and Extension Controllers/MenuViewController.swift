@@ -17,14 +17,21 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var rating: UILabel!
     @IBAction func exitButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+    
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print("Test1")
         self.nameLabel.text = globalVariablesViewController.username
+        print("rating", String(describing: globalVariablesViewController.ratingNumber))
+        self.rating.text = String(describing: globalVariablesViewController.ratingNumber)
+//        format: "%.3f", totalWorkTimeInHours)
         
         //Hexagon SHape
         let lineWidth = CGFloat(7.0)
@@ -54,13 +61,16 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         profileImage.isUserInteractionEnabled = true
         profileImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectImageView)))
         
-        
+        profileImage.loadProfilePicture()
 
         //Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        profileImage.loadProfilePicture()
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
     
     // Creating Hexagon Shape for Profile Picture
@@ -87,8 +97,11 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             profileImage.image = selectedImageFinal
         }
         let imageUniqueID = NSUUID().uuidString
-        let storageRef = Storage.storage().reference().child("UserProfileImages").child("\(imageUniqueID).png")
-        if let uploadData = UIImagePNGRepresentation(profileImage.image!){
+        let storageRef = Storage.storage().reference().child("UserProfileImages").child("\(imageUniqueID).jpeg")
+        
+       
+        if let uploadData = UIImageJPEGRepresentation(self.profileImage.image!, 0.1){
+
             storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                 if (error != nil){
                     print(error)
@@ -100,6 +113,7 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                         print(error)
                         return
                     }
+                    globalVariablesViewController.profilePicString = (updatedURL?.absoluteString)!
                     if let user = Auth.auth().currentUser{
                         let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
                         let userReference = databaseReference.root.child("Users").child((user.uid))
@@ -110,6 +124,7 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                                 return
                             }
                             print("Profile Pic Updated")
+                            
                         })
                     }
                 })
