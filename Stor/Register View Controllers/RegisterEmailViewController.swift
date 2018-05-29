@@ -76,7 +76,7 @@ class RegisterEmailViewController: UIViewController {
             UserDefaults.standard.synchronize()
         }
         
-        let defaultProfilePictureURL = "https://firebasestorage.googleapis.com/v0/b/stor-database.appspot.com/o/Default%20Picv2%402xx.jpeg?alt=media&token=67e184db-e950-4eab-9738-187eb15d3d3b"
+        let defaultProfilePictureURL = "https://firebasestorage.googleapis.com/v0/b/stor-database.appspot.com/o/Default%20Pic.jpeg?alt=media&token=d5082882-a22c-4442-a576-277205c8cb79"
         // Creates User from Firebase
         Auth.auth().createUser(withEmail: emailVerify, password: passwordVerify){ user,error in
             if (error == nil && user != nil){

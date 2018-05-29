@@ -30,12 +30,12 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         print("Test1")
         self.nameLabel.text = globalVariablesViewController.username
         print("rating", String(describing: globalVariablesViewController.ratingNumber))
-        self.rating.text = String(describing: globalVariablesViewController.ratingNumber)
-//        format: "%.3f", totalWorkTimeInHours)
+        let outputRating2 = ((globalVariablesViewController.ratingNumber as! Double) * 100).rounded()/100
+        self.rating.text = String(describing: outputRating2)
         
         //Hexagon SHape
         let lineWidth = CGFloat(7.0)
-        let rect = CGRect(x: 0, y: 0.0, width: 86, height: 93)
+        let rect = CGRect(x: 0, y: 0.0, width: 90, height: 96)
         let sides = 6
 
         let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 8.0, rotationOffset: CGFloat(.pi / 2.0))
@@ -66,12 +66,7 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         //Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
+
     
     // Creating Hexagon Shape for Profile Picture
     
