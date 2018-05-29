@@ -28,7 +28,7 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         //Hexagon SHape
         let lineWidth = CGFloat(7.0)
-        let rect = CGRect(x: 0, y: 0.0, width: 86, height: 93)
+        let rect = CGRect(x: 0, y: 0.0, width: 90, height: 96)
         let sides = 6
 
         let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 8.0, rotationOffset: CGFloat(.pi / 2.0))
