@@ -537,6 +537,18 @@ Copyright 2018 Google
    limitations under the License.
 
 
+## GoogleMaps
+
+Copyright 2018 Google
+
+## GooglePlacePicker
+
+Copyright 2018 Google
+
+## GooglePlaces
+
+Copyright 2018 Google
+
 ## GoogleSignIn
 
 Copyright 2018 Google

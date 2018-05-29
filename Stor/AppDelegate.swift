@@ -12,6 +12,9 @@ import FirebaseDatabase
 import FBSDKCoreKit
 import FBSDKLoginKit
 import GoogleSignIn
+import GoogleMaps
+import GooglePlaces
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
@@ -31,6 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         //Installing Google
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
+        
+        //Google Maps
+        GMSServices.provideAPIKey("AIzaSyBo14F_f64DR5VBqn5zAWIuDawbNGIyCiQ")
+        GMSPlacesClient.provideAPIKey("AIzaSyBo14F_f64DR5VBqn5zAWIuDawbNGIyCiQ")
+        //AIzaSyBo14F_f64DR5VBqn5zAWIuDawbNGIyCiQ
 
         return true
     }

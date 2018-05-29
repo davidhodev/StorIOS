@@ -10,6 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import GoogleSignIn
+import GooglePlaces
 import FBSDKLoginKit
 import MapKit
 import CoreLocation
@@ -51,6 +52,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
             }
         }, withCancel: nil)
         
+        
+        
+        
         // Show Annotations
         fetchProviders()
         
@@ -69,9 +73,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationView = MKAnnotationView(annotation: myPin, reuseIdentifier: "TESTPIN1")
-//        annotationView.image = UIImage(named: "")
-//        let transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-//        annotationView.transform = transform
         return annotationView
     }
 
@@ -80,6 +81,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //Textf
+    
+    
     
     // Search Bar Function
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
