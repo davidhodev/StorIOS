@@ -66,12 +66,7 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         //Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        
-    }
+
     
     // Creating Hexagon Shape for Profile Picture
     

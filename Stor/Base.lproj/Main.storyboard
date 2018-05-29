@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -132,9 +132,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qe-td-WDg">
-
-                                <rect key="frame" x="60" y="762" width="150" height="12"/>
-
+                                <rect key="frame" x="0.0" y="762" width="210" height="12"/>
                                 <attributedString key="attributedText">
                                     <fragment content="By tapping any of the buttons I agree to ">
                                         <attributes>
@@ -145,10 +143,8 @@
                                 </attributedString>
                                 <color key="highlightedColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
-
-                            <button opaque="NO" alpha="0.20000000000000001" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Stb-V6-Mz7">
-                                <rect key="frame" x="213" y="754" width="110" height="29"/>
-
+                            <button opaque="NO" alpha="0.20000000000000001" contentMode="scaleAspectFit" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Stb-V6-Mz7">
+                                <rect key="frame" x="213" y="754" width="162" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="ZIu-SV-FtK"/>
                                 </constraints>
@@ -540,34 +536,6 @@
             </objects>
             <point key="canvasLocation" x="7012" y="-794.33497536945811"/>
         </scene>
-        <!--SettingsTableViewController-->
-        <scene sceneID="CDG-5A-u9M">
-            <objects>
-                <tableViewController title="SettingsTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cI8-0Z-uJI" customClass="SettingsTableViewController" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XJz-j9-2tu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="09J-3f-b0j">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="09J-3f-b0j" id="EeO-p3-Hai">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="cI8-0Z-uJI" id="9SD-ez-6hT"/>
-                            <outlet property="delegate" destination="cI8-0Z-uJI" id="WVh-Lt-UK4"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="z9s-XP-4GF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="7809" y="-794"/>
-        </scene>
         <!--Map View Controller-->
         <scene sceneID="JOO-uD-wlg">
             <objects>
@@ -591,15 +559,6 @@
                                     <segue destination="rUo-Oy-5Qv" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="AEV-Qj-qdP"/>
                                 </connections>
                             </button>
-                            <searchBar contentMode="redraw" fixedFrame="YES" text="" translatesAutoresizingMaskIntoConstraints="NO" id="Cxl-sC-XNq">
-                                <rect key="frame" x="16" y="43" width="343" height="56"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <offsetWrapper key="searchFieldBackgroundPositionAdjustment" horizontal="0.0" vertical="0.0"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="dx9-Au-IeG" id="9Do-Ab-jLT"/>
-                                </connections>
-                            </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WX0-KF-kZz">
                                 <rect key="frame" x="148" y="191" width="162" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -608,6 +567,14 @@
                                     <action selector="logoutButtonPressed:" destination="dx9-Au-IeG" eventType="touchUpInside" id="grO-IZ-uNO"/>
                                 </connections>
                             </button>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="An4-sa-LEf">
+                                <rect key="frame" x="16" y="56" width="343" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="dx9-Au-IeG" id="TPD-Wr-G2o"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -618,8 +585,8 @@
                         <viewLayoutGuide key="safeArea" id="gao-4W-ZjZ"/>
                     </view>
                     <connections>
-                        <outlet property="searchDisplayController" destination="50n-e0-9Fd" id="LOJ-qh-3tl"/>
-                        <outlet property="searchXan" destination="Cxl-sC-XNq" id="iYP-xi-ZN5"/>
+                        <outlet property="searchDisplayController" destination="1xc-4G-GSe" id="s1C-ZV-dSh"/>
+                        <outlet property="searchXan" destination="An4-sa-LEf" id="Itm-2v-RwG"/>
                         <outlet property="storMapKit" destination="Otr-Yf-2jY" id="zXs-R4-din"/>
                     </connections>
                 </viewController>
@@ -630,6 +597,14 @@
                         <outlet property="searchContentsController" destination="dx9-Au-IeG" id="8tl-5I-Aiu"/>
                         <outlet property="searchResultsDataSource" destination="dx9-Au-IeG" id="sjk-Dd-fTU"/>
                         <outlet property="searchResultsDelegate" destination="dx9-Au-IeG" id="gHg-XP-sG6"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="1xc-4G-GSe">
+                    <connections>
+                        <outlet property="delegate" destination="dx9-Au-IeG" id="Ufg-xd-jEs"/>
+                        <outlet property="searchContentsController" destination="dx9-Au-IeG" id="XJ1-v2-ToY"/>
+                        <outlet property="searchResultsDataSource" destination="dx9-Au-IeG" id="ssv-fT-bxB"/>
+                        <outlet property="searchResultsDelegate" destination="dx9-Au-IeG" id="ewe-7E-8At"/>
                     </connections>
                 </searchDisplayController>
             </objects>
@@ -788,9 +763,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EbH-YX-jcu">
-
-                                <rect key="frame" x="149" y="213" width="34.666666666666657" height="18"/>
-
+                                <rect key="frame" x="149" y="212" width="34.666666666666657" height="18"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="14"/>
                                 <color key="textColor" red="0.99999000000000005" green="0.99999000000000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>

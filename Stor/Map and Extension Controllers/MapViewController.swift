@@ -10,12 +10,36 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import GoogleSignIn
+import GoogleMaps
 import GooglePlaces
 import FBSDKLoginKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate, GMSAutocompleteViewControllerDelegate{
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        let lat = place.coordinate.latitude
+        let long = place.coordinate.longitude
+        
+        let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, long)
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegionMake(coordinate, span)
+        self.storMapKit.setRegion(region, animated: true)
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        print(error)
+    }
+    
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     
     @IBOutlet weak var storMapKit: MKMapView!
     @IBOutlet weak var searchXan: UISearchBar!
@@ -52,9 +76,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
             }
         }, withCancel: nil)
         
-        
-        
-        
         // Show Annotations
         fetchProviders()
         
@@ -73,6 +94,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationView = MKAnnotationView(annotation: myPin, reuseIdentifier: "TESTPIN1")
+//        annotationView.image = UIImage(named: "")
+//        let transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+//        annotationView.transform = transform
         return annotationView
     }
 
@@ -82,11 +106,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         // Dispose of any resources that can be recreated.
     }
     
-    //Textf
+    // Search Bar When Clicked
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        
+        let autoCompleteController = GMSAutocompleteViewController()
+        autoCompleteController.delegate = self
+        
+        let filter = GMSAutocompleteFilter()
+        autoCompleteController.autocompleteFilter = filter
+        
+        self.locationManager.startUpdatingLocation()
+        self.present(autoCompleteController, animated: true, completion: nil)
+        return false
+    }
     
     
     
-    // Search Bar Function
+    
+    
+    // Search Bar When Entered Function
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         let searchRequest = MKLocalSearchRequest()
         searchRequest.naturalLanguageQuery = searchXan.text
