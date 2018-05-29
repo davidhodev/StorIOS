@@ -66,11 +66,21 @@ class RegisterEmailViewController: UIViewController {
         guard let passwordVerify = passwordRegisterText.text else {return}
         guard let phoneVerify = phoneRegisterText.text else {return}
         
+        PhoneAuthProvider.provider().verifyPhoneNumber(phoneVerify, uiDelegate: nil) { (verificationID, error) in
+            if ((error) != nil){
+                print(error)
+                return
+            }
+            print(verificationID)
+            UserDefaults.standard.set(verificationID, forKey: "firebase_verification")
+            UserDefaults.standard.synchronize()
+        }
         
+        let defaultProfilePictureURL = "https://firebasestorage.googleapis.com/v0/b/stor-database.appspot.com/o/Default%20Picv2%402xx.jpeg?alt=media&token=67e184db-e950-4eab-9738-187eb15d3d3b"
         // Creates User from Firebase
         Auth.auth().createUser(withEmail: emailVerify, password: passwordVerify){ user,error in
             if (error == nil && user != nil){
-                let registerDataValues = ["name": nameVerify, "email": emailVerify, "password": passwordVerify, "phone":phoneVerify]
+                let registerDataValues = ["name": nameVerify, "email": emailVerify, "password": passwordVerify, "phone":phoneVerify, "profilePicture": defaultProfilePictureURL, "rating": 5, "numberOfRatings": 1] as [String : Any]
                 
                 let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
                 let userReference = databaseReference.child("Users").child((user?.uid)!)
@@ -80,6 +90,7 @@ class RegisterEmailViewController: UIViewController {
                         return
                     }
                     print("User successfully saved to FIREBASE!")
+                    
                 })
                 self.navigationController?.popToRootViewController(animated: true)
             }

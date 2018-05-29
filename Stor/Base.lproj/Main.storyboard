@@ -844,6 +844,7 @@
                         <outlet property="nameLabel" destination="65d-x7-rRS" id="EEE-aD-dnd"/>
                         <outlet property="profileImage" destination="Ii9-ZF-bid" id="u5d-TA-PKB"/>
                         <outlet property="profileImageView" destination="1TM-T6-mza" id="3fF-YM-gyz"/>
+                        <outlet property="rating" destination="EbH-YX-jcu" id="Uxj-YA-JjZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Yg-HR-Ty7" userLabel="First Responder" sceneMemberID="firstResponder"/>

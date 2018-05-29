@@ -16,6 +16,7 @@ target 'Stor' do
 	pod 'FBSDKLoginKit'
 
 	pod 'GoogleSignIn'
+  	pod 'GooglePlacesSearchController'
 
 
   target 'StorTests' do
