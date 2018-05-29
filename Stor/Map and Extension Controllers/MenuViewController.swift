@@ -17,6 +17,7 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var rating: UILabel!
     @IBAction func exitButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
@@ -28,6 +29,9 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         print("Test1")
         self.nameLabel.text = globalVariablesViewController.username
+        print("rating", String(describing: globalVariablesViewController.ratingNumber))
+        self.rating.text = String(describing: globalVariablesViewController.ratingNumber)
+//        format: "%.3f", totalWorkTimeInHours)
         
         //Hexagon SHape
         let lineWidth = CGFloat(7.0)

@@ -46,6 +46,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
 
             if let dictionary = snapshot.value as? [String:Any] {
                 globalVariablesViewController.username = (dictionary["name"] as? String)!
+                globalVariablesViewController.ratingNumber = (dictionary["rating"] as? NSNumber)!
                 globalVariablesViewController.profilePicString = (dictionary["profilePicture"] as? String)!
             }
         }, withCancel: nil)
