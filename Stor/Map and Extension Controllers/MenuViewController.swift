@@ -30,8 +30,8 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         print("Test1")
         self.nameLabel.text = globalVariablesViewController.username
         print("rating", String(describing: globalVariablesViewController.ratingNumber))
-        self.rating.text = String(describing: globalVariablesViewController.ratingNumber)
-//        format: "%.3f", totalWorkTimeInHours)
+        let outputRating2 = ((globalVariablesViewController.ratingNumber as! Double) * 100).rounded()/100
+        self.rating.text = String(describing: outputRating2)
         
         //Hexagon SHape
         let lineWidth = CGFloat(7.0)
