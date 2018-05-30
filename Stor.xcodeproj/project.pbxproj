@@ -17,6 +17,7 @@
 		2B0B7B137B763384068CFD08 /* Pods_StorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83BDF3AB5601AEFA4206A668 /* Pods_StorTests.framework */; };
 		574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574FC7BE20B5F484001AE44F /* TermsViewController.swift */; };
 		576A007420B7798100F2174D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576A007320B7798100F2174D /* MenuViewController.swift */; };
+		579D4C5F20BF2D6E0082A86F /* AnnotationPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579D4C5E20BF2D6E0082A86F /* AnnotationPopUp.swift */; };
 		D1947A535ADA1F3F00BCE349 /* Pods_StorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBFB92A62876BD03C1FEC207 /* Pods_StorUITests.framework */; };
 		DB4B5E9320B339A30050F66E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB4B5E9220B339A20050F66E /* GoogleService-Info.plist */; };
 		DB4B5E9820B3474D0050F66E /* RegisterEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4B5E9720B3474D0050F66E /* RegisterEmailViewController.swift */; };
@@ -69,6 +70,7 @@
 		4E5B7ADF60FD9AF861F2989D /* Pods-Stor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stor/Pods-Stor.release.xcconfig"; sourceTree = "<group>"; };
 		574FC7BE20B5F484001AE44F /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		576A007320B7798100F2174D /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		579D4C5E20BF2D6E0082A86F /* AnnotationPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationPopUp.swift; sourceTree = "<group>"; };
 		83BDF3AB5601AEFA4206A668 /* Pods_StorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C530B0B3D761ADC198DC431 /* Pods-StorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorUITests/Pods-StorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1E7F08C17DB4E0B3B6B7EEE /* Pods-StorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorTests/Pods-StorTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				576A007320B7798100F2174D /* MenuViewController.swift */,
 				DB59552820B49F4D001E1AF0 /* MapViewController.swift */,
 				DB6B0EF820BC7830000CC1D9 /* Annotations.swift */,
+				579D4C5E20BF2D6E0082A86F /* AnnotationPopUp.swift */,
 				DB6B0EFD20BC7F99000CC1D9 /* Menu Items */,
 			);
 			path = "Map and Extension Controllers";
@@ -534,6 +537,7 @@
 			files = (
 				DB4B5EA020B351C20050F66E /* StartupViewController.swift in Sources */,
 				041640BC20BDF7C4001BE560 /* myStorageViewController.swift in Sources */,
+				579D4C5F20BF2D6E0082A86F /* AnnotationPopUp.swift in Sources */,
 				DB6B0EF720B8C7DB000CC1D9 /* Extensions.swift in Sources */,
 				041640BA20BDF775001BE560 /* paymentViewController.swift in Sources */,
 				DB6B0EFB20BC7F6F000CC1D9 /* SettingsViewController.swift in Sources */,
