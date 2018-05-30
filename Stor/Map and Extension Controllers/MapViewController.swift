@@ -196,7 +196,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
+        performSegue(withIdentifier: "AnnotationPopUpSegue", sender: self)
+        mapView.deselectAnnotation(view.annotation, animated: true)
     }
     
     // Getting Providers Info from database
