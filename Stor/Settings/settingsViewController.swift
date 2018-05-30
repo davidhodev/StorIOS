@@ -8,7 +8,7 @@
 
 import UIKit
 
-class settingsViewController: UIViewController, UITableViewDelegate{ 
+class settingsViewController: UIViewController, UITableViewDelegate{
 
     @IBOutlet weak var settingsTable: settingsTableView!
     var previousVC: MenuViewController!

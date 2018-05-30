@@ -10,8 +10,6 @@
 		041640B820BDF66E001BE560 /* myListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041640B720BDF66E001BE560 /* myListViewController.swift */; };
 		041640BA20BDF775001BE560 /* paymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041640B920BDF775001BE560 /* paymentViewController.swift */; };
 		041640BC20BDF7C4001BE560 /* myStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041640BB20BDF7C4001BE560 /* myStorageViewController.swift */; };
-		041A8EE420BF167600C8DA67 /* settingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A8EE320BF167600C8DA67 /* settingsViewController.swift */; };
-		041A8EE720BF17DF00C8DA67 /* settingsTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A8EE620BF17DF00C8DA67 /* settingsTableView.swift */; };
 		041A8EE920BF1ADD00C8DA67 /* settingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A8EE820BF1ADD00C8DA67 /* settingsTableViewCell.swift */; };
 		04F158A320BCA4C500AAC2ED /* hexagonProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F158A220BCA4C500AAC2ED /* hexagonProfilePicture.swift */; };
 		2B0B7B137B763384068CFD08 /* Pods_StorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83BDF3AB5601AEFA4206A668 /* Pods_StorTests.framework */; };
@@ -61,8 +59,6 @@
 		041640B720BDF66E001BE560 /* myListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myListViewController.swift; sourceTree = "<group>"; };
 		041640B920BDF775001BE560 /* paymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paymentViewController.swift; sourceTree = "<group>"; };
 		041640BB20BDF7C4001BE560 /* myStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myStorageViewController.swift; sourceTree = "<group>"; };
-		041A8EE320BF167600C8DA67 /* settingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
-		041A8EE620BF17DF00C8DA67 /* settingsTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsTableView.swift; sourceTree = "<group>"; };
 		041A8EE820BF1ADD00C8DA67 /* settingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsTableViewCell.swift; sourceTree = "<group>"; };
 		04F158A220BCA4C500AAC2ED /* hexagonProfilePicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hexagonProfilePicture.swift; sourceTree = "<group>"; };
 		18F4FB721B7B5B1C7D1493B0 /* Pods-Stor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stor/Pods-Stor.debug.xcconfig"; sourceTree = "<group>"; };
@@ -133,9 +129,7 @@
 		041A8EE520BF170300C8DA67 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				041A8EE320BF167600C8DA67 /* settingsViewController.swift */,
 				041A8EE820BF1ADD00C8DA67 /* settingsTableViewCell.swift */,
-				041A8EE620BF17DF00C8DA67 /* settingsTableView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -231,8 +225,8 @@
 				DB4B5E9620B346F50050F66E /* Register View Controllers */,
 				57874CA020B78529001F7B3F /* Map and Extension Controllers */,
 				DBE905DE20924BAE000F13DB /* AppDelegate.swift */,
-				DBE905E220924BAE000F13DB /* Main.storyboard */,
 				041A8EE520BF170300C8DA67 /* Settings */,
+				DBE905E220924BAE000F13DB /* Main.storyboard */,
 				041640BB20BDF7C4001BE560 /* myStorageViewController.swift */,
 				041640B920BDF775001BE560 /* paymentViewController.swift */,
 				041640B720BDF66E001BE560 /* myListViewController.swift */,
@@ -542,9 +536,7 @@
 				041640BA20BDF775001BE560 /* paymentViewController.swift in Sources */,
 				DB6B0EFB20BC7F6F000CC1D9 /* SettingsViewController.swift in Sources */,
 				DB6B0EF920BC7830000CC1D9 /* Annotations.swift in Sources */,
-				041A8EE720BF17DF00C8DA67 /* settingsTableView.swift in Sources */,
 				DB59552920B49F4D001E1AF0 /* MapViewController.swift in Sources */,
-				041A8EE420BF167600C8DA67 /* settingsViewController.swift in Sources */,
 				041640B820BDF66E001BE560 /* myListViewController.swift in Sources */,
 				04F158A320BCA4C500AAC2ED /* hexagonProfilePicture.swift in Sources */,
 				DBE905DF20924BAE000F13DB /* AppDelegate.swift in Sources */,
