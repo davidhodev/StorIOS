@@ -25,6 +25,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var storMapKit: MKMapView!
     @IBOutlet weak var textXan: UITextField!
     @IBOutlet weak var searchResultsTableView: UITableView!
+    @IBOutlet weak var outOfAuto: UIButton!
+    @IBAction func outOfAutoComplete(_ sender: Any) {
+        searchResultsTableView.isHidden = true
+        outOfAuto.isHidden = true
+    }
+    
     
     let locationManager = CLLocationManager()
     var myPin:Annotations!
@@ -56,6 +62,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
         
+        outOfAuto.isHidden = true
         searchResultsTableView.isHidden = true
         
         textXan.addTarget(self, action: #selector(MapViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
@@ -104,11 +111,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         searchResultsTableView.isHidden = false
+        outOfAuto.isHidden = false
     }
     
     //Text Bar Pressed
     @objc func textFieldDidChange(_ textField: UITextField) {
         searchResultsTableView.isHidden = false
+        outOfAuto.isHidden = false
         searchCompleter.queryFragment = textField.text!
     }
 
@@ -151,6 +160,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             let region = MKCoordinateRegionMake(coordinate, span)
             self.storMapKit.setRegion(region, animated: true)
             self.searchResultsTableView.isHidden = true
+            self.outOfAuto.isHidden = true
         }
     }
     
