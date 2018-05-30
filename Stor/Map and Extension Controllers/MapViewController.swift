@@ -31,11 +31,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         outOfAuto.isHidden = true
     }
     
+    // text xan image insets
+   
     
     let locationManager = CLLocationManager()
     var myPin:Annotations!
     var providers = [Annotations]()
-    
     var searchCompleter = MKLocalSearchCompleter()
     var searchResults = [MKLocalSearchCompletion]()
     
@@ -62,6 +63,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
         
+
         outOfAuto.isHidden = true
         searchResultsTableView.isHidden = true
         
@@ -181,6 +183,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         return false
     }
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation{
+            return nil
+        }
+        let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "provider")
+        annotationView.image = UIImage(named: "Map Pin Background")
+//        annotationView.canShowCallout = true
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+    }
     
     // Getting Providers Info from database
     func fetchProviders(){
@@ -198,7 +213,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         return
                     }
                     let provider = Annotations(title: dictionary["Title"] as! String, subtitle: dictionary["Subtitle"] as! String, address: dictionary["Address"] as! String, coordinate: location.coordinate)
+                    provider.image = #imageLiteral(resourceName: "Map Pin Background")
+                    self.providers.append(provider)
                     self.storMapKit.addAnnotation(provider)
+                    
                 }
             )}
         }, withCancel: nil)
