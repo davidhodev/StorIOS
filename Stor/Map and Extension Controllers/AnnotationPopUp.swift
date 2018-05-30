@@ -10,6 +10,10 @@ import UIKit
 
 class AnnotationPopUp: UIViewController {
 
+    
+    @IBAction func Exit(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
