@@ -39,6 +39,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        storMapKit!.delegate = self
         textXan.delegate = self
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -53,11 +54,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
                 globalVariablesViewController.profilePicString = (dictionary["profilePicture"] as? String)!
             }
         }, withCancel: nil)
-        
         // Show Annotations
         fetchProviders()
         
     }
+    
+    
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
@@ -66,9 +68,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         let region = MKCoordinateRegion(center: center, span: span)
         
         self.storMapKit.showsPointsOfInterest = false
-        storMapKit.setRegion(region, animated: true)
+        storMapKit.setRegion(region, animated: false)
         storMapKit.showsUserLocation = true
+        
     }
+    
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationView = MKAnnotationView(annotation: myPin, reuseIdentifier: "TESTPIN1")
@@ -81,10 +85,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
-    
     
     
     // Text Bar When Entered Function
