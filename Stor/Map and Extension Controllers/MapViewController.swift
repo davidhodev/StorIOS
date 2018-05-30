@@ -14,16 +14,25 @@ import FBSDKLoginKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate{
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate, MKLocalSearchCompleterDelegate, UITableViewDataSource, UITableViewDelegate{
+    
+    
+
+    
     
     
     // Instantiating Variables
     @IBOutlet weak var storMapKit: MKMapView!
     @IBOutlet weak var textXan: UITextField!
+    @IBOutlet weak var searchResultsTableView: UITableView!
     
     let locationManager = CLLocationManager()
     var myPin:Annotations!
     var providers = [Annotations]()
+    
+    var searchCompleter = MKLocalSearchCompleter()
+    var searchResults = [MKLocalSearchCompletion]()
+    
     
     
     // LogOut
@@ -43,6 +52,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         storMapKit.delegate = self
         textXan.delegate = self
         locationManager.delegate = self
+        searchCompleter.delegate = self
+        searchResultsTableView.delegate = self
+        searchResultsTableView.dataSource = self
+        
+        searchResultsTableView.isHidden = true
+        
+        textXan.addTarget(self, action: #selector(MapViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         storMapKit.showsUserLocation = true
@@ -61,6 +77,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         // Show Annotations
         fetchProviders()
     }
+    
+    
+    
     
     
     // Updating Locations
@@ -83,6 +102,57 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        searchResultsTableView.isHidden = false
+    }
+    
+    //Text Bar Pressed
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        searchResultsTableView.isHidden = false
+        searchCompleter.queryFragment = textField.text!
+    }
+
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        searchResults = completer.results
+        searchResultsTableView.reloadData()
+    }
+    
+    func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
+        print(error)
+    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchResults.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let searchResult = searchResults[indexPath.row]
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        cell.textLabel?.text = searchResult.title
+        cell.detailTextLabel?.text = searchResult.subtitle
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let completion = searchResults[indexPath.row]
+        
+        let searchRequest = MKLocalSearchRequest(completion: completion)
+        let search = MKLocalSearch(request: searchRequest)
+        search.start { (response, error) in
+            let latitude = response?.boundingRegion.center.latitude
+            let longitude = response?.boundingRegion.center.longitude
+            
+            let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
+            let span = MKCoordinateSpanMake(0.01, 0.01)
+            let region = MKCoordinateRegionMake(coordinate, span)
+            self.storMapKit.setRegion(region, animated: true)
+            self.searchResultsTableView.isHidden = true
+        }
+    }
     
     // Text Bar When Entered Function
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
