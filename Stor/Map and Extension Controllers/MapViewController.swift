@@ -64,6 +64,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
         
+        self.searchResultsTableView.layer.cornerRadius = 30
+        self.searchResultsTableView.layer.masksToBounds = true
 
         outOfAuto.isHidden = true
         searchResultsTableView.isHidden = true
