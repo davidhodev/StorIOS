@@ -146,7 +146,6 @@ class LoginViewController: UIViewController {
                 let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let goToMapFromLogin:MapViewController = storyboard.instantiateViewController(withIdentifier:"MapViewController") as! MapViewController
                 self.navigationController?.pushViewController(goToMapFromLogin, animated: true)
-
             }
             self.activityIndicator.stopAnimating()
         }

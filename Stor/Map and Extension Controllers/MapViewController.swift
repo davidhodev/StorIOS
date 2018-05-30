@@ -17,7 +17,7 @@ import CoreLocation
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate{
     
     
-    
+    // Instantiating Variables
     @IBOutlet weak var storMapKit: MKMapView!
     @IBOutlet weak var textXan: UITextField!
     
@@ -26,6 +26,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var providers = [Annotations]()
     
     
+    // LogOut
     @IBAction func logoutButtonPressed(_ sender: Any) {
         try!  Auth.auth().signOut()
         GIDSignIn.sharedInstance().signOut()
@@ -45,6 +46,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         storMapKit.showsUserLocation = true
+        
+        // Get Data for the Menu
         let uid = Auth.auth().currentUser?.uid
         Database.database().reference().child("Users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
 
@@ -57,11 +60,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         // Show Annotations
         fetchProviders()
-        
     }
     
     
-
+    // Updating Locations
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let center = self.storMapKit.userLocation.coordinate
@@ -71,7 +73,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.storMapKit.showsPointsOfInterest = false
         storMapKit.setRegion(region, animated: false)
         storMapKit.showsUserLocation = true
-        
     }
     
     
@@ -103,8 +104,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     // Getting Providers Info from database
     func fetchProviders(){
-        print("estyy")
-        print("PROVIDER FOUND")
         Database.database().reference().child("Providers").observe(.childAdded, with: { (snapshot) in
             print(snapshot)
             if let dictionary = snapshot.value as? [String: Any]{
@@ -121,9 +120,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     let provider = Annotations(title: dictionary["Title"] as! String, subtitle: dictionary["Subtitle"] as! String, address: dictionary["Address"] as! String, coordinate: location.coordinate)
                     self.storMapKit.addAnnotation(provider)
                 }
-            )
-            }
+            )}
         }, withCancel: nil)
     }
-
 }
