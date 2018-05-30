@@ -10,39 +10,16 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 import GoogleSignIn
-import GoogleMaps
-import GooglePlaces
 import FBSDKLoginKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate, GMSAutocompleteViewControllerDelegate{
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        let lat = place.coordinate.latitude
-        let long = place.coordinate.longitude
-        
-        let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(lat, long)
-        let span = MKCoordinateSpanMake(0.05, 0.05)
-        let region = MKCoordinateRegionMake(coordinate, span)
-        self.storMapKit.setRegion(region, animated: true)
-        
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
-        print(error)
-    }
-    
-    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
+class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate, UITextFieldDelegate{
     
     
     
     @IBOutlet weak var storMapKit: MKMapView!
-    @IBOutlet weak var searchXan: UISearchBar!
+    @IBOutlet weak var textXan: UITextField!
     
     let locationManager = CLLocationManager()
     var myPin:Annotations!
@@ -62,6 +39,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        textXan.delegate = self
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
@@ -94,9 +72,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let annotationView = MKAnnotationView(annotation: myPin, reuseIdentifier: "TESTPIN1")
-//        annotationView.image = UIImage(named: "")
-//        let transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-//        annotationView.transform = transform
+        
         return annotationView
     }
 
@@ -106,28 +82,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
         // Dispose of any resources that can be recreated.
     }
     
-    // Search Bar When Clicked
-    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        
-        let autoCompleteController = GMSAutocompleteViewController()
-        autoCompleteController.delegate = self
-        
-        let filter = GMSAutocompleteFilter()
-        autoCompleteController.autocompleteFilter = filter
-        
-        self.locationManager.startUpdatingLocation()
-        self.present(autoCompleteController, animated: true, completion: nil)
-        return false
-    }
     
     
     
     
     
-    // Search Bar When Entered Function
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    // Text Bar When Entered Function
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let searchRequest = MKLocalSearchRequest()
-        searchRequest.naturalLanguageQuery = searchXan.text
+        searchRequest.naturalLanguageQuery = textXan.text
         
         let activeSearch = MKLocalSearch(request: searchRequest)
         activeSearch.start { (response, error) in
@@ -138,8 +101,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
             let span = MKCoordinateSpanMake(0.05, 0.05)
             let region = MKCoordinateRegionMake(coordinate, span)
             self.storMapKit.setRegion(region, animated: true)
-            
         }
+        return false
     }
     
     // Getting Providers Info from database
@@ -161,7 +124,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
                     }
                     let provider = Annotations(title: dictionary["Title"] as! String, subtitle: dictionary["Subtitle"] as! String, address: dictionary["Address"] as! String, coordinate: location.coordinate)
                     self.storMapKit.addAnnotation(provider)
-                    
                 }
             )
             }
