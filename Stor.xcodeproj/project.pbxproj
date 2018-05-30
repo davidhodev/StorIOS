@@ -158,8 +158,8 @@
 			children = (
 				576A007320B7798100F2174D /* MenuViewController.swift */,
 				DB59552820B49F4D001E1AF0 /* MapViewController.swift */,
-				DB6B0EF820BC7830000CC1D9 /* Annotations.swift */,
 				579D4C5E20BF2D6E0082A86F /* AnnotationPopUp.swift */,
+				DB6B0EF820BC7830000CC1D9 /* Annotations.swift */,
 				DB6B0EFD20BC7F99000CC1D9 /* Menu Items */,
 			);
 			path = "Map and Extension Controllers";
