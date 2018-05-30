@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -700,7 +702,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhx-9f-mvD">
-                                <rect key="frame" x="16" y="675" width="100" height="103"/>
+                                <rect key="frame" x="0.0" y="675" width="100" height="103"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="103" id="y5W-k2-mv3"/>
                                     <constraint firstAttribute="width" constant="100" id="zTf-d9-0yx"/>
@@ -723,7 +725,6 @@
                                 <color key="backgroundColor" red="0.16470588235294117" green="0.27450980392156865" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="outOfAutoComplete:" destination="dx9-Au-IeG" eventType="touchUpInside" id="G7N-rF-ewK"/>
-                                    <segue destination="ChP-SR-ddt" kind="presentation" identifier="AnnotationPopUpSegue" id="F64-yR-6y7"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Map Bar" translatesAutoresizingMaskIntoConstraints="NO" id="EaT-Cv-28Z">
@@ -734,12 +735,13 @@
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LPh-AA-fL1">
-                                <rect key="frame" x="16" y="131" width="343" height="280"/>
+                                <rect key="frame" x="0.0" y="131" width="343" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="9gf-Jr-Bfb"/>
                                     <constraint firstAttribute="height" constant="280" id="zxb-0U-10G"/>
                                 </constraints>
+                                <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" alpha="0.0" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mapcell1" id="TbW-Zc-hDk" userLabel="1st Result">
                                         <rect key="frame" x="0.0" y="1" width="343" height="70"/>
@@ -753,14 +755,14 @@
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-                                <rect key="frame" x="27.666666666666671" y="84" width="20" height="20"/>
+                                <rect key="frame" x="0.0" y="84" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="J0k-Vv-Yda">
-                                <rect key="frame" x="63" y="67" width="251" height="50"/>
+                                <rect key="frame" x="0.0" y="67" width="251" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="251" id="XGg-Ao-Pen"/>
                                     <constraint firstAttribute="height" constant="50" id="d6q-r4-Irt"/>
@@ -770,22 +772,28 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQY-nG-TsQ" userLabel="Filters Button">
-                                <rect key="frame" x="309" y="67" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="67" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="L3E-RY-dIg"/>
                                     <constraint firstAttribute="width" constant="50" id="eAh-Jx-hRY"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="-14" minY="-4" maxX="-9" maxY="-23"/>
                                 <state key="normal" image="Filters Icon"/>
+                                <connections>
+                                    <action selector="filterButtonFunction:" destination="dx9-Au-IeG" eventType="touchUpInside" id="rcQ-Ob-iY0"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puJ-Ux-Fmn" userLabel="Cancel Button">
-                                <rect key="frame" x="309" y="67" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="67" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="VXo-OA-aiz"/>
                                     <constraint firstAttribute="height" constant="50" id="YpT-dL-62X"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="-14" minY="-4" maxX="-10" maxY="-23"/>
                                 <state key="normal" image="Exit Search Button"/>
+                                <connections>
+                                    <action selector="cancelButtonFunction:" destination="dx9-Au-IeG" eventType="touchUpInside" id="Psl-ID-MfW"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -816,11 +824,14 @@
                         <viewLayoutGuide key="safeArea" id="gao-4W-ZjZ"/>
                     </view>
                     <connections>
+                        <outlet property="cancelButton" destination="puJ-Ux-Fmn" id="pKr-RH-VIE"/>
+                        <outlet property="filterButton" destination="aQY-nG-TsQ" id="Qvi-Ck-42e"/>
                         <outlet property="outOfAuto" destination="Skq-Ro-Mpj" id="2AN-EJ-6s0"/>
                         <outlet property="searchDisplayController" destination="1xc-4G-GSe" id="s1C-ZV-dSh"/>
                         <outlet property="searchResultsTableView" destination="LPh-AA-fL1" id="lPg-je-sMb"/>
                         <outlet property="storMapKit" destination="Otr-Yf-2jY" id="zXs-R4-din"/>
                         <outlet property="textXan" destination="J0k-Vv-Yda" id="4c1-GE-BwL"/>
+                        <segue destination="ChP-SR-ddt" kind="presentation" identifier="AnnotationPopUpSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="qeR-G7-33Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ij5-G9-FKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -876,7 +887,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Rc-1l-1tK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7000.8000000000002" y="741.87192118226608"/>
+            <point key="canvasLocation" x="7012" y="783"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="734-PG-CWh">
