@@ -14,7 +14,7 @@ import FBSDKLoginKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBarDelegate, MKMapViewDelegate, UITextFieldDelegate{
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate{
     
     
     
@@ -39,12 +39,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        storMapKit!.delegate = self
+        storMapKit.delegate = self
         textXan.delegate = self
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        
+        storMapKit.showsUserLocation = true
         let uid = Auth.auth().currentUser?.uid
         Database.database().reference().child("Users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
 
@@ -54,6 +54,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
                 globalVariablesViewController.profilePicString = (dictionary["profilePicture"] as? String)!
             }
         }, withCancel: nil)
+        
         // Show Annotations
         fetchProviders()
         
@@ -74,11 +75,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
     }
     
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        let annotationView = MKAnnotationView(annotation: myPin, reuseIdentifier: "TESTPIN1")
-        
-        return annotationView
-    }
 
 
     override func didReceiveMemoryWarning() {
@@ -98,7 +94,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
             let longitude = response?.boundingRegion.center.longitude
             
             let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
-            let span = MKCoordinateSpanMake(0.05, 0.05)
+            let span = MKCoordinateSpanMake(0.01, 0.01)
             let region = MKCoordinateRegionMake(coordinate, span)
             self.storMapKit.setRegion(region, animated: true)
         }
