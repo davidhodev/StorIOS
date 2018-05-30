@@ -16,11 +16,7 @@ import CoreLocation
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate, MKLocalSearchCompleterDelegate, UITableViewDataSource, UITableViewDelegate{
     
-    
 
-    
-    
-    
     // Instantiating Variables
     @IBOutlet weak var storMapKit: MKMapView!
     @IBOutlet weak var textXan: UITextField!
@@ -29,8 +25,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBAction func outOfAutoComplete(_ sender: Any) {
         searchResultsTableView.isHidden = true
         outOfAuto.isHidden = true
+        cancelButton.isHidden = true
     }
     
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBAction func cancelButtonFunction(_ sender: Any) {
+        textXan.text! = ""
+    }
+    @IBOutlet weak var filterButton: UIButton!
+    @IBAction func filterButtonFunction(_ sender: Any) {
+        print("FILTER")
+    }
     // text xan image insets
    
     
@@ -68,6 +73,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
         outOfAuto.isHidden = true
         searchResultsTableView.isHidden = true
+        cancelButton.isHidden = true
         
         textXan.addTarget(self, action: #selector(MapViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
         locationManager.requestWhenInUseAuthorization()
@@ -116,12 +122,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func textFieldDidBeginEditing(_ textField: UITextField) {
         searchResultsTableView.isHidden = false
         outOfAuto.isHidden = false
+        cancelButton.isHidden = false
     }
     
     //Text Bar Pressed
     @objc func textFieldDidChange(_ textField: UITextField) {
         searchResultsTableView.isHidden = false
         outOfAuto.isHidden = false
+        cancelButton.isHidden = false
         searchCompleter.queryFragment = textField.text!
     }
 
@@ -143,9 +151,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let searchResult = searchResults[indexPath.row]
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        cell.textLabel?.text = searchResult.title
-        cell.detailTextLabel?.text = searchResult.subtitle
+        
+        cell.textLabel?.attributedText = highlightedText(searchResult.title, inRanges: searchResult.titleHighlightRanges, size: 17.0)
+        cell.detailTextLabel?.attributedText = highlightedText(searchResult.subtitle, inRanges: searchResult.subtitleHighlightRanges, size: 12.0)
+        cell.textLabel?.font = UIFont(name: "Dosis", size: 17.0)
+        cell.textLabel?.font = UIFont(name: "Dosis", size: 12.0)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if(indexPath.row % 2 == 1){
+            cell.backgroundColor = UIColor(red: 247/743, green: 247/743, blue:249/743, alpha:0.06)
+            //F7f7f9 alpha .6
+        }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -165,6 +183,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             self.storMapKit.setRegion(region, animated: true)
             self.searchResultsTableView.isHidden = true
             self.outOfAuto.isHidden = true
+            self.cancelButton.isHidden = true
         }
     }
     
@@ -185,6 +204,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         return false
     }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation{
             return nil
@@ -199,6 +219,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         performSegue(withIdentifier: "AnnotationPopUpSegue", sender: self)
         mapView.deselectAnnotation(view.annotation, animated: true)
     }
+    
+    func highlightedText(_ text: String, inRanges ranges: [NSValue], size: CGFloat) -> NSAttributedString {
+        let attributedText = NSMutableAttributedString(string: text)
+        let regular = UIFont.systemFont(ofSize: size)
+        attributedText.addAttribute(NSAttributedStringKey.font, value:regular, range:NSMakeRange(0, text.count))
+        
+        let bold = UIFont.boldSystemFont(ofSize: size)
+        for value in ranges {
+            attributedText.addAttribute(NSAttributedStringKey.font, value:bold, range:value.rangeValue)
+        }
+        
+        attributedText.accessibilityAssistiveTechnologyFocusedIdentifiers()
+        return attributedText
+    }
+    
+    
     
     // Getting Providers Info from database
     func fetchProviders(){
