@@ -31,6 +31,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         outOfAuto.isHidden = true
     }
     
+    // text xan image insets
+   
     
     let locationManager = CLLocationManager()
     var myPin:Annotations!
@@ -61,6 +63,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
         
+
         outOfAuto.isHidden = true
         searchResultsTableView.isHidden = true
         
