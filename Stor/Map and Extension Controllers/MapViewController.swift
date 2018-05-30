@@ -25,8 +25,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBAction func outOfAutoComplete(_ sender: Any) {
         searchResultsTableView.isHidden = true
         outOfAuto.isHidden = true
+        cancelButton.isHidden = true
     }
     
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBAction func cancelButtonFunction(_ sender: Any) {
+        textXan.text! = ""
+    }
+    @IBOutlet weak var filterButton: UIButton!
+    @IBAction func filterButtonFunction(_ sender: Any) {
+        print("FILTER")
+    }
     // text xan image insets
    
     
@@ -64,6 +73,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
         outOfAuto.isHidden = true
         searchResultsTableView.isHidden = true
+        cancelButton.isHidden = true
         
         textXan.addTarget(self, action: #selector(MapViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
         locationManager.requestWhenInUseAuthorization()
@@ -112,12 +122,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func textFieldDidBeginEditing(_ textField: UITextField) {
         searchResultsTableView.isHidden = false
         outOfAuto.isHidden = false
+        cancelButton.isHidden = false
     }
     
     //Text Bar Pressed
     @objc func textFieldDidChange(_ textField: UITextField) {
         searchResultsTableView.isHidden = false
         outOfAuto.isHidden = false
+        cancelButton.isHidden = false
         searchCompleter.queryFragment = textField.text!
     }
 
@@ -171,6 +183,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             self.storMapKit.setRegion(region, animated: true)
             self.searchResultsTableView.isHidden = true
             self.outOfAuto.isHidden = true
+            self.cancelButton.isHidden = true
         }
     }
     
