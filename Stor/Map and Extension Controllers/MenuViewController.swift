@@ -22,6 +22,19 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func menuHelpButton(_ sender: UIButton) {
+        openUrl(urlStr: "http://www.google.com")
+    }
+    /*@IBAction func settingsButton(_ sender: Any) {
+        self.present(settingsViewController, animated: true, completion: nil)
+    }*/
+    
+    func openUrl(urlStr:String!) {
+        
+        if let url = NSURL(string:urlStr) {
+            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        }
+    }
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
