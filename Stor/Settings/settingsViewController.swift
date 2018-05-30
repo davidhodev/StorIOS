@@ -9,16 +9,8 @@
 import UIKit
 
 class settingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
-    }
-    
-
-    @IBOutlet weak var settingsTable: settingsTableView!
+  
+    @IBOutlet weak var settingsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +18,21 @@ class settingsViewController: UIViewController, UITableViewDelegate, UITableView
         let notificationsButtonNames = ["Push Notifications", "Text Messages"]
         let privacyButtonNames = ["Allow STOR to contact you for news and promotions", "Delete Account"]
         // Do any additional setup after loading the view.
+        
+        settingsTableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    let cellId = "cellId"
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        cell.textLabel?.text = "Something"
+        
+        return cell
+        
     }
     
     override func didReceiveMemoryWarning() {
