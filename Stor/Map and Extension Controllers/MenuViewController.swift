@@ -27,7 +27,9 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
 
     @IBAction func SettingsButton(_ sender: UIButton) {
-        
+        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let settingsPage:SettingsViewController = storyboard.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
+        self.navigationController?.pushViewController(settingsPage, animated: true)
     }
     
     func openUrl(urlStr:String!) {

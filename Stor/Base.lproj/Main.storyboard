@@ -1056,10 +1056,6 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="-30" minY="-9" maxX="-30" maxY="-29"/>
                                 <state key="normal" image="Settings Button"/>
-                                <connections>
-                                    <action selector="SettingsButton:" destination="rUo-Oy-5Qv" eventType="touchUpInside" id="Pcg-n1-NzH"/>
-                                    <action selector="settingsButtonPressed:" destination="rUo-Oy-5Qv" eventType="touchUpInside" id="Fsa-a4-NJL"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNB-OK-N5r" userLabel="Payment Button">
                                 <rect key="frame" x="45" y="439" width="62" height="66"/>
