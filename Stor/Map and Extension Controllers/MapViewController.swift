@@ -271,7 +271,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         Database.database().reference().child("Providers").observe(.childAdded, with: { (snapshot) in
             print(snapshot)
             if let dictionary = snapshot.value as? [String: Any]{
-                let providerAddress = (dictionary["Address"] as! String)
+                let providerStorageDictionary = (dictionary["Storage"] as? [String: Any])
+                let providerAddress = (providerStorageDictionary!["Address"] as! String)
                 let geocoder = CLGeocoder()
                 geocoder.geocodeAddressString(providerAddress, completionHandler: { (placemarks, error) in
                     guard
@@ -282,7 +283,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         return
                     }
                     print(snapshot.key)
-                    let provider = Annotations(title: dictionary["Title"] as! String, subtitle: dictionary["Subtitle"] as! String, address: dictionary["Address"] as! String, coordinate: location.coordinate, uid: (snapshot.key))
+                    let provider = Annotations(title: providerStorageDictionary!["Title"] as! String, subtitle: providerStorageDictionary!["Subtitle"] as! String, address: providerStorageDictionary!["Address"] as! String, coordinate: location.coordinate, uid: (snapshot.key))
                     provider.image = #imageLiteral(resourceName: "Map Pin Background")
                     self.providers.append(provider)
                     self.storMapKit.addAnnotation(provider)
