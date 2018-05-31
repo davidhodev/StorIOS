@@ -48,6 +48,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var searchResults = [MKLocalSearchCompletion]()
     var annotationUID: String?
     var annotationAddress: String?
+    var annotationStorageID: String?
     
     
     
@@ -233,7 +234,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let annotation = view.annotation as! Annotations
         self.annotationAddress = annotation.address
-        self.annotationUID = annotation.uid
+        self.annotationUID = annotation.providerUID
+        self.annotationStorageID = annotation.storageUID
         performSegue(withIdentifier: "AnnotationPopUpSegue", sender: self)
         mapView.deselectAnnotation(view.annotation, animated: true)
     }
@@ -244,6 +246,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             let destinationController = segue.destination as! AnnotationPopUp
             destinationController.providerID = self.annotationUID
             destinationController.providerAddress = self.annotationAddress
+            destinationController.storageID = self.annotationStorageID
         }
     }
     
@@ -273,6 +276,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             if let dictionary = snapshot.value as? [String: Any]{
                 let providerStorageDictionary = (dictionary["currentStorage"] as? [String: Any])
                 let storageUID = (Array(providerStorageDictionary!.keys)[0])
+                self.annotationStorageID = storageUID
                 let actualStorageDictionary = providerStorageDictionary![storageUID] as? [String: Any]
                 let providerAddress = actualStorageDictionary!["Address"] as? String
                 let geocoder = CLGeocoder()
@@ -285,7 +289,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         return
                     }
                     print(snapshot.key)
-                    let provider = Annotations(title: actualStorageDictionary!["Title"] as! String, subtitle: actualStorageDictionary!["Subtitle"] as! String, address: actualStorageDictionary!["Address"] as! String, coordinate: location.coordinate, uid: (snapshot.key))
+                    let provider = Annotations(title: actualStorageDictionary!["Title"] as! String, subtitle: actualStorageDictionary!["Subtitle"] as! String, address: actualStorageDictionary!["Address"] as! String, coordinate: location.coordinate, providerUID: (snapshot.key), storageUID: storageUID)
                     provider.image = #imageLiteral(resourceName: "Map Pin Background")
                     self.providers.append(provider)
                     self.storMapKit.addAnnotation(provider)
