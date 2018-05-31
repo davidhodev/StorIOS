@@ -13,11 +13,13 @@ class Annotations: NSObject, MKAnnotation{
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var image: UIImage?
-    init(title: String, subtitle: String, address: String, coordinate: CLLocationCoordinate2D){
+    var uid: String?
+    init(title: String, subtitle: String, address: String, coordinate: CLLocationCoordinate2D, uid: String?){
         self.title = title
         self.subtitle = subtitle
+        self.address = address
         self.coordinate = coordinate
-    
+        self.uid = uid
     }
     
     

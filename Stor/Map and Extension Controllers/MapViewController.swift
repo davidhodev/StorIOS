@@ -46,6 +46,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var providers = [Annotations]()
     var searchCompleter = MKLocalSearchCompleter()
     var searchResults = [MKLocalSearchCompletion]()
+    var annotationUID: String?
+    var annotationAddress: String?
+    
+    
     
     
     
@@ -100,8 +104,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 globalVariablesViewController.ratingNumber = (dictionary["rating"] as? NSNumber)!
                 globalVariablesViewController.profilePicString = (dictionary["profilePicture"] as? String)!
             }
-            self.activityIndicator.stopAnimating()
-            UIApplication.shared.endIgnoringInteractionEvents()
+
         }, withCancel: nil)
         
         // Show Annotations
@@ -228,9 +231,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     // brings you to specific annotation page and brings over information
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let annotation = view.annotation as! Annotations
+        self.annotationAddress = annotation.address
+        self.annotationUID = annotation.uid
         performSegue(withIdentifier: "AnnotationPopUpSegue", sender: self)
         mapView.deselectAnnotation(view.annotation, animated: true)
     }
+    
+    // Segue Helper (SENDS INFO TO POPUP)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AnnotationPopUpSegue"{
+            let destinationController = segue.destination as! AnnotationPopUp
+            destinationController.providerID = self.annotationUID
+            destinationController.providerAddress = self.annotationAddress
+        }
+    }
+    
+    
+    
     
     func highlightedText(_ text: String, inRanges ranges: [NSValue], size: CGFloat) -> NSAttributedString {
         let attributedText = NSMutableAttributedString(string: text)
@@ -263,10 +281,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         print("NO LOCATION FOUND")
                         return
                     }
-                    let provider = Annotations(title: dictionary["Title"] as! String, subtitle: dictionary["Subtitle"] as! String, address: dictionary["Address"] as! String, coordinate: location.coordinate)
+                    print(snapshot.key)
+                    let provider = Annotations(title: dictionary["Title"] as! String, subtitle: dictionary["Subtitle"] as! String, address: dictionary["Address"] as! String, coordinate: location.coordinate, uid: (snapshot.key))
                     provider.image = #imageLiteral(resourceName: "Map Pin Background")
                     self.providers.append(provider)
                     self.storMapKit.addAnnotation(provider)
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     
                 }
             )}
