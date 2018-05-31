@@ -2,30 +2,26 @@
 //  SettingsViewController.swift
 //  Stor
 //
-//  Created by Jack Feldman on 5/30/18.
+//  Created by Cole Feldman on 5/31/18.
 //  Copyright © 2018 David Ho. All rights reserved.
 //
 
 import UIKit
 
-class settingsViewController: UIViewController, UITableViewDelegate{
+class SettingsViewController: UIViewController {
 
-    @IBOutlet weak var settingsTable: settingsTableView!
-    var previousVC: MenuViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
-        previousVC.dismiss(animated: false, completion: nil)
-        let notificationsButtonNames = ["Push Notifications", "Text Messages"]
-        let privacyButtonNames = ["Allow STOR to contact you for news and promotions", "Delete Account"]
+
         // Do any additional setup after loading the view.
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
     
+
     /*
     // MARK: - Navigation
 

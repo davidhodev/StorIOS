@@ -1,14 +1,14 @@
 //
-//  SettingsViewController.swift
-//  Stor
+//  NewSettingsViewController.swift
+//  
 //
-//  Created by David Ho on 5/28/18.
-//  Copyright © 2018 David Ho. All rights reserved.
+//  Created by Cole Feldman on 5/31/18.
 //
 
 import UIKit
 
-class SettingsViewController2: UIViewController {
+class NewSettingsViewController: UIViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
