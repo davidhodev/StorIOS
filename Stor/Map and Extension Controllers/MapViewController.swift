@@ -269,12 +269,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     // Getting Providers Info from database
     func fetchProviders(){
         Database.database().reference().child("Providers").observe(.childAdded, with: { (snapshot) in
-            print(snapshot)
+//            print(snapshot)
             if let dictionary = snapshot.value as? [String: Any]{
-                let providerStorageDictionary = (dictionary["Storage"] as? [String: Any])
-                let providerAddress = (providerStorageDictionary!["Address"] as! String)
+                let providerStorageDictionary = (dictionary["currentStorage"] as? [String: Any])
+                let storageUID = (Array(providerStorageDictionary!.keys)[0])
+                let actualStorageDictionary = providerStorageDictionary![storageUID] as? [String: Any]
+                let providerAddress = actualStorageDictionary!["Address"] as? String
                 let geocoder = CLGeocoder()
-                geocoder.geocodeAddressString(providerAddress, completionHandler: { (placemarks, error) in
+                geocoder.geocodeAddressString(providerAddress!, completionHandler: { (placemarks, error) in
                     guard
                     let placemarks = placemarks,
                     let location = placemarks.first?.location
@@ -283,7 +285,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         return
                     }
                     print(snapshot.key)
-                    let provider = Annotations(title: providerStorageDictionary!["Title"] as! String, subtitle: providerStorageDictionary!["Subtitle"] as! String, address: providerStorageDictionary!["Address"] as! String, coordinate: location.coordinate, uid: (snapshot.key))
+                    let provider = Annotations(title: actualStorageDictionary!["Title"] as! String, subtitle: actualStorageDictionary!["Subtitle"] as! String, address: actualStorageDictionary!["Address"] as! String, coordinate: location.coordinate, uid: (snapshot.key))
                     provider.image = #imageLiteral(resourceName: "Map Pin Background")
                     self.providers.append(provider)
                     self.storMapKit.addAnnotation(provider)
