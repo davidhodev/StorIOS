@@ -1,14 +1,18 @@
 //
-//  SettingsViewController.swift
+//  myListViewController.swift
 //  Stor
 //
-//  Created by David Ho on 5/28/18.
+//  Created by Jack Feldman on 5/29/18.
 //  Copyright © 2018 David Ho. All rights reserved.
 //
 
 import UIKit
 
-class SettingsViewController2: UIViewController {
+class myListViewController: UIViewController {
+
+    @IBAction func exitButton(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

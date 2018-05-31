@@ -25,18 +25,15 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBAction func menuHelpButton(_ sender: UIButton) {
         openUrl(urlStr: "http://www.google.com")
     }
-
-    @IBAction func SettingsButton(_ sender: UIButton) {
-        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let settingsPage:SettingsViewController = storyboard.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
-        self.navigationController?.pushViewController(settingsPage, animated: true)
-    }
-    
     func openUrl(urlStr:String!) {
         
         if let url = NSURL(string:urlStr) {
             UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
         }
+    }
+    
+    @IBAction func becomeProviderButton(_ sender: UIButton) {
+        openUrl(urlStr: "http://www.google.com")
     }
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
