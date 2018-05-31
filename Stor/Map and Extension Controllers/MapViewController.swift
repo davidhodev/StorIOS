@@ -230,7 +230,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "provider")
         annotationView.image = UIImage(named: "Map Pin Background")
-        let transform = CGAffineTransform(scaleX: 1.25, y: 1.25)
+        let transform = CGAffineTransform(scaleX: 1.00, y: 1.00)
         annotationView.transform = transform
         return annotationView
     }
