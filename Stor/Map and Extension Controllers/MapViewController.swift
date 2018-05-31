@@ -22,6 +22,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var textXan: UITextField!
     @IBOutlet weak var searchResultsTableView: UITableView!
     @IBOutlet weak var outOfAuto: UIButton!
+     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    
     @IBAction func outOfAutoComplete(_ sender: Any) {
         searchResultsTableView.isHidden = true
         outOfAuto.isHidden = true
@@ -64,6 +66,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         storMapKit.delegate = self
         textXan.delegate = self
@@ -86,6 +89,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         // Get Data for the Menu
         let uid = Auth.auth().currentUser?.uid
+        //Activity Indicator
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         Database.database().reference().child("Users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
 
             if let dictionary = snapshot.value as? [String:Any] {
@@ -93,6 +104,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 globalVariablesViewController.ratingNumber = (dictionary["rating"] as? NSNumber)!
                 globalVariablesViewController.profilePicString = (dictionary["profilePicture"] as? String)!
             }
+
         }, withCancel: nil)
         
         // Show Annotations
@@ -217,7 +229,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         annotationView.image = UIImage(named: "Map Pin Background")
         return annotationView
     }
-    
+    // brings you to specific annotation page and brings over information
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let annotation = view.annotation as! Annotations
         self.annotationAddress = annotation.address
@@ -274,6 +286,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     provider.image = #imageLiteral(resourceName: "Map Pin Background")
                     self.providers.append(provider)
                     self.storMapKit.addAnnotation(provider)
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     
                 }
             )}
