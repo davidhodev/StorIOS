@@ -29,11 +29,6 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         openUrl(urlStr: "http://www.google.com")
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? settingsViewController{
-            destinationVC.previousVC = self
-        }
-    }
     
     func openUrl(urlStr:String!) {
         
