@@ -29,7 +29,9 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
  
     // Login Button Function
     @IBAction func loginButton(_ sender: UIButton) {
-        
+        let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let loginPage: LoginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        self.navigationController?.pushViewController(loginPage, animated: true)
     }
     
     // Help? Button Function
