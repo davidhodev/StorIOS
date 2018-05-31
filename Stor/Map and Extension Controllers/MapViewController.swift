@@ -24,6 +24,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var outOfAuto: UIButton!
      var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
+    
     @IBAction func outOfAutoComplete(_ sender: Any) {
         searchResultsTableView.isHidden = true
         outOfAuto.isHidden = true
@@ -115,7 +116,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     
-    
+
     
     
     // Updating Locations
@@ -128,6 +129,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.storMapKit.showsPointsOfInterest = false
         storMapKit.setRegion(region, animated: true)
         storMapKit.showsUserLocation = true
+        locationManager.stopUpdatingLocation()
     }
     
     
@@ -230,6 +232,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "provider")
         annotationView.image = UIImage(named: "Map Pin Background")
+        let transform = CGAffineTransform(scaleX: 1.00, y: 1.00)
+        annotationView.transform = transform
         return annotationView
     }
     // brings you to specific annotation page and brings over information
