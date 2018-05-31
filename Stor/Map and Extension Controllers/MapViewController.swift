@@ -233,6 +233,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let transform = CGAffineTransform(scaleX: 1.00, y: 1.00)
         annotationView.transform = transform
         return annotationView
+        
     }
     // brings you to specific annotation page and brings over information
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -297,9 +298,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     provider.image = #imageLiteral(resourceName: "Map Pin Background")
                     self.providers.append(provider)
                     self.storMapKit.addAnnotation(provider)
-                    self.activityIndicator.stopAnimating()
                     UIApplication.shared.endIgnoringInteractionEvents()
-                    
+                    self.activityIndicator.stopAnimating()
                 }
             )}
         }, withCancel: nil)
