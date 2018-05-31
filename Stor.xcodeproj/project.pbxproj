@@ -10,7 +10,6 @@
 		041640B820BDF66E001BE560 /* myListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041640B720BDF66E001BE560 /* myListViewController.swift */; };
 		041640BA20BDF775001BE560 /* paymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041640B920BDF775001BE560 /* paymentViewController.swift */; };
 		041640BC20BDF7C4001BE560 /* myStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041640BB20BDF7C4001BE560 /* myStorageViewController.swift */; };
-		041A8EE920BF1ADD00C8DA67 /* settingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041A8EE820BF1ADD00C8DA67 /* settingsTableViewCell.swift */; };
 		04F158A320BCA4C500AAC2ED /* hexagonProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F158A220BCA4C500AAC2ED /* hexagonProfilePicture.swift */; };
 		2B0B7B137B763384068CFD08 /* Pods_StorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83BDF3AB5601AEFA4206A668 /* Pods_StorTests.framework */; };
 		574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574FC7BE20B5F484001AE44F /* TermsViewController.swift */; };
@@ -59,7 +58,6 @@
 		041640B720BDF66E001BE560 /* myListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myListViewController.swift; sourceTree = "<group>"; };
 		041640B920BDF775001BE560 /* paymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = paymentViewController.swift; sourceTree = "<group>"; };
 		041640BB20BDF7C4001BE560 /* myStorageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myStorageViewController.swift; sourceTree = "<group>"; };
-		041A8EE820BF1ADD00C8DA67 /* settingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsTableViewCell.swift; sourceTree = "<group>"; };
 		04F158A220BCA4C500AAC2ED /* hexagonProfilePicture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hexagonProfilePicture.swift; sourceTree = "<group>"; };
 		18F4FB721B7B5B1C7D1493B0 /* Pods-Stor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stor/Pods-Stor.debug.xcconfig"; sourceTree = "<group>"; };
 		20873EB433166AE1F0854C26 /* Pods-StorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StorTests/Pods-StorTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 		041A8EE520BF170300C8DA67 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				041A8EE820BF1ADD00C8DA67 /* settingsTableViewCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -544,7 +541,6 @@
 				DB4B5E9820B3474D0050F66E /* RegisterEmailViewController.swift in Sources */,
 				574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */,
 				DBF8BCBE20B7887D0080EEF5 /* globalVariablesViewController.swift in Sources */,
-				041A8EE920BF1ADD00C8DA67 /* settingsTableViewCell.swift in Sources */,
 				576A007420B7798100F2174D /* MenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

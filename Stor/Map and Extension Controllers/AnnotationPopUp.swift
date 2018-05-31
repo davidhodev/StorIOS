@@ -7,17 +7,28 @@
 //
 
 import UIKit
+import FirebaseDatabase
+
+
 
 class AnnotationPopUp: UIViewController {
 
-    
+    var providerAddress: String?
+    var providerID: String?
     @IBAction func Exit(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        print(providerID)
+        Database.database().reference().child("Providers").child(providerID!).observe(.childAdded, with: { (snapshot) in
+//            print(snapshot)
+            print(snapshot.value)
+            if let dictionary = snapshot.value as? [String: Any]{
+                print("SUBTITLE TEST", dictionary["Subtitle"] as! String)
+                let providerAddress = (dictionary["Address"] as! String)
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {

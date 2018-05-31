@@ -22,18 +22,10 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func settingsButtonPressed(_ sender: Any) {
-       
-    }
     @IBAction func menuHelpButton(_ sender: UIButton) {
         openUrl(urlStr: "http://www.google.com")
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? settingsViewController{
-            destinationVC.previousVC = self
-        }
-    }
     
     func openUrl(urlStr:String!) {
         
