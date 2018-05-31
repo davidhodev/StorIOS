@@ -13,13 +13,15 @@ class Annotations: NSObject, MKAnnotation{
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var image: UIImage?
-    var uid: String?
-    init(title: String, subtitle: String, address: String, coordinate: CLLocationCoordinate2D, uid: String?){
+    var providerUID: String?
+    var storageUID: String?
+    init(title: String, subtitle: String, address: String, coordinate: CLLocationCoordinate2D, providerUID: String?, storageUID: String?){
         self.title = title
         self.subtitle = subtitle
         self.address = address
         self.coordinate = coordinate
-        self.uid = uid
+        self.providerUID = providerUID
+        self.storageUID = storageUID
     }
     
     
