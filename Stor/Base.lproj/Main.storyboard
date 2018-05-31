@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
-
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -754,9 +753,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-
-                                <rect key="frame" x="28" y="84" width="20" height="20"/>
-
+                                <rect key="frame" x="27.666666666666671" y="84" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
@@ -863,9 +860,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IxH-yB-OLs">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IxH-yB-OLs">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4TU-oW-Ppw">
                                         <rect key="frame" x="83" y="609" width="71" height="63"/>
@@ -883,6 +879,12 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="IxH-yB-OLs" firstAttribute="top" secondItem="dSi-ah-9go" secondAttribute="top" id="6mE-r8-7Zz"/>
+                            <constraint firstItem="IxH-yB-OLs" firstAttribute="leading" secondItem="bzQ-eh-dqb" secondAttribute="leading" id="8nE-ss-qph"/>
+                            <constraint firstAttribute="bottom" secondItem="IxH-yB-OLs" secondAttribute="bottom" id="ejc-rZ-rXd"/>
+                            <constraint firstItem="IxH-yB-OLs" firstAttribute="trailing" secondItem="bzQ-eh-dqb" secondAttribute="trailing" id="hL0-YE-os8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bzQ-eh-dqb"/>
                     </view>
                 </viewController>
@@ -1059,10 +1061,6 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="-30" minY="-9" maxX="-30" maxY="-29"/>
                                 <state key="normal" image="Settings Button"/>
-                                <connections>
-                                    <action selector="SettingsButton:" destination="rUo-Oy-5Qv" eventType="touchUpInside" id="Pcg-n1-NzH"/>
-                                    <action selector="settingsButtonPressed:" destination="rUo-Oy-5Qv" eventType="touchUpInside" id="Fsa-a4-NJL"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNB-OK-N5r" userLabel="Payment Button">
                                 <rect key="frame" x="45" y="439" width="62" height="66"/>
