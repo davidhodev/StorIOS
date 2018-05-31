@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -520,7 +521,7 @@
                                 <rect key="frame" x="227" y="122" width="151" height="325"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oA9-Tv-tbh">
-                                <rect key="frame" x="150" y="172.33333333333334" width="34.666666666666657" height="18"/>
+                                <rect key="frame" x="150" y="172.66666666666666" width="34.666666666666657" height="18"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="14"/>
                                 <color key="textColor" red="0.99999000000000005" green="0.99999000000000005" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -753,7 +754,9 @@
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-                                <rect key="frame" x="27.666666666666671" y="84" width="20" height="20"/>
+
+                                <rect key="frame" x="28" y="84" width="20" height="20"/>
+
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
@@ -1057,6 +1060,7 @@
                                 <inset key="imageEdgeInsets" minX="-30" minY="-9" maxX="-30" maxY="-29"/>
                                 <state key="normal" image="Settings Button"/>
                                 <connections>
+                                    <action selector="SettingsButton:" destination="rUo-Oy-5Qv" eventType="touchUpInside" id="Pcg-n1-NzH"/>
                                     <action selector="settingsButtonPressed:" destination="rUo-Oy-5Qv" eventType="touchUpInside" id="Fsa-a4-NJL"/>
                                 </connections>
                             </button>
