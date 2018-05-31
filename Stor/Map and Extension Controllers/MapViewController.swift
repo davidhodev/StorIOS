@@ -50,6 +50,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var annotationUID: String?
     var annotationAddress: String?
     var annotationStorageID: String?
+    var annotationLocation: CLLocationCoordinate2D?
+    var annotationUserLocation :CLLocation?
     
     
     
@@ -125,7 +127,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let region = MKCoordinateRegion(center: center, span: span)
         
         self.storMapKit.showsPointsOfInterest = false
-        storMapKit.setRegion(region, animated: false)
+        storMapKit.setRegion(region, animated: true)
         storMapKit.showsUserLocation = true
         locationManager.stopUpdatingLocation()
     }
@@ -238,6 +240,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     // brings you to specific annotation page and brings over information
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         let annotation = view.annotation as! Annotations
+        self.annotationLocation = annotation.coordinate
         self.annotationAddress = annotation.address
         self.annotationUID = annotation.providerUID
         self.annotationStorageID = annotation.storageUID
@@ -252,6 +255,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             destinationController.providerID = self.annotationUID
             destinationController.providerAddress = self.annotationAddress
             destinationController.storageID = self.annotationStorageID
+            destinationController.providerLocation = self.annotationLocation
+            destinationController.userLocation = self.storMapKit.userLocation.location
         }
     }
     
@@ -294,6 +299,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         return
                     }
                     print(snapshot.key)
+                    
                     let provider = Annotations(title: actualStorageDictionary!["Title"] as! String, subtitle: actualStorageDictionary!["Subtitle"] as! String, address: actualStorageDictionary!["Address"] as! String, coordinate: location.coordinate, providerUID: (snapshot.key), storageUID: storageUID)
                     provider.image = #imageLiteral(resourceName: "Map Pin Background")
                     self.providers.append(provider)
