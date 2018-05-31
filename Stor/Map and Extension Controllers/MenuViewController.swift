@@ -26,6 +26,9 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         openUrl(urlStr: "http://www.google.com")
     }
 
+    @IBAction func SettingsButton(_ sender: UIButton) {
+        
+    }
     
     func openUrl(urlStr:String!) {
         
