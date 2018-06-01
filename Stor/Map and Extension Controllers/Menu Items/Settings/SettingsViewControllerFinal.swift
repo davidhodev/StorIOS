@@ -32,11 +32,13 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         GIDSignIn.sharedInstance().signOut()
         let manager = FBSDKLoginManager()
         manager.logOut()
-        
         print("signed out")
-        self.dismiss(animated: false, completion: {})
-        self.navigationController?.popToRootViewController(animated: true)
+        if let vc = self.storyboard?.instantiateInitialViewController() {
+            self.present(vc, animated: true, completion: nil)
+            self.navigationController?.popToViewController(vc, animated: true)
+        }
     }
+    
     
     var tableViewDataSettings = [cellDataForSettings]()
     
@@ -44,7 +46,7 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
-        tableViewDataSettings = [cellDataForSettings(openned: false, title: "My Profile", sectionData: [""]), cellDataForSettings(openned: false, title: "Location Settings", sectionData: [""]), cellDataForSettings(openned: false, title: "Notificantions", sectionData: ["Push Notifications", "Text Messages"]), cellDataForSettings(openned: false, title: "Privacy Settings", sectionData: ["Allow Stor to contact you for news and promotions", "Delete Account"])]
+        tableViewDataSettings = [cellDataForSettings(openned: false, title: "My Profile", sectionData: []), cellDataForSettings(openned: false, title: "Location Settings", sectionData: []), cellDataForSettings(openned: false, title: "Notificantions", sectionData: ["Push Notifications", "Text Messages"]), cellDataForSettings(openned: false, title: "Privacy Settings", sectionData: ["Allow Stor to contact you for news and promotions", "Delete Account"])]
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,7 +97,4 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
             }
         }
     }
-    
-
-
 }
