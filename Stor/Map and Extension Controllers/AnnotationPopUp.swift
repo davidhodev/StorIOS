@@ -40,8 +40,28 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate {
                 self.providerDescriptionLabel.text = dictionary["Subtitle"] as? String
                 let priceString = String(describing: dictionary["Price"]!)
                 if let outputPrice = (Double(priceString)){
-                    let finalPrice = (outputPrice*100).rounded()/100
-                    self.providerPriceLabel.text = String(format: "%.2f", finalPrice)
+                    let finalPrice = Int(round(outputPrice))
+                    var finalPriceRoundedString = "$"
+                    finalPriceRoundedString += String(describing: finalPrice)
+                    finalPriceRoundedString += " /month"
+                    
+                    for family: String in UIFont.familyNames
+                    {
+                        print("\(family)")
+                        for names: String in UIFont.fontNames(forFamilyName: family)
+                        {
+                            print("== \(names)")
+                        }
+                    }
+
+                    let font:UIFont? = UIFont(name: "Dosis-Bold", size:24)
+                    let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:16)
+                    let fontSmall:UIFont? = UIFont(name: "Dosis-Regular", size:14)
+                    let attString:NSMutableAttributedString = NSMutableAttributedString(string: finalPriceRoundedString, attributes: [.font:font!])
+                    attString.setAttributes([.font:fontSuper!,.baselineOffset:10], range: NSRange(location:0,length:1))
+                    attString.setAttributes([.font:fontSmall!,.baselineOffset:-11], range: NSRange(location:(finalPriceRoundedString.count)-6,length:6))
+                    self.providerPriceLabel.attributedText = attString
+                    
                 }
                 var dimensionsString = String(describing: dictionary["Length"]!)
                 dimensionsString += " X "
@@ -56,7 +76,7 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate {
                 }
                 else{
                     let finalDistance = Double(distance!) / 1609
-                    self.outputDistance = String(format: "%.2f", finalDistance)
+                    self.outputDistance = String(format: "%.1f", finalDistance)
                 }
                 self.providerDistanceLabel.text = self.outputDistance
                 

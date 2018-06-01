@@ -17,6 +17,8 @@
 		576A007420B7798100F2174D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576A007320B7798100F2174D /* MenuViewController.swift */; };
 		579D4C5F20BF2D6E0082A86F /* AnnotationPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579D4C5E20BF2D6E0082A86F /* AnnotationPopUp.swift */; };
 		D1947A535ADA1F3F00BCE349 /* Pods_StorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBFB92A62876BD03C1FEC207 /* Pods_StorUITests.framework */; };
+		DB4964DD20C0CBA9002F4EBD /* Dosis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964D920C0CB9F002F4EBD /* Dosis-Regular.otf */; };
+		DB4964DE20C0CC73002F4EBD /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964DA20C0CB9F002F4EBD /* Dosis-Bold.otf */; };
 		DB4B5E9320B339A30050F66E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB4B5E9220B339A20050F66E /* GoogleService-Info.plist */; };
 		DB4B5E9820B3474D0050F66E /* RegisterEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4B5E9720B3474D0050F66E /* RegisterEmailViewController.swift */; };
 		DB4B5E9E20B34E7C0050F66E /* dosis in Resources */ = {isa = PBXBuildFile; fileRef = DB4B5E9D20B34E7C0050F66E /* dosis */; };
@@ -70,6 +72,13 @@
 		9C530B0B3D761ADC198DC431 /* Pods-StorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorUITests/Pods-StorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1E7F08C17DB4E0B3B6B7EEE /* Pods-StorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorTests/Pods-StorTests.release.xcconfig"; sourceTree = "<group>"; };
 		DB3EE96E20B4B1D700CC4174 /* Stor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stor.entitlements; sourceTree = "<group>"; };
+		DB4964D620C0CB96002F4EBD /* Dosis-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraBold.otf"; sourceTree = "<group>"; };
+		DB4964D720C0CB9E002F4EBD /* Dosis-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Medium.otf"; sourceTree = "<group>"; };
+		DB4964D820C0CB9F002F4EBD /* Dosis-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-SemiBold.otf"; sourceTree = "<group>"; };
+		DB4964D920C0CB9F002F4EBD /* Dosis-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Regular.otf"; sourceTree = "<group>"; };
+		DB4964DA20C0CB9F002F4EBD /* Dosis-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Bold.otf"; sourceTree = "<group>"; };
+		DB4964DB20C0CBA0002F4EBD /* Dosis-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraLight.otf"; sourceTree = "<group>"; };
+		DB4964DC20C0CBA0002F4EBD /* Dosis-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Light.otf"; sourceTree = "<group>"; };
 		DB4B5E9220B339A20050F66E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DB4B5E9720B3474D0050F66E /* RegisterEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterEmailViewController.swift; sourceTree = "<group>"; };
 		DB4B5E9D20B34E7C0050F66E /* dosis */ = {isa = PBXFileReference; lastKnownFileType = folder; path = dosis; sourceTree = "<group>"; };
@@ -163,6 +172,13 @@
 		DB4B5E9C20B34E690050F66E /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				DB4964D620C0CB96002F4EBD /* Dosis-ExtraBold.otf */,
+				DB4964DA20C0CB9F002F4EBD /* Dosis-Bold.otf */,
+				DB4964DB20C0CBA0002F4EBD /* Dosis-ExtraLight.otf */,
+				DB4964DC20C0CBA0002F4EBD /* Dosis-Light.otf */,
+				DB4964D720C0CB9E002F4EBD /* Dosis-Medium.otf */,
+				DB4964D920C0CB9F002F4EBD /* Dosis-Regular.otf */,
+				DB4964D820C0CB9F002F4EBD /* Dosis-SemiBold.otf */,
 				DB4B5E9D20B34E7C0050F66E /* dosis */,
 			);
 			path = Fonts;
@@ -374,7 +390,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB4964DE20C0CC73002F4EBD /* Dosis-Bold.otf in Resources */,
 				DBE905E920924BAE000F13DB /* LaunchScreen.storyboard in Resources */,
+				DB4964DD20C0CBA9002F4EBD /* Dosis-Regular.otf in Resources */,
 				DB4B5E9320B339A30050F66E /* GoogleService-Info.plist in Resources */,
 				DBE905E620924BAE000F13DB /* Assets.xcassets in Resources */,
 				DBE905E420924BAE000F13DB /* Main.storyboard in Resources */,
