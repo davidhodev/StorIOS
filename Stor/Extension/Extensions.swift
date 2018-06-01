@@ -52,14 +52,20 @@ extension UIImageView{
             }
         }, withCancel: nil)
         
-        if let imageURL = URL(string: globalVariablesViewController.profilePicString){
-            globalVariablesViewController.profilePicData = NSData(contentsOf: imageURL) as Data!
+        URLSession.shared.dataTask(with: NSURL(string: globalVariablesViewController.profilePicString)! as URL, completionHandler: { (data, response, error) -> Void in
             
-            if let downloadedImage = UIImage(data: globalVariablesViewController.profilePicData){
-                profileImageCache.setObject(downloadedImage, forKey: globalVariablesViewController.profilePicString as AnyObject)
-                self.image = downloadedImage
+            if error != nil {
+                print(error)
+                return
             }
-        }
+            DispatchQueue.main.async(execute: { () -> Void in
+                let image = UIImage(data: data!)
+                self.image = image
+            })
+            
+        }).resume()
+        
+        
     }
 }
 
