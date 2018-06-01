@@ -66,16 +66,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     
     
-    // LogOut
-    @IBAction func logoutButtonPressed(_ sender: Any) {
-        try!  Auth.auth().signOut()
-        GIDSignIn.sharedInstance().signOut()
-        let manager = FBSDKLoginManager()
-        manager.logOut()
-        
-        print("signed out")
-        self.navigationController?.popToRootViewController(animated: true)
-    }
+    
     
     
     override func viewDidLoad() {

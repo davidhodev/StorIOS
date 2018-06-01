@@ -11,18 +11,19 @@ import FirebaseDatabase
 import CoreLocation
 
 
-class AnnotationPopUp: UIViewController, CLLocationManagerDelegate {
+class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollViewDelegate {
 
     @IBOutlet weak var providerNameLabel: UILabel! // Done
     @IBOutlet weak var providerRatingLabel: UILabel! // Done
-    @IBOutlet weak var providerDescriptionLabel: UILabel! // Done
     @IBOutlet weak var providerAddressLabel: UILabel! // Done
     @IBOutlet weak var providerDistanceLabel: UILabel!
     @IBOutlet weak var providerPriceLabel: UILabel! // Done
     @IBOutlet weak var providerSizeLabel: UILabel!
     @IBOutlet weak var providerProfileImage: UIImageView!
-    @IBOutlet weak var garagePhoto: UIImageView!
     @IBOutlet weak var addToListButton: UIButton!
+    @IBOutlet weak var imageScrollView: UIScrollView!
+    @IBOutlet weak var featurePageControl: UIPageControl!
+    @IBOutlet weak var descriptionScrollView: UIScrollView!
     
     var providerAddress: String?
     var providerID: String?
@@ -49,16 +50,34 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageScrollView.delegate = self
+        descriptionScrollView.delegate = self
         Database.database().reference().child("Providers").child(providerID!).child("currentStorage").observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String: Any]{
                 self.providerAddressLabel.text = dictionary["Address"] as? String
-                self.providerDescriptionLabel.text = dictionary["Subtitle"] as? String
+//                self.providerDescriptionLabel.text = dictionary["Subtitle"] as? String
                 let priceString = String(describing: dictionary["Price"]!)
+                let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.descriptionScrollView.frame.size.width, height: CGFloat.greatestFiniteMagnitude)) // resize
+                label.numberOfLines = 0
+                label.lineBreakMode = NSLineBreakMode.byWordWrapping
+                label.font = UIFont(name: "Dosis", size: 15.0)
+                label.text = dictionary["Subtitle"] as? String
+                label.alpha = 1.0
+                label.sizeToFit()
+                
+
+                self.descriptionScrollView.contentSize = CGSize(width: self.descriptionScrollView.bounds.width, height: label.frame.height + 5)
+                self.descriptionScrollView.addSubview(label)
+                
+                
+                
                 if let outputPrice = (Double(priceString)){
                     let finalPrice = Int(round(outputPrice))
                     var finalPriceRoundedString = "$ "
                     finalPriceRoundedString += String(describing: finalPrice)
                     finalPriceRoundedString += " /mo"
+                    
+                    
                     
 
                     let font:UIFont? = UIFont(name: "Dosis-Bold", size:24)
@@ -71,8 +90,9 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate {
                     
                 }
                 var dimensionsString = String(describing: dictionary["Length"]!)
-                dimensionsString += " X "
+                dimensionsString += "' X "
                 dimensionsString += String(describing: dictionary["Width"]!)
+                dimensionsString += "'"
                 self.providerSizeLabel.text = dimensionsString
                 
                 let locationProvider = CLLocation(latitude: (self.providerLocation?.latitude)!, longitude: (self.providerLocation?.longitude)!)
@@ -88,22 +108,35 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate {
                 self.providerDistanceLabel.text = self.outputDistance
                 
                 if let photoDictionary = dictionary["Photos"] as? [String: Any] {
-                    URLSession.shared.dataTask(with: NSURL(string: photoDictionary["photo1"] as! String)! as URL, completionHandler: { (data, response, error) -> Void in
-                        
-                        if error != nil {
-                            print(error)
-                            return
-                        }
-                        DispatchQueue.main.async(execute: { () -> Void in
-//                            self.garagePhoto.contentMode = .scaleAspectFill
-//                            self.garagePhoto.layer.cornerRadius = 50
-                            let image = UIImage(data: data!)
-                            self.garagePhoto.image = image
-                        })
-                        
-                    }).resume()
+                    self.featurePageControl.numberOfPages = photoDictionary.count
+                    self.imageScrollView.isPagingEnabled = true
+                    self.imageScrollView.contentSize = CGSize(width: self.imageScrollView.bounds.width * CGFloat(photoDictionary.count), height: 122)
+                    self.imageScrollView.showsHorizontalScrollIndicator = true
+                    self.imageScrollView.showsVerticalScrollIndicator = false
+                    for (index, feature) in photoDictionary.enumerated(){
+                        URLSession.shared.dataTask(with: NSURL(string: feature.value as! String)! as URL, completionHandler: { (data, response, error) -> Void in
+                            
+                            if error != nil {
+                                print(error)
+                                return
+                            }
+                            DispatchQueue.main.async(execute: { () -> Void in
+                                let myImage = UIImage(data: data!)
+                                let myImageView:UIImageView = UIImageView()
+                                myImageView.frame.size.width = self.view.bounds.size.width
+                                myImageView.frame.origin.x = CGFloat(index) * self.view.bounds.size.width
+                                myImageView.image = myImage
+                                
+                                let xPosition = (self.imageScrollView.frame.width) * CGFloat(index)
+                                myImageView.frame = CGRect(x: xPosition, y: 0, width: self.imageScrollView.frame.width, height: self.imageScrollView.frame.height)
+                                self.imageScrollView.layer.cornerRadius = 8
+                                
+                                self.imageScrollView.addSubview(myImageView)
+                            })
+                            
+                        }).resume()
+                    }
                 }
-                
             }
         }, withCancel: nil)
         
@@ -171,7 +204,10 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let page = scrollView.contentOffset.x / scrollView.frame.size.width
+        featurePageControl.currentPage = Int(page)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

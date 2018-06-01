@@ -169,8 +169,8 @@
 		DB4B5E9620B346F50050F66E /* Register View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DBD8FD3220B3791100776FAB /* LoginViewController.swift */,
 				DB4B5E9F20B351C20050F66E /* StartupViewController.swift */,
+				DBD8FD3220B3791100776FAB /* LoginViewController.swift */,
 				DB4B5E9720B3474D0050F66E /* RegisterEmailViewController.swift */,
 				574FC7BE20B5F484001AE44F /* TermsViewController.swift */,
 			);
