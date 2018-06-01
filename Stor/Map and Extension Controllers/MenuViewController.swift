@@ -62,7 +62,7 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         borderLayer.strokeColor = UIColor.black.cgColor
         borderLayer.fillColor = UIColor.white.cgColor
 
-        let hexagon = createImage(layer: borderLayer)
+        _ = createImage(layer: borderLayer)
         
         
         

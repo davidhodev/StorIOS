@@ -24,7 +24,9 @@ extension UIImageView{
         
         
         let uid = Auth.auth().currentUser?.uid
-        Database.database().reference().child("Users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+        URLSession.shared.dataTask(with: NSURL(string: globalVariablesViewController.profilePicString)! as URL, completionHandler: { (data, response, error) -> Void in
+            
+            Database.database().reference().child("Users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String:Any] {
                 globalVariablesViewController.username = (dictionary["name"] as? String)!
@@ -33,17 +35,22 @@ extension UIImageView{
             }
         }, withCancel: nil)
         
-        if let imageURL = URL(string: globalVariablesViewController.profilePicString){
-            globalVariablesViewController.profilePicData = NSData(contentsOf: imageURL) as Data!
-            
-            if let downloadedImage = UIImage(data: globalVariablesViewController.profilePicData){
-                profileImageCache.setObject(downloadedImage, forKey: globalVariablesViewController.profilePicString as AnyObject)
-                self.image = downloadedImage
+            if error != nil {
+                print(error)
+                return
             }
-        }
+            DispatchQueue.main.async(execute: { () -> Void in
+                let image = UIImage(data: data!)
+                profileImageCache.setObject(image!, forKey: globalVariablesViewController.profilePicString as AnyObject)
+                self.image = image
+            })
+            
+        }).resume()
+        
     }
     func forceLoadProfilePic(){
         let uid = Auth.auth().currentUser?.uid
+       URLSession.shared.dataTask(with: NSURL(string: globalVariablesViewController.profilePicString)! as URL, completionHandler: { (data, response, error) -> Void in
         Database.database().reference().child("Users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String:Any] {
@@ -52,7 +59,7 @@ extension UIImageView{
             }
         }, withCancel: nil)
         
-        URLSession.shared.dataTask(with: NSURL(string: globalVariablesViewController.profilePicString)! as URL, completionHandler: { (data, response, error) -> Void in
+        
             
             if error != nil {
                 print(error)
