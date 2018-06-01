@@ -71,7 +71,6 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
                 
                 
                 
-                
                 if let outputPrice = (Double(priceString)){
                     let finalPrice = Int(round(outputPrice))
                     var finalPriceRoundedString = "$ "
