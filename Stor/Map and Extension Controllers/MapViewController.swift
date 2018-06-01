@@ -31,6 +31,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         cancelButton.isHidden = true
     }
     
+    // centers the screen back on the user's location
+    @IBAction func reCenterButton(_ sender: UIButton) {
+        let center = self.storMapKit.userLocation.coordinate
+        let span = MKCoordinateSpanMake(0.01, 0.01) //WHERE WE CHANGE THE SPAN OF MAP
+        let region = MKCoordinateRegion(center: center, span: span)
+        storMapKit.setRegion(region, animated: true)
+    }
+    @IBOutlet weak var reCenterShowButton: UIButton!
+    
     @IBOutlet weak var cancelButton: UIButton!
     @IBAction func cancelButtonFunction(_ sender: Any) {
         textXan.text! = ""
@@ -78,7 +87,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         searchCompleter.delegate = self
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
-        
+        self.reCenterShowButton.isHidden = true
         self.searchResultsTableView.layer.cornerRadius = 30
         self.searchResultsTableView.layer.masksToBounds = true
 
@@ -132,7 +141,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationManager.stopUpdatingLocation()
     }
     
-    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        reCenterShowButton.isHidden = self.storMapKit.isUserLocationVisible
+    }
 
 
     override func didReceiveMemoryWarning() {
@@ -141,16 +152,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        searchResultsTableView.isHidden = false
-        outOfAuto.isHidden = false
-        cancelButton.isHidden = false
+        self.searchResultsTableView.isHidden = false
+        self.outOfAuto.isHidden = false
+        self.cancelButton.isHidden = false
     }
     
     //Text Bar Pressed
     @objc func textFieldDidChange(_ textField: UITextField) {
-        searchResultsTableView.isHidden = false
-        outOfAuto.isHidden = false
-        cancelButton.isHidden = false
+        self.searchResultsTableView.isHidden = false
+        self.outOfAuto.isHidden = false
+        self.cancelButton.isHidden = false
         searchCompleter.queryFragment = textField.text!
     }
 
