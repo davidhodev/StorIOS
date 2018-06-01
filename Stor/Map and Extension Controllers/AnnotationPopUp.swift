@@ -21,8 +21,8 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var providerPriceLabel: UILabel! // Done
     @IBOutlet weak var providerSizeLabel: UILabel!
     @IBOutlet weak var providerProfileImage: UIImageView!
-    @IBOutlet weak var garagePhoto: UIImageView!
     @IBOutlet weak var addToListButton: UIButton!
+    @IBOutlet weak var imageScrollView: UIScrollView!
     
     var providerAddress: String?
     var providerID: String?
@@ -71,8 +71,9 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate {
                     
                 }
                 var dimensionsString = String(describing: dictionary["Length"]!)
-                dimensionsString += " X "
+                dimensionsString += "' X "
                 dimensionsString += String(describing: dictionary["Width"]!)
+                dimensionsString += "'"
                 self.providerSizeLabel.text = dimensionsString
                 
                 let locationProvider = CLLocation(latitude: (self.providerLocation?.latitude)!, longitude: (self.providerLocation?.longitude)!)
@@ -88,20 +89,28 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate {
                 self.providerDistanceLabel.text = self.outputDistance
                 
                 if let photoDictionary = dictionary["Photos"] as? [String: Any] {
-                    URLSession.shared.dataTask(with: NSURL(string: photoDictionary["photo1"] as! String)! as URL, completionHandler: { (data, response, error) -> Void in
-                        
-                        if error != nil {
-                            print(error)
-                            return
+                    self.imageScrollView.isPagingEnabled = true
+                    self.imageScrollView.contentSize = CGSize(width: self.view.bounds.width * CGFloat(photoDictionary.count), height: 100)
+                    self.imageScrollView.showsHorizontalScrollIndicator = true
+                    self.imageScrollView.showsVerticalScrollIndicator = false
+                    for (index, feature) in photoDictionary.enumerated(){
+                        let url = URL(string:String(describing: feature.value))
+                        if let data = try? Data(contentsOf: url!)
+                        {
+                            let myImage = UIImage(data: data)
+                            let myImageView:UIImageView = UIImageView()
+                            myImageView.image = myImage
+                            
+                            let xPosition = (self.view.frame.width + 30) * CGFloat(index)
+                            myImageView.frame = CGRect(x: xPosition, y: 20, width: self.imageScrollView.frame.width, height: self.imageScrollView.frame.height)
+                            
+                            self.imageScrollView.addSubview(myImageView)
+                            myImageView.frame.size.width = self.view.bounds.size.width
+                            myImageView.frame.origin.x = CGFloat(index) * self.view.bounds.size.width
                         }
-                        DispatchQueue.main.async(execute: { () -> Void in
-//                            self.garagePhoto.contentMode = .scaleAspectFill
-//                            self.garagePhoto.layer.cornerRadius = 50
-                            let image = UIImage(data: data!)
-                            self.garagePhoto.image = image
-                        })
                         
-                    }).resume()
+                    }
+                    
                 }
                 
             }
