@@ -20,7 +20,9 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var providerDistanceLabel: UILabel!
     @IBOutlet weak var providerPriceLabel: UILabel! // Done
     @IBOutlet weak var providerSizeLabel: UILabel!
-    
+    @IBOutlet weak var providerProfileImage: UIImageView!
+    @IBOutlet weak var garagePhoto: UIImageView!
+    @IBOutlet weak var addToListButton: UIButton!
     
     var providerAddress: String?
     var providerID: String?
@@ -29,9 +31,22 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate {
     var userLocation: CLLocation?
     var outputDistance: String?
     
+    
     @IBAction func Exit(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func connectButton(_ sender: Any) {
+        print("CONNECT")
+    }
+    @IBAction func addToListButtonPressed(_ sender: Any) {
+        print("ADD TO LIST")
+    }
+    
+
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Database.database().reference().child("Providers").child(providerID!).child("currentStorage").observe(.childAdded, with: { (snapshot) in
@@ -40,8 +55,20 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate {
                 self.providerDescriptionLabel.text = dictionary["Subtitle"] as? String
                 let priceString = String(describing: dictionary["Price"]!)
                 if let outputPrice = (Double(priceString)){
-                    let finalPrice = (outputPrice*100).rounded()/100
-                    self.providerPriceLabel.text = String(format: "%.2f", finalPrice)
+                    let finalPrice = Int(round(outputPrice))
+                    var finalPriceRoundedString = "$ "
+                    finalPriceRoundedString += String(describing: finalPrice)
+                    finalPriceRoundedString += " /mo"
+                    
+
+                    let font:UIFont? = UIFont(name: "Dosis-Bold", size:24)
+                    let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:16)
+                    let fontSmall:UIFont? = UIFont(name: "Dosis-Regular", size:14)
+                    let attString:NSMutableAttributedString = NSMutableAttributedString(string: finalPriceRoundedString, attributes: [.font:font!])
+                    attString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:0,length:1))
+                    attString.setAttributes([.font:fontSmall!,.baselineOffset:-1], range: NSRange(location:(finalPriceRoundedString.count)-3,length:3))
+                    self.providerPriceLabel.attributedText = attString
+                    
                 }
                 var dimensionsString = String(describing: dictionary["Length"]!)
                 dimensionsString += " X "
@@ -56,10 +83,26 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate {
                 }
                 else{
                     let finalDistance = Double(distance!) / 1609
-                    self.outputDistance = String(format: "%.2f", finalDistance)
+                    self.outputDistance = String(format: "%.1f", finalDistance)
                 }
                 self.providerDistanceLabel.text = self.outputDistance
                 
+                if let photoDictionary = dictionary["Photos"] as? [String: Any] {
+                    URLSession.shared.dataTask(with: NSURL(string: photoDictionary["photo1"] as! String)! as URL, completionHandler: { (data, response, error) -> Void in
+                        
+                        if error != nil {
+                            print(error)
+                            return
+                        }
+                        DispatchQueue.main.async(execute: { () -> Void in
+//                            self.garagePhoto.contentMode = .scaleAspectFill
+//                            self.garagePhoto.layer.cornerRadius = 50
+                            let image = UIImage(data: data!)
+                            self.garagePhoto.image = image
+                        })
+                        
+                    }).resume()
+                }
                 
             }
         }, withCancel: nil)
@@ -69,14 +112,66 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate {
                 let ratingString = String(describing: dictionary["rating"]!)
                 let roundedRating = (Double(ratingString)! * 100).rounded()/100
                 self.providerRatingLabel.text = String(format: "%.2f", roundedRating)
-                self.providerNameLabel.text = dictionary["Name"] as? String
                 
+                let fullName = dictionary["Name"] as? String
+                let fullNameArr = fullName?.split(separator: " ")
+                let firstName = fullNameArr![0]
+                var lastName: String?
+                if (fullNameArr!.count > 2){
+                    lastName = String(describing: fullNameArr![1])
+                    lastName = lastName! + " " + String(describing: fullNameArr![2])
+                }
+                else{
+                    lastName = String(describing: fullNameArr![1])
+                }
+                var finalName = firstName
+                finalName += "\n"
+                finalName += lastName!
+                self.providerNameLabel.text = String(describing: finalName)
+                
+                
+                
+                URLSession.shared.dataTask(with: NSURL(string: dictionary["profileImage"] as! String)! as URL, completionHandler: { (data, response, error) -> Void in
+                    
+                    if error != nil {
+                        print(error)
+                        return
+                    }
+                    DispatchQueue.main.async(execute: { () -> Void in
+                        
+                        let lineWidth = CGFloat(7.0)
+                        let rect = CGRect(x: 0, y: 0.0, width: 50, height: 54)
+                        let sides = 6
+                        
+                        let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 5.0, rotationOffset: CGFloat(.pi / 2.0))
+                        
+                        let borderLayer = CAShapeLayer()
+                        borderLayer.frame = CGRect(x : 0.0, y : 0.0, width : path.bounds.width + lineWidth, height : path.bounds.height + lineWidth)
+                        borderLayer.path = path.cgPath
+                        borderLayer.lineWidth = lineWidth
+                        borderLayer.lineJoin = kCALineJoinRound
+                        borderLayer.lineCap = kCALineCapRound
+                        borderLayer.strokeColor = UIColor.black.cgColor
+                        borderLayer.fillColor = UIColor.white.cgColor
+                        
+                        let hexagon = createImage(layer: borderLayer)
+                        
+                        self.providerProfileImage.contentMode = .scaleAspectFill
+                        self.providerProfileImage.layer.masksToBounds = false
+                        self.providerProfileImage.layer.mask = borderLayer
+                        let image = UIImage(data: data!)
+                        self.providerProfileImage.image = image
+                    })
+                    
+                }).resume()
                 
                 
             }
         }, withCancel: nil)
         
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
