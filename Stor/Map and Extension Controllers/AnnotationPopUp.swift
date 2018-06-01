@@ -41,25 +41,17 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate {
                 let priceString = String(describing: dictionary["Price"]!)
                 if let outputPrice = (Double(priceString)){
                     let finalPrice = Int(round(outputPrice))
-                    var finalPriceRoundedString = "$"
+                    var finalPriceRoundedString = "$ "
                     finalPriceRoundedString += String(describing: finalPrice)
-                    finalPriceRoundedString += " /month"
+                    finalPriceRoundedString += " /mo"
                     
-                    for family: String in UIFont.familyNames
-                    {
-                        print("\(family)")
-                        for names: String in UIFont.fontNames(forFamilyName: family)
-                        {
-                            print("== \(names)")
-                        }
-                    }
 
                     let font:UIFont? = UIFont(name: "Dosis-Bold", size:24)
                     let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:16)
                     let fontSmall:UIFont? = UIFont(name: "Dosis-Regular", size:14)
                     let attString:NSMutableAttributedString = NSMutableAttributedString(string: finalPriceRoundedString, attributes: [.font:font!])
-                    attString.setAttributes([.font:fontSuper!,.baselineOffset:10], range: NSRange(location:0,length:1))
-                    attString.setAttributes([.font:fontSmall!,.baselineOffset:-11], range: NSRange(location:(finalPriceRoundedString.count)-6,length:6))
+                    attString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:0,length:1))
+                    attString.setAttributes([.font:fontSmall!,.baselineOffset:-1], range: NSRange(location:(finalPriceRoundedString.count)-3,length:3))
                     self.providerPriceLabel.attributedText = attString
                     
                 }
@@ -89,7 +81,24 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate {
                 let ratingString = String(describing: dictionary["rating"]!)
                 let roundedRating = (Double(ratingString)! * 100).rounded()/100
                 self.providerRatingLabel.text = String(format: "%.2f", roundedRating)
-                self.providerNameLabel.text = dictionary["Name"] as? String
+                
+                let fullName = dictionary["Name"] as? String
+                let fullNameArr = fullName?.split(separator: " ")
+                let firstName = fullNameArr![0]
+//                var lastName: String?
+//                if (fullNameArr!.count > 2){
+//                    lastName = String(describing: fullNameArr![1])
+//                    lastName += " "
+//                    lastName += String(describing: fullNameArr![2])
+//                }
+                let lastName = fullNameArr!.count > 1 ? fullNameArr![1] : nil
+                var finalName = firstName
+                finalName += "\n"
+                finalName += lastName!
+                print(firstName)
+                
+                
+                self.providerNameLabel.text = String(describing: finalName) //dictionary["Name"] as? String
                 
                 
                 
