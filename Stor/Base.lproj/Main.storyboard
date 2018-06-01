@@ -513,11 +513,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EtI-3i-8yf">
-<<<<<<< HEAD
-                                <rect key="frame" x="172" y="44" width="30" height="30"/>
-=======
                                 <rect key="frame" x="306" y="44" width="30" height="30"/>
->>>>>>> 18dffcffd8c8f1c994525e983066013899851906
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Exit">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -750,11 +746,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-<<<<<<< HEAD
-                                <rect key="frame" x="27.666666666666671" y="84" width="20" height="20"/>
-=======
                                 <rect key="frame" x="0.0" y="84" width="20" height="20"/>
->>>>>>> 18dffcffd8c8f1c994525e983066013899851906
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
@@ -972,27 +964,12 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmO-0j-QIg">
-<<<<<<< HEAD
-                                        <rect key="frame" x="73" y="450" width="68.666666666666686" height="20.333333333333314"/>
-=======
                                         <rect key="frame" x="73" y="420" width="69" height="21"/>
->>>>>>> 18dffcffd8c8f1c994525e983066013899851906
                                         <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                         <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-<<<<<<< HEAD
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Pvz-V6-38F">
-                                        <rect key="frame" x="73" y="470.33333333333331" width="227" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="106" id="aJN-xg-c4b"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="14"/>
-                                        <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-=======
->>>>>>> 18dffcffd8c8f1c994525e983066013899851906
+
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Black Star" translatesAutoresizingMaskIntoConstraints="NO" id="RPG-wl-K2P">
                                         <rect key="frame" x="73" y="324" width="13" height="13"/>
                                         <constraints>

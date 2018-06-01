@@ -6,12 +6,6 @@
 //
 
 import UIKit
-<<<<<<< HEAD:Stor/Map and Extension Controllers/Menu Items/Settings/SettingsViewControllerFinal.swift
-// making the cell data
-
-class SettingsViewControllerFinal: UIViewController {
-    // instantiating variables
-=======
 import FirebaseAuth
 import GoogleSignIn
 import FBSDKLoginKit
@@ -27,7 +21,6 @@ struct cellDataForSettings {
 
 
 class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITableViewDataSource {
->>>>>>> 18dffcffd8c8f1c994525e983066013899851906:Stor/Map and Extension Controllers/Menu Items/SettingsViewControllerFinal.swift
     
     @IBOutlet weak var settingsTableView: UITableView!
     @IBAction func ExitButton(_ sender: UIButton) {
@@ -39,22 +32,21 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         GIDSignIn.sharedInstance().signOut()
         let manager = FBSDKLoginManager()
         manager.logOut()
-        
         print("signed out")
-        self.dismiss(animated: false, completion: {})
-        self.navigationController?.popToRootViewController(animated: true)
+        if let vc = self.storyboard?.instantiateInitialViewController() {
+            self.present(vc, animated: true, completion: nil)
+            self.navigationController?.popToViewController(vc, animated: true)
+        }
     }
+    
     
     var tableViewDataSettings = [cellDataForSettings]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD:Stor/Map and Extension Controllers/Menu Items/Settings/SettingsViewControllerFinal.swift
-=======
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
-        tableViewDataSettings = [cellDataForSettings(openned: false, title: "My Profile", sectionData: [""]), cellDataForSettings(openned: false, title: "Location Settings", sectionData: [""]), cellDataForSettings(openned: false, title: "Notificantions", sectionData: ["Push Notifications", "Text Messages"]), cellDataForSettings(openned: false, title: "Privacy Settings", sectionData: ["Allow Stor to contact you for news and promotions", "Delete Account"])]
->>>>>>> 18dffcffd8c8f1c994525e983066013899851906:Stor/Map and Extension Controllers/Menu Items/SettingsViewControllerFinal.swift
+        tableViewDataSettings = [cellDataForSettings(openned: false, title: "My Profile", sectionData: []), cellDataForSettings(openned: false, title: "Location Settings", sectionData: []), cellDataForSettings(openned: false, title: "Notificantions", sectionData: ["Push Notifications", "Text Messages"]), cellDataForSettings(openned: false, title: "Privacy Settings", sectionData: ["Allow Stor to contact you for news and promotions", "Delete Account"])]
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,15 +54,6 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         // Dispose of any resources that can be recreated.
     }
     
-<<<<<<< HEAD:Stor/Map and Extension Controllers/Menu Items/Settings/SettingsViewControllerFinal.swift
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-=======
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return tableViewDataSettings.count
@@ -97,7 +80,6 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
             cell.textLabel?.text = tableViewDataSettings[indexPath.section].sectionData[dataIndex]
             return cell
         }
->>>>>>> 18dffcffd8c8f1c994525e983066013899851906:Stor/Map and Extension Controllers/Menu Items/SettingsViewControllerFinal.swift
     }
     
     
@@ -115,7 +97,4 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
             }
         }
     }
-    
-
-
 }
