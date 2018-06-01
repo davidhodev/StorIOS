@@ -6,6 +6,12 @@
 //
 
 import UIKit
+import FirebaseAuth
+import GoogleSignIn
+import FBSDKLoginKit
+
+
+
 struct cellDataForSettings {
     var openned: Bool?
     var title: String?
@@ -20,6 +26,17 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
     @IBAction func ExitButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    //logout
+    @IBAction func logoutButton(_ sender: Any) {
+        try!  Auth.auth().signOut()
+        GIDSignIn.sharedInstance().signOut()
+        let manager = FBSDKLoginManager()
+        manager.logOut()
+        
+        print("signed out")
+        self.dismiss(animated: false, completion: {})
+        self.navigationController?.popToRootViewController(animated: true)
+    }
     
     var tableViewDataSettings = [cellDataForSettings]()
     
@@ -27,7 +44,7 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
-        tableViewDataSettings = [cellDataForSettings(openned: false, title: "Title1", sectionData: ["Cell1", "Cell2", "Cell3"]), cellDataForSettings(openned: false, title: "Title1", sectionData: ["Cell1", "Cell2", "Cell3"]), cellDataForSettings(openned: false, title: "Title1", sectionData: ["Cell1", "Cell2", "Cell3"]), cellDataForSettings(openned: false, title: "Title1", sectionData: ["Cell1", "Cell2", "Cell3"])]
+        tableViewDataSettings = [cellDataForSettings(openned: false, title: "My Profile", sectionData: [""]), cellDataForSettings(openned: false, title: "Location Settings", sectionData: [""]), cellDataForSettings(openned: false, title: "Notificantions", sectionData: ["Push Notifications", "Text Messages"]), cellDataForSettings(openned: false, title: "Privacy Settings", sectionData: ["Allow Stor to contact you for news and promotions", "Delete Account"])]
     }
 
     override func didReceiveMemoryWarning() {
