@@ -101,7 +101,7 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
                 cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Width"]!))!)
                 cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Height"]!))!)
                 var cubicFeetString = String(describing: cubicFeetNumber!)
-                cubicFeetString += " ft3"
+                cubicFeetString += "ft3"
                 
                 let font:UIFont? = UIFont(name: "Dosis-Regular", size:16)
                 let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:14)
