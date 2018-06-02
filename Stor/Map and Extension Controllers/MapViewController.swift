@@ -22,6 +22,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var textXan: UITextField!
     @IBOutlet weak var searchResultsTableView: UITableView!
     @IBOutlet weak var outOfAuto: UIButton!
+    
      var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     
@@ -119,24 +120,31 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
     
     
-    // Updating Locations
+    // Updating Locations, old way of zooming in on user location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        let center = self.storMapKit.userLocation.coordinate
-        let span = MKCoordinateSpanMake(0.01, 0.01) //WHERE WE CHANGE THE SPAN OF MAP
-        let region = MKCoordinateRegion(center: center, span: span)
-        
+//        let center = self.storMapKit.userLocation.coordinate
+//        let span = MKCoordinateSpanMake(0.01, 0.01) //WHERE WE CHANGE THE SPAN OF MAP
+//        let region = MKCoordinateRegion(center: center, span: span)
         self.storMapKit.showsPointsOfInterest = false
-        storMapKit.setRegion(region, animated: true)
-        storMapKit.showsUserLocation = true
-        locationManager.stopUpdatingLocation()
+//        storMapKit.setRegion(region, animated: true)
+//        storMapKit.showsUserLocation = true
+
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         reCenterShowButton.isHidden = self.storMapKit.isUserLocationVisible
     }
-
-
+    
+    // new way of zooming in on user location
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+        let center = self.storMapKit.userLocation.coordinate
+        let span = MKCoordinateSpanMake(0.01, 0.01) //WHERE WE CHANGE THE SPAN OF MAP
+        let region = MKCoordinateRegion(center: center, span: span)
+        storMapKit.setRegion(region, animated: true)
+        storMapKit.showsUserLocation = true
+        locationManager.stopUpdatingLocation()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
