@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -850,7 +852,7 @@
         <!--Annotation Pop Up-->
         <scene sceneID="ODf-4I-HRP">
             <objects>
-                <viewController storyboardIdentifier="AnnotationPopUp" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ChP-SR-ddt" customClass="AnnotationPopUp" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AnnotationPopUp" providesPresentationContextTransitionStyle="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ChP-SR-ddt" customClass="AnnotationPopUp" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dSi-ah-9go">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -946,9 +948,9 @@
                                             <constraint firstAttribute="height" constant="105" id="t0U-cD-uos"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
-                                        <state key="normal" image="Connect Button"/>
+                                        <state key="normal" title="ConnectButton" image="Connect Button"/>
                                         <connections>
-                                            <action selector="connectButton:" destination="ChP-SR-ddt" eventType="touchUpInside" id="qmD-vD-G5h"/>
+                                            <segue destination="3Fq-0d-DHC" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="bS6-IH-uJ1"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWu-bF-CVJ">
@@ -1619,6 +1621,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Avf-uI-LH6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4806" y="783"/>
+        </scene>
+        <!--New Connect Pop Up-->
+        <scene sceneID="yvz-ID-SMq">
+            <objects>
+                <viewController definesPresentationContext="YES" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="3Fq-0d-DHC" customClass="newConnectPopUp" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MoN-IN-Aei">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84R-QG-Ejc">
+                                <rect key="frame" x="164" y="330" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="exitButton:" destination="3Fq-0d-DHC" eventType="touchUpInside" id="tqi-Dm-2Ct"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1647058824" green="0.27450980390000002" blue="0.70588235290000001" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="RcA-60-DvZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uM9-IX-Oiq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6124" y="1487"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hRq-tN-qLN">
