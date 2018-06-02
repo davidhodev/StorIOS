@@ -65,6 +65,7 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
                 label.text = dictionary["Subtitle"] as? String
                 label.alpha = 1.0
                 label.sizeToFit()
+                label.textColor = UIColor(red: 42/170, green: 39/170, blue: 89/170, alpha: 0.7)
                 
 
                 self.descriptionScrollView.contentSize = CGSize(width: self.descriptionScrollView.bounds.width, height: label.frame.height + 5)
@@ -80,10 +81,10 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
                     
                     
                     
-
                     let font:UIFont? = UIFont(name: "Dosis-Bold", size:24)
                     let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:16)
                     let fontSmall:UIFont? = UIFont(name: "Dosis-Regular", size:14)
+                    
                     let attString:NSMutableAttributedString = NSMutableAttributedString(string: finalPriceRoundedString, attributes: [.font:font!])
                     attString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:0,length:1))
                     attString.setAttributes([.font:fontSmall!,.baselineOffset:-1], range: NSRange(location:(finalPriceRoundedString.count)-3,length:3))
@@ -95,10 +96,21 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
                 dimensionsString += String(describing: dictionary["Width"]!)
                 dimensionsString += "'"
                 self.providerSizeLabel.text = dimensionsString
-//                
-//                var cubicFeetNumber = Int(String(describing:dictionary["Length"]))!
-//                cubicFeetNumber = cubicFeetNumber * (Int(String(describing:dictionary["Width"]))!)
-//                cubicFeetNumber = cubicFeetNumber * (Int(String(describing:dictionary["Height"]))!)
+                
+                var cubicFeetNumber = Int(String(describing:dictionary["Length"]!))
+                cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Width"]!))!)
+                cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Height"]!))!)
+                var cubicFeetString = String(describing: cubicFeetNumber!)
+                cubicFeetString += " ft3"
+                
+                let font:UIFont? = UIFont(name: "Dosis-Regular", size:16)
+                let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:14)
+                
+                let cubicFeetAttString:NSMutableAttributedString = NSMutableAttributedString(string: cubicFeetString, attributes: [.font:font!])
+                cubicFeetAttString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:(cubicFeetString.count)-1,length:1))
+                self.cubicFeetLabel.attributedText = cubicFeetAttString
+                print(self.cubicFeetLabel.attributedText)
+                
                 
                 
                 
