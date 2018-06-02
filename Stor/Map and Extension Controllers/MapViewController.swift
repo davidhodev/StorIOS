@@ -66,12 +66,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     
     
-    
-    
-    override func loadView() {
-        
-    }
-    
     override func viewDidLoad() {
         
         super.viewDidLoad()

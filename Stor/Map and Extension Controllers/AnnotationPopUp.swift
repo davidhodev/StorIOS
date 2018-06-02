@@ -95,10 +95,10 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
                 dimensionsString += String(describing: dictionary["Width"]!)
                 dimensionsString += "'"
                 self.providerSizeLabel.text = dimensionsString
-                
-                var cubicFeetNumber = Int(String(describing:dictionary["Length"]))!
-                cubicFeetNumber = cubicFeetNumber * (Int(String(describing:dictionary["Width"]))!)
-                cubicFeetNumber = cubicFeetNumber * (Int(String(describing:dictionary["Height"]))!)
+//                
+//                var cubicFeetNumber = Int(String(describing:dictionary["Length"]))!
+//                cubicFeetNumber = cubicFeetNumber * (Int(String(describing:dictionary["Width"]))!)
+//                cubicFeetNumber = cubicFeetNumber * (Int(String(describing:dictionary["Height"]))!)
                 
                 
                 
