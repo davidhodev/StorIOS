@@ -24,6 +24,7 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
     @IBOutlet weak var imageScrollView: UIScrollView!
     @IBOutlet weak var featurePageControl: UIPageControl!
     @IBOutlet weak var descriptionScrollView: UIScrollView!
+    @IBOutlet weak var cubicFeetLabel: UILabel!
     
     var providerAddress: String?
     var providerID: String?
@@ -94,6 +95,14 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
                 dimensionsString += String(describing: dictionary["Width"]!)
                 dimensionsString += "'"
                 self.providerSizeLabel.text = dimensionsString
+                
+                var cubicFeetNumber = Int(String(describing:dictionary["Length"]))!
+                cubicFeetNumber = cubicFeetNumber * (Int(String(describing:dictionary["Width"]))!)
+                cubicFeetNumber = cubicFeetNumber * (Int(String(describing:dictionary["Height"]))!)
+                
+                
+                
+                
                 
                 let locationProvider = CLLocation(latitude: (self.providerLocation?.latitude)!, longitude: (self.providerLocation?.longitude)!)
                 

@@ -67,12 +67,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     
     
-    
+    override func loadView() {
+        
+    }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         storMapKit.delegate = self
+        storMapKit.showsUserLocation = true
         textXan.delegate = self
         locationManager.delegate = self
         searchCompleter.delegate = self
@@ -89,7 +92,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         textXan.addTarget(self, action: #selector(MapViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        storMapKit.showsUserLocation = true
+        
         
         // Get Data for the Menu
         let uid = Auth.auth().currentUser?.uid
