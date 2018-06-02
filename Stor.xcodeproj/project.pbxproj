@@ -16,6 +16,7 @@
 		574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574FC7BE20B5F484001AE44F /* TermsViewController.swift */; };
 		576A007420B7798100F2174D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576A007320B7798100F2174D /* MenuViewController.swift */; };
 		579D4C5F20BF2D6E0082A86F /* AnnotationPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579D4C5E20BF2D6E0082A86F /* AnnotationPopUp.swift */; };
+		57EC509320C22389009F470F /* newConnectPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC509220C22389009F470F /* newConnectPopUp.swift */; };
 		D1947A535ADA1F3F00BCE349 /* Pods_StorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBFB92A62876BD03C1FEC207 /* Pods_StorUITests.framework */; };
 		DB4964DD20C0CBA9002F4EBD /* Dosis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964D920C0CB9F002F4EBD /* Dosis-Regular.otf */; };
 		DB4964DE20C0CC73002F4EBD /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964DA20C0CB9F002F4EBD /* Dosis-Bold.otf */; };
@@ -68,6 +69,7 @@
 		574FC7BE20B5F484001AE44F /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		576A007320B7798100F2174D /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		579D4C5E20BF2D6E0082A86F /* AnnotationPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationPopUp.swift; sourceTree = "<group>"; };
+		57EC509220C22389009F470F /* newConnectPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newConnectPopUp.swift; sourceTree = "<group>"; };
 		83BDF3AB5601AEFA4206A668 /* Pods_StorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C530B0B3D761ADC198DC431 /* Pods-StorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorUITests/Pods-StorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1E7F08C17DB4E0B3B6B7EEE /* Pods-StorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorTests/Pods-StorTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				DB59552820B49F4D001E1AF0 /* MapViewController.swift */,
 				579D4C5E20BF2D6E0082A86F /* AnnotationPopUp.swift */,
 				DB6B0EF820BC7830000CC1D9 /* Annotations.swift */,
+				57EC509220C22389009F470F /* newConnectPopUp.swift */,
 				DB6B0EFD20BC7F99000CC1D9 /* Menu Items */,
 			);
 			path = "Map and Extension Controllers";
@@ -551,6 +554,7 @@
 				DB6B0EF720B8C7DB000CC1D9 /* Extensions.swift in Sources */,
 				041640BA20BDF775001BE560 /* paymentViewController.swift in Sources */,
 				DB6B0EF920BC7830000CC1D9 /* Annotations.swift in Sources */,
+				57EC509320C22389009F470F /* newConnectPopUp.swift in Sources */,
 				DB59552920B49F4D001E1AF0 /* MapViewController.swift in Sources */,
 				041640B820BDF66E001BE560 /* myListViewController.swift in Sources */,
 				04F158A320BCA4C500AAC2ED /* hexagonProfilePicture.swift in Sources */,
