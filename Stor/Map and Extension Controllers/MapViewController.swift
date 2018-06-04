@@ -23,9 +23,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var searchResultsTableView: UITableView!
     @IBOutlet weak var outOfAuto: UIButton!
     
-     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
-    
-    
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+
     @IBAction func outOfAutoComplete(_ sender: Any) {
         searchResultsTableView.isHidden = true
         outOfAuto.isHidden = true
@@ -72,7 +71,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         storMapKit.delegate = self
         storMapKit.showsUserLocation = true
         textXan.delegate = self
-        locationManager.delegate = self
+//        locationManager.delegate = self
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         searchCompleter.delegate = self
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
@@ -86,7 +86,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         textXan.addTarget(self, action: #selector(MapViewController.textFieldDidChange(_:)), for: UIControlEvents.editingChanged)
         locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        locationManager.requestAlwaysAuthorization()
         
         
         // Get Data for the Menu
@@ -110,27 +110,36 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }, withCancel: nil)
         
         // Show Annotations
-        fetchProviders()
-        let center = self.storMapKit.userLocation.coordinate
-        let span = MKCoordinateSpanMake(0.01, 0.01) //WHERE WE CHANGE THE SPAN OF MAP
-        let region = MKCoordinateRegion(center: center, span: span)
-        self.storMapKit.showsPointsOfInterest = false
-        storMapKit.setRegion(region, animated: true)
         
-        self.hideKeyboardWhenTappedAround()
-    }
-    
-    
-
-    
-    
-    // Updating Locations, old way of zooming in on user location
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+            
+        }
+        fetchProviders()
 //        let center = self.storMapKit.userLocation.coordinate
 //        let span = MKCoordinateSpanMake(0.01, 0.01) //WHERE WE CHANGE THE SPAN OF MAP
 //        let region = MKCoordinateRegion(center: center, span: span)
 //        self.storMapKit.showsPointsOfInterest = false
+        self.hideKeyboardWhenTappedAround()
 //        storMapKit.setRegion(region, animated: true)
+    }
+    
+    
+    
+    
+    // Updating Locations
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let center = self.storMapKit.userLocation.coordinate
+        self.storMapKit.showsPointsOfInterest = false
+        if (center.latitude != 0) && (center.longitude != 0){
+            print("Found Location", center)
+            let span = MKCoordinateSpanMake(0.01, 0.01) //WHERE WE CHANGE THE SPAN OF MAP
+            let region = MKCoordinateRegion(center: center, span: span)
+            storMapKit.setRegion(region, animated: true)
+            locationManager.stopUpdatingLocation()
+        }
         storMapKit.showsUserLocation = true
 
     }
