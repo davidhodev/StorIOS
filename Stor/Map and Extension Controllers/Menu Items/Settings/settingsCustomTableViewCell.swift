@@ -9,9 +9,9 @@ import UIKit
 
 class settingsCustomCellTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var moreImage: UIImageView!
-    @IBOutlet weak var settingsLabel: UILabel!
     @IBOutlet weak var dropDownOne: UILabel! // Label
     @IBOutlet weak var dropDownTwo: UILabel!
     
@@ -20,6 +20,9 @@ class settingsCustomCellTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        switchOne.onTintColor = UIColor(red: 68/421, green: 140/421, blue: 253/421, alpha: 0.8)
+        switchTwo.onTintColor = UIColor(red: 68/421, green: 140/421, blue: 253/421, alpha: 0.8)
+        
         // Initialization code
     }
     

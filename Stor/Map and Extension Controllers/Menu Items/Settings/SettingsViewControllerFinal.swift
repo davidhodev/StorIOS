@@ -66,20 +66,26 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (indexPath == selectedIndexPath){
+        if (indexPath == selectedIndexPath && tableViewDataSettings[indexPath.section].openned == false){
+            tableViewDataSettings[indexPath.section].openned = true
             return 200
         }
-        else{
+        else if (tableViewDataSettings[indexPath.section].openned == true){
+            tableViewDataSettings[indexPath.section].openned = false
+            return 60
+        }
+        else {
+            tableViewDataSettings[indexPath.section].openned = false
             return 60
         }
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var dataIndex = indexPath.row - 1
+        //var dataIndex = indexPath.row - 1
 //        if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as! settingsCustomCellTableViewCell
-            cell.textLabel?.text = tableViewDataSettings[indexPath.section].title
+            cell.titleLabel?.text = tableViewDataSettings[indexPath.section].title
             cell.dropDownOne?.text = tableViewDataSettings[indexPath.section].subtitles[0]
             cell.dropDownTwo?.text = tableViewDataSettings[indexPath.section].subtitles[1]
             cell.moreImage.image = UIImage(named: "Expand Arrow")
@@ -96,6 +102,7 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
 //            return cell
 //        }
     }
+    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
@@ -117,6 +124,7 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
                 tableViewDataSettings[indexPath.section].openned = false
                 let sections = IndexSet.init(integer: indexPath.section)
                 tableView.reloadSections(sections, with: .none)
+                
             }
             else{
                 tableViewDataSettings[indexPath.section].openned = true

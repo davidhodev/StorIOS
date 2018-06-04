@@ -332,11 +332,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     provider.image = #imageLiteral(resourceName: "Map Pin Background")
                     self.providers.append(provider)
                     self.storMapKit.addAnnotation(provider)
-                    UIApplication.shared.endIgnoringInteractionEvents()
-                    self.activityIndicator.stopAnimating()
+                    
                 }
             )}
         }, withCancel: nil)
+        UIApplication.shared.endIgnoringInteractionEvents()
+        self.activityIndicator.stopAnimating()
     }
     
     func hideKeyboardWhenTappedAround() {

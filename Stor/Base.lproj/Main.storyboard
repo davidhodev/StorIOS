@@ -522,8 +522,18 @@
                                     <action selector="logoutButton:" destination="tOP-et-CL5" eventType="touchUpInside" id="FsW-pK-pc8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EtI-3i-8yf">
+                                <rect key="frame" x="275" y="737" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Exit">
+                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="ExitButton:" destination="tOP-et-CL5" eventType="touchUpInside" id="GWy-Fo-uP4"/>
+                                </connections>
+                            </button>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rur-VW-iZb">
-                                <rect key="frame" x="16" y="142" width="326" height="566"/>
+                                <rect key="frame" x="24" y="301" width="326" height="401"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -538,19 +548,13 @@
                                                     <rect key="frame" x="10" y="5" width="306" height="190"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZH5-Do-px8">
-                                                            <rect key="frame" x="279" y="21" width="9" height="8"/>
+                                                            <rect key="frame" x="277" y="21" width="11" height="8"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
-                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFit" verticalCompressionResistancePriority="751" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pR0-dX-EhJ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="50"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNu-nB-Bed">
                                                             <rect key="frame" x="15" y="104" width="194" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -565,16 +569,19 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njD-lO-BEW">
                                                             <rect key="frame" x="15" y="161" width="202" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="975-9d-yAB">
+                                                            <rect key="frame" x="15" y="15" width="247" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstItem="pR0-dX-EhJ" firstAttribute="top" secondItem="T0c-bm-YvA" secondAttribute="top" id="BxS-cr-wgr"/>
-                                                        <constraint firstItem="pR0-dX-EhJ" firstAttribute="leading" secondItem="T0c-bm-YvA" secondAttribute="leading" id="eLD-jg-4Tk"/>
-                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -589,22 +596,19 @@
                                             <outlet property="dropDownOne" destination="iNu-nB-Bed" id="R2a-SX-0Ux"/>
                                             <outlet property="dropDownTwo" destination="njD-lO-BEW" id="W1q-CQ-3GH"/>
                                             <outlet property="moreImage" destination="ZH5-Do-px8" id="SPf-1H-ePq"/>
-                                            <outlet property="settingsLabel" destination="pR0-dX-EhJ" id="JQa-wa-TZd"/>
                                             <outlet property="switchOne" destination="0us-cc-ALU" id="zXa-cp-vUa"/>
                                             <outlet property="switchTwo" destination="Shg-kC-DFS" id="vjk-zk-xsb"/>
+                                            <outlet property="titleLabel" destination="975-9d-yAB" id="bM2-vr-epp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EtI-3i-8yf">
-                                <rect key="frame" x="275" y="737" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04o-Od-NTg">
+                                <rect key="frame" x="44" y="176" width="110" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Exit">
-                                    <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="myProfileButton">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <connections>
-                                    <action selector="ExitButton:" destination="tOP-et-CL5" eventType="touchUpInside" id="GWy-Fo-uP4"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.27450980390000002" blue="0.70588235290000001" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
