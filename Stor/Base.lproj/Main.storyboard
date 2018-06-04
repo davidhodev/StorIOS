@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -660,6 +660,18 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHY-bV-fk9" userLabel="Finish Editing Button">
+                                <rect key="frame" x="80" y="628" width="96" height="105"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-29"/>
+                                <state key="normal" image="Done Editing Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8I-D8-mlh" userLabel="Edit Button">
+                                <rect key="frame" x="80" y="503" width="96" height="105"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
+                                <state key="normal" image="Edit List Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.27450980390000002" blue="0.70588235290000001" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1767,22 +1779,73 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84R-QG-Ejc">
-                                <rect key="frame" x="164" y="330" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84R-QG-Ejc" userLabel="Exit Button">
+                                <rect key="frame" x="279" y="685" width="60" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="77O-We-OTl"/>
+                                    <constraint firstAttribute="height" constant="66" id="l7r-LP-yl3"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-22"/>
+                                <state key="normal" image="Button white X"/>
                                 <connections>
                                     <action selector="exitButton:" destination="3Fq-0d-DHC" eventType="touchUpInside" id="tqi-Dm-2Ct"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Connect Pop Up" translatesAutoresizingMaskIntoConstraints="NO" id="3li-1g-aQo">
+                                <rect key="frame" x="0.0" y="337" width="375" height="344"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="344" id="QXm-eR-cB7"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select a drop-off time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n4V-Jr-6Og">
+                                <rect key="frame" x="54" y="370" width="201" height="23"/>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
+                                <color key="textColor" red="0.26666666666666666" green="0.47058823529411764" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iwn-5T-AoG" userLabel="Time 1">
+                                <rect key="frame" x="54" y="434" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiu-R9-yMQ" userLabel="Time 2">
+                                <rect key="frame" x="54" y="498" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNT-RD-Vqx" userLabel="Time 3">
+                                <rect key="frame" x="54" y="563" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.27450980390000002" blue="0.70588235290000001" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3li-1g-aQo" firstAttribute="leading" secondItem="RcA-60-DvZ" secondAttribute="leading" id="3vn-D4-8WP"/>
+                            <constraint firstItem="n4V-Jr-6Og" firstAttribute="leading" secondItem="RcA-60-DvZ" secondAttribute="leading" constant="54" id="50P-uS-n8Q"/>
+                            <constraint firstItem="oNT-RD-Vqx" firstAttribute="top" secondItem="hiu-R9-yMQ" secondAttribute="bottom" constant="44" id="7HV-kF-JwY"/>
+                            <constraint firstItem="hiu-R9-yMQ" firstAttribute="top" secondItem="iwn-5T-AoG" secondAttribute="bottom" constant="43" id="EqU-RQ-q4J"/>
+                            <constraint firstItem="RcA-60-DvZ" firstAttribute="trailing" secondItem="84R-QG-Ejc" secondAttribute="trailing" constant="36" id="Gmu-Wf-08G"/>
+                            <constraint firstItem="RcA-60-DvZ" firstAttribute="bottom" secondItem="84R-QG-Ejc" secondAttribute="bottom" constant="27" id="PZk-2t-htF"/>
+                            <constraint firstItem="3li-1g-aQo" firstAttribute="top" secondItem="n4V-Jr-6Og" secondAttribute="bottom" constant="-56" id="YcP-3e-EW3"/>
+                            <constraint firstItem="hiu-R9-yMQ" firstAttribute="leading" secondItem="RcA-60-DvZ" secondAttribute="leading" constant="54" id="Zun-UE-oIE"/>
+                            <constraint firstItem="iwn-5T-AoG" firstAttribute="leading" secondItem="RcA-60-DvZ" secondAttribute="leading" constant="54" id="dAz-Mn-uSx"/>
+                            <constraint firstItem="3li-1g-aQo" firstAttribute="top" secondItem="RcA-60-DvZ" secondAttribute="top" priority="750" constant="297" id="eig-0l-Sud"/>
+                            <constraint firstItem="3li-1g-aQo" firstAttribute="centerX" secondItem="RcA-60-DvZ" secondAttribute="centerX" id="f4e-XJ-2eX"/>
+                            <constraint firstItem="84R-QG-Ejc" firstAttribute="top" secondItem="3li-1g-aQo" secondAttribute="bottom" constant="4" id="mSn-Vn-3Lc"/>
+                            <constraint firstItem="oNT-RD-Vqx" firstAttribute="leading" secondItem="RcA-60-DvZ" secondAttribute="leading" constant="54" id="oCr-07-zQy"/>
+                            <constraint firstItem="RcA-60-DvZ" firstAttribute="trailing" secondItem="3li-1g-aQo" secondAttribute="trailing" id="rm2-eH-nXQ"/>
+                            <constraint firstItem="iwn-5T-AoG" firstAttribute="top" secondItem="n4V-Jr-6Og" secondAttribute="bottom" constant="41" id="tpd-EW-OIh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="RcA-60-DvZ"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uM9-IX-Oiq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6124" y="1487"/>
+            <point key="canvasLocation" x="6124" y="1486.6995073891626"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hRq-tN-qLN">
@@ -1815,8 +1878,11 @@
         <image name="CA Hex" width="375" height="720"/>
         <image name="Combined Shape3-1" width="18" height="13"/>
         <image name="Connect Button" width="135" height="143"/>
+        <image name="Connect Pop Up" width="375" height="370"/>
         <image name="Create Account Button" width="177" height="188"/>
         <image name="Distance Icon" width="78" height="79"/>
+        <image name="Done Editing Button" width="135" height="143"/>
+        <image name="Edit List Button" width="135" height="143"/>
         <image name="Exit Search Button" width="92" height="100"/>
         <image name="Fill 7 Copy 2" width="171" height="216"/>
         <image name="Fill 7 Copy 5CA" width="308" height="192"/>
