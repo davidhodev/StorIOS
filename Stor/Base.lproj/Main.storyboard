@@ -46,7 +46,7 @@
                                 <rect key="frame" x="0.0" y="358" width="170" height="300"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy4" translatesAutoresizingMaskIntoConstraints="NO" id="uGy-bx-NSJ">
-                                <rect key="frame" x="136" y="1" width="169" height="93"/>
+                                <rect key="frame" x="138" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy5_2" translatesAutoresizingMaskIntoConstraints="NO" id="U2q-m4-Bqu">
                                 <rect key="frame" x="224" y="82" width="151" height="323"/>
@@ -59,7 +59,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ED4-zM-ayk">
-                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
+                                <rect key="frame" x="0.0" y="-13" width="173" height="85"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Bd-4gJ">
                                 <rect key="frame" x="33.666666666666657" y="392" width="177" height="188"/>
@@ -316,7 +316,7 @@
                                 <rect key="frame" x="136" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ZcF-jB-fyb">
-                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
+                                <rect key="frame" x="0.0" y="-13" width="171" height="85"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo Copy" translatesAutoresizingMaskIntoConstraints="NO" id="iUg-vp-lcF">
                                 <rect key="frame" x="51" y="115" width="187" height="114"/>
@@ -603,24 +603,67 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTS-sv-acN">
-                                <rect key="frame" x="156" y="378" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Exit">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Settings Hex W" translatesAutoresizingMaskIntoConstraints="NO" id="tJu-UZ-G3N">
+                                <rect key="frame" x="0.0" y="102" width="375" height="710"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTS-sv-acN">
+                                <rect key="frame" x="17" y="63" width="8" height="22"/>
+                                <state key="normal" image="Back Arrow MS">
                                     <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="ExitButton:" destination="CEF-w8-ebf" eventType="touchUpInside" id="N7y-pR-8d8"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eh3-i7-C2d">
+                                <rect key="frame" x="74" y="57.666666666666657" width="84" height="31"/>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bottom Hex Payment" translatesAutoresizingMaskIntoConstraints="NO" id="pzX-Yj-8Kb">
+                                <rect key="frame" x="0.0" y="396" width="118" height="382"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Payment Top Hex" translatesAutoresizingMaskIntoConstraints="NO" id="cvI-mf-QbB">
+                                <rect key="frame" x="117" y="0.0" width="258" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="258" id="AyV-6I-4tl"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xs3-sg-glR" userLabel="Add New Card Button">
+                                <rect key="frame" x="67" y="638" width="96" height="105"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="5us-Cw-Kez"/>
+                                    <constraint firstAttribute="width" constant="96" id="dC3-1S-oaa"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="-20" minY="-9" maxX="-19" maxY="-29"/>
+                                <state key="normal" image="Add New Payment Btn"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.27450980390000002" blue="0.70588235290000001" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tJu-UZ-G3N" firstAttribute="leading" secondItem="eFW-Cm-CVy" secondAttribute="leading" id="046-Qm-lBk"/>
+                            <constraint firstItem="mTS-sv-acN" firstAttribute="leading" secondItem="eFW-Cm-CVy" secondAttribute="leading" constant="17" id="1D3-vr-3At"/>
+                            <constraint firstItem="eh3-i7-C2d" firstAttribute="leading" secondItem="mTS-sv-acN" secondAttribute="trailing" constant="49" id="6Wd-Ze-rS1"/>
+                            <constraint firstItem="tJu-UZ-G3N" firstAttribute="bottom" secondItem="eFW-Cm-CVy" secondAttribute="bottom" constant="34" id="6j9-Gg-dLx"/>
+                            <constraint firstItem="eFW-Cm-CVy" firstAttribute="trailing" secondItem="tJu-UZ-G3N" secondAttribute="trailing" id="7uS-NH-12M"/>
+                            <constraint firstItem="tJu-UZ-G3N" firstAttribute="top" secondItem="cvI-mf-QbB" secondAttribute="bottom" constant="-48" id="HbS-2p-IMo"/>
+                            <constraint firstItem="mTS-sv-acN" firstAttribute="top" secondItem="eFW-Cm-CVy" secondAttribute="top" constant="19" id="JFC-eR-8IG"/>
+                            <constraint firstItem="pzX-Yj-8Kb" firstAttribute="bottom" secondItem="eFW-Cm-CVy" secondAttribute="bottom" id="JGi-Vc-8R8"/>
+                            <constraint firstItem="Xs3-sg-glR" firstAttribute="leading" secondItem="eFW-Cm-CVy" secondAttribute="leading" constant="67" id="mXN-qt-9T8"/>
+                            <constraint firstItem="pzX-Yj-8Kb" firstAttribute="leading" secondItem="eFW-Cm-CVy" secondAttribute="leading" id="ojK-AX-y5v"/>
+                            <constraint firstItem="eFW-Cm-CVy" firstAttribute="bottom" secondItem="Xs3-sg-glR" secondAttribute="bottom" constant="35" id="rnc-xV-OXX"/>
+                            <constraint firstItem="eh3-i7-C2d" firstAttribute="centerY" secondItem="mTS-sv-acN" secondAttribute="centerY" id="u4N-5K-4g0"/>
+                            <constraint firstItem="eFW-Cm-CVy" firstAttribute="top" secondItem="cvI-mf-QbB" secondAttribute="top" constant="44" id="uZ7-wb-I4P"/>
+                            <constraint firstItem="eFW-Cm-CVy" firstAttribute="trailing" secondItem="cvI-mf-QbB" secondAttribute="trailing" id="uzb-vp-A6W"/>
+                            <constraint firstItem="tJu-UZ-G3N" firstAttribute="top" secondItem="eFW-Cm-CVy" secondAttribute="top" constant="58" id="vpW-Bs-8wi"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="eFW-Cm-CVy"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UMP-P3-Wsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8830" y="468"/>
+            <point key="canvasLocation" x="8829.6000000000004" y="467.73399014778329"/>
         </scene>
         <!--My Storage View Controller-->
         <scene sceneID="Uzo-ti-mwJ">
@@ -1474,7 +1517,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="P4G-xz-ODq">
-                                <rect key="frame" x="0.0" y="-55" width="171" height="101"/>
+                                <rect key="frame" x="0.0" y="-55" width="173" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="101" id="XiM-pS-Ieg"/>
                                 </constraints>
@@ -1664,10 +1707,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Add New Payment Btn" width="135" height="143"/>
         <image name="Add to List Button" width="126" height="129"/>
+        <image name="Back Arrow MS" width="8" height="14"/>
         <image name="Bitmap1" width="375" height="367"/>
         <image name="Black Star" width="15" height="14"/>
         <image name="Blue x button" width="100" height="95"/>
+        <image name="Bottom Hex Payment" width="118" height="382"/>
         <image name="Button Menu" width="100" height="103"/>
         <image name="Button white X" width="100" height="96"/>
         <image name="CA Hex" width="375" height="720"/>
@@ -1676,7 +1722,7 @@
         <image name="Create Account Button" width="177" height="188"/>
         <image name="Distance Icon" width="78" height="79"/>
         <image name="Exit Search Button" width="92" height="100"/>
-        <image name="Fill 7 Copy 2" width="171" height="216"/>
+        <image name="Fill 7 Copy 2" width="173" height="85"/>
         <image name="Fill 7 Copy 5CA" width="308" height="192"/>
         <image name="Fill 7 Copy 6" width="375" height="593"/>
         <image name="Filters Icon" width="89" height="100"/>
@@ -1697,6 +1743,7 @@
         <image name="My Storage Button" width="100" height="98"/>
         <image name="Name Card Icon" width="20" height="17"/>
         <image name="Payment Button" width="100" height="103"/>
+        <image name="Payment Top Hex" width="259" height="151"/>
         <image name="Pin Hex Bot" width="79" height="197"/>
         <image name="Pin Hex Top" width="149" height="325"/>
         <image name="Price Box" width="149" height="162"/>
@@ -1706,6 +1753,7 @@
         <image name="Rectangle 3 Copy 2" width="334" height="100"/>
         <image name="Search Icon" width="21" height="21"/>
         <image name="Settings Button" width="100" height="103"/>
+        <image name="Settings Hex W" width="375" height="862"/>
         <image name="Star" width="15" height="14"/>
         <image name="bitmap" width="375" height="570"/>
         <image name="facebook" width="16" height="16"/>
