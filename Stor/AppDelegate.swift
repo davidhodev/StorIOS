@@ -80,13 +80,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
                     let registerDataValues = ["name": fullName, "email": email, "password": user.uid, "phone":phone, "profilePicture": profilePic]
                     let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
                     let userReference = databaseReference.root.child("Users").child((user.uid))
-                    
-                    userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
-                        if err != nil{
-                            print(err)
-                            return
+                    databaseReference.child("Users").child((user.uid)).observeSingleEvent(of: .value, with: { (snapshot) in
+                        if snapshot.hasChild("rating"){
+                            print("IT HAS A RATING")
                         }
-                        print("User successfully saved to FIREBASE!")
+                        else{
+                            userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
+                                if err != nil{
+                                    print(err)
+                                    return
+                                }
+                                print("User successfully saved to FIREBASE!")
+                            })
+                        }
                     })
                 }
                 if let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MapViewController") as? MapViewController {
