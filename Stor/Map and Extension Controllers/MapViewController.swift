@@ -115,8 +115,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
-            
         }
+        
+        if CLLocationManager.locationServicesEnabled() == false{
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestAlwaysAuthorization()
+        }
+        
         fetchProviders()
 //        let center = self.storMapKit.userLocation.coordinate
 //        let span = MKCoordinateSpanMake(0.01, 0.01) //WHERE WE CHANGE THE SPAN OF MAP
