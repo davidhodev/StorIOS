@@ -79,7 +79,7 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         var dataIndex = indexPath.row - 1
 //        if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as! settingsCustomCellTableViewCell
-            cell.textLabel?.text = tableViewDataSettings[indexPath.section].title
+            cell.titleLabel?.text = tableViewDataSettings[indexPath.section].title
             cell.dropDownOne?.text = tableViewDataSettings[indexPath.section].subtitles[0]
             cell.dropDownTwo?.text = tableViewDataSettings[indexPath.section].subtitles[1]
             cell.moreImage.image = UIImage(named: "Expand Arrow")
