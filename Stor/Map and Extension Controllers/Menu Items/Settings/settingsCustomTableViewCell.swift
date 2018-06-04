@@ -12,7 +12,11 @@ class settingsCustomCellTableViewCell: UITableViewCell {
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var moreImage: UIImageView!
     @IBOutlet weak var settingsLabel: UILabel!
+    @IBOutlet weak var dropDownOne: UILabel! // Label
+    @IBOutlet weak var dropDownTwo: UILabel!
     
+    @IBOutlet weak var switchOne: UISwitch!
+    @IBOutlet weak var switchTwo: UISwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()

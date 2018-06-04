@@ -154,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				571E1B5520C08C0D00E68CA5 /* SettingsViewControllerFinal.swift */,
+				DBE6A8B320C5C28B005B1A75 /* settingsCustomTableViewCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -212,7 +213,6 @@
 				041640BB20BDF7C4001BE560 /* myStorageViewController.swift */,
 				041640B920BDF775001BE560 /* paymentViewController.swift */,
 				571E1B5920C0C6AB00E68CA5 /* Settings */,
-				DBE6A8B320C5C28B005B1A75 /* settingsCustomTableViewCell.swift */,
 			);
 			path = "Menu Items";
 			sourceTree = "<group>";

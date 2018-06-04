@@ -15,10 +15,10 @@ import FBSDKLoginKit
 struct cellDataForSettings {
     var openned: Bool?
     var title: String?
-    var sectionData = [String]()
+    var subtitles = [String]()
 }
 
-
+var selectedIndexPath: IndexPath?
 
 class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -48,7 +48,7 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         settingsTableView.dataSource = self
         settingsTableView.backgroundColor = UIColor.clear
         settingsTableView.sectionIndexBackgroundColor = UIColor.clear
-        tableViewDataSettings = [cellDataForSettings(openned: false, title: "My Profile", sectionData: []), cellDataForSettings(openned: false, title: "Location Settings", sectionData: []), cellDataForSettings(openned: false, title: "Notificantions", sectionData: ["Push Notifications", "Text Messages"]), cellDataForSettings(openned: false, title: "Privacy Settings", sectionData: ["Allow Stor to contact you for news and promotions", "Delete Account"])]
+        tableViewDataSettings = [cellDataForSettings(openned: false, title: "Notifications", subtitles: ["Push Notifications", "Text Message"]), cellDataForSettings(openned: false, title: "Privacy Settings", subtitles: ["Allow Stor to Contact you for news and promotions", "Delete Account"])]
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,34 +62,39 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableViewDataSettings[section].openned == true{
-            return tableViewDataSettings[section].sectionData.count + 1
-        }
-        else{
-            return 1
-        }
+        return 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        if (indexPath == selectedIndexPath){
+            return 200
+        }
+        else{
+            return 60
+        }
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var dataIndex = indexPath.row - 1
-        if indexPath.row == 0{
+//        if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as! settingsCustomCellTableViewCell
             cell.textLabel?.text = tableViewDataSettings[indexPath.section].title
-            cell.moreImage.image = UIImage(named: "Log out button")
+            cell.dropDownOne?.text = tableViewDataSettings[indexPath.section].subtitles[0]
+            cell.dropDownTwo?.text = tableViewDataSettings[indexPath.section].subtitles[1]
+            cell.moreImage.image = UIImage(named: "Expand Arrow")
             cell.cellView.layer.cornerRadius = 27
             cell.backgroundColor = UIColor.clear
+            cell.selectionStyle = UITableViewCellSelectionStyle.none
+        
+        
             return cell
-        }
-        else{
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") else{ return UITableViewCell()}
-            cell.textLabel?.text = tableViewDataSettings[indexPath.section].sectionData[dataIndex]
-            return cell
-        }
+//        }
+//        else{
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") else{ return UITableViewCell()}
+//            cell.textLabel?.text = tableViewDataSettings[indexPath.section].sectionData[dataIndex]
+//            return cell
+//        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -103,7 +108,10 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         return CGFloat(10)
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        
+        selectedIndexPath = indexPath
+        
         if indexPath.row == 0{
             if tableViewDataSettings[indexPath.section].openned == true{
                 tableViewDataSettings[indexPath.section].openned = false
