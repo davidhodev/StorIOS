@@ -46,6 +46,8 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
+        settingsTableView.backgroundColor = UIColor.clear
+        settingsTableView.sectionIndexBackgroundColor = UIColor.clear
         tableViewDataSettings = [cellDataForSettings(openned: false, title: "My Profile", sectionData: []), cellDataForSettings(openned: false, title: "Location Settings", sectionData: []), cellDataForSettings(openned: false, title: "Notificantions", sectionData: ["Push Notifications", "Text Messages"]), cellDataForSettings(openned: false, title: "Privacy Settings", sectionData: ["Allow Stor to contact you for news and promotions", "Delete Account"])]
     }
 
@@ -68,20 +70,33 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var dataIndex = indexPath.row - 1
         if indexPath.row == 0{
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else{ return UITableViewCell()}
+            let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as! settingsCustomCellTableViewCell
             cell.textLabel?.text = tableViewDataSettings[indexPath.section].title
+            cell.moreImage.image = UIImage(named: "Log out button")
+            cell.cellView.layer.cornerRadius = 27
+            cell.backgroundColor = UIColor.clear
             return cell
         }
         else{
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else{ return UITableViewCell()}
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") else{ return UITableViewCell()}
             cell.textLabel?.text = tableViewDataSettings[indexPath.section].sectionData[dataIndex]
             return cell
         }
     }
     
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    
+        return CGFloat(8)
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0{
