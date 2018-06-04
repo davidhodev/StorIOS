@@ -50,6 +50,8 @@ class RegisterEmailViewController: UIViewController {
         emailPicture.image = UIImage.init(named: "Combined Shape1")
         phonePicture.image = UIImage.init(named: "Phone Icon")
         passwordPicture.image = UIImage.init(named: "Combined Shape2")
+        
+        self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
 
@@ -76,7 +78,7 @@ class RegisterEmailViewController: UIViewController {
             UserDefaults.standard.synchronize()
         }
         
-        let defaultProfilePictureURL = "https://firebasestorage.googleapis.com/v0/b/stor-database.appspot.com/o/Default%20Pic.jpeg?alt=media&token=d5082882-a22c-4442-a576-277205c8cb79"
+        let defaultProfilePictureURL = "https://firebasestorage.googleapis.com/v0/b/stor-database.appspot.com/o/Group%202v2.jpeg?alt=media&token=4b1c267b-3b5d-4ad0-b79a-6f149ffa155e"
         // Creates User from Firebase
         Auth.auth().createUser(withEmail: emailVerify, password: passwordVerify){ user,error in
             if (error == nil && user != nil){
@@ -128,6 +130,16 @@ class RegisterEmailViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterEmailViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
     

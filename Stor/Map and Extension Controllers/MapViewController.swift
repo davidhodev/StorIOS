@@ -111,6 +111,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         // Show Annotations
         fetchProviders()
+        let center = self.storMapKit.userLocation.coordinate
+        let span = MKCoordinateSpanMake(0.01, 0.01) //WHERE WE CHANGE THE SPAN OF MAP
+        let region = MKCoordinateRegion(center: center, span: span)
+        self.storMapKit.showsPointsOfInterest = false
+        storMapKit.setRegion(region, animated: true)
+        
+        self.hideKeyboardWhenTappedAround()
     }
     
     
@@ -122,9 +129,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 //        let center = self.storMapKit.userLocation.coordinate
 //        let span = MKCoordinateSpanMake(0.01, 0.01) //WHERE WE CHANGE THE SPAN OF MAP
 //        let region = MKCoordinateRegion(center: center, span: span)
-        self.storMapKit.showsPointsOfInterest = false
+//        self.storMapKit.showsPointsOfInterest = false
 //        storMapKit.setRegion(region, animated: true)
-//        storMapKit.showsUserLocation = true
+        storMapKit.showsUserLocation = true
 
     }
     
@@ -132,15 +139,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         reCenterShowButton.isHidden = self.storMapKit.isUserLocationVisible
     }
     
-    // new way of zooming in on user location
-    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
-        let center = self.storMapKit.userLocation.coordinate
-        let span = MKCoordinateSpanMake(0.01, 0.01) //WHERE WE CHANGE THE SPAN OF MAP
-        let region = MKCoordinateRegion(center: center, span: span)
-        storMapKit.setRegion(region, animated: true)
-        storMapKit.showsUserLocation = true
-        locationManager.stopUpdatingLocation()
-    }
+//    // new way of zooming in on user location
+//    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
+//        let center = self.storMapKit.userLocation.coordinate
+//        let span = MKCoordinateSpanMake(0.01, 0.01) //WHERE WE CHANGE THE SPAN OF MAP
+//        let region = MKCoordinateRegion(center: center, span: span)
+//        storMapKit.setRegion(region, animated: true)
+//        storMapKit.showsUserLocation = true
+//        locationManager.stopUpdatingLocation()
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -316,5 +323,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 }
             )}
         }, withCancel: nil)
+    }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MapViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }

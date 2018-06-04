@@ -65,7 +65,9 @@ class LoginViewController: UIViewController {
         line2Image.image = UIImage.init(named: "Line 2")
         letterImage.image = UIImage.init(named: "Combined Shape1")
         lockImage.image = UIImage.init(named: "Combined Shape2")
-        // Do any additional setup after loading the view.
+        
+        self.hideKeyboardWhenTappedAround()
+          
     }
 
     override func didReceiveMemoryWarning() {
@@ -149,6 +151,16 @@ class LoginViewController: UIViewController {
             }
             self.activityIndicator.stopAnimating()
         }
+    }
+    
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 
 

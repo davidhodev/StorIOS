@@ -56,7 +56,6 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
         Database.database().reference().child("Providers").child(providerID!).child("currentStorage").observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String: Any]{
                 self.providerAddressLabel.text = dictionary["Address"] as? String
-//                self.providerDescriptionLabel.text = dictionary["Subtitle"] as? String
                 let priceString = String(describing: dictionary["Price"]!)
                 let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.descriptionScrollView.frame.size.width, height: CGFloat.greatestFiniteMagnitude)) // resize
                 label.numberOfLines = 0
@@ -101,7 +100,7 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
                 cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Width"]!))!)
                 cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Height"]!))!)
                 var cubicFeetString = String(describing: cubicFeetNumber!)
-                cubicFeetString += "ft3"
+                cubicFeetString += " ft3"
                 
                 let font:UIFont? = UIFont(name: "Dosis-Regular", size:16)
                 let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:14)
@@ -124,7 +123,9 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
                 }
                 else{
                     let finalDistance = Double(distance!) / 1609
-                    self.outputDistance = String(format: "%.1f", finalDistance)
+                    var milesAway = String(format: "%.1f", finalDistance)
+                    milesAway = milesAway + " miles away"
+                    self.outputDistance = milesAway
                 }
                 self.providerDistanceLabel.text = self.outputDistance
                 
