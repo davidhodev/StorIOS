@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 import FirebaseDatabase
 import CoreLocation
 
@@ -43,6 +44,11 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
     }
     @IBAction func addToListButtonPressed(_ sender: Any) {
         print("ADD TO LIST")
+//        if let user = Auth.auth().currentUser{
+//
+//        }
+        
+        
     }
     
 

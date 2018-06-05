@@ -267,13 +267,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     // brings you to specific annotation page and brings over information
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        let annotation = view.annotation as! Annotations
-        self.annotationLocation = annotation.coordinate
-        self.annotationAddress = annotation.address
-        self.annotationUID = annotation.providerUID
-        self.annotationStorageID = annotation.storageUID
-        performSegue(withIdentifier: "AnnotationPopUpSegue", sender: self)
-        mapView.deselectAnnotation(view.annotation, animated: true)
+        if let annotation = view.annotation as? Annotations{
+            self.annotationLocation = annotation.coordinate
+            self.annotationAddress = annotation.address
+            self.annotationUID = annotation.providerUID
+            self.annotationStorageID = annotation.storageUID
+            performSegue(withIdentifier: "AnnotationPopUpSegue", sender: self)
+            mapView.deselectAnnotation(view.annotation, animated: true)
+        }
     }
     
     // Segue Helper (SENDS INFO TO POPUP)
@@ -332,11 +333,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     provider.image = #imageLiteral(resourceName: "Map Pin Background")
                     self.providers.append(provider)
                     self.storMapKit.addAnnotation(provider)
-                    UIApplication.shared.endIgnoringInteractionEvents()
-                    self.activityIndicator.stopAnimating()
+                    
                 }
             )}
         }, withCancel: nil)
+        UIApplication.shared.endIgnoringInteractionEvents()
+        self.activityIndicator.stopAnimating()
     }
     
     func hideKeyboardWhenTappedAround() {
