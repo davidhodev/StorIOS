@@ -125,7 +125,7 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
             
             if let user = Auth.auth().currentUser{
                 let registerDataValues = ["name": fbName, "email": fbEmail, "password": user.uid, "phone":"phoneVerify", "profilePicture": fbPhoto, "rating": 5, "numberOfRatings": 1 ] as [String : Any]
-                    
+                
                 let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
                 let userReference = databaseReference.root.child("Users").child((user.uid))
                 
