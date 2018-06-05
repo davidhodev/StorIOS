@@ -54,6 +54,7 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
         removeFromList.isHidden = false
         [UIButton .animate(withDuration: 0.3, animations: {
             self.removeFromList.alpha = 1
+            self.addToListButton.alpha = 0
         })]
 }
     @IBAction func removeFromListButtonPressed(_ sender: Any) {
@@ -62,8 +63,10 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
             let userReference = databaseReference.root.child("Users").child((user.uid))
             userReference.child("myList").child(self.storageID!).removeValue()
         }
+        
                 [UIButton .animate(withDuration: 0.3, animations: {
                 self.removeFromList.alpha = 0
+                self.addToListButton.alpha = 1
         })]
 //        self.removeFromList.isHidden = true
     }
@@ -76,7 +79,25 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
         super.viewDidLoad()
         imageScrollView.delegate = self
         descriptionScrollView.delegate = self
-        removeFromList.isHidden = true
+        removeFromList.alpha = 0
+        addToListButton.alpha = 0
+        if let user = Auth.auth().currentUser{
+            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+            let userReference = databaseReference.root.child("Users").child((user.uid))
+            
+            userReference.child("myList").child(storageID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                if snapshot.exists() == true{
+                    self.removeFromList.alpha = 1
+                }
+                else{
+                    self.addToListButton.alpha = 1
+                }
+            })
+            { (error) in
+                print(error)
+            }
+            
+        }
         Database.database().reference().child("Providers").child(providerID!).child("currentStorage").observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String: Any]{
                 self.providerAddressLabel.text = dictionary["Address"] as? String
