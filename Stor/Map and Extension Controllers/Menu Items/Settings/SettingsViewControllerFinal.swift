@@ -19,6 +19,7 @@ struct cellDataForSettings {
 }
 
 var selectedIndexPath: IndexPath?
+var indexOfOtherCell: Int?
 
 class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -80,19 +81,26 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //var dataIndex = indexPath.row - 1
+        let image = UIImage(named: "Expand Arrow")
 //        if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as! settingsCustomCellTableViewCell
             cell.titleLabel?.text = tableViewDataSettings[indexPath.section].title
             cell.dropDownOne?.text = tableViewDataSettings[indexPath.section].subtitles[0]
             cell.dropDownTwo?.text = tableViewDataSettings[indexPath.section].subtitles[1]
-            cell.moreImage.image = UIImage(named: "Expand Arrow")
+        if (cell.contentView.bounds.size.height == 60){
+            cell.moreImage.image = image
+            cell.moreImage.transform = CGAffineTransform(rotationAngle: 3.14
+            )
+        }
+        else{
+            cell.moreImage.image = image
+            cell.moreImage.transform = CGAffineTransform(rotationAngle: 3.14)
+            
+        }
             cell.cellView.layer.cornerRadius = 27
             cell.backgroundColor = UIColor.clear
             cell.selectionStyle = UITableViewCellSelectionStyle.none
-        
         
             return cell
 //        }
@@ -102,7 +110,6 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
 //            return cell
 //        }
     }
-    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
