@@ -281,6 +281,14 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "connectPopUp"{
+            let destinationController = segue.destination as! newConnectPopUp
+            destinationController.providerID = self.providerID
+            destinationController.storageID = self.storageID
+            
+        }
+    }
 
     /*
     // MARK: - Navigation

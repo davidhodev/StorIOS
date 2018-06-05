@@ -984,7 +984,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-                                <rect key="frame" x="27.666666666666671" y="84" width="20" height="20"/>
+                                <rect key="frame" x="28" y="84" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
@@ -1186,7 +1186,7 @@
                                         <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
                                         <state key="normal" title="ConnectButton" image="Connect Button"/>
                                         <connections>
-                                            <segue destination="3Fq-0d-DHC" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="bS6-IH-uJ1"/>
+                                            <segue destination="3Fq-0d-DHC" kind="presentation" identifier="connectPopUp" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="bS6-IH-uJ1"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWu-bF-CVJ">
@@ -1976,6 +1976,9 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-24"/>
                                 <state key="normal" image="btn_submit"/>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="3Fq-0d-DHC" eventType="touchUpInside" id="cLp-Nf-4wm"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWx-QM-jER" userLabel="Submit Button">
                                 <rect key="frame" x="183" y="626" width="86" height="91"/>
@@ -1985,6 +1988,9 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-19" maxY="-29"/>
                                 <state key="normal" image="Call Button"/>
+                                <connections>
+                                    <action selector="callProviderButtonpressed:" destination="3Fq-0d-DHC" eventType="touchUpInside" id="bcG-Lb-na8"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.27450980390000002" blue="0.70588235290000001" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2026,6 +2032,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RcA-60-DvZ"/>
                     </view>
+                    <connections>
+                        <outlet property="date1Label" destination="iwn-5T-AoG" id="KOF-xc-p6V"/>
+                        <outlet property="date2Label" destination="hiu-R9-yMQ" id="sjC-uq-LsO"/>
+                        <outlet property="date3Label" destination="oNT-RD-Vqx" id="JsQ-FQ-z5A"/>
+                        <outlet property="time1Label" destination="Q00-Gc-n36" id="B21-Gh-ns5"/>
+                        <outlet property="time2Label" destination="aiE-UD-liP" id="enH-ih-EAJ"/>
+                        <outlet property="time3Label" destination="8yA-VZ-GOc" id="LDh-kX-DQR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uM9-IX-Oiq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
