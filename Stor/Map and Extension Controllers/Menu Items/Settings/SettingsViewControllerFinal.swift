@@ -10,16 +10,13 @@ import FirebaseAuth
 import GoogleSignIn
 import FBSDKLoginKit
 
+let cellID = "customCell"
 
-
-struct cellDataForSettings {
-    var openned: Bool?
-    var title: String?
-    var subtitles = [String]()
-}
-
-var selectedIndexPath: IndexPath?
-var indexOfOtherCell: Int?
+//struct cellDataForSettings {
+//    var openned: Bool?
+//    var title: String?
+//    var subtitles = [String]()
+//}
 
 class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -41,103 +38,78 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
     }
     
     
-    var tableViewDataSettings = [cellDataForSettings]()
+//    var tableViewDataSettings = [cellDataForSettings]()
+    var selectedIndexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
-        settingsTableView.backgroundColor = UIColor.clear
-        settingsTableView.sectionIndexBackgroundColor = UIColor.clear
-        tableViewDataSettings = [cellDataForSettings(openned: false, title: "Notifications", subtitles: ["Push Notifications", "Text Message"]), cellDataForSettings(openned: false, title: "Privacy Settings", subtitles: ["Allow Stor to Contact you for news and promotions", "Delete Account"])]
+//        settingsTableView.backgroundColor = UIColor.clear
+//        settingsTableView.sectionIndexBackgroundColor = UIColor.clear
+//        tableViewDataSettings = [cellDataForSettings(openned: false, title: "Notifications", subtitles: ["Push Notifications", "Text Message"]), cellDataForSettings(openned: false, title: "Privacy Settings", subtitles: ["Allow Stor to Contact you for news and promotions", "Delete Account"])]
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return tableViewDataSettings.count
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if (indexPath == selectedIndexPath && tableViewDataSettings[indexPath.section].openned == false){
-            tableViewDataSettings[indexPath.section].openned = true
-            return 200
-        }
-        else if (tableViewDataSettings[indexPath.section].openned == true){
-            tableViewDataSettings[indexPath.section].openned = false
-            return 60
-        }
-        else {
-            tableViewDataSettings[indexPath.section].openned = false
-            return 60
-        }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let image = UIImage(named: "Expand Arrow")
-//        if indexPath.row == 0{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") as! settingsCustomCellTableViewCell
-            cell.titleLabel?.text = tableViewDataSettings[indexPath.section].title
-            cell.dropDownOne?.text = tableViewDataSettings[indexPath.section].subtitles[0]
-            cell.dropDownTwo?.text = tableViewDataSettings[indexPath.section].subtitles[1]
-        if (cell.contentView.bounds.size.height == 60){
-            cell.moreImage.image = image
-            cell.moreImage.transform = CGAffineTransform(rotationAngle: 3.14
-            )
+        let cell = settingsTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! settingsCustomCellTableViewCell
+        cell.titleLabel.text = "Test Title"
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let previousIndexPath = selectedIndexPath
+        if indexPath == selectedIndexPath{
+            selectedIndexPath = nil
         }
         else{
-            cell.moreImage.image = image
-            cell.moreImage.transform = CGAffineTransform(rotationAngle: 3.14)
-            
+            selectedIndexPath = indexPath
         }
-            cell.cellView.layer.cornerRadius = 27
-            cell.backgroundColor = UIColor.clear
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
         
-            return cell
-//        }
-//        else{
-//            guard let cell = tableView.dequeueReusableCell(withIdentifier: "customCell") else{ return UITableViewCell()}
-//            cell.textLabel?.text = tableViewDataSettings[indexPath.section].sectionData[dataIndex]
-//            return cell
-//        }
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = UIColor.clear
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    
-        return CGFloat(10)
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        
-        selectedIndexPath = indexPath
-        
-        if indexPath.row == 0{
-            if tableViewDataSettings[indexPath.section].openned == true{
-                tableViewDataSettings[indexPath.section].openned = false
-                let sections = IndexSet.init(integer: indexPath.section)
-                tableView.reloadSections(sections, with: .none)
-                
-            }
-            else{
-                tableViewDataSettings[indexPath.section].openned = true
-                let sections = IndexSet.init(integer: indexPath.section)
-                tableView.reloadSections(sections, with: .none)
-            }
+        var indexPaths: Array<IndexPath> = []
+        if let previous = previousIndexPath{
+            indexPaths += [previous]
+        }
+        if let current = selectedIndexPath{
+            indexPaths += [current]
+        }
+        if indexPaths.count > 0{
+            tableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
         }
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        (cell as! settingsCustomCellTableViewCell).watchFrameChanges()
+    }
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        (cell as! settingsCustomCellTableViewCell).ignoreFrameChanges()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath == selectedIndexPath{
+            return settingsCustomCellTableViewCell.expandedHeight
+        }
+        else{
+            return settingsCustomCellTableViewCell.defaultHeight
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        for cell in settingsTableView.visibleCells as! [settingsCustomCellTableViewCell] {
+            cell.ignoreFrameChanges()
+        }
+        
+    }
+    
 }
