@@ -1772,8 +1772,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84R-QG-Ejc">
-                                <rect key="frame" x="164" y="330" width="46" height="30"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="exitButton:" destination="3Fq-0d-DHC" eventType="touchUpInside" id="tqi-Dm-2Ct"/>
@@ -1786,7 +1787,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uM9-IX-Oiq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6124" y="1487"/>
+            <point key="canvasLocation" x="6124" y="1486.6995073891626"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hRq-tN-qLN">
@@ -1822,7 +1823,7 @@
         <image name="Create Account Button" width="177" height="188"/>
         <image name="Distance Icon" width="78" height="79"/>
         <image name="Exit Search Button" width="92" height="100"/>
-        <image name="Fill 7 Copy 2" width="171" height="216"/>
+        <image name="Fill 7 Copy 2" width="173" height="85"/>
         <image name="Fill 7 Copy 5CA" width="308" height="192"/>
         <image name="Fill 7 Copy 6" width="375" height="593"/>
         <image name="Filters Icon" width="89" height="100"/>

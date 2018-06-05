@@ -9,7 +9,7 @@
 import UIKit
 
 class newConnectPopUp: UIViewController {
-
+    //exit button full screen so that when you click off of the table of connect times, it takes you out 
     @IBAction func exitButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
