@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1272,6 +1272,9 @@
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-31"/>
                                         <state key="normal" image="remove from list button"/>
+                                        <connections>
+                                            <action selector="removeFromListButtonPressed:" destination="ChP-SR-ddt" eventType="touchUpInside" id="hsT-0z-hKa"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1647058824" green="0.27450980390000002" blue="0.70588235290000001" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1350,6 +1353,7 @@
                         <outlet property="providerProfileImage" destination="6hF-BO-koD" id="Ff6-ci-hiw"/>
                         <outlet property="providerRatingLabel" destination="1ry-ze-GE2" id="Tk3-NU-8xE"/>
                         <outlet property="providerSizeLabel" destination="K44-Qz-mUp" id="MU3-n3-aeD"/>
+                        <outlet property="removeFromList" destination="MoF-qq-SN1" id="t3S-qJ-hqk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Rc-1l-1tK" userLabel="First Responder" sceneMemberID="firstResponder"/>

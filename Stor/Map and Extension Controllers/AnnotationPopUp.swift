@@ -26,6 +26,9 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
     @IBOutlet weak var featurePageControl: UIPageControl!
     @IBOutlet weak var descriptionScrollView: UIScrollView!
     @IBOutlet weak var cubicFeetLabel: UILabel!
+    @IBOutlet weak var removeFromList: UIButton!
+    
+    
     
     var providerAddress: String?
     var providerID: String?
@@ -39,18 +42,31 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
         dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func connectButton(_ sender: Any) {
-        print("CONNECT")
-    }
+
     @IBAction func addToListButtonPressed(_ sender: Any) {
         print("ADD TO LIST")
         if let user = Auth.auth().currentUser{
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
             let userReference = databaseReference.root.child("Users").child((user.uid))
         userReference.child("myList").child(self.storageID!).updateChildValues(["myListProvider0": self.providerID, "myListStorage0": self.storageID])
-            
     }
+        removeFromList.alpha = 0
+        removeFromList.isHidden = false
+        [UIButton .animate(withDuration: 0.3, animations: {
+            self.removeFromList.alpha = 1
+        })]
 }
+    @IBAction func removeFromListButtonPressed(_ sender: Any) {
+        if let user = Auth.auth().currentUser{
+            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+            let userReference = databaseReference.root.child("Users").child((user.uid))
+            userReference.child("myList").child(self.storageID!).removeValue()
+        }
+                [UIButton .animate(withDuration: 0.3, animations: {
+                self.removeFromList.alpha = 0
+        })]
+//        self.removeFromList.isHidden = true
+    }
     
 
     
@@ -60,6 +76,7 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
         super.viewDidLoad()
         imageScrollView.delegate = self
         descriptionScrollView.delegate = self
+        removeFromList.isHidden = true
         Database.database().reference().child("Providers").child(providerID!).child("currentStorage").observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String: Any]{
                 self.providerAddressLabel.text = dictionary["Address"] as? String
