@@ -9,28 +9,44 @@ import UIKit
 
 class settingsCustomCellTableViewCell: UITableViewCell {
     
+    var isObserving = false;
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var moreImage: UIImageView!
     @IBOutlet weak var dropDownOne: UILabel! // Label
     @IBOutlet weak var dropDownTwo: UILabel!
     
-    @IBOutlet weak var switchOne: UISwitch!
-    @IBOutlet weak var switchTwo: UISwitch!
+
+    class var expandedHeight: CGFloat {get { return 200 }}
+    class var defaultHeight: CGFloat {get { return 60 }}
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        switchOne.onTintColor = UIColor(red: 68/421, green: 140/421, blue: 253/421, alpha: 0.8)
-        switchTwo.onTintColor = UIColor(red: 68/421, green: 140/421, blue: 253/421, alpha: 0.8)
-        
-        // Initialization code
+    
+    
+    func checkHeight(){
+        cellView.isHidden = (frame.size.height < settingsCustomCellTableViewCell.expandedHeight)
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
+    func watchFrameChanges(){
+        if !isObserving{
+            addObserver(self, forKeyPath: "frame", options: .new, context: nil)
+            isObserving = true
+        }
     }
+    
+    func ignoreFrameChanges(){
+        if isObserving{
+            removeObserver(self, forKeyPath: "frame")
+            isObserving = false
+        }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "frame"{
+            checkHeight()
+        }
+    }
+    
     
 }
 
