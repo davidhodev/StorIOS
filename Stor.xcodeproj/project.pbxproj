@@ -20,6 +20,7 @@
 		57EC509320C22389009F470F /* newConnectPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC509220C22389009F470F /* newConnectPopUp.swift */; };
 		D1947A535ADA1F3F00BCE349 /* Pods_StorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBFB92A62876BD03C1FEC207 /* Pods_StorUITests.framework */; };
 		DB0515CE20C7551700386902 /* myListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0515CD20C7551700386902 /* myListCustomCell.swift */; };
+		DB0515D020C84F9A00386902 /* myListUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0515CF20C84F9A00386902 /* myListUser.swift */; };
 		DB4964DD20C0CBA9002F4EBD /* Dosis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964D920C0CB9F002F4EBD /* Dosis-Regular.otf */; };
 		DB4964DE20C0CC73002F4EBD /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964DA20C0CB9F002F4EBD /* Dosis-Bold.otf */; };
 		DB4B5E9320B339A30050F66E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB4B5E9220B339A20050F66E /* GoogleService-Info.plist */; };
@@ -78,6 +79,7 @@
 		9C530B0B3D761ADC198DC431 /* Pods-StorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorUITests/Pods-StorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1E7F08C17DB4E0B3B6B7EEE /* Pods-StorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorTests/Pods-StorTests.release.xcconfig"; sourceTree = "<group>"; };
 		DB0515CD20C7551700386902 /* myListCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myListCustomCell.swift; sourceTree = "<group>"; };
+		DB0515CF20C84F9A00386902 /* myListUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myListUser.swift; sourceTree = "<group>"; };
 		DB3EE96E20B4B1D700CC4174 /* Stor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stor.entitlements; sourceTree = "<group>"; };
 		DB4964D620C0CB96002F4EBD /* Dosis-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraBold.otf"; sourceTree = "<group>"; };
 		DB4964D720C0CB9E002F4EBD /* Dosis-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Medium.otf"; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				041640B720BDF66E001BE560 /* myListViewController.swift */,
+				DB0515CF20C84F9A00386902 /* myListUser.swift */,
 				DB0515CD20C7551700386902 /* myListCustomCell.swift */,
 				041640BB20BDF7C4001BE560 /* myStorageViewController.swift */,
 				041640B920BDF775001BE560 /* paymentViewController.swift */,
@@ -564,6 +567,7 @@
 				041640BA20BDF775001BE560 /* paymentViewController.swift in Sources */,
 				DB6B0EF920BC7830000CC1D9 /* Annotations.swift in Sources */,
 				57EC509320C22389009F470F /* newConnectPopUp.swift in Sources */,
+				DB0515D020C84F9A00386902 /* myListUser.swift in Sources */,
 				DB59552920B49F4D001E1AF0 /* MapViewController.swift in Sources */,
 				041640B820BDF66E001BE560 /* myListViewController.swift in Sources */,
 				04201CF520C8554500CA477E /* filterViewController.swift in Sources */,

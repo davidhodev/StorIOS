@@ -16,6 +16,11 @@ class settingsCustomCellTableViewCell: UITableViewCell {
     @IBOutlet weak var moreImage: UIImageView!
     @IBOutlet weak var dropDownOne: UILabel! // Label
     @IBOutlet weak var dropDownTwo: UILabel!
+    //switch variables
+    @IBOutlet weak var textMessageControl: UISwitch!
+    @IBOutlet weak var pushNotificationsControl: UISwitch!
+    @IBOutlet weak var storContactControl: UISwitch!
+    @IBOutlet weak var deleteAccountButtonControl: UIButton!
     
     class var expandedHeight: CGFloat {get { return 200 }}
     class var defaultHeight: CGFloat {get { return 60 }}
@@ -24,6 +29,8 @@ class settingsCustomCellTableViewCell: UITableViewCell {
     func checkHeight(){
         cellView.isHidden = (frame.size.height < settingsCustomCellTableViewCell.expandedHeight)
     }
+    
+    
     
     func watchFrameChanges(){
         if !isObserving{
