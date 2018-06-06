@@ -23,7 +23,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var searchResultsTableView: UITableView!
     @IBOutlet weak var outOfAuto: UIButton!
     
-    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    var newActivityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
 
     @IBAction func outOfAutoComplete(_ sender: Any) {
         searchResultsTableView.isHidden = true
@@ -76,6 +76,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         searchCompleter.delegate = self
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
+        //Activity Indicator
+        newActivityIndicator.center = self.view.center
+        newActivityIndicator.hidesWhenStopped = true
+        newActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+        view.addSubview(newActivityIndicator)
+        
+        newActivityIndicator.startAnimating()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         self.reCenterShowButton.isHidden = true
         self.searchResultsTableView.layer.cornerRadius = 30
         self.searchResultsTableView.layer.masksToBounds = true
@@ -91,14 +99,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         // Get Data for the Menu
         let uid = Auth.auth().currentUser?.uid
-        //Activity Indicator
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
-        view.addSubview(activityIndicator)
-        
-        activityIndicator.startAnimating()
-        UIApplication.shared.beginIgnoringInteractionEvents()
         Database.database().reference().child("Users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
 
             if let dictionary = snapshot.value as? [String:Any] {
@@ -123,12 +123,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         
         fetchProviders()
-//        let center = self.storMapKit.userLocation.coordinate
-//        let span = MKCoordinateSpanMake(0.01, 0.01) //WHERE WE CHANGE THE SPAN OF MAP
-//        let region = MKCoordinateRegion(center: center, span: span)
-//        self.storMapKit.showsPointsOfInterest = false
         self.hideKeyboardWhenTappedAround()
-//        storMapKit.setRegion(region, animated: true)
     }
     
     
@@ -162,6 +157,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 //        storMapKit.showsUserLocation = true
 //        locationManager.stopUpdatingLocation()
 //    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -333,12 +329,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     provider.image = #imageLiteral(resourceName: "Map Pin Background")
                     self.providers.append(provider)
                     self.storMapKit.addAnnotation(provider)
-                    
                 }
             )}
+            UIApplication.shared.endIgnoringInteractionEvents()
+            self.newActivityIndicator.stopAnimating()
         }, withCancel: nil)
-        UIApplication.shared.endIgnoringInteractionEvents()
-        self.activityIndicator.stopAnimating()
     }
     
     func hideKeyboardWhenTappedAround() {
