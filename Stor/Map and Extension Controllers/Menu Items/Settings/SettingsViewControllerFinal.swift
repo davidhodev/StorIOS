@@ -11,15 +11,19 @@ import GoogleSignIn
 import FBSDKLoginKit
 
 let cellID = "customCell"
-
-//struct cellDataForSettings {
-//    var openned: Bool?
-//    var title: String?
-//    var subtitles = [String]()
-//}
+let cellSpacingHeight: CGFloat = 10
+// making structure that labels and data takes from
+struct cellDataForSettings {
+    var title: String?
+    var subtitles = [String]()
+}
 
 class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBAction func pushNotificationsSwitch(_ sender: UISwitch) {
+    }
+    @IBAction func textMessageSwitch(_ sender: UISwitch) {
+    }
     @IBOutlet weak var settingsTableView: UITableView!
     @IBAction func ExitButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -38,7 +42,7 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
     }
     
     
-//    var tableViewDataSettings = [cellDataForSettings]()
+    var tableViewDataSettings = [cellDataForSettings]()
     var selectedIndexPath: IndexPath?
     
     override func viewDidLoad() {
@@ -47,7 +51,7 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         settingsTableView.dataSource = self
 //        settingsTableView.backgroundColor = UIColor.clear
 //        settingsTableView.sectionIndexBackgroundColor = UIColor.clear
-//        tableViewDataSettings = [cellDataForSettings(openned: false, title: "Notifications", subtitles: ["Push Notifications", "Text Message"]), cellDataForSettings(openned: false, title: "Privacy Settings", subtitles: ["Allow Stor to Contact you for news and promotions", "Delete Account"])]
+        tableViewDataSettings = [cellDataForSettings(title: "Notifications", subtitles: ["Push Notifications", "Text Message"]), cellDataForSettings(title: "Privacy Settings", subtitles: ["Allow Stor to Contact you for news and promotions", "Delete Account"])]
     }
 
     
@@ -60,10 +64,21 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         return 2
     }
     
-    
+    //gives each cell and its header properties
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = settingsTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! settingsCustomCellTableViewCell
-        cell.titleLabel.text = "Test Title"
+        // make this take in the full array items
+        cell.titleLabel.text = tableViewDataSettings[indexPath.row].title
+        cell.dropDownOne.text = tableViewDataSettings[indexPath.row].subtitles[0]
+        cell.dropDownTwo.text = tableViewDataSettings[indexPath.row].subtitles[1]
+        cell.cellView.layer.cornerRadius = 27
+        if (cell.contentView.bounds.size.height == 60){
+            cell.moreImage.image = UIImage(named: "Expand Arrow")
+        }
+        else
+        {
+            cell.moreImage.image = UIImage(named: "Up Arrow")
+        }
         return cell
     }
     
@@ -94,7 +109,7 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         (cell as! settingsCustomCellTableViewCell).ignoreFrameChanges()
     }
-    
+    // expands and contracts cells when pressed
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath == selectedIndexPath{
             return settingsCustomCellTableViewCell.expandedHeight
@@ -102,6 +117,10 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         else{
             return settingsCustomCellTableViewCell.defaultHeight
         }
+    }
+// height between cells
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return cellSpacingHeight
     }
     
     override func viewWillDisappear(_ animated: Bool) {

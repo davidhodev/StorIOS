@@ -17,10 +17,8 @@ class settingsCustomCellTableViewCell: UITableViewCell {
     @IBOutlet weak var dropDownOne: UILabel! // Label
     @IBOutlet weak var dropDownTwo: UILabel!
     
-
     class var expandedHeight: CGFloat {get { return 200 }}
     class var defaultHeight: CGFloat {get { return 60 }}
-    
     
     
     func checkHeight(){
