@@ -1,28 +1,30 @@
 //
-//  settingsCustomCellTableViewCell.swift
+//  myListCustomCell.swift
+//  Stor
 //
-//
-//  Created by David Ho on 6/4/18.
+//  Created by David Ho on 6/5/18.
+//  Copyright © 2018 David Ho. All rights reserved.
 //
 
 import UIKit
 
-class settingsCustomCellTableViewCell: UITableViewCell {
+class myListCustomCell: UITableViewCell {
     
     var isObserving = false;
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var cellView: UIView!
-    @IBOutlet weak var moreImage: UIImageView!
-    @IBOutlet weak var dropDownOne: UILabel! // Label
-    @IBOutlet weak var dropDownTwo: UILabel!
     
-    class var expandedHeight: CGFloat {get { return 200 }}
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var cellView: UIView!
+    
+    
+    
+    class var expandedHeight: CGFloat {get { return 420 }}
     class var defaultHeight: CGFloat {get { return 60 }}
     
     
+    
     func checkHeight(){
-        cellView.isHidden = (frame.size.height < settingsCustomCellTableViewCell.expandedHeight)
+        cellView.isHidden = (frame.size.height < myListCustomCell.expandedHeight)
     }
     
     func watchFrameChanges(){
@@ -47,4 +49,3 @@ class settingsCustomCellTableViewCell: UITableViewCell {
     
     
 }
-
