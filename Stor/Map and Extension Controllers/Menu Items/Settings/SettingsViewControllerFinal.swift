@@ -11,7 +11,7 @@ import GoogleSignIn
 import FBSDKLoginKit
 
 let cellID = "customCell"
-let cellSpacingHeight: CGFloat = 10
+let cellSpacingHeight: CGFloat = 30
 // making structure that labels and data takes from
 struct cellDataForSettings {
     var title: String?
@@ -20,11 +20,9 @@ struct cellDataForSettings {
 
 class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBAction func pushNotificationsSwitch(_ sender: UISwitch) {
-    }
-    @IBAction func textMessageSwitch(_ sender: UISwitch) {
-    }
+    
     @IBOutlet weak var settingsTableView: UITableView!
+    //exit button back to the map
     @IBAction func ExitButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -41,7 +39,7 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    
+    // creating variables for the structure and selection
     var tableViewDataSettings = [cellDataForSettings]()
     var selectedIndexPath: IndexPath?
     
@@ -57,21 +55,38 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
     
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return tableViewDataSettings.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     
     //gives each cell and its header properties
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = settingsTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! settingsCustomCellTableViewCell
         // make this take in the full array items
-        cell.titleLabel.text = tableViewDataSettings[indexPath.row].title
-        cell.dropDownOne.text = tableViewDataSettings[indexPath.row].subtitles[0]
-        cell.dropDownTwo.text = tableViewDataSettings[indexPath.row].subtitles[1]
-        cell.cellView.layer.cornerRadius = 27
+        cell.titleLabel.text = tableViewDataSettings[indexPath.section].title
+        cell.dropDownOne.text = tableViewDataSettings[indexPath.section].subtitles[0]
+        cell.dropDownTwo.text = tableViewDataSettings[indexPath.section].subtitles[1]
+        // change the look of cell
+        settingsTableView.backgroundColor = UIColor.clear
+        cell.backgroundColor = UIColor.white
+        cell.layer.cornerRadius = 27
+
+        //changing the switches, if statement is second section
+        if (indexPath.section == numberOfSections(in: settingsTableView) - 1){
+            cell.textMessageControl.isHidden = true
+            cell.storContactControl.isHidden = false
+            cell.pushNotificationsControl.isHidden = true
+            cell.deleteAccountButtonControl.isHidden = false
+        }
+        else{
+            cell.textMessageControl.isHidden = false
+            cell.pushNotificationsControl.isHidden = false
+            cell.storContactControl.isHidden = true
+            cell.deleteAccountButtonControl.isHidden = true
+        }
         if (cell.contentView.bounds.size.height == 60){
             cell.moreImage.image = UIImage(named: "Expand Arrow")
         }
@@ -118,9 +133,13 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
             return settingsCustomCellTableViewCell.defaultHeight
         }
     }
-// height between cells
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    //makes animations synchronous
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return cellSpacingHeight
+    }
+   //hides the footer/creates space between sections
+    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.clear
     }
     
     override func viewWillDisappear(_ animated: Bool) {
