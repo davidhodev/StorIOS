@@ -13,7 +13,8 @@ import FirebaseDatabase
 class myListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var selectedIndexPath: IndexPath?
-
+    var myListUsers = [myListUser]()
+    
     @IBOutlet weak var myListTableView: UITableView!
     @IBAction func exitButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -22,6 +23,8 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         myListTableView.delegate = self
         myListTableView.dataSource = self
+        
+        getMyList()
 
         // Do any additional setup after loading the view.
     }
@@ -33,11 +36,11 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myListTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! myListCustomCell
@@ -94,10 +97,22 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func getMyList(){
         let uid = Auth.auth().currentUser?.uid
         Database.database().reference().child("Users").child(uid!).child("myList").observeSingleEvent(of: .value, with: { (snapshot) in
+            for userChild in snapshot.children{
+                let userSnapshot = userChild as! DataSnapshot
+                let dictionary = userSnapshot.value as? [String: String?]
+                let user = myListUser()
+                user.providerID = dictionary!["myListProvider0"] as? String
+                user.storageID = dictionary!["myListStorage0"] as? String
+                self.myListUsers.append(user)
                 
-                if let dictionary = snapshot.value as? [String:Any] {
-                    print(dictionary)
+                DispatchQueue.main.async {
+                    self.myListTableView.reloadData()
                 }
+                
+
+            
+                    
+            }
             }, withCancel: nil)
     }
     
