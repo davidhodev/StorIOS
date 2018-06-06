@@ -18,6 +18,7 @@
 		579D4C5F20BF2D6E0082A86F /* AnnotationPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579D4C5E20BF2D6E0082A86F /* AnnotationPopUp.swift */; };
 		57EC509320C22389009F470F /* newConnectPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC509220C22389009F470F /* newConnectPopUp.swift */; };
 		D1947A535ADA1F3F00BCE349 /* Pods_StorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBFB92A62876BD03C1FEC207 /* Pods_StorUITests.framework */; };
+		DB0515CE20C7551700386902 /* myListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0515CD20C7551700386902 /* myListCustomCell.swift */; };
 		DB4964DD20C0CBA9002F4EBD /* Dosis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964D920C0CB9F002F4EBD /* Dosis-Regular.otf */; };
 		DB4964DE20C0CC73002F4EBD /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964DA20C0CB9F002F4EBD /* Dosis-Bold.otf */; };
 		DB4B5E9320B339A30050F66E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB4B5E9220B339A20050F66E /* GoogleService-Info.plist */; };
@@ -74,6 +75,7 @@
 		83BDF3AB5601AEFA4206A668 /* Pods_StorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C530B0B3D761ADC198DC431 /* Pods-StorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorUITests/Pods-StorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1E7F08C17DB4E0B3B6B7EEE /* Pods-StorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorTests/Pods-StorTests.release.xcconfig"; sourceTree = "<group>"; };
+		DB0515CD20C7551700386902 /* myListCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myListCustomCell.swift; sourceTree = "<group>"; };
 		DB3EE96E20B4B1D700CC4174 /* Stor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stor.entitlements; sourceTree = "<group>"; };
 		DB4964D620C0CB96002F4EBD /* Dosis-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraBold.otf"; sourceTree = "<group>"; };
 		DB4964D720C0CB9E002F4EBD /* Dosis-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Medium.otf"; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				041640B720BDF66E001BE560 /* myListViewController.swift */,
+				DB0515CD20C7551700386902 /* myListCustomCell.swift */,
 				041640BB20BDF7C4001BE560 /* myStorageViewController.swift */,
 				041640B920BDF775001BE560 /* paymentViewController.swift */,
 				571E1B5920C0C6AB00E68CA5 /* Settings */,
@@ -567,6 +570,7 @@
 				574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */,
 				DBF8BCBE20B7887D0080EEF5 /* globalVariablesViewController.swift in Sources */,
 				576A007420B7798100F2174D /* MenuViewController.swift in Sources */,
+				DB0515CE20C7551700386902 /* myListCustomCell.swift in Sources */,
 				DBE6A8B420C5C28B005B1A75 /* settingsCustomTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
