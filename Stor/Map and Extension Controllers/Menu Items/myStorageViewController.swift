@@ -16,8 +16,8 @@ struct cellDataForStorage {
 
 
 class myStorageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     @IBOutlet weak var storageTableView: UITableView!
-    
     @IBAction func exitButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -29,7 +29,6 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         super.viewDidLoad()
         storageTableView.delegate = self
         storageTableView.dataSource = self
-        tableViewData = [cellDataForStorage(openned: false, title: "Title1", sectionData: ["Cell1", "Cell2", "Cell3"]), cellDataForStorage(openned: false, title: "Title1", sectionData: ["Cell1", "Cell2", "Cell3"]), cellDataForStorage(openned: false, title: "Title1", sectionData: ["Cell1", "Cell2", "Cell3"]), cellDataForStorage(openned: false, title: "Title1", sectionData: ["Cell1", "Cell2", "Cell3"])]
     }
     
     override func didReceiveMemoryWarning() {
