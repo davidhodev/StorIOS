@@ -53,6 +53,10 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.cubicFeetLabel.attributedText = user.cubicString
         cell.nameLabel.text = user.name
         cell.ratingLabel.text = user.rating
+        myListTableView.backgroundColor = UIColor.clear
+        cell.backgroundColor = UIColor.white
+        cell.layer.cornerRadius = 27
+        
         
         DispatchQueue.main.async(execute: { () -> Void in
             
@@ -79,10 +83,16 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.providerProfilePicture.image = user.providerProfile
             cell.storagePhoto.image = user.storagePhoto
             
-            
-            
         })
-        
+        //changing image based on selection
+        if (cell.contentView.bounds.size.height.rounded() == 60){
+            cell.moreImage.image = UIImage(named: "Expand Arrow")
+        }
+        else
+        {
+            print (cell.contentView.bounds.size.height)
+            cell.moreImage.image = UIImage(named: "Up Arrow")
+        }
         
         return cell
     }
@@ -131,6 +141,16 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.ignoreFrameChanges()
         }
         
+    }
+    
+    //makes animations synchronous
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    //hides the footer/creates space between sections
+    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.clear
     }
     
     func getMyList(){

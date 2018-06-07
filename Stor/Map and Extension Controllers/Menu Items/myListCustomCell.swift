@@ -21,6 +21,7 @@ class myListCustomCell: UITableViewCell {
     @IBOutlet weak var dimensionsLabel: UILabel!
     @IBOutlet weak var cubicFeetLabel: UILabel!
     @IBOutlet weak var providerProfilePicture: UIImageView!
+    @IBOutlet weak var moreImage: UIImageView!
     
     @IBOutlet weak var storagePhoto: UIImageView!
     
