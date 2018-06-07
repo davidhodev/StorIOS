@@ -7,29 +7,26 @@
 //
 
 import UIKit
-
-struct cellDataForStorage {
-    var openned: Bool?
-    var title: String?
-    var sectionData = [String]()
-}
-
+import FirebaseAuth
+import FirebaseDatabase
 
 class myStorageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var storageTableView: UITableView!
+
+    var selectedIndexPath: IndexPath?
+    var myStorageUsers = [myStorageUser]()
     
+    @IBOutlet weak var storageTableView: UITableView!
     @IBAction func exitButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
-    var tableViewData = [cellDataForStorage]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         storageTableView.delegate = self
         storageTableView.dataSource = self
-        tableViewData = [cellDataForStorage(openned: false, title: "Title1", sectionData: ["Cell1", "Cell2", "Cell3"]), cellDataForStorage(openned: false, title: "Title1", sectionData: ["Cell1", "Cell2", "Cell3"]), cellDataForStorage(openned: false, title: "Title1", sectionData: ["Cell1", "Cell2", "Cell3"]), cellDataForStorage(openned: false, title: "Title1", sectionData: ["Cell1", "Cell2", "Cell3"])]
+        
+        getMyStorage()
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,58 +37,104 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
 
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return tableViewData.count
+        return myStorageUsers.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableViewData[section].openned == true{
-            return tableViewData[section].sectionData.count + 1
-        }
-        else{
-            return 1
-        }
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var dataIndex = indexPath.row - 1
-        if indexPath.row == 0{
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else{ return UITableViewCell()}
-            cell.textLabel?.text = tableViewData[indexPath.section].title
-            return cell
-        }
-        else{
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell") else{ return UITableViewCell()}
-            cell.textLabel?.text = tableViewData[indexPath.section].sectionData[dataIndex]
-            return cell
-        }
+       let cell = storageTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! myStorageCustomTableViewCell
+        let user = myStorageUsers[indexPath.section]
+        cell.addressLabel.text = user.address
+        
+        storageTableView.backgroundColor = UIColor.clear
+        cell.backgroundColor = UIColor.white
+        cell.layer.cornerRadius = 27
+        
+        return cell
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0{
-            if tableViewData[indexPath.section].openned == true{
-                tableViewData[indexPath.section].openned = false
-                let sections = IndexSet.init(integer: indexPath.section)
-                tableView.reloadSections(sections, with: .none)
-            }
-            else{
-                tableViewData[indexPath.section].openned = true
-                let sections = IndexSet.init(integer: indexPath.section)
-                tableView.reloadSections(sections, with: .none)
-            }
+        let previousIndexPath = selectedIndexPath
+        if indexPath == selectedIndexPath{
+            selectedIndexPath = nil
+        }
+        else{
+            selectedIndexPath = indexPath
+        }
+        
+        var indexPaths: Array<IndexPath> = []
+        if let previous = previousIndexPath{
+            indexPaths += [previous]
+        }
+        if let current = selectedIndexPath{
+            indexPaths += [current]
+        }
+        if indexPaths.count > 0{
+            tableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
         }
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        (cell as! myStorageCustomTableViewCell).watchFrameChanges()
+    }
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        (cell as! myStorageCustomTableViewCell).ignoreFrameChanges()
+    }
 
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath == selectedIndexPath{
+            return myStorageCustomTableViewCell.expandedHeight
+        }
+        else{
+            return myStorageCustomTableViewCell.defaultHeight
+        }
     }
-    */
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        for cell in storageTableView.visibleCells as! [myStorageCustomTableViewCell] {
+            cell.ignoreFrameChanges()
+        }
+        
+    }
+    
+    //makes animations synchronous
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    //hides the footer/creates space between sections
+    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.clear
+    }
+    
+    func getMyStorage(){
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("Users").child(uid!).child("pendingStorage").observeSingleEvent(of: .value, with: { (snapshot) in
+            for userChild in snapshot.children{
+                let userSnapshot = userChild as! DataSnapshot
+                let dictionary = userSnapshot.value as? [String: String?]
+                print("GET MY STORAGE DICTIONARY", dictionary)
+                let user = myStorageUser()
+                user.providerID = dictionary!["myListProvider0"] as? String
+                user.storageID = dictionary!["myListStorage0"] as? String
+                user.getAddress()
+                user.getData()
+                self.myStorageUsers.append(user)
+                
+                DispatchQueue.main.async {
+                    self.storageTableView.reloadData()
+                }
+                
+                
+                
+                
+            }
+        }, withCancel: nil)
+    }
 }

@@ -32,6 +32,13 @@ class newConnectPopUp: UIViewController {
     }
     @IBAction func submitButtonPressed(_ sender: Any) {
         print("submit")
+        
+        if let user = Auth.auth().currentUser{
+            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+            let userReference = databaseReference.root.child("Users").child((user.uid))
+            userReference.child("pendingStorage").child(self.storageID!).updateChildValues(["myListProvider0": self.providerID, "myListStorage0": self.storageID])
+        }
+        
 //        if let user = Auth.auth().currentUser{
 //            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
 //
