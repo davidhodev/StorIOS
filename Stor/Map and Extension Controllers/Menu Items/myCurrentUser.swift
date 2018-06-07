@@ -1,8 +1,8 @@
 //
-//  myStorageUser.swift
+//  myCurrentUser.swift
 //  Stor
 //
-//  Created by David Ho on 6/6/18.
+//  Created by David Ho on 6/7/18.
 //  Copyright © 2018 David Ho. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class myStorageUser: NSObject {
+class myCurrentUser: NSObject {
     var providerID: String?
     var storageID: String?
     var address: String?
@@ -21,7 +21,6 @@ class myStorageUser: NSObject {
     var providerProfile: UIImage?
     var storagePhoto: UIImage?
     var name: String?
-    
     
     func getAddress(){
         if let user = Auth.auth().currentUser{
@@ -138,4 +137,7 @@ class myStorageUser: NSObject {
         }
         
     }
+    
+    
+    
 }

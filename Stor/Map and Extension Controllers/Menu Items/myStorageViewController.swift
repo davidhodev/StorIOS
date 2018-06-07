@@ -14,17 +14,27 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
 
     var selectedIndexPath: IndexPath?
     var myStorageUsers = [myStorageUser]()
+    var myCurrentStorageUsers = [myCurrentUser]()
+    var selectorIndex: Int?
     
+    @IBAction func switchCustomTableViewAction(_ sender: Any) {
+        selectorIndex = switchCustomTable.selectedSegmentIndex
+        DispatchQueue.main.async {
+            self.storageTableView.reloadData()
+        }
+    }
     @IBOutlet weak var storageTableView: UITableView!
     @IBAction func exitButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-
+    @IBOutlet weak var switchCustomTable: UISegmentedControl!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         storageTableView.delegate = self
         storageTableView.dataSource = self
+        selectorIndex = 0
         
         getMyStorage()
     }
@@ -37,7 +47,14 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
 
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return myStorageUsers.count
+        print(selectorIndex)
+        if selectorIndex == 0{
+            return myStorageUsers.count
+        }
+        else{
+            print("TOOGGLED")
+            return myCurrentStorageUsers.count
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -46,14 +63,115 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let cell = storageTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! myStorageCustomTableViewCell
-        let user = myStorageUsers[indexPath.section]
-        cell.addressLabel.text = user.address
+        if selectorIndex == 0{
+            let user = myStorageUsers[indexPath.section]
+            cell.addressLabel.text = user.address
+            
+            cell.priceLabel.attributedText = user.price
+            cell.dimensionsLabel.text = user.dimensionsString
+            cell.cubicFeetLabel.attributedText = user.cubicString
+            cell.nameLabel.text = user.name
+            cell.ratingLabel.text = user.rating
+            
+            
+            DispatchQueue.main.async(execute: { () -> Void in
+                
+                let lineWidth = CGFloat(7.0)
+                let rect = CGRect(x: 0, y: 0.0, width: 50, height: 54)
+                let sides = 6
+                
+                let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 5.0, rotationOffset: CGFloat(.pi / 2.0))
+                
+                let borderLayer = CAShapeLayer()
+                borderLayer.frame = CGRect(x : 0.0, y : 0.0, width : path.bounds.width + lineWidth, height : path.bounds.height + lineWidth)
+                borderLayer.path = path.cgPath
+                borderLayer.lineWidth = lineWidth
+                borderLayer.lineJoin = kCALineJoinRound
+                borderLayer.lineCap = kCALineCapRound
+                borderLayer.strokeColor = UIColor.black.cgColor
+                borderLayer.fillColor = UIColor.white.cgColor
+                
+                let hexagon = createImage(layer: borderLayer)
+                
+                cell.providerProfileImage.contentMode = .scaleAspectFill
+                cell.providerProfileImage.layer.masksToBounds = false
+                cell.providerProfileImage.layer.mask = borderLayer
+                cell.providerProfileImage.image = user.providerProfile
+                cell.storagePhoto.image = user.storagePhoto
+                
+            })
+            //changing image based on selection
+            if (cell.contentView.bounds.size.height.rounded() == 60){
+                cell.moreImage.image = UIImage(named: "Expand Arrow")
+            }
+            else
+            {
+                print (cell.contentView.bounds.size.height)
+                cell.moreImage.image = UIImage(named: "Up Arrow")
+            }
+            
+            
+            storageTableView.backgroundColor = UIColor.clear
+            cell.backgroundColor = UIColor.white
+            cell.layer.cornerRadius = 27
+            
+            return cell
+        }
+        else{
+            let user = myCurrentStorageUsers[indexPath.section]
+            cell.addressLabel.text = "TESSTYYYY" //user.address
+
+            cell.priceLabel.attributedText = user.price
+            cell.dimensionsLabel.text = user.dimensionsString
+            cell.cubicFeetLabel.attributedText = user.cubicString
+            cell.nameLabel.text = user.name
+            cell.ratingLabel.text = user.rating
+
+
+            DispatchQueue.main.async(execute: { () -> Void in
+
+                let lineWidth = CGFloat(7.0)
+                let rect = CGRect(x: 0, y: 0.0, width: 50, height: 54)
+                let sides = 6
+
+                let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 5.0, rotationOffset: CGFloat(.pi / 2.0))
+
+                let borderLayer = CAShapeLayer()
+                borderLayer.frame = CGRect(x : 0.0, y : 0.0, width : path.bounds.width + lineWidth, height : path.bounds.height + lineWidth)
+                borderLayer.path = path.cgPath
+                borderLayer.lineWidth = lineWidth
+                borderLayer.lineJoin = kCALineJoinRound
+                borderLayer.lineCap = kCALineCapRound
+                borderLayer.strokeColor = UIColor.black.cgColor
+                borderLayer.fillColor = UIColor.white.cgColor
+
+                let hexagon = createImage(layer: borderLayer)
+
+                cell.providerProfileImage.contentMode = .scaleAspectFill
+                cell.providerProfileImage.layer.masksToBounds = false
+                cell.providerProfileImage.layer.mask = borderLayer
+                cell.providerProfileImage.image = user.providerProfile
+                cell.storagePhoto.image = user.storagePhoto
+
+            })
+            //changing image based on selection
+            if (cell.contentView.bounds.size.height.rounded() == 60){
+                cell.moreImage.image = UIImage(named: "Expand Arrow")
+            }
+            else
+            {
+                print (cell.contentView.bounds.size.height)
+                cell.moreImage.image = UIImage(named: "Up Arrow")
+            }
+
+
+            storageTableView.backgroundColor = UIColor.clear
+            cell.backgroundColor = UIColor.white
+            cell.layer.cornerRadius = 27
+            
+            return cell
+        }
         
-        storageTableView.backgroundColor = UIColor.clear
-        cell.backgroundColor = UIColor.white
-        cell.layer.cornerRadius = 27
-        
-        return cell
     }
     
     
@@ -116,24 +234,39 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     func getMyStorage(){
         let uid = Auth.auth().currentUser?.uid
         Database.database().reference().child("Users").child(uid!).child("pendingStorage").observeSingleEvent(of: .value, with: { (snapshot) in
+                for userChild in snapshot.children{
+                    let userSnapshot = userChild as! DataSnapshot
+                    let dictionary = userSnapshot.value as? [String: String?]
+                    print("GET MY STORAGE DICTIONARY", dictionary)
+                    let user = myStorageUser()
+                    user.providerID = dictionary!["myListProvider0"] as? String
+                    user.storageID = dictionary!["myListStorage0"] as? String
+                    user.getAddress()
+                    user.getData()
+                    self.myStorageUsers.append(user)
+                    
+                    DispatchQueue.main.async {
+                        self.storageTableView.reloadData()
+                    }
+                }
+            }, withCancel: nil)
+        
+        
+        Database.database().reference().child("Users").child(uid!).child("currentStorage").observeSingleEvent(of: .value, with: { (snapshot) in
             for userChild in snapshot.children{
                 let userSnapshot = userChild as! DataSnapshot
                 let dictionary = userSnapshot.value as? [String: String?]
                 print("GET MY STORAGE DICTIONARY", dictionary)
-                let user = myStorageUser()
+                let user = myCurrentUser()
                 user.providerID = dictionary!["myListProvider0"] as? String
                 user.storageID = dictionary!["myListStorage0"] as? String
                 user.getAddress()
                 user.getData()
-                self.myStorageUsers.append(user)
+                self.myCurrentStorageUsers.append(user)
                 
                 DispatchQueue.main.async {
                     self.storageTableView.reloadData()
                 }
-                
-                
-                
-                
             }
         }, withCancel: nil)
     }

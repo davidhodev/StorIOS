@@ -29,7 +29,7 @@ class myListCustomCell: UITableViewCell {
     
     class var expandedHeight: CGFloat {get { return 343 }}
     class var defaultHeight: CGFloat {get { return 60 }}
-    
+
     
 
 //     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
