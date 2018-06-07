@@ -115,10 +115,11 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     
     func getMyStorage(){
         let uid = Auth.auth().currentUser?.uid
-        Database.database().reference().child("Users").child(uid!).child("myList").observeSingleEvent(of: .value, with: { (snapshot) in
+        Database.database().reference().child("Users").child(uid!).child("pendingStorage").observeSingleEvent(of: .value, with: { (snapshot) in
             for userChild in snapshot.children{
                 let userSnapshot = userChild as! DataSnapshot
                 let dictionary = userSnapshot.value as? [String: String?]
+                print("GET MY STORAGE DICTIONARY", dictionary)
                 let user = myStorageUser()
                 user.providerID = dictionary!["myListProvider0"] as? String
                 user.storageID = dictionary!["myListStorage0"] as? String

@@ -36,7 +36,7 @@ class myStorageUser: NSObject {
     
     func getData(){
         if let user = Auth.auth().currentUser{
-            Database.database().reference().child("Providers").child(providerID!).child("currentStorage").observe(.childAdded, with: { (snapshot) in
+            Database.database().reference().child("Users").child(providerID!).child("currentStorage").observe(.childAdded, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: Any]{
                     let priceString = String(describing: dictionary["Price"]!)
                     if let outputPrice = (Double(priceString)){
