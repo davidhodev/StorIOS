@@ -29,9 +29,8 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Do any additional setup after loading the view.
     }
     //takes you to the corresponding annotation
-    @IBAction func toAnnotationButton(_ sender: UIButton) {
-        
-    }
+    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
