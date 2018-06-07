@@ -7,14 +7,19 @@
 //
 
 import UIKit
+import SwiftRangeSlider
 
 class filterViewController: UIViewController {
 
+    @IBOutlet weak var sizeRangeSlider: RangeSlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
