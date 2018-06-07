@@ -96,6 +96,10 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.moreImage.image = UIImage(named: "Up Arrow")
         }
         
+    
+//        cell.cellButton.addTarget(self, action: #selector(TableViewController.buttonTapped(_:)), for: UIControlEvents.touchUpInside)
+        
+        
         return cell
     }
     
@@ -178,5 +182,17 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             }, withCancel: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "AnnotationPopUpSegue"{
+//            let destinationController = segue.destination as! AnnotationPopUp
+//            destinationController.providerID = self.annotationUID
+//            destinationController.providerAddress = self.annotationAddress
+//            destinationController.storageID = self.annotationStorageID
+//            destinationController.providerLocation = self.annotationLocation
+//            destinationController.userLocation = self.storMapKit.userLocation.location
+//        }
+    }
+    
     
 }

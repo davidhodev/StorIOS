@@ -35,6 +35,7 @@
 		DBD8FD3320B3791100776FAB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD8FD3220B3791100776FAB /* LoginViewController.swift */; };
 		DBE2A9C320C8B19B00E052A1 /* myStorageCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9C220C8B19B00E052A1 /* myStorageCustomTableViewCell.swift */; };
 		DBE2A9C520C8B39500E052A1 /* myStorageUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9C420C8B39500E052A1 /* myStorageUser.swift */; };
+		DBE2A9C720C9D5BF00E052A1 /* myCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9C620C9D5BF00E052A1 /* myCurrentUser.swift */; };
 		DBE6A8B420C5C28B005B1A75 /* settingsCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE6A8B320C5C28B005B1A75 /* settingsCustomTableViewCell.swift */; };
 		DBE905DF20924BAE000F13DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905DE20924BAE000F13DB /* AppDelegate.swift */; };
 		DBE905E420924BAE000F13DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE905E220924BAE000F13DB /* Main.storyboard */; };
@@ -100,6 +101,7 @@
 		DBD8FD3220B3791100776FAB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DBE2A9C220C8B19B00E052A1 /* myStorageCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myStorageCustomTableViewCell.swift; sourceTree = "<group>"; };
 		DBE2A9C420C8B39500E052A1 /* myStorageUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myStorageUser.swift; sourceTree = "<group>"; };
+		DBE2A9C620C9D5BF00E052A1 /* myCurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCurrentUser.swift; sourceTree = "<group>"; };
 		DBE6A8B320C5C28B005B1A75 /* settingsCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsCustomTableViewCell.swift; sourceTree = "<group>"; };
 		DBE905DB20924BAE000F13DB /* Stor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE905DE20924BAE000F13DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				DB0515CD20C7551700386902 /* myListCustomCell.swift */,
 				041640BB20BDF7C4001BE560 /* myStorageViewController.swift */,
 				DBE2A9C420C8B39500E052A1 /* myStorageUser.swift */,
+				DBE2A9C620C9D5BF00E052A1 /* myCurrentUser.swift */,
 				DBE2A9C220C8B19B00E052A1 /* myStorageCustomTableViewCell.swift */,
 				041640B920BDF775001BE560 /* paymentViewController.swift */,
 				571E1B5920C0C6AB00E68CA5 /* Settings */,
@@ -571,6 +574,7 @@
 				579D4C5F20BF2D6E0082A86F /* AnnotationPopUp.swift in Sources */,
 				DB6B0EF720B8C7DB000CC1D9 /* Extensions.swift in Sources */,
 				041640BA20BDF775001BE560 /* paymentViewController.swift in Sources */,
+				DBE2A9C720C9D5BF00E052A1 /* myCurrentUser.swift in Sources */,
 				DBE2A9C320C8B19B00E052A1 /* myStorageCustomTableViewCell.swift in Sources */,
 				DBE2A9C520C8B39500E052A1 /* myStorageUser.swift in Sources */,
 				DB6B0EF920BC7830000CC1D9 /* Annotations.swift in Sources */,
