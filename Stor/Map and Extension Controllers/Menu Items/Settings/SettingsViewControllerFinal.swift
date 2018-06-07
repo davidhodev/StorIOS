@@ -74,19 +74,8 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         settingsTableView.backgroundColor = UIColor.clear
         cell.backgroundColor = UIColor.white
         cell.layer.cornerRadius = 30
-        cell.layer.shadowOffset = CGSize(width: 0, height: 10)
-        cell.layer.shadowRadius = 30
-        cell.layer.shadowOpacity = 0.07
-        cell.layer.shadowColor = (UIColor.black).cgColor
-        cell.backgroundView?.layer.cornerRadius = 30
-        cell.backgroundView?.layer.masksToBounds = true
-        cell.layer.masksToBounds = false
+        //shadows
         
-        
-        let shadowFrame: CGRect = (cell.cellView.bounds)
-        let shadowPath: CGPath = UIBezierPath(rect: shadowFrame).cgPath
-        cell.layer.shouldRasterize = true
-        cell.layer.shadowPath = shadowPath
         
         
         
