@@ -23,9 +23,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         myListTableView.delegate = self
         myListTableView.dataSource = self
-        
         getMyList()
-
         // Do any additional setup after loading the view.
     }
     //takes you to the corresponding annotation
