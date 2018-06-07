@@ -1,34 +1,23 @@
 //
-//  myListCustomCell.swift
+//  myStorageCustomTableViewCell.swift
 //  Stor
 //
-//  Created by David Ho on 6/5/18.
+//  Created by David Ho on 6/6/18.
 //  Copyright © 2018 David Ho. All rights reserved.
 //
 
 import UIKit
 
-class myListCustomCell: UITableViewCell {
+class myStorageCustomTableViewCell: UITableViewCell {
+
+        var isObserving = false;
     
-    var isObserving = false;
-    
-    
-    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var cellView: UIView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var dimensionsLabel: UILabel!
-    @IBOutlet weak var cubicFeetLabel: UILabel!
-    @IBOutlet weak var providerProfilePicture: UIImageView!
-    @IBOutlet weak var moreImage: UIImageView!
-    
-    @IBOutlet weak var storagePhoto: UIImageView!
+    @IBOutlet weak var addressLabel: UILabel!
     
     
     class var expandedHeight: CGFloat {get { return 343 }}
     class var defaultHeight: CGFloat {get { return 60 }}
-    
     
     
     func checkHeight(){
@@ -56,5 +45,4 @@ class myListCustomCell: UITableViewCell {
     }
     
 
-    
 }
