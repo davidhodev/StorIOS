@@ -29,6 +29,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         searchResultsTableView.isHidden = true
         outOfAuto.isHidden = true
         cancelButton.isHidden = true
+        self.filterButton.isHidden = false
     }
     
     // centers the screen back on the user's location
@@ -168,6 +169,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.searchResultsTableView.isHidden = false
         self.outOfAuto.isHidden = false
         self.cancelButton.isHidden = false
+        self.filterButton.isHidden = true
     }
     
     //Text Bar Pressed
@@ -175,6 +177,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.searchResultsTableView.isHidden = false
         self.outOfAuto.isHidden = false
         self.cancelButton.isHidden = false
+        self.filterButton.isHidden = true
         searchCompleter.queryFragment = textField.text!
     }
 
@@ -229,6 +232,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             self.searchResultsTableView.isHidden = true
             self.outOfAuto.isHidden = true
             self.cancelButton.isHidden = true
+//            self.filterButton.isHidden = true
         }
     }
     
