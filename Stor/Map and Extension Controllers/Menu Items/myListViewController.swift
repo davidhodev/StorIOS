@@ -57,7 +57,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.ratingLabel.text = user.rating
         myListTableView.backgroundColor = UIColor.clear
         cell.backgroundColor = UIColor.white
-        cell.layer.cornerRadius = 27
+        cell.layer.cornerRadius = 30
         
         
         DispatchQueue.main.async(execute: { () -> Void in
