@@ -55,7 +55,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.ratingLabel.text = user.rating
         myListTableView.backgroundColor = UIColor.clear
         cell.backgroundColor = UIColor.white
-        cell.layer.cornerRadius = 27
+        cell.layer.cornerRadius = 30
         
         
         DispatchQueue.main.async(execute: { () -> Void in
@@ -93,6 +93,10 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             print (cell.contentView.bounds.size.height)
             cell.moreImage.image = UIImage(named: "Up Arrow")
         }
+        
+    
+//        cell.cellButton.addTarget(self, action: #selector(TableViewController.buttonTapped(_:)), for: UIControlEvents.touchUpInside)
+        
         
         return cell
     }
@@ -176,5 +180,17 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             }, withCancel: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "AnnotationPopUpSegue"{
+//            let destinationController = segue.destination as! AnnotationPopUp
+//            destinationController.providerID = self.annotationUID
+//            destinationController.providerAddress = self.annotationAddress
+//            destinationController.storageID = self.annotationStorageID
+//            destinationController.providerLocation = self.annotationLocation
+//            destinationController.userLocation = self.storMapKit.userLocation.location
+//        }
+    }
+    
     
 }
