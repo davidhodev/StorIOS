@@ -18,6 +18,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var buttonIndexPath: Int?
     var buttonProviderLocation: CLLocationCoordinate2D?
     
+    
     @IBOutlet weak var myListTableView: UITableView!
     @IBAction func exitButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -144,12 +145,29 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath == selectedIndexPath{
+        if (indexPath == selectedIndexPath)
+            {
             return myListCustomCell.expandedHeight
         }
-        else{
+//        else if (myListCustomCell.opened == true && indexPath == selectedIndexPath) {
+//            print(myListCustomCell.opened)
+//                myListCustomCell.opened = false
+//                return myListCustomCell.defaultHeight
+//        }
+//
+//        else if (myListCustomCell.opened == false){
+//            print(myListCustomCell.opened)
+//              return myListCustomCell.defaultHeight
+//        }
+//
+//        else if (myListCustomCell.opened == true){
+//            print(myListCustomCell.opened)
+//             return myListCustomCell.expandedHeight
+//        }
+        else {
             return myListCustomCell.defaultHeight
         }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
