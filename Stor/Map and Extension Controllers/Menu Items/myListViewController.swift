@@ -53,6 +53,10 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.cubicFeetLabel.attributedText = user.cubicString
         cell.nameLabel.text = user.name
         cell.ratingLabel.text = user.rating
+        
+        cell.toAnnotationButton.addTarget(self, action: "pressed:", for: .touchUpInside)
+        
+        
         myListTableView.backgroundColor = UIColor.clear
         cell.backgroundColor = UIColor.white
         cell.layer.cornerRadius = 30
@@ -97,8 +101,12 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
 //        cell.cellButton.addTarget(self, action: #selector(TableViewController.buttonTapped(_:)), for: UIControlEvents.touchUpInside)
         
-        
         return cell
+    }
+    
+    @objc func connected(sender: UIButton){
+        let buttonTag = sender.tag
+        print("TO ANNOTATION BUTTON PRESSED")
     }
     
     
