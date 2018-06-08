@@ -35,6 +35,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     // centers the screen back on the user's location
     @IBAction func reCenterButton(_ sender: UIButton) {
         let center = self.storMapKit.userLocation.coordinate
+        globalVariablesViewController.currentLocation = self.storMapKit.userLocation.location
         let span = MKCoordinateSpanMake(0.01, 0.01) //WHERE WE CHANGE THE SPAN OF MAP
         let region = MKCoordinateRegion(center: center, span: span)
         storMapKit.setRegion(region, animated: true)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class globalVariablesViewController: UIViewController {
 
@@ -14,4 +15,6 @@ class globalVariablesViewController: UIViewController {
     static var profilePicString = String()
     static var ratingNumber = NSNumber()
     static var profilePicData = Data()
+    static var currentLocation: CLLocation?
+    
 }

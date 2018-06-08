@@ -9,11 +9,14 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import CoreLocation
 
 class myListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var selectedIndexPath: IndexPath?
     var myListUsers = [myListUser]()
+    var buttonIndexPath: Int?
+    var buttonProviderLocation: CLLocationCoordinate2D?
     
     @IBOutlet weak var myListTableView: UITableView!
     @IBAction func exitButton(_ sender: UIButton) {
@@ -53,6 +56,11 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.cubicFeetLabel.attributedText = user.cubicString
         cell.nameLabel.text = user.name
         cell.ratingLabel.text = user.rating
+        
+        cell.toAnnotationButton.tag = indexPath.section
+        cell.toAnnotationButton.addTarget(self, action: #selector(self.btnClick(_:)), for: .touchUpInside)
+        
+        
         myListTableView.backgroundColor = UIColor.clear
         cell.backgroundColor = UIColor.white
         cell.layer.cornerRadius = 30
@@ -95,10 +103,15 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
     
-//        cell.cellButton.addTarget(self, action: #selector(TableViewController.buttonTapped(_:)), for: UIControlEvents.touchUpInside)
-        
         
         return cell
+    }
+    
+    @objc func btnClick(_ sender:UIButton) {
+        buttonIndexPath = sender.tag
+        print(buttonIndexPath)
+        print("My custom button action")
+        performSegue(withIdentifier: "seeMoreSegue", sender: self)
     }
     
     
@@ -182,14 +195,22 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "AnnotationPopUpSegue"{
-//            let destinationController = segue.destination as! AnnotationPopUp
-//            destinationController.providerID = self.annotationUID
-//            destinationController.providerAddress = self.annotationAddress
-//            destinationController.storageID = self.annotationStorageID
-//            destinationController.providerLocation = self.annotationLocation
-//            destinationController.userLocation = self.storMapKit.userLocation.location
-//        }
+        if segue.identifier == "seeMoreSegue"{
+            print("Prepping")
+            let destinationController = segue.destination as! AnnotationPopUp
+            let user = self.myListUsers[buttonIndexPath!]
+            destinationController.providerID = user.providerID
+            destinationController.providerAddress = user.address
+            destinationController.storageID = user.storageID
+            
+            let locationManager = CLLocationManager()
+            
+            destinationController.userLocation = locationManager.location
+            destinationController.providerLocation = user.providerLocation
+            
+            
+        }
+            
     }
     
     

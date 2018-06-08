@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import CoreLocation
 
 class myListUser: NSObject {
     var providerID: String?
@@ -21,7 +22,7 @@ class myListUser: NSObject {
     var providerProfile: UIImage?
     var storagePhoto: UIImage?
     var name: String?
-
+    var providerLocation: CLLocationCoordinate2D?
 
     func getAddress(){
         if let user = Auth.auth().currentUser{
@@ -29,9 +30,24 @@ class myListUser: NSObject {
                 if let dictionary = snapshot.value as? [String: Any]{
                     print(dictionary)
                     self.address = dictionary["Address"] as? String
+                    
+                    let geoCoder = CLGeocoder()
+                    geoCoder.geocodeAddressString((dictionary["Address"] as? String)!) { (placemarks, error) in
+                        guard
+                            let placemarks = placemarks,
+                            let location = placemarks.first?.location
+                            else {
+                                // handle no location found
+                                return
+                        }
+                        self.providerLocation = location.coordinate
+                        // Use your location
+                    }
+                    
                     }
                 })
         }
+        
     }
 
     func getData(){
