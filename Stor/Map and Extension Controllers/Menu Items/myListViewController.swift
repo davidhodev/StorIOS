@@ -31,7 +31,12 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     //takes you to the corresponding annotation
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.myListTableView.reloadData()
+            self.reloadInputViews()
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -169,6 +174,33 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         view.tintColor = UIColor.clear
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let removeFromList = removeAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [removeFromList])
+    }
+    
+    func removeAction(at indexPath: IndexPath) -> UIContextualAction{
+        let myStorageID = myListUsers[indexPath.section].storageID
+        let action = UIContextualAction(style: .normal, title: "Remove") { (action, view, completion) in
+            if let user = Auth.auth().currentUser{
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                let userReference = databaseReference.root.child("Users").child((user.uid))
+                userReference.child("myList").child(myStorageID!).removeValue()
+            }
+            
+            self.myListUsers.remove(at: indexPath.section)
+            self.myListTableView.reloadData()
+            completion(true)
+        }
+
+        action.backgroundColor = UIColor.red
+        
+        
+        return action
+    }
+    
+    
     
     func getMyList(){
         let uid = Auth.auth().currentUser?.uid
