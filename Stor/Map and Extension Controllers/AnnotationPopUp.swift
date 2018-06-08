@@ -158,11 +158,12 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
                 
                 
                 
-                
+                print(self.providerLocation)
                 
                 let locationProvider = CLLocation(latitude: (self.providerLocation?.latitude)!, longitude: (self.providerLocation?.longitude)!)
                 
                 let distance = self.userLocation?.distance(from: locationProvider)
+                print(distance)
                 if (Int(distance!) < 1609){
                     self.outputDistance = "Less than one mile"
                 }

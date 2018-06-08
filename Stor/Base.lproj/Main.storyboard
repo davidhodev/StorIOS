@@ -1138,7 +1138,7 @@
                                             <outlet property="providerProfilePicture" destination="coa-OF-DyM" id="NoF-HD-Wq9"/>
                                             <outlet property="ratingLabel" destination="1Sx-rC-Zej" id="vL7-jN-UXG"/>
                                             <outlet property="storagePhoto" destination="4En-pB-bpY" id="Zoj-7z-jTa"/>
-                                            <outlet property="toAnnotationButton" destination="eey-kO-UQA" id="v44-z7-D9B"/>
+                                            <outlet property="toAnnotationButton" destination="eey-kO-UQA" id="QJX-nP-lDQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1179,11 +1179,12 @@
                     </view>
                     <connections>
                         <outlet property="myListTableView" destination="lyT-sV-Et1" id="pvF-5I-TCr"/>
+                        <segue destination="ChP-SR-ddt" kind="presentation" identifier="seeMoreSegue" modalPresentationStyle="overFullScreen" id="iCd-uy-vSg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="86l-qU-cOq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7949.6000000000004" y="34.729064039408868"/>
+            <point key="canvasLocation" x="7950" y="53"/>
         </scene>
         <!--Payment View Controller-->
         <scene sceneID="tqe-Wf-FGQ">
@@ -2795,4 +2796,7 @@
         <image name="google" width="18" height="18"/>
         <image name="remove from list button" width="127" height="131"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="iCd-uy-vSg"/>
+    </inferredMetricsTieBreakers>
 </document>
