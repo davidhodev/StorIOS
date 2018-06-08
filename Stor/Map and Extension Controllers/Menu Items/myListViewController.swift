@@ -48,7 +48,8 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let user = myListUsers[indexPath.section]
         cell.addressLabel.text = user.address
-        cell.priceLabel.attributedText = user.price
+        print("PRICE============", user.price!)
+        cell.priceLabel.attributedText = user.price!
         cell.dimensionsLabel.text = user.dimensionsString
         cell.cubicFeetLabel.attributedText = user.cubicString
         cell.nameLabel.text = user.name
