@@ -16,6 +16,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var selectedIndexPath: IndexPath?
     var myListUsers = [myListUser]()
     var buttonIndexPath: Int?
+    var buttonProviderLocation: CLLocationCoordinate2D?
     
     @IBOutlet weak var myListTableView: UITableView!
     @IBAction func exitButton(_ sender: UIButton) {
@@ -202,18 +203,10 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             destinationController.providerAddress = user.address
             destinationController.storageID = user.storageID
             
+            let locationManager = CLLocationManager()
             
-//            destinationController.userLocation = userLocation.location
-            
-            let geoCoder = CLGeocoder()
-            print("GEODUDE", geoCoder)
-            geoCoder.geocodeAddressString(user.address!) { (placemarks, error) in
-                print("TESTINGG")
-                let location = placemarks?.first?.location
-                destinationController.providerLocation = location?.coordinate
-                print(destinationController.providerLocation)
-                // Use your location
-            }
+            destinationController.userLocation = locationManager.location
+            destinationController.providerLocation = user.providerLocation
             
             
         }
