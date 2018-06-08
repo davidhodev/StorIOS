@@ -29,6 +29,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         searchResultsTableView.isHidden = true
         outOfAuto.isHidden = true
         cancelButton.isHidden = true
+        self.filterButton.isHidden = false
     }
     
     // centers the screen back on the user's location
@@ -168,6 +169,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.searchResultsTableView.isHidden = false
         self.outOfAuto.isHidden = false
         self.cancelButton.isHidden = false
+        self.filterButton.isHidden = true
     }
     
     //Text Bar Pressed
@@ -175,6 +177,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.searchResultsTableView.isHidden = false
         self.outOfAuto.isHidden = false
         self.cancelButton.isHidden = false
+        self.filterButton.isHidden = true
         searchCompleter.queryFragment = textField.text!
     }
 
@@ -229,6 +232,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             self.searchResultsTableView.isHidden = true
             self.outOfAuto.isHidden = true
             self.cancelButton.isHidden = true
+//            self.filterButton.isHidden = true
         }
     }
     
@@ -257,6 +261,56 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "provider")
         annotationView.image = UIImage(named: "Map Pin Background")
         let transform = CGAffineTransform(scaleX: 1.00, y: 1.00)
+        let priceLabelForAnnotation = UILabel(frame: CGRect(x: 5, y:9, width:34, height:30))
+        priceLabelForAnnotation.backgroundColor = UIColor.clear
+        priceLabelForAnnotation.textColor = UIColor.white
+        if let tempTitle = annotation.title!{
+            
+            
+            let font:UIFont? = UIFont(name: "Dosis-Bold", size:15)
+            let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:10)
+            
+            let attString:NSMutableAttributedString = NSMutableAttributedString(string: tempTitle, attributes: [.font:font!])
+            attString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:0,length:2))
+            print(attString)
+            priceLabelForAnnotation.textAlignment = .center
+            priceLabelForAnnotation.attributedText = attString
+        }
+        
+        
+        
+        /*
+         if let outputPrice = (Double(priceString)){
+         let finalPrice = Int(round(outputPrice))
+         var finalPriceRoundedString = "$ "
+         finalPriceRoundedString += String(describing: finalPrice)
+         finalPriceRoundedString += " /mo"
+         
+         
+         
+         let font:UIFont? = UIFont(name: "Dosis-Bold", size:24)
+         let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:16)
+         let fontSmall:UIFont? = UIFont(name: "Dosis-Regular", size:14)
+         
+         let attString:NSMutableAttributedString = NSMutableAttributedString(string: finalPriceRoundedString, attributes: [.font:font!])
+         attString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:0,length:1))
+         attString.setAttributes([.font:fontSmall!,.baselineOffset:-1], range: NSRange(location:(finalPriceRoundedString.count)-3,length:3))
+         self.providerPriceLabel.attributedText = attString
+         
+         }
+ */
+        
+        
+        annotationView.addSubview(priceLabelForAnnotation)
+        
+        /*
+         let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
+         lbl.backgroundColor = .black
+         lbl.textColor = .white
+         lbl.alpha = 0.5
+         lbl.tag = 42
+ */
+        
         annotationView.transform = transform
         return annotationView
         
@@ -325,7 +379,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     }
                     print(snapshot.key)
                     
-                    let provider = Annotations(title: actualStorageDictionary!["Title"] as! String, subtitle: actualStorageDictionary!["Subtitle"] as! String, address: actualStorageDictionary!["Address"] as! String, coordinate: location.coordinate, providerUID: (snapshot.key), storageUID: storageUID)
+                    let provider = Annotations(title: Int(actualStorageDictionary!["Price"] as! NSNumber), subtitle: actualStorageDictionary!["Subtitle"] as! String, address: actualStorageDictionary!["Address"] as! String, coordinate: location.coordinate, providerUID: (snapshot.key), storageUID: storageUID, price: actualStorageDictionary!["Price"] as? String)
                     provider.image = #imageLiteral(resourceName: "Map Pin Background")
                     self.providers.append(provider)
                     self.storMapKit.addAnnotation(provider)
