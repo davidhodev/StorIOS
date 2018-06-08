@@ -9,11 +9,13 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import CoreLocation
 
 class myListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var selectedIndexPath: IndexPath?
     var myListUsers = [myListUser]()
+    var buttonIndexPath: Int?
     
     @IBOutlet weak var myListTableView: UITableView!
     @IBAction func exitButton(_ sender: UIButton) {
@@ -48,14 +50,14 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let user = myListUsers[indexPath.section]
         cell.addressLabel.text = user.address
-        print("PRICE============", user.price!)
-        cell.priceLabel.attributedText = user.price!
+        cell.priceLabel.attributedText = user.price
         cell.dimensionsLabel.text = user.dimensionsString
         cell.cubicFeetLabel.attributedText = user.cubicString
         cell.nameLabel.text = user.name
         cell.ratingLabel.text = user.rating
         
-        cell.toAnnotationButton.addTarget(self, action: "pressed:", for: .touchUpInside)
+        cell.toAnnotationButton.tag = indexPath.section
+        cell.toAnnotationButton.addTarget(self, action: #selector(self.btnClick(_:)), for: .touchUpInside)
         
         
         myListTableView.backgroundColor = UIColor.clear
@@ -100,14 +102,15 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         
     
-//        cell.cellButton.addTarget(self, action: #selector(TableViewController.buttonTapped(_:)), for: UIControlEvents.touchUpInside)
         
         return cell
     }
     
-    @objc func connected(sender: UIButton){
-        let buttonTag = sender.tag
-        print("TO ANNOTATION BUTTON PRESSED")
+    @objc func btnClick(_ sender:UIButton) {
+        buttonIndexPath = sender.tag
+        print(buttonIndexPath)
+        print("My custom button action")
+        performSegue(withIdentifier: "seeMoreSegue", sender: self)
     }
     
     
@@ -191,14 +194,30 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "AnnotationPopUpSegue"{
-//            let destinationController = segue.destination as! AnnotationPopUp
-//            destinationController.providerID = self.annotationUID
-//            destinationController.providerAddress = self.annotationAddress
-//            destinationController.storageID = self.annotationStorageID
-//            destinationController.providerLocation = self.annotationLocation
-//            destinationController.userLocation = self.storMapKit.userLocation.location
-//        }
+        if segue.identifier == "seeMoreSegue"{
+            print("Prepping")
+            let destinationController = segue.destination as! AnnotationPopUp
+            let user = self.myListUsers[buttonIndexPath!]
+            destinationController.providerID = user.providerID
+            destinationController.providerAddress = user.address
+            destinationController.storageID = user.storageID
+            
+            
+//            destinationController.userLocation = userLocation.location
+            
+            let geoCoder = CLGeocoder()
+            print("GEODUDE", geoCoder)
+            geoCoder.geocodeAddressString(user.address!) { (placemarks, error) in
+                print("TESTINGG")
+                let location = placemarks?.first?.location
+                destinationController.providerLocation = location?.coordinate
+                print(destinationController.providerLocation)
+                // Use your location
+            }
+            
+            
+        }
+            
     }
     
     

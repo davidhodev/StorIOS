@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import CoreLocation
 
 class myListUser: NSObject {
     var providerID: String?
@@ -21,7 +22,7 @@ class myListUser: NSObject {
     var providerProfile: UIImage?
     var storagePhoto: UIImage?
     var name: String?
-
+    var providerLocation: CLLocationCoordinate2D?
 
     func getAddress(){
         if let user = Auth.auth().currentUser{
