@@ -28,6 +28,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         self.dismiss(animated: true, completion: nil)
     }
     @IBOutlet weak var switchCustomTable: UISegmentedControl!
+    @IBOutlet weak var myStorageLabel: UILabel!
     
     
     override func viewDidLoad() {

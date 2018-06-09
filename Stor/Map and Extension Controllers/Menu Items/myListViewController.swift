@@ -200,7 +200,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func removeAction(at indexPath: IndexPath) -> UIContextualAction{
         let myStorageID = myListUsers[indexPath.section].storageID
-        let action = UIContextualAction(style: .destructive, title: "Remove") { (action, view, completion) in
+        let action = UIContextualAction(style: .destructive, title: "") { (action, view, completion) in
             if let user = Auth.auth().currentUser{
                 let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
                 let userReference = databaseReference.root.child("Users").child((user.uid))
@@ -214,7 +214,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
         
 //        action.image = UIImage(named: "Delete from MyList Button")
-        action.backgroundColor = UIColor(patternImage: UIImage(named: "Delete from MyList Button")!)
+        action.backgroundColor = UIColor(patternImage: UIImage(named: "Delete from MyList Button 2")!)
         
         
         return action
