@@ -30,8 +30,7 @@ class myListUser: NSObject {
                 if let dictionary = snapshot.value as? [String: Any]{
                     print(dictionary)
                     let tempAddress = dictionary["Address"] as? String
-                    // PUT IN MEDIUM
-                    let fontAddress:UIFont? = UIFont(name: "Dosis-Regular", size:16)
+                    let fontAddress:UIFont? = UIFont(name: "Dosis-Medium", size:16)
                     let addressAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempAddress!, attributes: [.font: fontAddress!])
                     self.address = addressAttString
                     
@@ -127,7 +126,7 @@ class myListUser: NSObject {
                     let roundedRating = (Double(ratingString)! * 100).rounded()/100
                     let ratingTemp = String(format: "%.2f", roundedRating)
                     // MEDIUM
-                    let fontRating: UIFont? = UIFont(name: "Dosis-Regular", size:14)
+                    let fontRating: UIFont? = UIFont(name: "Dosis-Medium", size:14)
                     let ratingAttString:NSMutableAttributedString = NSMutableAttributedString(string: ratingTemp, attributes: [.font: fontRating!])
                     self.rating = ratingAttString
                     
