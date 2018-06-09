@@ -37,6 +37,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         self.dismiss(animated: true, completion: nil)
     }
     @IBOutlet weak var switchCustomTable: UISegmentedControl!
+    @IBOutlet weak var myStorageLabel: UILabel!
     
     
     override func viewDidLoad() {
@@ -44,6 +45,8 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         storageTableView.delegate = self
         storageTableView.dataSource = self
         selectorIndex = 0
+        let font = UIFont(name: "Dosis-Medium", size: 24.0)
+        myStorageLabel.attributedText = NSMutableAttributedString(string: "My Storage", attributes: [.font:font!])
         
         getMyStorage()
     }

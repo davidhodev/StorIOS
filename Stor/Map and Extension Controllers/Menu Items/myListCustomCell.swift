@@ -34,18 +34,6 @@ class myListCustomCell: UITableViewCell {
     class var defaultHeight: CGFloat {get { return 60 }}
 
     
-
-//     func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//     if segue.identifier == "toAnnotationSegue"{
-//         let destinationController = segue.destination as! AnnotationPopUp
-//        print("YPOPOPOPOP")
-////         destinationController.providerID = self.annotationUID
-////         destinationController.providerAddress = self.annotationAddress
-////         destinationController.storageID = self.annotationStorageID
-////         destinationController.providerLocation = self.annotationLocation
-////         destinationController.userLocation = self.storMapKit.userLocation.location
-//         }
-//     }
     
     func checkHeight(){
         cellView.isHidden = (frame.size.height < myListCustomCell.expandedHeight)
