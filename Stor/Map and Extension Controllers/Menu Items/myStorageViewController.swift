@@ -17,14 +17,26 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     var myCurrentStorageUsers = [myCurrentUser]()
     var selectorIndex: Int?
     
+    @IBOutlet weak var currentNoFill: UIImageView!
+    @IBOutlet weak var pendingNoFill: UIImageView!
+    @IBOutlet weak var pendingFill: UIImageView!
+    @IBOutlet weak var currentFill: UIImageView!
     @IBAction func switchCustomTableViewAction(_ sender: Any) {
         selectorIndex = switchCustomTable.selectedSegmentIndex
         
         // switch between current and past images
         if selectorIndex == 0{
+            currentFill.isHidden = true
+            pendingNoFill.isHidden = true
+            pendingFill.isHidden = false
+            currentNoFill.isHidden = false
             
         }
         else{
+            currentFill.isHidden = false
+            pendingNoFill.isHidden = false
+            pendingFill.isHidden = true
+            currentNoFill.isHidden = true
             
         }
         
@@ -47,7 +59,10 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         selectorIndex = 0
         let font = UIFont(name: "Dosis-Medium", size: 24.0)
         myStorageLabel.attributedText = NSMutableAttributedString(string: "My Storage", attributes: [.font:font!])
-        
+        currentFill.isHidden = true
+        pendingNoFill.isHidden = true
+        pendingFill.isHidden = false
+        currentNoFill.isHidden = false
         getMyStorage()
     }
     

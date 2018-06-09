@@ -1590,7 +1590,11 @@
                         <viewLayoutGuide key="safeArea" id="81N-WW-8aq"/>
                     </view>
                     <connections>
+                        <outlet property="currentFill" destination="0YN-xF-dMC" id="K2w-LI-pry"/>
+                        <outlet property="currentNoFill" destination="aef-qW-b7x" id="K8d-Oc-zav"/>
                         <outlet property="myStorageLabel" destination="ORS-A1-OxY" id="xa5-KU-Zg3"/>
+                        <outlet property="pendingFill" destination="Xkb-x6-0NF" id="wJ1-cx-5dz"/>
+                        <outlet property="pendingNoFill" destination="fA9-hA-qu3" id="bth-UK-e1A"/>
                         <outlet property="storageTableView" destination="KTX-FJ-bJD" id="qv5-Dr-PE5"/>
                         <outlet property="switchCustomTable" destination="KVE-GZ-8DO" id="ZeM-hH-mW4"/>
                     </connections>
