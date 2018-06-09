@@ -65,6 +65,7 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Dosis-Medium.otf</string>
 		<string>Dosis-Bold.otf</string>
 		<string>Dosis-Regular.otf</string>
 	</array>

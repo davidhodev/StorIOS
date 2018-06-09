@@ -14,14 +14,14 @@ import CoreLocation
 class myListUser: NSObject {
     var providerID: String?
     var storageID: String?
-    var address: String?
+    var address: NSMutableAttributedString?
     var price: NSMutableAttributedString?
-    var dimensionsString: String?
+    var dimensionsString: NSMutableAttributedString?
     var cubicString: NSMutableAttributedString?
-    var rating: String?
+    var rating: NSMutableAttributedString?
     var providerProfile: UIImage?
     var storagePhoto: UIImage?
-    var name: String?
+    var name: NSMutableAttributedString?
     var providerLocation: CLLocationCoordinate2D?
 
     func getAddress(){
@@ -29,7 +29,11 @@ class myListUser: NSObject {
         Database.database().reference().child("Providers").child(providerID!).child("currentStorage").observe(.childAdded, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: Any]{
                     print(dictionary)
-                    self.address = dictionary["Address"] as? String
+                    let tempAddress = dictionary["Address"] as? String
+                    // PUT IN MEDIUM
+                    let fontAddress:UIFont? = UIFont(name: "Dosis-Regular", size:16)
+                    let addressAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempAddress!, attributes: [.font: fontAddress!])
+                    self.address = addressAttString
                     
                     let geoCoder = CLGeocoder()
                     geoCoder.geocodeAddressString((dictionary["Address"] as? String)!) { (placemarks, error) in
@@ -77,7 +81,10 @@ class myListUser: NSObject {
                     dimensionsString += "' X "
                     dimensionsString += String(describing: dictionary["Width"]!)
                     dimensionsString += "'"
-                    self.dimensionsString = dimensionsString
+                    let dimensionsTemp = dimensionsString
+                    let fontDimensions: UIFont? = UIFont(name: "Dosis-Bold", size:16)
+                    let dimensionsAttString:NSMutableAttributedString = NSMutableAttributedString(string: dimensionsTemp, attributes: [.font: fontDimensions!])
+                    self.dimensionsString = dimensionsAttString
                     
                     var cubicFeetNumber = Int(String(describing:dictionary["Length"]!))
                     cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Width"]!))!)
@@ -92,6 +99,7 @@ class myListUser: NSObject {
                     cubicFeetAttString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:(cubicFeetString.count)-1,length:1))
                     
                     self.cubicString = cubicFeetAttString
+                    
                     
                     
                     if let photoDictionary = dictionary["Photos"] as? [String: Any] {
@@ -117,7 +125,11 @@ class myListUser: NSObject {
                 if let dictionary = snapshot.value as? [String: Any]{
                     let ratingString = String(describing: dictionary["rating"]!)
                     let roundedRating = (Double(ratingString)! * 100).rounded()/100
-                    self.rating = String(format: "%.2f", roundedRating)
+                    let ratingTemp = String(format: "%.2f", roundedRating)
+                    // MEDIUM
+                    let fontRating: UIFont? = UIFont(name: "Dosis-Regular", size:14)
+                    let ratingAttString:NSMutableAttributedString = NSMutableAttributedString(string: ratingTemp, attributes: [.font: fontRating!])
+                    self.rating = ratingAttString
                     
                     let fullName = dictionary["Name"] as? String
                     let fullNameArr = fullName?.split(separator: " ")
@@ -133,8 +145,11 @@ class myListUser: NSObject {
                     var finalName = firstName
                     finalName += "\n"
                     finalName += lastName!
-                    self.name = String(describing: finalName)
-                    
+                    //name of provider, font color 42, 39, 89
+                    let tempName = String(describing: finalName)
+                    let fontName:UIFont? = UIFont(name: "Dosis-Regular", size:18)
+                    let nameAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempName, attributes: [.font:fontName!])
+                    self.name = nameAttString
                     
                     
                     URLSession.shared.dataTask(with: NSURL(string: dictionary["profileImage"] as! String)! as URL, completionHandler: { (data, response, error) -> Void in

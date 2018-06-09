@@ -51,12 +51,12 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = myListTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! myListCustomCell
         
         let user = myListUsers[indexPath.section]
-        cell.addressLabel.text = user.address
+        cell.addressLabel.attributedText = user.address
         cell.priceLabel.attributedText = user.price
-        cell.dimensionsLabel.text = user.dimensionsString
+        cell.dimensionsLabel.attributedText = user.dimensionsString
         cell.cubicFeetLabel.attributedText = user.cubicString
-        cell.nameLabel.text = user.name
-        cell.ratingLabel.text = user.rating
+        cell.nameLabel.attributedText = user.name
+        cell.ratingLabel.attributedText = user.rating
         
         cell.toAnnotationButton.tag = indexPath.section
         cell.toAnnotationButton.addTarget(self, action: #selector(self.btnClick(_:)), for: .touchUpInside)
@@ -218,7 +218,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             let destinationController = segue.destination as! AnnotationPopUp
             let user = self.myListUsers[buttonIndexPath!]
             destinationController.providerID = user.providerID
-            destinationController.providerAddress = user.address
+//            destinationController.providerAddress = user.address
             destinationController.storageID = user.storageID
             
             let locationManager = CLLocationManager()

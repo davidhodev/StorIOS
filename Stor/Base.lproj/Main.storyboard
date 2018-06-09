@@ -1379,7 +1379,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pm6-NS-TiV">
-                                                            <rect key="frame" x="224.33333333333303" y="81" width="41.666666666666657" height="20"/>
+                                                            <rect key="frame" x="224.33333333333334" y="81" width="41.666666666666657" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.26666666666666666" green="0.47058823529411764" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -2840,6 +2840,6 @@
         <image name="remove from list button" width="127" height="131"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qeR-G7-33Z"/>
+        <segue reference="iCd-uy-vSg"/>
     </inferredMetricsTieBreakers>
 </document>
