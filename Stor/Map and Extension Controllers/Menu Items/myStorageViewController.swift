@@ -19,6 +19,15 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBAction func switchCustomTableViewAction(_ sender: Any) {
         selectorIndex = switchCustomTable.selectedSegmentIndex
+        
+        // switch between current and past images
+        if selectorIndex == 0{
+            
+        }
+        else{
+            
+        }
+        
         DispatchQueue.main.async {
             self.storageTableView.reloadData()
         }
