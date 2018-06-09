@@ -30,7 +30,7 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
     
     
     
-    var providerAddress: String?
+    var providerAddress: NSAttributedString?
     var providerID: String?
     var storageID: String?
     var providerLocation: CLLocationCoordinate2D?
