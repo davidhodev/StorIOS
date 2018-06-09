@@ -28,6 +28,7 @@ class myListCustomCell: UITableViewCell {
     
     @IBOutlet weak var storagePhoto: UIImageView!
     
+    static var opened = false
     
     class var expandedHeight: CGFloat {get { return 343 }}
     class var defaultHeight: CGFloat {get { return 60 }}
