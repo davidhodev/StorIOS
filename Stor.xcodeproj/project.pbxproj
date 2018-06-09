@@ -17,6 +17,7 @@
 		574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574FC7BE20B5F484001AE44F /* TermsViewController.swift */; };
 		576A007420B7798100F2174D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576A007320B7798100F2174D /* MenuViewController.swift */; };
 		576FD1E120CB3F72004BA549 /* MyProfileViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576FD1E020CB3F72004BA549 /* MyProfileViewController3.swift */; };
+		576FD1E220CB5276004BA549 /* Dosis-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964D720C0CB9E002F4EBD /* Dosis-Medium.otf */; };
 		579D4C5F20BF2D6E0082A86F /* AnnotationPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579D4C5E20BF2D6E0082A86F /* AnnotationPopUp.swift */; };
 		57EC509320C22389009F470F /* newConnectPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC509220C22389009F470F /* newConnectPopUp.swift */; };
 		D1947A535ADA1F3F00BCE349 /* Pods_StorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBFB92A62876BD03C1FEC207 /* Pods_StorUITests.framework */; };
@@ -432,6 +433,7 @@
 				DBE905E620924BAE000F13DB /* Assets.xcassets in Resources */,
 				DBE905E420924BAE000F13DB /* Main.storyboard in Resources */,
 				DB4B5E9E20B34E7C0050F66E /* dosis in Resources */,
+				576FD1E220CB5276004BA549 /* Dosis-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

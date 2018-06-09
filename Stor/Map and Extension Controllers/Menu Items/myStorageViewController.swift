@@ -65,13 +65,13 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
        let cell = storageTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! myStorageCustomTableViewCell
         if selectorIndex == 0{
             let user = myStorageUsers[indexPath.section]
-            cell.addressLabel.text = user.address
+            cell.addressLabel.attributedText = user.address
             
             cell.priceLabel.attributedText = user.price
-            cell.dimensionsLabel.text = user.dimensionsString
+            cell.dimensionsLabel.attributedText = user.dimensionsString
             cell.cubicFeetLabel.attributedText = user.cubicString
-            cell.nameLabel.text = user.name
-            cell.ratingLabel.text = user.rating
+            cell.nameLabel.attributedText = user.name
+            cell.ratingLabel.attributedText = user.rating
             
             
             DispatchQueue.main.async(execute: { () -> Void in
@@ -119,7 +119,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         }
         else{
             let user = myCurrentStorageUsers[indexPath.section]
-            cell.addressLabel.text = "TESSTYYYY" //user.address
+            cell.addressLabel.text = user.address
 
             cell.priceLabel.attributedText = user.price
             cell.dimensionsLabel.text = user.dimensionsString
