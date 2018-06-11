@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -970,7 +970,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uW-HG-WlC">
-                                <rect key="frame" x="74" y="58" width="65" height="31"/>
+                                <rect key="frame" x="74" y="58" width="64.666666666666686" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="pCN-EL-88S"/>
                                 </constraints>
@@ -2849,6 +2849,9 @@
                         <outlet property="date1Label" destination="iwn-5T-AoG" id="KOF-xc-p6V"/>
                         <outlet property="date2Label" destination="hiu-R9-yMQ" id="sjC-uq-LsO"/>
                         <outlet property="date3Label" destination="oNT-RD-Vqx" id="JsQ-FQ-z5A"/>
+                        <outlet property="slot1button" destination="vY9-vj-Rjh" id="izF-HB-KkP"/>
+                        <outlet property="slot2Button" destination="TZJ-Yt-atu" id="ubJ-wk-Y1X"/>
+                        <outlet property="slot3button" destination="fre-8k-Anu" id="qYy-YV-BFq"/>
                         <outlet property="time1Label" destination="Q00-Gc-n36" id="B21-Gh-ns5"/>
                         <outlet property="time2Label" destination="aiE-UD-liP" id="enH-ih-EAJ"/>
                         <outlet property="time3Label" destination="8yA-VZ-GOc" id="LDh-kX-DQR"/>

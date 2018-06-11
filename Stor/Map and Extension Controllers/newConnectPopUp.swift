@@ -18,10 +18,16 @@ class newConnectPopUp: UIViewController {
     @IBOutlet weak var time1Label: UILabel!
     @IBOutlet weak var time2Label: UILabel!
     @IBOutlet weak var time3Label: UILabel!
-    var timeSlotPressed: Int?
+    @IBOutlet weak var slot1button: UIButton!
+    @IBOutlet weak var slot2Button: UIButton!
+    @IBOutlet weak var slot3button: UIButton!
     
+    
+    
+    var timeSlotPressed: Int?
     var providerID: String?
     var storageID: String?
+
     
     
     
@@ -52,7 +58,19 @@ class newConnectPopUp: UIViewController {
     }
 
     @IBAction func callProviderButtonpressed(_ sender: Any) {
-        print("Call Provider")
+        if Auth.auth().currentUser != nil{
+            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+            databaseReference.root.child("Providers").child(providerID!).child("personalInfo").observe(.value, with: { (snapshot) in
+                print(snapshot)
+                if let dictionary = snapshot.value as? [String: Any]{
+                    let phone = dictionary["phone"]
+                    let providerPhone = String(describing: phone!)
+                    if let url = URL(string: "tel://\(String(describing: providerPhone))") {
+                        UIApplication.shared.open(url)
+                    }
+                }
+            })
+        }
     }
     
     
@@ -72,6 +90,7 @@ class newConnectPopUp: UIViewController {
                     self.time1Label.text = Array(timeDictionary!.values)[0] as? String
                     self.time2Label.text = Array(timeDictionary!.values)[1] as? String
                     self.time3Label.text = Array(timeDictionary!.values)[2] as? String
+                    
                 }
             })
             
