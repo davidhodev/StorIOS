@@ -11,6 +11,22 @@ import FirebaseAuth
 import FirebaseDatabase
 
 
+extension String {
+    var isPhoneNumber: Bool {
+        do {
+            let detector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.phoneNumber.rawValue)
+            let matches = detector.matches(in: self, options: [], range: NSMakeRange(0, self.count))
+            if let res = matches.first {
+                return res.resultType == .phoneNumber && res.range.location == 0 && res.range.length == self.count
+            } else {
+                return false
+            }
+        } catch {
+            return false
+        }
+    }
+}
+
 class RegisterEmailViewController: UIViewController {
 
     @IBOutlet weak var nameRegisterText: UITextField!
@@ -60,6 +76,9 @@ class RegisterEmailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    
 
     // Register Function
     func register(){
@@ -67,6 +86,18 @@ class RegisterEmailViewController: UIViewController {
         guard let emailVerify = emailRegisterText.text else {return}
         guard let passwordVerify = passwordRegisterText.text else {return}
         guard let phoneVerify = phoneRegisterText.text else {return}
+        
+        if (phoneRegisterText.text?.isPhoneNumber)!{
+            print("Valid Phone number")
+        }
+        else{
+            self.linePhone.image = UIImage.init(named: "Line 2Red")
+            self.phoneRegisterText.attributedPlaceholder = NSAttributedString(string: "Phone number is not valid", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
+            self.phoneRegisterText.text = ""
+            self.phonePicture.image = UIImage.init(named: "Phone Icon Red")
+            return
+        }
+        
         
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneVerify, uiDelegate: nil) { (verificationID, error) in
             if ((error) != nil){
