@@ -154,21 +154,6 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             {
             return myListCustomCell.expandedHeight
         }
-//        else if (myListCustomCell.opened == true && indexPath == selectedIndexPath) {
-//            print(myListCustomCell.opened)
-//                myListCustomCell.opened = false
-//                return myListCustomCell.defaultHeight
-//        }
-//
-//        else if (myListCustomCell.opened == false){
-//            print(myListCustomCell.opened)
-//              return myListCustomCell.defaultHeight
-//        }
-//
-//        else if (myListCustomCell.opened == true){
-//            print(myListCustomCell.opened)
-//             return myListCustomCell.expandedHeight
-//        }
         else {
             return myListCustomCell.defaultHeight
         }

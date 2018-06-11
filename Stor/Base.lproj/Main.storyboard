@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -46,7 +46,7 @@
                                 <rect key="frame" x="0.0" y="358" width="170" height="300"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy4" translatesAutoresizingMaskIntoConstraints="NO" id="uGy-bx-NSJ">
-                                <rect key="frame" x="136" y="1" width="169" height="93"/>
+                                <rect key="frame" x="138" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy5_2" translatesAutoresizingMaskIntoConstraints="NO" id="U2q-m4-Bqu">
                                 <rect key="frame" x="224" y="82" width="151" height="323"/>
@@ -59,7 +59,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ED4-zM-ayk">
-                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
+                                <rect key="frame" x="0.0" y="-13" width="173" height="85"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Bd-4gJ">
                                 <rect key="frame" x="33.666666666666657" y="392" width="177" height="188"/>
@@ -316,7 +316,7 @@
                                 <rect key="frame" x="136" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ZcF-jB-fyb">
-                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
+                                <rect key="frame" x="0.0" y="-13" width="171" height="85"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo Copy" translatesAutoresizingMaskIntoConstraints="NO" id="iUg-vp-lcF">
                                 <rect key="frame" x="51" y="115" width="187" height="114"/>
@@ -543,7 +543,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4c-0V-zAs" userLabel="Rating Label">
-                                <rect key="frame" x="154" y="163" width="33.666666666666657" height="18"/>
+                                <rect key="frame" x="154" y="163.33333333333334" width="33.666666666666657" height="18"/>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -572,7 +572,7 @@
                                 <state key="normal" image="Edit Pop Up"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(310) 909-9063" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gp4-WS-bwv" userLabel="Phone Number">
-                                <rect key="frame" x="102" y="297" width="97" height="21"/>
+                                <rect key="frame" x="102" y="297.66666666666669" width="97" height="20.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="ZeO-JY-Rbb"/>
                                 </constraints>
@@ -581,7 +581,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jack.m.feldman@vanderbilt.edu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1I-EF-ycA" userLabel="Email">
-                                <rect key="frame" x="101.99999999999999" y="368" width="190.66666666666663" height="21"/>
+                                <rect key="frame" x="101.99999999999999" y="368.66666666666669" width="190.66666666666663" height="20.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="245" id="6kI-17-za9"/>
                                 </constraints>
@@ -590,7 +590,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWA-gA-xZe" userLabel="Password Placeholder">
-                                <rect key="frame" x="102" y="440" width="68" height="20"/>
+                                <rect key="frame" x="102" y="440" width="68" height="20.333333333333314"/>
                                 <attributedString key="attributedText">
                                     <fragment content="•••••••">
                                         <attributes>
@@ -978,21 +978,11 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HHY-bV-fk9" userLabel="Finish Editing Button">
-                                <rect key="frame" x="80" y="628" width="96" height="105"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="96" id="8sx-Hq-d7k"/>
-                                    <constraint firstAttribute="height" constant="105" id="rgN-a0-Htp"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-29"/>
-                                <state key="normal" image="Done Editing Button"/>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lyT-sV-Et1">
-                                <rect key="frame" x="37" y="166" width="312" height="435"/>
+                                <rect key="frame" x="37" y="166" width="312" height="646"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="312" id="XZw-Qo-ljZ"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="435" id="wrk-4a-dfc"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="customCell" rowHeight="343" id="qm3-vY-lf0" customClass="myListCustomCell" customModule="Stor" customModuleProvider="target">
@@ -1143,35 +1133,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F8I-D8-mlh" userLabel="Edit Button">
-                                <rect key="frame" x="80" y="627" width="96" height="105"/>
-                                <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
-                                <state key="normal" image="Edit List Button"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.27450980390000002" blue="0.70588235290000001" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="KVA-SP-4l1" firstAttribute="trailing" secondItem="lyT-sV-Et1" secondAttribute="trailing" constant="26" id="2c2-EH-fNd"/>
-                            <constraint firstItem="HHY-bV-fk9" firstAttribute="top" secondItem="F8I-D8-mlh" secondAttribute="bottom" constant="-104" id="3pQ-vs-LNZ"/>
-                            <constraint firstItem="F8I-D8-mlh" firstAttribute="width" secondItem="HHY-bV-fk9" secondAttribute="width" id="8pm-bb-8V3"/>
                             <constraint firstItem="1uW-HG-WlC" firstAttribute="leading" secondItem="QIe-mI-sb4" secondAttribute="trailing" constant="36" id="ETI-Zb-hEI"/>
                             <constraint firstItem="G0D-rf-IKJ" firstAttribute="top" secondItem="KVA-SP-4l1" secondAttribute="top" constant="58" id="I4R-7Y-fpX"/>
                             <constraint firstItem="QIe-mI-sb4" firstAttribute="leading" secondItem="KVA-SP-4l1" secondAttribute="leading" id="JDs-zy-Xyk"/>
                             <constraint firstItem="G0D-rf-IKJ" firstAttribute="top" secondItem="wHg-kN-PLe" secondAttribute="bottom" constant="-48" id="Kdg-5N-8T9"/>
                             <constraint firstItem="KVA-SP-4l1" firstAttribute="trailing" secondItem="wHg-kN-PLe" secondAttribute="trailing" id="NaZ-LA-cKw"/>
-                            <constraint firstItem="F8I-D8-mlh" firstAttribute="height" secondItem="HHY-bV-fk9" secondAttribute="height" id="Qg1-gE-JOI"/>
+                            <constraint firstAttribute="bottom" secondItem="lyT-sV-Et1" secondAttribute="bottom" id="O4M-Ds-Xvi"/>
                             <constraint firstItem="G0D-rf-IKJ" firstAttribute="bottom" secondItem="KVA-SP-4l1" secondAttribute="bottom" constant="34" id="TVo-p5-5XP"/>
-                            <constraint firstItem="F8I-D8-mlh" firstAttribute="leading" secondItem="HHY-bV-fk9" secondAttribute="trailing" constant="-96" id="WRh-Ar-qll"/>
                             <constraint firstItem="QIe-mI-sb4" firstAttribute="top" secondItem="KVA-SP-4l1" secondAttribute="top" constant="14" id="Y5B-4l-Nb5"/>
                             <constraint firstItem="611-Z7-vNx" firstAttribute="leading" secondItem="KVA-SP-4l1" secondAttribute="leading" id="a05-p5-ECS"/>
                             <constraint firstItem="KVA-SP-4l1" firstAttribute="top" secondItem="wHg-kN-PLe" secondAttribute="top" constant="45" id="aRI-bj-gfu"/>
-                            <constraint firstItem="HHY-bV-fk9" firstAttribute="top" secondItem="lyT-sV-Et1" secondAttribute="bottom" constant="27" id="c6x-73-oGT"/>
-                            <constraint firstItem="KVA-SP-4l1" firstAttribute="bottom" secondItem="HHY-bV-fk9" secondAttribute="bottom" constant="45" id="jl0-iK-43i"/>
                             <constraint firstItem="KVA-SP-4l1" firstAttribute="bottom" secondItem="611-Z7-vNx" secondAttribute="bottom" id="ljp-W9-MQL"/>
                             <constraint firstItem="lyT-sV-Et1" firstAttribute="leading" secondItem="KVA-SP-4l1" secondAttribute="leading" constant="37" id="nRi-GN-LLA"/>
                             <constraint firstItem="KVA-SP-4l1" firstAttribute="trailing" secondItem="G0D-rf-IKJ" secondAttribute="trailing" id="nxN-3u-jSt"/>
                             <constraint firstItem="G0D-rf-IKJ" firstAttribute="leading" secondItem="KVA-SP-4l1" secondAttribute="leading" id="r4E-6a-awL"/>
-                            <constraint firstItem="HHY-bV-fk9" firstAttribute="leading" secondItem="611-Z7-vNx" secondAttribute="trailing" constant="-38" id="uRR-zG-UBE"/>
                             <constraint firstItem="1uW-HG-WlC" firstAttribute="centerY" secondItem="QIe-mI-sb4" secondAttribute="centerY" id="uWM-KS-JXI"/>
                             <constraint firstItem="lyT-sV-Et1" firstAttribute="top" secondItem="KVA-SP-4l1" secondAttribute="top" constant="122" id="vPN-iE-TnO"/>
                         </constraints>
@@ -1184,7 +1163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="86l-qU-cOq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8047" y="35"/>
+            <point key="canvasLocation" x="8045.6000000000004" y="34.729064039408868"/>
         </scene>
         <!--Payment View Controller-->
         <scene sceneID="tqe-Wf-FGQ">
@@ -1529,6 +1508,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addressLabel" destination="ED7-Oa-VzO" id="sSy-aA-s8C"/>
+                                            <outlet property="cancelConnectionButton" destination="CvQ-cx-wlJ" id="RnH-jY-ABN"/>
                                             <outlet property="cellView" destination="ifw-Sn-ZU4" id="ryx-4Y-N1V"/>
                                             <outlet property="cubicFeetLabel" destination="pm6-NS-TiV" id="cA9-Z9-dxI"/>
                                             <outlet property="dimensionsLabel" destination="9CA-Eg-ZRC" id="KaI-Da-ncZ"/>
@@ -1537,6 +1517,10 @@
                                             <outlet property="priceLabel" destination="QDf-cR-bff" id="pHu-Ao-tG2"/>
                                             <outlet property="providerProfileImage" destination="8rX-za-4zq" id="9Q8-hX-slw"/>
                                             <outlet property="ratingLabel" destination="WcK-Bx-JyT" id="aDX-2I-24L"/>
+                                            <outlet property="reportIssueButton" destination="OdX-5U-bCH" id="Ks8-xh-bQ5"/>
+                                            <outlet property="reportIssueLabel" destination="R93-xp-w2K" id="MiH-Ld-HEP"/>
+                                            <outlet property="schedulePickupButton" destination="Efb-8q-0SO" id="bX4-og-dq0"/>
+                                            <outlet property="schedulePickupLabel" destination="kIB-sR-uM1" id="CKc-wS-tXU"/>
                                             <outlet property="storagePhoto" destination="Zu9-Ma-sCp" id="Ucv-f8-KKY"/>
                                         </connections>
                                     </tableViewCell>
@@ -1591,9 +1575,11 @@
                     </view>
                     <connections>
                         <outlet property="currentFill" destination="0YN-xF-dMC" id="K2w-LI-pry"/>
+                        <outlet property="currentLabel" destination="x07-oX-A7c" id="MPp-Gs-ENy"/>
                         <outlet property="currentNoFill" destination="aef-qW-b7x" id="K8d-Oc-zav"/>
                         <outlet property="myStorageLabel" destination="ORS-A1-OxY" id="xa5-KU-Zg3"/>
                         <outlet property="pendingFill" destination="Xkb-x6-0NF" id="wJ1-cx-5dz"/>
+                        <outlet property="pendingLabel" destination="Puj-as-bwe" id="cEz-pu-xk6"/>
                         <outlet property="pendingNoFill" destination="fA9-hA-qu3" id="bth-UK-e1A"/>
                         <outlet property="storageTableView" destination="KTX-FJ-bJD" id="qv5-Dr-PE5"/>
                         <outlet property="switchCustomTable" destination="KVE-GZ-8DO" id="ZeM-hH-mW4"/>
@@ -1798,7 +1784,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-                                <rect key="frame" x="28" y="84" width="20" height="20"/>
+                                <rect key="frame" x="27.666666666666671" y="84" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
@@ -2540,7 +2526,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="P4G-xz-ODq">
-                                <rect key="frame" x="0.0" y="-55" width="171" height="101"/>
+                                <rect key="frame" x="0.0" y="-55" width="173" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="101" id="XiM-pS-Ieg"/>
                                 </constraints>
@@ -2762,6 +2748,9 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="240" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="Grey Circle"/>
+                                <connections>
+                                    <action selector="slot1ButtonPressed:" destination="3Fq-0d-DHC" eventType="touchUpInside" id="Zc9-7f-Z14"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZJ-Yt-atu">
                                 <rect key="frame" x="26" y="475" width="322" height="69"/>
@@ -2771,6 +2760,9 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="240" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="Grey Circle"/>
+                                <connections>
+                                    <action selector="slot2ButtonPressed:" destination="3Fq-0d-DHC" eventType="touchUpInside" id="0oZ-zQ-XRB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fre-8k-Anu">
                                 <rect key="frame" x="26" y="540" width="322" height="69"/>
@@ -2780,6 +2772,9 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="240" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="Grey Circle"/>
+                                <connections>
+                                    <action selector="slot3ButtonPressed:" destination="3Fq-0d-DHC" eventType="touchUpInside" id="Zb7-bI-lhQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBa-ZB-rvj" userLabel="Sumbit Button">
                                 <rect key="frame" x="46" y="606" width="120" height="132"/>
@@ -2904,11 +2899,9 @@
         <image name="Current Storage Hex Filled" width="375" height="727"/>
         <image name="Current Storage Hex No Fill" width="375" height="709"/>
         <image name="Distance Icon" width="78" height="79"/>
-        <image name="Done Editing Button" width="135" height="143"/>
-        <image name="Edit List Button" width="135" height="143"/>
         <image name="Edit Pop Up" width="346" height="110"/>
         <image name="Exit Search Button" width="12" height="12"/>
-        <image name="Fill 7 Copy 2" width="171" height="216"/>
+        <image name="Fill 7 Copy 2" width="173" height="85"/>
         <image name="Fill 7 Copy 5CA" width="308" height="192"/>
         <image name="Fill 7 Copy 6" width="375" height="593"/>
         <image name="Filters Icon" width="24" height="20"/>
