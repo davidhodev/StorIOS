@@ -18,6 +18,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var buttonIndexPath: Int?
     var buttonProviderLocation: CLLocationCoordinate2D?
     
+    @IBOutlet weak var listIsEmpty: UILabel!
     
     @IBOutlet weak var myListTableView: UITableView!
     @IBAction func exitButton(_ sender: UIButton) {
@@ -45,6 +46,14 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if myListUsers.count == 0{
+            self.myListTableView.isHidden = true
+            self.listIsEmpty.isHidden = false
+        }
+        else{
+            self.myListTableView.isHidden = false
+            self.listIsEmpty.isHidden = true
+        }
         return myListUsers.count
     }
     

@@ -24,6 +24,9 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var pendingNoFill: UIImageView!
     @IBOutlet weak var pendingFill: UIImageView!
     @IBOutlet weak var currentFill: UIImageView!
+    @IBOutlet weak var pendingIsEmpty: UILabel!
+    @IBOutlet weak var currentIsEmpty: UILabel!
+    
     @IBAction func switchCustomTableViewAction(_ sender: Any) {
         selectorIndex = switchCustomTable.selectedSegmentIndex
   
@@ -85,10 +88,30 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     func numberOfSections(in tableView: UITableView) -> Int {
         print(selectorIndex)
         if selectorIndex == 0{
+            if myStorageUsers.count == 0{
+                self.storageTableView.isHidden = true
+                self.pendingIsEmpty.isHidden = false
+                self.currentIsEmpty.isHidden = true
+            }
+            else{
+                self.storageTableView.isHidden = false
+                self.pendingIsEmpty.isHidden = true
+                self.currentIsEmpty.isHidden = true
+            }
             return myStorageUsers.count
         }
         else{
-            print("TOOGGLED")
+            if myCurrentStorageUsers.count == 0{
+                self.storageTableView.isHidden = true
+                self.pendingIsEmpty.isHidden = true
+                self.currentIsEmpty.isHidden = false
+            }
+            else{
+                self.storageTableView.isHidden = false
+                self.pendingIsEmpty.isHidden = true
+                self.currentIsEmpty.isHidden = true
+            }
+
             return myCurrentStorageUsers.count
         }
     }
