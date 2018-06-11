@@ -221,6 +221,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         Database.database().reference().child("Users").child(uid!).child("myList").observeSingleEvent(of: .value, with: { (snapshot) in
             for userChild in snapshot.children{
                 let userSnapshot = userChild as! DataSnapshot
+                print("USER SNAPSHOT: ", userSnapshot)
                 let dictionary = userSnapshot.value as? [String: String?]
                 let user = myListUser()
                 user.providerID = dictionary!["myListProvider0"] as? String
