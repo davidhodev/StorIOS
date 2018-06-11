@@ -85,7 +85,6 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
 
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        print(selectorIndex)
         if selectorIndex == 0{
             if myStorageUsers.count == 0{
                 self.storageTableView.isHidden = true
@@ -302,8 +301,9 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         Database.database().reference().child("Users").child(uid!).child("pendingStorage").observeSingleEvent(of: .value, with: { (snapshot) in
                 for userChild in snapshot.children{
                     let userSnapshot = userChild as! DataSnapshot
-                    let dictionary = userSnapshot.value as? [String: String?]
-                    print("GET MY STORAGE DICTIONARY", dictionary)
+                    print("USER SNAPSHOT: ", userSnapshot)
+                    let dictionary = userSnapshot.value as? [String: Any?]
+                    print("DICTIONARY: ", dictionary!)
                     let user = myStorageUser()
                     user.providerID = dictionary!["myListProvider0"] as? String
                     user.storageID = dictionary!["myListStorage0"] as? String
