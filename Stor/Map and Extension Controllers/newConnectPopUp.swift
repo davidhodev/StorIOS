@@ -19,8 +19,13 @@ class newConnectPopUp: UIViewController {
     @IBOutlet weak var time2Label: UILabel!
     @IBOutlet weak var time3Label: UILabel!
     @IBOutlet weak var slot1button: UIButton!
+    var buttonActive = false
+    
     @IBOutlet weak var slot2Button: UIButton!
+    var buttonActive2 = false
+    
     @IBOutlet weak var slot3button: UIButton!
+    var buttonActive3 = false
     
     
     
@@ -28,8 +33,51 @@ class newConnectPopUp: UIViewController {
     var providerID: String?
     var storageID: String?
 
+    // button function, changes color when pressed
+    @IBAction func slot1ButtonPressed(_ sender: UIButton) {
+        if buttonActive == false {
+            slot1button.setImage(UIImage(named: "Blue Circle"), for: .normal)
+            slot2Button.setImage(UIImage(named: "Grey Circle"), for: .normal)
+            slot3button.setImage(UIImage(named: "Grey Circle"), for: .normal)
+            buttonActive = true
+            buttonActive2 = false
+            buttonActive3 = false
+        }
+        else{
+            slot1button.setImage(UIImage(named: "Grey Circle"), for: .normal)
+            buttonActive = false
+        }
+    }
     
-    
+    @IBAction func slot2ButtonPressed(_ sender: UIButton) {
+        if buttonActive2 == false {
+            slot2Button.setImage(UIImage(named: "Blue Circle"), for: .normal)
+            slot1button.setImage(UIImage(named: "Grey Circle"), for: .normal)
+            slot3button.setImage(UIImage(named: "Grey Circle"), for: .normal)
+            buttonActive = false
+            buttonActive2 = true
+            buttonActive3 = false
+        }
+        else{
+            slot2Button.setImage(UIImage(named: "Grey Circle"), for: .normal)
+            buttonActive2 = false
+        }
+    }
+    @IBAction func slot3ButtonPressed(_ sender: Any) {
+
+        if buttonActive3 == false {
+            slot1button.setImage(UIImage(named: "Grey Circle"), for: .normal)
+            slot2Button.setImage(UIImage(named: "Grey Circle"), for: .normal)
+            slot3button.setImage(UIImage(named: "Blue Circle"), for: .normal)
+            buttonActive = false
+            buttonActive2 = false
+            buttonActive3 = true
+        }
+        else{
+            slot2Button.setImage(UIImage(named: "Grey Circle"), for: .normal)
+            buttonActive3 = false
+        }
+    }
     
     
     //exit button full screen so that when you click off of the table of connect times, it takes you out 
