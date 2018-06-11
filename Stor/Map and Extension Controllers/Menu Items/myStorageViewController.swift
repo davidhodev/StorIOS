@@ -17,12 +17,16 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     var myCurrentStorageUsers = [myCurrentUser]()
     var selectorIndex: Int?
     
+
+    @IBOutlet weak var currentLabel: UILabel!
+    @IBOutlet weak var pendingLabel: UILabel!
     @IBOutlet weak var currentNoFill: UIImageView!
     @IBOutlet weak var pendingNoFill: UIImageView!
     @IBOutlet weak var pendingFill: UIImageView!
     @IBOutlet weak var currentFill: UIImageView!
     @IBAction func switchCustomTableViewAction(_ sender: Any) {
         selectorIndex = switchCustomTable.selectedSegmentIndex
+  
         
         // switch between current and past images
         if selectorIndex == 0{
@@ -30,6 +34,10 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             pendingNoFill.isHidden = true
             pendingFill.isHidden = false
             currentNoFill.isHidden = false
+            pendingLabel.textColor = UIColor(red:0.27, green:0.47, blue:0.91, alpha:1.0)
+            currentLabel.textColor = UIColor.white
+            
+            
             
         }
         else{
@@ -37,7 +45,8 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             pendingNoFill.isHidden = false
             pendingFill.isHidden = true
             currentNoFill.isHidden = true
-            
+            pendingLabel.textColor = UIColor.white
+            currentLabel.textColor =  UIColor(red:0.27, green:0.47, blue:0.91, alpha:1.0)
         }
         
         DispatchQueue.main.async {
@@ -92,6 +101,12 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
        let cell = storageTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! myStorageCustomTableViewCell
         if selectorIndex == 0{
             let user = myStorageUsers[indexPath.section]
+            // hiding and showing the buttons on pending section
+            cell.cancelConnectionButton.isHidden = false
+            cell.reportIssueButton.isHidden = true
+            cell.schedulePickupButton.isHidden = true
+            cell.reportIssueLabel.isHidden = true
+            cell.schedulePickupLabel.isHidden = true
             cell.addressLabel.attributedText = user.address
             
             cell.priceLabel.attributedText = user.price
@@ -147,12 +162,18 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         else{
             let user = myCurrentStorageUsers[indexPath.section]
             cell.addressLabel.text = user.address
-
+            // hiding and showing buttons on current section
+            cell.cancelConnectionButton.isHidden = true
+            cell.schedulePickupButton.isHidden = false
+            cell.reportIssueButton.isHidden = false
+            cell.reportIssueLabel.isHidden = false
+            cell.schedulePickupLabel.isHidden = false
             cell.priceLabel.attributedText = user.price
-            cell.dimensionsLabel.text = user.dimensionsString
+            cell.dimensionsLabel.attributedText = user.dimensionsString
+
             cell.cubicFeetLabel.attributedText = user.cubicString
-            cell.nameLabel.text = user.name
-            cell.ratingLabel.text = user.rating
+            cell.nameLabel.attributedText = user.name
+            cell.ratingLabel.attributedText = user.rating
 
 
             DispatchQueue.main.async(execute: { () -> Void in
