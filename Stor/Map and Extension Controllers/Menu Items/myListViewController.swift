@@ -18,6 +18,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var buttonIndexPath: Int?
     var buttonProviderLocation: CLLocationCoordinate2D?
     
+    @IBOutlet weak var listIsEmpty: UILabel!
     
     @IBOutlet weak var myListTableView: UITableView!
     @IBAction func exitButton(_ sender: UIButton) {
@@ -45,6 +46,14 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if myListUsers.count == 0{
+            self.myListTableView.isHidden = true
+            self.listIsEmpty.isHidden = false
+        }
+        else{
+            self.myListTableView.isHidden = false
+            self.listIsEmpty.isHidden = true
+        }
         return myListUsers.count
     }
     
@@ -154,21 +163,6 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             {
             return myListCustomCell.expandedHeight
         }
-//        else if (myListCustomCell.opened == true && indexPath == selectedIndexPath) {
-//            print(myListCustomCell.opened)
-//                myListCustomCell.opened = false
-//                return myListCustomCell.defaultHeight
-//        }
-//
-//        else if (myListCustomCell.opened == false){
-//            print(myListCustomCell.opened)
-//              return myListCustomCell.defaultHeight
-//        }
-//
-//        else if (myListCustomCell.opened == true){
-//            print(myListCustomCell.opened)
-//             return myListCustomCell.expandedHeight
-//        }
         else {
             return myListCustomCell.defaultHeight
         }

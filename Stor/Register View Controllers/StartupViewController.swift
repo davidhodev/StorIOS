@@ -118,8 +118,34 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
             }
             
             if let photo = info["picture"] as? NSDictionary, let fbData = photo["data"] as? NSDictionary, let fbPhotoUrl = fbData["url"] as? String{
+
                 print(fbData)
-                fbPhoto = fbPhotoUrl
+                let imageUrl = URL(string: fbPhotoUrl)!
+                let imageData = try! Data(contentsOf: imageUrl)
+                
+                let image = UIImage(data: imageData)
+                
+                let imageUniqueID = NSUUID().uuidString
+                let storageRef = Storage.storage().reference().child("UserProfileImages").child("\(imageUniqueID).jpeg")
+                
+                
+                if let uploadData = UIImageJPEGRepresentation(image!, 0.1){
+                    
+                    storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                        if (error != nil){
+                            print(error)
+                            return
+                        }
+                        
+                        storageRef.downloadURL(completion: { (updatedURL, error) in
+                            if (error != nil){
+                                print(error)
+                                return
+                            }
+                            fbPhoto = (updatedURL?.absoluteString)!
+                        })
+                    })
+                }
             }
             let fbUrl = URL(string:fbPhoto)
             

@@ -543,7 +543,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4c-0V-zAs" userLabel="Rating Label">
-                                <rect key="frame" x="154" y="163" width="33.666666666666657" height="18"/>
+                                <rect key="frame" x="154" y="163.33333333333334" width="33.666666666666657" height="18"/>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="14"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -572,7 +572,7 @@
                                 <state key="normal" image="Edit Pop Up"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(310) 909-9063" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gp4-WS-bwv" userLabel="Phone Number">
-                                <rect key="frame" x="102" y="297" width="97" height="21"/>
+                                <rect key="frame" x="102" y="297.66666666666669" width="97" height="20.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="ZeO-JY-Rbb"/>
                                 </constraints>
@@ -581,7 +581,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jack.m.feldman@vanderbilt.edu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1I-EF-ycA" userLabel="Email">
-                                <rect key="frame" x="101.99999999999999" y="368" width="190.66666666666663" height="21"/>
+                                <rect key="frame" x="101.99999999999999" y="368.66666666666669" width="190.66666666666663" height="20.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="245" id="6kI-17-za9"/>
                                 </constraints>
@@ -590,7 +590,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bWA-gA-xZe" userLabel="Password Placeholder">
-                                <rect key="frame" x="102" y="440" width="68" height="20"/>
+                                <rect key="frame" x="102" y="440" width="68" height="20.333333333333314"/>
                                 <attributedString key="attributedText">
                                     <fragment content="•••••••">
                                         <attributes>
@@ -963,6 +963,21 @@
                                     <action selector="exitButton:" destination="DIb-zf-3Ve" eventType="touchUpInside" id="dCC-hX-LgQ"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alT-sU-oLR">
+                                <rect key="frame" x="0.0" y="243" width="375" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Your list is empty.
+Use the Add To List Button on a pin to begin</string>
+                                        <attributes>
+                                            <font key="NSFont" size="16" name="Dosis-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <color key="highlightedColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Payment Top Hex" translatesAutoresizingMaskIntoConstraints="NO" id="wHg-kN-PLe">
                                 <rect key="frame" x="117" y="-1" width="258" height="151"/>
                                 <constraints>
@@ -1157,6 +1172,7 @@
                         <viewLayoutGuide key="safeArea" id="KVA-SP-4l1"/>
                     </view>
                     <connections>
+                        <outlet property="listIsEmpty" destination="alT-sU-oLR" id="9Gf-h5-e6I"/>
                         <outlet property="myListTableView" destination="lyT-sV-Et1" id="pvF-5I-TCr"/>
                         <segue destination="ChP-SR-ddt" kind="presentation" identifier="seeMoreSegue" modalPresentationStyle="overFullScreen" id="iCd-uy-vSg"/>
                     </connections>
@@ -1508,6 +1524,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addressLabel" destination="ED7-Oa-VzO" id="sSy-aA-s8C"/>
+                                            <outlet property="cancelConnectionButton" destination="CvQ-cx-wlJ" id="RnH-jY-ABN"/>
                                             <outlet property="cellView" destination="ifw-Sn-ZU4" id="ryx-4Y-N1V"/>
                                             <outlet property="cubicFeetLabel" destination="pm6-NS-TiV" id="cA9-Z9-dxI"/>
                                             <outlet property="dimensionsLabel" destination="9CA-Eg-ZRC" id="KaI-Da-ncZ"/>
@@ -1516,6 +1533,10 @@
                                             <outlet property="priceLabel" destination="QDf-cR-bff" id="pHu-Ao-tG2"/>
                                             <outlet property="providerProfileImage" destination="8rX-za-4zq" id="9Q8-hX-slw"/>
                                             <outlet property="ratingLabel" destination="WcK-Bx-JyT" id="aDX-2I-24L"/>
+                                            <outlet property="reportIssueButton" destination="OdX-5U-bCH" id="Ks8-xh-bQ5"/>
+                                            <outlet property="reportIssueLabel" destination="R93-xp-w2K" id="MiH-Ld-HEP"/>
+                                            <outlet property="schedulePickupButton" destination="Efb-8q-0SO" id="bX4-og-dq0"/>
+                                            <outlet property="schedulePickupLabel" destination="kIB-sR-uM1" id="CKc-wS-tXU"/>
                                             <outlet property="storagePhoto" destination="Zu9-Ma-sCp" id="Ucv-f8-KKY"/>
                                         </connections>
                                     </tableViewCell>
@@ -1531,6 +1552,31 @@
                                 <rect key="frame" x="287" y="144.33333333333334" width="54" height="23"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqB-vb-ebv">
+                                <rect key="frame" x="207" y="88" width="152" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Pending Is Empty">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qki-CF-C03">
+                                <rect key="frame" x="121" y="88" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Current is Empty">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -1570,9 +1616,13 @@
                     </view>
                     <connections>
                         <outlet property="currentFill" destination="0YN-xF-dMC" id="K2w-LI-pry"/>
+                        <outlet property="currentIsEmpty" destination="Qki-CF-C03" id="fs0-5m-nUB"/>
+                        <outlet property="currentLabel" destination="x07-oX-A7c" id="MPp-Gs-ENy"/>
                         <outlet property="currentNoFill" destination="aef-qW-b7x" id="K8d-Oc-zav"/>
                         <outlet property="myStorageLabel" destination="ORS-A1-OxY" id="xa5-KU-Zg3"/>
                         <outlet property="pendingFill" destination="Xkb-x6-0NF" id="wJ1-cx-5dz"/>
+                        <outlet property="pendingIsEmpty" destination="rqB-vb-ebv" id="5hJ-nD-1kO"/>
+                        <outlet property="pendingLabel" destination="Puj-as-bwe" id="cEz-pu-xk6"/>
                         <outlet property="pendingNoFill" destination="fA9-hA-qu3" id="bth-UK-e1A"/>
                         <outlet property="storageTableView" destination="KTX-FJ-bJD" id="qv5-Dr-PE5"/>
                         <outlet property="switchCustomTable" destination="KVE-GZ-8DO" id="ZeM-hH-mW4"/>
@@ -1777,7 +1827,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-                                <rect key="frame" x="28" y="84" width="20" height="20"/>
+                                <rect key="frame" x="27.666666666666671" y="84" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
@@ -2741,6 +2791,9 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="240" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="Grey Circle"/>
+                                <connections>
+                                    <action selector="slot1ButtonPressed:" destination="3Fq-0d-DHC" eventType="touchUpInside" id="Zc9-7f-Z14"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZJ-Yt-atu">
                                 <rect key="frame" x="26" y="475" width="322" height="69"/>
@@ -2750,6 +2803,9 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="240" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="Grey Circle"/>
+                                <connections>
+                                    <action selector="slot2ButtonPressed:" destination="3Fq-0d-DHC" eventType="touchUpInside" id="0oZ-zQ-XRB"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fre-8k-Anu">
                                 <rect key="frame" x="26" y="540" width="322" height="69"/>
@@ -2759,6 +2815,9 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="240" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="Grey Circle"/>
+                                <connections>
+                                    <action selector="slot3ButtonPressed:" destination="3Fq-0d-DHC" eventType="touchUpInside" id="Zb7-bI-lhQ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBa-ZB-rvj" userLabel="Sumbit Button">
                                 <rect key="frame" x="46" y="606" width="120" height="132"/>

@@ -15,12 +15,12 @@ class myCurrentUser: NSObject {
     var storageID: String?
     var address: String?
     var price: NSMutableAttributedString?
-    var dimensionsString: String?
+    var dimensionsString: NSMutableAttributedString?
     var cubicString: NSMutableAttributedString?
-    var rating: String?
+    var rating: NSMutableAttributedString?
     var providerProfile: UIImage?
     var storagePhoto: UIImage?
-    var name: String?
+    var name: NSMutableAttributedString?
     
     func getAddress(){
         if let user = Auth.auth().currentUser{
@@ -60,7 +60,11 @@ class myCurrentUser: NSObject {
                     dimensionsString += "' X "
                     dimensionsString += String(describing: dictionary["Width"]!)
                     dimensionsString += "'"
-                    self.dimensionsString = dimensionsString
+                    let dimensionsTemp = dimensionsString
+                    // maybe change this
+                    let fontDimensions: UIFont? = UIFont(name: "Dosis-Bold", size:16)
+                    let dimensionsAttString:NSMutableAttributedString = NSMutableAttributedString(string: dimensionsTemp, attributes: [.font: fontDimensions!])
+                    self.dimensionsString = dimensionsAttString
                     
                     var cubicFeetNumber = Int(String(describing:dictionary["Length"]!))
                     cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Width"]!))!)
@@ -100,7 +104,11 @@ class myCurrentUser: NSObject {
                 if let dictionary = snapshot.value as? [String: Any]{
                     let ratingString = String(describing: dictionary["rating"]!)
                     let roundedRating = (Double(ratingString)! * 100).rounded()/100
-                    self.rating = String(format: "%.2f", roundedRating)
+                    let ratingTemp = String(format: "%.2f", roundedRating)
+                    // MEDIUM
+                    let fontRating: UIFont? = UIFont(name: "Dosis-Medium", size:14)
+                    let ratingAttString:NSMutableAttributedString = NSMutableAttributedString(string: ratingTemp, attributes: [.font: fontRating!])
+                    self.rating = ratingAttString
                     
                     let fullName = dictionary["Name"] as? String
                     let fullNameArr = fullName?.split(separator: " ")
@@ -116,7 +124,10 @@ class myCurrentUser: NSObject {
                     var finalName = firstName
                     finalName += "\n"
                     finalName += lastName!
-                    self.name = String(describing: finalName)
+                    let tempName = String(describing: finalName)
+                    let fontName:UIFont? = UIFont(name: "Dosis-Regular", size:18)
+                    let nameAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempName, attributes: [.font:fontName!])
+                    self.name = nameAttString
                     
                     
                     
@@ -137,7 +148,4 @@ class myCurrentUser: NSObject {
         }
         
     }
-    
-    
-    
 }
