@@ -2367,13 +2367,13 @@ Use the Add To List Button on a pin to begin</string>
                                     <segue destination="DIb-zf-3Ve" kind="showDetail" id="HkI-sf-r50"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ie1-Z9-sSB" userLabel="My Storage Button">
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ie1-Z9-sSB" userLabel="My Storage Button">
                                 <rect key="frame" x="45" y="685" width="62" height="66"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="Ix1-Gh-fKH"/>
                                     <constraint firstAttribute="width" constant="62" id="sTH-zV-3R2"/>
                                 </constraints>
-                                <inset key="imageEdgeInsets" minX="-20" minY="-9" maxX="-20" maxY="-23"/>
+                                <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-19"/>
                                 <state key="normal" image="My Storage Button"/>
                                 <connections>
                                     <segue destination="M5z-fM-Can" kind="showDetail" id="y4N-7o-eU3"/>
@@ -2941,7 +2941,7 @@ Use the Add To List Button on a pin to begin</string>
         <image name="Home Icon" width="100" height="103"/>
         <image name="Line 2" width="303" height="2"/>
         <image name="List Button" width="100" height="103"/>
-        <image name="Log out button" width="100" height="103"/>
+        <image name="Log out button" width="100" height="98"/>
         <image name="Login Via Email Button" width="135" height="143"/>
         <image name="Logo Copy" width="199" height="124"/>
         <image name="Logo Copy Small" width="135" height="85"/>
