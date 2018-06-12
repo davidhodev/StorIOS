@@ -16,6 +16,5 @@ class globalVariablesViewController: UIViewController {
     static var ratingNumber = NSNumber()
     static var profilePicData = Data()
     static var currentLocation: CLLocation?
-    static var priceFilter: Float?
     static var buttonOn: Int?
 }
