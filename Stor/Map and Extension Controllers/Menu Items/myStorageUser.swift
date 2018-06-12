@@ -21,6 +21,7 @@ class myStorageUser: NSObject {
     var providerProfile: UIImage?
     var storagePhoto: UIImage?
     var name: NSMutableAttributedString?
+    var inUse: Bool?
     
     
     func getAddress(){
