@@ -24,7 +24,6 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var pendingNoFill: UIImageView!
     @IBOutlet weak var pendingFill: UIImageView!
     @IBOutlet weak var currentFill: UIImageView!
-    @IBOutlet weak var pendingIsEmpty: UILabel!
     @IBOutlet weak var currentIsEmpty: UILabel!
     
     @IBAction func switchCustomTableViewAction(_ sender: Any) {
@@ -89,12 +88,10 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         if selectorIndex == 0{
             if myStorageUsers.count == 0{
                 self.storageTableView.isHidden = true
-                self.pendingIsEmpty.isHidden = false
-                self.currentIsEmpty.isHidden = true
+                self.currentIsEmpty.isHidden = false
             }
             else{
                 self.storageTableView.isHidden = false
-                self.pendingIsEmpty.isHidden = true
                 self.currentIsEmpty.isHidden = true
             }
             return myStorageUsers.count
@@ -102,12 +99,10 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         else{
             if myCurrentStorageUsers.count == 0{
                 self.storageTableView.isHidden = true
-                self.pendingIsEmpty.isHidden = true
                 self.currentIsEmpty.isHidden = false
             }
             else{
                 self.storageTableView.isHidden = false
-                self.pendingIsEmpty.isHidden = true
                 self.currentIsEmpty.isHidden = true
             }
 
