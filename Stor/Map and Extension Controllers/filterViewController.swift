@@ -11,23 +11,69 @@ import SwiftRangeSlider
 
 class filterViewController: UIViewController {
 
-    @IBOutlet weak var sizeRangeSlider: RangeSlider!
+    
+    @IBOutlet weak var priceSliderOutlet: UISlider!
     @IBOutlet weak var priceLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
+    
+    @IBAction func smallSizeButtonPressed(_ sender: UIButton) {
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        var priceLabelText = ""
+        if globalVariablesViewController.priceFilter == nil{
+            globalVariablesViewController.priceFilter = 250
+        }
+        if globalVariablesViewController.priceFilter == 250{
+            priceSliderOutlet.setValue(globalVariablesViewController.priceFilter!, animated: true)
+            priceLabelText = "> $"
+            priceLabelText += (String(describing: globalVariablesViewController.priceFilter!))
+            priceLabelText += "0"
+            priceLabel.text = priceLabelText
+        }
+        else if globalVariablesViewController.priceFilter == 0{
+            priceSliderOutlet.setValue(globalVariablesViewController.priceFilter!, animated: true)
+            priceLabelText = "   $"
+            priceLabelText += String(describing: globalVariablesViewController.priceFilter!)
+            priceLabelText += "0"
+            priceLabel.text = priceLabelText
+        }
+        else{
+            priceSliderOutlet.setValue(globalVariablesViewController.priceFilter!, animated: true)
+            priceLabelText = "< $"
+            priceLabelText += String(describing: globalVariablesViewController.priceFilter!)
+            priceLabelText += "0"
+            priceLabel.text = priceLabelText
+        }
+    }
+    
     @IBAction func priceSlider(_ sender: UISlider) {
-        let step: Float = 5
-        var priceText = "$"
+        priceSliderOutlet.isContinuous = true
+        
+        var priceText = ""
+        
+        if priceSliderOutlet.value == Float(250){
+            priceText = "> $"
+        }
+        else if priceSliderOutlet.value == priceSliderOutlet.minimumValue{
+            priceText = "   $"
+        }
+        else{
+            priceText = "< $"
+        }
         let price0 = "0"
+        let step: Float = 5
         let roundedValue = round(sender.value / step) * step
         sender.value = roundedValue
         priceText += String(describing: sender.value.rounded())
         priceText += price0
         priceLabel.text = priceText
+        priceSliderOutlet.value = sender.value
+        globalVariablesViewController.priceFilter = priceSliderOutlet.value
     }
     
     @IBAction func dismissButton(_ sender: UIButton) {

@@ -24,7 +24,9 @@ class myCurrentUser: NSObject {
     
     func getAddress(){
         if let user = Auth.auth().currentUser{
-            Database.database().reference().child("Providers").child(providerID!).child("currentStorage").observe(.childAdded, with: { (snapshot) in
+           print("TEST", providerID!)
+            Database.database().reference().child("Providers").child(providerID!).child("storageInUse").observe(.childAdded, with: { (snapshot) in
+                print("GET ADDESS SNAPSHOT: ", snapshot)
                 if let dictionary = snapshot.value as? [String: Any]{
                     print(dictionary)
                     self.address = dictionary["Address"] as? String
@@ -35,7 +37,7 @@ class myCurrentUser: NSObject {
     
     func getData(){
         if let user = Auth.auth().currentUser{
-            Database.database().reference().child("Providers").child(providerID!).child("currentStorage").observe(.childAdded, with: { (snapshot) in
+            Database.database().reference().child("Providers").child(providerID!).child("storageInUse").observe(.childAdded, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: Any]{
                     let priceString = String(describing: dictionary["Price"]!)
                     if let outputPrice = (Double(priceString)){
