@@ -12,11 +12,22 @@ import SwiftRangeSlider
 class filterViewController: UIViewController {
 
     @IBOutlet weak var sizeRangeSlider: RangeSlider!
+    @IBOutlet weak var priceLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    @IBAction func priceSlider(_ sender: UISlider) {
+        let step: Float = 5
+        var priceText = "$"
+        let price0 = "0"
+        let roundedValue = round(sender.value / step) * step
+        sender.value = roundedValue
+        priceText += String(describing: sender.value.rounded())
+        priceText += price0
+        priceLabel.text = priceText
     }
     
     @IBAction func dismissButton(_ sender: UIButton) {
