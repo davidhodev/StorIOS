@@ -1287,7 +1287,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <rect key="frame" x="0.0" y="396" width="118" height="382"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This list is empty. Begin by connecting with a provider on the map." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qki-CF-C03">
-                                <rect key="frame" x="74" y="265" width="216" height="76"/>
+                                <rect key="frame" x="64" y="264" width="216" height="76"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="216" id="ibL-jz-t2X"/>
                                     <constraint firstAttribute="height" constant="76" id="xFa-zX-oRE"/>
@@ -1310,7 +1310,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Storage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORS-A1-OxY">
-                                <rect key="frame" x="74" y="58" width="103.66666666666669" height="31"/>
+                                <rect key="frame" x="74" y="58" width="124.33333333333331" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="gDk-fS-wtu"/>
                                 </constraints>
@@ -1554,13 +1554,13 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Puj-as-bwe">
-                                <rect key="frame" x="74" y="138" width="56.666666666666657" height="23"/>
+                                <rect key="frame" x="64" y="139" width="66.666666666666686" height="21"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                 <color key="textColor" red="0.26666666666666666" green="0.47058823529411764" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x07-oX-A7c">
-                                <rect key="frame" x="287" y="138.33333333333334" width="54" height="23"/>
+                                <rect key="frame" x="287" y="139.33333333333334" width="60.333333333333314" height="21"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2998,7 +2998,7 @@ Use the Add To List Button on a pin to begin</string>
         <image name="Distance Icon" width="78" height="79"/>
         <image name="Edit Pop Up" width="346" height="110"/>
         <image name="Exit Search Button" width="12" height="12"/>
-        <image name="Fill 7 Copy 2" width="171" height="216"/>
+        <image name="Fill 7 Copy 2" width="173" height="85"/>
         <image name="Fill 7 Copy 5CA" width="308" height="192"/>
         <image name="Fill 7 Copy 6" width="375" height="593"/>
         <image name="Filters Icon" width="24" height="20"/>
