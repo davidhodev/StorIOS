@@ -63,6 +63,16 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var switchCustomTable: UISegmentedControl!
     @IBOutlet weak var myStorageLabel: UILabel!
     
+    @IBAction func cancelConnectionButtonPressed(_ sender: Any) {
+        print("Cancel button pressed")
+//        if let user = Auth.auth().currentUser{
+//            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+//            let userReference = databaseReference.root.child("Users").child((user.uid))
+//            userReference.child("pendingStorage").child(myStorageID!).removeValue()
+//        }
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,6 +139,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             cell.schedulePickupButton.isHidden = true
             cell.reportIssueLabel.isHidden = true
             cell.schedulePickupLabel.isHidden = true
+            
             cell.addressLabel.attributedText = user.address
             
             cell.priceLabel.attributedText = user.price
