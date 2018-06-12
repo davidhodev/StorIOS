@@ -63,6 +63,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var myStorageLabel: UILabel!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         storageTableView.delegate = self
@@ -124,6 +125,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             cell.schedulePickupButton.isHidden = true
             cell.reportIssueLabel.isHidden = true
             cell.schedulePickupLabel.isHidden = true
+            
             cell.addressLabel.attributedText = user.address
             
             cell.priceLabel.attributedText = user.price
@@ -169,6 +171,10 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.moreImage.image = UIImage(named: "Up Arrow")
             }
             
+            cell.cancelConnectionButton.tag = indexPath.section
+            print(cell.cancelConnectionButton.tag)
+            cell.cancelConnectionButton.addTarget(self, action: #selector(self.cancelConnection(_:)), for: .touchUpInside)
+
             
             storageTableView.backgroundColor = UIColor.clear
             cell.backgroundColor = UIColor.white
@@ -191,7 +197,8 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             cell.cubicFeetLabel.attributedText = user.cubicString
             cell.nameLabel.attributedText = user.name
             cell.ratingLabel.attributedText = user.rating
-
+            
+            
 
             DispatchQueue.main.async(execute: { () -> Void in
 
@@ -237,6 +244,34 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             return cell
         }
         
+    }
+    
+    @objc func cancelConnection(_ sender:UIButton) {
+        let buttonIndexPath = sender.tag
+        print("My custom button action")
+
+        if selectorIndex == 0{
+            let providerID = myStorageUsers[buttonIndexPath].providerID
+            let myStorageID = myStorageUsers[buttonIndexPath].storageID
+            if let user = Auth.auth().currentUser{
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                let userReference = databaseReference.root.child("Users").child((user.uid))
+                    userReference.child("pendingStorage").child(myStorageID!).removeValue()
+                
+                let providerReference = databaseReference.root.child("Providers").child(providerID!).child("currentStorage").child(myStorageID!).child("potentialConnects").child(user.uid)
+                providerReference.removeValue()
+                
+            }
+            
+            
+            //PUSH NOTIFICATION TO PROVIDER
+                
+                self.myStorageUsers.remove(at: buttonIndexPath)
+                self.storageTableView.reloadData()
+        }
+        else{
+            print(selectorIndex)
+        }
     }
     
     

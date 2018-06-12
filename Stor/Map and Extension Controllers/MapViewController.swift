@@ -333,7 +333,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if segue.identifier == "AnnotationPopUpSegue"{
             let destinationController = segue.destination as! AnnotationPopUp
             destinationController.providerID = self.annotationUID
-//            destinationController.providerAddress = self.annotationAddress
             destinationController.storageID = self.annotationStorageID
             destinationController.providerLocation = self.annotationLocation
             destinationController.userLocation = self.storMapKit.userLocation.location
