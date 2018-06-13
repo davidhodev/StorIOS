@@ -65,23 +65,35 @@ class filterViewController: UIViewController {
                 }
                 else
                 {
-                    var priceString = "$70 – $"
-                    let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
-                    priceString += currentPrice
-                    priceLabel.text = priceString
+                    if (priceSliderOutlet.value == 250){
+                        priceLabel.text = "$70 – $250+"
+                    }
+                    else{
+                        var priceString = "$70 – $"
+                        let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
+                        priceString += currentPrice
+                        priceLabel.text = priceString
+                    }
                 }
             }
-            // if large on
-            if (globalVariablesViewController.buttonOn! >= 100){
-                if (priceSliderOutlet.value <= 100){
-                    priceSliderOutlet.value = 100
-                    priceLabel.text = "$100"
-                }
-                else{
-                    var priceString = "$100 – $"
-                    let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
-                    priceString += currentPrice
-                    priceLabel.text = priceString
+            // if large on and medium off
+            else{
+                if (globalVariablesViewController.buttonOn! >= 100){
+                    if (priceSliderOutlet.value <= 100){
+                        priceSliderOutlet.value = 100
+                        priceLabel.text = "$100"
+                    }
+                    else{
+                        if (priceSliderOutlet.value == 250){
+                            priceLabel.text = "$100 – $250+"
+                        }
+                        else{
+                            var priceString = "$100 – $"
+                            let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
+                            priceString += currentPrice
+                            priceLabel.text = priceString
+                        }
+                    }
                 }
             }
         }
@@ -168,23 +180,88 @@ class filterViewController: UIViewController {
     }
     
     @IBAction func largeSizeButtonPressed(_ sender: UIButton) {
+        // button on
         if (globalVariablesViewController.buttonOn! < 100){
             globalVariablesViewController.buttonOn! = globalVariablesViewController.buttonOn! + 100
             //change image to on, change label to bold
             largeButtonImage.setImage(UIImage(named: "Blue Check"), for: .normal)
             largeLabel.font = UIFont(name: "Dosis-Bold", size: 15.0)
             largeLabel.textColor = UIColor.black
-            if (globalVariablesViewController.buttonOn! % 10 == 0 && globalVariablesViewController.buttonOn! % 100 < 10 && priceSliderOutlet.value < 100){
-                priceLabel.text = "$100"
-                priceSliderOutlet.value = 100
+            if (globalVariablesViewController.buttonOn! % 10 == 0 && globalVariablesViewController.buttonOn! % 100 < 10){
+                if (priceSliderOutlet.value <= 100){
+                    priceLabel.text = "$100"
+                    priceSliderOutlet.value = 100
+                }
+                if (priceSliderOutlet.value > 100){
+                    if (priceSliderOutlet.value == 250){
+                        var priceString = "$100 – $"
+                        let endString = "+"
+                        let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
+                        priceString += currentPrice
+                        priceString += endString
+                        priceLabel.text = priceString
+                    }
+                    else{
+                        var priceString = "$100 – $"
+                        let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
+                        priceString += currentPrice
+                        priceLabel.text = priceString
+                    }
+                }
             }
         }
+        // button off
         else{
             globalVariablesViewController.buttonOn! =  globalVariablesViewController.buttonOn! - 100
             //change image to off, label to unbold
              largeButtonImage.setImage(UIImage(named: "Grey Circle"), for: .normal)
             largeLabel.font = UIFont(name: "Dosis-Regular", size: 16.0)
             largeLabel.textColor = UIColor(red:0.16, green:0.15, blue:0.35, alpha:1.0)
+            // small off
+            if (globalVariablesViewController.buttonOn! % 10 == 0){
+                // medium off
+                if (globalVariablesViewController.buttonOn! % 100 < 10){
+                    if (priceSliderOutlet.value == 250){
+                        var priceString = "$0 – $"
+                        let endString = "+"
+                        let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
+                        priceString += currentPrice
+                        priceString += endString
+                        priceLabel.text = priceString
+                    }
+                    else{
+                        var priceString = "$0 – $"
+                        let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
+                        priceString += currentPrice
+                        priceLabel.text = priceString
+                    }
+                }
+                // medium on
+                else{
+                    if (priceSliderOutlet.value != 250){
+                        var priceString = "$70 – $"
+                        let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
+                        priceString += currentPrice
+                        priceLabel.text = priceString
+                    }
+                    else{
+                        var priceString = "$70 – $"
+                        let endString = "+"
+                        let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
+                        priceString += currentPrice
+                        priceString += endString
+                        priceLabel.text = priceString
+                    }
+                }
+            }
+            else if (priceSliderOutlet.value == 250){
+                var priceString = "$0 – $"
+                let endString = "+"
+                let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
+                priceString += currentPrice
+                priceString += endString
+                priceLabel.text = priceString
+            }
         }
     }
     

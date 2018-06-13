@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,6 +13,9 @@
     <customFonts key="customFonts">
         <array key="Dosis-Bold.otf">
             <string>Dosis-Bold</string>
+        </array>
+        <array key="Dosis-Light.otf">
+            <string>Dosis-Light</string>
         </array>
         <array key="Dosis-Medium.otf">
             <string>Dosis-Medium</string>
@@ -46,7 +49,7 @@
                                 <rect key="frame" x="0.0" y="358" width="170" height="300"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy4" translatesAutoresizingMaskIntoConstraints="NO" id="uGy-bx-NSJ">
-                                <rect key="frame" x="136" y="1" width="169" height="93"/>
+                                <rect key="frame" x="138" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy5_2" translatesAutoresizingMaskIntoConstraints="NO" id="U2q-m4-Bqu">
                                 <rect key="frame" x="224" y="82" width="151" height="323"/>
@@ -59,7 +62,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ED4-zM-ayk">
-                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
+                                <rect key="frame" x="0.0" y="-13" width="173" height="85"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Bd-4gJ">
                                 <rect key="frame" x="33.666666666666657" y="392" width="177" height="188"/>
@@ -316,7 +319,7 @@
                                 <rect key="frame" x="136" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ZcF-jB-fyb">
-                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
+                                <rect key="frame" x="0.0" y="-13" width="171" height="85"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo Copy" translatesAutoresizingMaskIntoConstraints="NO" id="iUg-vp-lcF">
                                 <rect key="frame" x="51" y="115" width="187" height="114"/>
@@ -1361,7 +1364,7 @@ Use the Add To List Button on a pin to begin</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="14" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WcK-Bx-JyT">
-                                                            <rect key="frame" x="91" y="189.33333333333334" width="29.333333333333329" height="18"/>
+                                                            <rect key="frame" x="91" y="189.66666666666666" width="29.333333333333329" height="18"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="14"/>
                                                             <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1422,7 +1425,7 @@ Use the Add To List Button on a pin to begin</string>
                                                             <state key="normal" image="Call Button Small"/>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Call" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="afn-4J-EuW">
-                                                            <rect key="frame" x="60.000000000000007" y="240.66666666666669" width="22.333333333333336" height="20.333333333333314"/>
+                                                            <rect key="frame" x="60.000000000000007" y="240" width="22.333333333333336" height="20.333333333333314"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                                             <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1437,7 +1440,7 @@ Use the Add To List Button on a pin to begin</string>
                                                             <state key="normal" image="Report Button"/>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report Issue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R93-xp-w2K">
-                                                            <rect key="frame" x="222.00000000000003" y="239.66666666666669" width="75.333333333333343" height="20.333333333333314"/>
+                                                            <rect key="frame" x="222.00000000000003" y="240" width="75.333333333333343" height="20.333333333333314"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                                             <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1671,26 +1674,26 @@ Use the Add To List Button on a pin to begin</string>
                                 <color key="textColor" red="0.26666666666666666" green="0.47058823529411764" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BzM-AB-17X">
-                                <rect key="frame" x="42.333333333333336" y="148" width="24.666666666666664" height="20.333333333333343"/>
-                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BzM-AB-17X">
+                                <rect key="frame" x="42" y="148" width="31" height="20"/>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                 <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M0J-oX-ZhK">
-                                <rect key="frame" x="42.333333333333336" y="231.33333333333334" width="31.000000000000007" height="20.333333333333343"/>
-                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                                <rect key="frame" x="42" y="231" width="44" height="20"/>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                 <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Looking for parking?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83r-mq-cbh">
-                                <rect key="frame" x="42.333333333333336" y="314.66666666666669" width="123.33333333333331" height="20.333333333333314"/>
-                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                                <rect key="frame" x="42.333333333333343" y="314.66666666666669" width="126" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                 <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gP5-8L-kYU">
-                                <rect key="frame" x="287.66666666666669" y="309.66666666666669" width="51" height="31"/>
+                                <rect key="frame" x="290.33333333333331" y="309.66666666666669" width="51" height="31"/>
                                 <color key="onTintColor" red="0.2666666667" green="0.47058823529999999" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KPX-3C-ri8">
@@ -1703,13 +1706,13 @@ Use the Add To List Button on a pin to begin</string>
                                 <state key="normal" image="Apply Filters Button"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0 – $250+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Af-eV-QcA" userLabel="Price Result">
-                                <rect key="frame" x="283.33333333333331" y="231.66666666666666" width="69.333333333333314" height="20.333333333333343"/>
+                                <rect key="frame" x="268.66666666666669" y="231.66666666666666" width="69.333333333333314" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                 <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4v-V7-RdW">
-                                <rect key="frame" x="42" y="186" width="63" height="20"/>
+                                <rect key="frame" x="40.666666666666657" y="186" width="63" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="63" id="1nZ-5a-pBp"/>
                                     <constraint firstAttribute="height" constant="20" id="CEe-nn-rH5"/>
@@ -1722,7 +1725,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phm-Oc-fsC">
-                                <rect key="frame" x="147" y="185.66666666666666" width="78" height="20"/>
+                                <rect key="frame" x="144.33333333333334" y="184.66666666666666" width="78" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="78" id="4Dz-14-Y6t"/>
                                     <constraint firstAttribute="height" constant="20" id="Rsn-BU-9wc"/>
@@ -1735,7 +1738,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZFf-Ym-j7F">
-                                <rect key="frame" x="281" y="186" width="63" height="20"/>
+                                <rect key="frame" x="277" y="186" width="63" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="63" id="aBx-ze-iBA"/>
                                     <constraint firstAttribute="height" constant="20" id="new-Q8-XCY"/>
@@ -1748,20 +1751,20 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Small" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwl-sC-9TP">
-                                <rect key="frame" x="42" y="185" width="35" height="21"/>
-                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                                <rect key="frame" x="42" y="185" width="33.666666666666657" height="21"/>
+                                <fontDescription key="fontDescription" name="Dosis-Light" family="Dosis" pointSize="16"/>
                                 <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Large" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gev-SQ-isk">
-                                <rect key="frame" x="281" y="185" width="35" height="21"/>
-                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                                <rect key="frame" x="278.33333333333331" y="185" width="33.666666666666686" height="21"/>
+                                <fontDescription key="fontDescription" name="Dosis-Light" family="Dosis" pointSize="16"/>
                                 <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medium" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8z9-M8-6Rx">
-                                <rect key="frame" x="147" y="185" width="50" height="21"/>
-                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                                <rect key="frame" x="145.66666666666666" y="184" width="48.666666666666657" height="21"/>
+                                <fontDescription key="fontDescription" name="Dosis-Light" family="Dosis" pointSize="16"/>
                                 <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1773,7 +1776,7 @@ Use the Add To List Button on a pin to begin</string>
                             <constraint firstItem="Qes-Lq-HP9" firstAttribute="leading" secondItem="9IE-RA-17n" secondAttribute="trailing" constant="-72" id="1cW-2v-0fC"/>
                             <constraint firstItem="8z9-M8-6Rx" firstAttribute="leading" secondItem="h4v-V7-RdW" secondAttribute="trailing" constant="42" id="2Ht-BT-vq7"/>
                             <constraint firstItem="KPX-3C-ri8" firstAttribute="top" secondItem="Qes-Lq-HP9" secondAttribute="bottom" constant="-35" id="54M-cs-38J"/>
-                            <constraint firstItem="83r-mq-cbh" firstAttribute="leading" secondItem="M0J-oX-ZhK" secondAttribute="trailing" constant="-31" id="7N5-EO-qAa"/>
+                            <constraint firstItem="83r-mq-cbh" firstAttribute="leading" secondItem="M0J-oX-ZhK" secondAttribute="trailing" constant="-43" id="7N5-EO-qAa"/>
                             <constraint firstItem="ZFf-Ym-j7F" firstAttribute="centerY" secondItem="gev-SQ-isk" secondAttribute="centerY" id="BIj-BX-Aca"/>
                             <constraint firstItem="9IE-RA-17n" firstAttribute="centerY" secondItem="jDe-jV-y52" secondAttribute="centerY" id="BgS-Ui-aoY"/>
                             <constraint firstItem="phm-Oc-fsC" firstAttribute="leading" secondItem="8z9-M8-6Rx" secondAttribute="trailing" constant="-50" id="DCQ-9N-dEr"/>
@@ -1802,8 +1805,8 @@ Use the Add To List Button on a pin to begin</string>
                             <constraint firstItem="jDe-jV-y52" firstAttribute="leading" secondItem="Qes-Lq-HP9" secondAttribute="trailing" constant="-60" id="oLi-FK-5Qm"/>
                             <constraint firstItem="Qes-Lq-HP9" firstAttribute="top" secondItem="jDe-jV-y52" secondAttribute="bottom" constant="-60" id="pen-oD-7Ot"/>
                             <constraint firstItem="h4v-V7-RdW" firstAttribute="leading" secondItem="rwl-sC-9TP" secondAttribute="trailing" constant="-35" id="ph7-U1-NIo"/>
+                            <constraint firstItem="7Af-eV-QcA" firstAttribute="trailing" secondItem="MaV-Yd-m8c" secondAttribute="trailing" id="sDr-0t-vqa"/>
                             <constraint firstItem="rwl-sC-9TP" firstAttribute="top" secondItem="BzM-AB-17X" secondAttribute="bottom" constant="16.666666666666657" id="sfb-Sc-3XL"/>
-                            <constraint firstItem="7Af-eV-QcA" firstAttribute="leading" secondItem="M0J-oX-ZhK" secondAttribute="trailing" constant="210" id="vLW-Bt-Ryi"/>
                             <constraint firstItem="7Af-eV-QcA" firstAttribute="centerY" secondItem="M0J-oX-ZhK" secondAttribute="centerY" id="vlh-Gs-doZ"/>
                             <constraint firstItem="83r-mq-cbh" firstAttribute="top" secondItem="M0J-oX-ZhK" secondAttribute="bottom" constant="63" id="yCt-mQ-IRe"/>
                         </constraints>
@@ -1837,7 +1840,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdK-rQ-mYB">
-                                <rect key="frame" x="0.0" y="605" width="60" height="65"/>
+                                <rect key="frame" x="279" y="605" width="60" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="M4V-Zr-rQq"/>
                                     <constraint firstAttribute="width" constant="60" id="MKj-Ib-ESF"/>
@@ -1848,7 +1851,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhx-9f-mvD">
-                                <rect key="frame" x="0.0" y="685" width="60" height="65"/>
+                                <rect key="frame" x="279" y="685" width="60" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="6GI-Oc-3ZE"/>
                                     <constraint firstAttribute="height" constant="65" id="uho-kZ-G0r"/>
@@ -1874,7 +1877,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LPh-AA-fL1">
-                                <rect key="frame" x="0.0" y="131" width="343" height="280"/>
+                                <rect key="frame" x="16" y="131" width="343" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="9gf-Jr-Bfb"/>
@@ -1894,14 +1897,14 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-                                <rect key="frame" x="0.0" y="84" width="20" height="20"/>
+                                <rect key="frame" x="28" y="84" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="J0k-Vv-Yda">
-                                <rect key="frame" x="0.0" y="67" width="251" height="50"/>
+                                <rect key="frame" x="63" y="67" width="251" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="251" id="XGg-Ao-Pen"/>
                                     <constraint firstAttribute="height" constant="50" id="d6q-r4-Irt"/>
@@ -1911,7 +1914,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQY-nG-TsQ" userLabel="Filters Button">
-                                <rect key="frame" x="0.0" y="67" width="50" height="50"/>
+                                <rect key="frame" x="309" y="67" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="L3E-RY-dIg"/>
                                     <constraint firstAttribute="width" constant="50" id="eAh-Jx-hRY"/>
@@ -1923,7 +1926,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puJ-Ux-Fmn" userLabel="Cancel Button">
-                                <rect key="frame" x="0.0" y="67" width="50" height="50"/>
+                                <rect key="frame" x="309" y="67" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="VXo-OA-aiz"/>
                                     <constraint firstAttribute="height" constant="50" id="YpT-dL-62X"/>
@@ -2652,7 +2655,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="P4G-xz-ODq">
-                                <rect key="frame" x="0.0" y="-55" width="171" height="101"/>
+                                <rect key="frame" x="0.0" y="-55" width="173" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="101" id="XiM-pS-Ieg"/>
                                 </constraints>
@@ -3027,7 +3030,7 @@ Use the Add To List Button on a pin to begin</string>
         <image name="Distance Icon" width="78" height="79"/>
         <image name="Edit Pop Up" width="346" height="110"/>
         <image name="Exit Search Button" width="12" height="12"/>
-        <image name="Fill 7 Copy 2" width="171" height="216"/>
+        <image name="Fill 7 Copy 2" width="173" height="85"/>
         <image name="Fill 7 Copy 5CA" width="308" height="192"/>
         <image name="Fill 7 Copy 6" width="375" height="593"/>
         <image name="Filters Icon" width="24" height="20"/>
