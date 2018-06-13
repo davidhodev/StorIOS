@@ -76,7 +76,26 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
 //        self.removeFromList.isHidden = true
     }
     
-
+    @IBAction func requestSentButtonPressed(_ sender: Any) {
+        if let user = Auth.auth().currentUser{
+            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+            let userReference = databaseReference.root.child("Users").child((user.uid))
+            userReference.child("pendingStorage").child(self.storageID!).removeValue()
+            
+            databaseReference.root.child("Providers").child(self.providerID!).child("currentStorage").child(self.storageID!).child("potentialConnects").child(user.uid).removeValue()
+            
+        }
+        
+        [UIButton .animate(withDuration: 0.3, animations: {
+            self.requestSentButton.alpha = 0
+            self.connectButton.alpha = 1
+        })]
+        
+        
+        
+    }
+    
+    
     
     
     

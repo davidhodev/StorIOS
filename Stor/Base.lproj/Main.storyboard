@@ -2193,6 +2193,9 @@ Use the Add To List Button on a pin to begin</string>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-19" maxY="-30"/>
                                         <state key="normal" title="Button" image="Request Sent Button"/>
+                                        <connections>
+                                            <action selector="requestSentButtonPressed:" destination="ChP-SR-ddt" eventType="touchUpInside" id="RcH-KK-Egu"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1647058824" green="0.27450980390000002" blue="0.70588235290000001" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
