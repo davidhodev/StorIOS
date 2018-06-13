@@ -576,6 +576,9 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-14" maxY="-30"/>
                                 <state key="normal" image="Edit Pop Up"/>
+                                <connections>
+                                    <action selector="informationButtonPressed:" destination="iec-79-MA3" eventType="touchUpInside" id="zTE-XD-tpo"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(310) 909-9063" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gp4-WS-bwv" userLabel="Phone Number">
                                 <rect key="frame" x="102" y="298" width="97" height="20.333333333333314"/>
@@ -632,10 +635,14 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tpe-mo-OBB" userLabel="Change Phone Button">
                                 <rect key="frame" x="75" y="297" width="174" height="22"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="174" id="Z7l-go-gHP"/>
                                 </constraints>
                                 <state key="normal" image="Phone Icon"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="lDA-40-yXO" appends="YES" id="70u-yf-VdG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yA8-k7-zlb" userLabel="Change Email Button">
                                 <rect key="frame" x="77" y="368" width="270" height="22"/>
@@ -697,8 +704,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="L7w-xh-ruH"/>
                     </view>
+                    <connections>
+                        <outlet property="informationButton" destination="JII-ax-Nip" id="GQ6-sF-AEs"/>
+                        <outlet property="nameLabel" destination="6Mg-49-joJ" id="sIm-dV-uYG"/>
+                        <outlet property="profileImage" destination="l9y-mF-LRt" id="SIP-hd-yU6"/>
+                        <outlet property="ratingLabel" destination="W4c-0V-zAs" id="lcz-Um-49V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SEu-Lc-3Ht" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="lDA-40-yXO"/>
             </objects>
             <point key="canvasLocation" x="6937" y="-939"/>
         </scene>
@@ -1186,6 +1200,36 @@ Use the Add To List Button on a pin to begin</string>
             </objects>
             <point key="canvasLocation" x="8045.6000000000004" y="34.729064039408868"/>
         </scene>
+        <!--Provider Menu View Controller-->
+        <scene sceneID="7x3-mc-P8x">
+            <objects>
+                <viewController restorationIdentifier="providerMenuViewController" storyboardIdentifier="providerMenuViewController" id="Kx1-Fl-5np" customClass="providerMenuViewController" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CMW-tr-iIQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="0.79583154965753422" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="cco-dh-oRE"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7mV-DW-geN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9368" y="390"/>
+        </scene>
+        <!--Register Provider View Controller-->
+        <scene sceneID="EH6-36-eHC">
+            <objects>
+                <viewController storyboardIdentifier="registerProviderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FS2-CZ-y91" customClass="registerProviderViewController" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FsU-md-bha">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="0fB-38-5Qg"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E7N-wO-gZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9374" y="-409"/>
+        </scene>
         <!--Payment View Controller-->
         <scene sceneID="tqe-Wf-FGQ">
             <objects>
@@ -1290,7 +1334,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <rect key="frame" x="0.0" y="396" width="118" height="382"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This list is empty. Begin by connecting with a provider on the map." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qki-CF-C03">
-                                <rect key="frame" x="64" y="264" width="216" height="76"/>
+                                <rect key="frame" x="74" y="265" width="216" height="76"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="216" id="ibL-jz-t2X"/>
                                     <constraint firstAttribute="height" constant="76" id="xFa-zX-oRE"/>
@@ -1313,7 +1357,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Storage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORS-A1-OxY">
-                                <rect key="frame" x="74" y="58" width="124.33333333333331" height="31"/>
+                                <rect key="frame" x="74" y="58" width="103.66666666666669" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="gDk-fS-wtu"/>
                                 </constraints>
@@ -1558,13 +1602,13 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Puj-as-bwe">
-                                <rect key="frame" x="64" y="139" width="66.666666666666686" height="21"/>
+                                <rect key="frame" x="74" y="138" width="56.666666666666657" height="23"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                 <color key="textColor" red="0.26666666666666666" green="0.47058823529411764" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x07-oX-A7c">
-                                <rect key="frame" x="287" y="139.33333333333334" width="60.333333333333314" height="21"/>
+                                <rect key="frame" x="287" y="138.33333333333334" width="54" height="23"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -3090,6 +3134,6 @@ Use the Add To List Button on a pin to begin</string>
         <image name="remove from list button" width="127" height="131"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iCd-uy-vSg"/>
+        <segue reference="qeR-G7-33Z"/>
     </inferredMetricsTieBreakers>
 </document>
