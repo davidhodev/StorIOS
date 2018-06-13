@@ -28,42 +28,145 @@ class filterViewController: UIViewController {
     }
     
     @IBAction func smallSizeButtonPressed(_ sender: UIButton) {
+        // turn button on
         if (globalVariablesViewController.buttonOn! % 10 == 0){
         globalVariablesViewController.buttonOn! = globalVariablesViewController.buttonOn! + 1
             smallButtonImage.setImage(UIImage(named: "Blue Check"), for: .normal)
             smallLabel.font = UIFont(name: "Dosis-Bold", size: 15.0)
             smallLabel.textColor = UIColor.black
+            if(priceSliderOutlet.value > 0)
+            {
+                if (priceSliderOutlet.value == 250){
+                    priceLabel.text = "$0 – $250+"
+                }
+                else{
+                    var priceString = "$0 – $"
+                    let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
+                    priceString += currentPrice
+                    priceLabel.text = priceString
+                }
+            }
+            else {
+                priceLabel.text = "$0"
+            }
         }
+        // turn button off
         else {
             globalVariablesViewController.buttonOn! = globalVariablesViewController.buttonOn! - 1
             smallButtonImage.setImage(UIImage(named: "Grey Circle"), for: .normal)
             smallLabel.font = UIFont(name: "Dosis-Regular", size: 16.0)
             smallLabel.textColor = UIColor(red:0.16, green:0.15, blue:0.35, alpha:1.0)
+            // if medium on
+            if (globalVariablesViewController.buttonOn! % 100 >= 10){
+                //if value under 70
+                if (priceSliderOutlet.value <= 70){
+                    priceLabel.text = "$70"
+                    priceSliderOutlet.value = 70
+                }
+                else
+                {
+                    var priceString = "$70 – $"
+                    let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
+                    priceString += currentPrice
+                    priceLabel.text = priceString
+                }
+            }
+            // if large on
+            if (globalVariablesViewController.buttonOn! >= 100){
+                if (priceSliderOutlet.value <= 100){
+                    priceSliderOutlet.value = 100
+                    priceLabel.text = "$100"
+                }
+                else{
+                    var priceString = "$100 – $"
+                    let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
+                    priceString += currentPrice
+                    priceLabel.text = priceString
+                }
+            }
         }
-//        if (globalVariablesViewController.buttonOn! >= 100 && globalVariablesViewController.buttonOn! % 100 < 10)
-//        {
-//            globalVariablesViewController.buttonOn! = globalVariablesViewController.buttonOn! - 100
-//        // change small image to selected and big image to unselected
-//            smallButtonImage.setImage(UIImage(named: "Blue Check"), for: .normal)
-//            largeButtonImage.setImage(UIImage(named: "Grey Circle"), for: .normal)
-//        }
     }
-    
     @IBAction func mediumSizeButtonPressed(_ sender: UIButton) {
+        // turn button on
         if (globalVariablesViewController.buttonOn! % 100 < 10) {
             globalVariablesViewController.buttonOn! = globalVariablesViewController.buttonOn! + 10
             mediumButtonImage.setImage(UIImage(named: "Blue Check"), for: .normal)
             mediumLabel.font = UIFont(name: "Dosis-Bold", size: 15.0)
             mediumLabel.textColor = UIColor.black
+            // if small is off
+            if(globalVariablesViewController.buttonOn! % 10 == 0){
+                if (priceSliderOutlet.value <= 70){
+                    priceLabel.text = "$70"
+                    priceSliderOutlet.value = 70
+                }
+                else if (priceSliderOutlet.value > 70){
+                    if (priceSliderOutlet.value == 250){
+                        priceLabel.text = "$70 – $250+"
+                    }
+                    else{
+                        var priceString = "$70 – $"
+                        let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
+                        priceString += currentPrice
+                        priceLabel.text = priceString
+                    }
+                }
+            }
         }
+        //turn button off
         else{
             globalVariablesViewController.buttonOn! = globalVariablesViewController.buttonOn! - 10
             mediumButtonImage.setImage(UIImage(named: "Grey Circle"), for: .normal)
             mediumLabel.font = UIFont(name: "Dosis-Regular", size: 16.0)
             mediumLabel.textColor = UIColor(red:0.16, green:0.15, blue:0.35, alpha:1.0)
+            // if small off
+            if (globalVariablesViewController.buttonOn! % 10 == 0){
+                //if large on
+                if (globalVariablesViewController.buttonOn! >= 100){
+                    //if value is less or equal to 100
+                    if (priceSliderOutlet.value <= 100){
+                        priceLabel.text = "$100"
+                        priceSliderOutlet.value = 100
+                    }
+                    // value greater than 100
+                    else if(priceSliderOutlet.value > 100){
+                        //value = 250
+                        if(priceSliderOutlet.value == 250){
+                            var priceString = "$100 – $"
+                            let endString = "+"
+                            let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
+                            priceString += currentPrice
+                            priceString += endString
+                            priceLabel.text = priceString
+                        }
+                        // value between 250 and 100
+                        else{
+                            var priceString = "$100 – $"
+                            let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
+                            priceString += currentPrice
+                            priceLabel.text = priceString
+                        }
+                    }
+                }
+                else{
+                    if (priceSliderOutlet.value < 250){
+                        var priceString = "$0 – $"
+                        let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
+                        priceString += currentPrice
+                        priceLabel.text = priceString
+                    }
+                    else{
+                        var priceString = "$0 – $"
+                        let endString = "+"
+                        let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
+                        priceString += currentPrice
+                        priceString += endString
+                        priceLabel.text = priceString
+                    }
+                }
+            }
         }
-        
     }
+    
     @IBAction func largeSizeButtonPressed(_ sender: UIButton) {
         if (globalVariablesViewController.buttonOn! < 100){
             globalVariablesViewController.buttonOn! = globalVariablesViewController.buttonOn! + 100
@@ -71,6 +174,10 @@ class filterViewController: UIViewController {
             largeButtonImage.setImage(UIImage(named: "Blue Check"), for: .normal)
             largeLabel.font = UIFont(name: "Dosis-Bold", size: 15.0)
             largeLabel.textColor = UIColor.black
+            if (globalVariablesViewController.buttonOn! % 10 == 0 && globalVariablesViewController.buttonOn! % 100 < 10 && priceSliderOutlet.value < 100){
+                priceLabel.text = "$100"
+                priceSliderOutlet.value = 100
+            }
         }
         else{
             globalVariablesViewController.buttonOn! =  globalVariablesViewController.buttonOn! - 100
@@ -79,81 +186,86 @@ class filterViewController: UIViewController {
             largeLabel.font = UIFont(name: "Dosis-Regular", size: 16.0)
             largeLabel.textColor = UIColor(red:0.16, green:0.15, blue:0.35, alpha:1.0)
         }
-//        if (globalVariablesViewController.buttonOn! % 10 == 1 && globalVariablesViewController.buttonOn! % 100 < 10){
-//            globalVariablesViewController.buttonOn! = globalVariablesViewController.buttonOn! - 1
-//            //change large image to on, large label to bold, small image to grey, small label to unbold
-//            largeButtonImage.setImage(UIImage(named: "Blue Check"), for: .normal)
-//            smallButtonImage.setImage(UIImage(named: "Grey Circle"), for: .normal)
-//        }
     }
     
     @IBAction func priceSlider(_ sender: UISlider) {
         priceSliderOutlet.isContinuous = true
         if (globalVariablesViewController.buttonOn! % 10 != 0 || globalVariablesViewController.buttonOn! == 0){
             var priceText = ""
-        
+            var priceTextEnd = ""
             if priceSliderOutlet.value == Float(250){
-                priceText = "> $"
+                priceText = "$0 – $"
+                priceTextEnd = "+"
             }
             else if priceSliderOutlet.value == priceSliderOutlet.minimumValue{
-                priceText = "   $"
+                priceText = "$"
+                priceTextEnd = ""
             }
             else{
-                priceText = "< $"
+                priceText = "$0 – $"
+                priceTextEnd = ""
             }
-            let price0 = "0"
             let step: Float = 5
             let roundedValue = round(sender.value / step) * step
             sender.value = roundedValue
-            priceText += String(describing: sender.value.rounded())
-            priceText += price0
+            priceText += String(describing: Int(sender.value.rounded()))
+            priceText += priceTextEnd
             priceLabel.text = priceText
             priceSliderOutlet.value = sender.value
         }
         else if (globalVariablesViewController.buttonOn! % 100 >= 10){
             var priceText = ""
-            if (priceSliderOutlet.value < 70){
+            var priceTextEnd = ""
+            if (globalVariablesViewController.buttonOn! > 100 && priceSliderOutlet.value < 100){
+                priceSliderOutlet.value = 100
+            }
+            else if (globalVariablesViewController.buttonOn! < 100 && priceSliderOutlet.value < 70){
                 priceSliderOutlet.value = 70
             }
             if priceSliderOutlet.value == Float(250){
-                priceText = "> $"
+                priceText = "$70 – $"
+                priceTextEnd = "+"
             }
             else if priceSliderOutlet.value == Float(70){
-                priceText = "   $"
+                priceText = "$"
+                priceTextEnd = ""
             }
             else{
-                priceText = "< $"
+                priceText = "$70 – $"
+                priceTextEnd = ""
             }
-            let price0 = "0"
             let step: Float = 5
             let roundedValue = round(sender.value / step) * step
             sender.value = roundedValue
-            priceText += String(describing: sender.value.rounded())
-            priceText += price0
+            priceText += String(describing: Int(sender.value.rounded()))
+            priceText += priceTextEnd
             priceLabel.text = priceText
             priceSliderOutlet.value = sender.value
         }
         else{
             var priceText = ""
+            var priceTextEnd = ""
             if (priceSliderOutlet.value < 100){
                 sender.value = 100
                 priceSliderOutlet.value = 100
             }
             if priceSliderOutlet.value == Float(250){
-                priceText = "> $"
+                priceText = "$100 – $"
+                priceTextEnd = "+"
             }
             else if priceSliderOutlet.value == Float(100){
-                priceText = "   $"
+                priceText = "$"
+                priceTextEnd = ""
             }
             else{
-                priceText = "< $"
+                priceText = "$100 – $"
+                priceTextEnd = ""
             }
-            let price0 = "0"
             let step: Float = 5
             let roundedValue = round(sender.value / step) * step
             sender.value = roundedValue
-            priceText += String(describing: sender.value.rounded())
-            priceText += price0
+            priceText += String(describing: Int(sender.value.rounded()))
+            priceText += priceTextEnd
             priceLabel.text = priceText
             priceSliderOutlet.value = sender.value
         }
