@@ -14,6 +14,7 @@
 		04F158A320BCA4C500AAC2ED /* hexagonProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F158A220BCA4C500AAC2ED /* hexagonProfilePicture.swift */; };
 		2B0B7B137B763384068CFD08 /* Pods_StorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83BDF3AB5601AEFA4206A668 /* Pods_StorTests.framework */; };
 		571E1B5620C08C0D00E68CA5 /* SettingsViewControllerFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571E1B5520C08C0D00E68CA5 /* SettingsViewControllerFinal.swift */; };
+		57499DD820D199CC005112E2 /* Dosis-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964DC20C0CBA0002F4EBD /* Dosis-Light.otf */; };
 		574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574FC7BE20B5F484001AE44F /* TermsViewController.swift */; };
 		576A007420B7798100F2174D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576A007320B7798100F2174D /* MenuViewController.swift */; };
 		576FD1E120CB3F72004BA549 /* MyProfileViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576FD1E020CB3F72004BA549 /* MyProfileViewController3.swift */; };
@@ -427,6 +428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB4964DE20C0CC73002F4EBD /* Dosis-Bold.otf in Resources */,
+				57499DD820D199CC005112E2 /* Dosis-Light.otf in Resources */,
 				DBE905E920924BAE000F13DB /* LaunchScreen.storyboard in Resources */,
 				DB4964DD20C0CBA9002F4EBD /* Dosis-Regular.otf in Resources */,
 				DB4B5E9320B339A30050F66E /* GoogleService-Info.plist in Resources */,

@@ -13,6 +13,7 @@ class filterViewController: UIViewController {
 
     
     @IBOutlet weak var priceSliderOutlet: UISlider!
+    @IBOutlet weak var coverSliderOutlet: UISlider!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var smallButtonImage: UIButton!
     @IBOutlet weak var mediumButtonImage: UIButton!
@@ -25,6 +26,7 @@ class filterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         globalVariablesViewController.buttonOn = 0
+        coverSliderOutlet.isHidden = true
     }
     
     @IBAction func smallSizeButtonPressed(_ sender: UIButton) {
@@ -38,23 +40,26 @@ class filterViewController: UIViewController {
             {
                 if (priceSliderOutlet.value == 250){
                     priceLabel.text = "$0 – $250+"
+                    coverSliderOutlet.isHidden = true
                 }
                 else{
                     var priceString = "$0 – $"
                     let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
                     priceString += currentPrice
                     priceLabel.text = priceString
+                    coverSliderOutlet.isHidden = true
                 }
             }
             else {
                 priceLabel.text = "$0"
+                coverSliderOutlet.isHidden = true
             }
         }
         // turn button off
         else {
             globalVariablesViewController.buttonOn! = globalVariablesViewController.buttonOn! - 1
             smallButtonImage.setImage(UIImage(named: "Grey Circle"), for: .normal)
-            smallLabel.font = UIFont(name: "Dosis-Regular", size: 16.0)
+            smallLabel.font = UIFont(name: "Dosis-Light", size: 16.0)
             smallLabel.textColor = UIColor(red:0.16, green:0.15, blue:0.35, alpha:1.0)
             // if medium on
             if (globalVariablesViewController.buttonOn! % 100 >= 10){
@@ -62,17 +67,23 @@ class filterViewController: UIViewController {
                 if (priceSliderOutlet.value <= 70){
                     priceLabel.text = "$70"
                     priceSliderOutlet.value = 70
+                    coverSliderOutlet.value = 56
+                    coverSliderOutlet.isHidden = false
                 }
                 else
                 {
                     if (priceSliderOutlet.value == 250){
                         priceLabel.text = "$70 – $250+"
+                        coverSliderOutlet.value = 56
+                        coverSliderOutlet.isHidden = false
                     }
                     else{
                         var priceString = "$70 – $"
                         let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
                         priceString += currentPrice
                         priceLabel.text = priceString
+                        coverSliderOutlet.value = 56
+                        coverSliderOutlet.isHidden = false
                     }
                 }
             }
@@ -82,16 +93,22 @@ class filterViewController: UIViewController {
                     if (priceSliderOutlet.value <= 100){
                         priceSliderOutlet.value = 100
                         priceLabel.text = "$100"
+                        coverSliderOutlet.value = 86
+                        coverSliderOutlet.isHidden = false
                     }
                     else{
                         if (priceSliderOutlet.value == 250){
                             priceLabel.text = "$100 – $250+"
+                            coverSliderOutlet.value = 86
+                            coverSliderOutlet.isHidden = false
                         }
                         else{
                             var priceString = "$100 – $"
                             let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
                             priceString += currentPrice
                             priceLabel.text = priceString
+                            coverSliderOutlet.value = 86
+                            coverSliderOutlet.isHidden = false
                         }
                     }
                 }
@@ -110,16 +127,22 @@ class filterViewController: UIViewController {
                 if (priceSliderOutlet.value <= 70){
                     priceLabel.text = "$70"
                     priceSliderOutlet.value = 70
+                    coverSliderOutlet.value = 56
+                    coverSliderOutlet.isHidden = false
                 }
                 else if (priceSliderOutlet.value > 70){
                     if (priceSliderOutlet.value == 250){
                         priceLabel.text = "$70 – $250+"
+                        coverSliderOutlet.value = 56
+                        coverSliderOutlet.isHidden = false
                     }
                     else{
                         var priceString = "$70 – $"
                         let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
                         priceString += currentPrice
                         priceLabel.text = priceString
+                        coverSliderOutlet.value = 56
+                        coverSliderOutlet.isHidden = false
                     }
                 }
             }
@@ -128,7 +151,7 @@ class filterViewController: UIViewController {
         else{
             globalVariablesViewController.buttonOn! = globalVariablesViewController.buttonOn! - 10
             mediumButtonImage.setImage(UIImage(named: "Grey Circle"), for: .normal)
-            mediumLabel.font = UIFont(name: "Dosis-Regular", size: 16.0)
+            mediumLabel.font = UIFont(name: "Dosis-Light", size: 16.0)
             mediumLabel.textColor = UIColor(red:0.16, green:0.15, blue:0.35, alpha:1.0)
             // if small off
             if (globalVariablesViewController.buttonOn! % 10 == 0){
@@ -138,6 +161,8 @@ class filterViewController: UIViewController {
                     if (priceSliderOutlet.value <= 100){
                         priceLabel.text = "$100"
                         priceSliderOutlet.value = 100
+                        coverSliderOutlet.value = 86
+                        coverSliderOutlet.isHidden = false
                     }
                     // value greater than 100
                     else if(priceSliderOutlet.value > 100){
@@ -149,6 +174,8 @@ class filterViewController: UIViewController {
                             priceString += currentPrice
                             priceString += endString
                             priceLabel.text = priceString
+                            coverSliderOutlet.value = 86
+                            coverSliderOutlet.isHidden = false
                         }
                         // value between 250 and 100
                         else{
@@ -156,6 +183,8 @@ class filterViewController: UIViewController {
                             let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
                             priceString += currentPrice
                             priceLabel.text = priceString
+                            coverSliderOutlet.value = 86
+                            coverSliderOutlet.isHidden = false
                         }
                     }
                 }
@@ -165,6 +194,7 @@ class filterViewController: UIViewController {
                         let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
                         priceString += currentPrice
                         priceLabel.text = priceString
+                        coverSliderOutlet.isHidden = true
                     }
                     else{
                         var priceString = "$0 – $"
@@ -173,6 +203,7 @@ class filterViewController: UIViewController {
                         priceString += currentPrice
                         priceString += endString
                         priceLabel.text = priceString
+                        coverSliderOutlet.isHidden = true
                     }
                 }
             }
@@ -191,6 +222,8 @@ class filterViewController: UIViewController {
                 if (priceSliderOutlet.value <= 100){
                     priceLabel.text = "$100"
                     priceSliderOutlet.value = 100
+                    coverSliderOutlet.value = 86
+                    coverSliderOutlet.isHidden = false
                 }
                 if (priceSliderOutlet.value > 100){
                     if (priceSliderOutlet.value == 250){
@@ -200,12 +233,16 @@ class filterViewController: UIViewController {
                         priceString += currentPrice
                         priceString += endString
                         priceLabel.text = priceString
+                        coverSliderOutlet.value = 86
+                        coverSliderOutlet.isHidden = false
                     }
                     else{
                         var priceString = "$100 – $"
                         let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
                         priceString += currentPrice
                         priceLabel.text = priceString
+                        coverSliderOutlet.value = 86
+                        coverSliderOutlet.isHidden = false
                     }
                 }
             }
@@ -215,7 +252,7 @@ class filterViewController: UIViewController {
             globalVariablesViewController.buttonOn! =  globalVariablesViewController.buttonOn! - 100
             //change image to off, label to unbold
              largeButtonImage.setImage(UIImage(named: "Grey Circle"), for: .normal)
-            largeLabel.font = UIFont(name: "Dosis-Regular", size: 16.0)
+            largeLabel.font = UIFont(name: "Dosis-Light", size: 16.0)
             largeLabel.textColor = UIColor(red:0.16, green:0.15, blue:0.35, alpha:1.0)
             // small off
             if (globalVariablesViewController.buttonOn! % 10 == 0){
@@ -228,12 +265,14 @@ class filterViewController: UIViewController {
                         priceString += currentPrice
                         priceString += endString
                         priceLabel.text = priceString
+                        coverSliderOutlet.isHidden = true
                     }
                     else{
                         var priceString = "$0 – $"
                         let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
                         priceString += currentPrice
                         priceLabel.text = priceString
+                        coverSliderOutlet.isHidden = true
                     }
                 }
                 // medium on
@@ -243,6 +282,8 @@ class filterViewController: UIViewController {
                         let currentPrice = String(describing: Int(priceSliderOutlet.value.rounded()))
                         priceString += currentPrice
                         priceLabel.text = priceString
+                        coverSliderOutlet.value = 56
+                        coverSliderOutlet.isHidden = false
                     }
                     else{
                         var priceString = "$70 – $"
@@ -251,6 +292,8 @@ class filterViewController: UIViewController {
                         priceString += currentPrice
                         priceString += endString
                         priceLabel.text = priceString
+                        coverSliderOutlet.value = 56
+                        coverSliderOutlet.isHidden = false
                     }
                 }
             }
@@ -261,6 +304,7 @@ class filterViewController: UIViewController {
                 priceString += currentPrice
                 priceString += endString
                 priceLabel.text = priceString
+                coverSliderOutlet.isHidden = true
             }
         }
     }
