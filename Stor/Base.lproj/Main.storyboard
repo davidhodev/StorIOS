@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1066,9 +1066,7 @@ Use the Add To List Button on a pin to begin</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9k-7b-Tpr">
-
                                                             <rect key="frame" x="229" y="89" width="33" height="20.333333333333329"/>
-
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                                             <color key="textColor" red="0.2666666667" green="0.47058823529999999" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1537,6 +1535,7 @@ Use the Add To List Button on a pin to begin</string>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addressLabel" destination="ED7-Oa-VzO" id="sSy-aA-s8C"/>
+                                            <outlet property="callButton" destination="emP-j8-oej" id="9nD-nc-8cT"/>
                                             <outlet property="cancelConnectionButton" destination="CvQ-cx-wlJ" id="RnH-jY-ABN"/>
                                             <outlet property="cellView" destination="ifw-Sn-ZU4" id="ryx-4Y-N1V"/>
                                             <outlet property="cubicFeetLabel" destination="pm6-NS-TiV" id="cA9-Z9-dxI"/>
@@ -2128,6 +2127,11 @@ Use the Add To List Button on a pin to begin</string>
                                         <connections>
                                             <action selector="removeFromListButtonPressed:" destination="ChP-SR-ddt" eventType="touchUpInside" id="hsT-0z-hKa"/>
                                         </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lnV-xx-MBG">
+                                        <rect key="frame" x="63" y="651" width="70" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="reques"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.1647058824" green="0.27450980390000002" blue="0.70588235290000001" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3009,6 +3013,7 @@ Use the Add To List Button on a pin to begin</string>
         <image name="fill7Copy6" width="375" height="440"/>
         <image name="google" width="18" height="18"/>
         <image name="remove from list button" width="127" height="131"/>
+        <image name="reques" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="iCd-uy-vSg"/>
