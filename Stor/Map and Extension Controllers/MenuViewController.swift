@@ -13,6 +13,7 @@ import FirebaseStorage
 import Firebase
 
 
+
 class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var profileImage: UIImageView!
@@ -32,6 +33,8 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    
+    
     @IBAction func becomeProviderButton(_ sender: UIButton) {
         openUrl(urlStr: "http://www.google.com")
     }
@@ -39,7 +42,6 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         print("Test1")
         self.nameLabel.text = globalVariablesViewController.username
         print("ralet sting", String(describing: globalVariablesViewController.ratingNumber))

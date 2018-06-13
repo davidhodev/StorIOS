@@ -118,6 +118,8 @@ class newConnectPopUp: UIViewController {
                 
                 providerReference.child("potentialConnects").child(user.uid).updateChildValues([user.uid: user.uid, "chosenTimeSlotNumber": selectedButton, "timeSlotString": selectedTimeString])
                 
+                DataManager.shared.menuVC.viewDidLoad()
+                
                 self.dismiss(animated: true, completion: nil)
             }
         }
