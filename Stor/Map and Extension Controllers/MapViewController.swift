@@ -399,7 +399,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     
                     
                     
-                    if globalVariablesViewController.buttonOn! % 100 == 1{ // Small storage Checked
+                    if globalVariablesViewController.buttonOn! % 10 == 1{ // Small storage Checked
                         if(sizeFeetSquared! < 25){
                             if (providerPrice < 250){
                                 let provider = Annotations(title: Int(actualStorageDictionary!["Price"] as! NSNumber), subtitle: actualStorageDictionary!["Subtitle"] as! String, address: actualStorageDictionary!["Address"] as! String, coordinate: location.coordinate, providerUID: (snapshot.key), storageUID: storageUID, price: actualStorageDictionary!["Price"] as? String)
@@ -410,7 +410,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         }
                     }
                     if globalVariablesViewController.buttonOn! % 100 > 9{
-                        if(sizeFeetSquared! < 100){
+                        if(sizeFeetSquared! < 100 && sizeFeetSquared! >= 25){
                             if (providerPrice < 250){
                                 let provider = Annotations(title: Int(actualStorageDictionary!["Price"] as! NSNumber), subtitle: actualStorageDictionary!["Subtitle"] as! String, address: actualStorageDictionary!["Address"] as! String, coordinate: location.coordinate, providerUID: (snapshot.key), storageUID: storageUID, price: actualStorageDictionary!["Price"] as? String)
                                 provider.image = #imageLiteral(resourceName: "Map Pin Background")
@@ -419,7 +419,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                             }
                         }
                     }
-                    if globalVariablesViewController.buttonOn! >= 100 || globalVariablesViewController.buttonOn! == 0{
+                    if globalVariablesViewController.buttonOn! >= 100{
                         if(sizeFeetSquared! >= 100){
                             if (providerPrice < 250){
                                 let provider = Annotations(title: Int(actualStorageDictionary!["Price"] as! NSNumber), subtitle: actualStorageDictionary!["Subtitle"] as! String, address: actualStorageDictionary!["Address"] as! String, coordinate: location.coordinate, providerUID: (snapshot.key), storageUID: storageUID, price: actualStorageDictionary!["Price"] as? String)
@@ -428,6 +428,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                 self.storMapKit.addAnnotation(provider)
                             }
                         }
+                    }
+                    if globalVariablesViewController.buttonOn! == 0{
+                        let provider = Annotations(title: Int(actualStorageDictionary!["Price"] as! NSNumber), subtitle: actualStorageDictionary!["Subtitle"] as! String, address: actualStorageDictionary!["Address"] as! String, coordinate: location.coordinate, providerUID: (snapshot.key), storageUID: storageUID, price: actualStorageDictionary!["Price"] as? String)
+                        provider.image = #imageLiteral(resourceName: "Map Pin Background")
+                        self.providers.append(provider)
+                        self.storMapKit.addAnnotation(provider)
                     }
                     
                     

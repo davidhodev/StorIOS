@@ -36,7 +36,7 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     
     @IBAction func becomeProviderButton(_ sender: UIButton) {
-        openUrl(urlStr: "http://www.google.com")
+        performSegue(withIdentifier: "toProviderMenu", sender: self)
     }
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
