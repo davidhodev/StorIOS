@@ -21,6 +21,7 @@ class myStorageCustomTableViewCell: UITableViewCell {
     @IBOutlet weak var cancelConnectionButton: UIButton!
     @IBOutlet weak var reportIssueButton: UIButton!
     @IBOutlet weak var schedulePickupButton: UIButton!
+    @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var cubicFeetLabel: UILabel!
     @IBOutlet weak var providerProfileImage: UIImageView!
     @IBOutlet weak var schedulePickupLabel: UILabel!

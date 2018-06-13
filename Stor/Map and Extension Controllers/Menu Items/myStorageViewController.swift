@@ -174,6 +174,12 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             cell.cancelConnectionButton.tag = indexPath.section
             print(cell.cancelConnectionButton.tag)
             cell.cancelConnectionButton.addTarget(self, action: #selector(self.cancelConnection(_:)), for: .touchUpInside)
+            cell.callButton.tag = indexPath.section
+            cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
+            cell.reportIssueButton.addTarget(self, action: #selector(self.reportIssue(_:)), for: .touchUpInside)
+            cell.schedulePickupButton.tag = indexPath.section
+            cell.schedulePickupButton.addTarget(self, action: #selector(self.schedulePickup(_:)), for: .touchUpInside)
+            
 
             
             storageTableView.backgroundColor = UIColor.clear
@@ -272,6 +278,57 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         else{
             print(selectorIndex)
         }
+    }
+    
+    @objc func call(_ sender:UIButton) {
+        let buttonIndexPath = sender.tag
+        print("call")
+        
+        if selectorIndex == 0{
+            let providerID = myStorageUsers[buttonIndexPath].providerID
+            if Auth.auth().currentUser != nil{
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                databaseReference.root.child("Providers").child(providerID!).child("personalInfo").observe(.value, with: { (snapshot) in
+                    if let dictionary = snapshot.value as? [String: Any]{
+                        let phone = dictionary["phone"]
+                        let providerPhone = String(describing: phone!)
+                        if let url = URL(string: "tel://\(String(describing: providerPhone))") {
+                            UIApplication.shared.open(url)
+                        }
+                    }
+                })
+            }
+        }
+        else{
+            let providerID = myCurrentStorageUsers[buttonIndexPath].providerID
+            if Auth.auth().currentUser != nil{
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                databaseReference.root.child("Providers").child(providerID!).child("personalInfo").observe(.value, with: { (snapshot) in
+                    print(snapshot)
+                    if let dictionary = snapshot.value as? [String: Any]{
+                        let phone = dictionary["phone"]
+                        let providerPhone = String(describing: phone!)
+                        if let url = URL(string: "tel://\(String(describing: providerPhone))") {
+                            UIApplication.shared.open(url)
+                        }
+                    }
+                })
+            }
+        }
+    }
+    @objc func reportIssue(_ sender:UIButton) {
+        openUrl(urlStr: "http://www.google.com") // STOR HELP WEBSITE
+    }
+    func openUrl(urlStr:String!) {
+        
+        if let url = NSURL(string:urlStr) {
+            UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+        }
+    }
+    
+    
+    @objc func schedulePickup(_ sender:UIButton) {
+        print("Schedule Pickup") 
     }
     
     

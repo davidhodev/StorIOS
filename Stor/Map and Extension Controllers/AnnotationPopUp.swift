@@ -11,6 +11,11 @@ import FirebaseAuth
 import FirebaseDatabase
 import CoreLocation
 
+class DataManager {
+    
+    static let shared = DataManager()
+    var menuVC = AnnotationPopUp()
+}
 
 class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollViewDelegate {
 
@@ -27,7 +32,8 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
     @IBOutlet weak var descriptionScrollView: UIScrollView!
     @IBOutlet weak var cubicFeetLabel: UILabel!
     @IBOutlet weak var removeFromList: UIButton!
-    
+    @IBOutlet weak var connectButton: UIButton!
+    @IBOutlet weak var requestSentButton: UIButton!
     
     
     var providerAddress: NSAttributedString?
@@ -70,16 +76,39 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
 //        self.removeFromList.isHidden = true
     }
     
-
+    @IBAction func requestSentButtonPressed(_ sender: Any) {
+        if let user = Auth.auth().currentUser{
+            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+            let userReference = databaseReference.root.child("Users").child((user.uid))
+            userReference.child("pendingStorage").child(self.storageID!).removeValue()
+            
+            databaseReference.root.child("Providers").child(self.providerID!).child("currentStorage").child(self.storageID!).child("potentialConnects").child(user.uid).removeValue()
+            
+        }
+        
+        [UIButton .animate(withDuration: 0.3, animations: {
+            self.requestSentButton.alpha = 0
+            self.connectButton.alpha = 1
+        })]
+        
+        
+        
+    }
+    
+    
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DataManager.shared.menuVC = self
         imageScrollView.delegate = self
         descriptionScrollView.delegate = self
         removeFromList.alpha = 0
         addToListButton.alpha = 0
+        
+        connectButton.alpha = 0
+        requestSentButton.alpha = 0
         if let user = Auth.auth().currentUser{
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
             let userReference = databaseReference.root.child("Users").child((user.uid))
@@ -95,6 +124,15 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
             { (error) in
                 print(error)
             }
+            
+            userReference.child("pendingStorage").child(storageID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                if snapshot.exists() == true{
+                    self.requestSentButton.alpha = 1
+                }
+                else{
+                    self.connectButton.alpha = 1
+                }
+            })
             
         }
         Database.database().reference().child("Providers").child(providerID!).child("currentStorage").observe(.childAdded, with: { (snapshot) in
