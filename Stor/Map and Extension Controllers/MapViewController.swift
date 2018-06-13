@@ -14,6 +14,13 @@ import FBSDKLoginKit
 import MapKit
 import CoreLocation
 
+class filterManager {
+    
+    static let shared = filterManager()
+    var mapVC = MapViewController()
+}
+
+
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITextFieldDelegate, MKLocalSearchCompleterDelegate, UITableViewDataSource, UITableViewDelegate{
     
 
@@ -70,6 +77,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        filterManager.shared.mapVC = self
         storMapKit.delegate = self
         storMapKit.showsUserLocation = true
         textXan.delegate = self
@@ -277,41 +285,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             priceLabelForAnnotation.textAlignment = .center
             priceLabelForAnnotation.attributedText = attString
         }
-        
-        
-        
-        /*
-         if let outputPrice = (Double(priceString)){
-         let finalPrice = Int(round(outputPrice))
-         var finalPriceRoundedString = "$ "
-         finalPriceRoundedString += String(describing: finalPrice)
-         finalPriceRoundedString += " /mo"
-         
-         
-         
-         let font:UIFont? = UIFont(name: "Dosis-Bold", size:24)
-         let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:16)
-         let fontSmall:UIFont? = UIFont(name: "Dosis-Regular", size:14)
-         
-         let attString:NSMutableAttributedString = NSMutableAttributedString(string: finalPriceRoundedString, attributes: [.font:font!])
-         attString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:0,length:1))
-         attString.setAttributes([.font:fontSmall!,.baselineOffset:-1], range: NSRange(location:(finalPriceRoundedString.count)-3,length:3))
-         self.providerPriceLabel.attributedText = attString
-         
-         }
- */
-        
-        
         annotationView.addSubview(priceLabelForAnnotation)
         
-        /*
-         let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 30))
-         lbl.backgroundColor = .black
-         lbl.textColor = .white
-         lbl.alpha = 0.5
-         lbl.tag = 42
- */
-        
+
         annotationView.transform = transform
         return annotationView
         
@@ -378,7 +354,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         return
                     }
                     print(snapshot.key)
-                    
+                    print(actualStorageDictionary)
                     let provider = Annotations(title: Int(actualStorageDictionary!["Price"] as! NSNumber), subtitle: actualStorageDictionary!["Subtitle"] as! String, address: actualStorageDictionary!["Address"] as! String, coordinate: location.coordinate, providerUID: (snapshot.key), storageUID: storageUID, price: actualStorageDictionary!["Price"] as? String)
                     provider.image = #imageLiteral(resourceName: "Map Pin Background")
                     self.providers.append(provider)
@@ -399,4 +375,82 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    func filterAnnotations(){
+        newActivityIndicator.startAnimating()
+        let removedAnnotations = self.storMapKit.annotations
+        self.storMapKit.removeAnnotations(removedAnnotations)
+        self.providers.removeAll()
+        
+        
+        Database.database().reference().child("Providers").observe(.childAdded, with: { (snapshot) in
+            //            print(snapshot)
+            if let dictionary = snapshot.value as? [String: Any]{
+                let providerStorageDictionary = (dictionary["currentStorage"] as? [String: Any])
+                let storageUID = (Array(providerStorageDictionary!.keys)[0])
+                self.annotationStorageID = storageUID
+                let actualStorageDictionary = providerStorageDictionary![storageUID] as? [String: Any]
+                let providerAddress = actualStorageDictionary!["Address"] as? String
+                let geocoder = CLGeocoder()
+                geocoder.geocodeAddressString(providerAddress!, completionHandler: { (placemarks, error) in
+                    guard
+                        let placemarks = placemarks,
+                        let location = placemarks.first?.location
+                        else {
+                            print("NO LOCATION FOUND")
+                            return
+                    }
+                    var sizeFeetSquared = Int(String(describing:actualStorageDictionary!["Length"]!))
+                    sizeFeetSquared = sizeFeetSquared! * (Int(String(describing:actualStorageDictionary!["Width"]!))!)
+                    print(sizeFeetSquared)
+                    
+                    let providerPrice = Int(String(describing:actualStorageDictionary!["Price"]!))
+                    print(providerPrice)
+                    
+                    
+                    
+                    if globalVariablesViewController.buttonOn! % 100 == 1{ // Small storage Checked
+                        if(sizeFeetSquared! < 25){
+                            if (providerPrice! < 250){
+                                let provider = Annotations(title: Int(actualStorageDictionary!["Price"] as! NSNumber), subtitle: actualStorageDictionary!["Subtitle"] as! String, address: actualStorageDictionary!["Address"] as! String, coordinate: location.coordinate, providerUID: (snapshot.key), storageUID: storageUID, price: actualStorageDictionary!["Price"] as? String)
+                                provider.image = #imageLiteral(resourceName: "Map Pin Background")
+                                self.providers.append(provider)
+                                self.storMapKit.addAnnotation(provider)
+                            }
+                        }
+                    }
+                    if globalVariablesViewController.buttonOn! % 100 > 9{
+                        if(sizeFeetSquared! < 100){
+                            if (providerPrice! < 250){
+                                let provider = Annotations(title: Int(actualStorageDictionary!["Price"] as! NSNumber), subtitle: actualStorageDictionary!["Subtitle"] as! String, address: actualStorageDictionary!["Address"] as! String, coordinate: location.coordinate, providerUID: (snapshot.key), storageUID: storageUID, price: actualStorageDictionary!["Price"] as? String)
+                                provider.image = #imageLiteral(resourceName: "Map Pin Background")
+                                self.providers.append(provider)
+                                self.storMapKit.addAnnotation(provider)
+                            }
+                        }
+                    }
+                    if globalVariablesViewController.buttonOn! > 100{
+                        if(sizeFeetSquared! >= 100){
+                            if (providerPrice! < 250){
+                                let provider = Annotations(title: Int(actualStorageDictionary!["Price"] as! NSNumber), subtitle: actualStorageDictionary!["Subtitle"] as! String, address: actualStorageDictionary!["Address"] as! String, coordinate: location.coordinate, providerUID: (snapshot.key), storageUID: storageUID, price: actualStorageDictionary!["Price"] as? String)
+                                provider.image = #imageLiteral(resourceName: "Map Pin Background")
+                                self.providers.append(provider)
+                                self.storMapKit.addAnnotation(provider)
+                            }
+                        }
+                    }
+                    
+                    
+                    
+                    
+                }
+            )}
+            UIApplication.shared.endIgnoringInteractionEvents()
+            self.newActivityIndicator.stopAnimating()
+        }, withCancel: nil)
+        
+        
+        newActivityIndicator.stopAnimating()
+    }
+    
 }

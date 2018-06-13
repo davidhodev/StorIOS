@@ -76,6 +76,8 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
 //        self.removeFromList.isHidden = true
     }
     
+    
+    // Request Sent button will remove data and hide
     @IBAction func requestSentButtonPressed(_ sender: Any) {
         if let user = Auth.auth().currentUser{
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
@@ -90,12 +92,9 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
             self.requestSentButton.alpha = 0
             self.connectButton.alpha = 1
         })]
-        
-        
-        
     }
     
-    
+
     
     
     
