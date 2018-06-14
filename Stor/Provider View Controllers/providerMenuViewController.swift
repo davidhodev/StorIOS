@@ -10,6 +10,12 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
+class providerMenuPopup {
+    static let shared = providerMenuPopup()
+    var providerMenuVC = providerMenuViewController()
+    
+}
+
 class providerMenuViewController: UIViewController {
     @IBOutlet weak var providerProfileImage: UIImageView!
     @IBOutlet weak var providerNameLabel: UILabel!
@@ -23,6 +29,8 @@ class providerMenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        providerMenuPopup.shared.providerMenuVC = self
+        print(globalVariablesViewController.username)
         self.providerNameLabel.text = globalVariablesViewController.username
 
         if let user = Auth.auth().currentUser{
@@ -37,10 +45,10 @@ class providerMenuViewController: UIViewController {
         
         //Hexagon SHape
         let lineWidth = CGFloat(7.0)
-        let rect = CGRect(x: 0, y: 0.0, width: 90, height: 96)
+        let rect = CGRect(x: 0, y: 0.0, width:47, height: 51)
         let sides = 6
         
-        let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 8.0, rotationOffset: CGFloat(.pi / 2.0))
+        let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 5.0, rotationOffset: CGFloat(.pi / 2.0))
         
         let borderLayer = CAShapeLayer()
         borderLayer.frame = CGRect(x : 0.0, y : 0.0, width : path.bounds.width + lineWidth, height : path.bounds.height + lineWidth)
@@ -83,5 +91,17 @@ class providerMenuViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    func showPopUp(){
+        let alert = UIAlertController(title: "Thanks for signing up!", message: "Please check your email in 4 to 5 days. The results of the background check will allow you to publish your listing!", preferredStyle: .alert)
+        self.present(alert, animated: true, completion:{
+            alert.view.superview?.isUserInteractionEnabled = true
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+        })
+    }
+    
+    
+    @objc func alertControllerBackgroundTapped()
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

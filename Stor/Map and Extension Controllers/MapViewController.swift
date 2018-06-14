@@ -325,33 +325,36 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     // Getting Providers Info from database
     func fetchProviders(){
         Database.database().reference().child("Providers").observe(.childAdded, with: { (snapshot) in
-            if let dictionary = snapshot.value as? [String: Any]{
-                let providerStorageDictionary = (dictionary["currentStorage"] as? [String: Any])
-                //WHERE WE WOULD LET PEOPLE ADD MORE THAN ONE STORAGE
-//                for arrays in ((providerStorageDictionary?.keys)!){
-//                    print("ARRAYS: ===", arrays)
-//                }
-                let storageUID = (Array(providerStorageDictionary!.keys)[0])
-                self.annotationStorageID = storageUID
-                let actualStorageDictionary = providerStorageDictionary![storageUID] as? [String: Any]
-                let providerAddress = actualStorageDictionary!["Address"] as? String
-                let geocoder = CLGeocoder()
-                geocoder.geocodeAddressString(providerAddress!, completionHandler: { (placemarks, error) in
-                    guard
-                    let placemarks = placemarks,
-                    let location = placemarks.first?.location
-                    else {
-                        print("NO LOCATION FOUND")
-                        return
+            if snapshot.hasChild("currentStorage"){
+                if let dictionary = snapshot.value as? [String: Any]{
+                    let providerStorageDictionary = (dictionary["currentStorage"] as? [String: Any])
+                    //WHERE WE WOULD LET PEOPLE ADD MORE THAN ONE STORAGE
+    //                for arrays in ((providerStorageDictionary?.keys)!){
+    //                    print("ARRAYS: ===", arrays)
+    //                }
+                    print(providerStorageDictionary)
+                    let storageUID = (Array(providerStorageDictionary!.keys)[0])
+                    self.annotationStorageID = storageUID
+                    let actualStorageDictionary = providerStorageDictionary![storageUID] as? [String: Any]
+                    let providerAddress = actualStorageDictionary!["Address"] as? String
+                    let geocoder = CLGeocoder()
+                    geocoder.geocodeAddressString(providerAddress!, completionHandler: { (placemarks, error) in
+                        guard
+                        let placemarks = placemarks,
+                        let location = placemarks.first?.location
+                        else {
+                            print("NO LOCATION FOUND")
+                            return
+                        }
+                        print(snapshot.key)
+                        print(actualStorageDictionary)
+                        let provider = Annotations(title: Int(actualStorageDictionary!["Price"] as! NSNumber), subtitle: actualStorageDictionary!["Subtitle"] as! String, address: actualStorageDictionary!["Address"] as! String, coordinate: location.coordinate, providerUID: (snapshot.key), storageUID: storageUID, price: actualStorageDictionary!["Price"] as? String)
+                        provider.image = #imageLiteral(resourceName: "Map Pin Background")
+                        self.providers.append(provider)
+                        self.storMapKit.addAnnotation(provider)
                     }
-                    print(snapshot.key)
-                    print(actualStorageDictionary)
-                    let provider = Annotations(title: Int(actualStorageDictionary!["Price"] as! NSNumber), subtitle: actualStorageDictionary!["Subtitle"] as! String, address: actualStorageDictionary!["Address"] as! String, coordinate: location.coordinate, providerUID: (snapshot.key), storageUID: storageUID, price: actualStorageDictionary!["Price"] as? String)
-                    provider.image = #imageLiteral(resourceName: "Map Pin Background")
-                    self.providers.append(provider)
-                    self.storMapKit.addAnnotation(provider)
-                }
-            )}
+                )}
+            }
             UIApplication.shared.endIgnoringInteractionEvents()
             self.newActivityIndicator.stopAnimating()
         }, withCancel: nil)
