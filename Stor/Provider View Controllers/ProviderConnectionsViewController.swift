@@ -14,12 +14,14 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     
     var selectedIndexPath: IndexPath?
     var potentialConnects = [providerPotentialUser]()
-//    var currentConnects = []()
+    var currentConnects = [providerCurrentUser]()
     var selectorIndex: Int?
     
     @IBOutlet weak var providerTableView: UITableView!
     @IBOutlet weak var switchProviderTable: UISegmentedControl!
     @IBOutlet weak var myConnectionsLabel: UILabel!
+    @IBOutlet weak var noCurrentConnectionsLabel: UILabel!
+    @IBOutlet weak var noPendingOptionsLabel: UILabel!
     
     
     
@@ -66,29 +68,30 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if selectorIndex == 0{
-//            if myStorageUsers.count == 0{
-//                self.storageTableView.isHidden = true
-//                self.currentIsEmpty.isHidden = false
-//            }
-//            else{
-//                self.storageTableView.isHidden = false
-//                self.currentIsEmpty.isHidden = true
-//            }
+            if potentialConnects.count == 0{
+                self.providerTableView.isHidden = true
+                self.noPendingOptionsLabel.isHidden = false
+                self.noCurrentConnectionsLabel.isHidden = true
+            }
+            else{
+                self.providerTableView.isHidden = false
+                self.noPendingOptionsLabel.isHidden = true
+                self.noCurrentConnectionsLabel.isHidden = true
+            }
             return potentialConnects.count
         }
-//        else{
-//            if myCurrentStorageUsers.count == 0{
-//                self.storageTableView.isHidden = true
-//                self.currentIsEmpty.isHidden = false
-//            }
-//            else{
-//                self.storageTableView.isHidden = false
-//                self.currentIsEmpty.isHidden = true
-//            }
-//
-//            return myCurrentStorageUsers.count
-//        }
-        return 1
+        if currentConnects.count == 0{
+            self.providerTableView.isHidden = true
+            self.noPendingOptionsLabel.isHidden = true
+            self.noCurrentConnectionsLabel.isHidden = false
+            return 0
+        }
+        else{
+            self.providerTableView.isHidden = false
+            self.noPendingOptionsLabel.isHidden = true
+            self.noCurrentConnectionsLabel.isHidden = true
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -98,8 +101,44 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
         let user = potentialConnects[indexPath.section]
         cell.nameLabel.attributedText = user.name
         cell.ratingLabel.attributedText = user.rating
-        cell.profileImage.image = user.providerProfile
         
+        
+        
+        DispatchQueue.main.async(execute: { () -> Void in
+            
+            let lineWidth = CGFloat(7.0)
+            let rect = CGRect(x: 0, y: 0.0, width: 50, height: 54)
+            let sides = 6
+            
+            let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 5.0, rotationOffset: CGFloat(.pi / 2.0))
+            
+            let borderLayer = CAShapeLayer()
+            borderLayer.frame = CGRect(x : 0.0, y : 0.0, width : path.bounds.width + lineWidth, height : path.bounds.height + lineWidth)
+            borderLayer.path = path.cgPath
+            borderLayer.lineWidth = lineWidth
+            borderLayer.lineJoin = kCALineJoinRound
+            borderLayer.lineCap = kCALineCapRound
+            borderLayer.strokeColor = UIColor.black.cgColor
+            borderLayer.fillColor = UIColor.white.cgColor
+            
+            let hexagon = createImage(layer: borderLayer)
+            
+            cell.profileImage.contentMode = .scaleAspectFill
+            cell.profileImage.layer.masksToBounds = false
+            cell.profileImage.layer.mask = borderLayer
+            cell.profileImage.image = user.providerProfile
+            
+        })
+        
+        
+        if (cell.contentView.bounds.size.height.rounded() == 60){
+            cell.dropDownImage.image = UIImage(named: "Expand Arrow")
+        }
+        else
+        {
+            print (cell.contentView.bounds.size.height)
+            cell.dropDownImage.image = UIImage(named: "Up Arrow")
+        }
         
         providerTableView.backgroundColor = UIColor.clear
         cell.backgroundColor = UIColor.white
@@ -167,13 +206,17 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
         super.viewDidLoad()
         providerTableView.delegate = self
         providerTableView.dataSource = self
+        noCurrentConnectionsLabel.isHidden = true
+        noPendingOptionsLabel.isHidden = true
         selectorIndex = 0
         
         let font = UIFont(name: "Dosis-Medium", size: 24.0)
         myConnectionsLabel.attributedText = NSMutableAttributedString(string: "My Connections", attributes: [.font:font!])
         
         getConnections()
-        
+        DispatchQueue.main.async {
+            self.providerTableView.reloadData()
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -201,14 +244,29 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                     user.getName()
 //                    user.getData()
                     self.potentialConnects.append(user)
-                    DispatchQueue.main.async {
-                        self.providerTableView.reloadData()
-                    }
+                    
                 }
-                
-
-                
-                
+            }
+        }, withCancel: nil)
+        
+        Database.database().reference().child("Providers").child(uid!).child("inUseStorage").observeSingleEvent(of: .value, with: { (snapshot) in
+            for userChild in snapshot.children{
+                let userSnapshot = userChild as! DataSnapshot
+                //                print("USER SNAPSHOT: ", userSnapshot)
+                let dictionary = userSnapshot.value as? [String: Any?]
+                //                print("DICTIONARY: ", dictionary!)
+                let connectionDictionary = dictionary!["connection"] as? [String: Any?]
+                print("POTENTIAL CONNECTS DICT: ", connectionDictionary)
+                for potentials in (connectionDictionary?.keys)!{
+                    print("STORAGE ID: ", potentials)
+                    print("================================")
+                    let user = providerPotentialUser()
+                    user.userID = potentials
+                    user.getName()
+                    //                    user.getData()
+                    self.potentialConnects.append(user)
+                    
+                }
             }
         }, withCancel: nil)
         

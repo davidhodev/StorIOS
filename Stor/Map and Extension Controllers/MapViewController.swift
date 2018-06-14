@@ -325,9 +325,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     // Getting Providers Info from database
     func fetchProviders(){
         Database.database().reference().child("Providers").observe(.childAdded, with: { (snapshot) in
-//            print(snapshot)
             if let dictionary = snapshot.value as? [String: Any]{
                 let providerStorageDictionary = (dictionary["currentStorage"] as? [String: Any])
+                //WHERE WE WOULD LET PEOPLE ADD MORE THAN ONE STORAGE
+//                for arrays in ((providerStorageDictionary?.keys)!){
+//                    print("ARRAYS: ===", arrays)
+//                }
                 let storageUID = (Array(providerStorageDictionary!.keys)[0])
                 self.annotationStorageID = storageUID
                 let actualStorageDictionary = providerStorageDictionary![storageUID] as? [String: Any]
