@@ -665,23 +665,68 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Error Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmf-cc-WbS">
+                                <rect key="frame" x="77" y="547" width="239" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+
+
+                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                                <color key="textColor" red="0.80000000000000004" green="0.066666666666666666" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ey-Ou-YOF">
+                                <rect key="frame" x="322" y="364" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="emailDoneEditing:" destination="iec-79-MA3" eventType="touchUpInside" id="nIm-oi-78q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ofz-6u-qUl">
+                                <rect key="frame" x="279" y="435" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="passwordDoneEditing:" destination="iec-79-MA3" eventType="touchUpInside" id="Kyz-sE-Z4K"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l27-N3-xI1">
+                                <rect key="frame" x="97" y="401" width="206" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cKW-1a-AlR">
+                                <rect key="frame" x="97" y="469" width="131" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WCO-rX-RCJ">
+                                <rect key="frame" x="97" y="509" width="131" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uup-0H-gJo">
+                                <rect key="frame" x="279" y="473" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Reveal"/>
+                                <connections>
+                                    <action selector="revealTextButtonPressed:" destination="iec-79-MA3" eventType="touchUpInside" id="qCQ-6K-Ek6"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONC-nV-LeP">
-                                <rect key="frame" x="237" y="293" width="37" height="30"/>
+                                <rect key="frame" x="247" y="296" width="37" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="phoneDoneEditingButton:" destination="iec-79-MA3" eventType="touchUpInside" id="Ych-Ok-swK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmf-cc-WbS">
-                                <rect key="frame" x="78" y="502.99999999999994" width="239" height="20.333333333333314"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="239" id="aGh-Dr-cgV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
-                                <color key="textColor" red="0.80000000000000004" green="0.066666666666666666" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.27450980390000002" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -731,15 +776,25 @@
                         <viewLayoutGuide key="safeArea" id="L7w-xh-ruH"/>
                     </view>
                     <connections>
+                        <outlet property="changeEmailButton" destination="yA8-k7-zlb" id="F6I-pA-1iB"/>
+                        <outlet property="changePasswordButton" destination="Yr1-ni-FXq" id="tAo-eg-nA5"/>
                         <outlet property="changePhoneButton" destination="Tpe-mo-OBB" id="5X2-Zz-TXU"/>
+                        <outlet property="confirmPasswordTextField" destination="WCO-rX-RCJ" id="25G-HS-42Q"/>
+                        <outlet property="emailDoneButton" destination="5ey-Ou-YOF" id="Ycr-QW-p6B"/>
+                        <outlet property="emailLabel" destination="k1I-EF-ycA" id="rtH-a1-ffF"/>
+                        <outlet property="emailTextField" destination="l27-N3-xI1" id="IBw-Z9-MVH"/>
                         <outlet property="errorLabel" destination="Qmf-cc-WbS" id="PPq-df-Rei"/>
                         <outlet property="informationButton" destination="JII-ax-Nip" id="GQ6-sF-AEs"/>
                         <outlet property="nameLabel" destination="6Mg-49-joJ" id="sIm-dV-uYG"/>
+                        <outlet property="passwordDoneButton" destination="Ofz-6u-qUl" id="QqU-hl-omo"/>
+                        <outlet property="passwordLabel" destination="bWA-gA-xZe" id="HOs-Cj-Qc8"/>
+                        <outlet property="passwordTextField" destination="cKW-1a-AlR" id="yCf-gl-vwb"/>
                         <outlet property="phoneDoneButton" destination="ONC-nV-LeP" id="eZ6-NL-SZc"/>
                         <outlet property="phoneLabel" destination="gp4-WS-bwv" id="IEE-XV-17u"/>
                         <outlet property="phoneTextField" destination="NGz-Xx-o4h" id="rYb-Fz-RQU"/>
                         <outlet property="profileImage" destination="l9y-mF-LRt" id="SIP-hd-yU6"/>
                         <outlet property="ratingLabel" destination="W4c-0V-zAs" id="lcz-Um-49V"/>
+                        <outlet property="revealTextOutlet" destination="uup-0H-gJo" id="gc5-8F-7n2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SEu-Lc-3Ht" userLabel="First Responder" sceneMemberID="firstResponder"/>
