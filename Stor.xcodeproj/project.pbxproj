@@ -14,6 +14,7 @@
 		04F158A320BCA4C500AAC2ED /* hexagonProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F158A220BCA4C500AAC2ED /* hexagonProfilePicture.swift */; };
 		2B0B7B137B763384068CFD08 /* Pods_StorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83BDF3AB5601AEFA4206A668 /* Pods_StorTests.framework */; };
 		571E1B5620C08C0D00E68CA5 /* SettingsViewControllerFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571E1B5520C08C0D00E68CA5 /* SettingsViewControllerFinal.swift */; };
+		57499DD820D199CC005112E2 /* Dosis-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964DC20C0CBA0002F4EBD /* Dosis-Light.otf */; };
 		574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574FC7BE20B5F484001AE44F /* TermsViewController.swift */; };
 		576A007420B7798100F2174D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576A007320B7798100F2174D /* MenuViewController.swift */; };
 		576FD1E120CB3F72004BA549 /* MyProfileViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576FD1E020CB3F72004BA549 /* MyProfileViewController3.swift */; };
@@ -40,6 +41,8 @@
 		DBE2A9C720C9D5BF00E052A1 /* myCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9C620C9D5BF00E052A1 /* myCurrentUser.swift */; };
 		DBE2A9C920D1A99300E052A1 /* registerProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9C820D1A99300E052A1 /* registerProviderViewController.swift */; };
 		DBE2A9CD20D1AA2A00E052A1 /* providerMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9CC20D1AA2A00E052A1 /* providerMenuViewController.swift */; };
+		DBE2A9CF20D2D94500E052A1 /* ProviderConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9CE20D2D94500E052A1 /* ProviderConnectionsViewController.swift */; };
+		DBE2A9D120D2DD9900E052A1 /* potentialConnectsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9D020D2DD9900E052A1 /* potentialConnectsTableViewCell.swift */; };
 		DBE6A8B420C5C28B005B1A75 /* settingsCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE6A8B320C5C28B005B1A75 /* settingsCustomTableViewCell.swift */; };
 		DBE905DF20924BAE000F13DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905DE20924BAE000F13DB /* AppDelegate.swift */; };
 		DBE905E420924BAE000F13DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE905E220924BAE000F13DB /* Main.storyboard */; };
@@ -109,6 +112,8 @@
 		DBE2A9C620C9D5BF00E052A1 /* myCurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCurrentUser.swift; sourceTree = "<group>"; };
 		DBE2A9C820D1A99300E052A1 /* registerProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerProviderViewController.swift; sourceTree = "<group>"; };
 		DBE2A9CC20D1AA2A00E052A1 /* providerMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = providerMenuViewController.swift; sourceTree = "<group>"; };
+		DBE2A9CE20D2D94500E052A1 /* ProviderConnectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderConnectionsViewController.swift; sourceTree = "<group>"; };
+		DBE2A9D020D2DD9900E052A1 /* potentialConnectsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = potentialConnectsTableViewCell.swift; sourceTree = "<group>"; };
 		DBE6A8B320C5C28B005B1A75 /* settingsCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsCustomTableViewCell.swift; sourceTree = "<group>"; };
 		DBE905DB20924BAE000F13DB /* Stor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE905DE20924BAE000F13DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -248,6 +253,8 @@
 			isa = PBXGroup;
 			children = (
 				DBE2A9CC20D1AA2A00E052A1 /* providerMenuViewController.swift */,
+				DBE2A9CE20D2D94500E052A1 /* ProviderConnectionsViewController.swift */,
+				DBE2A9D020D2DD9900E052A1 /* potentialConnectsTableViewCell.swift */,
 			);
 			path = "Provider View Controllers";
 			sourceTree = "<group>";
@@ -441,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB4964DE20C0CC73002F4EBD /* Dosis-Bold.otf in Resources */,
+				57499DD820D199CC005112E2 /* Dosis-Light.otf in Resources */,
 				DBE905E920924BAE000F13DB /* LaunchScreen.storyboard in Resources */,
 				DB4964DD20C0CBA9002F4EBD /* Dosis-Regular.otf in Resources */,
 				DB4B5E9320B339A30050F66E /* GoogleService-Info.plist in Resources */,
@@ -585,6 +593,7 @@
 			files = (
 				DB4B5EA020B351C20050F66E /* StartupViewController.swift in Sources */,
 				041640BC20BDF7C4001BE560 /* myStorageViewController.swift in Sources */,
+				DBE2A9D120D2DD9900E052A1 /* potentialConnectsTableViewCell.swift in Sources */,
 				571E1B5620C08C0D00E68CA5 /* SettingsViewControllerFinal.swift in Sources */,
 				579D4C5F20BF2D6E0082A86F /* AnnotationPopUp.swift in Sources */,
 				DB6B0EF720B8C7DB000CC1D9 /* Extensions.swift in Sources */,
@@ -606,6 +615,7 @@
 				DB4B5E9820B3474D0050F66E /* RegisterEmailViewController.swift in Sources */,
 				DBE2A9C920D1A99300E052A1 /* registerProviderViewController.swift in Sources */,
 				574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */,
+				DBE2A9CF20D2D94500E052A1 /* ProviderConnectionsViewController.swift in Sources */,
 				DBF8BCBE20B7887D0080EEF5 /* globalVariablesViewController.swift in Sources */,
 				576A007420B7798100F2174D /* MenuViewController.swift in Sources */,
 				DB0515CE20C7551700386902 /* myListCustomCell.swift in Sources */,
