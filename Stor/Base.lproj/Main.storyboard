@@ -658,8 +658,8 @@
                                 </constraints>
                                 <state key="normal" image="Combined Shape2"/>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="310 909 9063" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NGz-Xx-o4h">
-                                <rect key="frame" x="97" y="326" width="131" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="310 909 9063" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NGz-Xx-o4h">
+                                <rect key="frame" x="97" y="326" width="131" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -673,11 +673,13 @@
                                     <action selector="phoneDoneEditingButton:" destination="iec-79-MA3" eventType="touchUpInside" id="Ych-Ok-swK"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Error Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmf-cc-WbS">
-                                <rect key="frame" x="77" y="547" width="239" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmf-cc-WbS">
+                                <rect key="frame" x="78" y="502.99999999999994" width="239" height="20.333333333333314"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="239" id="aGh-Dr-cgV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
-                                <color key="textColor" red="1" green="0.14029597373187641" blue="0.12445998773618694" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.80000000000000004" green="0.066666666666666666" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -696,11 +698,13 @@
                             <constraint firstItem="ZUm-A5-v2w" firstAttribute="top" secondItem="L7w-xh-ruH" secondAttribute="top" constant="164" id="Liw-rn-29c"/>
                             <constraint firstItem="l9y-mF-LRt" firstAttribute="top" secondItem="M6C-zC-3Ke" secondAttribute="bottom" constant="17" id="NUQ-h3-mtP"/>
                             <constraint firstItem="ZUm-A5-v2w" firstAttribute="top" secondItem="Tpe-mo-OBB" secondAttribute="bottom" constant="-111" id="NXS-A4-6hY"/>
+                            <constraint firstItem="Qmf-cc-WbS" firstAttribute="top" secondItem="Yr1-ni-FXq" secondAttribute="bottom" constant="42" id="NgV-1h-bGp"/>
                             <constraint firstItem="hty-hH-z1W" firstAttribute="leading" secondItem="l9y-mF-LRt" secondAttribute="trailing" constant="-43" id="Pvt-7Y-zMm"/>
                             <constraint firstItem="l9y-mF-LRt" firstAttribute="centerY" secondItem="6Mg-49-joJ" secondAttribute="centerY" id="Rc6-nH-wTY"/>
                             <constraint firstItem="Tpe-mo-OBB" firstAttribute="leading" secondItem="l9y-mF-LRt" secondAttribute="trailing" constant="-45" id="RfQ-c1-hVr"/>
                             <constraint firstItem="L7w-xh-ruH" firstAttribute="leading" secondItem="wuw-eb-e0w" secondAttribute="leading" constant="43" id="UnD-c3-Izw"/>
                             <constraint firstItem="CN2-9T-5R3" firstAttribute="leading" secondItem="L7w-xh-ruH" secondAttribute="leading" id="UpB-cp-XOI"/>
+                            <constraint firstItem="Qmf-cc-WbS" firstAttribute="leading" secondItem="Yr1-ni-FXq" secondAttribute="leading" id="WnD-zP-HWi"/>
                             <constraint firstItem="gp4-WS-bwv" firstAttribute="centerY" secondItem="Tpe-mo-OBB" secondAttribute="centerY" id="Xp8-n9-FRz"/>
                             <constraint firstItem="bWA-gA-xZe" firstAttribute="leading" secondItem="Yr1-ni-FXq" secondAttribute="trailing" constant="-214" id="ZUt-Vu-K79"/>
                             <constraint firstItem="k1I-EF-ycA" firstAttribute="leading" secondItem="yA8-k7-zlb" secondAttribute="trailing" constant="-245" id="ag0-Kh-Soy"/>
