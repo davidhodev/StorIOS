@@ -14,13 +14,23 @@ class potentialConnectsTableViewCell: UITableViewCell {
     
     static var opened = false
     
+    
+    @IBOutlet weak var cellView: UIView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var dropDownImage: UIImageView!
+    
+    
+    
+    
     class var expandedHeight: CGFloat {get { return 343 }}
     class var defaultHeight: CGFloat {get { return 60 }}
     
    
-//    func checkHeight(){
-//        cellView.isHidden = (frame.size.height < myListCustomCell.expandedHeight)
-//    }
+    func checkHeight(){
+        cellView.isHidden = (frame.size.height < myListCustomCell.expandedHeight)
+    }
     
     func watchFrameChanges(){
         if !isObserving{
@@ -38,7 +48,7 @@ class potentialConnectsTableViewCell: UITableViewCell {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "frame"{
-//            checkHeight()
+            checkHeight()
         }
     }
     

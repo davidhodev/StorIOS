@@ -43,6 +43,8 @@
 		DBE2A9CD20D1AA2A00E052A1 /* providerMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9CC20D1AA2A00E052A1 /* providerMenuViewController.swift */; };
 		DBE2A9CF20D2D94500E052A1 /* ProviderConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9CE20D2D94500E052A1 /* ProviderConnectionsViewController.swift */; };
 		DBE2A9D120D2DD9900E052A1 /* potentialConnectsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9D020D2DD9900E052A1 /* potentialConnectsTableViewCell.swift */; };
+		DBE2A9D320D2E71F00E052A1 /* providerPotentialUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9D220D2E71F00E052A1 /* providerPotentialUser.swift */; };
+		DBE2A9D520D3116800E052A1 /* providerCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9D420D3116800E052A1 /* providerCurrentUser.swift */; };
 		DBE6A8B420C5C28B005B1A75 /* settingsCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE6A8B320C5C28B005B1A75 /* settingsCustomTableViewCell.swift */; };
 		DBE905DF20924BAE000F13DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905DE20924BAE000F13DB /* AppDelegate.swift */; };
 		DBE905E420924BAE000F13DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE905E220924BAE000F13DB /* Main.storyboard */; };
@@ -114,6 +116,8 @@
 		DBE2A9CC20D1AA2A00E052A1 /* providerMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = providerMenuViewController.swift; sourceTree = "<group>"; };
 		DBE2A9CE20D2D94500E052A1 /* ProviderConnectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderConnectionsViewController.swift; sourceTree = "<group>"; };
 		DBE2A9D020D2DD9900E052A1 /* potentialConnectsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = potentialConnectsTableViewCell.swift; sourceTree = "<group>"; };
+		DBE2A9D220D2E71F00E052A1 /* providerPotentialUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = providerPotentialUser.swift; sourceTree = "<group>"; };
+		DBE2A9D420D3116800E052A1 /* providerCurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = providerCurrentUser.swift; sourceTree = "<group>"; };
 		DBE6A8B320C5C28B005B1A75 /* settingsCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsCustomTableViewCell.swift; sourceTree = "<group>"; };
 		DBE905DB20924BAE000F13DB /* Stor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE905DE20924BAE000F13DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 			children = (
 				DBE2A9CC20D1AA2A00E052A1 /* providerMenuViewController.swift */,
 				DBE2A9CE20D2D94500E052A1 /* ProviderConnectionsViewController.swift */,
+				DBE2A9D220D2E71F00E052A1 /* providerPotentialUser.swift */,
+				DBE2A9D420D3116800E052A1 /* providerCurrentUser.swift */,
 				DBE2A9D020D2DD9900E052A1 /* potentialConnectsTableViewCell.swift */,
 			);
 			path = "Provider View Controllers";
@@ -591,6 +597,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBE2A9D520D3116800E052A1 /* providerCurrentUser.swift in Sources */,
 				DB4B5EA020B351C20050F66E /* StartupViewController.swift in Sources */,
 				041640BC20BDF7C4001BE560 /* myStorageViewController.swift in Sources */,
 				DBE2A9D120D2DD9900E052A1 /* potentialConnectsTableViewCell.swift in Sources */,
@@ -603,6 +610,7 @@
 				DBE2A9C320C8B19B00E052A1 /* myStorageCustomTableViewCell.swift in Sources */,
 				DBE2A9C520C8B39500E052A1 /* myStorageUser.swift in Sources */,
 				DB6B0EF920BC7830000CC1D9 /* Annotations.swift in Sources */,
+				DBE2A9D320D2E71F00E052A1 /* providerPotentialUser.swift in Sources */,
 				57EC509320C22389009F470F /* newConnectPopUp.swift in Sources */,
 				DB0515D020C84F9A00386902 /* myListUser.swift in Sources */,
 				DB59552920B49F4D001E1AF0 /* MapViewController.swift in Sources */,
