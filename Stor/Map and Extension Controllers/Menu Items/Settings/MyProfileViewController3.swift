@@ -95,8 +95,6 @@ class MyProfileViewController3: UIViewController {
         
         _ = createImage(layer: borderLayer)
         
-        
-        
         profileImage.contentMode = .scaleAspectFill
         //        profileImage.layer.cornerRadius = 20
         profileImage.layer.masksToBounds = false

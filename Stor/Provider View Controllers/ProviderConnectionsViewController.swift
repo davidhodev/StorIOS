@@ -28,7 +28,9 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     
     
     @IBAction func exitButton(_ sender: Any) {
-        self.present(MenuViewController(), animated: true, completion: nil)
+        
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func segmentedControl(_ sender: Any) {
