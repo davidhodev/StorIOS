@@ -20,6 +20,9 @@ class potentialConnectsTableViewCell: UITableViewCell {
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var dropDownImage: UIImageView!
+    @IBOutlet weak var dropOffTime: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var callButton: UIButton!
     
     
     

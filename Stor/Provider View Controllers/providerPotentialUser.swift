@@ -12,6 +12,7 @@ import FirebaseAuth
 
 class providerPotentialUser: NSObject {
     var providerID: String?
+    var storageID: String?
     var userID: String?
     var price: NSMutableAttributedString?
     var dimensionsString: NSMutableAttributedString?
@@ -20,15 +21,15 @@ class providerPotentialUser: NSObject {
     var providerProfile: UIImage?
     var storagePhoto: UIImage?
     var name: NSMutableAttributedString?
+    var phone: NSMutableAttributedString?
     var inUse: Bool?
+    var dropOff: String?
     
     
     func getName(){
         if let user = Auth.auth().currentUser{
             Database.database().reference().child("Users").child(userID!).observe(.value, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: Any]{
-                    print("DICTIONARY: ", dictionary)
-                    print("NAME: ", dictionary["name"])
                     let tempName = dictionary["name"] as? String
                     let fontAddress:UIFont? = UIFont(name: "Dosis-Medium", size:16)
                     let addressAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempName!, attributes: [.font: fontAddress!])
@@ -42,6 +43,27 @@ class providerPotentialUser: NSObject {
                     let ratingAttString:NSMutableAttributedString = NSMutableAttributedString(string: ratingTemp, attributes: [.font: fontRating!])
                     self.rating = ratingAttString
                     
+                    let tempPhone = dictionary["phone"] as? String
+                    print("TEMP PHONE: ", tempPhone)
+                    let fontPhone:UIFont? = UIFont(name: "Dosis-Medium", size:16)
+                    let phoneAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempPhone!, attributes: [.font: fontPhone!])
+                    self.phone = phoneAttString
+                    
+                    let timesDictionary = dictionary["pendingStorage"] as? [String: Any]
+                    
+                    let finalTimeDictionary = timesDictionary![self.storageID!] as? [String: Any]
+                    self.dropOff = finalTimeDictionary!["timeSlotString"] as! String
+                    
+                
+                    
+                    
+                    
+//                    print(timesDictionary!)
+//                    let userStorageInfo = timesDictionary![self.userID!] as? [String: Any]
+//                    print(userStorageInfo!)
+//                    let timeSlotTemp = userStorageInfo!["timeSlotString"]
+//                    print("TIME SLOT", timeSlotTemp)
+                    
                     
                     
                     URLSession.shared.dataTask(with: NSURL(string: dictionary["profilePicture"] as! String)! as URL, completionHandler: { (data, response, error) -> Void in
@@ -54,128 +76,29 @@ class providerPotentialUser: NSObject {
                         })
                         
                     }).resume()
-                    
-                    
-                    
                 }
             })
         }
     }
     
     func getData(){
+        print("=============================GET DATA==========================")
         if let user = Auth.auth().currentUser{
-            Database.database().reference().child("Providers").child(user.uid).child("currentStorage").observe(.childAdded, with: { (snapshot) in
+            Database.database().reference().child("Users").child(userID!).observe(.value, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: Any]{
-                    let priceString = String(describing: dictionary["Price"]!)
-                    if let outputPrice = (Double(priceString)){
-                        let finalPrice = Int(round(outputPrice))
-                        var finalPriceRoundedString = "$ "
-                        finalPriceRoundedString += String(describing: finalPrice)
-                        finalPriceRoundedString += " /mo"
-                        let font:UIFont? = UIFont(name: "Dosis-Bold", size:24)
-                        let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:16)
-                        let fontSmall:UIFont? = UIFont(name: "Dosis-Regular", size:14)
-                        
-                        let attString:NSMutableAttributedString = NSMutableAttributedString(string: finalPriceRoundedString, attributes: [.font:font!])
-                        attString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:0,length:1))
-                        attString.setAttributes([.font:fontSmall!,.baselineOffset:-1], range: NSRange(location:(finalPriceRoundedString.count)-3,length:3))
-                        self.price = attString
-                    }
+                    let tempPhone = dictionary["phone"] as? String
+                    print("TEMP PHONE: ", tempPhone)
+                    let fontAddress:UIFont? = UIFont(name: "Dosis-Medium", size:16)
+                    let phoneAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempPhone!, attributes: [.font: fontAddress!])
+                    self.phone = phoneAttString
                     
-                    
-                    
-                    
-                    var dimensionsString = String(describing: dictionary["Length"]!)
-                    dimensionsString += "' X "
-                    dimensionsString += String(describing: dictionary["Width"]!)
-                    dimensionsString += "'"
-                    let dimensionsTemp = dimensionsString
-                    // maybe change this
-                    let fontDimensions: UIFont? = UIFont(name: "Dosis-Bold", size:16)
-                    let dimensionsAttString:NSMutableAttributedString = NSMutableAttributedString(string: dimensionsTemp, attributes: [.font: fontDimensions!])
-                    self.dimensionsString = dimensionsAttString
-                    
-                    var cubicFeetNumber = Int(String(describing:dictionary["Length"]!))
-                    cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Width"]!))!)
-                    cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Height"]!))!)
-                    var cubicFeetString = String(describing: cubicFeetNumber!)
-                    cubicFeetString += " ft3"
-                    
-                    let font:UIFont? = UIFont(name: "Dosis-Regular", size:16)
-                    let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:14)
-                    
-                    let cubicFeetAttString:NSMutableAttributedString = NSMutableAttributedString(string: cubicFeetString, attributes: [.font:font!])
-                    cubicFeetAttString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:(cubicFeetString.count)-1,length:1))
-                    
-                    self.cubicString = cubicFeetAttString
-                    
-                    
-                    if let photoDictionary = dictionary["Photos"] as? [String: Any] {
-                        let myURL = (photoDictionary.first?.value)!
-                        
-                        URLSession.shared.dataTask(with: NSURL(string: myURL as! String)! as URL, completionHandler: { (data, response, error) -> Void in
-                            
-                            if error != nil {
-                                print(error)
-                                return
-                            }
-                            DispatchQueue.main.async(execute: { () -> Void in
-                                self.storagePhoto = UIImage(data: data!)
-                            })
-                        }).resume()
-                    }
-                    
-                    
+                    let timesDictionary = dictionary["pendingStorage"] as? [String: Any]
+                    print("TIMES DICTIONARY: ", timesDictionary)
                 }
-            })
-            
-            Database.database().reference().child("Providers").child(user.uid).child("personalInfo").observe(.value, with: { (snapshot) in
-                if let dictionary = snapshot.value as? [String: Any]{
-                    let ratingString = String(describing: dictionary["rating"]!)
-                    let roundedRating = (Double(ratingString)! * 100).rounded()/100
-                    let ratingTemp = String(format: "%.2f", roundedRating)
-                    // MEDIUM
-                    let fontRating: UIFont? = UIFont(name: "Dosis-Medium", size:14)
-                    let ratingAttString:NSMutableAttributedString = NSMutableAttributedString(string: ratingTemp, attributes: [.font: fontRating!])
-                    self.rating = ratingAttString
-                    
-                    let fullName = dictionary["Name"] as? String
-                    let fullNameArr = fullName?.split(separator: " ")
-                    let firstName = fullNameArr![0]
-                    var lastName: String?
-                    if (fullNameArr!.count > 2){
-                        lastName = String(describing: fullNameArr![1])
-                        lastName = lastName! + " " + String(describing: fullNameArr![2])
-                    }
-                    else{
-                        lastName = String(describing: fullNameArr![1])
-                    }
-                    var finalName = firstName
-                    finalName += "\n"
-                    finalName += lastName!
-                    let tempName = String(describing: finalName)
-                    let fontName:UIFont? = UIFont(name: "Dosis-Regular", size:18)
-                    let nameAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempName, attributes: [.font:fontName!])
-                    self.name = nameAttString
-                    
-                    
-                    
-                    URLSession.shared.dataTask(with: NSURL(string: dictionary["profileImage"] as! String)! as URL, completionHandler: { (data, response, error) -> Void in
-                        if error != nil {
-                            print(error)
-                            return
-                        }
-                        DispatchQueue.main.async(execute: { () -> Void in
-                            self.providerProfile = UIImage(data: data!)
-                        })
-                        
-                    }).resume()
-                    
-                    
-                }
-            }, withCancel: nil)
-        }
+            }
+        )}
         
     }
     
 }
+
