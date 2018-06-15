@@ -1213,7 +1213,7 @@ Use the Add To List Button on a pin to begin</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x9k-7b-Tpr">
-                                                            <rect key="frame" x="229" y="89" width="33" height="20.333333333333329"/>
+                                                            <rect key="frame" x="229.33333333333334" y="89" width="33.000000000000028" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                                             <color key="textColor" red="0.2666666667" green="0.47058823529999999" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -1254,7 +1254,7 @@ Use the Add To List Button on a pin to begin</string>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjm-Ss-1ew">
-                                                    <rect key="frame" x="24.999999999999996" y="21.666666666666671" width="33.666666666666657" height="20.333333333333329"/>
+                                                    <rect key="frame" x="24.999999999999996" y="21" width="33.666666666666657" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1842,7 +1842,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <rect key="frame" x="0.0" y="396" width="118" height="382"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This list is empty. Begin by connecting with a provider on the map." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qki-CF-C03">
-                                <rect key="frame" x="74" y="265" width="216" height="76"/>
+                                <rect key="frame" x="66.666666666666686" y="265" width="216" height="76"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="216" id="ibL-jz-t2X"/>
                                     <constraint firstAttribute="height" constant="76" id="xFa-zX-oRE"/>
@@ -2109,8 +2109,8 @@ Use the Add To List Button on a pin to begin</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Puj-as-bwe">
-                                <rect key="frame" x="74" y="138" width="56.666666666666657" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Requests" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Puj-as-bwe">
+                                <rect key="frame" x="66.666666666666671" y="138" width="64.000000000000014" height="23"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                 <color key="textColor" red="0.26666666666666666" green="0.47058823529411764" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
