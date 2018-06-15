@@ -30,7 +30,7 @@ class myStorageCustomTableViewCell: UITableViewCell {
     
     @IBOutlet weak var moreImage: UIImageView!
     
-    class var expandedHeight: CGFloat {get { return 343 }}
+    class var expandedHeight: CGFloat {get { return 420 }}
     class var defaultHeight: CGFloat {get { return 60 }}
     
     

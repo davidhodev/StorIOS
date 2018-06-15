@@ -73,11 +73,13 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         cell.backgroundColor = UIColor.white
         cell.layer.cornerRadius = 30
         //shadows
-        
-        
-        
-        
-
+        let shadowPath2 = UIBezierPath(roundedRect: cell.bounds, cornerRadius: 30)
+        cell.layer.masksToBounds = false
+        cell.layer.shadowColor = UIColor(red:0.27, green:0.29, blue:0.36, alpha:1.0).cgColor
+        cell.layer.shadowOffset = CGSize(width: CGFloat(0), height: CGFloat(14.0))
+        cell.layer.shadowOpacity = 0.0270
+        cell.layer.shadowPath = shadowPath2.cgPath
+    
         //changing the switches, if statement is second section
         if (indexPath.section == numberOfSections(in: settingsTableView) - 1){
             cell.textMessageControl.isHidden = true
