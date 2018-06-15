@@ -10,6 +10,20 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Dosis-Bold.otf">
+            <string>Dosis-Bold</string>
+        </array>
+        <array key="Dosis-Light.otf">
+            <string>Dosis-Light</string>
+        </array>
+        <array key="Dosis-Medium.otf">
+            <string>Dosis-Medium</string>
+        </array>
+        <array key="Dosis-Regular.otf">
+            <string>Dosis-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Startup View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -1240,7 +1254,7 @@ Use the Add To List Button on a pin to begin</string>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yjm-Ss-1ew">
-                                                    <rect key="frame" x="24.999999999999996" y="22" width="33.666666666666657" height="20.333333333333329"/>
+                                                    <rect key="frame" x="24.999999999999996" y="21" width="33.666666666666657" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
                                                     <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1608,16 +1622,6 @@ Use the Add To List Button on a pin to begin</string>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-<<<<<<< HEAD
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFc-JA-hpa">
-                                <rect key="frame" x="142" y="510" width="90" height="48"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="submitButtonPressed:" destination="FS2-CZ-y91" eventType="touchUpInside" id="WiG-5p-vcf"/>
-                                </connections>
-                            </button>
-=======
->>>>>>> 292828cfa97d67cd091dd7aee0808d6c5317a0d9
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2la-0S-hwR" userLabel="Exit">
                                 <rect key="frame" x="293" y="406" width="60" height="66"/>
                                 <constraints>
@@ -2568,7 +2572,7 @@ Use the Add To List Button on a pin to begin</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j0O-Kk-dGs">
-                                        <rect key="frame" x="102" y="394" width="0.0" height="20"/>
+                                        <rect key="frame" x="102" y="402" width="0.0" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="99f-MZ-Ilp"/>
                                         </constraints>
@@ -2748,12 +2752,11 @@ Use the Add To List Button on a pin to begin</string>
                                     <constraint firstItem="K44-Qz-mUp" firstAttribute="top" secondItem="NnX-bl-T6E" secondAttribute="bottom" constant="2" id="LBF-bw-3F0"/>
                                     <constraint firstItem="j0O-Kk-dGs" firstAttribute="leading" secondItem="tBN-ev-Ma3" secondAttribute="trailing" constant="-10" id="LqA-nt-SF8"/>
                                     <constraint firstItem="tWu-bF-CVJ" firstAttribute="top" secondItem="GMA-C9-65g" secondAttribute="bottom" constant="10" id="NWE-AI-4R1"/>
-                                    <constraint firstItem="j0O-Kk-dGs" firstAttribute="top" secondItem="PCF-kT-v60" secondAttribute="bottom" constant="-4" id="PTo-Aq-wFY"/>
+                                    <constraint firstItem="j0O-Kk-dGs" firstAttribute="top" secondItem="PCF-kT-v60" secondAttribute="bottom" constant="4" id="PTo-Aq-wFY"/>
                                     <constraint firstItem="GMA-C9-65g" firstAttribute="top" secondItem="dmO-0j-QIg" secondAttribute="bottom" constant="-5" id="QUW-uX-7qe"/>
                                     <constraint firstItem="tWu-bF-CVJ" firstAttribute="top" secondItem="BDl-Sl-yhT" secondAttribute="bottom" constant="-160" id="RTV-sK-O7F"/>
                                     <constraint firstItem="seL-n9-abw" firstAttribute="top" secondItem="tWu-bF-CVJ" secondAttribute="bottom" constant="-78" id="Ul0-gj-Bt7"/>
                                     <constraint firstItem="1ry-ze-GE2" firstAttribute="top" secondItem="Ziq-55-z61" secondAttribute="bottom" constant="3" id="YMz-zG-SkY"/>
-                                    <constraint firstItem="dmO-0j-QIg" firstAttribute="top" secondItem="j0O-Kk-dGs" secondAttribute="bottom" constant="20" id="a3s-s0-A03"/>
                                     <constraint firstItem="Ziq-55-z61" firstAttribute="leading" secondItem="1ry-ze-GE2" secondAttribute="trailing" constant="-48" id="ai5-nr-LeD"/>
                                     <constraint firstItem="tWu-bF-CVJ" firstAttribute="top" secondItem="MoF-qq-SN1" secondAttribute="bottom" constant="-89" id="bV5-zG-f4h"/>
                                     <constraint firstItem="Gvo-Nx-Urv" firstAttribute="top" secondItem="K44-Qz-mUp" secondAttribute="bottom" constant="4" id="dDJ-nU-AlL"/>
@@ -3603,6 +3606,7 @@ Use the Add To List Button on a pin to begin</string>
         <image name="Provider Button" width="100" height="103"/>
         <image name="Provider Menu Background" width="375" height="370"/>
         <image name="Purple Hex No Fill" width="298" height="325"/>
+        <image name="Purple Submit Button" width="135" height="143"/>
         <image name="Re Center Button" width="60" height="65"/>
         <image name="Rectangle 3 Blue" width="321" height="100"/>
         <image name="Rectangle 3 Copy 2" width="334" height="100"/>
