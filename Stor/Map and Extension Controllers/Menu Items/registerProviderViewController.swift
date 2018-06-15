@@ -62,9 +62,11 @@ class registerProviderViewController: UIViewController {
                     let registerDataValues = ["Name": dictionary["name"], "SocialSecurity": socialSecurityVerify, "numberOfRatings": 1, "rating": 5, "phone": dictionary["phone"], "profileImage": dictionary["profilePicture"], "backgroundCheck": "pending"]
                     databaseReference.child("Providers").child(user.uid).child("personalInfo").updateChildValues(registerDataValues)
                     
+                    
                     self.performSegue(withIdentifier: "socialToMenuSegue", sender: nil)
                     
                     providerMenuPopup.shared.providerMenuVC.showPopUp()
+                    registerProviderViewController().dismiss(animated: true)
 
                 }
             })
