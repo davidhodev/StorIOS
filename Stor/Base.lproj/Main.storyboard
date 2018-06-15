@@ -10,20 +10,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Dosis-Bold.otf">
-            <string>Dosis-Bold</string>
-        </array>
-        <array key="Dosis-Light.otf">
-            <string>Dosis-Light</string>
-        </array>
-        <array key="Dosis-Medium.otf">
-            <string>Dosis-Medium</string>
-        </array>
-        <array key="Dosis-Regular.otf">
-            <string>Dosis-Regular</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Startup View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -49,7 +35,7 @@
                                 <rect key="frame" x="0.0" y="358" width="170" height="300"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy4" translatesAutoresizingMaskIntoConstraints="NO" id="uGy-bx-NSJ">
-                                <rect key="frame" x="136" y="1" width="169" height="93"/>
+                                <rect key="frame" x="138" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy5_2" translatesAutoresizingMaskIntoConstraints="NO" id="U2q-m4-Bqu">
                                 <rect key="frame" x="224" y="82" width="151" height="323"/>
@@ -62,7 +48,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ED4-zM-ayk">
-                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
+                                <rect key="frame" x="0.0" y="-13" width="173" height="85"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Bd-4gJ">
                                 <rect key="frame" x="33.666666666666657" y="392" width="177" height="188"/>
@@ -319,7 +305,7 @@
                                 <rect key="frame" x="136" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ZcF-jB-fyb">
-                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
+                                <rect key="frame" x="0.0" y="-13" width="171" height="85"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo Copy" translatesAutoresizingMaskIntoConstraints="NO" id="iUg-vp-lcF">
                                 <rect key="frame" x="51" y="115" width="187" height="114"/>
@@ -1622,6 +1608,16 @@ Use the Add To List Button on a pin to begin</string>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+<<<<<<< HEAD
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFc-JA-hpa">
+                                <rect key="frame" x="142" y="510" width="90" height="48"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="FS2-CZ-y91" eventType="touchUpInside" id="WiG-5p-vcf"/>
+                                </connections>
+                            </button>
+=======
+>>>>>>> 292828cfa97d67cd091dd7aee0808d6c5317a0d9
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2la-0S-hwR" userLabel="Exit">
                                 <rect key="frame" x="293" y="406" width="60" height="66"/>
                                 <constraints>
@@ -3190,7 +3186,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="P4G-xz-ODq">
-                                <rect key="frame" x="0.0" y="-55" width="171" height="101"/>
+                                <rect key="frame" x="0.0" y="-55" width="173" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="101" id="XiM-pS-Ieg"/>
                                 </constraints>
@@ -3607,7 +3603,6 @@ Use the Add To List Button on a pin to begin</string>
         <image name="Provider Button" width="100" height="103"/>
         <image name="Provider Menu Background" width="375" height="370"/>
         <image name="Purple Hex No Fill" width="298" height="325"/>
-        <image name="Purple Submit Button" width="135" height="143"/>
         <image name="Re Center Button" width="60" height="65"/>
         <image name="Rectangle 3 Blue" width="321" height="100"/>
         <image name="Rectangle 3 Copy 2" width="334" height="100"/>
