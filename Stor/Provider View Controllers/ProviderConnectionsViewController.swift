@@ -103,6 +103,13 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
         let user = potentialConnects[indexPath.section]
         cell.nameLabel.attributedText = user.name
         cell.ratingLabel.attributedText = user.rating
+        print("PHONE LABEL: ", user.phone)
+        cell.phoneLabel.attributedText = user.phone
+        cell.callButton.tag = indexPath.section
+        cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
+        
+        
+        
         
         
         
@@ -129,6 +136,8 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             cell.profileImage.layer.masksToBounds = false
             cell.profileImage.layer.mask = borderLayer
             cell.profileImage.image = user.providerProfile
+            print(user.dropOff)
+            cell.dropOffTime.text = user.dropOff
             
         })
         
@@ -233,7 +242,9 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
         Database.database().reference().child("Providers").child(uid!).child("currentStorage").observeSingleEvent(of: .value, with: { (snapshot) in
             for userChild in snapshot.children{
                 let userSnapshot = userChild as! DataSnapshot
-//                print("USER SNAPSHOT: ", userSnapshot)
+                print("USER SNAPSHOT: ", userSnapshot.key)
+                let storageID = userSnapshot.key
+                
                 let dictionary = userSnapshot.value as? [String: Any?]
 //                print("DICTIONARY: ", dictionary!)
                 let potentialConnectsDictionary = dictionary!["potentialConnects"] as? [String: Any?]
@@ -242,6 +253,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                     print("STORAGE ID: ", potentials)
                     print("================================")
                     let user = providerPotentialUser()
+                    user.storageID = storageID
                     user.userID = potentials
                     user.getName()
 //                    user.getData()
@@ -260,12 +272,12 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                 let connectionDictionary = dictionary!["connection"] as? [String: Any?]
                 print("POTENTIAL CONNECTS DICT: ", connectionDictionary)
                 for potentials in (connectionDictionary?.keys)!{
-                    print("STORAGE ID: ", potentials)
+                    print("Provider ID: ", potentials)
                     print("================================")
                     let user = providerPotentialUser()
                     user.userID = potentials
                     user.getName()
-                    //                    user.getData()
+                    user.getData()
                     self.potentialConnects.append(user)
                     
                 }
@@ -292,5 +304,43 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
 //        }, withCancel: nil)
 //    }
     }
+    
+    
+    @objc func call(_ sender:UIButton) {
+        let buttonIndexPath = sender.tag
+        
+        if selectorIndex == 0{
+            let providerID = potentialConnects[buttonIndexPath].userID
+            if Auth.auth().currentUser != nil{
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                databaseReference.root.child("Users").child(providerID!).observe(.value, with: { (snapshot) in
+                    if let dictionary = snapshot.value as? [String: Any]{
+                        let phone = dictionary["phone"]
+                        let customerPhone = String(describing: phone!)
+                        if let url = URL(string: "tel://\(String(describing: customerPhone))") {
+                            UIApplication.shared.open(url)
+                        }
+                    }
+                })
+            }
+        }
+    }
+//        else{
+//            let providerID = myCurrentStorageUsers[buttonIndexPath].providerID
+//            if Auth.auth().currentUser != nil{
+//                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+//                databaseReference.root.child("Providers").child(providerID!).child("personalInfo").observe(.value, with: { (snapshot) in
+//                    print(snapshot)
+//                    if let dictionary = snapshot.value as? [String: Any]{
+//                        let phone = dictionary["phone"]
+//                        let providerPhone = String(describing: phone!)
+//                        if let url = URL(string: "tel://\(String(describing: providerPhone))") {
+//                            UIApplication.shared.open(url)
+//                        }
+//                    }
+//                })
+//            }
+//        }
+//    }
     
 }
