@@ -117,6 +117,14 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let cell = storageTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! myStorageCustomTableViewCell
+        let shadowPath2 = UIBezierPath(roundedRect: cell.bounds, cornerRadius: 25)
+        cell.layer.masksToBounds = false
+        cell.layer.shadowColor = UIColor(red:0.27, green:0.29, blue:0.36, alpha:1.0).cgColor
+        cell.layer.shadowOffset = CGSize(width: CGFloat(2), height: CGFloat(14.0))
+        cell.layer.shadowOpacity = 0.0275
+        cell.layer.shadowPath = shadowPath2.cgPath
+        cell.layer.cornerRadius = 27
+        cell.cellView.layer.cornerRadius = 27
         if selectorIndex == 0{
             let user = myStorageUsers[indexPath.section]
             // hiding and showing the buttons on pending section
@@ -184,8 +192,6 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             
             storageTableView.backgroundColor = UIColor.clear
             cell.backgroundColor = UIColor.white
-            cell.layer.cornerRadius = 27
-            
             return cell
         }
         else{
@@ -203,14 +209,6 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             cell.cubicFeetLabel.attributedText = user.cubicString
             cell.nameLabel.attributedText = user.name
             cell.ratingLabel.attributedText = user.rating
-            
-            // shadows
-            let shadowPath2 = UIBezierPath(roundedRect: cell.bounds, cornerRadius: 30)
-            cell.layer.masksToBounds = false
-            cell.layer.shadowColor = UIColor(red:0.27, green:0.29, blue:0.36, alpha:1.0).cgColor
-            cell.layer.shadowOffset = CGSize(width: CGFloat(0), height: CGFloat(14.0))
-            cell.layer.shadowOpacity = 0.0270
-            cell.layer.shadowPath = shadowPath2.cgPath
             
             DispatchQueue.main.async(execute: { () -> Void in
 
@@ -251,8 +249,6 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
 
             storageTableView.backgroundColor = UIColor.clear
             cell.backgroundColor = UIColor.white
-            cell.layer.cornerRadius = 27
-            
             return cell
         }
         
@@ -269,6 +265,8 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
                 let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
                 let userReference = databaseReference.root.child("Users").child((user.uid))
                     userReference.child("pendingStorage").child(myStorageID!).removeValue()
+                
+                
                 
                 let providerReference = databaseReference.root.child("Providers").child(providerID!).child("currentStorage").child(myStorageID!).child("potentialConnects").child(user.uid)
                 providerReference.removeValue()

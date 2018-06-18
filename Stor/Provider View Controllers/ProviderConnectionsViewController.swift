@@ -14,7 +14,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     
     var selectedIndexPath: IndexPath?
     var potentialConnects = [providerPotentialUser]()
-    var currentConnects = [providerCurrentUser]()
+    var currentConnects = [providerPotentialUser]()
     var selectorIndex: Int?
     
     @IBOutlet weak var providerTableView: UITableView!
@@ -89,6 +89,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             return 0
         }
         else{
+            print("1")
             self.providerTableView.isHidden = false
             self.noPendingOptionsLabel.isHidden = true
             self.noCurrentConnectionsLabel.isHidden = true
@@ -98,58 +99,121 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = providerTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! potentialConnectsTableViewCell
-        print(potentialConnects.count)
-        print(indexPath.section)
-        let user = potentialConnects[indexPath.section]
-        cell.nameLabel.attributedText = user.name
-        cell.ratingLabel.attributedText = user.rating
-        print("PHONE LABEL: ", user.phone)
-        cell.phoneLabel.attributedText = user.phone
-        cell.callButton.tag = indexPath.section
-        cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
-        
-        
-        
-        
-        
-        
-        DispatchQueue.main.async(execute: { () -> Void in
+        if selectorIndex == 0{
+            let user = potentialConnects[indexPath.section]
+            cell.nameLabel.attributedText = user.name
+            cell.ratingLabel.attributedText = user.rating
+            print("PHONE LABEL: ", user.phone)
+            cell.phoneLabel.attributedText = user.phone
+            cell.callButton.tag = indexPath.section
+            cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
             
-            let lineWidth = CGFloat(7.0)
-            let rect = CGRect(x: 0, y: 0.0, width: 50, height: 54)
-            let sides = 6
             
-            let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 5.0, rotationOffset: CGFloat(.pi / 2.0))
             
-            let borderLayer = CAShapeLayer()
-            borderLayer.frame = CGRect(x : 0.0, y : 0.0, width : path.bounds.width + lineWidth, height : path.bounds.height + lineWidth)
-            borderLayer.path = path.cgPath
-            borderLayer.lineWidth = lineWidth
-            borderLayer.lineJoin = kCALineJoinRound
-            borderLayer.lineCap = kCALineCapRound
-            borderLayer.strokeColor = UIColor.black.cgColor
-            borderLayer.fillColor = UIColor.white.cgColor
             
-            let hexagon = createImage(layer: borderLayer)
             
-            cell.profileImage.contentMode = .scaleAspectFill
-            cell.profileImage.layer.masksToBounds = false
-            cell.profileImage.layer.mask = borderLayer
-            cell.profileImage.image = user.providerProfile
-            print(user.dropOff)
-            cell.dropOffTime.text = user.dropOff
             
-        })
-        
-        
-        if (cell.contentView.bounds.size.height.rounded() == 60){
-            cell.dropDownImage.image = UIImage(named: "Expand Arrow")
+            DispatchQueue.main.async(execute: { () -> Void in
+                
+                let lineWidth = CGFloat(7.0)
+                let rect = CGRect(x: 0, y: 0.0, width: 50, height: 54)
+                let sides = 6
+                
+                let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 5.0, rotationOffset: CGFloat(.pi / 2.0))
+                
+                let borderLayer = CAShapeLayer()
+                borderLayer.frame = CGRect(x : 0.0, y : 0.0, width : path.bounds.width + lineWidth, height : path.bounds.height + lineWidth)
+                borderLayer.path = path.cgPath
+                borderLayer.lineWidth = lineWidth
+                borderLayer.lineJoin = kCALineJoinRound
+                borderLayer.lineCap = kCALineCapRound
+                borderLayer.strokeColor = UIColor.black.cgColor
+                borderLayer.fillColor = UIColor.white.cgColor
+                
+                let hexagon = createImage(layer: borderLayer)
+                
+                cell.profileImage.contentMode = .scaleAspectFill
+                cell.profileImage.layer.masksToBounds = false
+                cell.profileImage.layer.mask = borderLayer
+                cell.profileImage.image = user.providerProfile
+                print(user.dropOff)
+                cell.dropOffTime.text = user.dropOff
+                
+            })
+            
+            
+            if (cell.contentView.bounds.size.height.rounded() == 60){
+                cell.dropDownImage.image = UIImage(named: "Expand Arrow")
+            }
+            else
+            {
+                print (cell.contentView.bounds.size.height)
+                cell.dropDownImage.image = UIImage(named: "Up Arrow")
+            }
+            
+            cell.declineButton.tag = indexPath.section
+            cell.declineButton.addTarget(self, action: #selector(self.declineButton(_:)), for: .touchUpInside)
+            cell.acceptButton.tag = indexPath.section
+            cell.acceptButton.addTarget(self, action: #selector(self.acceptButton(_:)), for: .touchUpInside)
         }
-        else
-        {
-            print (cell.contentView.bounds.size.height)
-            cell.dropDownImage.image = UIImage(named: "Up Arrow")
+        else{
+            let user = currentConnects[indexPath.section]
+            cell.nameLabel.attributedText = user.name
+            cell.ratingLabel.attributedText = user.rating
+            print("PHONE LABEL: ", user.phone)
+            cell.phoneLabel.attributedText = user.phone
+            cell.callButton.tag = indexPath.section
+            cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
+            
+            
+            
+            
+            
+            
+            DispatchQueue.main.async(execute: { () -> Void in
+                
+                let lineWidth = CGFloat(7.0)
+                let rect = CGRect(x: 0, y: 0.0, width: 50, height: 54)
+                let sides = 6
+                
+                let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 5.0, rotationOffset: CGFloat(.pi / 2.0))
+                
+                let borderLayer = CAShapeLayer()
+                borderLayer.frame = CGRect(x : 0.0, y : 0.0, width : path.bounds.width + lineWidth, height : path.bounds.height + lineWidth)
+                borderLayer.path = path.cgPath
+                borderLayer.lineWidth = lineWidth
+                borderLayer.lineJoin = kCALineJoinRound
+                borderLayer.lineCap = kCALineCapRound
+                borderLayer.strokeColor = UIColor.black.cgColor
+                borderLayer.fillColor = UIColor.white.cgColor
+                
+                let hexagon = createImage(layer: borderLayer)
+                
+                cell.profileImage.contentMode = .scaleAspectFill
+                cell.profileImage.layer.masksToBounds = false
+                cell.profileImage.layer.mask = borderLayer
+                cell.profileImage.image = user.providerProfile
+                print(user.dropOff)
+                cell.dropOffTime.text = user.dropOff
+                
+            })
+            
+            
+            if (cell.contentView.bounds.size.height.rounded() == 60){
+                cell.dropDownImage.image = UIImage(named: "Expand Arrow")
+            }
+            else
+            {
+                print (cell.contentView.bounds.size.height)
+                cell.dropDownImage.image = UIImage(named: "Up Arrow")
+            }
+            
+            cell.declineButton.tag = indexPath.section
+            cell.declineButton.addTarget(self, action: #selector(self.declineButton(_:)), for: .touchUpInside)
+            cell.acceptButton.tag = indexPath.section
+            cell.acceptButton.addTarget(self, action: #selector(self.acceptButton(_:)), for: .touchUpInside)
         }
+        
         
         providerTableView.backgroundColor = UIColor.clear
         cell.backgroundColor = UIColor.white
@@ -247,62 +311,41 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                 
                 let dictionary = userSnapshot.value as? [String: Any?]
 //                print("DICTIONARY: ", dictionary!)
-                let potentialConnectsDictionary = dictionary!["potentialConnects"] as? [String: Any?]
-                print("POTENTIAL CONNECTS DICT: ", potentialConnectsDictionary)
-                for potentials in (potentialConnectsDictionary?.keys)!{
-                    print("STORAGE ID: ", potentials)
-                    print("================================")
-                    let user = providerPotentialUser()
-                    user.storageID = storageID
-                    user.userID = potentials
-                    user.getName()
-//                    user.getData()
-                    self.potentialConnects.append(user)
-                    
+                if let potentialConnectsDictionary = dictionary!["potentialConnects"] as? [String: Any?]{
+                    print("POTENTIAL CONNECTS DICT: ", potentialConnectsDictionary)
+                    for potentials in (potentialConnectsDictionary.keys){
+                        print("STORAGE ID: ", potentials)
+                        print("================================")
+                        let user = providerPotentialUser()
+                        user.storageID = storageID
+                        user.userID = potentials
+                        user.getName()
+    //                    user.getData()
+                        self.potentialConnects.append(user)
+                        
+                    }
                 }
             }
         }, withCancel: nil)
         
-        Database.database().reference().child("Providers").child(uid!).child("inUseStorage").observeSingleEvent(of: .value, with: { (snapshot) in
+        Database.database().reference().child("Providers").child(uid!).child("storageInUse").observeSingleEvent(of: .value, with: { (snapshot) in
             for userChild in snapshot.children{
                 let userSnapshot = userChild as! DataSnapshot
-                //                print("USER SNAPSHOT: ", userSnapshot)
+                print("USER SNAPSHOT: ", userSnapshot.key)
+                let storageID = userSnapshot.key
+                
                 let dictionary = userSnapshot.value as? [String: Any?]
                 //                print("DICTIONARY: ", dictionary!)
-                let connectionDictionary = dictionary!["connection"] as? [String: Any?]
-                print("POTENTIAL CONNECTS DICT: ", connectionDictionary)
-                for potentials in (connectionDictionary?.keys)!{
-                    print("Provider ID: ", potentials)
-                    print("================================")
-                    let user = providerPotentialUser()
-                    user.userID = potentials
-                    user.getName()
-                    user.getData()
-                    self.potentialConnects.append(user)
-                    
-                }
+                let currentUser = dictionary!["Connector"]
+                let user = providerPotentialUser()
+                user.storageID = storageID
+                user.userID = currentUser as! String
+                user.getName()
+                //                    user.getData()
+                self.currentConnects.append(user)
             }
         }, withCancel: nil)
         
-//
-//        Database.database().reference().child("Users").child(uid!).child("currentStorage").observeSingleEvent(of: .value, with: { (snapshot) in
-//            for userChild in snapshot.children{
-//                let userSnapshot = userChild as! DataSnapshot
-//                let dictionary = userSnapshot.value as? [String: String?]
-//                print("GET MY STORAGE DICTIONARY", dictionary)
-//                let user = myCurrentUser()
-//                user.providerID = dictionary!["myListProvider0"] as? String
-//                user.storageID = dictionary!["myListStorage0"] as? String
-//                user.getAddress()
-//                user.getData()
-//                self.myCurrentStorageUsers.append(user)
-//
-//                DispatchQueue.main.async {
-//                    self.storageTableView.reloadData()
-//                }
-//            }
-//        }, withCancel: nil)
-//    }
     }
     
     
@@ -342,5 +385,93 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
 //            }
 //        }
 //    }
+    
+    
+    @objc func declineButton(_ sender:UIButton) {
+        let buttonIndexPath = sender.tag
+        print("My custom button action")
+        
+        if selectorIndex == 0{
+            let userID = potentialConnects[buttonIndexPath].userID
+            print("USERID: ", userID)
+            let myStorageID = potentialConnects[buttonIndexPath].storageID
+            if let user = Auth.auth().currentUser{
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                let providerReference = databaseReference.root.child("Providers").child(user.uid).child("currentStorage").child(myStorageID!).child("potentialConnects").child(userID!)
+                providerReference.removeValue()
+                
+                let userReference = databaseReference.root.child("Users").child(userID!)
+                userReference.child("pendingStorage").child(myStorageID!).removeValue()
+                
+                
+                self.potentialConnects.remove(at: buttonIndexPath)
+                self.providerTableView.reloadData()
+                
+                
+                
+            }
+            
+            
+            //PUSH NOTIFICATION TO PROVIDER
+            
+        }
+        else{
+            print(selectorIndex)
+        }
+    }
+    
+    @objc func acceptButton(_ sender:UIButton) {
+        let buttonIndexPath = sender.tag
+        print("My custom button action")
+        
+        if selectorIndex == 0{
+            let userID = potentialConnects[buttonIndexPath].userID
+            print("USERID: ", userID)
+            let myStorageID = potentialConnects[buttonIndexPath].storageID
+            let realConnect = potentialConnects[buttonIndexPath]
+            
+            
+            if let user = Auth.auth().currentUser{
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                for removingConnects in potentialConnects{
+                    
+                    let removingID = removingConnects.userID
+                    let providerReference = databaseReference.root.child("Providers").child(user.uid).child("currentStorage").child(myStorageID!).child("potentialConnects").child(removingID!)
+                    providerReference.removeValue()
+                    
+                    let userReference = databaseReference.root.child("Users").child(removingID!)
+                    userReference.child("pendingStorage").child(myStorageID!).removeValue()
+                    
+                }
+            databaseReference.root.child("Providers").child(user.uid).child("currentStorage").child(myStorageID!).child("potentialConnects").removeValue()
+                
+                
+                databaseReference.root.child("Providers").child(user.uid).child("currentStorage").child(myStorageID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                    if let tempSnapshotValue = snapshot.value as? [String : AnyObject]{
+                    
+                    databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).setValue(tempSnapshotValue)
+                databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).child("time").updateChildValues(["time": realConnect.dropOff])
+                    
+                databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).updateChildValues(["Connector": realConnect.userID])
+                    }
+                    
+
+                })
+
+                databaseReference.child("Providers").child(user.uid).child("currentStorage").removeValue()
+                
+                self.potentialConnects.removeAll()
+                self.providerTableView.reloadData()
+
+            }
+            
+            print(realConnect)
+            //PUSH NOTIFICATION TO PROVIDER
+            
+        }
+        else{
+            print(selectorIndex)
+        }
+    }
     
 }

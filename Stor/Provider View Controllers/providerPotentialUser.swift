@@ -49,12 +49,12 @@ class providerPotentialUser: NSObject {
                     let phoneAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempPhone!, attributes: [.font: fontPhone!])
                     self.phone = phoneAttString
                     
-                    let timesDictionary = dictionary["pendingStorage"] as? [String: Any]
+                    if let timesDictionary = dictionary["pendingStorage"] as? [String: Any]{
+                        if let finalTimeDictionary = timesDictionary[self.storageID!] as? [String: Any]{
+                            self.dropOff = finalTimeDictionary["timeSlotString"] as! String
+                        }
                     
-                    let finalTimeDictionary = timesDictionary![self.storageID!] as? [String: Any]
-                    self.dropOff = finalTimeDictionary!["timeSlotString"] as! String
-                    
-                
+                    }
                     
                     
                     
