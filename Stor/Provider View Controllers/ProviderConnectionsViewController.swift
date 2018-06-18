@@ -14,7 +14,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     
     var selectedIndexPath: IndexPath?
     var potentialConnects = [providerPotentialUser]()
-    var currentConnects = [providerCurrentUser]()
+    var currentConnects = [providerPotentialUser]()
     var selectorIndex: Int?
     
     @IBOutlet weak var providerTableView: UITableView!
@@ -89,6 +89,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             return 0
         }
         else{
+            print("1")
             self.providerTableView.isHidden = false
             self.noPendingOptionsLabel.isHidden = true
             self.noCurrentConnectionsLabel.isHidden = true
@@ -98,63 +99,120 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = providerTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! potentialConnectsTableViewCell
-        print(potentialConnects.count)
-        print(indexPath.section)
-        let user = potentialConnects[indexPath.section]
-        cell.nameLabel.attributedText = user.name
-        cell.ratingLabel.attributedText = user.rating
-        print("PHONE LABEL: ", user.phone)
-        cell.phoneLabel.attributedText = user.phone
-        cell.callButton.tag = indexPath.section
-        cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
-        
-        
-        
-        
-        
-        
-        DispatchQueue.main.async(execute: { () -> Void in
+        if selectorIndex == 0{
+            let user = potentialConnects[indexPath.section]
+            cell.nameLabel.attributedText = user.name
+            cell.ratingLabel.attributedText = user.rating
+            print("PHONE LABEL: ", user.phone)
+            cell.phoneLabel.attributedText = user.phone
+            cell.callButton.tag = indexPath.section
+            cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
             
-            let lineWidth = CGFloat(7.0)
-            let rect = CGRect(x: 0, y: 0.0, width: 50, height: 54)
-            let sides = 6
             
-            let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 5.0, rotationOffset: CGFloat(.pi / 2.0))
             
-            let borderLayer = CAShapeLayer()
-            borderLayer.frame = CGRect(x : 0.0, y : 0.0, width : path.bounds.width + lineWidth, height : path.bounds.height + lineWidth)
-            borderLayer.path = path.cgPath
-            borderLayer.lineWidth = lineWidth
-            borderLayer.lineJoin = kCALineJoinRound
-            borderLayer.lineCap = kCALineCapRound
-            borderLayer.strokeColor = UIColor.black.cgColor
-            borderLayer.fillColor = UIColor.white.cgColor
             
-            let hexagon = createImage(layer: borderLayer)
             
-            cell.profileImage.contentMode = .scaleAspectFill
-            cell.profileImage.layer.masksToBounds = false
-            cell.profileImage.layer.mask = borderLayer
-            cell.profileImage.image = user.providerProfile
-            print(user.dropOff)
-            cell.dropOffTime.text = user.dropOff
             
-        })
-        
-        
-        if (cell.contentView.bounds.size.height.rounded() == 60){
-            cell.dropDownImage.image = UIImage(named: "Expand Arrow")
+            DispatchQueue.main.async(execute: { () -> Void in
+                
+                let lineWidth = CGFloat(7.0)
+                let rect = CGRect(x: 0, y: 0.0, width: 50, height: 54)
+                let sides = 6
+                
+                let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 5.0, rotationOffset: CGFloat(.pi / 2.0))
+                
+                let borderLayer = CAShapeLayer()
+                borderLayer.frame = CGRect(x : 0.0, y : 0.0, width : path.bounds.width + lineWidth, height : path.bounds.height + lineWidth)
+                borderLayer.path = path.cgPath
+                borderLayer.lineWidth = lineWidth
+                borderLayer.lineJoin = kCALineJoinRound
+                borderLayer.lineCap = kCALineCapRound
+                borderLayer.strokeColor = UIColor.black.cgColor
+                borderLayer.fillColor = UIColor.white.cgColor
+                
+                let hexagon = createImage(layer: borderLayer)
+                
+                cell.profileImage.contentMode = .scaleAspectFill
+                cell.profileImage.layer.masksToBounds = false
+                cell.profileImage.layer.mask = borderLayer
+                cell.profileImage.image = user.providerProfile
+                print(user.dropOff)
+                cell.dropOffTime.text = user.dropOff
+                
+            })
+            
+            
+            if (cell.contentView.bounds.size.height.rounded() == 60){
+                cell.dropDownImage.image = UIImage(named: "Expand Arrow")
+            }
+            else
+            {
+                print (cell.contentView.bounds.size.height)
+                cell.dropDownImage.image = UIImage(named: "Up Arrow")
+            }
+            
+            cell.declineButton.tag = indexPath.section
+            cell.declineButton.addTarget(self, action: #selector(self.declineButton(_:)), for: .touchUpInside)
+            cell.acceptButton.tag = indexPath.section
+            cell.acceptButton.addTarget(self, action: #selector(self.acceptButton(_:)), for: .touchUpInside)
         }
-        else
-        {
-            print (cell.contentView.bounds.size.height)
-            cell.dropDownImage.image = UIImage(named: "Up Arrow")
+        else{
+            let user = currentConnects[indexPath.section]
+            cell.nameLabel.attributedText = user.name
+            cell.ratingLabel.attributedText = user.rating
+            print("PHONE LABEL: ", user.phone)
+            cell.phoneLabel.attributedText = user.phone
+            cell.callButton.tag = indexPath.section
+            cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
+            
+            
+            
+            
+            
+            
+            DispatchQueue.main.async(execute: { () -> Void in
+                
+                let lineWidth = CGFloat(7.0)
+                let rect = CGRect(x: 0, y: 0.0, width: 50, height: 54)
+                let sides = 6
+                
+                let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 5.0, rotationOffset: CGFloat(.pi / 2.0))
+                
+                let borderLayer = CAShapeLayer()
+                borderLayer.frame = CGRect(x : 0.0, y : 0.0, width : path.bounds.width + lineWidth, height : path.bounds.height + lineWidth)
+                borderLayer.path = path.cgPath
+                borderLayer.lineWidth = lineWidth
+                borderLayer.lineJoin = kCALineJoinRound
+                borderLayer.lineCap = kCALineCapRound
+                borderLayer.strokeColor = UIColor.black.cgColor
+                borderLayer.fillColor = UIColor.white.cgColor
+                
+                let hexagon = createImage(layer: borderLayer)
+                
+                cell.profileImage.contentMode = .scaleAspectFill
+                cell.profileImage.layer.masksToBounds = false
+                cell.profileImage.layer.mask = borderLayer
+                cell.profileImage.image = user.providerProfile
+                print(user.dropOff)
+                cell.dropOffTime.text = user.dropOff
+                
+            })
+            
+            
+            if (cell.contentView.bounds.size.height.rounded() == 60){
+                cell.dropDownImage.image = UIImage(named: "Expand Arrow")
+            }
+            else
+            {
+                print (cell.contentView.bounds.size.height)
+                cell.dropDownImage.image = UIImage(named: "Up Arrow")
+            }
+            
+            cell.declineButton.tag = indexPath.section
+            cell.declineButton.addTarget(self, action: #selector(self.declineButton(_:)), for: .touchUpInside)
+            cell.acceptButton.tag = indexPath.section
+            cell.acceptButton.addTarget(self, action: #selector(self.acceptButton(_:)), for: .touchUpInside)
         }
-        
-        cell.declineButton.tag = indexPath.section
-        cell.declineButton.addTarget(self, action: #selector(self.declineButton(_:)), for: .touchUpInside)
-        cell.acceptButton.tag = indexPath.section
-        cell.acceptButton.addTarget(self, action: #selector(self.acceptButton(_:)), for: .touchUpInside)
         
         
         providerTableView.backgroundColor = UIColor.clear
@@ -266,50 +324,28 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                         self.potentialConnects.append(user)
                         
                     }
-            }
-            }
-        }, withCancel: nil)
-        
-        Database.database().reference().child("Providers").child(uid!).child("inUseStorage").observeSingleEvent(of: .value, with: { (snapshot) in
-            for userChild in snapshot.children{
-                let userSnapshot = userChild as! DataSnapshot
-                //                print("USER SNAPSHOT: ", userSnapshot)
-                let dictionary = userSnapshot.value as? [String: Any?]
-                //                print("DICTIONARY: ", dictionary!)
-                let connectionDictionary = dictionary!["connection"] as? [String: Any?]
-                print("POTENTIAL CONNECTS DICT: ", connectionDictionary)
-                for potentials in (connectionDictionary?.keys)!{
-                    print("Provider ID: ", potentials)
-                    print("================================")
-                    let user = providerPotentialUser()
-                    user.userID = potentials
-                    user.getName()
-                    user.getData()
-                    self.potentialConnects.append(user)
-                    
                 }
             }
         }, withCancel: nil)
         
-//
-//        Database.database().reference().child("Users").child(uid!).child("currentStorage").observeSingleEvent(of: .value, with: { (snapshot) in
-//            for userChild in snapshot.children{
-//                let userSnapshot = userChild as! DataSnapshot
-//                let dictionary = userSnapshot.value as? [String: String?]
-//                print("GET MY STORAGE DICTIONARY", dictionary)
-//                let user = myCurrentUser()
-//                user.providerID = dictionary!["myListProvider0"] as? String
-//                user.storageID = dictionary!["myListStorage0"] as? String
-//                user.getAddress()
-//                user.getData()
-//                self.myCurrentStorageUsers.append(user)
-//
-//                DispatchQueue.main.async {
-//                    self.storageTableView.reloadData()
-//                }
-//            }
-//        }, withCancel: nil)
-//    }
+        Database.database().reference().child("Providers").child(uid!).child("storageInUse").observeSingleEvent(of: .value, with: { (snapshot) in
+            for userChild in snapshot.children{
+                let userSnapshot = userChild as! DataSnapshot
+                print("USER SNAPSHOT: ", userSnapshot.key)
+                let storageID = userSnapshot.key
+                
+                let dictionary = userSnapshot.value as? [String: Any?]
+                //                print("DICTIONARY: ", dictionary!)
+                let currentUser = dictionary!["Connector"]
+                let user = providerPotentialUser()
+                user.storageID = storageID
+                user.userID = currentUser as! String
+                user.getName()
+                //                    user.getData()
+                self.currentConnects.append(user)
+            }
+        }, withCancel: nil)
+        
     }
     
     
