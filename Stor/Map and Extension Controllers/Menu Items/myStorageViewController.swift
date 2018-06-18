@@ -266,6 +266,8 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
                 let userReference = databaseReference.root.child("Users").child((user.uid))
                     userReference.child("pendingStorage").child(myStorageID!).removeValue()
                 
+                
+                
                 let providerReference = databaseReference.root.child("Providers").child(providerID!).child("currentStorage").child(myStorageID!).child("potentialConnects").child(user.uid)
                 providerReference.removeValue()
                 

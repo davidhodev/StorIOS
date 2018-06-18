@@ -23,6 +23,8 @@ class potentialConnectsTableViewCell: UITableViewCell {
     @IBOutlet weak var dropOffTime: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var callButton: UIButton!
+    @IBOutlet weak var acceptButton: UIButton!
+    @IBOutlet weak var declineButton: UIButton!
     
     
     
