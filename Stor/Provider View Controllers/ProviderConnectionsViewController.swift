@@ -151,6 +151,10 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             cell.dropDownImage.image = UIImage(named: "Up Arrow")
         }
         
+        cell.declineButton.tag = indexPath.section
+        cell.declineButton.addTarget(self, action: #selector(self.declineButton(_:)), for: .touchUpInside)
+        
+        
         providerTableView.backgroundColor = UIColor.clear
         cell.backgroundColor = UIColor.white
         cell.layer.cornerRadius = 27
@@ -247,19 +251,20 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                 
                 let dictionary = userSnapshot.value as? [String: Any?]
 //                print("DICTIONARY: ", dictionary!)
-                let potentialConnectsDictionary = dictionary!["potentialConnects"] as? [String: Any?]
-                print("POTENTIAL CONNECTS DICT: ", potentialConnectsDictionary)
-                for potentials in (potentialConnectsDictionary?.keys)!{
-                    print("STORAGE ID: ", potentials)
-                    print("================================")
-                    let user = providerPotentialUser()
-                    user.storageID = storageID
-                    user.userID = potentials
-                    user.getName()
-//                    user.getData()
-                    self.potentialConnects.append(user)
-                    
-                }
+                if let potentialConnectsDictionary = dictionary!["potentialConnects"] as? [String: Any?]{
+                    print("POTENTIAL CONNECTS DICT: ", potentialConnectsDictionary)
+                    for potentials in (potentialConnectsDictionary.keys){
+                        print("STORAGE ID: ", potentials)
+                        print("================================")
+                        let user = providerPotentialUser()
+                        user.storageID = storageID
+                        user.userID = potentials
+                        user.getName()
+    //                    user.getData()
+                        self.potentialConnects.append(user)
+                        
+                    }
+            }
             }
         }, withCancel: nil)
         
@@ -342,5 +347,39 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
 //            }
 //        }
 //    }
+    
+    
+    @objc func declineButton(_ sender:UIButton) {
+        let buttonIndexPath = sender.tag
+        print("My custom button action")
+        
+        if selectorIndex == 0{
+            let userID = potentialConnects[buttonIndexPath].userID
+            print("USERID: ", userID)
+            let myStorageID = potentialConnects[buttonIndexPath].storageID
+            if let user = Auth.auth().currentUser{
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                let providerReference = databaseReference.root.child("Providers").child(user.uid).child("currentStorage").child(myStorageID!).child("potentialConnects").child(userID!)
+                providerReference.removeValue()
+                
+                let userReference = databaseReference.root.child("Users").child(userID!)
+                userReference.child("pendingStorage").child(myStorageID!).removeValue()
+                
+                
+                self.potentialConnects.remove(at: buttonIndexPath)
+                self.providerTableView.reloadData()
+                
+                
+                
+            }
+            
+            
+            //PUSH NOTIFICATION TO PROVIDER
+            
+        }
+        else{
+            print(selectorIndex)
+        }
+    }
     
 }
