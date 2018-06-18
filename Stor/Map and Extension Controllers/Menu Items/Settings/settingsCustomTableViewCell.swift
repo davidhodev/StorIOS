@@ -21,16 +21,14 @@ class settingsCustomCellTableViewCell: UITableViewCell {
     @IBOutlet weak var pushNotificationsControl: UISwitch!
     @IBOutlet weak var storContactControl: UISwitch!
     @IBOutlet weak var deleteAccountButtonControl: UIButton!
+    var shadowLayer: CAShapeLayer!
     
     class var expandedHeight: CGFloat {get { return 200 }}
     class var defaultHeight: CGFloat {get { return 60 }}
     
-    
     func checkHeight(){
         cellView.isHidden = (frame.size.height < settingsCustomCellTableViewCell.expandedHeight)
     }
-    
-    
     
     func watchFrameChanges(){
         if !isObserving{

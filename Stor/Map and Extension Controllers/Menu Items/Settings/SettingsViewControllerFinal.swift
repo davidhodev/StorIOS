@@ -51,8 +51,6 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         tableViewDataSettings = [cellDataForSettings(title: "Notifications", subtitles: ["Push Notifications", "Text Message"]), cellDataForSettings(title: "Privacy Settings", subtitles: ["Allow Stor to Contact you for news and promotions", ""])]
     }
     
-    
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return tableViewDataSettings.count
     }
@@ -76,10 +74,10 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         let shadowPath2 = UIBezierPath(roundedRect: cell.bounds, cornerRadius: 30)
         cell.layer.masksToBounds = false
         cell.layer.shadowColor = UIColor(red:0.27, green:0.29, blue:0.36, alpha:1.0).cgColor
-        cell.layer.shadowOffset = CGSize(width: CGFloat(0), height: CGFloat(14.0))
-        cell.layer.shadowOpacity = 0.0270
+        cell.layer.shadowOffset = CGSize(width: CGFloat(2), height: CGFloat(14.0))
+        cell.layer.shadowOpacity = 0.0275
         cell.layer.shadowPath = shadowPath2.cgPath
-    
+        cell.cellView.layer.cornerRadius = 27
         //changing the switches, if statement is second section
         if (indexPath.section == numberOfSections(in: settingsTableView) - 1){
             cell.textMessageControl.isHidden = true
@@ -139,7 +137,7 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
             return settingsCustomCellTableViewCell.defaultHeight
         }
     }
-    //makes animations synchronous
+    //makes space between cells
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return cellSpacingHeight
     }
