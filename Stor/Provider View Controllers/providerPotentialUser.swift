@@ -50,9 +50,9 @@ class providerPotentialUser: NSObject {
                     self.phone = phoneAttString
                     
                     if let timesDictionary = dictionary["pendingStorage"] as? [String: Any]{
-                    
-                        let finalTimeDictionary = timesDictionary[self.storageID!] as? [String: Any]
-                        self.dropOff = finalTimeDictionary!["timeSlotString"] as! String
+                        if let finalTimeDictionary = timesDictionary[self.storageID!] as? [String: Any]{
+                            self.dropOff = finalTimeDictionary["timeSlotString"] as! String
+                        }
                     
                     }
                     

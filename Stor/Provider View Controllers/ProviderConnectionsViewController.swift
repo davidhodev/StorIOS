@@ -153,6 +153,8 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
         
         cell.declineButton.tag = indexPath.section
         cell.declineButton.addTarget(self, action: #selector(self.declineButton(_:)), for: .touchUpInside)
+        cell.acceptButton.tag = indexPath.section
+        cell.acceptButton.addTarget(self, action: #selector(self.acceptButton(_:)), for: .touchUpInside)
         
         
         providerTableView.backgroundColor = UIColor.clear
@@ -374,6 +376,60 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             }
             
             
+            //PUSH NOTIFICATION TO PROVIDER
+            
+        }
+        else{
+            print(selectorIndex)
+        }
+    }
+    
+    @objc func acceptButton(_ sender:UIButton) {
+        let buttonIndexPath = sender.tag
+        print("My custom button action")
+        
+        if selectorIndex == 0{
+            let userID = potentialConnects[buttonIndexPath].userID
+            print("USERID: ", userID)
+            let myStorageID = potentialConnects[buttonIndexPath].storageID
+            let realConnect = potentialConnects[buttonIndexPath]
+            
+            
+            if let user = Auth.auth().currentUser{
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                for removingConnects in potentialConnects{
+                    
+                    let removingID = removingConnects.userID
+                    let providerReference = databaseReference.root.child("Providers").child(user.uid).child("currentStorage").child(myStorageID!).child("potentialConnects").child(removingID!)
+                    providerReference.removeValue()
+                    
+                    let userReference = databaseReference.root.child("Users").child(removingID!)
+                    userReference.child("pendingStorage").child(myStorageID!).removeValue()
+                    
+                }
+            databaseReference.root.child("Providers").child(user.uid).child("currentStorage").child(myStorageID!).child("potentialConnects").removeValue()
+                
+                
+                databaseReference.root.child("Providers").child(user.uid).child("currentStorage").child(myStorageID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                    if let tempSnapshotValue = snapshot.value as? [String : AnyObject]{
+                    
+                    databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).setValue(tempSnapshotValue)
+                databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).child("time").updateChildValues(["time": realConnect.dropOff])
+                    
+                databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).updateChildValues(["Connector": realConnect.userID])
+                    }
+                    
+
+                })
+
+                databaseReference.child("Providers").child(user.uid).child("currentStorage").removeValue()
+                
+                self.potentialConnects.removeAll()
+                self.providerTableView.reloadData()
+
+            }
+            
+            print(realConnect)
             //PUSH NOTIFICATION TO PROVIDER
             
         }
