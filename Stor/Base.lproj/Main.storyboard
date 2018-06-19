@@ -1667,7 +1667,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PLK-nq-izZ">
-                                <rect key="frame" x="127" y="130" width="121" height="28"/>
+                                <rect key="frame" x="0.0" y="130" width="375" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="First"/>
@@ -1677,21 +1677,17 @@ Use the Add To List Button on a pin to begin</string>
                                     <action selector="segmentedControl:" destination="kjK-C2-I2F" eventType="valueChanged" id="waN-9M-aor"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFx-t2-ZQU">
-                                <rect key="frame" x="257" y="44" width="102" height="57"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Exit"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFx-t2-ZQU">
+                                <rect key="frame" x="0.0" y="58" width="38" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="Ch4-Ih-CXw"/>
+                                    <constraint firstAttribute="height" constant="32" id="bCv-dw-RUi"/>
+                                </constraints>
+                                <state key="normal" image="Back Arrow MS"/>
                                 <connections>
                                     <action selector="exitButton:" destination="kjK-C2-I2F" eventType="touchUpInside" id="5cO-FK-w61"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWI-fB-hzi">
-                                <rect key="frame" x="41" y="62" width="154" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.99597007036209106" green="0.99618667364120483" blue="0.99164849519729614" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Pending Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3P-kU-IPG">
                                 <rect key="frame" x="231" y="158" width="154" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1706,8 +1702,24 @@ Use the Add To List Button on a pin to begin</string>
                                 <color key="textColor" red="0.99597007036209106" green="0.99618667364120483" blue="0.99164849519729614" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Connections" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWI-fB-hzi">
+                                <rect key="frame" x="74" y="62" width="128" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="9Rf-Ys-zFV"/>
+                                    <constraint firstAttribute="width" constant="128" id="F19-f7-aaf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.99597007036209106" green="0.99618667364120483" blue="0.99164849519729614" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tFx-t2-ZQU" firstAttribute="centerY" secondItem="VWI-fB-hzi" secondAttribute="centerY" id="C6K-o0-l94"/>
+                            <constraint firstItem="tFx-t2-ZQU" firstAttribute="top" secondItem="rsp-oL-p68" secondAttribute="top" constant="14" id="KFD-3f-RCN"/>
+                            <constraint firstItem="VWI-fB-hzi" firstAttribute="leading" secondItem="tFx-t2-ZQU" secondAttribute="trailing" constant="36" id="Nae-ll-hbI"/>
+                            <constraint firstItem="tFx-t2-ZQU" firstAttribute="leading" secondItem="rsp-oL-p68" secondAttribute="leading" id="ucc-6z-BZk"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="rsp-oL-p68"/>
                     </view>
                     <connections>
