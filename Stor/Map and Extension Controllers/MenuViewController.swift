@@ -15,8 +15,8 @@ import Firebase
 
 
 class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    // white hex group variables
-     @IBOutlet weak var bottomWhiteHex: UIImageView!
+    // white hex group variables, y translation
+    @IBOutlet weak var bottomWhiteHex: UIImageView!
     @IBOutlet weak var settingsButtonOutlet: UIButton!
     @IBOutlet weak var settingsLabelOutlet: UILabel!
     @IBOutlet weak var paymentLabelOutlet: UILabel!
@@ -30,10 +30,20 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var exitButtonOutlet: UIButton!
     @IBOutlet weak var helpButtonOutlet: UIButton!
     
-    // blue hex group variables
+    // blue hex group variables for x and y translation
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var rating: UILabel!
+    @IBOutlet weak var menuBlueHexOutlet: UIImageView!
+    @IBOutlet weak var starOutlet: UIImageView!
+    
+    // fade animation variables
+    @IBOutlet weak var sideWhiteHex: UIImageView!
+    @IBOutlet weak var topLeftHex: UIImageView!
+    @IBOutlet weak var topRightHex: UIImageView!
+    @IBOutlet weak var legalButtonOutlet: UIButton!
+    @IBOutlet weak var legalLabel: UILabel!
+    
     @IBAction func exitButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
@@ -51,7 +61,7 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     // loading animations
     @objc fileprivate func loadingAnimation() {
         print ("animating")
-        UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.25 , delay: 0, options: .curveEaseOut, animations: {
             //white hex and attachments animations
             self.bottomWhiteHex.transform = CGAffineTransform(translationX: 0, y: -515)
             self.settingsLabelOutlet.transform = CGAffineTransform(translationX: 0, y: -515)
@@ -67,9 +77,20 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             self.exitButtonOutlet.transform = CGAffineTransform(translationX: 0, y: -515)
             self.helpButtonOutlet.transform = CGAffineTransform(translationX: 0, y: -515)
             //blue hex animations
+            self.menuBlueHexOutlet.transform = CGAffineTransform(translationX: -339, y: 363)
+            self.profileImage.transform = CGAffineTransform(translationX: -339, y: 363)
+            self.nameLabel.transform = CGAffineTransform(translationX: -339, y: 363)
+            self.rating.transform = CGAffineTransform(translationX: -339, y: 363)
+            self.starOutlet.transform = CGAffineTransform(translationX: -339, y: 363)
         }) { (_) in
-            
-    }
+            UIView.animate(withDuration: 0.25 , delay: 0.1, options: .curveEaseOut, animations: {
+                self.topRightHex.alpha = 1
+                self.topLeftHex.alpha = 1
+                self.legalButtonOutlet.alpha = 1
+                self.legalLabel.alpha = 1
+                self.sideWhiteHex.alpha = 1
+                }
+            )}
     }
     
     @IBAction func becomeProviderButton(_ sender: UIButton) {
@@ -99,6 +120,12 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 //        let stackView = UIStackView(arrangedSubviews: [nameLabel])
 //        stackView.axis = .vertical
 //        view.addSubview(stackView)
+        //prepping fade in
+        legalLabel.alpha = 0
+        topLeftHex.alpha = 0
+        topRightHex.alpha = 0
+        sideWhiteHex.alpha = 0
+        legalButtonOutlet.alpha = 0
         print("Test1")
         self.nameLabel.text = globalVariablesViewController.username
         print("ralet sting", String(describing: globalVariablesViewController.ratingNumber))
