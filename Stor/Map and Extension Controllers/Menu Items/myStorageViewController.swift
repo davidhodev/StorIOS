@@ -129,9 +129,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             let user = myStorageUsers[indexPath.section]
             // hiding and showing the buttons on pending section
             cell.cancelConnectionButton.isHidden = false
-            cell.reportIssueButton.isHidden = true
             cell.schedulePickupButton.isHidden = true
-            cell.reportIssueLabel.isHidden = true
             cell.schedulePickupLabel.isHidden = true
             
             cell.addressLabel.attributedText = user.address
@@ -184,7 +182,6 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             cell.cancelConnectionButton.addTarget(self, action: #selector(self.cancelConnection(_:)), for: .touchUpInside)
             cell.callButton.tag = indexPath.section
             cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
-            cell.reportIssueButton.addTarget(self, action: #selector(self.reportIssue(_:)), for: .touchUpInside)
             cell.schedulePickupButton.tag = indexPath.section
             cell.schedulePickupButton.addTarget(self, action: #selector(self.schedulePickup(_:)), for: .touchUpInside)
             
@@ -200,8 +197,6 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             // hiding and showing buttons on current section
             cell.cancelConnectionButton.isHidden = true
             cell.schedulePickupButton.isHidden = false
-            cell.reportIssueButton.isHidden = false
-            cell.reportIssueLabel.isHidden = false
             cell.schedulePickupLabel.isHidden = false
             cell.priceLabel.attributedText = user.price
             cell.dimensionsLabel.attributedText = user.dimensionsString
@@ -319,9 +314,6 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
                 })
             }
         }
-    }
-    @objc func reportIssue(_ sender:UIButton) {
-        openUrl(urlStr: "http://www.google.com") // STOR HELP WEBSITE
     }
     func openUrl(urlStr:String!) {
         
