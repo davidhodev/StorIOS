@@ -1527,7 +1527,7 @@ Use the Add To List Button on a pin to begin</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAu-By-nAl">
-                                                            <rect key="frame" x="137" y="84" width="161" height="46"/>
+                                                            <rect key="frame" x="205" y="84" width="93" height="46"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -1535,6 +1535,27 @@ Use the Add To List Button on a pin to begin</string>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zAI-tC-qTi">
                                                             <rect key="frame" x="239" y="163" width="59" height="38"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ij-9z-QJz">
+                                                            <rect key="frame" x="30" y="84" width="80" height="34"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Available Now" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryw-7l-Tpy">
+                                                            <rect key="frame" x="49" y="55" width="136" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Dosis-Bold" family="Dosis" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Bh-Hg-eAE">
+                                                            <rect key="frame" x="68" y="23" width="42" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -1554,10 +1575,13 @@ Use the Add To List Button on a pin to begin</string>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addressLabel" destination="zY4-mz-zVt" id="94W-O4-ZxB"/>
+                                            <outlet property="availableLabel" destination="ryw-7l-Tpy" id="Vaq-El-1C9"/>
                                             <outlet property="cellView" destination="CGj-2e-HEM" id="jQD-ar-Bli"/>
                                             <outlet property="cubicFeetLabel" destination="zAI-tC-qTi" id="IfH-qV-zNv"/>
                                             <outlet property="dimensionsLabel" destination="XAu-By-nAl" id="dtB-b3-97Z"/>
+                                            <outlet property="nameLabel" destination="6Bh-Hg-eAE" id="pUw-0e-Der"/>
                                             <outlet property="priceLabel" destination="PW5-OD-9dP" id="M0l-dx-ynM"/>
+                                            <outlet property="ratingLabel" destination="7ij-9z-QJz" id="5kz-Qs-jVi"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -45,6 +45,13 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.priceLabel.attributedText = self.price
             cell.cubicFeetLabel.attributedText = self.cubicFeet
             cell.dimensionsLabel.attributedText = self.dimensions
+            if taken!{
+                cell.availableLabel.isHidden = true
+                
+            }
+            else{
+                cell.availableLabel.isHidden = false
+            }
         }
 
         
@@ -145,66 +152,66 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                 for userChild in snapshot.children{
                     let userSnapshot = userChild as! DataSnapshot
                     let storageID = userSnapshot.key
-                    let dictionary = userSnapshot.value as? [String:Any?]
-                    print("MY LIST DICTIONARY", dictionary)
-                    
-                    
-                    
-                    
-                    let tempAddress = dictionary!["Address"] as? String
-                    let fontAddress:UIFont? = UIFont(name: "Dosis-Medium", size:16)
-                    let addressAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempAddress!, attributes: [.font: fontAddress!])
-                    self.address = addressAttString
-                    print(self.address)
-                    
-                   
-                    let priceString = String(describing: dictionary!["Price"]!)
-                    if let outputPrice = (Double(priceString)){
-                        let finalPrice = Int(round(outputPrice))
-                        var finalPriceRoundedString = "$ "
-                        finalPriceRoundedString += String(describing: finalPrice)
-                        finalPriceRoundedString += " /mo"
-                        let font:UIFont? = UIFont(name: "Dosis-Bold", size:24)
-                        let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:16)
-                        let fontSmall:UIFont? = UIFont(name: "Dosis-Regular", size:14)
+                    if let dictionary = userSnapshot.value as? [String:Any?]{
+                        print("MY LIST DICTIONARY", dictionary)
+                        let tempAddress = dictionary["Address"] as? String
+                        let fontAddress:UIFont? = UIFont(name: "Dosis-Medium", size:16)
+                        let addressAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempAddress!, attributes: [.font: fontAddress!])
+                        self.address = addressAttString
+                        print(self.address)
                         
-                        let attString:NSMutableAttributedString = NSMutableAttributedString(string: finalPriceRoundedString, attributes: [.font:font!])
-                        attString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:0,length:1))
-                        attString.setAttributes([.font:fontSmall!,.baselineOffset:-1], range: NSRange(location:(finalPriceRoundedString.count)-3,length:3))
-                        self.price = attString
+                        
+                        let priceString = String(describing: dictionary["Price"]!!)
+                        if let outputPrice = (Float(priceString)){
+                            let finalPrice = Int(round(outputPrice))
+                            var finalPriceRoundedString = "$ "
+                            finalPriceRoundedString += String(describing: finalPrice)
+                            finalPriceRoundedString += " /mo"
+                            let font:UIFont? = UIFont(name: "Dosis-Bold", size:24)
+                            let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:16)
+                            let fontSmall:UIFont? = UIFont(name: "Dosis-Regular", size:14)
+                            
+                            let attString:NSMutableAttributedString = NSMutableAttributedString(string: finalPriceRoundedString, attributes: [.font:font!])
+                            attString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:0,length:1))
+                            attString.setAttributes([.font:fontSmall!,.baselineOffset:-1], range: NSRange(location:(finalPriceRoundedString.count)-3,length:3))
+                            self.price = attString
+                            
+                        }
+                        var dimensionsString = String(describing: dictionary["Length"]!!)
+                        dimensionsString += "' X "
+                        dimensionsString += String(describing: dictionary["Width"]!!)
+                        dimensionsString += "'"
+                        let dimensionsTemp = dimensionsString
+                        // maybe change this
+                        let fontDimensions: UIFont? = UIFont(name: "Dosis-Bold", size:16)
+                        let dimensionsAttString:NSMutableAttributedString = NSMutableAttributedString(string: dimensionsTemp, attributes: [.font: fontDimensions!])
+                        self.dimensions = dimensionsAttString
+                        
+                        var cubicFeetNumber = Int(String(describing:dictionary["Length"]!!))
+                        cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Width"]!!))!)
+                        cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Height"]!!))!)
+                        var cubicFeetString = String(describing: cubicFeetNumber!)
+                        cubicFeetString += " ft3"
+                        
+                        let font:UIFont? = UIFont(name: "Dosis-Regular", size:16)
+                        let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:14)
+                        
+                        let cubicFeetAttString:NSMutableAttributedString = NSMutableAttributedString(string: cubicFeetString, attributes: [.font:font!])
+                        cubicFeetAttString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:(cubicFeetString.count)-1,length:1))
+                        
+                        self.cubicFeet = cubicFeetAttString
                     }
                     
                     
                     self.taken = false
                     self.exists = true
                     
+                    
                 }
                 
             }
         }, withCancel: nil)
-//            for userChild in snapshot.children{
-//                let userSnapshot = userChild as! DataSnapshot
-//                print("USER SNAPSHOT: ", userSnapshot.key)
-//                let storageID = userSnapshot.key
-//
-//                let dictionary = userSnapshot.value as? [String: Any?]
-//                //                print("DICTIONARY: ", dictionary!)
-//                if let potentialConnectsDictionary = dictionary!["potentialConnects"] as? [String: Any?]{
-//                    print("POTENTIAL CONNECTS DICT: ", potentialConnectsDictionary)
-//                    for potentials in (potentialConnectsDictionary.keys){
-//                        print("STORAGE ID: ", potentials)
-//                        print("================================")
-//                        let user = providerPotentialUser()
-//                        user.storageID = storageID
-//                        user.userID = potentials
-//                        user.getName()
-//                        //                    user.getData()
-////                        self.potentialConnects.append(user)
-//
-//                    }
-//                }
-//            }
-        
+
         Database.database().reference().child("Providers").child(uid!).child("storageInUse").observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.exists(){
                 for userChild in snapshot.children{
@@ -258,11 +265,12 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                         cubicFeetAttString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:(cubicFeetString.count)-1,length:1))
 
                         self.cubicFeet = cubicFeetAttString
+                        
+                        let connectorID = dictionary["Connector"]!! as? String
+                        
+                        
                     }
-                    
 
-                   
-                    
                     
                     self.taken = true
                     self.exists = true
