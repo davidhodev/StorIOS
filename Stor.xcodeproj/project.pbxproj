@@ -45,6 +45,9 @@
 		DBE2A9D120D2DD9900E052A1 /* potentialConnectsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9D020D2DD9900E052A1 /* potentialConnectsTableViewCell.swift */; };
 		DBE2A9D320D2E71F00E052A1 /* providerPotentialUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9D220D2E71F00E052A1 /* providerPotentialUser.swift */; };
 		DBE2A9D520D3116800E052A1 /* providerCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9D420D3116800E052A1 /* providerCurrentUser.swift */; };
+		DBE2A9D720D8708A00E052A1 /* myListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9D620D8708A00E052A1 /* myListingViewController.swift */; };
+		DBE2A9D920D875EF00E052A1 /* addListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9D820D875EF00E052A1 /* addListingViewController.swift */; };
+		DBE2A9DB20D8792000E052A1 /* providerMyListingCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9DA20D8792000E052A1 /* providerMyListingCellTableViewCell.swift */; };
 		DBE6A8B420C5C28B005B1A75 /* settingsCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE6A8B320C5C28B005B1A75 /* settingsCustomTableViewCell.swift */; };
 		DBE905DF20924BAE000F13DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905DE20924BAE000F13DB /* AppDelegate.swift */; };
 		DBE905E420924BAE000F13DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBE905E220924BAE000F13DB /* Main.storyboard */; };
@@ -118,6 +121,9 @@
 		DBE2A9D020D2DD9900E052A1 /* potentialConnectsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = potentialConnectsTableViewCell.swift; sourceTree = "<group>"; };
 		DBE2A9D220D2E71F00E052A1 /* providerPotentialUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = providerPotentialUser.swift; sourceTree = "<group>"; };
 		DBE2A9D420D3116800E052A1 /* providerCurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = providerCurrentUser.swift; sourceTree = "<group>"; };
+		DBE2A9D620D8708A00E052A1 /* myListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myListingViewController.swift; sourceTree = "<group>"; };
+		DBE2A9D820D875EF00E052A1 /* addListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addListingViewController.swift; sourceTree = "<group>"; };
+		DBE2A9DA20D8792000E052A1 /* providerMyListingCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = providerMyListingCellTableViewCell.swift; sourceTree = "<group>"; };
 		DBE6A8B320C5C28B005B1A75 /* settingsCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsCustomTableViewCell.swift; sourceTree = "<group>"; };
 		DBE905DB20924BAE000F13DB /* Stor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBE905DE20924BAE000F13DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -261,6 +267,9 @@
 				DBE2A9D220D2E71F00E052A1 /* providerPotentialUser.swift */,
 				DBE2A9D420D3116800E052A1 /* providerCurrentUser.swift */,
 				DBE2A9D020D2DD9900E052A1 /* potentialConnectsTableViewCell.swift */,
+				DBE2A9D620D8708A00E052A1 /* myListingViewController.swift */,
+				DBE2A9D820D875EF00E052A1 /* addListingViewController.swift */,
+				DBE2A9DA20D8792000E052A1 /* providerMyListingCellTableViewCell.swift */,
 			);
 			path = "Provider View Controllers";
 			sourceTree = "<group>";
@@ -600,6 +609,7 @@
 				DBE2A9D520D3116800E052A1 /* providerCurrentUser.swift in Sources */,
 				DB4B5EA020B351C20050F66E /* StartupViewController.swift in Sources */,
 				041640BC20BDF7C4001BE560 /* myStorageViewController.swift in Sources */,
+				DBE2A9DB20D8792000E052A1 /* providerMyListingCellTableViewCell.swift in Sources */,
 				DBE2A9D120D2DD9900E052A1 /* potentialConnectsTableViewCell.swift in Sources */,
 				571E1B5620C08C0D00E68CA5 /* SettingsViewControllerFinal.swift in Sources */,
 				579D4C5F20BF2D6E0082A86F /* AnnotationPopUp.swift in Sources */,
@@ -620,6 +630,8 @@
 				04F158A320BCA4C500AAC2ED /* hexagonProfilePicture.swift in Sources */,
 				DBE905DF20924BAE000F13DB /* AppDelegate.swift in Sources */,
 				DBD8FD3320B3791100776FAB /* LoginViewController.swift in Sources */,
+				DBE2A9D720D8708A00E052A1 /* myListingViewController.swift in Sources */,
+				DBE2A9D920D875EF00E052A1 /* addListingViewController.swift in Sources */,
 				DB4B5E9820B3474D0050F66E /* RegisterEmailViewController.swift in Sources */,
 				DBE2A9C920D1A99300E052A1 /* registerProviderViewController.swift in Sources */,
 				574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */,
