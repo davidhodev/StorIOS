@@ -1667,7 +1667,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="PLK-nq-izZ">
-                                <rect key="frame" x="127" y="130" width="121" height="28"/>
+                                <rect key="frame" x="0.0" y="130" width="375" height="28"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="First"/>
@@ -1677,21 +1677,17 @@ Use the Add To List Button on a pin to begin</string>
                                     <action selector="segmentedControl:" destination="kjK-C2-I2F" eventType="valueChanged" id="waN-9M-aor"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFx-t2-ZQU">
-                                <rect key="frame" x="257" y="44" width="102" height="57"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Exit"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFx-t2-ZQU">
+                                <rect key="frame" x="0.0" y="58" width="38" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="38" id="Ch4-Ih-CXw"/>
+                                    <constraint firstAttribute="height" constant="32" id="bCv-dw-RUi"/>
+                                </constraints>
+                                <state key="normal" image="Back Arrow MS"/>
                                 <connections>
                                     <action selector="exitButton:" destination="kjK-C2-I2F" eventType="touchUpInside" id="5cO-FK-w61"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWI-fB-hzi">
-                                <rect key="frame" x="41" y="62" width="154" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.99597007036209106" green="0.99618667364120483" blue="0.99164849519729614" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Pending Options" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3P-kU-IPG">
                                 <rect key="frame" x="231" y="158" width="154" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1706,8 +1702,24 @@ Use the Add To List Button on a pin to begin</string>
                                 <color key="textColor" red="0.99597007036209106" green="0.99618667364120483" blue="0.99164849519729614" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Connections" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWI-fB-hzi">
+                                <rect key="frame" x="74" y="62" width="128" height="23"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="23" id="9Rf-Ys-zFV"/>
+                                    <constraint firstAttribute="width" constant="128" id="F19-f7-aaf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.99597007036209106" green="0.99618667364120483" blue="0.99164849519729614" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="tFx-t2-ZQU" firstAttribute="centerY" secondItem="VWI-fB-hzi" secondAttribute="centerY" id="C6K-o0-l94"/>
+                            <constraint firstItem="tFx-t2-ZQU" firstAttribute="top" secondItem="rsp-oL-p68" secondAttribute="top" constant="14" id="KFD-3f-RCN"/>
+                            <constraint firstItem="VWI-fB-hzi" firstAttribute="leading" secondItem="tFx-t2-ZQU" secondAttribute="trailing" constant="36" id="Nae-ll-hbI"/>
+                            <constraint firstItem="tFx-t2-ZQU" firstAttribute="leading" secondItem="rsp-oL-p68" secondAttribute="leading" id="ucc-6z-BZk"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="rsp-oL-p68"/>
                     </view>
                     <connections>
@@ -1939,7 +1951,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <rect key="frame" x="0.0" y="396" width="118" height="382"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This list is empty. Begin by connecting with a provider on the map." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qki-CF-C03">
-                                <rect key="frame" x="54.333333333333343" y="264" width="216.00000000000003" height="76"/>
+                                <rect key="frame" x="66.666666666666686" y="265" width="216" height="76"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="216" id="ibL-jz-t2X"/>
                                     <constraint firstAttribute="height" constant="76" id="xFa-zX-oRE"/>
@@ -1962,7 +1974,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Storage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ORS-A1-OxY">
-                                <rect key="frame" x="74" y="58" width="124.33333333333331" height="31"/>
+                                <rect key="frame" x="74" y="58" width="103.66666666666669" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="gDk-fS-wtu"/>
                                 </constraints>
@@ -2079,9 +2091,7 @@ Use the Add To List Button on a pin to begin</string>
                                                             <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Efb-8q-0SO" userLabel="Confirm Pickup">
-
                                                             <rect key="frame" x="15" y="245.66666666666669" width="153" height="42"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="153" id="X6v-Rv-I6r"/>
@@ -2090,9 +2100,7 @@ Use the Add To List Button on a pin to begin</string>
                                                             <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
                                                             <state key="normal" image="Pickup Button"/>
                                                         </button>
-
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm drop-off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIB-sR-uM1" userLabel="Confirm Pickup">
-
                                                             <rect key="frame" x="60" y="241" width="108" height="51"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="108" id="tSI-hO-O6d"/>
@@ -2150,13 +2158,11 @@ Use the Add To List Button on a pin to begin</string>
                                                         <constraint firstItem="SdH-h9-DhY" firstAttribute="top" secondItem="QDf-cR-bff" secondAttribute="bottom" constant="-56" id="1Qv-8C-yOy"/>
                                                         <constraint firstItem="FBI-6L-inv" firstAttribute="top" secondItem="8rX-za-4zq" secondAttribute="bottom" constant="-38.329999999999998" id="256-bI-RrM"/>
                                                         <constraint firstItem="vWu-2g-iCG" firstAttribute="centerY" secondItem="9Jx-md-edg" secondAttribute="centerY" id="2fg-wH-dEm"/>
-                                                        <constraint firstItem="j81-tL-zkb" firstAttribute="top" secondItem="tVK-ZS-bNK" secondAttribute="bottom" constant="-46" id="6bF-7g-NCB"/>
                                                         <constraint firstItem="WcK-Bx-JyT" firstAttribute="leading" secondItem="nZE-4n-fL0" secondAttribute="trailing" constant="7" id="7qN-Yn-VXx"/>
                                                         <constraint firstItem="Efb-8q-0SO" firstAttribute="top" secondItem="9Jx-md-edg" secondAttribute="bottom" constant="10" id="Acy-FM-xfg"/>
-                                                        <constraint firstItem="O6u-6b-egC" firstAttribute="leading" secondItem="Efb-8q-0SO" secondAttribute="trailing" constant="-153" id="AqA-eV-ACU"/>
+                                                        <constraint firstAttribute="leading" secondItem="Efb-8q-0SO" secondAttribute="trailing" constant="-153" id="AqA-eV-ACU"/>
                                                         <constraint firstItem="Zu9-Ma-sCp" firstAttribute="leading" secondItem="ifw-Sn-ZU4" secondAttribute="leading" id="BOY-pq-1uq"/>
                                                         <constraint firstItem="kIB-sR-uM1" firstAttribute="centerY" secondItem="Efb-8q-0SO" secondAttribute="centerY" id="BvE-Un-4aG"/>
-                                                        <constraint firstItem="Efb-8q-0SO" firstAttribute="top" secondItem="tVK-ZS-bNK" secondAttribute="bottom" constant="-41.333333333333314" id="CAr-FS-PDg"/>
                                                         <constraint firstItem="WcK-Bx-JyT" firstAttribute="centerY" secondItem="nZE-4n-fL0" secondAttribute="centerY" id="EtF-r7-1Lk"/>
                                                         <constraint firstItem="z12-vA-qFp" firstAttribute="top" secondItem="kIB-sR-uM1" secondAttribute="bottom" constant="-51" id="Fc2-KK-g74"/>
                                                         <constraint firstItem="QDf-cR-bff" firstAttribute="centerX" secondItem="SdH-h9-DhY" secondAttribute="centerX" id="Ign-Ph-slh"/>
@@ -2168,7 +2174,6 @@ Use the Add To List Button on a pin to begin</string>
                                                         <constraint firstAttribute="bottom" secondItem="emP-j8-oej" secondAttribute="bottom" constant="18" id="Wtc-Gl-uEN"/>
                                                         <constraint firstItem="Zu9-Ma-sCp" firstAttribute="top" secondItem="ifw-Sn-ZU4" secondAttribute="top" id="ZQ0-o8-MbN"/>
                                                         <constraint firstItem="9CA-Eg-ZRC" firstAttribute="centerX" secondItem="SdH-h9-DhY" secondAttribute="centerX" constant="2" id="bEj-f7-pgr"/>
-                                                        <constraint firstItem="j81-tL-zkb" firstAttribute="leading" secondItem="tVK-ZS-bNK" secondAttribute="trailing" constant="-108" id="d0d-xz-XWB"/>
                                                         <constraint firstItem="emP-j8-oej" firstAttribute="top" secondItem="Efb-8q-0SO" secondAttribute="bottom" constant="10.333333333333258" id="eIm-nE-97p"/>
                                                         <constraint firstAttribute="bottom" secondItem="CvQ-cx-wlJ" secondAttribute="bottom" constant="18" id="fQh-FB-j8r"/>
                                                         <constraint firstItem="8rX-za-4zq" firstAttribute="top" secondItem="Zu9-Ma-sCp" secondAttribute="bottom" constant="-10" id="fhJ-NN-zxQ"/>
@@ -2176,7 +2181,6 @@ Use the Add To List Button on a pin to begin</string>
                                                         <constraint firstAttribute="trailing" secondItem="CvQ-cx-wlJ" secondAttribute="trailing" constant="34" id="g1o-Sj-lBB"/>
                                                         <constraint firstItem="9CA-Eg-ZRC" firstAttribute="top" secondItem="QDf-cR-bff" secondAttribute="bottom" constant="2" id="ged-Ie-CBu"/>
                                                         <constraint firstItem="kIB-sR-uM1" firstAttribute="leading" secondItem="Efb-8q-0SO" secondAttribute="trailing" constant="-108" id="gtT-59-cFh"/>
-                                                        <constraint firstItem="Efb-8q-0SO" firstAttribute="top" secondItem="O6u-6b-egC" secondAttribute="bottom" constant="-41.333333333333314" id="iBo-7Z-prA"/>
                                                         <constraint firstItem="SdH-h9-DhY" firstAttribute="top" secondItem="ifw-Sn-ZU4" secondAttribute="top" id="jbE-Sd-lqP"/>
                                                         <constraint firstItem="vWu-2g-iCG" firstAttribute="leading" secondItem="9Jx-md-edg" secondAttribute="trailing" constant="19" id="n3O-Km-hTq"/>
                                                         <constraint firstItem="nZE-4n-fL0" firstAttribute="leading" secondItem="FBI-6L-inv" secondAttribute="leading" id="o3m-zq-xFc"/>
@@ -2184,7 +2188,7 @@ Use the Add To List Button on a pin to begin</string>
                                                         <constraint firstItem="afn-4J-EuW" firstAttribute="leading" secondItem="emP-j8-oej" secondAttribute="trailing" constant="-24" id="ta6-uQ-33b"/>
                                                         <constraint firstItem="afn-4J-EuW" firstAttribute="centerY" secondItem="emP-j8-oej" secondAttribute="centerY" id="tdM-7V-QEr"/>
                                                         <constraint firstItem="9Jx-md-edg" firstAttribute="centerX" secondItem="8rX-za-4zq" secondAttribute="centerX" id="tdd-Nt-tKg"/>
-                                                        <constraint firstItem="tVK-ZS-bNK" firstAttribute="leading" secondItem="Efb-8q-0SO" secondAttribute="trailing" constant="-153" id="uzz-Uu-lsO"/>
+                                                        <constraint firstAttribute="leading" secondItem="Efb-8q-0SO" secondAttribute="trailing" constant="-153" id="uzz-Uu-lsO"/>
                                                         <constraint firstItem="8rX-za-4zq" firstAttribute="leading" secondItem="ifw-Sn-ZU4" secondAttribute="leading" constant="11" id="vbB-ru-EX2"/>
                                                         <constraint firstItem="emP-j8-oej" firstAttribute="leading" secondItem="ifw-Sn-ZU4" secondAttribute="leading" constant="15" id="wyG-vw-3FP"/>
                                                         <constraint firstItem="pcZ-P0-Yl8" firstAttribute="leading" secondItem="CvQ-cx-wlJ" secondAttribute="trailing" constant="-54" id="zAE-nD-WOc"/>
@@ -2246,13 +2250,13 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Requests" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Puj-as-bwe">
-                                <rect key="frame" x="54.333333333333336" y="139" width="76.333333333333314" height="21"/>
+                                <rect key="frame" x="66.666666666666671" y="138" width="64.000000000000014" height="23"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                 <color key="textColor" red="0.26666666666666666" green="0.47058823529411764" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x07-oX-A7c">
-                                <rect key="frame" x="287" y="139.33333333333334" width="60.333333333333314" height="21"/>
+                                <rect key="frame" x="287" y="138.33333333333334" width="54" height="23"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2600,9 +2604,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-
-                                <rect key="frame" x="0.0" y="84" width="20" height="20"/>
-
+                                <rect key="frame" x="28" y="84" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
@@ -3784,7 +3786,6 @@ Use the Add To List Button on a pin to begin</string>
         <image name="Rectangle 3 Blue" width="321" height="100"/>
         <image name="Rectangle 3 Copy 2" width="334" height="100"/>
         <image name="Request Sent Button" width="135" height="143"/>
-        <image name="Schedule Pickup Button" width="78" height="79"/>
         <image name="Search Icon" width="21" height="21"/>
         <image name="See More Button" width="135" height="143"/>
         <image name="Settings Button" width="100" height="103"/>
