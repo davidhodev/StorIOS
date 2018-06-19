@@ -13,6 +13,15 @@ class providerMyListingCellTableViewCell: UITableViewCell {
     
     static var opened = false
 
+    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var dimensionsLabel: UILabel!
+    @IBOutlet weak var cubicFeetLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var availableLabel: UILabel!
+    
     @IBOutlet weak var cellView: UIView!
     class var expandedHeight: CGFloat {get { return 343 }}
     class var defaultHeight: CGFloat {get { return 60 }}
