@@ -19,7 +19,13 @@ class providerMyListingCellTableViewCell: UITableViewCell {
     @IBOutlet weak var cubicFeetLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var moreImage: UIImageView!
+    @IBOutlet weak var callButton: UIButton!
+    @IBOutlet weak var editDetailsButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
     
+    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var availableLabel: UILabel!
     
     @IBOutlet weak var cellView: UIView!
