@@ -15,14 +15,29 @@ import Firebase
 
 
 class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    // white hex group variables
+     @IBOutlet weak var bottomWhiteHex: UIImageView!
+    @IBOutlet weak var settingsButtonOutlet: UIButton!
+    @IBOutlet weak var settingsLabelOutlet: UILabel!
+    @IBOutlet weak var paymentLabelOutlet: UILabel!
+    @IBOutlet weak var paymentButtonOutlet: UIButton!
+    @IBOutlet weak var providerButtonOutlet: UIButton!
+    @IBOutlet weak var providerLabelOutlet: UILabel!
+    @IBOutlet weak var myListButtonOutlet: UIButton!
+    @IBOutlet weak var myListLabelOutlet: UILabel!
+    @IBOutlet weak var myStorageLabelOutlet: UILabel!
+    @IBOutlet weak var myStorageButtonOutlet: UIButton!
+    @IBOutlet weak var exitButtonOutlet: UIButton!
+    @IBOutlet weak var helpButtonOutlet: UIButton!
+    
+    // blue hex group variables
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var rating: UILabel!
     @IBAction func exitButton(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
-    
+
     @IBAction func menuHelpButton(_ sender: UIButton) {
         openUrl(urlStr: "http://www.google.com")
     }
@@ -33,7 +48,29 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
-    
+    // loading animations
+    @objc fileprivate func loadingAnimation() {
+        print ("animating")
+        UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseOut, animations: {
+            //white hex and attachments animations
+            self.bottomWhiteHex.transform = CGAffineTransform(translationX: 0, y: -515)
+            self.settingsLabelOutlet.transform = CGAffineTransform(translationX: 0, y: -515)
+            self.settingsButtonOutlet.transform = CGAffineTransform(translationX: 0, y: -515)
+            self.paymentLabelOutlet.transform = CGAffineTransform(translationX: 0, y: -515)
+            self.paymentButtonOutlet.transform = CGAffineTransform(translationX: 0, y: -515)
+            self.providerLabelOutlet.transform = CGAffineTransform(translationX: 0, y: -515)
+            self.providerButtonOutlet.transform = CGAffineTransform(translationX: 0, y: -515)
+            self.myListLabelOutlet.transform = CGAffineTransform(translationX: 0, y: -515)
+            self.myListButtonOutlet.transform = CGAffineTransform(translationX: 0, y: -515)
+            self.myStorageLabelOutlet.transform = CGAffineTransform(translationX: 0, y: -515)
+            self.myStorageButtonOutlet.transform = CGAffineTransform(translationX: 0, y: -515)
+            self.exitButtonOutlet.transform = CGAffineTransform(translationX: 0, y: -515)
+            self.helpButtonOutlet.transform = CGAffineTransform(translationX: 0, y: -515)
+            //blue hex animations
+        }) { (_) in
+            
+    }
+    }
     
     @IBAction func becomeProviderButton(_ sender: UIButton) {
         if let user = Auth.auth().currentUser{
@@ -59,6 +96,9 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let stackView = UIStackView(arrangedSubviews: [nameLabel])
+//        stackView.axis = .vertical
+//        view.addSubview(stackView)
         print("Test1")
         self.nameLabel.text = globalVariablesViewController.username
         print("ralet sting", String(describing: globalVariablesViewController.ratingNumber))
@@ -94,11 +134,12 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         profileImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectImageView)))
         
         profileImage.loadProfilePicture()
-
         //Do any additional setup after loading the view.
     }
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        loadingAnimation()
+    }
     
     // Creating Hexagon Shape for Profile Picture
     
