@@ -1,34 +1,20 @@
 //
-//  myStorageCustomTableViewCell.swift
+//  providerMyListingCellTableViewCell.swift
 //  Stor
 //
-//  Created by David Ho on 6/6/18.
+//  Created by David Ho on 6/18/18.
 //  Copyright © 2018 David Ho. All rights reserved.
 //
 
 import UIKit
 
-class myStorageCustomTableViewCell: UITableViewCell {
+class providerMyListingCellTableViewCell: UITableViewCell {
+    var isObserving = false;
+    
+    static var opened = false
 
-        var isObserving = false;
-    
     @IBOutlet weak var cellView: UIView!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var ratingLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var dimensionsLabel: UILabel!
-    @IBOutlet weak var cancelConnectionButton: UIButton!
-    @IBOutlet weak var schedulePickupButton: UIButton!
-    @IBOutlet weak var callButton: UIButton!
-    @IBOutlet weak var cubicFeetLabel: UILabel!
-    @IBOutlet weak var providerProfileImage: UIImageView!
-    @IBOutlet weak var schedulePickupLabel: UILabel!
-    @IBOutlet weak var storagePhoto: UIImageView!
-    
-    @IBOutlet weak var moreImage: UIImageView!
-    
-    class var expandedHeight: CGFloat {get { return 420 }}
+    class var expandedHeight: CGFloat {get { return 343 }}
     class var defaultHeight: CGFloat {get { return 60 }}
     
     
