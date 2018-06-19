@@ -1089,7 +1089,7 @@
         <!--My List View Controller-->
         <scene sceneID="1uj-Cr-OPn">
             <objects>
-                <viewController title="My List View Controller" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="DIb-zf-3Ve" customClass="myListViewController" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="My List View Controller" modalTransitionStyle="crossDissolve" id="DIb-zf-3Ve" customClass="myListViewController" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SSt-78-3Zv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3360,7 +3360,7 @@ Use the Add To List Button on a pin to begin</string>
                         <outlet property="topLeftHex" destination="eSo-y4-4tI" id="I0E-g7-qFZ"/>
                         <outlet property="topRightHex" destination="PbC-YC-bgS" id="62G-8b-Grx"/>
                         <segue destination="Kx1-Fl-5np" kind="presentation" identifier="toProviderMenu" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="ht3-KD-VYk"/>
-                        <segue destination="FS2-CZ-y91" kind="presentation" identifier="toSocialSecuritySegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="3ce-0B-jZb"/>
+                        <segue destination="FS2-CZ-y91" kind="showDetail" identifier="toSocialSecuritySegue" id="3ce-0B-jZb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Yg-HR-Ty7" userLabel="First Responder" sceneMemberID="firstResponder"/>
