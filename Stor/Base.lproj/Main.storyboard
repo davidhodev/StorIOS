@@ -1674,10 +1674,33 @@ Use the Add To List Button on a pin to begin</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add Availability"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qT4-hc-vuy">
+                                <rect key="frame" x="84" y="212" width="63" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFX-PZ-SFS">
+                                <rect key="frame" x="54" y="274" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hQ7-X7-K9m">
+                                <rect key="frame" x="16" y="202" width="50" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="0.9002300941780822" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="A5l-fn-Qo5"/>
                     </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="qT4-hc-vuy" id="hNb-g0-E60"/>
+                        <outlet property="profileImage" destination="hQ7-X7-K9m" id="yYp-ae-HYL"/>
+                        <outlet property="ratingLabel" destination="NFX-PZ-SFS" id="XLR-qU-W3x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pis-mf-pN9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2703,7 +2726,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdK-rQ-mYB">
-                                <rect key="frame" x="0.0" y="605" width="60" height="65"/>
+                                <rect key="frame" x="279" y="605" width="60" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="M4V-Zr-rQq"/>
                                     <constraint firstAttribute="width" constant="60" id="MKj-Ib-ESF"/>
@@ -2714,7 +2737,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhx-9f-mvD">
-                                <rect key="frame" x="0.0" y="685" width="60" height="65"/>
+                                <rect key="frame" x="279" y="685" width="60" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="6GI-Oc-3ZE"/>
                                     <constraint firstAttribute="height" constant="65" id="uho-kZ-G0r"/>
@@ -2740,7 +2763,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LPh-AA-fL1">
-                                <rect key="frame" x="0.0" y="131" width="343" height="280"/>
+                                <rect key="frame" x="16" y="131" width="343" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="9gf-Jr-Bfb"/>
@@ -2760,14 +2783,14 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-                                <rect key="frame" x="0.0" y="84" width="20" height="20"/>
+                                <rect key="frame" x="28" y="84" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="J0k-Vv-Yda">
-                                <rect key="frame" x="0.0" y="67" width="251" height="50"/>
+                                <rect key="frame" x="63" y="67" width="251" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="251" id="XGg-Ao-Pen"/>
                                     <constraint firstAttribute="height" constant="50" id="d6q-r4-Irt"/>
@@ -2777,7 +2800,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQY-nG-TsQ" userLabel="Filters Button">
-                                <rect key="frame" x="0.0" y="67" width="50" height="50"/>
+                                <rect key="frame" x="309" y="67" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="L3E-RY-dIg"/>
                                     <constraint firstAttribute="width" constant="50" id="eAh-Jx-hRY"/>
@@ -2789,7 +2812,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puJ-Ux-Fmn" userLabel="Cancel Button">
-                                <rect key="frame" x="0.0" y="67" width="50" height="50"/>
+                                <rect key="frame" x="309" y="67" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="VXo-OA-aiz"/>
                                     <constraint firstAttribute="height" constant="50" id="YpT-dL-62X"/>

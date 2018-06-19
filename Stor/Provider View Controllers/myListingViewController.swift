@@ -32,16 +32,16 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func addListingButton(_ sender: Any) {
-        if exists! == true{
-            let alert = UIAlertController(title: "Uh-oh", message: "Looks like you already having a listing out! You are limitted to only 1 listing at a time. We apologize for the inconvenience. More listings will be allowed in the next update!", preferredStyle: .alert)
-            self.present(alert, animated: true, completion:{
-                alert.view.superview?.isUserInteractionEnabled = true
-                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
-            })
-        }
-        else{
+//        if exists! == true{
+//            let alert = UIAlertController(title: "Uh-oh", message: "Looks like you already having a listing out! You are limitted to only 1 listing at a time. We apologize for the inconvenience. More listings will be allowed in the next update!", preferredStyle: .alert)
+//            self.present(alert, animated: true, completion:{
+//                alert.view.superview?.isUserInteractionEnabled = true
+//                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+//            })
+//        }
+//        else{
             performSegue(withIdentifier: "addListingSegue", sender: self)
-        }
+//        }
     }
     
     
