@@ -37,10 +37,19 @@ class MyProfileViewController3: UIViewController {
     @IBOutlet weak var revealTextOutlet: UIButton!
     var iconClick : Bool!
     
-
+    @objc fileprivate func infoButtonAnimation(){
+        UIView.animate(withDuration: 0.3, animations: {
+            self.informationButton.alpha = 1
+            })
+        }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        infoButtonAnimation()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        informationButton.alpha = 0
         if let user = Auth.auth().currentUser{
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
             databaseReference.root.child("Users").child(user.uid).observe(.value, with: { (snapshot) in
