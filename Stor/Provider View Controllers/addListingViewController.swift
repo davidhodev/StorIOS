@@ -11,6 +11,9 @@ import UIKit
 class addListingViewController: UIViewController {
 
 
+    @IBAction func addListingButton(_ sender: Any) {
+        print("add Listing!")
+    }
     @IBAction func exitButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
