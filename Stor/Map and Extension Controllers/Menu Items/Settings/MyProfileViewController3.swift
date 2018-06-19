@@ -7,9 +7,14 @@
 //
 
 import UIKit
-
+import FirebaseAuth
+import FirebaseDatabase
 
 class MyProfileViewController3: UIViewController {
+    var email: String?
+    var phone: String?
+    var password: String?
+    
 
     @IBOutlet weak var informationButton: UIButton!
     @IBOutlet weak var profileImage: UIImageView!
@@ -32,8 +37,24 @@ class MyProfileViewController3: UIViewController {
     @IBOutlet weak var revealTextOutlet: UIButton!
     var iconClick : Bool!
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let user = Auth.auth().currentUser{
+            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+            databaseReference.root.child("Users").child(user.uid).observe(.value, with: { (snapshot) in
+                print(snapshot)
+                if let dictionary = snapshot.value as? [String: Any]{
+                    self.phone = String(describing: dictionary["phone"]!)
+                    self.email = String(describing: dictionary["email"]!)
+                    print("PHONE 1", String(describing: dictionary["phone"]!))
+                    print("PHONE 2", self.phone!)
+                    self.phoneLabel.text = self.phone!
+                    self.emailLabel.text = self.email!
+                }
+            })
+        }
         // phone long press
         iconClick = true
         let longPhonePressGestureRecog = UILongPressGestureRecognizer(target: self, action: #selector(self.longPhonePress))
@@ -122,10 +143,26 @@ class MyProfileViewController3: UIViewController {
             phoneTextField.isEnabled = false
             phoneDoneButton.isHidden = true
             errorLabel.isHidden = true
+            
+            if let user = Auth.auth().currentUser{
+                let registerDataValues = ["phone": phoneTextField.text ] as [String : Any]
+                
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                let userReference = databaseReference.root.child("Users").child((user.uid))
+                
+                databaseReference.child("Users").child((user.uid)).observeSingleEvent(of: .value, with: { (snapshot) in
+                    userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
+                        if err != nil{
+                            print(err)
+                            return
+                        }
+                    })
+                })
+            }
         }
         else{
             errorLabel.isHidden = false
-            errorLabel.text = "Invalid Phone Number. Please use the format (111)-111-1111."
+            errorLabel.text = "Invalid Phone Number. Please just enter the 10 digits that is your phone number. "
         }
     }
     
@@ -144,6 +181,23 @@ class MyProfileViewController3: UIViewController {
             emailTextField.isEnabled = false
             emailDoneButton.isHidden = true
             errorLabel.isHidden = true
+            
+            
+            if let user = Auth.auth().currentUser{
+                let registerDataValues = ["email": emailTextField.text ] as [String : Any]
+                
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                let userReference = databaseReference.root.child("Users").child((user.uid))
+                
+                databaseReference.child("Users").child((user.uid)).observeSingleEvent(of: .value, with: { (snapshot) in
+                    userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
+                        if err != nil{
+                            print(err)
+                            return
+                        }
+                    })
+                })
+            }
         }
         else{
             errorLabel.isHidden = false
@@ -175,6 +229,22 @@ class MyProfileViewController3: UIViewController {
                 passwordTextField.isEnabled = false
                 passwordDoneButton.isHidden = true
                 errorLabel.isHidden = true
+                revealTextOutlet.isHidden = true
+                if let user = Auth.auth().currentUser{
+                    let registerDataValues = ["password": passwordTextField.text ] as [String : Any]
+                    
+                    let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                    let userReference = databaseReference.root.child("Users").child((user.uid))
+                    
+                    databaseReference.child("Users").child((user.uid)).observeSingleEvent(of: .value, with: { (snapshot) in
+                        userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
+                            if err != nil{
+                                print(err)
+                                return
+                            }
+                        })
+                    })
+                }
             }
         }
         else{
@@ -209,4 +279,6 @@ class MyProfileViewController3: UIViewController {
             self.informationButton.alpha = 0
         })]
     }
+    
+
 }
