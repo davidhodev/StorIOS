@@ -150,13 +150,23 @@ class MyProfileViewController3: UIViewController {
                 let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
                 let userReference = databaseReference.root.child("Users").child((user.uid))
                 
-                databaseReference.child("Users").child((user.uid)).observeSingleEvent(of: .value, with: { (snapshot) in
-                    userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
-                        if err != nil{
-                            print(err)
-                            return
-                        }
-                    })
+                userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
+                    if err != nil{
+                        print(err)
+                        return
+                    }
+                })
+                
+                databaseReference.child("Providers").child((user.uid)).observeSingleEvent(of: .value, with: { (snapshot) in
+                    if snapshot.exists(){
+                        databaseReference.root.child("Providers").child(user.uid).child("personalInfo").updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
+                            if err != nil{
+                                print(err)
+                                return
+                            }
+                        })
+                    }
+                    
                 })
             }
         }
