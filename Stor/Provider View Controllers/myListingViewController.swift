@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 class myListingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -37,6 +39,10 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 4
+    }
+    
     
 
     
@@ -45,6 +51,7 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         myListingTableView.delegate = self
         myListingTableView.dataSource = self
+        findListings()
 
         // Do any additional setup after loading the view.
     }
@@ -111,15 +118,51 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func findListings(){
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("Providers").child(uid!).child("currentStorage").observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.exists(){}
+            for userChild in snapshot.children{
+                let userSnapshot = userChild as! DataSnapshot
+                print("USER SNAPSHOT: ", userSnapshot.key)
+                let storageID = userSnapshot.key
+                
+                let dictionary = userSnapshot.value as? [String: Any?]
+                //                print("DICTIONARY: ", dictionary!)
+                if let potentialConnectsDictionary = dictionary!["potentialConnects"] as? [String: Any?]{
+                    print("POTENTIAL CONNECTS DICT: ", potentialConnectsDictionary)
+                    for potentials in (potentialConnectsDictionary.keys){
+                        print("STORAGE ID: ", potentials)
+                        print("================================")
+                        let user = providerPotentialUser()
+                        user.storageID = storageID
+                        user.userID = potentials
+                        user.getName()
+                        //                    user.getData()
+//                        self.potentialConnects.append(user)
+                        
+                    }
+                }
+            }
+        }, withCancel: nil)
+        
+        Database.database().reference().child("Providers").child(uid!).child("storageInUse").observeSingleEvent(of: .value, with: { (snapshot) in
+            for userChild in snapshot.children{
+                let userSnapshot = userChild as! DataSnapshot
+                print("USER SNAPSHOT: ", userSnapshot.key)
+                let storageID = userSnapshot.key
+                
+                let dictionary = userSnapshot.value as? [String: Any?]
+                //                print("DICTIONARY: ", dictionary!)
+                let currentUser = dictionary!["Connector"]
+                let user = providerPotentialUser()
+                user.storageID = storageID
+                user.userID = currentUser as! String
+                user.getName()
+                //                    user.getData()
+//                self.currentConnects.append(user)
+            }
+        }, withCancel: nil)
     }
-    */
-
+    
 }
