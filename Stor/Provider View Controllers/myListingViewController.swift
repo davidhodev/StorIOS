@@ -19,7 +19,11 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     var price: NSMutableAttributedString?
     var dimensions: NSMutableAttributedString?
     var cubicFeet: NSMutableAttributedString?
-    
+    var name: NSMutableAttributedString?
+    var rating: NSMutableAttributedString?
+    var phone: NSMutableAttributedString?
+    var userProfile: UIImage?
+    var phoneRaw: String?
     
     
     @IBOutlet weak var myListingTableView: UITableView!
@@ -45,12 +49,58 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.priceLabel.attributedText = self.price
             cell.cubicFeetLabel.attributedText = self.cubicFeet
             cell.dimensionsLabel.attributedText = self.dimensions
+            
+            if (cell.contentView.bounds.size.height.rounded() == 60){
+                cell.moreImage.image = UIImage(named: "Expand Arrow")
+            }
+            else
+            {
+                print (cell.contentView.bounds.size.height)
+                cell.moreImage.image = UIImage(named: "Up Arrow")
+            }
+            
             if taken!{
                 cell.availableLabel.isHidden = true
+                cell.nameLabel.attributedText = self.name
+                cell.phoneLabel.attributedText = self.phone
+                cell.ratingLabel.attributedText = self.rating
+                cell.deleteButton.isHidden = true
+                cell.editDetailsButton.isHidden = true
+                cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
                 
+                DispatchQueue.main.async(execute: { () -> Void in
+                    let lineWidth = CGFloat(7.0)
+                    let rect = CGRect(x: 0, y: 0.0, width: 50, height: 54)
+                    let sides = 6
+                    
+                    let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 5.0, rotationOffset: CGFloat(.pi / 2.0))
+                    
+                    let borderLayer = CAShapeLayer()
+                    borderLayer.frame = CGRect(x : 0.0, y : 0.0, width : path.bounds.width + lineWidth, height : path.bounds.height + lineWidth)
+                    borderLayer.path = path.cgPath
+                    borderLayer.lineWidth = lineWidth
+                    borderLayer.lineJoin = kCALineJoinRound
+                    borderLayer.lineCap = kCALineCapRound
+                    borderLayer.strokeColor = UIColor.black.cgColor
+                    borderLayer.fillColor = UIColor.white.cgColor
+                    
+                    let hexagon = createImage(layer: borderLayer)
+                    
+                    cell.profileImage.contentMode = .scaleAspectFill
+                    cell.profileImage.layer.masksToBounds = false
+                    cell.profileImage.layer.mask = borderLayer
+                    cell.profileImage.image = self.userProfile
+                })
             }
             else{
+                cell.callButton.isHidden = true
                 cell.availableLabel.isHidden = false
+                cell.nameLabel.isHidden = true
+                cell.phoneLabel.isHidden = true
+                cell.ratingLabel.isHidden = true
+                cell.profileImage.isHidden = true
+                
+                
             }
         }
 
@@ -267,8 +317,7 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                         self.cubicFeet = cubicFeetAttString
                         
                         let connectorID = dictionary["Connector"]!! as? String
-                        
-                        
+                        self.getConnectorInfo(connectorID: connectorID!)
                     }
 
                     
@@ -282,4 +331,56 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
         }, withCancel: nil)
     }
     
+    func getConnectorInfo(connectorID: String){
+        print(connectorID)
+        Database.database().reference().child("Users").child(connectorID).observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.exists(){
+                    if let dictionary = snapshot.value as? [String:Any?]{
+                        print("MY LIST DICTIONARY", dictionary)
+                        let tempName = dictionary["name"] as? String
+                        let fontName:UIFont? = UIFont(name: "Dosis-Bold", size:20)
+                        let nameAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempName!, attributes: [.font: fontName!])
+                        self.name = nameAttString
+                        
+                        
+                        
+                        let ratingString = String(describing: dictionary["rating"]!!)
+                        let roundedRating = (Double(ratingString)! * 100).rounded()/100
+                        let fontRating:UIFont? = UIFont(name: "Dosis-Regular", size:16)
+                        let tempRating = String(format: "%.2f", roundedRating)
+                        let ratingAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempRating, attributes: [.font: fontRating!])
+                        self.rating = ratingAttString
+                        
+                        
+                        let tempPhone = dictionary["phone"] as? String
+                        self.phoneRaw = tempPhone
+                        let fontPhone:UIFont? = UIFont(name: "Dosis-Regular", size:16)
+                        let phoneAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempPhone!, attributes: [.font: fontPhone!])
+                        self.phone = phoneAttString
+                        
+                        
+                        
+                        URLSession.shared.dataTask(with: NSURL(string: dictionary["profilePicture"]!! as! String)! as URL, completionHandler: { (data, response, error) -> Void in
+                            if error != nil {
+                                print(error)
+                                return
+                            }
+                            DispatchQueue.main.async(execute: { () -> Void in
+                                self.userProfile = UIImage(data: data!)
+                            })
+                            
+                        }).resume()
+                        
+                    }
+                
+            }
+        }, withCancel: nil)
+    }
+    
+    @objc func call(_ sender:UIButton){
+        print("CALLING")
+        if let url = URL(string: "tel://\(String(describing: self.phoneRaw!))") {
+            UIApplication.shared.open(url)
+        }
+    }
 }

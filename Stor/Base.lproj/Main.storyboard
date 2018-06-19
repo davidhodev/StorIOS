@@ -1555,32 +1555,68 @@ Use the Add To List Button on a pin to begin</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Bh-Hg-eAE">
-                                                            <rect key="frame" x="68" y="23" width="42" height="21"/>
+                                                            <rect key="frame" x="68" y="23" width="117" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cAX-8G-Q7V">
+                                                            <rect key="frame" x="49" y="137" width="153" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0eP-hF-EmW">
+                                                            <rect key="frame" x="10" y="0.0" width="50" height="54"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        </imageView>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pz3-yU-sHG">
+                                                            <rect key="frame" x="8" y="137" width="33" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <state key="normal" title="Call"/>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G5Z-BG-eOS">
+                                                            <rect key="frame" x="-2" y="203" width="98" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <state key="normal" title="Edit Details"/>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LVH-eh-af7">
+                                                            <rect key="frame" x="187" y="210" width="57" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <state key="normal" title="Delete"/>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zY4-mz-zVt">
-                                                    <rect key="frame" x="38" y="22" width="176" height="21"/>
+                                                    <rect key="frame" x="38" y="22" width="241" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wyX-iX-Exo">
+                                                    <rect key="frame" x="314" y="11" width="14" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addressLabel" destination="zY4-mz-zVt" id="94W-O4-ZxB"/>
                                             <outlet property="availableLabel" destination="ryw-7l-Tpy" id="Vaq-El-1C9"/>
+                                            <outlet property="callButton" destination="Pz3-yU-sHG" id="pCQ-Y0-Frp"/>
                                             <outlet property="cellView" destination="CGj-2e-HEM" id="jQD-ar-Bli"/>
                                             <outlet property="cubicFeetLabel" destination="zAI-tC-qTi" id="IfH-qV-zNv"/>
+                                            <outlet property="deleteButton" destination="LVH-eh-af7" id="7Xd-dS-Dki"/>
                                             <outlet property="dimensionsLabel" destination="XAu-By-nAl" id="dtB-b3-97Z"/>
+                                            <outlet property="editDetailsButton" destination="G5Z-BG-eOS" id="qoN-on-nuD"/>
+                                            <outlet property="moreImage" destination="wyX-iX-Exo" id="giU-5r-x6n"/>
                                             <outlet property="nameLabel" destination="6Bh-Hg-eAE" id="pUw-0e-Der"/>
+                                            <outlet property="phoneLabel" destination="cAX-8G-Q7V" id="M9r-y7-CuK"/>
                                             <outlet property="priceLabel" destination="PW5-OD-9dP" id="M0l-dx-ynM"/>
+                                            <outlet property="profileImage" destination="0eP-hF-EmW" id="AZu-7G-8v2"/>
                                             <outlet property="ratingLabel" destination="7ij-9z-QJz" id="5kz-Qs-jVi"/>
                                         </connections>
                                     </tableViewCell>
