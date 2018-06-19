@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -49,7 +49,7 @@
                                 <rect key="frame" x="0.0" y="358" width="170" height="300"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy4" translatesAutoresizingMaskIntoConstraints="NO" id="uGy-bx-NSJ">
-                                <rect key="frame" x="138" y="1" width="169" height="93"/>
+                                <rect key="frame" x="136" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy5_2" translatesAutoresizingMaskIntoConstraints="NO" id="U2q-m4-Bqu">
                                 <rect key="frame" x="224" y="82" width="151" height="323"/>
@@ -62,7 +62,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ED4-zM-ayk">
-                                <rect key="frame" x="0.0" y="-13" width="173" height="85"/>
+                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Bd-4gJ">
                                 <rect key="frame" x="33.666666666666657" y="392" width="177" height="188"/>
@@ -319,7 +319,7 @@
                                 <rect key="frame" x="136" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ZcF-jB-fyb">
-                                <rect key="frame" x="0.0" y="-13" width="171" height="85"/>
+                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo Copy" translatesAutoresizingMaskIntoConstraints="NO" id="iUg-vp-lcF">
                                 <rect key="frame" x="51" y="115" width="187" height="114"/>
@@ -580,8 +580,8 @@
                                     <action selector="informationButtonPressed:" destination="iec-79-MA3" eventType="touchUpInside" id="zTE-XD-tpo"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(310) 909-9063" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gp4-WS-bwv" userLabel="Phone Number">
-                                <rect key="frame" x="102" y="298" width="97" height="20.333333333333314"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gp4-WS-bwv" userLabel="Phone Number">
+                                <rect key="frame" x="102" y="308.33333333333331" width="0.0" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="150" id="ZeO-JY-Rbb"/>
                                 </constraints>
@@ -589,8 +589,8 @@
                                 <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="jack.m.feldman@vanderbilt.edu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1I-EF-ycA" userLabel="Email">
-                                <rect key="frame" x="101.99999999999999" y="344" width="190.66666666666663" height="20.333333333333314"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1I-EF-ycA" userLabel="Email">
+                                <rect key="frame" x="102" y="354.33333333333331" width="0.0" height="0.0"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="245" id="6kI-17-za9"/>
                                 </constraints>
@@ -1089,7 +1089,7 @@
         <!--My List View Controller-->
         <scene sceneID="1uj-Cr-OPn">
             <objects>
-                <viewController title="My List View Controller" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="DIb-zf-3Ve" customClass="myListViewController" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="My List View Controller" modalTransitionStyle="crossDissolve" id="DIb-zf-3Ve" customClass="myListViewController" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SSt-78-3Zv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1652,14 +1652,55 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="who-mu-leA">
-                                <rect key="frame" x="164" y="496" width="46" height="30"/>
+                                <rect key="frame" x="260" y="707" width="37" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="addListingButton:" destination="iOa-Xt-34d" eventType="touchUpInside" id="QJt-tn-FLe"/>
+                                </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLG-6Q-9Hx">
+                                <rect key="frame" x="199" y="194" width="127" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Dimensions"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ri-Mg-XBo">
+                                <rect key="frame" x="167" y="419" width="159" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Description"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmq-xA-5BU">
+                                <rect key="frame" x="84" y="572" width="210" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Availability"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qT4-hc-vuy">
+                                <rect key="frame" x="84" y="212" width="63" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFX-PZ-SFS">
+                                <rect key="frame" x="54" y="274" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hQ7-X7-K9m">
+                                <rect key="frame" x="16" y="202" width="50" height="54"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="0.9002300941780822" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="A5l-fn-Qo5"/>
                     </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="qT4-hc-vuy" id="hNb-g0-E60"/>
+                        <outlet property="profileImage" destination="hQ7-X7-K9m" id="yYp-ae-HYL"/>
+                        <outlet property="ratingLabel" destination="NFX-PZ-SFS" id="XLR-qU-W3x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pis-mf-pN9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2657,13 +2698,29 @@ Use the Add To List Button on a pin to begin</string>
                                 <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="70" minValue="0.0" maxValue="250" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jU1-Ny-VR5">
-                                <rect key="frame" x="35" y="260" width="307" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <slider userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="86" minValue="0.0" maxValue="250" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jU1-Ny-VR5">
+                                <rect key="frame" x="35" y="259" width="307" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="303" id="gRy-zq-uet"/>
+                                </constraints>
                                 <color key="minimumTrackTintColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="maximumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="thumbTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </slider>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Thumb Cap" translatesAutoresizingMaskIntoConstraints="NO" id="D8H-YY-Rcf">
+                                <rect key="frame" x="111" y="259.66666666666674" width="4" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="h8B-hf-2M1"/>
+                                    <constraint firstAttribute="width" constant="4" id="i8A-J2-TRC"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Thumb Cap" translatesAutoresizingMaskIntoConstraints="NO" id="RQN-rp-bBy">
+                                <rect key="frame" x="144" y="260" width="4" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="4" id="Y9H-tb-uXw"/>
+                                    <constraint firstAttribute="height" constant="30" id="pUc-uz-i4S"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.16470588235294117" green="0.27450980392156865" blue="0.70588235294117641" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -2679,7 +2736,9 @@ Use the Add To List Button on a pin to begin</string>
                             <constraint firstItem="rwl-sC-9TP" firstAttribute="leading" secondItem="BzM-AB-17X" secondAttribute="leading" id="E3g-3b-sFm"/>
                             <constraint firstItem="gev-SQ-isk" firstAttribute="top" secondItem="BzM-AB-17X" secondAttribute="bottom" constant="16.666666666666657" id="Er1-2D-2LO"/>
                             <constraint firstItem="BzM-AB-17X" firstAttribute="leading" secondItem="9IE-RA-17n" secondAttribute="leading" id="GTx-Bm-jwb"/>
+                            <constraint firstItem="jU1-Ny-VR5" firstAttribute="leading" secondItem="RQN-rp-bBy" secondAttribute="trailing" constant="-111" id="GVG-WX-8av"/>
                             <constraint firstItem="gP5-8L-kYU" firstAttribute="centerY" secondItem="83r-mq-cbh" secondAttribute="centerY" id="Ms3-R4-lsk"/>
+                            <constraint firstItem="jU1-Ny-VR5" firstAttribute="top" secondItem="Qes-Lq-HP9" secondAttribute="bottom" constant="-128" id="MuO-Dp-vfx"/>
                             <constraint firstItem="gev-SQ-isk" firstAttribute="leading" secondItem="phm-Oc-fsC" secondAttribute="trailing" constant="56" id="NBg-Sc-yhi"/>
                             <constraint firstItem="MaV-Yd-m8c" firstAttribute="centerX" secondItem="Qes-Lq-HP9" secondAttribute="centerX" id="NRe-Fo-gU0"/>
                             <constraint firstAttribute="bottomMargin" secondItem="s05-k7-Y9f" secondAttribute="bottom" constant="-34" id="Nel-fz-pze"/>
@@ -2689,15 +2748,19 @@ Use the Add To List Button on a pin to begin</string>
                             <constraint firstItem="GGg-km-aJg" firstAttribute="top" secondItem="Qes-Lq-HP9" secondAttribute="top" constant="-23" id="T7h-S1-MCr"/>
                             <constraint firstItem="BzM-AB-17X" firstAttribute="top" secondItem="9IE-RA-17n" secondAttribute="bottom" constant="39" id="TK8-Rf-fO9"/>
                             <constraint firstItem="s05-k7-Y9f" firstAttribute="top" secondItem="HAi-9y-hxh" secondAttribute="topMargin" constant="338" id="Vg1-F5-Nix"/>
+                            <constraint firstItem="RQN-rp-bBy" firstAttribute="centerY" secondItem="jU1-Ny-VR5" secondAttribute="centerY" constant="1" id="Wi1-gk-ovI"/>
                             <constraint firstItem="KPX-3C-ri8" firstAttribute="centerX" secondItem="Qes-Lq-HP9" secondAttribute="centerX" id="XxK-G8-efO"/>
                             <constraint firstItem="8z9-M8-6Rx" firstAttribute="top" secondItem="BzM-AB-17X" secondAttribute="bottom" constant="16" id="Yop-rf-Cjz"/>
                             <constraint firstItem="gP5-8L-kYU" firstAttribute="leading" secondItem="83r-mq-cbh" secondAttribute="trailing" constant="122" id="cHJ-Wp-vaW"/>
                             <constraint firstItem="s05-k7-Y9f" firstAttribute="leading" secondItem="GGg-km-aJg" secondAttribute="leading" id="cR9-yz-5F6"/>
                             <constraint firstItem="MaV-Yd-m8c" firstAttribute="top" secondItem="Qes-Lq-HP9" secondAttribute="bottom" constant="-128" id="f7Y-sR-RxL"/>
+                            <constraint firstItem="jU1-Ny-VR5" firstAttribute="leading" secondItem="Qes-Lq-HP9" secondAttribute="trailing" constant="-325" id="gwi-u4-F0j"/>
                             <constraint firstItem="M0J-oX-ZhK" firstAttribute="leading" secondItem="BzM-AB-17X" secondAttribute="leading" id="gyR-dv-ZiK"/>
+                            <constraint firstItem="D8H-YY-Rcf" firstAttribute="centerY" secondItem="jU1-Ny-VR5" secondAttribute="centerY" constant="1.7" id="kUU-2l-peA"/>
                             <constraint firstItem="MaV-Yd-m8c" firstAttribute="leading" secondItem="Qes-Lq-HP9" secondAttribute="trailing" constant="-324" id="kXN-oV-sMl"/>
                             <constraint firstItem="h4v-V7-RdW" firstAttribute="centerY" secondItem="rwl-sC-9TP" secondAttribute="centerY" id="lKC-Ys-xaB"/>
                             <constraint firstItem="s05-k7-Y9f" firstAttribute="trailing" secondItem="GGg-km-aJg" secondAttribute="trailing" id="n0e-SJ-0ql"/>
+                            <constraint firstItem="jU1-Ny-VR5" firstAttribute="leading" secondItem="D8H-YY-Rcf" secondAttribute="trailing" constant="-78" id="nRl-aV-AYW"/>
                             <constraint firstItem="jDe-jV-y52" firstAttribute="leading" secondItem="Qes-Lq-HP9" secondAttribute="trailing" constant="-60" id="oLi-FK-5Qm"/>
                             <constraint firstItem="Qes-Lq-HP9" firstAttribute="top" secondItem="jDe-jV-y52" secondAttribute="bottom" constant="-60" id="pen-oD-7Ot"/>
                             <constraint firstItem="h4v-V7-RdW" firstAttribute="leading" secondItem="rwl-sC-9TP" secondAttribute="trailing" constant="-35" id="ph7-U1-NIo"/>
@@ -2718,6 +2781,8 @@ Use the Add To List Button on a pin to begin</string>
                         <outlet property="priceSliderOutlet" destination="MaV-Yd-m8c" id="p2T-lu-OUC"/>
                         <outlet property="smallButtonImage" destination="h4v-V7-RdW" id="dL7-Zs-nhh"/>
                         <outlet property="smallLabel" destination="rwl-sC-9TP" id="sQs-26-cTZ"/>
+                        <outlet property="thumbCap56" destination="D8H-YY-Rcf" id="My7-fR-11B"/>
+                        <outlet property="thumbCap86" destination="RQN-rp-bBy" id="E5f-r7-Hai"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MTg-QP-WrR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2794,7 +2859,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-                                <rect key="frame" x="27.666666666666671" y="84" width="20" height="20"/>
+                                <rect key="frame" x="28" y="84" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
@@ -3492,7 +3557,7 @@ Use the Add To List Button on a pin to begin</string>
                         <outlet property="topLeftHex" destination="eSo-y4-4tI" id="I0E-g7-qFZ"/>
                         <outlet property="topRightHex" destination="PbC-YC-bgS" id="62G-8b-Grx"/>
                         <segue destination="Kx1-Fl-5np" kind="presentation" identifier="toProviderMenu" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="ht3-KD-VYk"/>
-                        <segue destination="FS2-CZ-y91" kind="presentation" identifier="toSocialSecuritySegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="3ce-0B-jZb"/>
+                        <segue destination="FS2-CZ-y91" kind="showDetail" identifier="toSocialSecuritySegue" id="3ce-0B-jZb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Yg-HR-Ty7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3574,7 +3639,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="P4G-xz-ODq">
-                                <rect key="frame" x="0.0" y="-55" width="173" height="101"/>
+                                <rect key="frame" x="0.0" y="-55" width="171" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="101" id="XiM-pS-Ieg"/>
                                 </constraints>
@@ -3954,7 +4019,7 @@ Use the Add To List Button on a pin to begin</string>
         <image name="Drop off Icon" width="16" height="17"/>
         <image name="Edit Pop Up" width="346" height="110"/>
         <image name="Exit Search Button" width="12" height="12"/>
-        <image name="Fill 7 Copy 2" width="173" height="85"/>
+        <image name="Fill 7 Copy 2" width="171" height="216"/>
         <image name="Fill 7 Copy 5CA" width="308" height="192"/>
         <image name="Fill 7 Copy 6" width="375" height="593"/>
         <image name="Filters Icon" width="24" height="20"/>
@@ -4004,6 +4069,7 @@ Use the Add To List Button on a pin to begin</string>
         <image name="Settings Hex W" width="375" height="862"/>
         <image name="Settings button thin" width="345" height="100"/>
         <image name="Star" width="15" height="14"/>
+        <image name="Thumb Cap" width="4" height="28"/>
         <image name="bitmap" width="375" height="570"/>
         <image name="btn_submit" width="160" height="164"/>
         <image name="facebook" width="16" height="16"/>
