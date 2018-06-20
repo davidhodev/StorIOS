@@ -142,13 +142,13 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             })
             
             
-            if (cell.contentView.bounds.size.height.rounded() == 63){
-                cell.dropDownImage.image = UIImage(named: "Expand Arrow")
+            if (cell.contentView.bounds.size.height.rounded() == 60){
+                cell.dropDownImage.image = UIImage(named: "Purple Expand Arrow")
             }
             else
             {
                 print (cell.contentView.bounds.size.height)
-                cell.dropDownImage.image = UIImage(named: "Up Arrow")
+                cell.dropDownImage.image = UIImage(named: "Purple Close arrow")
             }
             
             cell.declineButton.tag = indexPath.section
@@ -199,13 +199,13 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             })
             
             
-            if (cell.contentView.bounds.size.height.rounded() == 63){
-                cell.dropDownImage.image = UIImage(named: "Expand Arrow")
+            if (cell.contentView.bounds.size.height.rounded() == 60){
+                cell.dropDownImage.image = UIImage(named: "Purple Expand Arrow")
             }
             else
             {
                 print (cell.contentView.bounds.size.height)
-                cell.dropDownImage.image = UIImage(named: "Up Arrow")
+                cell.dropDownImage.image = UIImage(named: "Purple Close arrow")
             }
             
             cell.declineButton.tag = indexPath.section
