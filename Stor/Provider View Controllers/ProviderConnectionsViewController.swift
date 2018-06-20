@@ -24,9 +24,6 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     @IBOutlet weak var noPendingOptionsLabel: UILabel!
     
     
-    
-    
-    
     @IBAction func exitButton(_ sender: Any) {
         
         
@@ -100,14 +97,14 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = providerTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! potentialConnectsTableViewCell
         cell.cellView.layer.cornerRadius = 27
+        cell.callButton.tag = indexPath.section
+        cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
         if selectorIndex == 0{
             let user = potentialConnects[indexPath.section]
             cell.nameLabel.attributedText = user.name
             cell.ratingLabel.attributedText = user.rating
             print("PHONE LABEL: ", user.phone)
             cell.phoneLabel.attributedText = user.phone
-            cell.callButton.tag = indexPath.section
-            cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
             
             
             
@@ -163,8 +160,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             cell.ratingLabel.attributedText = user.rating
             print("PHONE LABEL: ", user.phone)
             cell.phoneLabel.attributedText = user.phone
-            cell.callButton.tag = indexPath.section
-            cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
+            
             
             
             
@@ -352,6 +348,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     
     @objc func call(_ sender:UIButton) {
         let buttonIndexPath = sender.tag
+        print("CALLING")
         
         if selectorIndex == 0{
             let providerID = potentialConnects[buttonIndexPath].userID
@@ -368,24 +365,22 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                 })
             }
         }
+        else{
+            let providerID = currentConnects[buttonIndexPath].userID
+            if Auth.auth().currentUser != nil{
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                databaseReference.root.child("Users").child(providerID!).observe(.value, with: { (snapshot) in
+                    if let dictionary = snapshot.value as? [String: Any]{
+                        let phone = dictionary["phone"]
+                        let customerPhone = String(describing: phone!)
+                        if let url = URL(string: "tel://\(String(describing: customerPhone))") {
+                            UIApplication.shared.open(url)
+                        }
+                    }
+                })
+            }
+        }
     }
-//        else{
-//            let providerID = myCurrentStorageUsers[buttonIndexPath].providerID
-//            if Auth.auth().currentUser != nil{
-//                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
-//                databaseReference.root.child("Providers").child(providerID!).child("personalInfo").observe(.value, with: { (snapshot) in
-//                    print(snapshot)
-//                    if let dictionary = snapshot.value as? [String: Any]{
-//                        let phone = dictionary["phone"]
-//                        let providerPhone = String(describing: phone!)
-//                        if let url = URL(string: "tel://\(String(describing: providerPhone))") {
-//                            UIApplication.shared.open(url)
-//                        }
-//                    }
-//                })
-//            }
-//        }
-//    }
     
     
     @objc func declineButton(_ sender:UIButton) {
@@ -455,11 +450,9 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                     
                 databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).updateChildValues(["Connector": realConnect.userID])
                     }
-                    
-
                 })
 
-                databaseReference.child("Providers").child(user.uid).child("currentStorage").removeValue()
+            databaseReference.child("Providers").child(user.uid).child("currentStorage").removeValue()
                 
                 self.potentialConnects.removeAll()
                 self.providerTableView.reloadData()
@@ -467,7 +460,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             }
             
             print(realConnect)
-            //PUSH NOTIFICATION TO PROVIDER
+            // PUSH NOTIFICATION TO PROVIDER
             
         }
         else{
