@@ -29,12 +29,12 @@ class providerMyListingCellTableViewCell: UITableViewCell {
     @IBOutlet weak var availableLabel: UILabel!
     
     @IBOutlet weak var cellView: UIView!
-    class var expandedHeight: CGFloat {get { return 343 }}
+    class var expandedHeight: CGFloat {get { return 380 }}
     class var defaultHeight: CGFloat {get { return 60 }}
     
     
     func checkHeight(){
-        cellView.isHidden = (frame.size.height < myListCustomCell.expandedHeight)
+        cellView.isHidden = (frame.size.height < providerMyListingCellTableViewCell.expandedHeight)
     }
     
     func watchFrameChanges(){
