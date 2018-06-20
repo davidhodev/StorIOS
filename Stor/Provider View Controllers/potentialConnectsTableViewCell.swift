@@ -29,8 +29,8 @@ class potentialConnectsTableViewCell: UITableViewCell {
     
     
     
-    class var expandedHeight: CGFloat {get { return 343 }}
-    class var defaultHeight: CGFloat {get { return 60 }}
+    class var expandedHeight: CGFloat {get { return 259 }}
+    class var defaultHeight: CGFloat {get { return 63 }}
     
    
     func checkHeight(){
