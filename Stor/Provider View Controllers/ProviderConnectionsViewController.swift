@@ -142,7 +142,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             })
             
             
-            if (cell.contentView.bounds.size.height.rounded() == 60){
+            if (cell.contentView.bounds.size.height.rounded() == 63){
                 cell.dropDownImage.image = UIImage(named: "Expand Arrow")
             }
             else
@@ -199,7 +199,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             })
             
             
-            if (cell.contentView.bounds.size.height.rounded() == 60){
+            if (cell.contentView.bounds.size.height.rounded() == 63){
                 cell.dropDownImage.image = UIImage(named: "Expand Arrow")
             }
             else
