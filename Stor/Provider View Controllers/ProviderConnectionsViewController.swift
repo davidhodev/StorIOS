@@ -99,6 +99,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = providerTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! potentialConnectsTableViewCell
+        cell.cellView.layer.cornerRadius = 27
         if selectorIndex == 0{
             let user = potentialConnects[indexPath.section]
             cell.nameLabel.attributedText = user.name
@@ -143,12 +144,12 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             
             
             if (cell.contentView.bounds.size.height.rounded() == 60){
-                cell.dropDownImage.image = UIImage(named: "Expand Arrow")
+                cell.dropDownImage.image = UIImage(named: "Purple Expand Arrow")
             }
             else
             {
                 print (cell.contentView.bounds.size.height)
-                cell.dropDownImage.image = UIImage(named: "Up Arrow")
+                cell.dropDownImage.image = UIImage(named: "Purple Close arrow")
             }
             
             cell.declineButton.tag = indexPath.section
@@ -200,12 +201,12 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             
             
             if (cell.contentView.bounds.size.height.rounded() == 60){
-                cell.dropDownImage.image = UIImage(named: "Expand Arrow")
+                cell.dropDownImage.image = UIImage(named: "Purple Expand Arrow")
             }
             else
             {
                 print (cell.contentView.bounds.size.height)
-                cell.dropDownImage.image = UIImage(named: "Up Arrow")
+                cell.dropDownImage.image = UIImage(named: "Purple Close arrow")
             }
             
             cell.declineButton.tag = indexPath.section

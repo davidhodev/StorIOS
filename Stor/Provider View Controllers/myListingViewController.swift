@@ -60,12 +60,12 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.dimensionsLabel.attributedText = self.dimensions
             
             if (cell.contentView.bounds.size.height.rounded() == 60){
-                cell.moreImage.image = UIImage(named: "Expand Arrow")
+                cell.moreImage.image = UIImage(named: "Purple Expand Arrow")
             }
             else
             {
                 print (cell.contentView.bounds.size.height)
-                cell.moreImage.image = UIImage(named: "Up Arrow")
+                cell.moreImage.image = UIImage(named: "Purple Close arrow")
             }
             
             if taken!{

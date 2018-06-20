@@ -139,6 +139,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             cell.cubicFeetLabel.attributedText = user.cubicString
             cell.nameLabel.attributedText = user.name
             cell.ratingLabel.attributedText = user.rating
+            cell.dropOffTimeLabel.attributedText = user.dropOffTime
             
             
             DispatchQueue.main.async(execute: { () -> Void in
@@ -200,6 +201,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             cell.schedulePickupLabel.isHidden = false
             cell.priceLabel.attributedText = user.price
             cell.dimensionsLabel.attributedText = user.dimensionsString
+            cell.dropOffTimeLabel.attributedText = user.dropOffTime
 
             cell.cubicFeetLabel.attributedText = user.cubicString
             cell.nameLabel.attributedText = user.name
