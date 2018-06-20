@@ -99,6 +99,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = providerTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! potentialConnectsTableViewCell
+        cell.cellView.layer.cornerRadius = 27
         if selectorIndex == 0{
             let user = potentialConnects[indexPath.section]
             cell.nameLabel.attributedText = user.name

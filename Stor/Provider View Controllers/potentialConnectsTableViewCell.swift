@@ -29,12 +29,12 @@ class potentialConnectsTableViewCell: UITableViewCell {
     
     
     
-    class var expandedHeight: CGFloat {get { return 259 }}
+    class var expandedHeight: CGFloat {get { return 265 }}
     class var defaultHeight: CGFloat {get { return 63 }}
     
    
     func checkHeight(){
-        cellView.isHidden = (frame.size.height < myListCustomCell.expandedHeight)
+        cellView.isHidden = (frame.size.height <= myListCustomCell.expandedHeight)
     }
     
     func watchFrameChanges(){
