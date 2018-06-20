@@ -950,7 +950,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="310" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZH5-Do-px8">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Expand Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="ZH5-Do-px8">
                                                     <rect key="frame" x="280" y="26.666666666666668" width="11" height="8.0000000000000036"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="11" id="6ar-rz-2x5"/>
@@ -1666,16 +1666,32 @@ Use the Add To List Button on a pin to begin</string>
                                 <rect key="frame" x="199" y="194" width="127" height="57"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add Dimensions"/>
+                                <connections>
+                                    <action selector="addDimensionsPressed:" destination="iOa-Xt-34d" eventType="touchUpInside" id="8Ge-Ke-85K"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ri-Mg-XBo">
                                 <rect key="frame" x="167" y="419" width="159" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add Description"/>
+                                <connections>
+                                    <action selector="addDescriptionPressed:" destination="iOa-Xt-34d" eventType="touchUpInside" id="O7W-KK-tNU"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ydd-Nl-90R">
+                                <rect key="frame" x="84" y="455" width="242" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmq-xA-5BU">
                                 <rect key="frame" x="84" y="572" width="210" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add Availability"/>
+                                <connections>
+                                    <action selector="addAvailabilityPressed:" destination="iOa-Xt-34d" eventType="touchUpInside" id="KRu-Hg-7Nh"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qT4-hc-vuy">
                                 <rect key="frame" x="84" y="212" width="63" height="39"/>
@@ -1695,17 +1711,109 @@ Use the Add To List Button on a pin to begin</string>
                                 <rect key="frame" x="16" y="202" width="50" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <visualEffectView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nvf-2i-YT3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="2L0-Cw-5H6">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <color key="backgroundColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="0.9002300941780822" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="A5l-fn-Qo5"/>
                     </view>
                     <connections>
+                        <outlet property="availabilityView" destination="ysA-BL-oZa" id="o1C-yM-xzn"/>
+                        <outlet property="blurView" destination="Nvf-2i-YT3" id="ugj-4P-dad"/>
+                        <outlet property="descriptionLabel" destination="Ydd-Nl-90R" id="ixi-ft-gbV"/>
+                        <outlet property="descriptionView" destination="lDR-XF-Neg" id="GmM-Zt-tHp"/>
+                        <outlet property="dimensionsView" destination="MQs-tK-IpP" id="If5-aH-Oma"/>
                         <outlet property="nameLabel" destination="qT4-hc-vuy" id="hNb-g0-E60"/>
                         <outlet property="profileImage" destination="hQ7-X7-K9m" id="yYp-ae-HYL"/>
                         <outlet property="ratingLabel" destination="NFX-PZ-SFS" id="XLR-qU-W3x"/>
+                        <outlet property="userDescriptionText" destination="IDz-F1-Zj4" id="Uxm-Ci-Hr1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pis-mf-pN9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="MQs-tK-IpP">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBZ-YX-Fof">
+                            <rect key="frame" x="186" y="32" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Exit"/>
+                            <connections>
+                                <action selector="exitDimensions:" destination="iOa-Xt-34d" eventType="touchUpInside" id="w85-Gv-21x"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dimensions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOm-FM-u3p">
+                            <rect key="frame" x="16" y="35" width="89" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="bJ7-dc-Cax"/>
+                </view>
+                <view contentMode="scaleToFill" id="lDR-XF-Neg">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="231"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yf4-FJ-Rji">
+                            <rect key="frame" x="186" y="34" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Exit"/>
+                            <connections>
+                                <action selector="exitDescription:" destination="iOa-Xt-34d" eventType="touchUpInside" id="oPE-sX-iFU"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Eh-cl-qAe">
+                            <rect key="frame" x="16" y="39" width="88" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IDz-F1-Zj4">
+                            <rect key="frame" x="16" y="68" width="200" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="9f7-6M-W8I"/>
+                </view>
+                <view contentMode="scaleToFill" id="ysA-BL-oZa">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O5t-ZV-P4W">
+                            <rect key="frame" x="186" y="33" width="30" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Exit"/>
+                            <connections>
+                                <action selector="exitAvailability:" destination="iOa-Xt-34d" eventType="touchUpInside" id="45b-mJ-LYf"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Availability" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNR-Qt-cPT">
+                            <rect key="frame" x="63" y="33" width="81" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="0.7990421660958904" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <viewLayoutGuide key="safeArea" id="lE3-go-7hS"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="11448.799999999999" y="40.64039408866995"/>
         </scene>
