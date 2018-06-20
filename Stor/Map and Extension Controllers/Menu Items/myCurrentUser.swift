@@ -21,6 +21,7 @@ class myCurrentUser: NSObject {
     var providerProfile: UIImage?
     var storagePhoto: UIImage?
     var name: NSMutableAttributedString?
+    var dropOffTime: NSMutableAttributedString?
     
     func getAddress(){
         if let user = Auth.auth().currentUser{
@@ -81,6 +82,20 @@ class myCurrentUser: NSObject {
                     cubicFeetAttString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:(cubicFeetString.count)-1,length:1))
                     
                     self.cubicString = cubicFeetAttString
+                    
+                    if let timeDictionary = dictionary["time"] as? [String: Any]{
+                        var dropOffTimeString = "Drop Off Time: "
+                        
+                        dropOffTimeString += (timeDictionary.first?.key)!
+                        dropOffTimeString += " "
+                        dropOffTimeString += (timeDictionary.first?.value)! as! String
+                        
+                        let timeFont: UIFont? = UIFont(name: "Dosis-Regular", size:14)
+                        let dropOffAttString:NSMutableAttributedString = NSMutableAttributedString(string: dropOffTimeString, attributes: [.font:timeFont!])
+                        self.dropOffTime = dropOffAttString
+                       
+                        
+                    }
                     
                     
                     if let photoDictionary = dictionary["Photos"] as? [String: Any] {

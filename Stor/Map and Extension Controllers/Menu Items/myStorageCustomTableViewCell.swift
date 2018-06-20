@@ -25,6 +25,7 @@ class myStorageCustomTableViewCell: UITableViewCell {
     @IBOutlet weak var providerProfileImage: UIImageView!
     @IBOutlet weak var schedulePickupLabel: UILabel!
     @IBOutlet weak var storagePhoto: UIImageView!
+    @IBOutlet weak var dropOffTimeLabel: UILabel!
     
     @IBOutlet weak var moreImage: UIImageView!
     
