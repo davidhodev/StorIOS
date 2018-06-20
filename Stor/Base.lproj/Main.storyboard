@@ -1836,10 +1836,14 @@ Use the Add To List Button on a pin to begin</string>
                                                             <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
                                                             <state key="normal" image="Call Small Purple"/>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drop off Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTu-xG-Qd4">
-                                                            <rect key="frame" x="137" y="26" width="83.333333333333314" height="21"/>
-                                                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
-                                                            <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Drop Off Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTu-xG-Qd4">
+                                                            <rect key="frame" x="45" y="24" width="114" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+
+
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Amt-ct-hIw">
@@ -2536,6 +2540,7 @@ Use the Add To List Button on a pin to begin</string>
                                             <outlet property="cellView" destination="ifw-Sn-ZU4" id="ryx-4Y-N1V"/>
                                             <outlet property="cubicFeetLabel" destination="pm6-NS-TiV" id="cA9-Z9-dxI"/>
                                             <outlet property="dimensionsLabel" destination="9CA-Eg-ZRC" id="KaI-Da-ncZ"/>
+                                            <outlet property="dropOffTimeLabel" destination="vWu-2g-iCG" id="ZYa-3x-2Co"/>
                                             <outlet property="moreImage" destination="T4f-HZ-gTy" id="SUu-u6-fqW"/>
                                             <outlet property="nameLabel" destination="FBI-6L-inv" id="WfV-41-CsV"/>
                                             <outlet property="priceLabel" destination="QDf-cR-bff" id="pHu-Ao-tG2"/>

@@ -22,6 +22,7 @@ class myStorageUser: NSObject {
     var storagePhoto: UIImage?
     var name: NSMutableAttributedString?
     var inUse: Bool?
+    var dropOffTime: NSMutableAttributedString?
     
     
     func getAddress(){
@@ -85,6 +86,22 @@ class myStorageUser: NSObject {
                     
                     self.cubicString = cubicFeetAttString
                     
+                    
+                    if let timeDictionary = dictionary["potentialConnects"] as? [String: Any]{
+                        if let finalTimeDictionary = timeDictionary[user.uid] as? [String: Any]{
+                            print("TIMMMEEEE: ", finalTimeDictionary["timeSlotString"])
+                            var dropOffTimeString = "Drop Off Time: "
+                            
+                            dropOffTimeString += finalTimeDictionary["timeSlotString"]! as! String
+                            
+                            let timeFont: UIFont? = UIFont(name: "Dosis-Regular", size:14)
+                            let dropOffAttString:NSMutableAttributedString = NSMutableAttributedString(string: dropOffTimeString, attributes: [.font:timeFont!])
+                            self.dropOffTime = dropOffAttString
+
+                        }
+                        
+                        
+                    }
                     
                     if let photoDictionary = dictionary["Photos"] as? [String: Any] {
                         let myURL = (photoDictionary.first?.value)!
