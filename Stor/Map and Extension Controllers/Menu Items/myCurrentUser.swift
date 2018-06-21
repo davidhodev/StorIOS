@@ -22,6 +22,8 @@ class myCurrentUser: NSObject {
     var storagePhoto: UIImage?
     var name: NSMutableAttributedString?
     var dropOffTime: NSMutableAttributedString?
+    var status: String?
+    
     
     func getAddress(){
         if let user = Auth.auth().currentUser{
@@ -55,6 +57,9 @@ class myCurrentUser: NSObject {
                         attString.setAttributes([.font:fontSmall!,.baselineOffset:-1], range: NSRange(location:(finalPriceRoundedString.count)-3,length:3))
                         self.price = attString
                     }
+                    
+                    self.status = String(describing: dictionary["status"]!)
+                    
                     
                     
                     

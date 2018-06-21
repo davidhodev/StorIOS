@@ -355,7 +355,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                 let storageID = userSnapshot.key
                 
                 let dictionary = userSnapshot.value as? [String: Any?]
-                //                print("DICTIONARY: ", dictionary!)
+                print("DICTIONARY: ", dictionary!)
                 let currentUser = dictionary!["Connector"]
                 let user = providerPotentialUser()
                 user.storageID = storageID
@@ -472,6 +472,8 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                 databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).child("time").updateChildValues(["time": realConnect.dropOff])
                     
                 databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).updateChildValues(["Connector": realConnect.userID])
+                        
+                databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).updateChildValues(["status": "confirmDropOff"])
                     }
                 })
 
