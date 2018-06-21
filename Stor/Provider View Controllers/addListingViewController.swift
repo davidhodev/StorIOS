@@ -10,6 +10,13 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
+
+extension String{
+    var digits: String{
+        return components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+    }
+}
+
 class Dates{
     var day = [String]()
     var hour = [String]()
@@ -22,9 +29,12 @@ class Dates{
 }
 
 class addListingViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+  // keeping track of the
     var outputTime: String?
     var previousRow: Int?
+    var selectedRow0: Int?
     var selectedRow: Int?
+    var selectedRow2: Int?
     var previousRow2: Int?
     var days = [Dates]()
     
@@ -45,19 +55,6 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
         }
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        if (component == 0){
-            return days[0].day[row]
-        }
-        else {
-            if (row == selectedRow){
-                return outputTime
-            }
-//            return self.outputTime
-            return days[0].hour[row]
-        }
-    }
     //changing font
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         var label: UILabel
@@ -79,16 +76,20 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
         }
         return label
     }
-    
+    // did select in picker view, creates static label
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("RoW", row)
+        if (component == 0){
+            selectedRow0 = row
+        }
         if (component == 1){
             if (row <= 11){
                 days[0].hour[row] += " a.m."
                 if previousRow != nil{
+                    print("PREVIOUS ROW REMOVE", days[0].hour[previousRow!])
                     days[0].hour[previousRow!].removeLast(5)
                 }
                 previousRow = row
+                selectedRow = row
                 pickerView.reloadComponent(1)
             }
             else{
@@ -97,6 +98,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
                     days[0].hour[previousRow!].removeLast(5)
                 }
                 previousRow = row
+                selectedRow = row
                 pickerView.reloadComponent(1)
             }
         }
@@ -107,6 +109,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
                     days[0].secondHour[previousRow2!].removeLast(5)
                 }
                 previousRow2 = row
+                selectedRow2 = row
                 pickerView.reloadComponent(2)
             }
             else{
@@ -115,6 +118,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
                     days[0].secondHour[previousRow2!].removeLast(5)
                 }
                 previousRow2 = row
+                selectedRow2 = row
                 pickerView.reloadComponent(2)
             }
         }
@@ -131,27 +135,112 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var userDescriptionText: UITextField!
     @IBOutlet weak var descriptionLabel: UILabel!
     let picker = UIPickerView()
-    
+    // 3 text views to take in the text from picker view
+    @IBOutlet weak var timePicker: UITextView!
+    @IBOutlet weak var timePicker2: UITextView!
+    @IBOutlet weak var timePicker3: UITextView!
+    @IBOutlet weak var errorLabel: UITextView!
     
     //availability variables
     @IBOutlet var availabilityView: UIView!
-    @IBOutlet weak var timePicker: UITextField!
+    
     
     @IBOutlet weak var blurView: UIVisualEffectView!
     var blurEffect: UIVisualEffect!
     
-    //create first picker view
+    //create first picker view, instantiates toolbars for each of the three selectors
     func createFirstPickerView(){
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
-        let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: nil)
+        let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector((donePressed)))
         toolbar.setItems([done], animated: false)
         timePicker.inputAccessoryView = toolbar
         timePicker.inputView = picker
     }
     
+    func createSecondPickerView(){
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector((donePressed2)))
+        toolbar.setItems([done], animated: false)
+        timePicker2.inputAccessoryView = toolbar
+        timePicker2.inputView = picker
+    }
+    
+    func createThirdPickerView(){
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector((donePressed3)))
+        toolbar.setItems([done], animated: false)
+        timePicker3.inputAccessoryView = toolbar
+        timePicker3.inputView = picker
+    }
+    
     @objc func donePressed(){
-       // timePicker.text = "\(picker.) "
+        if checkValidTimes(){
+            var timePickerString = days[0].day[selectedRow0!]
+            timePickerString += " "
+            timePickerString += days[0].hour[selectedRow!]
+            timePickerString += " – "
+            timePickerString += days[0].secondHour[selectedRow2!]
+            timePicker.text = "\(timePickerString)"
+            
+            picker.selectRow(0, inComponent: 0, animated: false)
+            picker.selectRow(0, inComponent: 1, animated: false)
+            picker.selectRow(0, inComponent: 2, animated: false)
+            days = [Dates(day: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], hour: ["12 a.m.", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11"], secondHour: ["12 a.m.", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11"])]
+            previousRow = 0
+            previousRow2 = 0
+            errorLabel.isHidden = true
+            self.view.endEditing(true)
+        }
+        else{
+            errorLabel.isHidden = false
+        }
+    }
+    
+    @objc func donePressed2(){
+        if checkValidTimes(){
+            var timePickerString = days[0].day[selectedRow0!]
+            timePickerString += " "
+            timePickerString += days[0].hour[selectedRow!]
+            timePickerString += " – "
+            timePickerString += days[0].secondHour[selectedRow2!]
+            timePicker2.text = "\(timePickerString)"
+            picker.selectRow(0, inComponent: 0, animated: false)
+            picker.selectRow(0, inComponent: 1, animated: false)
+            picker.selectRow(0, inComponent: 2, animated: false)
+            days = [Dates(day: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], hour: ["12 a.m.", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11"], secondHour: ["12 a.m.", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11"])]
+            previousRow = 0
+            previousRow2 = 0
+            errorLabel.isHidden = true
+            self.view.endEditing(true)
+        }
+        else{
+            errorLabel.isHidden = false
+        }
+    }
+    
+    @objc func donePressed3(){
+        if checkValidTimes(){
+            var timePickerString = days[0].day[selectedRow0!]
+            timePickerString += " "
+            timePickerString += days[0].hour[selectedRow!]
+            timePickerString += " – "
+            timePickerString += days[0].secondHour[selectedRow2!]
+            timePicker3.text = "\(timePickerString)"
+            picker.selectRow(0, inComponent: 0, animated: false)
+            picker.selectRow(0, inComponent: 1, animated: false)
+            picker.selectRow(0, inComponent: 2, animated: false)
+            days = [Dates(day: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], hour: ["12 a.m.", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11"], secondHour: ["12 a.m.", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11"])]
+            previousRow = 0
+            previousRow2 = 0
+            errorLabel.isHidden = true
+            self.view.endEditing(true)
+        }
+        else {
+            errorLabel.isHidden = false
+        }
     }
     
     @IBAction func addListingButton(_ sender: Any) {
@@ -189,14 +278,22 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // error label
+        errorLabel.isHidden = true
+        // keeping track of current and previous rows
         previousRow = 0
         previousRow2 = 0
+        selectedRow0 = 0
+        selectedRow = 0
+        selectedRow2 = 0
+        
         //picker view
         picker.delegate = self
         picker.dataSource = self
         days.append(Dates(day: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], hour: ["12 a.m.", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11"], secondHour: ["12 a.m.", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]))
         createFirstPickerView()
-        
+        createSecondPickerView()
+        createThirdPickerView()
         //recording blur effect and settings blur window's effect to 0
         blurEffect = blurView.effect
         blurView.isHidden = true
@@ -339,7 +436,14 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBAction func parkingSwitch(_ sender: UISwitch) {
     }
     
-
+    func checkValidTimes() -> Bool{
+        print(Int(days[0].hour[selectedRow!].digits)!)
+        print(Int(days[0].secondHour[selectedRow2!].digits)!)
+        if (Int(days[0].hour[selectedRow!].digits)! >= Int(days[0].secondHour[selectedRow2!].digits)! || Int(days[0].secondHour[selectedRow2!].digits)!-Int(days[0].hour[selectedRow!].digits)! >= 5) {
+            return false
+        }
+        return true
+    }
     /*
     // MARK: - Navigation
 

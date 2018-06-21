@@ -1817,10 +1817,13 @@ Use the Add To List Button on a pin to begin</string>
                         <outlet property="descriptionLabel" destination="Ydd-Nl-90R" id="ixi-ft-gbV"/>
                         <outlet property="descriptionView" destination="lDR-XF-Neg" id="GmM-Zt-tHp"/>
                         <outlet property="dimensionsView" destination="MQs-tK-IpP" id="If5-aH-Oma"/>
+                        <outlet property="errorLabel" destination="0U9-Lm-tdR" id="Ijv-ke-wun"/>
                         <outlet property="nameLabel" destination="qT4-hc-vuy" id="hNb-g0-E60"/>
                         <outlet property="profileImage" destination="hQ7-X7-K9m" id="yYp-ae-HYL"/>
                         <outlet property="ratingLabel" destination="NFX-PZ-SFS" id="XLR-qU-W3x"/>
-                        <outlet property="timePicker" destination="Irk-Qp-NuM" id="wUR-R6-x8v"/>
+                        <outlet property="timePicker" destination="Xa6-vI-nc4" id="VUv-S6-lGS"/>
+                        <outlet property="timePicker2" destination="KVG-Sa-871" id="wOg-eJ-0oN"/>
+                        <outlet property="timePicker3" destination="L5m-zn-i9W" id="1gZ-HV-maU"/>
                         <outlet property="userDescriptionText" destination="IDz-F1-Zj4" id="Uxm-Ci-Hr1"/>
                     </connections>
                 </viewController>
@@ -1897,13 +1900,36 @@ Use the Add To List Button on a pin to begin</string>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Period" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Irk-Qp-NuM">
-                            <rect key="frame" x="34" y="105" width="154" height="30"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Choose first available period" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xa6-vI-nc4">
+                            <rect key="frame" x="5" y="71" width="240" height="61"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Choose second available period" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KVG-Sa-871">
+                            <rect key="frame" x="5" y="126" width="240" height="66"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Choose third available period" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="L5m-zn-i9W">
+                            <rect key="frame" x="5" y="185" width="240" height="92"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0U9-Lm-tdR">
+                            <rect key="frame" x="0.0" y="231" width="240" height="128"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <string key="text">Selection Error: Availability dates must be a timeslot of less than four hours. Additionally, the first hour selection must come before the second.</string>
+                            <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="Dosis-Light" family="Dosis" pointSize="12"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="0.7990421660958904" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <viewLayoutGuide key="safeArea" id="lE3-go-7hS"/>
@@ -2050,15 +2076,6 @@ Use the Add To List Button on a pin to begin</string>
                                                             <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
                                                             <state key="normal" image="Call Small Purple"/>
                                                         </button>
-<<<<<<< HEAD
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Drop Off Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTu-xG-Qd4">
-                                                            <rect key="frame" x="45" y="24" width="114" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-=======
->>>>>>> 929c594801fb6c936b1fb3a5300808bd0887f568
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Amt-ct-hIw">
                                                             <rect key="frame" x="20" y="141" width="38" height="42"/>
                                                             <constraints>
@@ -2096,13 +2113,8 @@ Use the Add To List Button on a pin to begin</string>
                                                             <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-<<<<<<< HEAD
-                                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drop off on" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7P-ME-OPt">
-                                                            <rect key="frame" x="65" y="27" width="69" height="21"/>
-=======
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drop-off on" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7P-ME-OPt">
-                                                            <rect key="frame" x="65" y="26" width="72" height="21"/>
->>>>>>> 929c594801fb6c936b1fb3a5300808bd0887f568
+                                                            <rect key="frame" x="65" y="27" width="72" height="21"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                                             <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
@@ -2126,13 +2138,13 @@ Use the Add To List Button on a pin to begin</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick-up on" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDU-I2-i5N">
-                                                            <rect key="frame" x="68" y="26" width="66" height="21"/>
+                                                            <rect key="frame" x="68" y="27" width="66" height="21"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                                             <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9QF-3L-LQP" userLabel="Confirm Drop off button">
-                                                            <rect key="frame" x="20" y="140" width="38" height="42"/>
+                                                            <rect key="frame" x="20" y="141" width="38" height="42"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="42" id="Mb3-Kl-5Lg"/>
                                                                 <constraint firstAttribute="width" constant="38" id="jgk-Sk-dPO"/>
@@ -2141,7 +2153,7 @@ Use the Add To List Button on a pin to begin</string>
                                                             <state key="normal" image="Confirm Button Purple"/>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="joP-dv-qOE" userLabel="Confirm Pickup">
-                                                            <rect key="frame" x="20" y="140" width="38" height="42"/>
+                                                            <rect key="frame" x="20" y="141" width="38" height="42"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="42" id="PpV-lg-qZG"/>
                                                                 <constraint firstAttribute="width" constant="38" id="e8P-KP-qGY"/>
@@ -2150,13 +2162,13 @@ Use the Add To List Button on a pin to begin</string>
                                                             <state key="normal" image="Confirm Button Purple"/>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Drop-off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcE-nP-M5f">
-                                                            <rect key="frame" x="65" y="151" width="106" height="21"/>
+                                                            <rect key="frame" x="65" y="152" width="106" height="21"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                                             <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Pick-up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qV7-cF-Obd">
-                                                            <rect key="frame" x="66" y="150" width="101" height="21"/>
+                                                            <rect key="frame" x="66" y="151" width="101" height="21"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                                             <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
@@ -3246,7 +3258,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-                                <rect key="frame" x="28" y="84" width="20" height="20"/>
+                                <rect key="frame" x="27.666666666666671" y="84" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
@@ -4354,6 +4366,39 @@ Use the Add To List Button on a pin to begin</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X0t-8S-bdr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3810.4000000000001" y="34.729064039408868"/>
+        </scene>
+        <!--Collection View Controller-->
+        <scene sceneID="GRk-q2-81j">
+            <objects>
+                <collectionViewController id="yRn-wN-xn7" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="IQ4-PH-mEC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="P7f-iq-Vn0">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fp3-Rk-JEb">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="yRn-wN-xn7" id="OZ4-R2-xO3"/>
+                            <outlet property="delegate" destination="yRn-wN-xn7" id="mPl-9A-tdl"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ztW-ly-D2Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>
