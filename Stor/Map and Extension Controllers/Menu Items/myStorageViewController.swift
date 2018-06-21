@@ -129,8 +129,17 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             let user = myStorageUsers[indexPath.section]
             // hiding and showing the buttons on pending section
             cell.cancelConnectionButton.isHidden = false
+            cell.cancelConnectionLabel.isHidden = false
             cell.schedulePickupButton.isHidden = true
             cell.schedulePickupLabel.isHidden = true
+            
+            cell.confirmDropoffLabel.isHidden = true
+            cell.confirmDropoffButton.isHidden = true
+            
+            cell.confirmPickupButton.isHidden = true
+            cell.confirmPickupLabel.isHidden = true
+
+            
             
             cell.addressLabel.attributedText = user.address
             
@@ -183,8 +192,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             cell.cancelConnectionButton.addTarget(self, action: #selector(self.cancelConnection(_:)), for: .touchUpInside)
             cell.callButton.tag = indexPath.section
             cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
-            cell.schedulePickupButton.tag = indexPath.section
-            cell.schedulePickupButton.addTarget(self, action: #selector(self.schedulePickup(_:)), for: .touchUpInside)
+            
             
 
             
@@ -197,8 +205,51 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             cell.addressLabel.text = user.address
             // hiding and showing buttons on current section
             cell.cancelConnectionButton.isHidden = true
-            cell.schedulePickupButton.isHidden = false
-            cell.schedulePickupLabel.isHidden = false
+            cell.cancelConnectionLabel.isHidden = true
+            
+            print(user.status!)
+            if user.status! == "confirmDropoff" {
+                cell.confirmDropoffLabel.isHidden = false
+                cell.confirmDropoffButton.isHidden = false
+                cell.confirmDropoffButton.tag = indexPath.section
+                cell.confirmDropoffButton.addTarget(self, action: #selector(self.confirmDropoff(_:)), for: .touchUpInside)
+                
+                cell.schedulePickupButton.isHidden = true
+                cell.schedulePickupLabel.isHidden = true
+                
+                cell.confirmPickupButton.isHidden = true
+                cell.confirmPickupLabel.isHidden = true
+            }
+            else if user.status! == "schedulePickup" {
+                cell.confirmDropoffLabel.isHidden = true
+                cell.confirmDropoffButton.isHidden = true
+                
+                cell.schedulePickupButton.isHidden = false
+                cell.schedulePickupLabel.isHidden = false
+                cell.schedulePickupButton.tag = indexPath.section
+                cell.schedulePickupButton.addTarget(self, action: #selector(self.schedulePickup(_:)), for: .touchUpInside)
+                
+                
+                cell.confirmPickupButton.isHidden = true
+                cell.confirmPickupLabel.isHidden = true
+            }
+            else{
+                cell.confirmDropoffLabel.isHidden = true
+                cell.confirmDropoffButton.isHidden = true
+                
+                cell.schedulePickupButton.isHidden = true
+                cell.schedulePickupLabel.isHidden = true
+                
+                cell.confirmPickupButton.isHidden = false
+                cell.confirmPickupLabel.isHidden = false
+                cell.confirmPickupButton.tag = indexPath.section
+                cell.confirmPickupButton.addTarget(self, action: #selector(self.confirmPickup(_:)), for: .touchUpInside)
+            }
+            
+            
+            
+            
+            
             cell.priceLabel.attributedText = user.price
             cell.dimensionsLabel.attributedText = user.dimensionsString
             cell.dropOffTimeLabel.attributedText = user.dropOffTime
@@ -325,9 +376,8 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     
-    @objc func schedulePickup(_ sender:UIButton) {
-        print("Schedule Pickup") 
-    }
+    
+    
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -425,5 +475,19 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
                 }
             }
         }, withCancel: nil)
+    }
+    
+    
+    
+    
+    
+    @objc func confirmDropoff(_ sender:UIButton) {
+        print("confirm Drop Off")
+    }
+    @objc func schedulePickup(_ sender:UIButton) {
+        print("Schedule Pickup")
+    }
+    @objc func confirmPickup(_ sender:UIButton) {
+        print("Confirm Pickup")
     }
 }
