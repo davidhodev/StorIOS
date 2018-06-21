@@ -46,6 +46,7 @@ class providerPotentialUser: NSObject {
                     let tempPhone = dictionary["phone"] as? String
                     print("TEMP PHONE: ", tempPhone)
                     let fontPhone:UIFont? = UIFont(name: "Dosis-Medium", size:16)
+                    
                     let phoneAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempPhone!, attributes: [.font: fontPhone!])
                     self.phone = phoneAttString
                     
@@ -56,14 +57,7 @@ class providerPotentialUser: NSObject {
                     
                     }
                     
-                    
-                    
-//                    print(timesDictionary!)
-//                    let userStorageInfo = timesDictionary![self.userID!] as? [String: Any]
-//                    print(userStorageInfo!)
-//                    let timeSlotTemp = userStorageInfo!["timeSlotString"]
-//                    print("TIME SLOT", timeSlotTemp)
-                    
+          
                     
                     
                     URLSession.shared.dataTask(with: NSURL(string: dictionary["profilePicture"] as! String)! as URL, completionHandler: { (data, response, error) -> Void in
