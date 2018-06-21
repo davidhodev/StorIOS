@@ -3389,11 +3389,9 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-<<<<<<< HEAD
-                                <rect key="frame" x="28" y="84" width="20" height="20"/>
-=======
+
                                 <rect key="frame" x="27.666666666666671" y="84" width="20" height="20"/>
->>>>>>> 4c4c16593c181f7edf06f98c44886bfe4aef43b2
+
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
