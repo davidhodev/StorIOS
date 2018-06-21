@@ -50,6 +50,13 @@
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Please allow location for this app</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Dosis-Light.otf</string>
+		<string>Dosis-Medium.otf</string>
+		<string>Dosis-Bold.otf</string>
+		<string>Dosis-Regular.otf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -58,17 +65,12 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Dosis-Light.otf</string>
-		<string>Dosis-Medium.otf</string>
-		<string>Dosis-Bold.otf</string>
-		<string>Dosis-Regular.otf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

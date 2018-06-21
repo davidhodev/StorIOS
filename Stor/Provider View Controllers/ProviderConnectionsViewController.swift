@@ -24,6 +24,25 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     @IBOutlet weak var noPendingOptionsLabel: UILabel!
     
     
+    @IBOutlet weak var currentLabel: UILabel!
+    @IBOutlet weak var pendingLabel: UILabel!
+    @IBOutlet weak var currentNoFill: UIImageView!
+    @IBOutlet weak var pendingNoFill: UIImageView!
+    @IBOutlet weak var pendingFill: UIImageView!
+    @IBOutlet weak var currentFill: UIImageView!
+    
+    
+    /*
+     @IBOutlet weak var currentLabel: UILabel!
+     @IBOutlet weak var pendingLabel: UILabel!
+     @IBOutlet weak var currentNoFill: UIImageView!
+     @IBOutlet weak var pendingNoFill: UIImageView!
+     @IBOutlet weak var pendingFill: UIImageView!
+     @IBOutlet weak var currentFill: UIImageView!
+     @IBOutlet weak var currentIsEmpty: UILabel!
+     
+ */
+    
     @IBAction func exitButton(_ sender: Any) {
         
         
@@ -36,23 +55,23 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
         
         // switch between current and past images
         if selectorIndex == 0{
-//            currentFill.isHidden = true
-//            pendingNoFill.isHidden = true
-//            pendingFill.isHidden = false
-//            currentNoFill.isHidden = false
-//            pendingLabel.textColor = UIColor(red:0.27, green:0.47, blue:0.91, alpha:1.0)
-//            currentLabel.textColor = UIColor.white
+            currentFill.isHidden = true
+            pendingNoFill.isHidden = true
+            pendingFill.isHidden = false
+            currentNoFill.isHidden = false
+            pendingLabel.textColor = UIColor(red:0.58, green:0.41, blue:0.9, alpha:1.0)
+            currentLabel.textColor = UIColor.white
             
             
             
         }
         else{
-//            currentFill.isHidden = false
-//            pendingNoFill.isHidden = false
-//            pendingFill.isHidden = true
-//            currentNoFill.isHidden = true
-//            pendingLabel.textColor = UIColor.white
-//            currentLabel.textColor =  UIColor(red:0.27, green:0.47, blue:0.91, alpha:1.0)
+            currentFill.isHidden = false
+            pendingNoFill.isHidden = false
+            pendingFill.isHidden = true
+            currentNoFill.isHidden = true
+            pendingLabel.textColor = UIColor.white
+            currentLabel.textColor =  UIColor(red:0.58, green:0.41, blue:0.9, alpha:1.0)
         }
         
         DispatchQueue.main.async {
@@ -276,6 +295,10 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentFill.isHidden = true
+        pendingNoFill.isHidden = true
+        pendingFill.isHidden = false
+        currentNoFill.isHidden = false
         providerTableView.delegate = self
         providerTableView.dataSource = self
         noCurrentConnectionsLabel.isHidden = true
