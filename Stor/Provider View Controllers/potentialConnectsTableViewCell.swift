@@ -26,8 +26,12 @@ class potentialConnectsTableViewCell: UITableViewCell {
     @IBOutlet weak var acceptButton: UIButton!
     @IBOutlet weak var declineButton: UIButton!
     
-    
-    
+    @IBOutlet weak var confirmDropoffLabel: UILabel!
+    @IBOutlet weak var confirmPickupLabel: UILabel!
+    @IBOutlet weak var confirmDropoffButton: UIButton!
+    @IBOutlet weak var confirmPickupButton: UIButton!
+    @IBOutlet weak var acceptLabel: UILabel!
+    @IBOutlet weak var rejectLabel: UILabel!
     
     class var expandedHeight: CGFloat {get { return 256 }}
     class var defaultHeight: CGFloat {get { return 60 }}

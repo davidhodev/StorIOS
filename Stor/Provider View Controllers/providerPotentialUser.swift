@@ -24,6 +24,7 @@ class providerPotentialUser: NSObject {
     var phone: NSMutableAttributedString?
     var inUse: Bool?
     var dropOff: String?
+    var status: String?
     
     
     func getName(){
@@ -57,6 +58,7 @@ class providerPotentialUser: NSObject {
                     
                     }
                     
+                    
           
                     
                     
@@ -72,6 +74,13 @@ class providerPotentialUser: NSObject {
                     }).resume()
                 }
             })
+            
+            Database.database().reference().child("Providers").child(user.uid).child("storageInUse").observe(.childAdded, with: { (snapshot) in
+                if let dictionary = snapshot.value as? [String: Any]{
+                    self.status = String(describing: dictionary["status"]!)
+            }
+            })
+
         }
     }
     
