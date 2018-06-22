@@ -1746,7 +1746,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFX-PZ-SFS">
-                                <rect key="frame" x="94" y="330" width="30" height="18"/>
+                                <rect key="frame" x="94" y="330" width="29.333333333333329" height="18"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="14"/>
                                 <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1759,7 +1759,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Listing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4JH-jc-4QI">
-                                <rect key="frame" x="74" y="58" width="103" height="31"/>
+                                <rect key="frame" x="74" y="58.333333333333336" width="102.66666666666669" height="30.666666666666664"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="24"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1841,7 +1841,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="who-mu-leA">
-                                <rect key="frame" x="274" y="676" width="77" height="84"/>
+                                <rect key="frame" x="291" y="694" width="60" height="66"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="who-mu-leA" secondAttribute="height" multiplier="32:35" id="NiW-3L-yOa"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Z8H-eF-DQ2"/>
@@ -1853,46 +1853,82 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="V6z-Ud-hty">
-                                <rect key="frame" x="74" y="650" width="49" height="31"/>
+                                <rect key="frame" x="74" y="658" width="51" height="31"/>
                                 <color key="onTintColor" red="0.26666666666666666" green="0.47058823529411764" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="parkingSwitch:" destination="iOa-Xt-34d" eventType="valueChanged" id="VfW-6H-3or"/>
                                 </connections>
                             </switch>
-
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time Slot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVu-sX-Iyb">
-                                <rect key="frame" x="75" y="541" width="209" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="bIC-E3-mgL">
+                                <rect key="frame" x="74" y="543" width="49.333333333333343" height="62"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Slot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVu-sX-Iyb">
+                                        <rect key="frame" x="0.0" y="0.0" width="49.333333333333336" height="18"/>
+                                        <fontDescription key="fontDescription" name="Dosis-Light" family="Dosis" pointSize="14"/>
+                                        <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Slot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zi-dG-cjk">
+                                        <rect key="frame" x="0.0" y="22" width="49.333333333333336" height="18"/>
+                                        <fontDescription key="fontDescription" name="Dosis-Light" family="Dosis" pointSize="14"/>
+                                        <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Slot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dD3-xp-us3">
+                                        <rect key="frame" x="0.0" y="44" width="49.333333333333336" height="18"/>
+                                        <fontDescription key="fontDescription" name="Dosis-Light" family="Dosis" pointSize="14"/>
+                                        <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="dD3-xp-us3" firstAttribute="top" secondItem="1Zi-dG-cjk" secondAttribute="bottom" constant="4" id="MB2-W7-fxK"/>
+                                    <constraint firstItem="1Zi-dG-cjk" firstAttribute="top" secondItem="FVu-sX-Iyb" secondAttribute="bottom" constant="4" id="MU7-61-e4R"/>
+                                    <constraint firstItem="FVu-sX-Iyb" firstAttribute="top" secondItem="bIC-E3-mgL" secondAttribute="top" id="VJ8-73-uZL"/>
+                                    <constraint firstItem="FVu-sX-Iyb" firstAttribute="leading" secondItem="bIC-E3-mgL" secondAttribute="leading" id="aLj-KX-Zym"/>
+                                    <constraint firstItem="1Zi-dG-cjk" firstAttribute="leading" secondItem="bIC-E3-mgL" secondAttribute="leading" id="ncM-RK-zcV"/>
+                                    <constraint firstItem="dD3-xp-us3" firstAttribute="leading" secondItem="bIC-E3-mgL" secondAttribute="leading" id="rSg-65-5k0"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parking Space?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xaa-rZ-hMv">
+                                <rect key="frame" x="74" y="631" width="92" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                                <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OL8-w6-Zlq" userLabel="Cubic Feet Label">
+                                <rect key="frame" x="254" y="364" width="98" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="98" id="Hav-ka-R8v"/>
+                                    <constraint firstAttribute="height" constant="20" id="YlB-zJ-PFf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time Slot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zi-dG-cjk">
-                                <rect key="frame" x="75" y="570" width="185" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qrv-mu-5HX" userLabel="Dimensions Label">
+                                <rect key="frame" x="254" y="392" width="98" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="98" id="FuW-xL-oCd"/>
+                                    <constraint firstAttribute="height" constant="20" id="O3u-Wa-6Cv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time Slot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dD3-xp-us3">
-                                <rect key="frame" x="75" y="599" width="187" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
-                                <nil key="textColor"/>
-
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="0.9002300941780822" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="1ds-tT-3ci" firstAttribute="top" secondItem="Os9-V4-bzN" secondAttribute="bottom" constant="-116" id="0Np-xm-LwQ"/>
+                            <constraint firstItem="dLG-6Q-9Hx" firstAttribute="top" secondItem="OL8-w6-Zlq" secondAttribute="bottom" constant="-59" id="1H6-Bg-g9n"/>
                             <constraint firstItem="Fqg-SD-XN2" firstAttribute="trailing" secondItem="A5l-fn-Qo5" secondAttribute="trailing" constant="148" id="1nM-Pl-wo0"/>
                             <constraint firstItem="7fb-Bu-mer" firstAttribute="bottom" secondItem="A5l-fn-Qo5" secondAttribute="bottom" constant="195" id="2S8-9a-mkY"/>
-                            <constraint firstItem="V1U-v5-LYJ" firstAttribute="leading" secondItem="NYc-Jx-rOc" secondAttribute="leading" id="2X3-IT-YxF"/>
                             <constraint firstItem="Ydd-Nl-90R" firstAttribute="leading" secondItem="9Ri-Mg-XBo" secondAttribute="trailing" constant="-118" id="2Y0-ak-sej"/>
+                            <constraint firstItem="Qrv-mu-5HX" firstAttribute="centerX" secondItem="OL8-w6-Zlq" secondAttribute="centerX" id="3fB-od-UtC"/>
                             <constraint firstItem="1ds-tT-3ci" firstAttribute="bottom" secondItem="A5l-fn-Qo5" secondAttribute="bottom" constant="34" id="3oC-FP-cfb"/>
                             <constraint firstItem="q7W-Ws-BDR" firstAttribute="top" secondItem="bVh-MW-cd2" secondAttribute="bottom" constant="18" id="4jn-0O-gRt"/>
                             <constraint firstItem="9Ri-Mg-XBo" firstAttribute="top" secondItem="q7W-Ws-BDR" secondAttribute="bottom" constant="-5" id="5Ba-iN-Y8J"/>
+                            <constraint firstItem="rmq-xA-5BU" firstAttribute="leading" secondItem="bIC-E3-mgL" secondAttribute="trailing" constant="-101.33" id="68O-XJ-y9r"/>
                             <constraint firstItem="NYc-Jx-rOc" firstAttribute="leading" secondItem="rmq-xA-5BU" secondAttribute="trailing" constant="-130" id="6dt-Rl-sba"/>
                             <constraint firstItem="4JH-jc-4QI" firstAttribute="centerY" secondItem="6kz-ln-KSr" secondAttribute="centerY" id="6lk-2o-4rO"/>
                             <constraint firstItem="A5l-fn-Qo5" firstAttribute="leading" secondItem="7fb-Bu-mer" secondAttribute="leading" constant="220" id="8MR-mR-AIL"/>
@@ -1912,31 +1948,35 @@ Use the Add To List Button on a pin to begin</string>
                             <constraint firstItem="1ds-tT-3ci" firstAttribute="leading" secondItem="A5l-fn-Qo5" secondAttribute="leading" id="MUe-6x-9V9"/>
                             <constraint firstItem="bVh-MW-cd2" firstAttribute="top" secondItem="qT4-hc-vuy" secondAttribute="bottom" constant="7" id="Mut-8O-XNt"/>
                             <constraint firstItem="A5l-fn-Qo5" firstAttribute="top" secondItem="xdd-QA-YrH" secondAttribute="top" constant="49" id="QhU-aS-sH6"/>
-                            <constraint firstItem="V1U-v5-LYJ" firstAttribute="top" secondItem="NYc-Jx-rOc" secondAttribute="bottom" constant="22" id="RsC-GI-TXM"/>
                             <constraint firstItem="EBe-Av-eRe" firstAttribute="top" secondItem="dLG-6Q-9Hx" secondAttribute="bottom" constant="-83" id="UgU-to-YHb"/>
                             <constraint firstItem="Ydd-Nl-90R" firstAttribute="top" secondItem="9Ri-Mg-XBo" secondAttribute="bottom" constant="-9" id="VyL-S3-XHU"/>
                             <constraint firstItem="q7W-Ws-BDR" firstAttribute="leading" secondItem="hQ7-X7-K9m" secondAttribute="trailing" constant="-7" id="WvW-21-j0T"/>
+                            <constraint firstItem="V6z-Ud-hty" firstAttribute="leading" secondItem="Xaa-rZ-hMv" secondAttribute="leading" id="YEL-Xh-fNp"/>
                             <constraint firstItem="hQ7-X7-K9m" firstAttribute="top" secondItem="Os9-V4-bzN" secondAttribute="bottom" constant="4" id="YMs-Nh-ZOl"/>
                             <constraint firstItem="q7W-Ws-BDR" firstAttribute="top" secondItem="emg-21-5uq" secondAttribute="bottom" constant="-42" id="YTu-b1-vZi"/>
                             <constraint firstItem="6kz-ln-KSr" firstAttribute="leading" secondItem="A5l-fn-Qo5" secondAttribute="leading" id="aav-MG-SEZ"/>
                             <constraint firstItem="rmq-xA-5BU" firstAttribute="top" secondItem="9Ri-Mg-XBo" secondAttribute="bottom" constant="45" id="aq1-KA-aCc"/>
                             <constraint firstItem="dLG-6Q-9Hx" firstAttribute="top" secondItem="Fqg-SD-XN2" secondAttribute="bottom" constant="-128" id="avO-ez-ayb"/>
                             <constraint firstItem="hQ7-X7-K9m" firstAttribute="leading" secondItem="A5l-fn-Qo5" secondAttribute="leading" constant="14" id="b4u-I8-VQD"/>
+                            <constraint firstItem="Qrv-mu-5HX" firstAttribute="top" secondItem="OL8-w6-Zlq" secondAttribute="bottom" constant="8" id="bT6-kG-5LT"/>
                             <constraint firstItem="A5l-fn-Qo5" firstAttribute="trailing" secondItem="Os9-V4-bzN" secondAttribute="trailing" constant="32" id="cXK-2F-bnR"/>
                             <constraint firstItem="A5l-fn-Qo5" firstAttribute="trailing" secondItem="dLG-6Q-9Hx" secondAttribute="trailing" constant="14" id="cv7-VW-hcT"/>
                             <constraint firstItem="1ds-tT-3ci" firstAttribute="top" secondItem="A5l-fn-Qo5" secondAttribute="top" constant="136" id="dAt-2W-eUQ"/>
+                            <constraint firstItem="OL8-w6-Zlq" firstAttribute="centerX" secondItem="dLG-6Q-9Hx" secondAttribute="centerX" id="dDJ-mJ-i0h"/>
                             <constraint firstItem="Os9-V4-bzN" firstAttribute="leading" secondItem="A5l-fn-Qo5" secondAttribute="leading" constant="32" id="dYN-1y-iR6"/>
                             <constraint firstItem="A5l-fn-Qo5" firstAttribute="top" secondItem="Lbi-0q-pE3" secondAttribute="top" constant="244" id="emn-Gh-lS3"/>
+                            <constraint firstItem="bIC-E3-mgL" firstAttribute="top" secondItem="rmq-xA-5BU" secondAttribute="bottom" constant="-7" id="g5B-1X-I9u"/>
                             <constraint firstItem="Os9-V4-bzN" firstAttribute="centerX" secondItem="A5l-fn-Qo5" secondAttribute="centerX" id="gCg-Du-aSa"/>
                             <constraint firstItem="A5l-fn-Qo5" firstAttribute="trailing" secondItem="Lbi-0q-pE3" secondAttribute="trailing" constant="87" id="jJV-Uu-d4k"/>
                             <constraint firstItem="NFX-PZ-SFS" firstAttribute="leading" secondItem="bVh-MW-cd2" secondAttribute="trailing" constant="7" id="jVN-H1-hrs"/>
+                            <constraint firstItem="NYc-Jx-rOc" firstAttribute="leading" secondItem="Xaa-rZ-hMv" secondAttribute="trailing" constant="-92" id="kTV-a6-peZ"/>
                             <constraint firstItem="who-mu-leA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="NYc-Jx-rOc" secondAttribute="bottom" constant="-10" id="kzt-hK-rx6"/>
                             <constraint firstItem="Os9-V4-bzN" firstAttribute="top" secondItem="xdd-QA-YrH" secondAttribute="bottom" constant="-45" id="m05-Wu-BfL"/>
+                            <constraint firstItem="V6z-Ud-hty" firstAttribute="top" secondItem="Xaa-rZ-hMv" secondAttribute="bottom" constant="6.6666666666666288" id="mLU-oo-EGI"/>
                             <constraint firstItem="A5l-fn-Qo5" firstAttribute="trailing" secondItem="1ds-tT-3ci" secondAttribute="trailing" id="ms9-Ht-nxU"/>
-                            <constraint firstItem="V6z-Ud-hty" firstAttribute="top" secondItem="V1U-v5-LYJ" secondAttribute="bottom" constant="8" id="ojZ-JS-OnL"/>
+                            <constraint firstItem="Xaa-rZ-hMv" firstAttribute="top" secondItem="NYc-Jx-rOc" secondAttribute="bottom" constant="32" id="pRE-Rt-NZZ"/>
                             <constraint firstItem="emg-21-5uq" firstAttribute="leading" secondItem="q7W-Ws-BDR" secondAttribute="trailing" constant="8" id="pqW-hk-R8P"/>
-                            <constraint firstItem="V6z-Ud-hty" firstAttribute="leading" secondItem="V1U-v5-LYJ" secondAttribute="leading" id="qwt-6f-PpS"/>
-                            <constraint firstItem="who-mu-leA" firstAttribute="leading" secondItem="A5l-fn-Qo5" secondAttribute="leading" constant="274" id="sYp-hY-PDU"/>
+                            <constraint firstItem="who-mu-leA" firstAttribute="leading" secondItem="A5l-fn-Qo5" secondAttribute="leading" constant="291" id="sYp-hY-PDU"/>
                             <constraint firstItem="bVh-MW-cd2" firstAttribute="leading" secondItem="qT4-hc-vuy" secondAttribute="leading" id="y3V-vg-a4t"/>
                             <constraint firstItem="1ds-tT-3ci" firstAttribute="top" secondItem="Fqg-SD-XN2" secondAttribute="bottom" constant="-273" id="y9A-LZ-aQ8"/>
                         </constraints>
@@ -3441,9 +3481,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-
                                 <rect key="frame" x="28" y="84" width="20" height="20"/>
-
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
