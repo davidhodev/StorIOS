@@ -1998,18 +1998,30 @@ Use the Add To List Button on a pin to begin</string>
                         <outlet property="availabilityTwo" destination="fmT-PC-YYg" id="p4W-LF-re0"/>
                         <outlet property="availabilityView" destination="ysA-BL-oZa" id="o1C-yM-xzn"/>
                         <outlet property="blurView" destination="Nvf-2i-YT3" id="ugj-4P-dad"/>
+                        <outlet property="cubicFeetLabel" destination="RVh-hU-qAQ" id="b8N-Pi-pnc"/>
                         <outlet property="descriptionLabel" destination="Ydd-Nl-90R" id="ixi-ft-gbV"/>
                         <outlet property="descriptionView" destination="lDR-XF-Neg" id="GmM-Zt-tHp"/>
+                        <outlet property="dimensionsErrorLabel" destination="Wwa-vr-fkV" id="f4E-q7-C6X"/>
                         <outlet property="dimensionsView" destination="MQs-tK-IpP" id="If5-aH-Oma"/>
                         <outlet property="errorLabel" destination="0U9-Lm-tdR" id="Ijv-ke-wun"/>
                         <outlet property="errorLabel2" destination="RpK-s3-5dO" id="mWv-tW-SQ3"/>
+                        <outlet property="feetCubedLabel" destination="brv-Jc-13q" id="jH1-8C-Ac1"/>
+                        <outlet property="heightLabel" destination="3G5-1E-1cN" id="AwB-oQ-9VK"/>
+                        <outlet property="heightSliderOutlet" destination="C7q-HP-fIZ" id="Jh8-9C-pie"/>
+                        <outlet property="lengthLabel" destination="VrE-tK-4pv" id="0pB-um-K6Q"/>
+                        <outlet property="lengthSliderOutlet" destination="n6w-kv-6sG" id="8Wt-x2-CA5"/>
                         <outlet property="nameLabel" destination="qT4-hc-vuy" id="hNb-g0-E60"/>
+                        <outlet property="placeHolderDimensionsLabel" destination="EBe-Av-eRe" id="uTh-yk-upT"/>
                         <outlet property="profileImage" destination="hQ7-X7-K9m" id="hy6-kR-Hnz"/>
                         <outlet property="ratingLabel" destination="NFX-PZ-SFS" id="XLR-qU-W3x"/>
+                        <outlet property="savedCubicFeetLabel" destination="OL8-w6-Zlq" id="Xw7-xt-aHi"/>
+                        <outlet property="savedDimensionsLabel" destination="Qrv-mu-5HX" id="oeB-ys-7ew"/>
                         <outlet property="timePicker" destination="Xa6-vI-nc4" id="VUv-S6-lGS"/>
                         <outlet property="timePicker2" destination="KVG-Sa-871" id="wOg-eJ-0oN"/>
                         <outlet property="timePicker3" destination="L5m-zn-i9W" id="1gZ-HV-maU"/>
-                        <outlet property="userDescriptionText" destination="IDz-F1-Zj4" id="Uxm-Ci-Hr1"/>
+                        <outlet property="userDescriptionText" destination="ZZZ-nE-Qip" id="UX7-jE-PxD"/>
+                        <outlet property="widthLabel" destination="UrQ-yM-gjV" id="bNx-RD-Zgx"/>
+                        <outlet property="widthSliderOutlet" destination="fbX-UD-Wxs" id="75N-Hz-6Kf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pis-mf-pN9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2026,27 +2038,81 @@ Use the Add To List Button on a pin to begin</string>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dimensions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOm-FM-u3p">
-                            <rect key="frame" x="16" y="35" width="89" height="21"/>
+                            <rect key="frame" x="16" y="35" width="80" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="18"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="n6w-kv-6sG">
                             <rect key="frame" x="39" y="162" width="179" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="maximumTrackTintColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="thumbTintColor" red="0.2666666667" green="0.47058823529999999" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="lengthSliderAction:" destination="iOa-Xt-34d" eventType="valueChanged" id="NMM-kL-yqV"/>
+                            </connections>
                         </slider>
                         <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="C7q-HP-fIZ">
                             <rect key="frame" x="39" y="228" width="179" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="maximumTrackTintColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="thumbTintColor" red="0.2666666667" green="0.47058823529999999" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="heightSliderAction:" destination="iOa-Xt-34d" eventType="valueChanged" id="TU4-2O-1bp"/>
+                            </connections>
                         </slider>
                         <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="fbX-UD-Wxs">
                             <rect key="frame" x="39" y="96" width="179" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="maximumTrackTintColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="thumbTintColor" red="0.2666666667" green="0.47058823529999999" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="widthSliderAction:" destination="iOa-Xt-34d" eventType="valueChanged" id="6rF-T2-t7B"/>
+                            </connections>
                         </slider>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Width" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UrQ-yM-gjV">
+                            <rect key="frame" x="122" y="70" width="118" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Length" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VrE-tK-4pv">
+                            <rect key="frame" x="122" y="145" width="94" height="18"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Height" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3G5-1E-1cN">
+                            <rect key="frame" x="122" y="202" width="94" height="18"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cubic Feet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVh-hU-qAQ">
+                            <rect key="frame" x="58" y="281" width="138" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brv-Jc-13q">
+                            <rect key="frame" x="139" y="282" width="42" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please choose values for all three dimensions." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wwa-vr-fkV">
+                            <rect key="frame" x="16" y="300" width="224" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Dosis-Light" family="Dosis" pointSize="12"/>
+                            <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <viewLayoutGuide key="safeArea" id="bJ7-dc-Cax"/>
@@ -2070,13 +2136,13 @@ Use the Add To List Button on a pin to begin</string>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IDz-F1-Zj4">
-                            <rect key="frame" x="16" y="68" width="200" height="30"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Add description here" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZZZ-nE-Qip">
+                            <rect key="frame" x="0.0" y="72" width="240" height="128"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <viewLayoutGuide key="safeArea" id="9f7-6M-W8I"/>

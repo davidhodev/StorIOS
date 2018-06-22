@@ -33,22 +33,24 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     var selectedRow0: Int?
     var selectedRow: Int?
     var days = [Dates]()
-    
+    // number of columns in picker
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
     
-    
+    // number of items per column
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        //first column
         if (component == 0){
             return 8
         }
+        //second column
         else{
             return days[0].hour.count
         }
     }
     
-    //changing font
+    //changing font inside picker view
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         var label: UILabel
         if let view = view as? UILabel {
@@ -108,12 +110,26 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
-    // dimensions variables
+    // dimensions variables, slider and their labels w values
     @IBOutlet var dimensionsView: UIView!
+    @IBOutlet weak var widthLabel: UILabel!
+    @IBOutlet weak var widthSliderOutlet: UISlider!
+    @IBOutlet weak var lengthSliderOutlet: UISlider!
+    @IBOutlet weak var lengthLabel: UILabel!
+    @IBOutlet weak var heightSliderOutlet: UISlider!
+    @IBOutlet weak var heightLabel: UILabel!
+    //widthxlengthxheight
+    @IBOutlet weak var cubicFeetLabel: UILabel!
+    //ft3 with superscript
+    @IBOutlet weak var feetCubedLabel: UILabel!
+    @IBOutlet weak var savedDimensionsLabel: UILabel!
+    @IBOutlet weak var savedCubicFeetLabel: UILabel!
+    @IBOutlet weak var dimensionsErrorLabel: UILabel!
+    @IBOutlet weak var placeHolderDimensionsLabel: UILabel!
     
     //description variables
     @IBOutlet var descriptionView: UIView!
-    @IBOutlet weak var userDescriptionText: UITextField!
+    @IBOutlet weak var userDescriptionText: UITextView!
     @IBOutlet weak var descriptionLabel: UILabel!
     let picker = UIPickerView()
     // 3 text views to take in the text from picker view
@@ -130,7 +146,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var availabilityThree: UILabel!
     @IBOutlet weak var availabilityInfoLabel: UILabel!
     
-    
+    //blur effect and window
     @IBOutlet weak var blurView: UIVisualEffectView!
     var blurEffect: UIVisualEffect!
     
@@ -299,7 +315,23 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
         animateInDimensions()
     }
     @IBAction func exitDimensions(_ sender: UIButton) {
-        animateOutDimensions()
+        if (widthFeet != 0 && lengthFeet != 0 && heightFeet != 0){
+            animateOutDimensions()
+            var cubicFinalString = cubicFeetLabel.text
+            cubicFinalString?.append(" ")
+            cubicFinalString?.append(feetCubedLabel.text!)
+            savedCubicFeetLabel.text = cubicFinalString
+            savedCubicFeetLabel.isHidden = false
+            var dimensionsFinalString = String(describing: widthFeet!)
+            dimensionsFinalString += (" X ")
+            dimensionsFinalString += String(describing: lengthFeet!)
+            savedDimensionsLabel.text = dimensionsFinalString
+            savedDimensionsLabel.isHidden = false
+            placeHolderDimensionsLabel.isHidden = true
+        }
+        else{
+            dimensionsErrorLabel.isHidden = false
+        }
     }
     
     //takes you to description pop up
@@ -333,6 +365,17 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //feet cubed label hidden
+        feetCubedLabel.isHidden = true
+        savedCubicFeetLabel.isHidden = true
+        savedDimensionsLabel.isHidden = true
+        dimensionsErrorLabel.isHidden = true
+        let font:UIFont? = UIFont(name: "Dosis-Regular", size:16)
+        let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:14)
+        
+        let cubicFeetAttString:NSMutableAttributedString = NSMutableAttributedString(string: "ft3", attributes: [.font:font!])
+        cubicFeetAttString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:2 ,length:1))
+        self.feetCubedLabel.attributedText = cubicFeetAttString
         // error label
         errorLabel.isHidden = true
         errorLabel2.isHidden = true
@@ -511,6 +554,43 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
         }
         return false
     }
+    var widthFeet: Int? = 0
+    var heightFeet: Int? = 0
+    var lengthFeet: Int? = 0
+    
+    //dimensions variables code
+    @IBAction func widthSliderAction(_ sender: UISlider) {
+        var widthLabelText = "Width: "
+        widthLabelText += String(describing: Int(sender.value))
+        widthLabelText += " ft."
+        widthLabel.text = widthLabelText
+        widthFeet = Int(sender.value)
+        cubicFeetLabel.text = (String(describing: Int(heightFeet! * lengthFeet! * widthFeet!)))
+        feetCubedLabel.isHidden = false
+    }
+
+    @IBAction func lengthSliderAction(_ sender: UISlider) {
+        var lengthLabelText = "Length: "
+        lengthLabelText += String(describing: Int(sender.value))
+        lengthLabelText += " ft."
+        lengthLabel.text = lengthLabelText
+        lengthFeet = Int(sender.value)
+        cubicFeetLabel.text = (String(describing: Int(heightFeet! * lengthFeet! * widthFeet!)))
+        feetCubedLabel.isHidden = false
+    }
+
+    @IBAction func heightSliderAction(_ sender: UISlider) {
+        var heightLabelText = "Height: "
+        heightLabelText += String(describing: Int(sender.value))
+        heightLabelText += " ft."
+        heightLabel.text = heightLabelText
+        heightFeet = Int(sender.value)
+        cubicFeetLabel.text = (String(describing: Int(heightFeet! * lengthFeet! * widthFeet!)))
+        feetCubedLabel.isHidden = false
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 
