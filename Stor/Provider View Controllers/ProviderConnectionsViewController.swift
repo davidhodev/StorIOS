@@ -195,9 +195,20 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                 
                 cell.confirmPickupButton.isHidden = true
                 cell.confirmPickupLabel.isHidden = true
-            }
                 
+                print("USER DROPOFF", user.dropOff)
+                cell.dropOffTime.text = user.dropOff
+            }
+            
             else{
+                if user.status! == "schedulePickup"{
+                    cell.dropOffTime.text = "Pickup time not yet chosen"
+                }
+                else{
+                    print("USER PICKUPTIME", user.pickupTime)
+                    cell.dropOffTime.text = user.pickupTime
+                }
+                
                 cell.confirmDropoffLabel.isHidden = true
                 cell.confirmDropoffButton.isHidden = true
                 
