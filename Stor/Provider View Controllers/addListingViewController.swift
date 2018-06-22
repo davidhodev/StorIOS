@@ -343,6 +343,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
                     let nameString = String(describing: dictionary["Name"]!)
                     let nameFont: UIFont? = UIFont(name: "Dosis-Bold", size:18)
                     let nameAttString:NSMutableAttributedString = NSMutableAttributedString(string: nameString, attributes: [.font: nameFont!])
+                    print("NAME ATT STRING: ", nameAttString)
                     self.nameLabel.attributedText = nameAttString
                     
                 }
