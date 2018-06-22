@@ -165,7 +165,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @objc func donePressed(){
         if checkValidTimes(){
             var timePickerString = days[0].day[selectedRow0!]
-            timePickerString += " "
+            timePickerString += ", "
             timePickerString += days[0].hour[selectedRow!]
             timePickerString += " – "
             
@@ -207,7 +207,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @objc func donePressed2(){
         if checkValidTimes(){
             var timePickerString = days[0].day[selectedRow0!]
-            timePickerString += " "
+            timePickerString += ", "
             timePickerString += days[0].hour[selectedRow!]
             timePickerString += " – "
             
@@ -249,7 +249,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @objc func donePressed3(){
         if checkValidTimes(){
             var timePickerString = days[0].day[selectedRow0!]
-            timePickerString += " "
+            timePickerString += ", "
             timePickerString += days[0].hour[selectedRow!]
             timePickerString += " – "
             
