@@ -47,7 +47,7 @@ class providerPotentialUser: NSObject {
                     
                     let tempPhone = dictionary["phone"] as? String
                     print("TEMP PHONE: ", tempPhone)
-                    let fontPhone:UIFont? = UIFont(name: "Dosis-Medium", size:16)
+                    let fontPhone:UIFont? = UIFont(name: "Dosis-Regular", size:16)
                     
                     let phoneAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempPhone!, attributes: [.font: fontPhone!])
                     self.phone = phoneAttString

@@ -154,8 +154,6 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                 cell.profileImage.layer.mask = borderLayer
                 cell.profileImage.image = user.providerProfile
                 print(user.dropOff)
-                cell.dropoffOnLabel.isHidden = false
-                cell.pickupOnLabel.isHidden = true
                 cell.dropOffTime.text = user.dropOff
                 
             })
@@ -198,8 +196,6 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                 cell.confirmPickupButton.isHidden = true
                 cell.confirmPickupLabel.isHidden = true
                 
-                cell.dropoffOnLabel.isHidden = false
-                cell.pickupOnLabel.isHidden = true
                 print("USER DROPOFF", user.dropOff)
                 cell.dropOffTime.text = user.dropOff
             }
@@ -212,9 +208,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                     print("USER PICKUPTIME", user.pickupTime)
                     cell.dropOffTime.text = user.pickupTime
                 }
-                cell.dropoffOnLabel.isHidden = true
-                cell.pickupOnLabel.isHidden = true
-            
+                
                 cell.confirmDropoffLabel.isHidden = true
                 cell.confirmDropoffButton.isHidden = true
                 

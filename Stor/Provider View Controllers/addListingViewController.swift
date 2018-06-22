@@ -20,11 +20,9 @@ extension String{
 class Dates{
     var day = [String]()
     var hour = [String]()
-    var secondHour = [String]()
-    init(day: [String], hour: [String], secondHour: [String]){
+    init(day: [String], hour: [String]){
         self.day = day
         self.hour = hour
-        self.secondHour = secondHour
     }
 }
 
@@ -34,12 +32,10 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     var previousRow: Int?
     var selectedRow0: Int?
     var selectedRow: Int?
-    var selectedRow2: Int?
-    var previousRow2: Int?
     var days = [Dates]()
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 3
+        return 2
     }
     
     
@@ -47,11 +43,8 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
         if (component == 0){
             return 8
         }
-        else if (component == 1){
-            return days[0].hour.count
-        }
         else{
-            return days[0].secondHour.count
+            return days[0].hour.count
         }
     }
     
@@ -71,9 +64,6 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
         else if component == 1{
             label.text = days[0].hour[row]
         }
-        else{
-            label.text = days[0].secondHour[row]
-        }
         return label
     }
     // did select in picker view, creates static label
@@ -83,13 +73,13 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
                 selectedRow0 = row
             }
             else{
-                selectedRow0 = nil
+                selectedRow0 = 0
             }
         }
         if (component == 1){
             if (row != 0)
             {
-                if (row <= 11){
+                if (row < 8){
                     days[0].hour[row] += " a.m."
                     if previousRow != nil{
                         print("PREVIOUS ROW REMOVE", days[0].hour[previousRow!])
@@ -109,27 +99,8 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
                     pickerView.reloadComponent(1)
                 }
             }
-        }
-        else if (component == 2){
-            if (row != 0){
-                if (row <= 11){
-                    days[0].secondHour[row] += " a.m."
-                    if previousRow2 != nil{
-                        days[0].secondHour[previousRow2!].removeLast(5)
-                    }
-                    previousRow2 = row
-                    selectedRow2 = row
-                    pickerView.reloadComponent(2)
-                }
-                else{
-                    days[0].secondHour[row] += " p.m."
-                    if previousRow2 != nil{
-                        days[0].secondHour[previousRow2!].removeLast(5)
-                    }
-                    previousRow2 = row
-                    selectedRow2 = row
-                    pickerView.reloadComponent(2)
-                }
+            else{
+                selectedRow = 0
             }
         }
     }
@@ -157,6 +128,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var availabilityOne: UILabel!
     @IBOutlet weak var availabilityTwo: UILabel!
     @IBOutlet weak var availabilityThree: UILabel!
+    @IBOutlet weak var availabilityInfoLabel: UILabel!
     
     
     @IBOutlet weak var blurView: UIVisualEffectView!
@@ -196,15 +168,34 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
             timePickerString += " "
             timePickerString += days[0].hour[selectedRow!]
             timePickerString += " – "
-            timePickerString += days[0].secondHour[selectedRow2!]
+            
+            // add in window of time
+//            timePickerString += days[0].secondHour[selectedRow2!]
+            var endTimeString = ""
+            if selectedRow! == 19{
+                endTimeString = "12 a.m."
+            }
+            else if selectedRow! == 7{
+                endTimeString = "12 p.m."
+            }
+            else{
+                let endTimeFirstRow = selectedRow! + 1
+                endTimeString = days[0].hour[endTimeFirstRow]
+                if selectedRow! < 7{
+                    endTimeString += " a.m."
+                }
+                else{
+                    endTimeString += " p.m"
+                }
+            }
+            timePickerString += endTimeString
+            
             timePicker.text = "\(timePickerString)"
             
             picker.selectRow(0, inComponent: 0, animated: false)
             picker.selectRow(0, inComponent: 1, animated: false)
-            picker.selectRow(0, inComponent: 2, animated: false)
-            days = [Dates(day: ["", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], hour: ["", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11"], secondHour: ["", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11"])]
+            days = [Dates(day: ["", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], hour: ["", "5", "6", "7", "8", "9", "10", "11", "12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"])]
             previousRow = nil
-            previousRow2 = nil
             errorLabel.isHidden = true
             self.view.endEditing(true)
         }
@@ -219,14 +210,34 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
             timePickerString += " "
             timePickerString += days[0].hour[selectedRow!]
             timePickerString += " – "
-            timePickerString += days[0].secondHour[selectedRow2!]
+            
+            // add in window of time
+            //            timePickerString += days[0].secondHour[selectedRow2!]
+            var endTimeString = ""
+            if selectedRow! == 19{
+                endTimeString = "12 a.m."
+            }
+            else if selectedRow! == 7{
+                endTimeString = "12 p.m."
+            }
+            else{
+                let endTimeFirstRow = selectedRow! + 1
+                endTimeString = days[0].hour[endTimeFirstRow]
+                if selectedRow! < 7{
+                    endTimeString += " a.m."
+                }
+                else{
+                    endTimeString += " p.m"
+                }
+            }
+            timePickerString += endTimeString
+            
             timePicker2.text = "\(timePickerString)"
+            
             picker.selectRow(0, inComponent: 0, animated: false)
             picker.selectRow(0, inComponent: 1, animated: false)
-            picker.selectRow(0, inComponent: 2, animated: false)
-            days = [Dates(day: ["", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], hour: ["", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11"], secondHour: ["", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11"])]
+            days = [Dates(day: ["", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], hour: ["", "5", "6", "7", "8", "9", "10", "11", "12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"])]
             previousRow = nil
-            previousRow2 = nil
             errorLabel.isHidden = true
             self.view.endEditing(true)
         }
@@ -241,18 +252,38 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
             timePickerString += " "
             timePickerString += days[0].hour[selectedRow!]
             timePickerString += " – "
-            timePickerString += days[0].secondHour[selectedRow2!]
+            
+            // add in window of time
+            //            timePickerString += days[0].secondHour[selectedRow2!]
+            var endTimeString = ""
+            if selectedRow! == 19{
+                endTimeString = "12 a.m."
+            }
+            else if selectedRow! == 7{
+                endTimeString = "12 p.m."
+            }
+            else{
+                let endTimeFirstRow = selectedRow! + 1
+                endTimeString = days[0].hour[endTimeFirstRow]
+                if selectedRow! < 7{
+                    endTimeString += " a.m."
+                }
+                else{
+                    endTimeString += " p.m"
+                }
+            }
+            timePickerString += endTimeString
+            
             timePicker3.text = "\(timePickerString)"
+            
             picker.selectRow(0, inComponent: 0, animated: false)
             picker.selectRow(0, inComponent: 1, animated: false)
-            picker.selectRow(0, inComponent: 2, animated: false)
-            days = [Dates(day: ["", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], hour: ["", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11"], secondHour: ["", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11"])]
+            days = [Dates(day: ["", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], hour: ["", "5", "6", "7", "8", "9", "10", "11", "12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"])]
             previousRow = nil
-            previousRow2 = nil
             errorLabel.isHidden = true
             self.view.endEditing(true)
         }
-        else {
+        else{
             errorLabel.isHidden = false
         }
     }
@@ -292,6 +323,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
         }
         else{
             errorLabel2.isHidden = true
+            availabilityInfoLabel.isHidden = true
             animateOutAvailability()
         }
     }
@@ -302,14 +334,13 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
         errorLabel.isHidden = true
         errorLabel2.isHidden = true
         // keeping track of current and previous rows
-        selectedRow0 = 1
-        selectedRow = 1
-        selectedRow2 = 1
+        selectedRow0 = 0
+        selectedRow = 0
         
         //picker view
         picker.delegate = self
         picker.dataSource = self
-        days.append(Dates(day: ["", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], hour: ["", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11"], secondHour: ["", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "1","2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]))
+        days = [Dates(day: ["", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], hour: ["", "5", "6", "7", "8", "9", "10", "11", "12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"])]
         createFirstPickerView()
         createSecondPickerView()
         createThirdPickerView()
@@ -470,16 +501,11 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     func checkValidTimes() -> Bool{
-        if (days[0].day[selectedRow0!] == ""){
-            return false
-        }
-        if (selectedRow! != selectedRow2!){
-            if (selectedRow2! - selectedRow! == 1){
+        if (selectedRow0 != 0 && selectedRow != 0) {
             return true
-            }
         }
         return false
-        }
+    }
     /*
     // MARK: - Navigation
 
