@@ -318,7 +318,10 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     @IBAction func exitAvailability(_ sender: UIButton) {
-        if (timePicker.text == timePicker2.text || timePicker2.text == timePicker3.text || timePicker.text == timePicker3.text){
+        if (timePicker.text.contains("Choose") || timePicker2.text.contains("Choose") || timePicker3.text.contains("Choose")){
+            errorLabel2.isHidden = false
+        }
+        else if (timePicker.text == timePicker2.text || timePicker.text == timePicker3.text || timePicker2.text == timePicker3.text){
             errorLabel2.isHidden = false
         }
         else{
@@ -336,7 +339,9 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
         // keeping track of current and previous rows
         selectedRow0 = 0
         selectedRow = 0
-        
+        timePicker.text = "Choose first available period"
+        timePicker2.text = "Choose second available period"
+        timePicker3.text = "Choose third available period"
         //picker view
         picker.delegate = self
         picker.dataSource = self
