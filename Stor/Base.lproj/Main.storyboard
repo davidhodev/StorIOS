@@ -5,9 +5,8 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1845,20 +1844,26 @@ Use the Add To List Button on a pin to begin</string>
                                     <action selector="addListingButton:" destination="iOa-Xt-34d" eventType="touchUpInside" id="QJt-tn-FLe"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="V6z-Ud-hty">
-                                <rect key="frame" x="74" y="645" width="49" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="V6z-Ud-hty">
+                                <rect key="frame" x="74" y="650" width="49" height="31"/>
                                 <color key="onTintColor" red="0.26666666666666666" green="0.47058823529411764" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="parkingSwitch:" destination="iOa-Xt-34d" eventType="valueChanged" id="VfW-6H-3or"/>
                                 </connections>
                             </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listing a Parking Spot?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1U-v5-LYJ">
+                                <rect key="frame" x="74" y="621" width="137" height="21"/>
+                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                                <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="0.9002300941780822" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="1ds-tT-3ci" firstAttribute="top" secondItem="Os9-V4-bzN" secondAttribute="bottom" constant="-116" id="0Np-xm-LwQ"/>
                             <constraint firstItem="Fqg-SD-XN2" firstAttribute="trailing" secondItem="A5l-fn-Qo5" secondAttribute="trailing" constant="148" id="1nM-Pl-wo0"/>
                             <constraint firstItem="7fb-Bu-mer" firstAttribute="bottom" secondItem="A5l-fn-Qo5" secondAttribute="bottom" constant="195" id="2S8-9a-mkY"/>
+                            <constraint firstItem="V1U-v5-LYJ" firstAttribute="leading" secondItem="NYc-Jx-rOc" secondAttribute="leading" id="2X3-IT-YxF"/>
                             <constraint firstItem="Ydd-Nl-90R" firstAttribute="leading" secondItem="9Ri-Mg-XBo" secondAttribute="trailing" constant="-118" id="2Y0-ak-sej"/>
                             <constraint firstItem="1ds-tT-3ci" firstAttribute="bottom" secondItem="A5l-fn-Qo5" secondAttribute="bottom" constant="34" id="3oC-FP-cfb"/>
                             <constraint firstItem="q7W-Ws-BDR" firstAttribute="top" secondItem="bVh-MW-cd2" secondAttribute="bottom" constant="18" id="4jn-0O-gRt"/>
@@ -1882,6 +1887,7 @@ Use the Add To List Button on a pin to begin</string>
                             <constraint firstItem="1ds-tT-3ci" firstAttribute="leading" secondItem="A5l-fn-Qo5" secondAttribute="leading" id="MUe-6x-9V9"/>
                             <constraint firstItem="bVh-MW-cd2" firstAttribute="top" secondItem="qT4-hc-vuy" secondAttribute="bottom" constant="7" id="Mut-8O-XNt"/>
                             <constraint firstItem="A5l-fn-Qo5" firstAttribute="top" secondItem="xdd-QA-YrH" secondAttribute="top" constant="49" id="QhU-aS-sH6"/>
+                            <constraint firstItem="V1U-v5-LYJ" firstAttribute="top" secondItem="NYc-Jx-rOc" secondAttribute="bottom" constant="22" id="RsC-GI-TXM"/>
                             <constraint firstItem="EBe-Av-eRe" firstAttribute="top" secondItem="dLG-6Q-9Hx" secondAttribute="bottom" constant="-83" id="UgU-to-YHb"/>
                             <constraint firstItem="Ydd-Nl-90R" firstAttribute="top" secondItem="9Ri-Mg-XBo" secondAttribute="bottom" constant="-9" id="VyL-S3-XHU"/>
                             <constraint firstItem="q7W-Ws-BDR" firstAttribute="leading" secondItem="hQ7-X7-K9m" secondAttribute="trailing" constant="-7" id="WvW-21-j0T"/>
@@ -1902,7 +1908,9 @@ Use the Add To List Button on a pin to begin</string>
                             <constraint firstItem="who-mu-leA" firstAttribute="top" relation="greaterThanOrEqual" secondItem="NYc-Jx-rOc" secondAttribute="bottom" constant="-10" id="kzt-hK-rx6"/>
                             <constraint firstItem="Os9-V4-bzN" firstAttribute="top" secondItem="xdd-QA-YrH" secondAttribute="bottom" constant="-45" id="m05-Wu-BfL"/>
                             <constraint firstItem="A5l-fn-Qo5" firstAttribute="trailing" secondItem="1ds-tT-3ci" secondAttribute="trailing" id="ms9-Ht-nxU"/>
+                            <constraint firstItem="V6z-Ud-hty" firstAttribute="top" secondItem="V1U-v5-LYJ" secondAttribute="bottom" constant="8" id="ojZ-JS-OnL"/>
                             <constraint firstItem="emg-21-5uq" firstAttribute="leading" secondItem="q7W-Ws-BDR" secondAttribute="trailing" constant="8" id="pqW-hk-R8P"/>
+                            <constraint firstItem="V6z-Ud-hty" firstAttribute="leading" secondItem="V1U-v5-LYJ" secondAttribute="leading" id="qwt-6f-PpS"/>
                             <constraint firstItem="who-mu-leA" firstAttribute="leading" secondItem="A5l-fn-Qo5" secondAttribute="leading" constant="274" id="sYp-hY-PDU"/>
                             <constraint firstItem="bVh-MW-cd2" firstAttribute="leading" secondItem="qT4-hc-vuy" secondAttribute="leading" id="y3V-vg-a4t"/>
                             <constraint firstItem="1ds-tT-3ci" firstAttribute="top" secondItem="Fqg-SD-XN2" secondAttribute="bottom" constant="-273" id="y9A-LZ-aQ8"/>
@@ -2252,7 +2260,7 @@ Use the Add To List Button on a pin to begin</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Drop Off Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTu-xG-Qd4">
-                                                            <rect key="frame" x="138" y="26" width="87" height="21"/>
+                                                            <rect key="frame" x="138" y="27" width="87" height="21"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                                             <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -3389,9 +3397,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-
                                 <rect key="frame" x="27.666666666666671" y="84" width="20" height="20"/>
-
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
