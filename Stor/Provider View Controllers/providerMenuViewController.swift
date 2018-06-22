@@ -25,6 +25,9 @@ class providerMenuViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func exitArea(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     
     override func viewDidLoad() {

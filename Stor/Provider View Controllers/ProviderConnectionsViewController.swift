@@ -180,11 +180,33 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             print("PHONE LABEL: ", user.phone)
             cell.phoneLabel.attributedText = user.phone
             
+            cell.acceptLabel.isHidden = true
+            cell.rejectLabel.isHidden = true
             
             
             
-            
-            
+            print(user.status!)
+            if user.status! == "confirmDropoff" {
+                cell.confirmDropoffLabel.isHidden = false
+                cell.confirmDropoffButton.isHidden = false
+                cell.confirmDropoffButton.tag = indexPath.section
+                cell.confirmDropoffButton.addTarget(self, action: #selector(self.confirmDropoff(_:)), for: .touchUpInside)
+                
+                
+                cell.confirmPickupButton.isHidden = true
+                cell.confirmPickupLabel.isHidden = true
+            }
+                
+            else{
+                cell.confirmDropoffLabel.isHidden = true
+                cell.confirmDropoffButton.isHidden = true
+                
+                
+                cell.confirmPickupButton.isHidden = false
+                cell.confirmPickupLabel.isHidden = false
+                cell.confirmPickupButton.tag = indexPath.section
+                cell.confirmPickupButton.addTarget(self, action: #selector(self.confirmPickup(_:)), for: .touchUpInside)
+            }
             
             DispatchQueue.main.async(execute: { () -> Void in
                 
@@ -492,5 +514,34 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             print(selectorIndex)
         }
     }
+    @objc func confirmDropoff(_ sender:UIButton) {
+        print("confirm Drop Off")
+    }
+    
+    @objc func confirmPickup(_ sender:UIButton) {
+       if let user = Auth.auth().currentUser{
+        Database.database().reference().child("Providers").child(user.uid).child("storageInUse").observe(.value, with: { (snapshot) in
+
+            if let dictionary = snapshot.value as? [String: Any]{
+                let status = String(describing: dictionary["status"]!)
+                print(status)
+                if status == "schedulePickup"{
+                    let alert = UIAlertController(title: "Uh-oh", message: "Your connection has not yet scheduled a pickup. Please call them if something is wrong ", preferredStyle: .alert)
+                    self.present(alert, animated: true, completion:{
+                        alert.view.superview?.isUserInteractionEnabled = true
+                        alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+                    })
+                }
+            }
+        })
+    }
+    print("Confirm Pickup")
+    }
+    
+    @objc func alertControllerBackgroundTapped()
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
+
     
 }
