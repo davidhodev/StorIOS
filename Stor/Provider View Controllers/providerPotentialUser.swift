@@ -25,6 +25,7 @@ class providerPotentialUser: NSObject {
     var inUse: Bool?
     var dropOff: String?
     var status: String?
+    var pickupTime: String?
     
     
     func getName(){
@@ -53,10 +54,12 @@ class providerPotentialUser: NSObject {
                     
                     if let timesDictionary = dictionary["pendingStorage"] as? [String: Any]{
                         if let finalTimeDictionary = timesDictionary[self.storageID!] as? [String: Any]{
+                            
                             self.dropOff = finalTimeDictionary["timeSlotString"] as! String
                         }
                     
                     }
+                    
                     
                     
           
@@ -78,7 +81,15 @@ class providerPotentialUser: NSObject {
             Database.database().reference().child("Providers").child(user.uid).child("storageInUse").observe(.childAdded, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: Any]{
                     self.status = String(describing: dictionary["status"]!)
-            }
+                    if self.status == "confrimPickup"{
+                        self.pickupTime = String(describing: dictionary["pickupTime"])
+                    }
+                    if let finalTimeDictionary = dictionary["time"] as? [String: Any]{
+                            print("SELF.DROPOFF", finalTimeDictionary["time"] as! String)
+                            print(finalTimeDictionary)
+                            self.dropOff = finalTimeDictionary["time"] as! String
+                            }
+                }
             })
 
         }
