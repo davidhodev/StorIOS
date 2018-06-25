@@ -16,6 +16,10 @@
 		571E1B5620C08C0D00E68CA5 /* SettingsViewControllerFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571E1B5520C08C0D00E68CA5 /* SettingsViewControllerFinal.swift */; };
 		57499DD820D199CC005112E2 /* Dosis-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964DC20C0CBA0002F4EBD /* Dosis-Light.otf */; };
 		574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574FC7BE20B5F484001AE44F /* TermsViewController.swift */; };
+		5750DA0F20E1A7D000D43734 /* confirmDropoffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750DA0E20E1A7D000D43734 /* confirmDropoffViewController.swift */; };
+		5750DA1120E1AA0600D43734 /* confirmPickupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750DA1020E1AA0600D43734 /* confirmPickupViewController.swift */; };
+		5750DA1320E1ACC700D43734 /* confirmDropoffProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750DA1220E1ACC700D43734 /* confirmDropoffProviderViewController.swift */; };
+		5750DA1520E1ACEF00D43734 /* confirmPickupProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750DA1420E1ACEF00D43734 /* confirmPickupProviderViewController.swift */; };
 		576A007420B7798100F2174D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576A007320B7798100F2174D /* MenuViewController.swift */; };
 		576FD1E120CB3F72004BA549 /* MyProfileViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576FD1E020CB3F72004BA549 /* MyProfileViewController3.swift */; };
 		576FD1E220CB5276004BA549 /* Dosis-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964D720C0CB9E002F4EBD /* Dosis-Medium.otf */; };
@@ -88,6 +92,10 @@
 		4E5B7ADF60FD9AF861F2989D /* Pods-Stor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stor/Pods-Stor.release.xcconfig"; sourceTree = "<group>"; };
 		571E1B5520C08C0D00E68CA5 /* SettingsViewControllerFinal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerFinal.swift; sourceTree = "<group>"; };
 		574FC7BE20B5F484001AE44F /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
+		5750DA0E20E1A7D000D43734 /* confirmDropoffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmDropoffViewController.swift; sourceTree = "<group>"; };
+		5750DA1020E1AA0600D43734 /* confirmPickupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = confirmPickupViewController.swift; path = Settings/confirmPickupViewController.swift; sourceTree = "<group>"; };
+		5750DA1220E1ACC700D43734 /* confirmDropoffProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmDropoffProviderViewController.swift; sourceTree = "<group>"; };
+		5750DA1420E1ACEF00D43734 /* confirmPickupProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmPickupProviderViewController.swift; sourceTree = "<group>"; };
 		576A007320B7798100F2174D /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		576FD1E020CB3F72004BA549 /* MyProfileViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController3.swift; sourceTree = "<group>"; };
 		579D4C5E20BF2D6E0082A86F /* AnnotationPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationPopUp.swift; sourceTree = "<group>"; };
@@ -254,6 +262,8 @@
 				DBE2A9C420C8B39500E052A1 /* myStorageUser.swift */,
 				DBE2A9C620C9D5BF00E052A1 /* myCurrentUser.swift */,
 				DBE2A9C220C8B19B00E052A1 /* myStorageCustomTableViewCell.swift */,
+				5750DA0E20E1A7D000D43734 /* confirmDropoffViewController.swift */,
+				5750DA1020E1AA0600D43734 /* confirmPickupViewController.swift */,
 				041640B920BDF775001BE560 /* paymentViewController.swift */,
 				571E1B5920C0C6AB00E68CA5 /* Settings */,
 				DBE2A9C820D1A99300E052A1 /* registerProviderViewController.swift */,
@@ -273,6 +283,8 @@
 				DBE2A9D620D8708A00E052A1 /* myListingViewController.swift */,
 				DBE2A9DA20D8792000E052A1 /* providerMyListingCellTableViewCell.swift */,
 				DBE2A9DC20D984CB00E052A1 /* myListingObject.swift */,
+				5750DA1220E1ACC700D43734 /* confirmDropoffProviderViewController.swift */,
+				5750DA1420E1ACEF00D43734 /* confirmPickupProviderViewController.swift */,
 			);
 			path = "Provider View Controllers";
 			sourceTree = "<group>";
@@ -622,10 +634,12 @@
 				DB6B0EF720B8C7DB000CC1D9 /* Extensions.swift in Sources */,
 				041640BA20BDF775001BE560 /* paymentViewController.swift in Sources */,
 				DBE2A9CD20D1AA2A00E052A1 /* providerMenuViewController.swift in Sources */,
+				5750DA1120E1AA0600D43734 /* confirmPickupViewController.swift in Sources */,
 				DBE2A9C720C9D5BF00E052A1 /* myCurrentUser.swift in Sources */,
 				DBE2A9C320C8B19B00E052A1 /* myStorageCustomTableViewCell.swift in Sources */,
 				DBE2A9DD20D984CB00E052A1 /* myListingObject.swift in Sources */,
 				DBE2A9C520C8B39500E052A1 /* myStorageUser.swift in Sources */,
+				5750DA0F20E1A7D000D43734 /* confirmDropoffViewController.swift in Sources */,
 				DB6B0EF920BC7830000CC1D9 /* Annotations.swift in Sources */,
 				DBE2A9D320D2E71F00E052A1 /* providerPotentialUser.swift in Sources */,
 				57EC509320C22389009F470F /* newConnectPopUp.swift in Sources */,
@@ -643,10 +657,12 @@
 				DBE2A9C920D1A99300E052A1 /* registerProviderViewController.swift in Sources */,
 				574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */,
 				DBE2A9CF20D2D94500E052A1 /* ProviderConnectionsViewController.swift in Sources */,
+				5750DA1520E1ACEF00D43734 /* confirmPickupProviderViewController.swift in Sources */,
 				DBF8BCBE20B7887D0080EEF5 /* globalVariablesViewController.swift in Sources */,
 				576A007420B7798100F2174D /* MenuViewController.swift in Sources */,
 				DB0515CE20C7551700386902 /* myListCustomCell.swift in Sources */,
 				DBE6A8B420C5C28B005B1A75 /* settingsCustomTableViewCell.swift in Sources */,
+				5750DA1320E1ACC700D43734 /* confirmDropoffProviderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
