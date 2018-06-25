@@ -73,7 +73,10 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         cell.layer.shadowPath = shadowPath2.cgPath
         cell.layer.cornerRadius = 27
         cell.cellView.layer.cornerRadius = 27
+        cell.callButton.tag = indexPath.section
+        cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
         if myCurrentStorageUsers.count > 0{
+            print("MY CURRENT STORAGE USERS ARRAY", myCurrentStorageUsers)
             let user = myCurrentStorageUsers[indexPath.section]
             cell.addressLabel.text = user.address
             // hiding and showing buttons on current section
@@ -93,6 +96,10 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
                 
                 cell.confirmPickupButton.isHidden = true
                 cell.confirmPickupLabel.isHidden = true
+                cell.cancelConnectionButton.isHidden = false
+                cell.cancelConnectionLabel.isHidden = false
+                cell.cancelConnectionButton.tag = indexPath.section
+                cell.cancelConnectionButton.addTarget(self, action: #selector(self.cancelConnection(_:)), for: .touchUpInside)
             }
             else if user.status! == "schedulePickup" {
                 cell.confirmDropoffLabel.isHidden = true
@@ -106,6 +113,8 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
                 
                 cell.confirmPickupButton.isHidden = true
                 cell.confirmPickupLabel.isHidden = true
+                cell.cancelConnectionButton.isHidden = true
+                cell.cancelConnectionLabel.isHidden = true
             }
             else{
                 cell.confirmDropoffLabel.isHidden = true
@@ -117,7 +126,12 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.confirmPickupButton.isHidden = false
                 cell.confirmPickupLabel.isHidden = false
                 cell.confirmPickupButton.tag = indexPath.section
+                
+                cell.cancelConnectionButton.isHidden = true
+                cell.cancelConnectionLabel.isHidden = true
+                
                 cell.confirmPickupButton.addTarget(self, action: #selector(self.confirmPickup(_:)), for: .touchUpInside)
+                
             }
             
             
@@ -181,26 +195,45 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         print("My custom button action")
 
 //        if selectorIndex == 0{
-//            let providerID = myStorageUsers[buttonIndexPath].providerID
-//            let myStorageID = myStorageUsers[buttonIndexPath].storageID
-//            if let user = Auth.auth().currentUser{
+        let providerID = myCurrentStorageUsers[buttonIndexPath].providerID
+        let myStorageID = myCurrentStorageUsers[buttonIndexPath].storageID
+        print("PROVIDER AND STORAGE ID", providerID, myStorageID)
+        if let user = Auth.auth().currentUser{
 //                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
 //                let userReference = databaseReference.root.child("Users").child((user.uid))
-//                    userReference.child("pendingStorage").child(myStorageID!).removeValue()
-//
-//
-//
-//                let providerReference = databaseReference.root.child("Providers").child(providerID!).child("currentStorage").child(myStorageID!).child("potentialConnects").child(user.uid)
+//                    userReference.child("currentStorage").removeValue()
+
+
+
+//                let providerReference =
+//                    databaseReference.root.child("Providers").child(providerID!).child("currentStorage").child(myStorageID!).child("storageInUse")
 //                providerReference.removeValue()
+                
+
+            let moveToAvailableReference = Database.database().reference(fromURL: "https:stor-database.firebaseio.com/")
+            print("REFERENCE", moveToAvailableReference)
+            moveToAvailableReference.root.child("Providers").child(providerID!).child("storageInUse").child(myStorageID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                print("SNAPSHOT, ", snapshot)
+                    if let tempSnapshotValue = snapshot.value as? [String : AnyObject]{
+                        print("TEMP SNAPSHOT VALUE", tempSnapshotValue)
+                    }
+                })
 //
-//            }
+//                 databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).setValue(tempSnapshotValue)
+//                 databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).child("time").updateChildValues(["time": realConnect.dropOff])
 //
+//                 databaseReference.root.child("Providers").child(user.uid).child("st orageInUse").child(myStorageID!).updateChildValues(["Connector": realConnect.userID])
 //
+//                 databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).updateChildValues(["status": "confirmDropOff"])
+
+
+            }
+
+            // REMOVE FROM PAYMENT AREA
 //            //PUSH NOTIFICATION TO PROVIDER
 //
-//                self.myStorageUsers.remove(at: buttonIndexPath)
-//                self.storageTableView.reloadData()
-//        }
+//                self.myCurrentStorageUsers.remove(at: buttonIndexPath)
+                self.storageTableView.reloadData()
 //        else{
             print(selectorIndex)
 //        }
@@ -304,7 +337,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
                 print("GET MY STORAGE DICTIONARY", dictionary)
                 let user = myCurrentUser()
                 user.providerID = dictionary!["myListProvider0"] as? String
-                user.storageID = dictionary!["myListStorage0"] as? String
+                user.storageID = dictionary!["myListStorage"] as? String
                 user.getAddress()
                 user.getData()
                 self.myCurrentStorageUsers.append(user)
