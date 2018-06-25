@@ -501,7 +501,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                 databaseReference.root.child("Providers").child(user.uid).child("currentStorage").child(myStorageID!).observeSingleEvent(of: .value, with: { (snapshot) in
                     if let tempSnapshotValue = snapshot.value as? [String : AnyObject]{
                     
-                    databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).setValue(tempSnapshotValue)
+                databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).setValue(tempSnapshotValue)
                 databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).child("time").updateChildValues(["time": realConnect.dropOff])
                     
                 databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).updateChildValues(["Connector": realConnect.userID])

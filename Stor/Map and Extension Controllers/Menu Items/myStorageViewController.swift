@@ -13,53 +13,18 @@ import FirebaseDatabase
 class myStorageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var selectedIndexPath: IndexPath?
-    var myStorageUsers = [myStorageUser]()
     var myCurrentStorageUsers = [myCurrentUser]()
     var selectorIndex: Int?
     
-
-    @IBOutlet weak var currentLabel: UILabel!
-    @IBOutlet weak var pendingLabel: UILabel!
-    @IBOutlet weak var currentNoFill: UIImageView!
-    @IBOutlet weak var pendingNoFill: UIImageView!
-    @IBOutlet weak var pendingFill: UIImageView!
-    @IBOutlet weak var currentFill: UIImageView!
-    @IBOutlet weak var currentIsEmpty: UILabel!
     
-    @IBAction func switchCustomTableViewAction(_ sender: Any) {
-        selectorIndex = switchCustomTable.selectedSegmentIndex
-  
-        
-        // switch between current and past images
-        if selectorIndex == 0{
-            currentFill.isHidden = true
-            pendingNoFill.isHidden = true
-            pendingFill.isHidden = false
-            currentNoFill.isHidden = false
-            pendingLabel.textColor = UIColor(red:0.27, green:0.47, blue:0.91, alpha:1.0)
-            currentLabel.textColor = UIColor.white
-            
-            
-            
-        }
-        else{
-            currentFill.isHidden = false
-            pendingNoFill.isHidden = false
-            pendingFill.isHidden = true
-            currentNoFill.isHidden = true
-            pendingLabel.textColor = UIColor.white
-            currentLabel.textColor =  UIColor(red:0.27, green:0.47, blue:0.91, alpha:1.0)
-        }
-        
-        DispatchQueue.main.async {
-            self.storageTableView.reloadData()
-        }
-    }
+    @IBOutlet weak var pendingFill: UIImageView!
+    @IBOutlet weak var currentIsEmpty: UILabel!
+
     @IBOutlet weak var storageTableView: UITableView!
     @IBAction func exitButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
-    @IBOutlet weak var switchCustomTable: UISegmentedControl!
+    
     @IBOutlet weak var myStorageLabel: UILabel!
     
     
@@ -71,10 +36,6 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         selectorIndex = 0
         let font = UIFont(name: "Dosis-Medium", size: 24.0)
         myStorageLabel.attributedText = NSMutableAttributedString(string: "My Storage", attributes: [.font:font!])
-        currentFill.isHidden = true
-        pendingNoFill.isHidden = true
-        pendingFill.isHidden = false
-        currentNoFill.isHidden = false
         getMyStorage()
     }
     
@@ -86,29 +47,16 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
 
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if selectorIndex == 0{
-            if myStorageUsers.count == 0{
-                self.storageTableView.isHidden = true
-                self.currentIsEmpty.isHidden = false
-            }
-            else{
-                self.storageTableView.isHidden = false
-                self.currentIsEmpty.isHidden = true
-            }
-            return myStorageUsers.count
+        if myCurrentStorageUsers.count == 0{
+            self.storageTableView.isHidden = true
+            self.currentIsEmpty.isHidden = false
         }
         else{
-            if myCurrentStorageUsers.count == 0{
-                self.storageTableView.isHidden = true
-                self.currentIsEmpty.isHidden = false
-            }
-            else{
-                self.storageTableView.isHidden = false
-                self.currentIsEmpty.isHidden = true
-            }
-
-            return myCurrentStorageUsers.count
+            self.storageTableView.isHidden = false
+            self.currentIsEmpty.isHidden = true
         }
+
+        return myCurrentStorageUsers.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -125,87 +73,16 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         cell.layer.shadowPath = shadowPath2.cgPath
         cell.layer.cornerRadius = 27
         cell.cellView.layer.cornerRadius = 27
-        if selectorIndex == 0{
-            let user = myStorageUsers[indexPath.section]
-            // hiding and showing the buttons on pending section
-            cell.cancelConnectionButton.isHidden = false
-            cell.cancelConnectionLabel.isHidden = false
-            cell.schedulePickupButton.isHidden = true
-            cell.schedulePickupLabel.isHidden = true
-            
-            cell.confirmDropoffLabel.isHidden = true
-            cell.confirmDropoffButton.isHidden = true
-            
-            cell.confirmPickupButton.isHidden = true
-            cell.confirmPickupLabel.isHidden = true
-
-            
-            
-            cell.addressLabel.attributedText = user.address
-            
-            cell.priceLabel.attributedText = user.price
-            cell.dimensionsLabel.attributedText = user.dimensionsString
-            cell.cubicFeetLabel.attributedText = user.cubicString
-            cell.nameLabel.attributedText = user.name
-            cell.ratingLabel.attributedText = user.rating
-            cell.dropOffTimeLabel.attributedText = user.dropOffTime
-            
-            
-            DispatchQueue.main.async(execute: { () -> Void in
-                
-                let lineWidth = CGFloat(7.0)
-                let rect = CGRect(x: 0, y: 0.0, width: 50, height: 54)
-                let sides = 6
-                
-                let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 5.0, rotationOffset: CGFloat(.pi / 2.0))
-                
-                let borderLayer = CAShapeLayer()
-                borderLayer.frame = CGRect(x : 0.0, y : 0.0, width : path.bounds.width + lineWidth, height : path.bounds.height + lineWidth)
-                borderLayer.path = path.cgPath
-                borderLayer.lineWidth = lineWidth
-                borderLayer.lineJoin = kCALineJoinRound
-                borderLayer.lineCap = kCALineCapRound
-                borderLayer.strokeColor = UIColor.black.cgColor
-                borderLayer.fillColor = UIColor.white.cgColor
-                
-                let hexagon = createImage(layer: borderLayer)
-                
-                cell.providerProfileImage.contentMode = .scaleAspectFill
-                cell.providerProfileImage.layer.masksToBounds = false
-                cell.providerProfileImage.layer.mask = borderLayer
-                cell.providerProfileImage.image = user.providerProfile
-                cell.storagePhoto.image = user.storagePhoto
-                
-            })
-            //changing image based on selection
-            if (cell.contentView.bounds.size.height.rounded() == 60){
-                cell.moreImage.image = UIImage(named: "Expand Arrow")
-            }
-            else
-            {
-                print (cell.contentView.bounds.size.height)
-                cell.moreImage.image = UIImage(named: "Up Arrow")
-            }
-            
-            cell.cancelConnectionButton.tag = indexPath.section
-            print(cell.cancelConnectionButton.tag)
-            cell.cancelConnectionButton.addTarget(self, action: #selector(self.cancelConnection(_:)), for: .touchUpInside)
-            cell.callButton.tag = indexPath.section
-            cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
-            
-            
-
-            
-            storageTableView.backgroundColor = UIColor.clear
-            cell.backgroundColor = UIColor.white
-            return cell
-        }
-        else{
+        cell.callButton.tag = indexPath.section
+        cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
+        if myCurrentStorageUsers.count > 0{
+            print("MY CURRENT STORAGE USERS ARRAY", myCurrentStorageUsers)
             let user = myCurrentStorageUsers[indexPath.section]
             cell.addressLabel.text = user.address
             // hiding and showing buttons on current section
             cell.cancelConnectionButton.isHidden = true
             cell.cancelConnectionLabel.isHidden = true
+            print(user.name)
             
             print(user.status!)
             if user.status! == "confirmDropoff" {
@@ -219,6 +96,10 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
                 
                 cell.confirmPickupButton.isHidden = true
                 cell.confirmPickupLabel.isHidden = true
+                cell.cancelConnectionButton.isHidden = false
+                cell.cancelConnectionLabel.isHidden = false
+                cell.cancelConnectionButton.tag = indexPath.section
+                cell.cancelConnectionButton.addTarget(self, action: #selector(self.cancelConnection(_:)), for: .touchUpInside)
             }
             else if user.status! == "schedulePickup" {
                 cell.confirmDropoffLabel.isHidden = true
@@ -232,6 +113,8 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
                 
                 cell.confirmPickupButton.isHidden = true
                 cell.confirmPickupLabel.isHidden = true
+                cell.cancelConnectionButton.isHidden = true
+                cell.cancelConnectionLabel.isHidden = true
             }
             else{
                 cell.confirmDropoffLabel.isHidden = true
@@ -243,7 +126,12 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
                 cell.confirmPickupButton.isHidden = false
                 cell.confirmPickupLabel.isHidden = false
                 cell.confirmPickupButton.tag = indexPath.section
+                
+                cell.cancelConnectionButton.isHidden = true
+                cell.cancelConnectionLabel.isHidden = true
+                
                 cell.confirmPickupButton.addTarget(self, action: #selector(self.confirmPickup(_:)), for: .touchUpInside)
+                
             }
             
             
@@ -293,12 +181,12 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
                 print (cell.contentView.bounds.size.height)
                 cell.moreImage.image = UIImage(named: "Up Arrow")
             }
+        }
 
 
             storageTableView.backgroundColor = UIColor.clear
             cell.backgroundColor = UIColor.white
             return cell
-        }
         
     }
     
@@ -306,52 +194,55 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         let buttonIndexPath = sender.tag
         print("My custom button action")
 
-        if selectorIndex == 0{
-            let providerID = myStorageUsers[buttonIndexPath].providerID
-            let myStorageID = myStorageUsers[buttonIndexPath].storageID
-            if let user = Auth.auth().currentUser{
-                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
-                let userReference = databaseReference.root.child("Users").child((user.uid))
-                    userReference.child("pendingStorage").child(myStorageID!).removeValue()
+//        if selectorIndex == 0{
+        let providerID = myCurrentStorageUsers[buttonIndexPath].providerID
+        let myStorageID = myCurrentStorageUsers[buttonIndexPath].storageID
+        print("PROVIDER AND STORAGE ID", providerID, myStorageID)
+        if let user = Auth.auth().currentUser{
+//                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+//                let userReference = databaseReference.root.child("Users").child((user.uid))
+//                    userReference.child("currentStorage").removeValue()
+
+
+
+//                let providerReference =
+//                    databaseReference.root.child("Providers").child(providerID!).child("currentStorage").child(myStorageID!).child("storageInUse")
+//                providerReference.removeValue()
                 
-                
-                
-                let providerReference = databaseReference.root.child("Providers").child(providerID!).child("currentStorage").child(myStorageID!).child("potentialConnects").child(user.uid)
-                providerReference.removeValue()
-                
+
+            let moveToAvailableReference = Database.database().reference(fromURL: "https:stor-database.firebaseio.com/")
+            print("REFERENCE", moveToAvailableReference)
+            moveToAvailableReference.root.child("Providers").child(providerID!).child("storageInUse").child(myStorageID!).observeSingleEvent(of: .value, with: { (snapshot) in
+                print("SNAPSHOT, ", snapshot)
+                    if let tempSnapshotValue = snapshot.value as? [String : AnyObject]{
+                        print("TEMP SNAPSHOT VALUE", tempSnapshotValue)
+                    }
+                })
+//
+//                 databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).setValue(tempSnapshotValue)
+//                 databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).child("time").updateChildValues(["time": realConnect.dropOff])
+//
+//                 databaseReference.root.child("Providers").child(user.uid).child("st orageInUse").child(myStorageID!).updateChildValues(["Connector": realConnect.userID])
+//
+//                 databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).updateChildValues(["status": "confirmDropOff"])
+
+
             }
-            
-            
-            //PUSH NOTIFICATION TO PROVIDER
-                
-                self.myStorageUsers.remove(at: buttonIndexPath)
+
+            // REMOVE FROM PAYMENT AREA
+//            //PUSH NOTIFICATION TO PROVIDER
+//
+//                self.myCurrentStorageUsers.remove(at: buttonIndexPath)
                 self.storageTableView.reloadData()
-        }
-        else{
+//        else{
             print(selectorIndex)
-        }
+//        }
     }
     
     @objc func call(_ sender:UIButton) {
         let buttonIndexPath = sender.tag
         print("call")
         
-        if selectorIndex == 0{
-            let providerID = myStorageUsers[buttonIndexPath].providerID
-            if Auth.auth().currentUser != nil{
-                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
-                databaseReference.root.child("Providers").child(providerID!).child("personalInfo").observe(.value, with: { (snapshot) in
-                    if let dictionary = snapshot.value as? [String: Any]{
-                        let phone = dictionary["phone"]
-                        let providerPhone = String(describing: phone!)
-                        if let url = URL(string: "tel://\(String(describing: providerPhone))") {
-                            UIApplication.shared.open(url)
-                        }
-                    }
-                })
-            }
-        }
-        else{
             let providerID = myCurrentStorageUsers[buttonIndexPath].providerID
             if Auth.auth().currentUser != nil{
                 let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
@@ -366,7 +257,6 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
                     }
                 })
             }
-        }
     }
     func openUrl(urlStr:String!) {
         
@@ -438,25 +328,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     
     func getMyStorage(){
         let uid = Auth.auth().currentUser?.uid
-        Database.database().reference().child("Users").child(uid!).child("pendingStorage").observeSingleEvent(of: .value, with: { (snapshot) in
-                for userChild in snapshot.children{
-                    let userSnapshot = userChild as! DataSnapshot
-                    print("USER SNAPSHOT: ", userSnapshot)
-                    let dictionary = userSnapshot.value as? [String: Any?]
-                    print("DICTIONARY: ", dictionary!)
-                    let user = myStorageUser()
-                    user.providerID = dictionary!["myListProvider0"] as? String
-                    user.storageID = dictionary!["myListStorage0"] as? String
-                    user.getAddress()
-                    user.getData()
-                    self.myStorageUsers.append(user)
-                    
-                    DispatchQueue.main.async {
-                        self.storageTableView.reloadData()
-                    }
-                }
-            }, withCancel: nil)
-        
+
         
         Database.database().reference().child("Users").child(uid!).child("currentStorage").observeSingleEvent(of: .value, with: { (snapshot) in
             for userChild in snapshot.children{
@@ -465,7 +337,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
                 print("GET MY STORAGE DICTIONARY", dictionary)
                 let user = myCurrentUser()
                 user.providerID = dictionary!["myListProvider0"] as? String
-                user.storageID = dictionary!["myListStorage0"] as? String
+                user.storageID = dictionary!["myListStorage"] as? String
                 user.getAddress()
                 user.getData()
                 self.myCurrentStorageUsers.append(user)
