@@ -33,79 +33,6 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     var selectedRow0: Int?
     var selectedRow: Int?
     var days = [Dates]()
-    // number of columns in picker
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
-    }
-    
-    // number of items per column
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        //first column
-        if (component == 0){
-            return 8
-        }
-        //second column
-        else{
-            return days[0].hour.count
-        }
-    }
-    
-    //changing font inside picker view
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var label: UILabel
-        if let view = view as? UILabel {
-            label = view
-        } else {
-            label = UILabel()
-            label.font = UIFont(name:"Dosis-Regular", size:18)
-            label.textAlignment = .center
-        }
-        if component == 0{
-            label.text = days[0].day[row]
-        }
-        else if component == 1{
-            label.text = days[0].hour[row]
-        }
-        return label
-    }
-    // did select in picker view, creates static label
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if (component == 0){
-            if (row != 0){
-                selectedRow0 = row
-            }
-            else{
-                selectedRow0 = 0
-            }
-        }
-        if (component == 1){
-            if (row != 0)
-            {
-                if (row < 8){
-                    days[0].hour[row] += " a.m."
-                    if previousRow != nil{
-                        print("PREVIOUS ROW REMOVE", days[0].hour[previousRow!])
-                        days[0].hour[previousRow!].removeLast(5)
-                    }
-                    previousRow = row
-                    selectedRow = row
-                    pickerView.reloadComponent(1)
-                }
-                else{
-                    days[0].hour[row] += " p.m."
-                    if previousRow != nil{
-                        days[0].hour[previousRow!].removeLast(5)
-                    }
-                    previousRow = row
-                    selectedRow = row
-                    pickerView.reloadComponent(1)
-                }
-            }
-            else{
-                selectedRow = 0
-            }
-        }
-    }
 
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -178,6 +105,81 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
         timePicker3.inputView = picker
     }
     
+    // number of columns in picker
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    // number of items per column
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        //first column
+        if (component == 0){
+            return 8
+        }
+            //second column
+        else{
+            return days[0].hour.count
+        }
+    }
+    
+    //changing font inside picker view
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        var label: UILabel
+        if let view = view as? UILabel {
+            label = view
+        } else {
+            label = UILabel()
+            label.font = UIFont(name:"Dosis-Regular", size:18)
+            label.textAlignment = .center
+        }
+        if component == 0{
+            label.text = days[0].day[row]
+        }
+        else if component == 1{
+            label.text = days[0].hour[row]
+        }
+        return label
+    }
+    // did select in picker view, creates static label
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if (component == 0){
+            if (row != 0){
+                selectedRow0 = row
+            }
+            else{
+                selectedRow0 = 0
+            }
+        }
+        if (component == 1){
+            if (row != 0)
+            {
+                if (row < 8){
+                    days[0].hour[row] += " a.m."
+                    if previousRow != nil{
+                        print("PREVIOUS ROW REMOVE", days[0].hour[previousRow!])
+                        days[0].hour[previousRow!].removeLast(5)
+                    }
+                    previousRow = row
+                    selectedRow = row
+                    pickerView.reloadComponent(1)
+                }
+                else{
+                    days[0].hour[row] += " p.m."
+                    if previousRow != nil{
+                        days[0].hour[previousRow!].removeLast(5)
+                    }
+                    previousRow = row
+                    selectedRow = row
+                    pickerView.reloadComponent(1)
+                }
+            }
+            else{
+                selectedRow = 0
+            }
+        }
+    }
+
+    // fills in time slot for first picker label, adds in a.m.'s and p.m.'s
     @objc func donePressed(){
         if checkValidTimes(){
             var timePickerString = days[0].day[selectedRow0!]
@@ -219,7 +221,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
             errorLabel.isHidden = false
         }
     }
-    
+    //second time slot for picker
     @objc func donePressed2(){
         if checkValidTimes(){
             var timePickerString = days[0].day[selectedRow0!]
@@ -261,7 +263,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
             errorLabel.isHidden = false
         }
     }
-    
+    // third time slot for picker
     @objc func donePressed3(){
         if checkValidTimes(){
             var timePickerString = days[0].day[selectedRow0!]
@@ -303,10 +305,11 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
             errorLabel.isHidden = false
         }
     }
-    
+    // final add listing button, need to add checks for all filled out/parking spot
     @IBAction func addListingButton(_ sender: Any) {
         print("add Listing!")
     }
+    //exit button for full page
     @IBAction func exitButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -314,6 +317,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBAction func addDimensionsPressed(_ sender: UIButton) {
         animateInDimensions()
     }
+    //save button for dimensions
     @IBAction func exitDimensions(_ sender: UIButton) {
         if (widthFeet != 0 && lengthFeet != 0 && heightFeet != 0){
             animateOutDimensions()
@@ -338,7 +342,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBAction func addDescriptionPressed(_ sender: UIButton) {
         animateInDescriptions()
     }
-    
+    // save button for descriptions
     @IBAction func exitDescription(_ sender: UIButton) {
         descriptionLabel.text = userDescriptionText.text
         animateOutDescriptions()
@@ -348,7 +352,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBAction func addAvailabilityPressed(_ sender: UIButton) {
         animateInAvailability()
     }
-    
+    //save button for availability
     @IBAction func exitAvailability(_ sender: UIButton) {
         if (timePicker.text.contains("Choose") || timePicker2.text.contains("Choose") || timePicker3.text.contains("Choose")){
             errorLabel2.isHidden = false
@@ -456,7 +460,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
         profileImage.loadProfilePicture()
         // Do any additional setup after loading the view.
     }
-    
+    // animates in dimension pop up and adds blur
     func animateInDimensions() {
         self.view.addSubview(dimensionsView)
         dimensionsView.center = self.view.center
@@ -470,7 +474,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
             self.dimensionsView.transform = CGAffineTransform.identity
             }
     }
-    
+    // animates out dimension pop up and blur
     func animateOutDimensions(){
         UIView.animate(withDuration: 0.3, animations: {
             self.dimensionsView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)

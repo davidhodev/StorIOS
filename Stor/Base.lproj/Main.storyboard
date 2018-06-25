@@ -1905,7 +1905,7 @@ Use the Add To List Button on a pin to begin</string>
                                     <constraint firstAttribute="width" constant="98" id="Hav-ka-R8v"/>
                                     <constraint firstAttribute="height" constant="20" id="YlB-zJ-PFf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1915,7 +1915,7 @@ Use the Add To List Button on a pin to begin</string>
                                     <constraint firstAttribute="width" constant="98" id="FuW-xL-oCd"/>
                                     <constraint firstAttribute="height" constant="20" id="O3u-Wa-6Cv"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
