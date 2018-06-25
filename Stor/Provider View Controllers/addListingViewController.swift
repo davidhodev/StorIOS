@@ -423,6 +423,7 @@ class addListingViewController: UIViewController, UIPickerViewDelegate, UIPicker
                     let ratingAttString:NSMutableAttributedString = NSMutableAttributedString(string: ratingTemp, attributes: [.font: fontRating!])
                     self.ratingLabel.attributedText = ratingAttString
                     
+                    
                     let nameString = String(describing: dictionary["Name"]!)
                     let nameFont: UIFont? = UIFont(name: "Dosis-Bold", size:18)
                     let nameAttString:NSMutableAttributedString = NSMutableAttributedString(string: nameString, attributes: [.font: nameFont!])
