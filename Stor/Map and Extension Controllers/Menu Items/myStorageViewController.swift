@@ -82,7 +82,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             // hiding and showing buttons on current section
             cell.cancelConnectionButton.isHidden = true
             cell.cancelConnectionLabel.isHidden = true
-            print(user.name)
+            print("NAME", user.name)
             
             print(user.status!)
             if user.status! == "confirmDropoff" {
