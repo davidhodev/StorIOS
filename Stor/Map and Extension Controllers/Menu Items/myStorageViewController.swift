@@ -82,7 +82,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             // hiding and showing buttons on current section
             cell.cancelConnectionButton.isHidden = true
             cell.cancelConnectionLabel.isHidden = true
-            print(user.name)
+            print("NAME", user.name)
             
             print(user.status!)
             if user.status! == "confirmDropoff" {
@@ -194,32 +194,30 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         let buttonIndexPath = sender.tag
         print("My custom button action")
 
-//        if selectorIndex == 0{
         let providerID = myCurrentStorageUsers[buttonIndexPath].providerID
         let myStorageID = myCurrentStorageUsers[buttonIndexPath].storageID
         print("PROVIDER AND STORAGE ID", providerID, myStorageID)
         if let user = Auth.auth().currentUser{
-//                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
-//                let userReference = databaseReference.root.child("Users").child((user.uid))
-//                    userReference.child("currentStorage").removeValue()
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                let userReference = databaseReference.root.child("Users").child((user.uid))
+                    userReference.child("currentStorage").removeValue()
 
 
 
-//                let providerReference =
-//                    databaseReference.root.child("Providers").child(providerID!).child("currentStorage").child(myStorageID!).child("storageInUse")
+//                let providerReference = databaseReference.root.child("Providers").child(providerID!).child("currentStorage").child(myStorageID!).child("storageInUse")
 //                providerReference.removeValue()
                 
 
-            let moveToAvailableReference = Database.database().reference(fromURL: "https:stor-database.firebaseio.com/")
-            print("REFERENCE", moveToAvailableReference)
-            moveToAvailableReference.root.child("Providers").child(providerID!).child("storageInUse").child(myStorageID!).observeSingleEvent(of: .value, with: { (snapshot) in
+            databaseReference.root.child("Providers").child(providerID!).child("storageInUse").child(myStorageID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 print("SNAPSHOT, ", snapshot)
                     if let tempSnapshotValue = snapshot.value as? [String : AnyObject]{
                         print("TEMP SNAPSHOT VALUE", tempSnapshotValue)
+                    databaseReference.root.child("Providers").child(providerID!).child("currentStorage").child(myStorageID!).setValue(tempSnapshotValue)
+                    databaseReference.child("Providers").child(providerID!).child("storageInUse").removeValue()
                     }
                 })
 //
-//                 databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).setValue(tempSnapshotValue)
+            
 //                 databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).child("time").updateChildValues(["time": realConnect.dropOff])
 //
 //                 databaseReference.root.child("Providers").child(user.uid).child("st orageInUse").child(myStorageID!).updateChildValues(["Connector": realConnect.userID])
@@ -227,16 +225,15 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
 //                 databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).updateChildValues(["status": "confirmDropOff"])
 
 
-            }
+//            }
 
             // REMOVE FROM PAYMENT AREA
 //            //PUSH NOTIFICATION TO PROVIDER
 //
-//                self.myCurrentStorageUsers.remove(at: buttonIndexPath)
+                self.myCurrentStorageUsers.remove(at: buttonIndexPath)
                 self.storageTableView.reloadData()
-//        else{
-            print(selectorIndex)
-//        }
+//            print(selectorIndex)
+        }
     }
     
     @objc func call(_ sender:UIButton) {
