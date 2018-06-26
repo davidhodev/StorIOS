@@ -50,7 +50,7 @@ class newConnectPopUp: UIViewController {
         //play around with this
         dateFormatter.dateStyle = .medium
 //        dateFormatter.locale = Locale(identifier: "en_US")
-        dateFormatter.dateFormat = "MMMM d, yyyy H:mm a"
+        dateFormatter.dateFormat = "MMMM d, yyyy h:mm a"
         timePicker.text = dateFormatter.string(from: picker.date)
         view.endEditing(true)
     }
@@ -59,7 +59,7 @@ class newConnectPopUp: UIViewController {
         let dateFormatter = DateFormatter()
         
         //play around with this
-        dateFormatter.dateFormat = "MMMM d, yyyy H:mm a"
+        dateFormatter.dateFormat = "MMMM d, yyyy h:mm a"
         pickUpTimePicker.text = dateFormatter.string(from: pickUpPicker.date)
         view.endEditing(true)
     }
@@ -82,7 +82,7 @@ class newConnectPopUp: UIViewController {
             return
         }
         
-        if selectedButton == 3{
+        if timePicker.text == "" || pickUpTimePicker.text == ""{
             print("NOTHING IS SELECTED")
             
             let alert = UIAlertController(title: "Uh-oh", message: "Please select one of the offered time slots", preferredStyle: .alert)
@@ -91,28 +91,29 @@ class newConnectPopUp: UIViewController {
                 alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
             })
         }
-    }
-//        else{
-//
-//            if let user = Auth.auth().currentUser{
-//                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
-//                let userReference = databaseReference.root.child("Users").child((user.uid))
-//
+        else{
+
+            if let user = Auth.auth().currentUser{
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                let userReference = databaseReference.root.child("Users").child((user.uid))
+
 //                var selectedTimeString = Array(self.timeDictionary!.keys)[selectedButton]
 //                selectedTimeString += " "
 //                selectedTimeString += (Array(self.timeDictionary!.values)[selectedButton] as? String)!
-//                userReference.child("pendingStorage").child(self.storageID!).updateChildValues(["myListProvider0": self.providerID, "myListStorage0": self.storageID, "chosenTimeSlotNumber": selectedButton, "timeSlotString": selectedTimeString])
+                userReference.child("pendingStorage").child(self.storageID!).updateChildValues(["myListProvider0": self.providerID, "myListStorage0": self.storageID, "timeSlotString": timePicker.text, "dropOffTime": timePicker.text, "pickUpTime": pickUpTimePicker.text])
 //
 //
-//                let providerReference = databaseReference.root.child("Providers").child(providerID!).child("currentStorage").child(storageID!)
+                let providerReference = databaseReference.root.child("Providers").child(providerID!).child("currentStorage").child(storageID!)
 //
 //
-//                providerReference.child("potentialConnects").child(user.uid).updateChildValues([user.uid: user.uid, "chosenTimeSlotNumber": selectedButton, "timeSlotString": selectedTimeString])
+                providerReference.child("potentialConnects").child(user.uid).updateChildValues([user.uid: user.uid, "timeSlotString": timePicker.text, "dropOffTime": timePicker.text, "pickUpTime": pickUpTimePicker.text])
 //
-//                DataManager.shared.menuVC.viewDidLoad()
+                DataManager.shared.menuVC.viewDidLoad()
 //
-//                self.dismiss(animated: true, completion: nil)
-//            }
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
     
     @objc func alertControllerBackgroundTapped()
     {
