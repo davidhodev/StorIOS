@@ -206,7 +206,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
 
 //                let providerReference = databaseReference.root.child("Providers").child(providerID!).child("currentStorage").child(myStorageID!).child("storageInUse")
 //                providerReference.removeValue()
-                
+            
 
             databaseReference.root.child("Providers").child(providerID!).child("storageInUse").child(myStorageID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 print("SNAPSHOT, ", snapshot)
