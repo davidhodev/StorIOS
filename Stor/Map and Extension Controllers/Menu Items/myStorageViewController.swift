@@ -230,8 +230,8 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             // REMOVE FROM PAYMENT AREA
 //            //PUSH NOTIFICATION TO PROVIDER
 //
-//                self.myCurrentStorageUsers.remove(at: buttonIndexPath)
-//                self.storageTableView.reloadData()
+                self.myCurrentStorageUsers.remove(at: buttonIndexPath)
+                self.storageTableView.reloadData()
 //            print(selectorIndex)
         }
     }
