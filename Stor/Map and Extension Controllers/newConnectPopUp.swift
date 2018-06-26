@@ -13,32 +13,57 @@ import FirebaseDatabase
 class newConnectPopUp: UIViewController {
     
 
-    
     var timeDictionary: [String: Any]?
     var selectedButton = 3
     var timeSlotPressed: Int?
     var providerID: String?
     var storageID: String?
     @IBOutlet weak var timePicker: UITextField!
+    @IBOutlet weak var pickUpTimePicker: UITextField!
     let picker = UIDatePicker()
+    let pickUpPicker = UIDatePicker()
     
     func createDatePickerView(){
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
+        let dropOffToolBar = UIToolbar()
+        let pickUpToolBar = UIToolbar()
+        dropOffToolBar.sizeToFit()
+        pickUpToolBar.sizeToFit()
         let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector((donePressed)))
-        toolbar.setItems([done], animated: false)
-        timePicker.inputAccessoryView = toolbar
+        let pickUpDone = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector((pickUpDonePressed)))
+        
+        dropOffToolBar.setItems([done], animated: false)
+        pickUpToolBar.setItems([pickUpDone], animated: false)
+        timePicker.inputAccessoryView = dropOffToolBar
+        pickUpTimePicker.inputAccessoryView = pickUpToolBar
+        picker.minimumDate = Date()
+        picker.minuteInterval = 30
+        pickUpPicker.minimumDate = Date()
+        pickUpPicker.minuteInterval = 30
         timePicker.inputView = picker
+        pickUpTimePicker.inputView = pickUpPicker
+
     }
     
     @objc func donePressed(){
         let dateFormatter = DateFormatter()
         
         //play around with this
-        dateFormatter.dateFormat = "Month, Day, hour:minutes"
+        dateFormatter.dateStyle = .medium
+//        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "MMMM d, yyyy H:mm a"
         timePicker.text = dateFormatter.string(from: picker.date)
         view.endEditing(true)
     }
+    
+    @objc func pickUpDonePressed(){
+        let dateFormatter = DateFormatter()
+        
+        //play around with this
+        dateFormatter.dateFormat = "MMMM d, yyyy H:mm a"
+        pickUpTimePicker.text = dateFormatter.string(from: pickUpPicker.date)
+        view.endEditing(true)
+    }
+
 
     
     //exit button full screen so that when you click off of the table of connect times, it takes you out 
@@ -47,6 +72,16 @@ class newConnectPopUp: UIViewController {
     }
     @IBAction func submitButtonPressed(_ sender: Any) {
         print("submit")
+        
+        if picker.date > pickUpPicker.date{
+            let alert = UIAlertController(title: "Uh-oh", message: "Please make sure that your drop-off date is before your pick-up date", preferredStyle: .alert)
+            self.present(alert, animated: true, completion:{
+                alert.view.superview?.isUserInteractionEnabled = true
+                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+            })
+            return
+        }
+        
         if selectedButton == 3{
             print("NOTHING IS SELECTED")
             
@@ -89,6 +124,11 @@ class newConnectPopUp: UIViewController {
     
     override func viewDidLoad() {
         createDatePickerView()
+        
+    }
+        
+        
+        
 //        if Auth.auth().currentUser != nil{
 //            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
 //            databaseReference.root.child("Providers").child(providerID!).child("currentStorage").child(storageID!).observe(.value, with: { (snapshot) in
@@ -109,7 +149,7 @@ class newConnectPopUp: UIViewController {
 //
 //
 //        }
-    }
+//    }
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

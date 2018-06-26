@@ -4531,6 +4531,7 @@ Use the Add To List Button on a pin to begin</string>
                         <viewLayoutGuide key="safeArea" id="RcA-60-DvZ"/>
                     </view>
                     <connections>
+                        <outlet property="pickUpTimePicker" destination="UEU-T4-m9D" id="ZRH-dW-77k"/>
                         <outlet property="timePicker" destination="Gut-9A-ye9" id="hf1-KN-Tb9"/>
                     </connections>
                 </viewController>
