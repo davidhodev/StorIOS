@@ -4492,7 +4492,6 @@ Use the Add To List Button on a pin to begin</string>
                                     <constraint firstAttribute="width" constant="400" id="XQL-9q-MKQ"/>
                                 </constraints>
                             </imageView>
-
                             <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zBa-ZB-rvj" userLabel="Sumbit Button">
                                 <rect key="frame" x="46" y="606" width="120" height="132"/>
                                 <constraints>
@@ -4505,6 +4504,13 @@ Use the Add To List Button on a pin to begin</string>
                                     <action selector="submitButtonPressed:" destination="3Fq-0d-DHC" eventType="touchUpInside" id="cLp-Nf-4wm"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pick a date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gut-9A-ye9">
+                                <rect key="frame" x="88" y="482" width="204" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.27450980390000002" blue="0.70588235290000001" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -4517,6 +4523,9 @@ Use the Add To List Button on a pin to begin</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RcA-60-DvZ"/>
                     </view>
+                    <connections>
+                        <outlet property="timePicker" destination="Gut-9A-ye9" id="hf1-KN-Tb9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uM9-IX-Oiq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -19,6 +19,26 @@ class newConnectPopUp: UIViewController {
     var timeSlotPressed: Int?
     var providerID: String?
     var storageID: String?
+    @IBOutlet weak var timePicker: UITextField!
+    let picker = UIDatePicker()
+    
+    func createDatePickerView(){
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector((donePressed)))
+        toolbar.setItems([done], animated: false)
+        timePicker.inputAccessoryView = toolbar
+        timePicker.inputView = picker
+    }
+    
+    @objc func donePressed(){
+        let dateFormatter = DateFormatter()
+        
+        //play around with this
+        dateFormatter.dateFormat = "Month, Day, hour:minutes"
+        timePicker.text = dateFormatter.string(from: picker.date)
+        view.endEditing(true)
+    }
 
     
     //exit button full screen so that when you click off of the table of connect times, it takes you out 
@@ -68,6 +88,7 @@ class newConnectPopUp: UIViewController {
     
     
     override func viewDidLoad() {
+        createDatePickerView()
 //        if Auth.auth().currentUser != nil{
 //            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
 //            databaseReference.root.child("Providers").child(providerID!).child("currentStorage").child(storageID!).observe(.value, with: { (snapshot) in
