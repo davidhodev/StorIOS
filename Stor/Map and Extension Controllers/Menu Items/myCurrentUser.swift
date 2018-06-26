@@ -133,22 +133,22 @@ class myCurrentUser: NSObject {
                     self.rating = ratingAttString
                     
                     let fullName = dictionary["Name"] as? String
-                    let fullNameArr = fullName?.split(separator: " ")
-                    let firstName = fullNameArr![0]
-                    var lastName: String?
-                    if (fullNameArr!.count > 2){
-                        lastName = String(describing: fullNameArr![1])
-                        lastName = lastName! + " " + String(describing: fullNameArr![2])
-                    }
-                    else{
-                        lastName = String(describing: fullNameArr![1])
-                    }
-                    var finalName = firstName
-                    finalName += "\n"
-                    finalName += lastName!
-                    let tempName = String(describing: finalName)
+//                    let fullNameArr = fullName?.split(separator: " ")
+//                    let firstName = fullNameArr![0]
+//                    var lastName: String?
+//                    if (fullNameArr!.count > 2){
+//                        lastName = String(describing: fullNameArr![1])
+//                        lastName = lastName! + " " + String(describing: fullNameArr![2])
+//                    }
+//                    else{
+//                        lastName = String(describing: fullNameArr![1])
+//                    }
+//                    var finalName = firstName
+//                    finalName += "\n"
+//                    finalName += lastName!
+//                    let tempName = String(describing: finalName!)
                     let fontName:UIFont? = UIFont(name: "Dosis-Regular", size:18)
-                    let nameAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempName, attributes: [.font:fontName!])
+                    let nameAttString:NSMutableAttributedString = NSMutableAttributedString(string: fullName!, attributes: [.font:fontName!])
                     self.name = nameAttString
                     
                     

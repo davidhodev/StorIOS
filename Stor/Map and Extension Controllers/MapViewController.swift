@@ -441,10 +441,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         self.providers.append(provider)
                         self.storMapKit.addAnnotation(provider)
                     }
-                    
-                    
-                    
-                    
                 }
             )}
             UIApplication.shared.endIgnoringInteractionEvents()
