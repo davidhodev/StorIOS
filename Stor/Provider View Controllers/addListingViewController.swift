@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
-
+import Photos
 
 extension String{
     var digits: String{
@@ -26,12 +26,11 @@ class Dates{
     }
 }
 
-class addListingViewController: UIViewController {
+class addListingViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var profileImage: UIImageView!
     //photos variables
     @IBOutlet weak var storageImage: UIImageView!
-    @IBOutlet weak var addPhoto: UIButton!
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
@@ -69,6 +68,34 @@ class addListingViewController: UIViewController {
     
     // final add listing button, need to add checks for all filled out/parking spot
     @IBAction func addListingButton(_ sender: Any) {
+        // Show Pricing
+        if cubicFeetLabel.text! == "" || savedDimensionsLabel.text! == "" || descriptionLabel.text! == "Tap the plus sign to create a custom description. Add up to 500 characters." || storageImage.image == nil{
+            let alert = UIAlertController(title: "Uh-oh", message: "Please fill out the entire page before publishing your listing", preferredStyle: .alert)
+            self.present(alert, animated: true, completion:{
+                alert.view.superview?.isUserInteractionEnabled = true
+                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+            })
+        }
+        
+        
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("Providers").child(uid!).child("personalInfo").observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.exists(){
+                print(snapshot)
+                 if let dictionary = snapshot.value as? [String: Any]{
+                    print(dictionary["backgroundCheck"])
+                    if dictionary["backgroundCheck"] as? String == "pending"{
+                        let alert = UIAlertController(title: "Uh-oh", message: "You have to wait for your background check to be completed before publishing your listing", preferredStyle: .alert)
+                        self.present(alert, animated: true, completion:{
+                            alert.view.superview?.isUserInteractionEnabled = true
+                            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+                        })
+                    }
+                }
+                
+                
+            }
+        })
         print("add Listing!")
     }
     //exit button for full page
@@ -126,6 +153,15 @@ class addListingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //feet cubed label hidden
+        storageImage.contentMode = .scaleAspectFill
+        storageImage.image = UIImage(named: "Blank Photo")
+        storageImage.isUserInteractionEnabled = true
+        storageImage.layer.masksToBounds = true
+        
+        
+        storageImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(choosePhoto)))
+        
+        
         feetCubedLabel.isHidden = true
         savedCubicFeetLabel.isHidden = true
         savedDimensionsLabel.isHidden = true
@@ -317,16 +353,42 @@ class addListingViewController: UIViewController {
         feetCubedLabel.isHidden = false
     }
     
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @objc func alertControllerBackgroundTapped()
+    {
+        self.dismiss(animated: true, completion: nil)
     }
-    */
+    
+    // CHOOSING PHOTOS
+    @objc func choosePhoto(){
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        
+        let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a Source", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            }
+            else{
+                print("camera not available")
+            }
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil ))
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        storageImage.image = image
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 
 }
