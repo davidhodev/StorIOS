@@ -18,6 +18,7 @@ class confirmDropoffViewController: UIViewController, UIImagePickerControllerDel
     @IBOutlet weak var fiveStar: UIButton!
     
     var rating = 0
+    var address: String?
     
 
     override func viewDidLoad() {
@@ -127,6 +128,41 @@ class confirmDropoffViewController: UIViewController, UIImagePickerControllerDel
         }
         else{
             print("SUBMITTED")
+//            let imageUniqueID = NSUUID().uuidString
+//            let storageRef = Storage.storage().reference().child("UserProfileImages").child("\(imageUniqueID).jpeg")
+//
+//
+//            if let uploadData = UIImageJPEGRepresentation(self.profileImage.image!, 0.1){
+//
+//                storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+//                    if (error != nil){
+//                        print(error)
+//                        return
+//                    }
+//
+//                    storageRef.downloadURL(completion: { (updatedURL, error) in
+//                        if (error != nil){
+//                            print(error)
+//                            return
+//                        }
+//                        globalVariablesViewController.profilePicString = (updatedURL?.absoluteString)!
+//                        if let user = Auth.auth().currentUser{
+//                            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+//                            let userReference = databaseReference.root.child("Users").child((user.uid))
+//                            print(userReference)
+//                            userReference.updateChildValues(["profilePicture": updatedURL?.absoluteString], withCompletionBlock: {(err, registerDataValues) in
+//                                if err != nil{
+//                                    print(err)
+//                                    return
+//                                }
+//                                print("Profile Pic Updated")
+//
+//                            })
+//                        }
+//                    })
+//                })
+//            }
+            dismiss(animated: true, completion: nil)
         }
     }
     @objc func alertControllerBackgroundTapped()

@@ -347,7 +347,13 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "confirmDropOffSegue"{
+            let destinationController = segue.destination as! confirmDropoffViewController
+//            destinationController.address = myCurrentStorageUsers[]
+            
+        }
+    }
     
     
     @objc func confirmDropoff(_ sender:UIButton) {
