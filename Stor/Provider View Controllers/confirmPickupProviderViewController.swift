@@ -17,6 +17,7 @@ class confirmPickupProviderViewController: UIViewController, UIImagePickerContro
         photoConfirmation.contentMode = .scaleAspectFill
         photoConfirmation.image = UIImage(named: "Blank Photo")
         photoConfirmation.isUserInteractionEnabled = true
+        photoConfirmation.layer.masksToBounds = true
         photoConfirmation.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(chooseConfirmationPhoto)))
         // Do any additional setup after loading the view.
     }
