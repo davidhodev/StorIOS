@@ -30,8 +30,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
 
     @IBOutlet weak var profileImage: UIImageView!
     //photos variables
-    @IBOutlet weak var storageImage: UIImageView!
-    
+
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     // dimensions variables, slider and their labels w values
@@ -73,7 +72,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
     // final add listing button, need to add checks for all filled out/parking spot
     @IBAction func addListingButton(_ sender: Any) {
         // Show Pricing
-        if cubicFeetLabel.text! == "" || savedDimensionsLabel.text! == "" || descriptionLabel.text! == "Tap the plus sign to create a custom description. Add up to 500 characters." || storageImage.image == nil{
+        if cubicFeetLabel.text! == "" || savedDimensionsLabel.text! == "" || descriptionLabel.text! == "Tap the plus sign to create a custom description. Add up to 500 characters." || (addImagesDictionary.count == 0 && addImagesDictionary["2"]! == UIImage(named: "BlankPhoto")){
             let alert = UIAlertController(title: "Uh-oh", message: "Please fill out the entire page before publishing your listing", preferredStyle: .alert)
             self.present(alert, animated: true, completion:{
                 alert.view.superview?.isUserInteractionEnabled = true
@@ -157,10 +156,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         //feet cubed label hidden
-        storageImage.contentMode = .scaleAspectFill
-        storageImage.image = UIImage(named: "Blank Photo")
-        storageImage.isUserInteractionEnabled = true
-        storageImage.layer.masksToBounds = true
+
         addImageScrollView.delegate = self
         self.addImageScrollView.isPagingEnabled = true
         self.addImageScrollView.showsHorizontalScrollIndicator = true
@@ -169,9 +165,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         reloadAddImages()
         
         addImageScrollView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(choosePhoto)))
-        
-        
-    storageImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(choosePhoto)))
+
         
         
         feetCubedLabel.isHidden = true
@@ -429,7 +423,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         let sortedKeys = addImagesDictionary.keys.sorted()
 //        let addImagesDictionary = addImagesDictionary.keys.s
 //            addImagesDictionary.sorted{ $0.key < $1.key }
-        self.addImageScrollView.contentSize = CGSize(width: self.addImageScrollView.bounds.width * CGFloat(addImagesDictionary.count), height: 186)
+        self.addImageScrollView.contentSize = CGSize(width: self.addImageScrollView.bounds.width * CGFloat(addImagesDictionary.count), height: 155)
         for (index, feature) in sortedKeys.enumerated(){
             DispatchQueue.main.async(execute: { () -> Void in
                 let myImage = self.addImagesDictionary[feature]
@@ -438,7 +432,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
                 myImageView.frame.origin.x = CGFloat(index) * self.view.bounds.size.width
                 myImageView.image = myImage!
                 myImageView.contentMode = .scaleAspectFill
-                
+
                 let xPosition = (self.addImageScrollView.frame.width) * CGFloat(index)
                 myImageView.frame = CGRect(x: xPosition, y: 0, width: self.addImageScrollView.frame.width, height: self.addImageScrollView.frame.height)
                 self.addImageScrollView.layer.cornerRadius = 8

@@ -1929,10 +1929,6 @@ Use the Add To List Button on a pin to begin</string>
                                 <color key="backgroundColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                 <blurEffect style="light"/>
                             </visualEffectView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iad-9Z-xYU">
-                                <rect key="frame" x="176" y="292" width="64" height="94"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="be4-St-dnZ">
                                 <rect key="frame" x="31" y="97" width="277" height="186"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2009,7 +2005,6 @@ Use the Add To List Button on a pin to begin</string>
                         <outlet property="ratingLabel" destination="NFX-PZ-SFS" id="XLR-qU-W3x"/>
                         <outlet property="savedCubicFeetLabel" destination="OL8-w6-Zlq" id="Xw7-xt-aHi"/>
                         <outlet property="savedDimensionsLabel" destination="Qrv-mu-5HX" id="oeB-ys-7ew"/>
-                        <outlet property="storageImage" destination="iad-9Z-xYU" id="Gxd-Vf-xsT"/>
                         <outlet property="userDescriptionText" destination="ZZZ-nE-Qip" id="UX7-jE-PxD"/>
                         <outlet property="widthLabel" destination="UrQ-yM-gjV" id="bNx-RD-Zgx"/>
                         <outlet property="widthSliderOutlet" destination="fbX-UD-Wxs" id="75N-Hz-6Kf"/>
