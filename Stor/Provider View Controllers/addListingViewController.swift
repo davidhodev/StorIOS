@@ -26,7 +26,7 @@ class Dates{
     }
 }
 
-class addListingViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class addListingViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
 
     @IBOutlet weak var profileImage: UIImageView!
     //photos variables
@@ -60,11 +60,15 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
     
     //availability variables
     @IBOutlet var availabilityView: UIView!
-    @IBOutlet weak var availabilityInfoLabel: UILabel!
     
     //blur effect and window
     @IBOutlet weak var blurView: UIVisualEffectView!
     var blurEffect: UIVisualEffect!
+    
+    // Add Images
+    @IBOutlet weak var addImageScrollView: UIScrollView!
+    var addImagesDictionary = ["2": UIImage(named: "Blank Photo")]
+    var currentPage: Int?
     
     // final add listing button, need to add checks for all filled out/parking spot
     @IBAction func addListingButton(_ sender: Any) {
@@ -157,9 +161,17 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         storageImage.image = UIImage(named: "Blank Photo")
         storageImage.isUserInteractionEnabled = true
         storageImage.layer.masksToBounds = true
+        addImageScrollView.delegate = self
+        self.addImageScrollView.isPagingEnabled = true
+        self.addImageScrollView.showsHorizontalScrollIndicator = true
+        self.addImageScrollView.showsVerticalScrollIndicator = false
+        
+        reloadAddImages()
+        
+        addImageScrollView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(choosePhoto)))
         
         
-        storageImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(choosePhoto)))
+    storageImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(choosePhoto)))
         
         
         feetCubedLabel.isHidden = true
@@ -362,6 +374,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
     @objc func choosePhoto(){
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
         
         let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a Source", preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
@@ -382,13 +395,59 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        storageImage.image = image
+        var selectedImage: UIImage?
+        if let edittedImage = info["UIImagePickerControllerEdittedImage"] as? UIImage {
+            selectedImage = edittedImage
+        }
+        else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            selectedImage = originalImage
+        }
+        if let selectedImageFinal = selectedImage{
+            let currentPage = Int(self.addImageScrollView.contentOffset.x / self.addImageScrollView.frame.size.width)
+            print("CURRENT PAGE", currentPage)
+            addImagesDictionary[String(describing: currentPage)] = selectedImageFinal
+            print("ADD IMAGE DICTIONARY", addImagesDictionary)
+        }
+        
+        reloadAddImages()
         picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        print("1:", scrollView.contentOffset.x)
+//        print("2:", scrollView.frame.size.width)
+//        currentPage = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+//        featurePageControl.currentPage = Int(page)
+//    }
+    
+    func reloadAddImages(){
+        print("COUNT OF DICTIOANRY", addImagesDictionary.count)
+        let sortedKeys = addImagesDictionary.keys.sorted()
+//        let addImagesDictionary = addImagesDictionary.keys.s
+//            addImagesDictionary.sorted{ $0.key < $1.key }
+        self.addImageScrollView.contentSize = CGSize(width: self.addImageScrollView.bounds.width * CGFloat(addImagesDictionary.count), height: 186)
+        for (index, feature) in sortedKeys.enumerated(){
+            DispatchQueue.main.async(execute: { () -> Void in
+                let myImage = self.addImagesDictionary[feature]
+                let myImageView:UIImageView = UIImageView()
+                myImageView.frame.size.width = self.view.bounds.size.width
+                myImageView.frame.origin.x = CGFloat(index) * self.view.bounds.size.width
+                myImageView.image = myImage!
+                myImageView.contentMode = .scaleAspectFill
+                
+                let xPosition = (self.addImageScrollView.frame.width) * CGFloat(index)
+                myImageView.frame = CGRect(x: xPosition, y: 0, width: self.addImageScrollView.frame.width, height: self.addImageScrollView.frame.height)
+                self.addImageScrollView.layer.cornerRadius = 8
+                
+                self.addImageScrollView.addSubview(myImageView)
+            })
+        }
+    }
+    
+    
 
 }
