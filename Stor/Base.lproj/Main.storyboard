@@ -2618,22 +2618,37 @@ Use the Add To List Button on a pin to begin</string>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SqP-aw-TcA">
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="oneStarButton:" destination="jx7-Y9-1qS" eventType="touchUpInside" id="EmO-Qx-SdW"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLg-Dx-Q1S">
                                         <rect key="frame" x="61" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="twoStarButton:" destination="jx7-Y9-1qS" eventType="touchUpInside" id="zQb-RJ-CA0"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fb3-vY-CNN">
                                         <rect key="frame" x="122" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="threeStarButton:" destination="jx7-Y9-1qS" eventType="touchUpInside" id="Llg-cL-dEa"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mP8-fK-Yfm">
                                         <rect key="frame" x="183" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="fourStarButton:" destination="jx7-Y9-1qS" eventType="touchUpInside" id="dIR-Tk-BrR"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTB-Lx-fgZ">
                                         <rect key="frame" x="244" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="fiveStarButton:" destination="jx7-Y9-1qS" eventType="touchUpInside" id="8yY-m1-AKQ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -2664,6 +2679,14 @@ Use the Add To List Button on a pin to begin</string>
                                     <constraint firstAttribute="width" constant="252" id="y8I-ox-y6e"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRu-Ra-gsn">
+                                <rect key="frame" x="68" y="529" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submit:" destination="jx7-Y9-1qS" eventType="touchUpInside" id="8zl-QM-Pqu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -2688,7 +2711,12 @@ Use the Add To List Button on a pin to begin</string>
                         <viewLayoutGuide key="safeArea" id="g9N-br-Kel"/>
                     </view>
                     <connections>
+                        <outlet property="fiveStar" destination="WTB-Lx-fgZ" id="3xL-Xp-6ab"/>
+                        <outlet property="fourStar" destination="mP8-fK-Yfm" id="5yM-iV-qTW"/>
+                        <outlet property="oneStar" destination="SqP-aw-TcA" id="inj-n5-hkl"/>
                         <outlet property="photoConfirmation" destination="w9s-09-UnE" id="K1d-gX-Td9"/>
+                        <outlet property="threeStar" destination="fb3-vY-CNN" id="Dub-x5-qN7"/>
+                        <outlet property="twoStar" destination="RLg-Dx-Q1S" id="ubg-Ni-3QY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nrG-2a-xLS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2741,22 +2769,37 @@ Use the Add To List Button on a pin to begin</string>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ktu-Ho-epE">
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="oneStarButton:" destination="dz7-vw-hM1" eventType="touchUpInside" id="aLY-Qb-z31"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f58-ur-NFZ">
                                         <rect key="frame" x="61" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="twoStarButton:" destination="dz7-vw-hM1" eventType="touchUpInside" id="dZx-J4-jY8"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpT-kV-7SB">
                                         <rect key="frame" x="122" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="threeStarButton:" destination="dz7-vw-hM1" eventType="touchUpInside" id="xYv-L3-dbX"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8R-bW-iAx">
                                         <rect key="frame" x="183" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="fourStarButton:" destination="dz7-vw-hM1" eventType="touchUpInside" id="Qzz-tp-llJ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khg-mw-B5g">
                                         <rect key="frame" x="244" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="fiveStarButton:" destination="dz7-vw-hM1" eventType="touchUpInside" id="UPX-Eb-43f"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -2787,6 +2830,14 @@ Use the Add To List Button on a pin to begin</string>
                                     <action selector="exitButtonPressed:" destination="dz7-vw-hM1" eventType="touchUpInside" id="VDl-EG-oLz"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ZW-Os-QFk">
+                                <rect key="frame" x="65" y="529" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submit:" destination="dz7-vw-hM1" eventType="touchUpInside" id="Mn8-jf-5hw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -2811,12 +2862,17 @@ Use the Add To List Button on a pin to begin</string>
                         <viewLayoutGuide key="safeArea" id="Hbg-zf-cNS"/>
                     </view>
                     <connections>
+                        <outlet property="fiveStar" destination="Khg-mw-B5g" id="d9e-p1-hCI"/>
+                        <outlet property="fourStar" destination="g8R-bW-iAx" id="Fto-Sz-zBl"/>
+                        <outlet property="oneStar" destination="ktu-Ho-epE" id="HgE-C9-pzL"/>
                         <outlet property="photoConfirmation" destination="98d-Uw-Y1r" id="Bg3-Pw-IWj"/>
+                        <outlet property="threeStar" destination="dpT-kV-7SB" id="ktg-X8-IDF"/>
+                        <outlet property="twoStar" destination="f58-ur-NFZ" id="FwR-c3-2Me"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xrU-yi-YI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="11482" y="1683"/>
+            <point key="canvasLocation" x="11480.799999999999" y="1682.5123152709361"/>
         </scene>
         <!--Register Provider View Controller-->
         <scene sceneID="EH6-36-eHC">
@@ -3633,7 +3689,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdK-rQ-mYB">
-                                <rect key="frame" x="0.0" y="605" width="60" height="65"/>
+                                <rect key="frame" x="279" y="605" width="60" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="M4V-Zr-rQq"/>
                                     <constraint firstAttribute="width" constant="60" id="MKj-Ib-ESF"/>
@@ -3644,7 +3700,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhx-9f-mvD">
-                                <rect key="frame" x="0.0" y="685" width="60" height="65"/>
+                                <rect key="frame" x="279" y="685" width="60" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="6GI-Oc-3ZE"/>
                                     <constraint firstAttribute="height" constant="65" id="uho-kZ-G0r"/>
@@ -3670,7 +3726,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LPh-AA-fL1">
-                                <rect key="frame" x="0.0" y="131" width="343" height="280"/>
+                                <rect key="frame" x="16" y="131" width="343" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="9gf-Jr-Bfb"/>
@@ -3690,14 +3746,14 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-                                <rect key="frame" x="0.0" y="84" width="20" height="20"/>
+                                <rect key="frame" x="28" y="84" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="J0k-Vv-Yda">
-                                <rect key="frame" x="0.0" y="67" width="251" height="50"/>
+                                <rect key="frame" x="63" y="67" width="251" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="251" id="XGg-Ao-Pen"/>
                                     <constraint firstAttribute="height" constant="50" id="d6q-r4-Irt"/>
@@ -3707,7 +3763,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQY-nG-TsQ" userLabel="Filters Button">
-                                <rect key="frame" x="0.0" y="67" width="50" height="50"/>
+                                <rect key="frame" x="309" y="67" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="L3E-RY-dIg"/>
                                     <constraint firstAttribute="width" constant="50" id="eAh-Jx-hRY"/>
@@ -3719,7 +3775,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puJ-Ux-Fmn" userLabel="Cancel Button">
-                                <rect key="frame" x="0.0" y="67" width="50" height="50"/>
+                                <rect key="frame" x="309" y="67" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="VXo-OA-aiz"/>
                                     <constraint firstAttribute="height" constant="50" id="YpT-dL-62X"/>
@@ -4775,22 +4831,37 @@ Use the Add To List Button on a pin to begin</string>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hdz-YZ-he9">
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="oneStarButton:" destination="coP-1j-maq" eventType="touchUpInside" id="UZs-bl-wbL"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4yF-7A-6g8">
                                         <rect key="frame" x="61" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="twoStarButton:" destination="coP-1j-maq" eventType="touchUpInside" id="N0h-9t-3Jr"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aI7-pF-khy">
                                         <rect key="frame" x="122" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="threeStarButton:" destination="coP-1j-maq" eventType="touchUpInside" id="diF-v8-UXp"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYM-Qg-ZeV">
                                         <rect key="frame" x="183" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="fourStarButton:" destination="coP-1j-maq" eventType="touchUpInside" id="7IR-m4-0fy"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L5u-hp-14z">
                                         <rect key="frame" x="244" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="fiveStarButton:" destination="coP-1j-maq" eventType="touchUpInside" id="BGD-m9-FH4"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -4820,6 +4891,14 @@ Use the Add To List Button on a pin to begin</string>
                                 </constraints>
                                 <state key="normal" title="Button" image="If you would like to"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9t-gb-RLr">
+                                <rect key="frame" x="68" y="529" width="108" height="92"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submit:" destination="coP-1j-maq" eventType="touchUpInside" id="8PW-BV-F4M"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.27450980390000002" blue="0.70588235290000001" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -4844,7 +4923,12 @@ Use the Add To List Button on a pin to begin</string>
                         <viewLayoutGuide key="safeArea" id="T4Z-TW-Rqn"/>
                     </view>
                     <connections>
+                        <outlet property="fiveStar" destination="L5u-hp-14z" id="FmS-cu-1rE"/>
+                        <outlet property="fourStar" destination="IYM-Qg-ZeV" id="k55-D4-2FF"/>
+                        <outlet property="oneStar" destination="Hdz-YZ-he9" id="9v9-IK-GFH"/>
                         <outlet property="photoConfirmation" destination="pTK-I0-gFW" id="1nD-b5-o8Y"/>
+                        <outlet property="threeStar" destination="aI7-pF-khy" id="JmG-Bg-zP9"/>
+                        <outlet property="twoStar" destination="4yF-7A-6g8" id="LBl-NK-vCz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ua-Bn-NhL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4897,22 +4981,37 @@ Use the Add To List Button on a pin to begin</string>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYa-3W-von">
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="oneStarButton:" destination="tfE-7N-NII" eventType="touchUpInside" id="XNS-fu-vVL"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEN-qa-fNn">
                                         <rect key="frame" x="61" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="twoStarButton:" destination="tfE-7N-NII" eventType="touchUpInside" id="un9-u2-ge2"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNu-4O-5w2">
                                         <rect key="frame" x="122" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="threeStarButton:" destination="tfE-7N-NII" eventType="touchUpInside" id="E5k-ps-gvr"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2O-Ty-hfk">
                                         <rect key="frame" x="183" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="fourStarButton:" destination="tfE-7N-NII" eventType="touchUpInside" id="VBe-gd-WxO"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mem-qa-Snc">
                                         <rect key="frame" x="244" y="0.0" width="42" height="41"/>
                                         <state key="normal" image="Grey Star"/>
+                                        <connections>
+                                            <action selector="fiveStarButton:" destination="tfE-7N-NII" eventType="touchUpInside" id="CvI-6R-nc7"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -4946,6 +5045,14 @@ Use the Add To List Button on a pin to begin</string>
                                 <color key="textColor" red="0.2666666667" green="0.47058823529999999" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Wd-Kt-gGa">
+                                <rect key="frame" x="68" y="529" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="submit:" destination="tfE-7N-NII" eventType="touchUpInside" id="pw2-a1-xBz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.27450980390000002" blue="0.70588235290000001" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -4970,7 +5077,12 @@ Use the Add To List Button on a pin to begin</string>
                         <viewLayoutGuide key="safeArea" id="Wam-No-HvP"/>
                     </view>
                     <connections>
+                        <outlet property="fiveStar" destination="mem-qa-Snc" id="gJK-LE-CHd"/>
+                        <outlet property="fourStar" destination="L2O-Ty-hfk" id="qbd-AS-svi"/>
+                        <outlet property="oneStar" destination="cYa-3W-von" id="M48-3J-1lI"/>
                         <outlet property="photoConfirmation" destination="oFC-5b-olf" id="N1c-rq-SM9"/>
+                        <outlet property="threeStar" destination="sNu-4O-5w2" id="hA4-HD-WIO"/>
+                        <outlet property="twoStar" destination="HEN-qa-fNn" id="2Un-dO-Ldb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5dY-Jb-Ykn" userLabel="First Responder" sceneMemberID="firstResponder"/>
