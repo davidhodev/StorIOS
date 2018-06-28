@@ -1762,6 +1762,8 @@ Use the Add To List Button on a pin to begin</string>
                                             <outlet property="priceLabel" destination="PW5-OD-9dP" id="M0l-dx-ynM"/>
                                             <outlet property="profileImage" destination="0eP-hF-EmW" id="AZu-7G-8v2"/>
                                             <outlet property="ratingLabel" destination="7ij-9z-QJz" id="5kz-Qs-jVi"/>
+                                            <outlet property="ratingStar" destination="Sdw-ea-0nl" id="XXC-jU-dk8"/>
+                                            <outlet property="takenByLabel" destination="FOg-9p-1CK" id="kEu-OC-Ztc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -2019,8 +2021,8 @@ Use the Add To List Button on a pin to begin</string>
                                     <constraint firstAttribute="height" constant="155" id="xCL-Oi-FOP"/>
                                 </constraints>
                             </scrollView>
-                            <visualEffectView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nvf-2i-YT3">
-                                <rect key="frame" x="148" y="0.0" width="375" height="812"/>
+                            <visualEffectView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nvf-2i-YT3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2L0-Cw-5H6">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

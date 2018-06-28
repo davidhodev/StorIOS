@@ -171,6 +171,7 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
                     self.providerPriceLabel.attributedText = attString
                     
                 }
+                print("DICTIONARY MEH", dictionary)
                 var dimensionsString = String(describing: dictionary["Length"]!)
                 dimensionsString += "' X "
                 dimensionsString += String(describing: dictionary["Width"]!)
@@ -212,13 +213,18 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
                 self.providerDistanceLabel.text = self.outputDistance
                 
                 if let photoDictionary = dictionary["Photos"] as? [String: Any] {
+                    
+                    let sortedKeys = photoDictionary.keys.sorted()
+                    
+                            
                     self.featurePageControl.numberOfPages = photoDictionary.count
                     self.imageScrollView.isPagingEnabled = true
                     self.imageScrollView.contentSize = CGSize(width: self.imageScrollView.bounds.width * CGFloat(photoDictionary.count), height: 122)
                     self.imageScrollView.showsHorizontalScrollIndicator = true
                     self.imageScrollView.showsVerticalScrollIndicator = false
-                    for (index, feature) in photoDictionary.enumerated(){
-                        URLSession.shared.dataTask(with: NSURL(string: feature.value as! String)! as URL, completionHandler: { (data, response, error) -> Void in
+                    for (index, featureSorted) in sortedKeys.enumerated(){
+                        let feature = photoDictionary[featureSorted]
+                        URLSession.shared.dataTask(with: NSURL(string: feature as! String)! as URL, completionHandler: { (data, response, error) -> Void in
                             
                             if error != nil {
                                 print(error)

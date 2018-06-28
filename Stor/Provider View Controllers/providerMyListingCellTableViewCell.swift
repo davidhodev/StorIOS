@@ -29,6 +29,8 @@ class providerMyListingCellTableViewCell: UITableViewCell {
     @IBOutlet weak var editListingButton: UIButton!
     @IBOutlet weak var dropOffTimeLabel: UILabel!
     @IBOutlet weak var pickUpTimeLabel: UILabel!
+    @IBOutlet weak var takenByLabel: UILabel!
+    @IBOutlet weak var ratingStar: UIImageView!
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var availableLabel: UILabel!

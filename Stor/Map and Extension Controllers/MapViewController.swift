@@ -336,6 +336,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     let storageUID = (Array(providerStorageDictionary!.keys)[0])
                     self.annotationStorageID = storageUID
                     let actualStorageDictionary = providerStorageDictionary![storageUID] as? [String: Any]
+                    
                     let providerAddress = actualStorageDictionary!["Address"] as? String
                     let geocoder = CLGeocoder()
                     geocoder.geocodeAddressString(providerAddress!, completionHandler: { (placemarks, error) in

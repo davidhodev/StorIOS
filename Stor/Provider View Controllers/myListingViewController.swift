@@ -110,6 +110,10 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
             }
             else{
                 cell.callButton.isHidden = true
+                cell.ratingStar.isHidden = true
+                cell.takenByLabel.isHidden = true
+                cell.dropOffTimeLabel.isHidden = true
+                cell.pickUpTimeLabel.isHidden = true
                 cell.availableLabel.isHidden = false
                 cell.nameLabel.isHidden = true
                 cell.phoneLabel.isHidden = true
@@ -130,10 +134,15 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if (self.exists)!{
+            myListingTableView.isHidden = false
+            //hiddenLabel.isHidden = true
             return 1
         }
+        myListingTableView.isHidden = true
+        //HIDDEN LABEL.isHidden = false
         return 0
     }
+    
     
     
 

@@ -92,9 +92,6 @@ class myCurrentUser: NSObject {
                     
                     if let timeDictionary = dictionary["time"] as? [String: Any]{
                         var dropOffTimeString = "Drop Off Time: "
-                        
-                        dropOffTimeString += (timeDictionary.first?.key)!
-                        dropOffTimeString += " "
                         dropOffTimeString += (timeDictionary.first?.value)! as! String
                         
                         let timeFont: UIFont? = UIFont(name: "Dosis-Regular", size:14)
