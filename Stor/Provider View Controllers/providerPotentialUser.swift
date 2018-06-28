@@ -26,6 +26,7 @@ class providerPotentialUser: NSObject {
     var dropOff: String?
     var status: String?
     var pickupTime: String?
+    var address: String?
     
     
     func getName(){
@@ -80,7 +81,8 @@ class providerPotentialUser: NSObject {
             
             Database.database().reference().child("Providers").child(user.uid).child("storageInUse").observe(.childAdded, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: Any]{
-                    self.status = String(describing: dictionary["status"]!)
+                    self.status = String(describing: dictionary["providerStatus"]!)
+                    self.address = String(describing: dictionary["Address"]!)
                     if self.status == "confrimPickup"{
                         self.pickupTime = String(describing: dictionary["pickupTime"])
                     }

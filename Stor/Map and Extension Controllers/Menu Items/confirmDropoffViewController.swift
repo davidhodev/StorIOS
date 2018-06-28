@@ -135,7 +135,7 @@ class confirmDropoffViewController: UIViewController, UIImagePickerControllerDel
             print("SUBMITTED")
             let imageUniqueID = self.address
             print(imageUniqueID)
-            let storageRef = Storage.storage().reference().child("ProviderStorageAddImages").child("\(imageUniqueID!).jpeg")
+            let storageRef = Storage.storage().reference().child("userConfirmationPhotos").child("\(imageUniqueID!).jpeg")
 
             
             if let uploadData = UIImageJPEGRepresentation(self.photoConfirmation.image!, 0.1){

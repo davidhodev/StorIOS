@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -53,7 +53,7 @@
                                 <rect key="frame" x="0.0" y="358" width="170" height="300"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy4" translatesAutoresizingMaskIntoConstraints="NO" id="uGy-bx-NSJ">
-                                <rect key="frame" x="138" y="1" width="169" height="93"/>
+                                <rect key="frame" x="136" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy5_2" translatesAutoresizingMaskIntoConstraints="NO" id="U2q-m4-Bqu">
                                 <rect key="frame" x="224" y="82" width="151" height="323"/>
@@ -66,7 +66,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ED4-zM-ayk">
-                                <rect key="frame" x="0.0" y="-13" width="173" height="85"/>
+                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Bd-4gJ">
                                 <rect key="frame" x="33.666666666666657" y="392" width="177" height="188"/>
@@ -323,7 +323,7 @@
                                 <rect key="frame" x="136" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ZcF-jB-fyb">
-                                <rect key="frame" x="0.0" y="-13" width="171" height="85"/>
+                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo Copy" translatesAutoresizingMaskIntoConstraints="NO" id="iUg-vp-lcF">
                                 <rect key="frame" x="51" y="115" width="187" height="114"/>
@@ -2454,9 +2454,6 @@ Use the Add To List Button on a pin to begin</string>
                                                             </constraints>
                                                             <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
                                                             <state key="normal" image="Confirm Button Purple"/>
-                                                            <connections>
-                                                                <segue destination="jx7-Y9-1qS" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="RjW-eX-kMp"/>
-                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="joP-dv-qOE" userLabel="Confirm Pickup">
                                                             <rect key="frame" x="20" y="141" width="38" height="42"/>
@@ -2658,6 +2655,7 @@ Use the Add To List Button on a pin to begin</string>
                         <outlet property="pendingNoFill" destination="RKD-rS-gEU" id="B5b-xD-O06"/>
                         <outlet property="providerTableView" destination="a8I-I6-tSo" id="YhA-6D-75j"/>
                         <outlet property="switchProviderTable" destination="PLK-nq-izZ" id="P8C-BR-EJ7"/>
+                        <segue destination="jx7-Y9-1qS" kind="presentation" identifier="confirmDropoffProviderSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="6ht-wG-7lT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dE9-ih-1D0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -4599,7 +4597,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="P4G-xz-ODq">
-                                <rect key="frame" x="0.0" y="-55" width="173" height="101"/>
+                                <rect key="frame" x="0.0" y="-55" width="171" height="101"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="101" id="XiM-pS-Ieg"/>
                                 </constraints>
@@ -5243,7 +5241,7 @@ Use the Add To List Button on a pin to begin</string>
         <image name="End Date" width="31" height="30"/>
         <image name="Exit Search Button" width="12" height="12"/>
         <image name="Expand Arrow" width="14" height="8"/>
-        <image name="Fill 7 Copy 2" width="173" height="85"/>
+        <image name="Fill 7 Copy 2" width="171" height="216"/>
         <image name="Fill 7 Copy 5CA" width="308" height="192"/>
         <image name="Fill 7 Copy 6" width="375" height="593"/>
         <image name="Filters Icon" width="24" height="20"/>
