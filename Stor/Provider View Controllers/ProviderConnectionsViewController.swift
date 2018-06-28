@@ -16,6 +16,9 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     var potentialConnects = [providerPotentialUser]()
     var currentConnects = [providerPotentialUser]()
     var selectorIndex: Int?
+    var confirmationAddress: String?
+    var userID: String?
+    var confirmationStorageID: String?
     
     @IBOutlet weak var providerTableView: UITableView!
     @IBOutlet weak var switchProviderTable: UISegmentedControl!
@@ -32,16 +35,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     @IBOutlet weak var currentFill: UIImageView!
     
     
-    /*
-     @IBOutlet weak var currentLabel: UILabel!
-     @IBOutlet weak var pendingLabel: UILabel!
-     @IBOutlet weak var currentNoFill: UIImageView!
-     @IBOutlet weak var pendingNoFill: UIImageView!
-     @IBOutlet weak var pendingFill: UIImageView!
-     @IBOutlet weak var currentFill: UIImageView!
-     @IBOutlet weak var currentIsEmpty: UILabel!
-     
- */
+
     
     @IBAction func exitButton(_ sender: Any) {
         
@@ -506,7 +500,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                     
                 databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).updateChildValues(["Connector": realConnect.userID])
                         
-                databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).updateChildValues(["status": "confirmDropOff"])
+                        databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(myStorageID!).updateChildValues(["status": "confirmDropOff", "providerStatus": "confirmDropoff"])
                     }
                 })
 
@@ -525,8 +519,24 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             print(selectorIndex)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "confirmDropoffProviderSegue"{
+            let destinationController = segue.destination as! confirmDropoffProviderViewController
+            destinationController.address = self.confirmationAddress
+            destinationController.userID = self.userID
+            destinationController.storageID = self.confirmationStorageID
+            
+        }
+    }
+    
     @objc func confirmDropoff(_ sender:UIButton) {
         print("confirm Drop Off")
+        let buttonIndexPath = sender.tag
+        self.confirmationAddress = currentConnects[buttonIndexPath].address
+        self.userID = currentConnects[buttonIndexPath].userID
+        self.confirmationStorageID = currentConnects[buttonIndexPath].storageID
+        performSegue(withIdentifier: "confirmDropoffProviderSegue", sender: self)
     }
     
     @objc func confirmPickup(_ sender:UIButton) {
@@ -534,7 +544,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
         Database.database().reference().child("Providers").child(user.uid).child("storageInUse").observe(.value, with: { (snapshot) in
 
             if let dictionary = snapshot.value as? [String: Any]{
-                let status = String(describing: dictionary["status"]!)
+                let status = String(describing: dictionary["providerStatus"]!)
                 print(status)
                 if status == "schedulePickup"{
                     let alert = UIAlertController(title: "Uh-oh", message: "Your connection has not yet scheduled a pickup. Please call them if something is wrong ", preferredStyle: .alert)

@@ -24,6 +24,8 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     var phone: NSMutableAttributedString?
     var userProfile: UIImage?
     var phoneRaw: String?
+    var dropOffTime: NSMutableAttributedString?
+    var pickUpTime: NSMutableAttributedString?
     
     
     @IBOutlet weak var myListingTableView: UITableView!
@@ -74,7 +76,12 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                 cell.phoneLabel.attributedText = self.phone
                 cell.ratingLabel.attributedText = self.rating
                 cell.deleteButton.isHidden = true
+                cell.deleteLabel.isHidden = true
+                cell.editListingLabel.isHidden = true
+                cell.editListingButton.isHidden = true
                 cell.editDetailsButton.isHidden = true
+                cell.dropOffTimeLabel.attributedText = self.dropOffTime
+                cell.pickUpTimeLabel.attributedText = self.pickUpTime
                 cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
                 
                 DispatchQueue.main.async(execute: { () -> Void in
@@ -324,6 +331,18 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                         cubicFeetAttString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:(cubicFeetString.count)-1,length:1))
 
                         self.cubicFeet = cubicFeetAttString
+                        
+                        if let timeDictionary = dictionary["time"] as? [String: Any]{
+                            let tempDropOff = timeDictionary["dropOffTime"] as? String
+                            let tempPickUp = timeDictionary["pickUpTime"] as? String
+                            let timeFont:UIFont? = UIFont(name: "Dosis-Regular", size:14)
+                            let dropOffAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempDropOff!, attributes: [.font: timeFont!])
+                            let pickUpAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempPickUp!, attributes: [.font: timeFont!])
+                            self.dropOffTime = dropOffAttString
+                            self.pickUpTime = pickUpAttString
+                        }
+                        
+                        
                         
                         let connectorID = dictionary["Connector"]!! as? String
                         self.getConnectorInfo(connectorID: connectorID!)
