@@ -1155,7 +1155,7 @@ Use the Add To List Button on a pin to begin</string>
                                         <rect key="frame" x="0.0" y="28" width="312" height="343"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qm3-vY-lf0" id="7I7-3P-ha6">
-                                            <rect key="frame" x="0.0" y="0.0" width="312" height="342.66666666666669"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="312" height="342.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pKj-Ot-Bqj">
@@ -2019,8 +2019,8 @@ Use the Add To List Button on a pin to begin</string>
                                     <constraint firstAttribute="height" constant="155" id="xCL-Oi-FOP"/>
                                 </constraints>
                             </scrollView>
-                            <visualEffectView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nvf-2i-YT3">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            <visualEffectView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nvf-2i-YT3">
+                                <rect key="frame" x="148" y="0.0" width="375" height="812"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2L0-Cw-5H6">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2091,7 +2091,7 @@ Use the Add To List Button on a pin to begin</string>
                     </view>
                     <connections>
                         <outlet property="addImageScrollView" destination="be4-St-dnZ" id="cwF-vO-DjE"/>
-                        <outlet property="availabilityView" destination="ysA-BL-oZa" id="o1C-yM-xzn"/>
+                        <outlet property="addressLabel" destination="emg-21-5uq" id="Dn2-pP-RF8"/>
                         <outlet property="blurView" destination="Nvf-2i-YT3" id="ugj-4P-dad"/>
                         <outlet property="cubicFeetLabel" destination="RVh-hU-qAQ" id="b8N-Pi-pnc"/>
                         <outlet property="descriptionLabel" destination="Ydd-Nl-90R" id="ixi-ft-gbV"/>
@@ -2245,9 +2245,6 @@ Use the Add To List Button on a pin to begin</string>
                             <rect key="frame" x="184" y="33" width="34" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Save"/>
-                            <connections>
-                                <action selector="exitAvailability:" destination="iOa-Xt-34d" eventType="touchUpInside" id="45b-mJ-LYf"/>
-                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Availability" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNR-Qt-cPT">
                             <rect key="frame" x="63" y="33" width="81" height="21"/>

@@ -49,6 +49,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var savedCubicFeetLabel: UILabel!
     @IBOutlet weak var dimensionsErrorLabel: UILabel!
     @IBOutlet weak var placeHolderDimensionsLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     
     //description variables
     @IBOutlet var descriptionView: UIView!
@@ -57,8 +58,6 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
     let picker = UIPickerView()
     // 3 text views to take in the text from picker view
     
-    //availability variables
-    @IBOutlet var availabilityView: UIView!
     
     //blur effect and window
     @IBOutlet weak var blurView: UIVisualEffectView!
@@ -144,14 +143,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         animateOutDescriptions()
     }
     
-    //takes you to availability pop up
-    @IBAction func addAvailabilityPressed(_ sender: UIButton) {
-        animateInAvailability()
-    }
-    //save button for availability
-    @IBAction func exitAvailability(_ sender: UIButton) {
-        animateOutAvailability()
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -187,10 +179,8 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         //rounding corners of embeded views
         descriptionView.layer.cornerRadius = 27
         dimensionsView.layer.cornerRadius = 27
-        availabilityView.layer.cornerRadius = 27
         descriptionView.frame = subviewFrame
         dimensionsView.frame = subviewFrame2
-        availabilityView.frame = subviewFrame
         if let user = Auth.auth().currentUser{
             Database.database().reference().child("Providers").child(user.uid).child("personalInfo").observe(.value, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: Any]{
@@ -208,6 +198,8 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
                     let nameAttString:NSMutableAttributedString = NSMutableAttributedString(string: nameString, attributes: [.font: nameFont!])
                     print("NAME ATT STRING: ", nameAttString)
                     self.nameLabel.attributedText = nameAttString
+                    
+//                    let addressString
                     
                 }
             })
@@ -240,8 +232,8 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         profileImage.loadProfilePicture()
         // Do any additional setup after loading the view.
     }
-    let subviewFrame = CGRect(x: 62.5, y: 92, width: 250, height: 300)
-    let subviewFrame2 = CGRect(x: 62.5, y: 92, width: 250, height: 350)
+    let subviewFrame = CGRect(x: 62.5, y: 92, width: 312, height: 369) // 312 369
+    let subviewFrame2 = CGRect(x: 62.5, y: 92, width: 312, height: 369)
     // animates in dimension pop up and adds blur
     func animateInDimensions() {
         self.view.addSubview(dimensionsView)
@@ -291,29 +283,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         }
     }
 
-    func animateInAvailability(){
-        self.view.addSubview(availabilityView)
-        availabilityView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-        availabilityView.alpha = 0
-        blurView.isHidden = false
-        UIView.animate(withDuration: 0.3) {
-            print(self.blurEffect)
-            self.blurView.effect = self.blurEffect
-            self.availabilityView.alpha = 1
-            self.availabilityView.transform = CGAffineTransform.identity
-        }
-    }
     
-    func animateOutAvailability(){
-        UIView.animate(withDuration: 0.3, animations: {
-            self.availabilityView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-            self.availabilityView.alpha = 0
-            self.blurView.effect = nil
-            self.blurView.isHidden = true
-        }) { (success:Bool) in
-            self.availabilityView.removeFromSuperview()
-        }
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
