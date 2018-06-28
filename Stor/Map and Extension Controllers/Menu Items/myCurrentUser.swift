@@ -30,6 +30,8 @@ class myCurrentUser: NSObject {
            print("TEST", providerID!)
             Database.database().reference().child("Providers").child(providerID!).child("storageInUse").observe(.childAdded, with: { (snapshot) in
                 print("GET ADDESS SNAPSHOT: ", snapshot)
+                print(snapshot.key)
+                self.storageID = snapshot.key
                 if let dictionary = snapshot.value as? [String: Any]{
                     print(dictionary)
                     self.address = dictionary["Address"] as? String

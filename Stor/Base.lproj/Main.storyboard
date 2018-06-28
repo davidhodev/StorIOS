@@ -3288,15 +3288,12 @@ Use the Add To List Button on a pin to begin</string>
                                                             </constraints>
                                                             <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
                                                             <state key="normal" image="Pickup Button"/>
-                                                            <connections>
-                                                                <segue destination="coP-1j-maq" kind="presentation" identifier="confirmDropOffSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="3sC-es-NUl"/>
-                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Confirm Pickup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGj-iz-N9R">
-                                                            <rect key="frame" x="60" y="257" width="118" height="21"/>
+                                                            <rect key="frame" x="60" y="256" width="118" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
+                                                            <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="0.79826626712328763" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -3429,6 +3426,7 @@ Use the Add To List Button on a pin to begin</string>
                         <outlet property="myStorageLabel" destination="ORS-A1-OxY" id="xa5-KU-Zg3"/>
                         <outlet property="pendingFill" destination="Xkb-x6-0NF" id="wJ1-cx-5dz"/>
                         <outlet property="storageTableView" destination="KTX-FJ-bJD" id="qv5-Dr-PE5"/>
+                        <segue destination="coP-1j-maq" kind="presentation" identifier="confirmDropOffSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="fvg-7S-PdD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4F-zh-0tE" userLabel="First Responder" sceneMemberID="firstResponder"/>
