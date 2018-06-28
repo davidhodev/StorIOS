@@ -1665,6 +1665,13 @@ Use the Add To List Button on a pin to begin</string>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5KX-Z4-Xo4">
+                                                            <rect key="frame" x="72" y="106" width="42" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
@@ -1742,11 +1749,16 @@ Use the Add To List Button on a pin to begin</string>
                                             <outlet property="cellView" destination="CGj-2e-HEM" id="jQD-ar-Bli"/>
                                             <outlet property="cubicFeetLabel" destination="zAI-tC-qTi" id="IfH-qV-zNv"/>
                                             <outlet property="deleteButton" destination="LVH-eh-af7" id="7Xd-dS-Dki"/>
+                                            <outlet property="deleteLabel" destination="vKI-IE-7HX" id="4dH-Mr-8lS"/>
                                             <outlet property="dimensionsLabel" destination="XAu-By-nAl" id="dtB-b3-97Z"/>
+                                            <outlet property="dropOffTimeLabel" destination="Mx5-0w-lE6" id="n02-ct-87d"/>
                                             <outlet property="editDetailsButton" destination="G5Z-BG-eOS" id="qoN-on-nuD"/>
+                                            <outlet property="editListingButton" destination="G5Z-BG-eOS" id="YWL-hz-EHF"/>
+                                            <outlet property="editListingLabel" destination="Lf6-xV-qv2" id="FUO-HW-Smq"/>
                                             <outlet property="moreImage" destination="wyX-iX-Exo" id="giU-5r-x6n"/>
                                             <outlet property="nameLabel" destination="6Bh-Hg-eAE" id="pUw-0e-Der"/>
                                             <outlet property="phoneLabel" destination="cAX-8G-Q7V" id="M9r-y7-CuK"/>
+                                            <outlet property="pickUpTimeLabel" destination="5KX-Z4-Xo4" id="ru8-y4-eeE"/>
                                             <outlet property="priceLabel" destination="PW5-OD-9dP" id="M0l-dx-ynM"/>
                                             <outlet property="profileImage" destination="0eP-hF-EmW" id="AZu-7G-8v2"/>
                                             <outlet property="ratingLabel" destination="7ij-9z-QJz" id="5kz-Qs-jVi"/>
