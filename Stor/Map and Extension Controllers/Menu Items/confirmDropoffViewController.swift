@@ -172,8 +172,8 @@ class confirmDropoffViewController: UIViewController, UIImagePickerControllerDel
                         databaseRating = databaseRating / numberOfRatings!
                         userReference.child("personalInfo").updateChildValues(["rating": databaseRating, "numberOfRatings": numberOfRatings])
                         
-                        myStorageDataManager.shared.storageVC.dismiss(animated: true, completion: nil)
-                        
+                        myStorageDataManager.shared.storageVC.refreshUI()
+                        self.dismiss(animated: true, completion: nil)
                         
                     }
                 })
@@ -188,7 +188,7 @@ class confirmDropoffViewController: UIViewController, UIImagePickerControllerDel
  */
             
             
-            dismiss(animated: true, completion: nil)
+            
         }
     }
     @objc func alertControllerBackgroundTapped()

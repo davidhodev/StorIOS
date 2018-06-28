@@ -381,4 +381,5 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     @objc func confirmPickup(_ sender:UIButton) {
         print("Confirm Pickup")
     }
+    func refreshUI() { DispatchQueue.main.async { self.storageTableView.reloadData() } }
 }
