@@ -10,12 +10,20 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
+class myStorageDataManager {
+    
+    static let shared = myStorageDataManager()
+    var storageVC = myStorageViewController()
+}
+
 class myStorageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var selectedIndexPath: IndexPath?
     var myCurrentStorageUsers = [myCurrentUser]()
     var selectorIndex: Int?
-    
+    var confirmationAddress: String?
+    var confirmationProviderID: String?
+    var confirmationStorageID: String?
     
     @IBOutlet weak var pendingFill: UIImageView!
     @IBOutlet weak var currentIsEmpty: UILabel!
@@ -31,12 +39,14 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        myStorageDataManager.shared.storageVC = self
         storageTableView.delegate = self
         storageTableView.dataSource = self
         selectorIndex = 0
         let font = UIFont(name: "Dosis-Medium", size: 24.0)
         myStorageLabel.attributedText = NSMutableAttributedString(string: "My Storage", attributes: [.font:font!])
         getMyStorage()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -347,11 +357,23 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "confirmDropOffSegue"{
+            let destinationController = segue.destination as! confirmDropoffViewController
+            destinationController.address = self.confirmationAddress
+            destinationController.providerID = self.confirmationProviderID
+            destinationController.storageID = self.confirmationStorageID
+            
+        }
+    }
     
     
     @objc func confirmDropoff(_ sender:UIButton) {
-        print("confirm Drop Off")
+        let buttonIndexPath = sender.tag
+        self.confirmationAddress = myCurrentStorageUsers[buttonIndexPath].address
+        self.confirmationProviderID = myCurrentStorageUsers[buttonIndexPath].providerID
+        self.confirmationStorageID = myCurrentStorageUsers[buttonIndexPath].storageID!
+        performSegue(withIdentifier: "confirmDropOffSegue", sender: self)
     }
     @objc func schedulePickup(_ sender:UIButton) {
         print("Schedule Pickup")

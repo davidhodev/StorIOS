@@ -7,14 +7,31 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 
 class confirmPickupViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var photoConfirmation: UIImageView!
     
+    @IBOutlet weak var oneStar: UIButton!
+    @IBOutlet weak var twoStar: UIButton!
+    @IBOutlet weak var threeStar: UIButton!
+    @IBOutlet weak var fourStar: UIButton!
+    @IBOutlet weak var fiveStar: UIButton!
+    
+    var rating = 0
+    var address: String?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         photoConfirmation.contentMode = .scaleAspectFill
+        photoConfirmation.layer.cornerRadius = 8
+        photoConfirmation.layer.shadowOpacity = 0.07
+        photoConfirmation.layer.shadowOffset = CGSize(width: CGFloat(0), height: CGFloat(10.0))
+        
         photoConfirmation.image = UIImage(named: "Blank Photo")
         photoConfirmation.isUserInteractionEnabled = true
         photoConfirmation.layer.masksToBounds = true
@@ -63,14 +80,100 @@ class confirmPickupViewController: UIViewController, UIImagePickerControllerDele
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func oneStarButton(_ sender: Any) {
+        rating = 1
+        self.oneStar.setImage(UIImage(named: "Gold Star"), for: UIControlState.normal)
+        self.twoStar.setImage(UIImage(named: "Grey Star"), for: UIControlState.normal)
+        self.threeStar.setImage(UIImage(named: "Grey Star"), for: UIControlState.normal)
+        self.fourStar.setImage(UIImage(named: "Grey Star"), for: UIControlState.normal)
+        self.fiveStar.setImage(UIImage(named: "Grey Star"), for: UIControlState.normal)
     }
-    */
+    
+    @IBAction func twoStarButton(_ sender: Any) {
+        rating = 2
+        self.oneStar.setImage(UIImage(named: "Gold Star"), for: UIControlState.normal)
+        self.twoStar.setImage(UIImage(named: "Gold Star"), for: UIControlState.normal)
+        self.threeStar.setImage(UIImage(named: "Grey Star"), for: UIControlState.normal)
+        self.fourStar.setImage(UIImage(named: "Grey Star"), for: UIControlState.normal)
+        self.fiveStar.setImage(UIImage(named: "Grey Star"), for: UIControlState.normal)
+    }
+    
+    @IBAction func threeStarButton(_ sender: Any) {
+        rating = 3
+        self.oneStar.setImage(UIImage(named: "Gold Star"), for: UIControlState.normal)
+        self.twoStar.setImage(UIImage(named: "Gold Star"), for: UIControlState.normal)
+        self.threeStar.setImage(UIImage(named: "Gold Star"), for: UIControlState.normal)
+        self.fourStar.setImage(UIImage(named: "Grey Star"), for: UIControlState.normal)
+        self.fiveStar.setImage(UIImage(named: "Grey Star"), for: UIControlState.normal)
+    }
+    
+    @IBAction func fourStarButton(_ sender: Any) {
+        rating = 4
+        self.oneStar.setImage(UIImage(named: "Gold Star"), for: UIControlState.normal)
+        self.twoStar.setImage(UIImage(named: "Gold Star"), for: UIControlState.normal)
+        self.threeStar.setImage(UIImage(named: "Gold Star"), for: UIControlState.normal)
+        self.fourStar.setImage(UIImage(named: "Gold Star"), for: UIControlState.normal)
+        self.fiveStar.setImage(UIImage(named: "Grey Star"), for: UIControlState.normal)
+    }
+    
+    @IBAction func fiveStarButton(_ sender: Any) {
+        rating = 5
+        self.oneStar.setImage(UIImage(named: "Gold Star"), for: UIControlState.normal)
+        self.twoStar.setImage(UIImage(named: "Gold Star"), for: UIControlState.normal)
+        self.threeStar.setImage(UIImage(named: "Gold Star"), for: UIControlState.normal)
+        self.fourStar.setImage(UIImage(named: "Gold Star"), for: UIControlState.normal)
+        self.fiveStar.setImage(UIImage(named: "Gold Star"), for: UIControlState.normal)
+    }
+    @IBAction func submit(_ sender: Any) {
+        if rating == 0 || photoConfirmation.image == UIImage(named: "Blank Photo"){
+            let alert = UIAlertController(title: "Uh-oh", message: "Make sure you chose a rating and submit a photo for security references", preferredStyle: .alert)
+            self.present(alert, animated: true, completion:{
+                alert.view.superview?.isUserInteractionEnabled = true
+                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+            })
+        }
+        else{
+            print("SUBMITTED")
+//            let imageUniqueID = NSUUID().uuidString
+//            let storageRef = Storage.storage().reference().child("UserProfileImages").child("\(imageUniqueID).jpeg")
+//
+//
+//            if let uploadData = UIImageJPEGRepresentation(self.profileImage.image!, 0.1){
+//
+//                storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+//                    if (error != nil){
+//                        print(error)
+//                        return
+//                    }
+//
+//                    storageRef.downloadURL(completion: { (updatedURL, error) in
+//                        if (error != nil){
+//                            print(error)
+//                            return
+//                        }
+//                        globalVariablesViewController.profilePicString = (updatedURL?.absoluteString)!
+//                        if let user = Auth.auth().currentUser{
+//                            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+//                            let userReference = databaseReference.root.child("Users").child((user.uid))
+//                            print(userReference)
+//                            userReference.updateChildValues(["profilePicture": updatedURL?.absoluteString], withCompletionBlock: {(err, registerDataValues) in
+//                                if err != nil{
+//                                    print(err)
+//                                    return
+//                                }
+//                                print("Profile Pic Updated")
+//
+//                            })
+//                        }
+//                    })
+//                })
+//            }
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    @objc func alertControllerBackgroundTapped()
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
 
 }
