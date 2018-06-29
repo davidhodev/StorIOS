@@ -34,16 +34,16 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func addListingButton(_ sender: Any) {
-//        if exists! == true{
-//            let alert = UIAlertController(title: "Uh-oh", message: "Looks like you already having a listing out! You are limitted to only 1 listing at a time. We apologize for the inconvenience. More listings will be allowed in the next update!", preferredStyle: .alert)
-//            self.present(alert, animated: true, completion:{
-//                alert.view.superview?.isUserInteractionEnabled = true
-//                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
-//            })
-//        }
-//        else{
+        if exists! == true{
+            let alert = UIAlertController(title: "Uh-oh", message: "Looks like you already having a listing out! You are limitted to only 1 listing at a time. We apologize for the inconvenience. More listings will be allowed in the next update!", preferredStyle: .alert)
+            self.present(alert, animated: true, completion:{
+                alert.view.superview?.isUserInteractionEnabled = true
+                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+            })
+        }
+        else{
             performSegue(withIdentifier: "addListingSegue", sender: self)
-//        }
+        }
     }
     
     
@@ -119,6 +119,9 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                 cell.phoneLabel.isHidden = true
                 cell.ratingLabel.isHidden = true
                 cell.profileImage.isHidden = true
+                cell.editListingButton.isHidden = false
+                cell.editListingLabel.isHidden = false
+                cell.editListingButton.addTarget(self, action: #selector(self.editListing(_:)), for: .touchUpInside)
                 
                 
             }
@@ -423,5 +426,148 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     @objc func alertControllerBackgroundTapped()
     {
         self.dismiss(animated: true, completion: nil)
+    }
+    @objc func editListing(_ sender:UIButton){
+        print("editListing")
+        performSegue(withIdentifier: "editListingSegue", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editListingSegue"{
+//            let buttonIndexPath =
+            let destinationController = segue.destination as! addListingViewController
+            if let user = Auth.auth().currentUser{
+                Database.database().reference().child("Providers").child(user.uid).child("currentStorage").observe(.childAdded, with: { (snapshot) in
+                    if let dictionary = snapshot.value as? [String: Any]{
+                        destinationController.descriptionLabel.text = dictionary["Subtitle"] as! String
+                        
+                        
+                        //                        self.providerAddressLabel.text = dictionary["Address"] as? String
+                        //                        let priceString = String(describing: dictionary["Price"]!)
+                        //                        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.descriptionScrollView.frame.size.width, height: CGFloat.greatestFiniteMagnitude)) // resize
+                        //                        label.numberOfLines = 0
+                        //                        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+                        //                        label.font = UIFont(name: "Dosis", size: 15.0)
+                        //                        label.text = dictionary["Subtitle"] as? String
+                        //                        label.alpha = 1.0
+                        //                        label.sizeToFit()
+                        //                        label.textColor = UIColor(red: 42/170, green: 39/170, blue: 89/170, alpha: 0.7)
+                        //
+                        //
+                        //                        self.descriptionScrollView.contentSize = CGSize(width: self.descriptionScrollView.bounds.width, height: label.frame.height + 5)
+                        //                        self.descriptionScrollView.addSubview(label)
+                        //
+                        //
+                        //
+                        //                        if let outputPrice = (Double(priceString)){
+                        //                            let finalPrice = Int(round(outputPrice))
+                        //                            var finalPriceRoundedString = "$ "
+                        //                            finalPriceRoundedString += String(describing: finalPrice)
+                        //                            finalPriceRoundedString += " /mo"
+                        //
+                        //
+                        //
+                        //                            let font:UIFont? = UIFont(name: "Dosis-Bold", size:24)
+                        //                            let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:16)
+                        //                            let fontSmall:UIFont? = UIFont(name: "Dosis-Regular", size:14)
+                        //
+                        //                            let attString:NSMutableAttributedString = NSMutableAttributedString(string: finalPriceRoundedString, attributes: [.font:font!])
+                        //                            attString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:0,length:1))
+                        //                            attString.setAttributes([.font:fontSmall!,.baselineOffset:-1], range: NSRange(location:(finalPriceRoundedString.count)-3,length:3))
+                        //                            self.providerPriceLabel.attributedText = attString
+                        //
+                        //                        }
+                        //                        print("DICTIONARY MEH", dictionary)
+                        //                        var dimensionsString = String(describing: dictionary["Length"]!)
+                        //                        dimensionsString += "' X "
+                        //                        dimensionsString += String(describing: dictionary["Width"]!)
+                        //                        dimensionsString += "'"
+                        //                        self.providerSizeLabel.text = dimensionsString
+                        //
+                        //                        var cubicFeetNumber = Int(String(describing:dictionary["Length"]!))
+                        //                        cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Width"]!))!)
+                        //                        cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Height"]!))!)
+                        //                        var cubicFeetString = String(describing: cubicFeetNumber!)
+                        //                        cubicFeetString += " ft3"
+                        //
+                        //                        let font:UIFont? = UIFont(name: "Dosis-Regular", size:16)
+                        //                        let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:14)
+                        //
+                        //                        let cubicFeetAttString:NSMutableAttributedString = NSMutableAttributedString(string: cubicFeetString, attributes: [.font:font!])
+                        //                        cubicFeetAttString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:(cubicFeetString.count)-1,length:1))
+                        //                        self.cubicFeetLabel.attributedText = cubicFeetAttString
+                        //                        print(self.cubicFeetLabel.attributedText)
+                        //
+                        //
+                        //
+                        //
+                        //                        print(self.providerLocation)
+                        //
+                        //                        let locationProvider = CLLocation(latitude: (self.providerLocation?.latitude)!, longitude: (self.providerLocation?.longitude)!)
+                        //
+                        //                        let distance = self.userLocation?.distance(from: locationProvider)
+                        //                        print(distance)
+                        //                        if (Int(distance!) < 1609){
+                        //                            self.outputDistance = "Less than one mile"
+                        //                        }
+                        //                        else{
+                        //                            let finalDistance = Double(distance!) / 1609
+                        //                            var milesAway = String(format: "%.1f", finalDistance)
+                        //                            milesAway = milesAway + " miles away"
+                        //                            self.outputDistance = milesAway
+                        //                        }
+                        //                        self.providerDistanceLabel.text = self.outputDistance
+                        //
+                        //                        if let photoDictionary = dictionary["Photos"] as? [String: Any] {
+                        //
+                        //                            let sortedKeys = photoDictionary.keys.sorted()
+                        //
+                        //
+                        //                            self.featurePageControl.numberOfPages = photoDictionary.count
+                        //                            self.imageScrollView.isPagingEnabled = true
+                        //                            self.imageScrollView.contentSize = CGSize(width: self.imageScrollView.bounds.width * CGFloat(photoDictionary.count), height: 122)
+                        //                            self.imageScrollView.showsHorizontalScrollIndicator = true
+                        //                            self.imageScrollView.showsVerticalScrollIndicator = false
+                        //                            for (index, featureSorted) in sortedKeys.enumerated(){
+                        //                                let feature = photoDictionary[featureSorted]
+                        //                                URLSession.shared.dataTask(with: NSURL(string: feature as! String)! as URL, completionHandler: { (data, response, error) -> Void in
+                        //
+                        //                                    if error != nil {
+                        //                                        print(error)
+                        //                                        return
+                        //                                    }
+                        //                                    DispatchQueue.main.async(execute: { () -> Void in
+                        //                                        let myImage = UIImage(data: data!)
+                        //                                        let myImageView:UIImageView = UIImageView()
+                        //                                        myImageView.frame.size.width = self.view.bounds.size.width
+                        //                                        myImageView.frame.origin.x = CGFloat(index) * self.view.bounds.size.width
+                        //                                        myImageView.image = myImage
+                        //
+                        //                                        let xPosition = (self.imageScrollView.frame.width) * CGFloat(index)
+                        //                                        myImageView.frame = CGRect(x: xPosition, y: 0, width: self.imageScrollView.frame.width, height: self.imageScrollView.frame.height)
+                        //                                        self.imageScrollView.layer.cornerRadius = 8
+                        //
+                        //                                        self.imageScrollView.addSubview(myImageView)
+                        //                                    })
+                        //
+                        //                                }).resume()
+                        //                            }
+                        //                        }
+
+                    }
+                }, withCancel: nil)
+            }
+//            let user = self.myListUsers[buttonIndexPath!]
+//            destinationController.providerID = user.providerID
+//            //            destinationController.providerAddress = user.address
+//            destinationController.storageID = user.storageID
+//
+//            let locationManager = CLLocationManager()
+//
+//            destinationController.userLocation = locationManager.location
+//            destinationController.providerLocation = user.providerLocation
+            
+            
+        }
+        
     }
 }
