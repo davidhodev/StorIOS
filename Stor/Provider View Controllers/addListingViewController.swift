@@ -163,9 +163,9 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
             cubicFinalString?.append(feetCubedLabel.text!)
             savedCubicFeetLabel.text = cubicFinalString
             savedCubicFeetLabel.isHidden = false
-            var dimensionsFinalString = String(describing: widthFeet!)
+            var dimensionsFinalString = String(describing: lengthFeet!)
             dimensionsFinalString += (" X ")
-            dimensionsFinalString += String(describing: lengthFeet!)
+            dimensionsFinalString += String(describing: widthFeet!)
             savedDimensionsLabel.text = dimensionsFinalString
             savedDimensionsLabel.isHidden = false
             placeHolderDimensionsLabel.isHidden = true
