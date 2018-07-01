@@ -24,6 +24,8 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     var phone: NSMutableAttributedString?
     var userProfile: UIImage?
     var phoneRaw: String?
+    var dropOffTime: NSMutableAttributedString?
+    var pickUpTime: NSMutableAttributedString?
     
     
     @IBOutlet weak var myListingTableView: UITableView!
@@ -32,16 +34,16 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func addListingButton(_ sender: Any) {
-//        if exists! == true{
-//            let alert = UIAlertController(title: "Uh-oh", message: "Looks like you already having a listing out! You are limitted to only 1 listing at a time. We apologize for the inconvenience. More listings will be allowed in the next update!", preferredStyle: .alert)
-//            self.present(alert, animated: true, completion:{
-//                alert.view.superview?.isUserInteractionEnabled = true
-//                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
-//            })
-//        }
-//        else{
+        if exists! == true{
+            let alert = UIAlertController(title: "Uh-oh", message: "Looks like you already having a listing out! You are limitted to only 1 listing at a time. We apologize for the inconvenience. More listings will be allowed in the next update!", preferredStyle: .alert)
+            self.present(alert, animated: true, completion:{
+                alert.view.superview?.isUserInteractionEnabled = true
+                alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+            })
+        }
+        else{
             performSegue(withIdentifier: "addListingSegue", sender: self)
-//        }
+        }
     }
     
     
@@ -74,7 +76,12 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                 cell.phoneLabel.attributedText = self.phone
                 cell.ratingLabel.attributedText = self.rating
                 cell.deleteButton.isHidden = true
+                cell.deleteLabel.isHidden = true
+                cell.editListingLabel.isHidden = true
+                cell.editListingButton.isHidden = true
                 cell.editDetailsButton.isHidden = true
+                cell.dropOffTimeLabel.attributedText = self.dropOffTime
+                cell.pickUpTimeLabel.attributedText = self.pickUpTime
                 cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
                 
                 DispatchQueue.main.async(execute: { () -> Void in
@@ -103,11 +110,18 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
             }
             else{
                 cell.callButton.isHidden = true
+                cell.ratingStar.isHidden = true
+                cell.takenByLabel.isHidden = true
+                cell.dropOffTimeLabel.isHidden = true
+                cell.pickUpTimeLabel.isHidden = true
                 cell.availableLabel.isHidden = false
                 cell.nameLabel.isHidden = true
                 cell.phoneLabel.isHidden = true
                 cell.ratingLabel.isHidden = true
                 cell.profileImage.isHidden = true
+                cell.editListingButton.isHidden = false
+                cell.editListingLabel.isHidden = false
+                cell.editListingButton.addTarget(self, action: #selector(self.editListing(_:)), for: .touchUpInside)
                 
                 
             }
@@ -123,10 +137,15 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if (self.exists)!{
+            myListingTableView.isHidden = false
+            //hiddenLabel.isHidden = true
             return 1
         }
+        myListingTableView.isHidden = true
+        //HIDDEN LABEL.isHidden = false
         return 0
     }
+    
     
     
 
@@ -325,6 +344,18 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
 
                         self.cubicFeet = cubicFeetAttString
                         
+                        if let timeDictionary = dictionary["time"] as? [String: Any]{
+                            let tempDropOff = timeDictionary["dropOffTime"] as? String
+                            let tempPickUp = timeDictionary["pickUpTime"] as? String
+                            let timeFont:UIFont? = UIFont(name: "Dosis-Regular", size:14)
+                            let dropOffAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempDropOff!, attributes: [.font: timeFont!])
+                            let pickUpAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempPickUp!, attributes: [.font: timeFont!])
+                            self.dropOffTime = dropOffAttString
+                            self.pickUpTime = pickUpAttString
+                        }
+                        
+                        
+                        
                         let connectorID = dictionary["Connector"]!! as? String
                         self.getConnectorInfo(connectorID: connectorID!)
                     }
@@ -395,5 +426,90 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     @objc func alertControllerBackgroundTapped()
     {
         self.dismiss(animated: true, completion: nil)
+    }
+    @objc func editListing(_ sender:UIButton){
+        print("editListing")
+        performSegue(withIdentifier: "editListingSegue", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editListingSegue"{
+//            let buttonIndexPath =
+            let destinationController = segue.destination as! addListingViewController
+            if let user = Auth.auth().currentUser{
+                Database.database().reference().child("Providers").child(user.uid).child("currentStorage").observe(.childAdded, with: { (snapshot) in
+                    if let dictionary = snapshot.value as? [String: Any]{
+                        destinationController.descriptionLabel.text = dictionary["Subtitle"] as! String
+                        
+
+                        var cubicFeetNumber = Int(String(describing:dictionary["Length"]!))
+                        cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Width"]!))!)
+                        cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Height"]!))!)
+                        var cubicFeetString = String(describing: cubicFeetNumber!)
+                        cubicFeetString += " ft3"
+                        
+                        let font:UIFont? = UIFont(name: "Dosis-Regular", size:16)
+                        let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:14)
+                        
+                        let cubicFeetAttString:NSMutableAttributedString = NSMutableAttributedString(string: cubicFeetString, attributes: [.font:font!])
+                        cubicFeetAttString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:(cubicFeetString.count)-1,length:1))
+                        destinationController.savedCubicFeetLabel.attributedText = cubicFeetAttString
+
+                        
+                        
+                        destinationController.savedCubicFeetLabel.isHidden = false
+                        var dimensionsFinalString = String(describing: dictionary["Length"]!)
+                        dimensionsFinalString += (" X ")
+                        dimensionsFinalString += String(describing: dictionary["Width"]!)
+                        destinationController.savedDimensionsLabel.text = dimensionsFinalString
+                        destinationController.savedDimensionsLabel.isHidden = false
+                        destinationController.placeHolderDimensionsLabel.isHidden = true
+                        destinationController.dimensionsErrorLabel.isHidden = true
+                        
+                        
+                        //Photos
+                        if let photoDictionary = dictionary["Photos"] as? [String: Any] {
+                            
+                            let sortedKeys = photoDictionary.keys.sorted()
+                            
+                            for (index, featureSorted) in sortedKeys.enumerated(){
+                                let feature = photoDictionary[featureSorted]
+                                URLSession.shared.dataTask(with: NSURL(string: feature as! String)! as URL, completionHandler: { (data, response, error) -> Void in
+                                    
+                                    if error != nil {
+                                        print(error)
+                                        return
+                                    }
+                                    DispatchQueue.main.async(execute: { () -> Void in
+                                        let myImage = UIImage(data: data!)
+                                        let myImageView:UIImageView = UIImageView()
+                                        myImageView.frame.size.width = self.view.bounds.size.width
+                                        myImageView.frame.origin.x = CGFloat(index) * self.view.bounds.size.width
+                                        myImageView.image = myImage
+                                        
+                                        destinationController.addImagesDictionary[String(describing: index)] = myImage
+                                    })
+                                    
+                                }).resume()
+                            }
+                        }
+                        
+                        
+
+                    }
+                }, withCancel: nil)
+            }
+//            let user = self.myListUsers[buttonIndexPath!]
+//            destinationController.providerID = user.providerID
+//            //            destinationController.providerAddress = user.address
+//            destinationController.storageID = user.storageID
+//
+//            let locationManager = CLLocationManager()
+//
+//            destinationController.userLocation = locationManager.location
+//            destinationController.providerLocation = user.providerLocation
+            
+            
+        }
+        
     }
 }

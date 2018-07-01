@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 import Photos
 
 extension String{
@@ -49,6 +50,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var savedCubicFeetLabel: UILabel!
     @IBOutlet weak var dimensionsErrorLabel: UILabel!
     @IBOutlet weak var placeHolderDimensionsLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     
     //description variables
     @IBOutlet var descriptionView: UIView!
@@ -57,8 +59,6 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
     let picker = UIPickerView()
     // 3 text views to take in the text from picker view
     
-    //availability variables
-    @IBOutlet var availabilityView: UIView!
     
     //blur effect and window
     @IBOutlet weak var blurView: UIVisualEffectView!
@@ -78,6 +78,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
                 alert.view.superview?.isUserInteractionEnabled = true
                 alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
             })
+            return
         }
         
         
@@ -94,12 +95,56 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
                             alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
                         })
                     }
+                    else{
+                        self.createListing()
+                    }
                 }
                 
                 
             }
         })
         print("add Listing!")
+    }
+    
+    func createListing(){
+        let uid = Auth.auth().currentUser?.uid
+        let uniqueStorageID = NSUUID().uuidString
+        var finalPhotosDictionary = [String: Any]()
+        
+        for (index, feature) in addImagesDictionary{
+            if feature != UIImage(named: "Blank Photo"){
+                let imageUniqueID = NSUUID().uuidString
+                print(imageUniqueID)
+                let storageRef = Storage.storage().reference().child("ProviderStorageAddImages").child("\(imageUniqueID).jpeg")
+                
+                
+                if let uploadData = UIImageJPEGRepresentation(feature!, 0.1){
+                    
+                    storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                        if (error != nil){
+                            print(error)
+                            return
+                        }
+                        storageRef.downloadURL(completion: { (updatedURL, error) in
+                            if (error != nil){
+                                print(error)
+                                return
+                            }
+                            print("URL: ", updatedURL?.absoluteString)
+                            var stringIndex = "photo"
+                            stringIndex += String(describing: index)
+                            finalPhotosDictionary[stringIndex] = updatedURL?.absoluteString
+                            print("ADDED IMAGE", finalPhotosDictionary)
+                        Database.database().reference().child("Providers").child(uid!).child("currentStorage").child(uniqueStorageID).child("Photos").updateChildValues(finalPhotosDictionary)
+                        })
+                    })
+                }
+            }
+        }
+        Database.database().reference().child("Providers").child(uid!).child("currentStorage").child(uniqueStorageID).updateChildValues(["Address": addressLabel.text!, "Height": heightFeet!, "Length": lengthFeet!, "Name": nameLabel.text!, "Price": 100000, "Subtitle": descriptionLabel.text!, "Title": "Title", "Width": widthFeet!, "status": "available", "providerStatus": "avaialable"])
+
+        self.dismiss(animated: true, completion: nil)
+        //RELOAD TABLEVIEW
     }
     //exit button for full page
     @IBAction func exitButton(_ sender: Any) {
@@ -118,9 +163,9 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
             cubicFinalString?.append(feetCubedLabel.text!)
             savedCubicFeetLabel.text = cubicFinalString
             savedCubicFeetLabel.isHidden = false
-            var dimensionsFinalString = String(describing: widthFeet!)
+            var dimensionsFinalString = String(describing: lengthFeet!)
             dimensionsFinalString += (" X ")
-            dimensionsFinalString += String(describing: lengthFeet!)
+            dimensionsFinalString += String(describing: widthFeet!)
             savedDimensionsLabel.text = dimensionsFinalString
             savedDimensionsLabel.isHidden = false
             placeHolderDimensionsLabel.isHidden = true
@@ -144,14 +189,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         animateOutDescriptions()
     }
     
-    //takes you to availability pop up
-    @IBAction func addAvailabilityPressed(_ sender: UIButton) {
-        animateInAvailability()
-    }
-    //save button for availability
-    @IBAction func exitAvailability(_ sender: UIButton) {
-        animateOutAvailability()
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -187,10 +225,10 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         //rounding corners of embeded views
         descriptionView.layer.cornerRadius = 27
         dimensionsView.layer.cornerRadius = 27
-        availabilityView.layer.cornerRadius = 27
         descriptionView.frame = subviewFrame
         dimensionsView.frame = subviewFrame2
-        availabilityView.frame = subviewFrame
+//        descriptionView.backgroundColor = UIColor.clear
+//        dimensionsView.backgroundColor = UIColor.clear
         if let user = Auth.auth().currentUser{
             Database.database().reference().child("Providers").child(user.uid).child("personalInfo").observe(.value, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: Any]{
@@ -209,16 +247,20 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
                     print("NAME ATT STRING: ", nameAttString)
                     self.nameLabel.attributedText = nameAttString
                     
+                    let addressString = String(describing: dictionary["permanentAddress"]!)
+                    let addressAttString:NSMutableAttributedString = NSMutableAttributedString(string: addressString, attributes: [.font: fontRating!])
+                    self.addressLabel.attributedText = addressAttString
+                    
                 }
             })
         }
         
         //Hexagon SHape
         let lineWidth = CGFloat(7.0)
-        let rect = CGRect(x: 0, y: 0.0, width: 90, height: 96)
+        let rect = CGRect(x: 0, y: 0.0, width: 50, height: 54)
         let sides = 6
         
-        let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 8.0, rotationOffset: CGFloat(.pi / 2.0))
+        let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 7.0, rotationOffset: CGFloat(.pi / 2.0))
         
         let borderLayer = CAShapeLayer()
         borderLayer.frame = CGRect(x : 0.0, y : 0.0, width : path.bounds.width + lineWidth, height : path.bounds.height + lineWidth)
@@ -240,8 +282,8 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         profileImage.loadProfilePicture()
         // Do any additional setup after loading the view.
     }
-    let subviewFrame = CGRect(x: 62.5, y: 92, width: 250, height: 300)
-    let subviewFrame2 = CGRect(x: 62.5, y: 92, width: 250, height: 350)
+    let subviewFrame = CGRect(x: 62.5, y: 92, width: 312, height: 369) // 312 369
+    let subviewFrame2 = CGRect(x: 62.5, y: 92, width: 312, height: 369)
     // animates in dimension pop up and adds blur
     func animateInDimensions() {
         self.view.addSubview(dimensionsView)
@@ -291,29 +333,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         }
     }
 
-    func animateInAvailability(){
-        self.view.addSubview(availabilityView)
-        availabilityView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-        availabilityView.alpha = 0
-        blurView.isHidden = false
-        UIView.animate(withDuration: 0.3) {
-            print(self.blurEffect)
-            self.blurView.effect = self.blurEffect
-            self.availabilityView.alpha = 1
-            self.availabilityView.transform = CGAffineTransform.identity
-        }
-    }
     
-    func animateOutAvailability(){
-        UIView.animate(withDuration: 0.3, animations: {
-            self.availabilityView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
-            self.availabilityView.alpha = 0
-            self.blurView.effect = nil
-            self.blurView.isHidden = true
-        }) { (success:Bool) in
-            self.availabilityView.removeFromSuperview()
-        }
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -421,8 +441,6 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
     func reloadAddImages(){
         print("COUNT OF DICTIOANRY", addImagesDictionary.count)
         let sortedKeys = addImagesDictionary.keys.sorted()
-//        let addImagesDictionary = addImagesDictionary.keys.s
-//            addImagesDictionary.sorted{ $0.key < $1.key }
         self.addImageScrollView.contentSize = CGSize(width: self.addImageScrollView.bounds.width * CGFloat(addImagesDictionary.count), height: 155)
         for (index, feature) in sortedKeys.enumerated(){
             DispatchQueue.main.async(execute: { () -> Void in

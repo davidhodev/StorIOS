@@ -24,12 +24,19 @@ class providerMyListingCellTableViewCell: UITableViewCell {
     @IBOutlet weak var callButton: UIButton!
     @IBOutlet weak var editDetailsButton: UIButton!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var deleteLabel: UILabel!
+    @IBOutlet weak var editListingLabel: UILabel!
+    @IBOutlet weak var editListingButton: UIButton!
+    @IBOutlet weak var dropOffTimeLabel: UILabel!
+    @IBOutlet weak var pickUpTimeLabel: UILabel!
+    @IBOutlet weak var takenByLabel: UILabel!
+    @IBOutlet weak var ratingStar: UIImageView!
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var availableLabel: UILabel!
     
     @IBOutlet weak var cellView: UIView!
-    class var expandedHeight: CGFloat {get { return 380 }}
+    class var expandedHeight: CGFloat {get { return 272 }}
     class var defaultHeight: CGFloat {get { return 60 }}
     
     
