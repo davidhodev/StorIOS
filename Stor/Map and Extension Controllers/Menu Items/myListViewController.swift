@@ -81,6 +81,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cell.layer.cornerRadius = 30
         
         
+        
         DispatchQueue.main.async(execute: { () -> Void in
             
             let lineWidth = CGFloat(7.0)
@@ -198,7 +199,11 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let removeFromList = removeAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [removeFromList])
+        let config = UISwipeActionsConfiguration(actions: [removeFromList])
+        config.performsFirstActionWithFullSwipe = false
+        return config
+        
+//        return UISwipeActionsConfiguration(actions: [removeFromList])
     }
     
     func removeAction(at indexPath: IndexPath) -> UIContextualAction{
@@ -215,9 +220,11 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             completion(true)
         }
 
-        
+         
 //        action.image = UIImage(named: "Delete from MyList Button")
         action.backgroundColor = UIColor(patternImage: UIImage(named: "Delete from MyList Button 2")!)
+//        action.backgroundColor = UIColor.clear
+//        action.image = UIImage(named: "Delete from MyList Button 2")!
         
         
         return action

@@ -91,8 +91,10 @@ class myCurrentUser: NSObject {
                     self.cubicString = cubicFeetAttString
                     
                     if let timeDictionary = dictionary["time"] as? [String: Any]{
-                        var dropOffTimeString = "Drop Off Time: "
-                        dropOffTimeString += (timeDictionary.first?.value)! as! String
+                        
+                        var dropOffTimeString = timeDictionary["dropOffTime"] as! String
+                        dropOffTimeString += " - "
+                        dropOffTimeString += timeDictionary["pickUpTime"] as! String
                         
                         let timeFont: UIFont? = UIFont(name: "Dosis-Regular", size:14)
                         let dropOffAttString:NSMutableAttributedString = NSMutableAttributedString(string: dropOffTimeString, attributes: [.font:timeFont!])
