@@ -220,7 +220,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             completion(true)
         }
 
-        
+         
 //        action.image = UIImage(named: "Delete from MyList Button")
         action.backgroundColor = UIColor(patternImage: UIImage(named: "Delete from MyList Button 2")!)
 //        action.backgroundColor = UIColor.clear
