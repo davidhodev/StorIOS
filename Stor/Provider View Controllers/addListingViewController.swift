@@ -28,6 +28,7 @@ class Dates{
 }
 
 class addListingViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
+    var uniqueStorageID = NSUUID().uuidString
 
     @IBOutlet weak var profileImage: UIImageView!
     //photos variables
@@ -63,6 +64,17 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
     //blur effect and window
     @IBOutlet weak var blurView: UIVisualEffectView!
     var blurEffect: UIVisualEffect!
+
+    @IBOutlet weak var exitDescription: UIButton!
+    @IBAction func exitDescriptionButton(_ sender: Any) {
+        animateOutDescriptions()
+    }
+    
+    @IBOutlet weak var exitDimensions: UIButton!
+    @IBAction func exitDimensionsButton(_ sender: Any) {
+        animateOutDimensions()
+    }
+    
     
     // Add Images
     @IBOutlet weak var addImageScrollView: UIScrollView!
@@ -108,7 +120,6 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
     
     func createListing(){
         let uid = Auth.auth().currentUser?.uid
-        let uniqueStorageID = NSUUID().uuidString
         var finalPhotosDictionary = [String: Any]()
         
         for (index, feature) in addImagesDictionary{
@@ -135,7 +146,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
                             stringIndex += String(describing: index)
                             finalPhotosDictionary[stringIndex] = updatedURL?.absoluteString
                             print("ADDED IMAGE", finalPhotosDictionary)
-                        Database.database().reference().child("Providers").child(uid!).child("currentStorage").child(uniqueStorageID).child("Photos").updateChildValues(finalPhotosDictionary)
+                            Database.database().reference().child("Providers").child(uid!).child("currentStorage").child(self.uniqueStorageID).child("Photos").updateChildValues(finalPhotosDictionary)
                         })
                     })
                 }
@@ -159,20 +170,33 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         if (widthFeet != 0 && lengthFeet != 0 && heightFeet != 0){
             animateOutDimensions()
             var cubicFinalString = cubicFeetLabel.text
+            
+            
+            
+            
             cubicFinalString?.append(" ")
-            cubicFinalString?.append(feetCubedLabel.text!)
-            savedCubicFeetLabel.text = cubicFinalString
+            cubicFinalString?.append("ft3")
+            
+            let font:UIFont? = UIFont(name: "Dosis-Regular", size:16)
+            let fontSuper:UIFont? = UIFont(name: "Dosis-Regular", size:14)
+            
+            let cubicFeetAttString:NSMutableAttributedString = NSMutableAttributedString(string: cubicFinalString!, attributes: [.font:font!])
+            cubicFeetAttString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:(cubicFinalString?.count)!-1,length:1))
+            
+            savedCubicFeetLabel.attributedText = cubicFeetAttString
             savedCubicFeetLabel.isHidden = false
             var dimensionsFinalString = String(describing: lengthFeet!)
-            dimensionsFinalString += (" X ")
+            dimensionsFinalString += ("' x ")
             dimensionsFinalString += String(describing: widthFeet!)
-            savedDimensionsLabel.text = dimensionsFinalString
+            dimensionsFinalString += ("'")
+            
+            let dimensionsFont:UIFont? = UIFont(name: "Dosis-Bold", size:16)
+            let dimensionsAttString:NSMutableAttributedString = NSMutableAttributedString(string: dimensionsFinalString, attributes: [.font: dimensionsFont!])
+            
+            savedDimensionsLabel.attributedText = dimensionsAttString
             savedDimensionsLabel.isHidden = false
             placeHolderDimensionsLabel.isHidden = true
             dimensionsErrorLabel.isHidden = true
-        }
-        else if (widthFeet == 0 && lengthFeet == 0 && heightFeet == 0){
-            animateOutDimensions()
         }
         else{
             dimensionsErrorLabel.isHidden = false
@@ -227,8 +251,8 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         dimensionsView.layer.cornerRadius = 27
         descriptionView.frame = subviewFrame
         dimensionsView.frame = subviewFrame2
-//        descriptionView.backgroundColor = UIColor.clear
-//        dimensionsView.backgroundColor = UIColor.clear
+        dimensionsView.center.x = view.center.x
+        descriptionView.center.x = view.center.x
         if let user = Auth.auth().currentUser{
             Database.database().reference().child("Providers").child(user.uid).child("personalInfo").observe(.value, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: Any]{
@@ -260,7 +284,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         let rect = CGRect(x: 0, y: 0.0, width: 50, height: 54)
         let sides = 6
         
-        let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 7.0, rotationOffset: CGFloat(.pi / 2.0))
+        let path = roundedPolygonPath(rect: rect, lineWidth: lineWidth, sides: sides, cornerRadius: 6.0, rotationOffset: CGFloat(.pi / 2.0))
         
         let borderLayer = CAShapeLayer()
         borderLayer.frame = CGRect(x : 0.0, y : 0.0, width : path.bounds.width + lineWidth, height : path.bounds.height + lineWidth)
@@ -282,6 +306,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         profileImage.loadProfilePicture()
         // Do any additional setup after loading the view.
     }
+    
     let subviewFrame = CGRect(x: 62.5, y: 92, width: 312, height: 369) // 312 369
     let subviewFrame2 = CGRect(x: 62.5, y: 92, width: 312, height: 369)
     // animates in dimension pop up and adds blur
@@ -294,6 +319,8 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
             print(self.blurEffect)
             self.blurView.effect = self.blurEffect
             self.dimensionsView.alpha = 1
+            self.exitDimensions.isHidden = false
+            self.exitDescription.isHidden = true
             self.dimensionsView.transform = CGAffineTransform.identity
             }
     }
@@ -319,6 +346,8 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
             self.blurView.effect = self.blurEffect
             self.descriptionView.alpha = 1
             self.descriptionView.transform = CGAffineTransform.identity
+            self.exitDescription.isHidden = false
+            self.exitDimensions.isHidden = true
         }
     }
 
@@ -440,6 +469,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
     
     func reloadAddImages(){
         print("COUNT OF DICTIOANRY", addImagesDictionary.count)
+        print("EDIT ADD IMAGES", addImagesDictionary)
         let sortedKeys = addImagesDictionary.keys.sorted()
         self.addImageScrollView.contentSize = CGSize(width: self.addImageScrollView.bounds.width * CGFloat(addImagesDictionary.count), height: 155)
         for (index, feature) in sortedKeys.enumerated(){
