@@ -363,8 +363,15 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             destinationController.address = self.confirmationAddress
             destinationController.providerID = self.confirmationProviderID
             destinationController.storageID = self.confirmationStorageID
+        }
+        if segue.identifier == "confirmPickupSegue"{
+            let destinationController = segue.destination as! confirmDropoffViewController
+            destinationController.address = self.confirmationAddress
+            destinationController.providerID = self.confirmationProviderID
+            destinationController.storageID = self.confirmationStorageID
             
         }
+        
     }
     
     

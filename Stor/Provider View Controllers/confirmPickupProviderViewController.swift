@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 
 class confirmPickupProviderViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -18,7 +21,10 @@ class confirmPickupProviderViewController: UIViewController, UIImagePickerContro
     @IBOutlet weak var fiveStar: UIButton!
     
     
-    var rating = 0
+    var rating = 0.0
+    var address: String?
+    var userID: String?
+    var storageID: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,6 +136,53 @@ class confirmPickupProviderViewController: UIViewController, UIImagePickerContro
         }
         else{
             print("SUBMITTED")
+            let imageUniqueID = self.address
+            print(imageUniqueID)
+            let storageRef = Storage.storage().reference().child("providerConfirmPickup").child("\(imageUniqueID!).jpeg")
+            
+            
+            if let uploadData = UIImageJPEGRepresentation(self.photoConfirmation.image!, 0.1){
+                
+                storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                    if (error != nil){
+                        print(error)
+                        return
+                    }
+                    
+                    storageRef.downloadURL(completion: { (updatedURL, error) in
+                        if (error != nil){
+                            print(error)
+                            return
+                        }
+                    })
+                })
+            }
+            
+            if let user = Auth.auth().currentUser{
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                let userReference = databaseReference.root.child("Users").child((self.userID!))
+                
+                let providerReference = databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(self.storageID!)
+                providerReference.updateChildValues(["providerStatus": "done"])
+                
+                
+                // New Rating
+                userReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                    if let dictionary = snapshot.value as? [String: Any]{
+                        let oldRating = dictionary["rating"] as? Double
+                        var numberOfRatings = dictionary["numberOfRatings"] as? Double
+                        var databaseRating = oldRating! * numberOfRatings!
+                        databaseRating += self.rating
+                        numberOfRatings! += 1
+                        databaseRating = databaseRating / numberOfRatings!
+                        userReference.updateChildValues(["rating": databaseRating, "numberOfRatings": numberOfRatings])
+                        //
+                        //                        myStorageDataManager.shared.storageVC.refreshUI()
+                        self.dismiss(animated: true, completion: nil)
+                        
+                    }
+                })
+            }
         }
     }
     @objc func alertControllerBackgroundTapped()

@@ -20,14 +20,31 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var listIsEmpty: UILabel!
     
+    @IBOutlet weak var swipeToRemove: UIButton!
     @IBOutlet weak var myListTableView: UITableView!
     @IBAction func exitButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func swipeToRemoveButton(_ sender: Any) {
+        [UIButton .animate(withDuration: 0.3, animations: {
+            self.swipeToRemove.alpha = 0
+        })]
+    }
+    
+    @objc fileprivate func showSwipeToRemove(){
+        UIView.animate(withDuration: 0.3, animations: {
+            self.swipeToRemove.alpha = 1
+        })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        showSwipeToRemove()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         myListTableView.delegate = self
         myListTableView.dataSource = self
+        swipeToRemove.alpha = 0
         getMyList()
         // Do any additional setup after loading the view.
     }
@@ -220,7 +237,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             completion(true)
         }
 
-         
+        
 //        action.image = UIImage(named: "Delete from MyList Button")
         action.backgroundColor = UIColor(patternImage: UIImage(named: "Delete from MyList Button 2")!)
 //        action.backgroundColor = UIColor.clear

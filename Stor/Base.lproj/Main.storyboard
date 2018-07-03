@@ -1314,6 +1314,9 @@ Use the Add To List Button on a pin to begin</string>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="-19" minY="-10" maxX="-14" maxY="-30"/>
                                 <state key="normal" image="Swipe to remove popup"/>
+                                <connections>
+                                    <action selector="swipeToRemoveButton:" destination="DIb-zf-3Ve" eventType="touchUpInside" id="N6A-Y1-hyV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.1647058824" green="0.27450980390000002" blue="0.70588235290000001" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1345,6 +1348,7 @@ Use the Add To List Button on a pin to begin</string>
                     <connections>
                         <outlet property="listIsEmpty" destination="alT-sU-oLR" id="9Gf-h5-e6I"/>
                         <outlet property="myListTableView" destination="lyT-sV-Et1" id="pvF-5I-TCr"/>
+                        <outlet property="swipeToRemove" destination="Qtx-Lz-0zm" id="bSc-xW-RK3"/>
                         <segue destination="ChP-SR-ddt" kind="presentation" identifier="seeMoreSegue" modalPresentationStyle="overFullScreen" id="iCd-uy-vSg"/>
                     </connections>
                 </viewController>
@@ -2577,9 +2581,6 @@ Use the Add To List Button on a pin to begin</string>
                                                             </constraints>
                                                             <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
                                                             <state key="normal" image="Confirm Button Purple"/>
-                                                            <connections>
-                                                                <segue destination="dz7-vw-hM1" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Rvd-qh-btA"/>
-                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Drop-off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tcE-nP-M5f">
                                                             <rect key="frame" x="65" y="152" width="106" height="20.333333333333343"/>
@@ -2770,6 +2771,7 @@ Use the Add To List Button on a pin to begin</string>
                         <outlet property="providerTableView" destination="a8I-I6-tSo" id="YhA-6D-75j"/>
                         <outlet property="switchProviderTable" destination="PLK-nq-izZ" id="P8C-BR-EJ7"/>
                         <segue destination="jx7-Y9-1qS" kind="presentation" identifier="confirmDropoffProviderSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="6ht-wG-7lT"/>
+                        <segue destination="dz7-vw-hM1" kind="presentation" identifier="confirmPickupProviderSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="PHl-VO-SfU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dE9-ih-1D0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3437,9 +3439,6 @@ Use the Add To List Button on a pin to begin</string>
                                                             </constraints>
                                                             <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
                                                             <state key="normal" image="Pickup Button"/>
-                                                            <connections>
-                                                                <segue destination="tfE-7N-NII" kind="presentation" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="q85-mS-xFk"/>
-                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm drop-off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kIB-sR-uM1" userLabel="Confirm Dropoff">
                                                             <rect key="frame" x="60" y="241" width="108" height="51"/>
@@ -3652,6 +3651,7 @@ Use the Add To List Button on a pin to begin</string>
                         <outlet property="pendingFill" destination="Xkb-x6-0NF" id="wJ1-cx-5dz"/>
                         <outlet property="storageTableView" destination="KTX-FJ-bJD" id="qv5-Dr-PE5"/>
                         <segue destination="coP-1j-maq" kind="presentation" identifier="confirmDropOffSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="fvg-7S-PdD"/>
+                        <segue destination="tfE-7N-NII" kind="presentation" identifier="confirmPickupSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Uwp-dH-bbI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4F-zh-0tE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3912,7 +3912,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdK-rQ-mYB">
-                                <rect key="frame" x="279" y="605" width="60" height="65"/>
+                                <rect key="frame" x="0.0" y="605" width="60" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="M4V-Zr-rQq"/>
                                     <constraint firstAttribute="width" constant="60" id="MKj-Ib-ESF"/>
@@ -3923,7 +3923,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhx-9f-mvD">
-                                <rect key="frame" x="279" y="685" width="60" height="65"/>
+                                <rect key="frame" x="0.0" y="685" width="60" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="6GI-Oc-3ZE"/>
                                     <constraint firstAttribute="height" constant="65" id="uho-kZ-G0r"/>
@@ -3949,7 +3949,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LPh-AA-fL1">
-                                <rect key="frame" x="16" y="131" width="343" height="280"/>
+                                <rect key="frame" x="0.0" y="131" width="343" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="9gf-Jr-Bfb"/>
@@ -3976,7 +3976,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="J0k-Vv-Yda">
-                                <rect key="frame" x="62.666666666666657" y="67" width="250.99999999999997" height="50"/>
+                                <rect key="frame" x="0.0" y="67" width="251" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="251" id="XGg-Ao-Pen"/>
                                     <constraint firstAttribute="height" constant="50" id="d6q-r4-Irt"/>
@@ -3986,7 +3986,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQY-nG-TsQ" userLabel="Filters Button">
-                                <rect key="frame" x="309" y="67" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="67" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="L3E-RY-dIg"/>
                                     <constraint firstAttribute="width" constant="50" id="eAh-Jx-hRY"/>
@@ -3998,7 +3998,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puJ-Ux-Fmn" userLabel="Cancel Button">
-                                <rect key="frame" x="309" y="67" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="67" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="VXo-OA-aiz"/>
                                     <constraint firstAttribute="height" constant="50" id="YpT-dL-62X"/>

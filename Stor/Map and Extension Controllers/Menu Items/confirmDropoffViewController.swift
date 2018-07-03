@@ -178,16 +178,7 @@ class confirmDropoffViewController: UIViewController, UIImagePickerControllerDel
                     }
                 })
             }
-            
-            /*
-             if let user = Auth.auth().currentUser{
-             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
-             let userReference = databaseReference.root.child("Users").child((user.uid))
-             userReference.child("myList").child(self.storageID!).updateChildValues(["myListProvider0": self.providerID, "myListStorage0": self.storageID])
-             }
- */
-            
-            
+        
             
         }
     }
