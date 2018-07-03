@@ -164,6 +164,19 @@ class confirmPickupViewController: UIViewController, UIImagePickerControllerDele
                 let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
                 let userReference = databaseReference.root.child("Providers").child((self.providerID!))
                 print(self.storageID)
+                
+                Database.database().reference().child("Providers").child((self.providerID!)).observeSingleEvent(of: .value, with: { (snapshot) in
+                    if let dictionary = snapshot.value as? [String: Any]{
+                        let providerStatus = dictionary["providerStatus"] as? String
+                        if (providerStatus == "done"){
+                            //REMOVE
+                            
+                        }
+                    }
+                })
+                
+                
+                
                 userReference.child("storageInUse").child(self.storageID!).updateChildValues(["status": "done"])
                 
                 // New Rating

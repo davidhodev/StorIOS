@@ -163,6 +163,17 @@ class confirmPickupProviderViewController: UIViewController, UIImagePickerContro
                 let userReference = databaseReference.root.child("Users").child((self.userID!))
                 
                 let providerReference = databaseReference.root.child("Providers").child(user.uid).child("storageInUse").child(self.storageID!)
+               
+                
+                Database.database().reference().child("Providers").child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                    if let dictionary = snapshot.value as? [String: Any]{
+                        let userStatus = dictionary["status"] as? String
+                        if (userStatus == "done"){
+                            //REMOVE
+                            
+                        }
+                    }
+                })
                 providerReference.updateChildValues(["providerStatus": "done"])
                 
                 
@@ -176,8 +187,6 @@ class confirmPickupProviderViewController: UIViewController, UIImagePickerContro
                         numberOfRatings! += 1
                         databaseRating = databaseRating / numberOfRatings!
                         userReference.updateChildValues(["rating": databaseRating, "numberOfRatings": numberOfRatings])
-                        //
-                        //                        myStorageDataManager.shared.storageVC.refreshUI()
                         self.dismiss(animated: true, completion: nil)
                         
                     }
