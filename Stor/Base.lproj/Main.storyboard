@@ -3743,7 +3743,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0 – $250+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Af-eV-QcA" userLabel="Price Result">
-                                <rect key="frame" x="268.66666666666669" y="232" width="69.333333333333314" height="20.333333333333343"/>
+                                <rect key="frame" x="268.66666666666669" y="231" width="69.333333333333314" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                 <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -3969,9 +3969,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-
                                 <rect key="frame" x="28" y="84" width="20" height="20"/>
-
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
@@ -4082,7 +4080,7 @@ Use the Add To List Button on a pin to begin</string>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IxH-yB-OLs">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Map Pin Hex" translatesAutoresizingMaskIntoConstraints="NO" id="BDl-Sl-yhT">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Map Pin Hex" translatesAutoresizingMaskIntoConstraints="NO" id="BDl-Sl-yhT">
                                         <rect key="frame" x="-212" y="99" width="652" height="658"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ziq-55-z61">
@@ -4320,8 +4318,8 @@ Use the Add To List Button on a pin to begin</string>
                             <constraint firstItem="pa1-xP-dnb" firstAttribute="centerX" secondItem="bzQ-eh-dqb" secondAttribute="centerX" id="662-u7-k7i"/>
                             <constraint firstItem="IAj-ns-7JK" firstAttribute="top" secondItem="bzQ-eh-dqb" secondAttribute="top" constant="29" id="6EE-qX-oLn"/>
                             <constraint firstItem="IxH-yB-OLs" firstAttribute="top" secondItem="dSi-ah-9go" secondAttribute="top" id="6mE-r8-7Zz"/>
-                            <constraint firstItem="BDl-Sl-yhT" firstAttribute="trailing" secondItem="bzQ-eh-dqb" secondAttribute="trailing" constant="65" id="7iM-PL-EUU"/>
                             <constraint firstItem="IxH-yB-OLs" firstAttribute="leading" secondItem="bzQ-eh-dqb" secondAttribute="leading" id="8nE-ss-qph"/>
+                            <constraint firstItem="BDl-Sl-yhT" firstAttribute="trailing" secondItem="bzQ-eh-dqb" secondAttribute="trailing" constant="65" id="BJl-bG-QvO"/>
                             <constraint firstItem="bzQ-eh-dqb" firstAttribute="trailing" secondItem="4TU-oW-Ppw" secondAttribute="trailing" constant="36" id="Bcq-TP-OSX"/>
                             <constraint firstItem="CT9-X9-L0k" firstAttribute="bottom" secondItem="bzQ-eh-dqb" secondAttribute="bottom" constant="50" id="CRN-An-WCJ"/>
                             <constraint firstItem="bzQ-eh-dqb" firstAttribute="bottom" secondItem="4TU-oW-Ppw" secondAttribute="bottom" constant="28" id="GJs-gf-wmt"/>
