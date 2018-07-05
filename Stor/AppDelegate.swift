@@ -34,8 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
             else{
                 UNUserNotificationCenter.current().delegate = self
                 Messaging.messaging().delegate = self
-                application.registerForRemoteNotifications()
-                
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
             }
         }
         

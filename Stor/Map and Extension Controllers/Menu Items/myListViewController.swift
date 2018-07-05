@@ -16,6 +16,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var selectedIndexPath: IndexPath?
     var myListUsers = [myListUser]()
     var buttonIndexPath: Int?
+    var exists: Bool?
     var buttonProviderLocation: CLLocationCoordinate2D?
     
     @IBOutlet weak var listIsEmpty: UILabel!
@@ -38,7 +39,9 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        showSwipeToRemove()
+        if exists!{
+            showSwipeToRemove()
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,10 +69,12 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if myListUsers.count == 0{
             self.myListTableView.isHidden = true
             self.listIsEmpty.isHidden = false
+            exists = false
         }
         else{
             self.myListTableView.isHidden = false
             self.listIsEmpty.isHidden = true
+            exists = true
         }
         return myListUsers.count
     }
