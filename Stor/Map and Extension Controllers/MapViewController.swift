@@ -105,17 +105,44 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationManager.requestAlwaysAuthorization()
         
         
+        
         // Get Data for the Menu
-        let uid = Auth.auth().currentUser?.uid
-        Database.database().reference().child("Users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
+        if let user = Auth.auth().currentUser{
+            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+            let userReference = databaseReference.root.child("Users").child(user.uid)
+            print("USER ID TEST", user.uid)
+            ////            print("TEST 1")
+            userReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                let dictionary = snapshot.value as? [String: Any]
+                print("TEST PLEASE WORK", dictionary)
+                globalVariablesViewController.username = (dictionary!["name"] as? String)!
+                globalVariablesViewController.ratingNumber = (dictionary!["rating"] as? NSNumber)!
+                globalVariablesViewController.profilePicString = (dictionary!["profilePicture"] as? String)!
+            }, withCancel: nil)
+        }
+        
+//        if let user = Auth.auth().currentUser{
+//            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+//            let userReference = databaseReference.root.child("Users").child(user.uid)
+////            print("TEST 1")
+//            userReference.observeSingleEvent(of: .value, with: { (snapshot) in
+//                let dictionary = snapshot.value as? [String: Any]
+//                    print("TEST PLEASE WORK", dictionary)
+//                
+//            }, withCancel: nil)
+//        }
+        
+//        let uid = Auth.auth().currentUser?.uid
+//        Database.database().reference().child("Users").child(uid!).observeSingleEvent(of: .value, with: { (snapshot) in
 
-            if let dictionary = snapshot.value as? [String:Any] {
-                globalVariablesViewController.username = (dictionary["name"] as? String)!
-                globalVariablesViewController.ratingNumber = (dictionary["rating"] as? NSNumber)!
-                globalVariablesViewController.profilePicString = (dictionary["profilePicture"] as? String)!
-            }
+//            let dictionary = snapshot.value as? [String:Any]
+//            print("TEST PLEASE WORK", snapshot.value)
+//            globalVariablesViewController.username = (dictionary!["name"] as? String)!
+//            globalVariablesViewController.ratingNumber = (dictionary!["rating"] as? NSNumber)!
+//            globalVariablesViewController.profilePicString = (dictionary!["profilePicture"] as? String)!
+            
 
-        }, withCancel: nil)
+//        }, withCancel: nil)
         
         // Show Annotations
         
@@ -397,12 +424,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     }
                     var sizeFeetSquared = Int(String(describing:actualStorageDictionary!["Length"]!))
                     sizeFeetSquared = sizeFeetSquared! * (Int(String(describing:actualStorageDictionary!["Width"]!))!)
-                    print(sizeFeetSquared)
+//                    print(sizeFeetSquared)
                     
                     let tempPrice = (String(describing:actualStorageDictionary!["Price"]!))
                     let outputPrice = (Double(tempPrice))
                     let providerPrice = Int(round(outputPrice!))
-                    print(providerPrice)
+//                    print(providerPrice)
                     
                     
                     
