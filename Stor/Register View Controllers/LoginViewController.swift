@@ -127,7 +127,6 @@ class LoginViewController: UIViewController {
                         // sets placeholder red
                         self.passwordText.attributedPlaceholder = NSAttributedString(string: "Invalid Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
                         //removes text
-                        self.emailText.text = ""
                         self.passwordText.text = ""
                         // sets bars and icons to red
                         self.line2Image.image = UIImage.init(named: "Line 2Red")

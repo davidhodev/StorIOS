@@ -99,15 +99,16 @@ class RegisterEmailViewController: UIViewController {
         }
         
         
-        PhoneAuthProvider.provider().verifyPhoneNumber(phoneVerify, uiDelegate: nil) { (verificationID, error) in
-            if ((error) != nil){
-                print(error)
-                return
-            }
-            print(verificationID)
-            UserDefaults.standard.set(verificationID, forKey: "firebase_verification")
-            UserDefaults.standard.synchronize()
-        }
+//        PhoneAuthProvider.provider().verifyPhoneNumber(phoneVerify, uiDelegate: nil) { (verificationID, error) in
+//            if ((error) != nil){
+//                print(error)
+//                return
+//            }
+//            print(verificationID)
+//            UserDefaults.standard.set(verificationID, forKey: "firebase_verification")
+//            UserDefaults.standard.synchronize()
+//        }
+        print("TESTING IF IT WORKS")
         
         let defaultProfilePictureURL = "https://firebasestorage.googleapis.com/v0/b/stor-database.appspot.com/o/Group%202v2.jpeg?alt=media&token=4b1c267b-3b5d-4ad0-b79a-6f149ffa155e"
         // Creates User from Firebase

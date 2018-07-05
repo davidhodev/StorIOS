@@ -9,19 +9,38 @@
 import UIKit
 import Firebase
 import FirebaseDatabase
+import FirebaseMessaging
 import FBSDKCoreKit
 import FBSDKLoginKit
 import GoogleSignIn
+import UserNotifications
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUserNotificationCenterDelegate, MessagingDelegate{
 
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //User Notifications
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (isGranted, error) in
+            if error != nil{
+                // Something Went wrong
+                print("User Notification Error")
+            }
+            else{
+                UNUserNotificationCenter.current().delegate = self
+                Messaging.messaging().delegate = self
+                DispatchQueue.main.async {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+            }
+        }
+        
+        
         
         //Facebook SDK
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -36,6 +55,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
 
         return true
     }
+    
+    //Connecting to Firebase Connection Manager
+    func ConnectToFCM(){
+        Messaging.messaging().shouldEstablishDirectChannel = true
+    }
+    
+    
     
     // Facebook and Google SDK function
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -113,6 +139,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        Messaging.messaging().shouldEstablishDirectChannel = false
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -121,11 +149,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        // Connecting to FCM
+        ConnectToFCM()
+        
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    
 
 
 }

@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>496451902106-3130bg3kbr1gf0abr2so7s0l1jnqn58e.apps.googleusercontent.com</string>
+	<string>496451902106-ker0c9cgdnlievmj5cv3sbbic9hfflfg.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string> </string>
+	<string>com.googleusercontent.apps.496451902106-ker0c9cgdnlievmj5cv3sbbic9hfflfg</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCXFrJcYAAoqhcXVmr773-MeAvPdsnlcBk</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,23 +17,23 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>David-Ho.Stor</string>
+	<string>David-Ho-Development.Stor</string>
 	<key>PROJECT_ID</key>
 	<string>stor-database</string>
 	<key>STORAGE_BUCKET</key>
 	<string>stor-database.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:496451902106:ios:24d087770c2cf237</string>
+	<string>1:496451902106:ios:7bc74f23d4d705b2</string>
 	<key>DATABASE_URL</key>
 	<string>https://stor-database.firebaseio.com</string>
 </dict>

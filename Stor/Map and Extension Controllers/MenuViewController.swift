@@ -49,7 +49,7 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
 
     @IBAction func menuHelpButton(_ sender: UIButton) {
-        openUrl(urlStr: "http://www.google.com")
+        openUrl(urlStr: "https://www.mystorapp.com/contact-us-1/")
     }
     func openUrl(urlStr:String!) {
         

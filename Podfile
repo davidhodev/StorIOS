@@ -11,6 +11,7 @@ target 'Stor' do
 	pod ‘Firebase/Database’
 	pod ‘Firebase/Auth’
 	pod ‘Firebase/Storage’
+	pod ‘Firebase/Messaging’
 
 	pod 'FBSDKCoreKit'
 	pod 'FBSDKShareKit'

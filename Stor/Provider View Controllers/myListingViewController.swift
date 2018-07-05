@@ -434,7 +434,6 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editListingSegue"{
-//            let buttonIndexPath =
             let destinationController = segue.destination as! addListingViewController
             if let user = Auth.auth().currentUser{
                 Database.database().reference().child("Providers").child(user.uid).child("currentStorage").observe(.childAdded, with: { (snapshot) in
