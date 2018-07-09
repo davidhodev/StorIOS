@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class LoginViewController: UIViewController {
     
@@ -127,7 +128,6 @@ class LoginViewController: UIViewController {
                         // sets placeholder red
                         self.passwordText.attributedPlaceholder = NSAttributedString(string: "Invalid Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
                         //removes text
-                        self.emailText.text = ""
                         self.passwordText.text = ""
                         // sets bars and icons to red
                         self.line2Image.image = UIImage.init(named: "Line 2Red")
@@ -143,6 +143,21 @@ class LoginViewController: UIViewController {
             }
             // Correct Password
             else{
+                
+                if let user = Auth.auth().currentUser{
+                    let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                    let userReference = databaseReference.root.child("Users").child(user.uid)
+                    print("USER ID TEST", user.uid)
+                    ////            print("TEST 1")
+                    userReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                        let dictionary = snapshot.value as? [String: Any]
+                        print("TEST PLEASE WORK", dictionary)
+                        globalVariablesViewController.username = (dictionary!["name"] as? String)!
+                        globalVariablesViewController.ratingNumber = (dictionary!["rating"] as? NSNumber)!
+                        globalVariablesViewController.profilePicString = (dictionary!["profilePicture"] as? String)!
+                    }, withCancel: nil)
+                }
+                
                 self.activityIndicator.stopAnimating()
                 print("Successfully logged in")
                 let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

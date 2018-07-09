@@ -199,7 +199,20 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
     // Override viewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+//        try!  Auth.auth().signOut()
         if let user = Auth.auth().currentUser{
+            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+            let userReference = databaseReference.root.child("Users").child(user.uid)
+            print("USER ID TEST", user.uid)
+            ////            print("TEST 1")
+            userReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                let dictionary = snapshot.value as? [String: Any]
+                print("TEST PLEASE WORK", dictionary)
+                globalVariablesViewController.username = (dictionary!["name"] as? String)!
+                globalVariablesViewController.ratingNumber = (dictionary!["rating"] as? NSNumber)!
+                globalVariablesViewController.profilePicString = (dictionary!["profilePicture"] as? String)!
+                }, withCancel: nil)
+
             performSegue(withIdentifier: "toMapSegue", sender: nil)
         }
     }

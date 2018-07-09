@@ -21,8 +21,11 @@ class confirmPickupViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var fourStar: UIButton!
     @IBOutlet weak var fiveStar: UIButton!
     
-    var rating = 0
+    var rating = 0.0
     var address: String?
+    var providerID: String?
+    var storageID: String?
+    
     
     
     override func viewDidLoad() {
@@ -134,40 +137,66 @@ class confirmPickupViewController: UIViewController, UIImagePickerControllerDele
         }
         else{
             print("SUBMITTED")
-//            let imageUniqueID = NSUUID().uuidString
-//            let storageRef = Storage.storage().reference().child("UserProfileImages").child("\(imageUniqueID).jpeg")
-//
-//
-//            if let uploadData = UIImageJPEGRepresentation(self.profileImage.image!, 0.1){
-//
-//                storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-//                    if (error != nil){
-//                        print(error)
-//                        return
-//                    }
-//
-//                    storageRef.downloadURL(completion: { (updatedURL, error) in
-//                        if (error != nil){
-//                            print(error)
-//                            return
-//                        }
-//                        globalVariablesViewController.profilePicString = (updatedURL?.absoluteString)!
-//                        if let user = Auth.auth().currentUser{
-//                            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
-//                            let userReference = databaseReference.root.child("Users").child((user.uid))
-//                            print(userReference)
-//                            userReference.updateChildValues(["profilePicture": updatedURL?.absoluteString], withCompletionBlock: {(err, registerDataValues) in
-//                                if err != nil{
-//                                    print(err)
-//                                    return
-//                                }
-//                                print("Profile Pic Updated")
-//
-//                            })
-//                        }
-//                    })
-//                })
-//            }
+            //             print("SUBMITTED")
+            let imageUniqueID = self.address
+            print(imageUniqueID)
+            let storageRef = Storage.storage().reference().child("userConfirmPickup").child("\(imageUniqueID!).jpeg")
+            
+            
+            if let uploadData = UIImageJPEGRepresentation(self.photoConfirmation.image!, 0.1){
+                
+                storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                    if (error != nil){
+                        print(error)
+                        return
+                    }
+                    
+                    storageRef.downloadURL(completion: { (updatedURL, error) in
+                        if (error != nil){
+                            print(error)
+                            return
+                        }
+                    })
+                })
+            }
+            
+            if let user = Auth.auth().currentUser{
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                let userReference = databaseReference.root.child("Providers").child((self.providerID!))
+                print(self.storageID)
+                
+                Database.database().reference().child("Providers").child((self.providerID!)).observeSingleEvent(of: .value, with: { (snapshot) in
+                    if let dictionary = snapshot.value as? [String: Any]{
+                        let providerStatus = dictionary["providerStatus"] as? String
+                        if (providerStatus == "done"){
+                            //REMOVE
+                            
+                        }
+                    }
+                })
+                
+                
+                
+                userReference.child("storageInUse").child(self.storageID!).updateChildValues(["status": "done"])
+                
+                // New Rating
+                userReference.child("personalInfo").observeSingleEvent(of: .value, with: { (snapshot) in
+                    if let dictionary = snapshot.value as? [String: Any]{
+                        let oldRating = dictionary["rating"] as? Double
+                        var numberOfRatings = dictionary["numberOfRatings"] as? Double
+                        var databaseRating = oldRating! * numberOfRatings!
+                        databaseRating += self.rating
+                        numberOfRatings! += 1
+                        databaseRating = databaseRating / numberOfRatings!
+                        userReference.child("personalInfo").updateChildValues(["rating": databaseRating, "numberOfRatings": numberOfRatings])
+                        
+                        myStorageDataManager.shared.storageVC.refreshUI()
+                        self.dismiss(animated: true, completion: nil)
+                        
+                    }
+                })
+            }
+            
             dismiss(animated: true, completion: nil)
         }
     }

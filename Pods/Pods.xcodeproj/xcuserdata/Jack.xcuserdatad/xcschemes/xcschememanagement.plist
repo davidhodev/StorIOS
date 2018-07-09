@@ -74,10 +74,15 @@
 			<key>orderHint</key>
 			<integer>11</integer>
 		</dict>
-		<key>SwiftRangeSlider.xcscheme</key>
+		<key>Protobuf.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>13</integer>
+		</dict>
+		<key>SwiftRangeSlider.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
 		</dict>
 		<key>leveldb-library.xcscheme</key>
 		<dict>

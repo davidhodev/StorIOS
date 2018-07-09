@@ -236,6 +236,7 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
                                 myImageView.frame.size.width = self.view.bounds.size.width
                                 myImageView.frame.origin.x = CGFloat(index) * self.view.bounds.size.width
                                 myImageView.image = myImage
+                                myImageView.contentMode = .scaleAspectFill
                                 
                                 let xPosition = (self.imageScrollView.frame.width) * CGFloat(index)
                                 myImageView.frame = CGRect(x: xPosition, y: 0, width: self.imageScrollView.frame.width, height: self.imageScrollView.frame.height)

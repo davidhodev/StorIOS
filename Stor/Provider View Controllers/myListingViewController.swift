@@ -27,6 +27,7 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     var dropOffTime: NSMutableAttributedString?
     var pickUpTime: NSMutableAttributedString?
     
+    @IBOutlet weak var noCurrentListing: UILabel!
     
     @IBOutlet weak var myListingTableView: UITableView!
     @IBAction func exitButton(_ sender: Any) {
@@ -138,11 +139,11 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     func numberOfSections(in tableView: UITableView) -> Int {
         if (self.exists)!{
             myListingTableView.isHidden = false
-            //hiddenLabel.isHidden = true
+            self.noCurrentListing.isHidden = true
             return 1
         }
         myListingTableView.isHidden = true
-        //HIDDEN LABEL.isHidden = false
+        self.noCurrentListing.isHidden = false
         return 0
     }
     
@@ -321,7 +322,7 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                             
                         }
                         var dimensionsString = String(describing: dictionary["Length"]!!)
-                        dimensionsString += "' X "
+                        dimensionsString += "' x "
                         dimensionsString += String(describing: dictionary["Width"]!!)
                         dimensionsString += "'"
                         let dimensionsTemp = dimensionsString
@@ -433,13 +434,29 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editListingSegue"{
-//            let buttonIndexPath =
             let destinationController = segue.destination as! addListingViewController
             if let user = Auth.auth().currentUser{
                 Database.database().reference().child("Providers").child(user.uid).child("currentStorage").observe(.childAdded, with: { (snapshot) in
+                    let currentStorageID = snapshot.key
+                    destinationController.uniqueStorageID = currentStorageID
                     if let dictionary = snapshot.value as? [String: Any]{
                         destinationController.descriptionLabel.text = dictionary["Subtitle"] as! String
                         
+                        
+                        
+                        /*
+                         var dimensionsString = String(describing: dictionary["Length"]!!)
+                         dimensionsString += "' x "
+                         dimensionsString += String(describing: dictionary["Width"]!!)
+                         dimensionsString += "'"
+                         let dimensionsTemp = dimensionsString
+                         // maybe change this
+                         let fontDimensions: UIFont? = UIFont(name: "Dosis-Bold", size:16)
+                         let dimensionsAttString:NSMutableAttributedString = NSMutableAttributedString(string: dimensionsTemp, attributes: [.font: fontDimensions!])
+                         self.dimensions = dimensionsAttString
+
+                         
+ */
 
                         var cubicFeetNumber = Int(String(describing:dictionary["Length"]!))
                         cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Width"]!))!)
@@ -458,9 +475,14 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                         
                         destinationController.savedCubicFeetLabel.isHidden = false
                         var dimensionsFinalString = String(describing: dictionary["Length"]!)
-                        dimensionsFinalString += (" X ")
+                        dimensionsFinalString += ("' x ")
                         dimensionsFinalString += String(describing: dictionary["Width"]!)
-                        destinationController.savedDimensionsLabel.text = dimensionsFinalString
+                        dimensionsFinalString += ("'")
+                        
+                        let fontDimensions: UIFont? = UIFont(name: "Dosis-Bold", size:16)
+                        let dimensionsAttString:NSMutableAttributedString = NSMutableAttributedString(string: dimensionsFinalString, attributes: [.font: fontDimensions!])
+                        
+                        destinationController.savedDimensionsLabel.attributedText = dimensionsAttString
                         destinationController.savedDimensionsLabel.isHidden = false
                         destinationController.placeHolderDimensionsLabel.isHidden = true
                         destinationController.dimensionsErrorLabel.isHidden = true
@@ -468,6 +490,8 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                         
                         //Photos
                         if let photoDictionary = dictionary["Photos"] as? [String: Any] {
+                            print("PHOTO DICT FROM DATABASE", photoDictionary)
+                            var editPhotoDictionary = [String: UIImage]()
                             
                             let sortedKeys = photoDictionary.keys.sorted()
                             
@@ -486,7 +510,11 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                                         myImageView.frame.origin.x = CGFloat(index) * self.view.bounds.size.width
                                         myImageView.image = myImage
                                         
-                                        destinationController.addImagesDictionary[String(describing: index)] = myImage
+                                        
+                                        editPhotoDictionary[String(describing: index)] = myImage
+                                        destinationController.addImagesDictionary = editPhotoDictionary
+                                        destinationController.reloadAddImages()
+                                        print("EDIT PHOTO DICTIONARY SEGUE", editPhotoDictionary)
                                     })
                                     
                                 }).resume()

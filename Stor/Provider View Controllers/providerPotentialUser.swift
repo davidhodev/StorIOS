@@ -57,6 +57,10 @@ class providerPotentialUser: NSObject {
                         if let finalTimeDictionary = timesDictionary[self.storageID!] as? [String: Any]{
                             
                             self.dropOff = finalTimeDictionary["timeSlotString"] as! String
+                            
+                            self.dropOff! += " - "
+                            
+                            self.dropOff! += finalTimeDictionary["pickUpTime"] as! String
                         }
                     
                     }

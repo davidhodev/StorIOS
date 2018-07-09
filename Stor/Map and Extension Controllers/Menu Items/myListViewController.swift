@@ -16,18 +16,38 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var selectedIndexPath: IndexPath?
     var myListUsers = [myListUser]()
     var buttonIndexPath: Int?
+    var exists: Bool?
     var buttonProviderLocation: CLLocationCoordinate2D?
     
     @IBOutlet weak var listIsEmpty: UILabel!
     
+    @IBOutlet weak var swipeToRemove: UIButton!
     @IBOutlet weak var myListTableView: UITableView!
     @IBAction func exitButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func swipeToRemoveButton(_ sender: Any) {
+        [UIButton .animate(withDuration: 0.3, animations: {
+            self.swipeToRemove.alpha = 0
+        })]
+    }
+    
+    @objc fileprivate func showSwipeToRemove(){
+        UIView.animate(withDuration: 0.3, animations: {
+            self.swipeToRemove.alpha = 1
+        })
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if exists!{
+            showSwipeToRemove()
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         myListTableView.delegate = self
         myListTableView.dataSource = self
+        swipeToRemove.alpha = 0
         getMyList()
         // Do any additional setup after loading the view.
     }
@@ -49,10 +69,12 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if myListUsers.count == 0{
             self.myListTableView.isHidden = true
             self.listIsEmpty.isHidden = false
+            exists = false
         }
         else{
             self.myListTableView.isHidden = false
             self.listIsEmpty.isHidden = true
+            exists = true
         }
         return myListUsers.count
     }
@@ -79,6 +101,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         myListTableView.backgroundColor = UIColor.clear
         cell.backgroundColor = UIColor.white
         cell.layer.cornerRadius = 30
+        
         
         
         DispatchQueue.main.async(execute: { () -> Void in
@@ -198,7 +221,11 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let removeFromList = removeAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [removeFromList])
+        let config = UISwipeActionsConfiguration(actions: [removeFromList])
+        config.performsFirstActionWithFullSwipe = false
+        return config
+        
+//        return UISwipeActionsConfiguration(actions: [removeFromList])
     }
     
     func removeAction(at indexPath: IndexPath) -> UIContextualAction{
@@ -218,6 +245,8 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
 //        action.image = UIImage(named: "Delete from MyList Button")
         action.backgroundColor = UIColor(patternImage: UIImage(named: "Delete from MyList Button 2")!)
+//        action.backgroundColor = UIColor.clear
+//        action.image = UIImage(named: "Delete from MyList Button 2")!
         
         
         return action

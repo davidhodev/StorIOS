@@ -528,6 +528,13 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             destinationController.storageID = self.confirmationStorageID
             
         }
+        if segue.identifier == "confirmPickupProviderSegue"{
+            let destinationController = segue.destination as! confirmDropoffProviderViewController
+            destinationController.address = self.confirmationAddress
+            destinationController.userID = self.userID
+            destinationController.storageID = self.confirmationStorageID
+            
+        }
     }
     
     @objc func confirmDropoff(_ sender:UIButton) {
