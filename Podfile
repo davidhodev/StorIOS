@@ -19,6 +19,7 @@ target 'Stor' do
 
 	pod 'GoogleSignIn'
 	pod 'SwiftRangeSlider', '~> 2.0'
+	pod 'Alamofire', '~> 4.7'
 
   target 'StorTests' do
     inherit! :search_paths

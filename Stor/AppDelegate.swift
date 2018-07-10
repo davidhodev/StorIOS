@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseInstanceID
 import FirebaseDatabase
 import FirebaseMessaging
 import FBSDKCoreKit
@@ -20,6 +21,9 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUserNotificationCenterDelegate, MessagingDelegate{
 
     var window: UIWindow?
+    static let NOTIFICATION_URL = "//fcm.googleapis.com/v1/projects/stor-database/messages:send HTTP/1.1"
+    static var DEVICEID = String()
+    static let SERVERKEY = "AAAAc5bW2po:APA91bF5n0a-ubA8Mzv7oEf6lMBI9Q6CBiqOpMGf7V8REIAQBSmFvPZtg8RaBmqOGBsSugd8Mck49K85p-jokRsa0sDPxnJvsYUBaovQemslwu1q3W5wXIdHtIVFePrW2v4ZT7laphMD"
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -36,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
                 Messaging.messaging().delegate = self
                 DispatchQueue.main.async {
                     UIApplication.shared.registerForRemoteNotifications()
+                    UIApplication.shared.applicationIconBadgeNumber = 0
                 }
             }
         }
@@ -97,7 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
                 let phone = user?.phoneNumber
                 
                 if let user = Auth.auth().currentUser{
-                    let registerDataValues = ["name": fullName, "email": email, "password": user.uid, "phone":phone, "profilePicture": profilePic]
+                    let registerDataValues = ["name": fullName, "email": email, "password": user.uid, "phone":phone, "profilePicture": profilePic, "deviceToken": AppDelegate.DEVICEID]
                     let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
                     let userReference = databaseReference.root.child("Users").child((user.uid))
                     databaseReference.child("Users").child((user.uid)).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -159,8 +164,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        guard let newToken = InstanceID.instanceID().token() else {return}
+        AppDelegate.DEVICEID = newToken
+    }
     
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let notification = response.notification.request.content.body
+        print(notification)
+        completionHandler()
+    }
 
-
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        guard let token = InstanceID.instanceID().token() else {return}
+        AppDelegate.DEVICEID = token
+    }
 }
 

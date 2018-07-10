@@ -114,7 +114,7 @@ class RegisterEmailViewController: UIViewController {
         // Creates User from Firebase
         Auth.auth().createUser(withEmail: emailVerify, password: passwordVerify){ user,error in
             if (error == nil && user != nil){
-                let registerDataValues = ["name": nameVerify, "email": emailVerify, "password": passwordVerify, "phone":phoneVerify, "profilePicture": defaultProfilePictureURL, "rating": 5, "numberOfRatings": 1] as [String : Any]
+                let registerDataValues = ["name": nameVerify, "email": emailVerify, "password": passwordVerify, "phone":phoneVerify, "profilePicture": defaultProfilePictureURL, "rating": 5, "numberOfRatings": 1, "deviceToken": AppDelegate.DEVICEID] as [String : Any]
                 
                 let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
                 let userReference = databaseReference.child("Users").child((user?.uid)!)

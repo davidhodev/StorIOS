@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import Alamofire
 
 class newConnectPopUp: UIViewController {
     
@@ -120,6 +121,19 @@ class newConnectPopUp: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+    fileprivate func setUpPushNotification(fromDevice: String){
+        let body = "A user has requested your storage"
+        let title = "Title"
+        let toDeviceID = fromDevice
+        
+        var headers:HTTPHeaders = HTTPHeaders()
+        headers = ["Content-Type": "application/json", "Authorization": "key=\(AppDelegate.SERVERKEY)"]
+        
+        let notification = ["to":"\(toDeviceID)", "notification":["body":body, "title": title, "badge":1, "sound":"default"]] as [String: Any]
+        Alamofire.request(AppDelegate.NOTIFICATION_URL as URLConvertible, method: .post as HTTPMethod, parameters: notification, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+            print(response)
+        }
+    }
 
     
     
