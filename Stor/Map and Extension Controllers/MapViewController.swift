@@ -407,7 +407,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         Database.database().reference().child("Providers").observe(.childAdded, with: { (snapshot) in
             //            print(snapshot)
-            if let dictionary = snapshot.value as? [String: Any]{
+            if snapshot.hasChild("currentStorage"){
+                if let dictionary = snapshot.value as? [String: Any]{
+                
+                print("TEST FOR FILTER", dictionary)
                 let providerStorageDictionary = (dictionary["currentStorage"] as? [String: Any])
                 let storageUID = (Array(providerStorageDictionary!.keys)[0])
                 self.annotationStorageID = storageUID
@@ -473,7 +476,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             )}
             UIApplication.shared.endIgnoringInteractionEvents()
             self.newActivityIndicator.stopAnimating()
+            }
         }, withCancel: nil)
+        
         
         
         newActivityIndicator.stopAnimating()
