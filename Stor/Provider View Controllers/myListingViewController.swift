@@ -11,7 +11,6 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class myListingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var myListing = myListingObject()
     var selectedIndexPath: IndexPath?
     var taken: Bool?
     var exists: Bool?

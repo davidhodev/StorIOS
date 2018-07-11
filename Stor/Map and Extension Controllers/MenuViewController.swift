@@ -45,7 +45,40 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var legalLabel: UILabel!
     
     @IBAction func exitButton(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
+        UIView.animate(withDuration: 0.25 , delay: 0, options: .curveEaseIn, animations: {
+            //white hex and attachments animations
+            self.topRightHex.alpha = 0
+            self.topLeftHex.alpha = 0
+            self.legalButtonOutlet.alpha = 0
+            self.legalLabel.alpha = 0
+            self.sideWhiteHex.alpha = 0
+        }) { (_) in
+            UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
+                self.bottomWhiteHex.transform = CGAffineTransform(translationX: 0, y: 515)
+                self.settingsLabelOutlet.transform = CGAffineTransform(translationX: 0, y: 515)
+                self.settingsButtonOutlet.transform = CGAffineTransform(translationX: 0, y: 515)
+                self.paymentLabelOutlet.transform = CGAffineTransform(translationX: 0, y: 515)
+                self.paymentButtonOutlet.transform = CGAffineTransform(translationX: 0, y: 515)
+                self.providerLabelOutlet.transform = CGAffineTransform(translationX: 0, y: 515)
+                self.providerButtonOutlet.transform = CGAffineTransform(translationX: 0, y: 515)
+                self.myListLabelOutlet.transform = CGAffineTransform(translationX: 0, y: 515)
+                self.myListButtonOutlet.transform = CGAffineTransform(translationX: 0, y: 515)
+                self.myStorageLabelOutlet.transform = CGAffineTransform(translationX: 0, y: 515)
+                self.myStorageButtonOutlet.transform = CGAffineTransform(translationX: 0, y: 515)
+                self.exitButtonOutlet.transform = CGAffineTransform(translationX: 0, y: 515)
+                self.helpButtonOutlet.transform = CGAffineTransform(translationX: 0, y: 515)
+                //blue hex animations
+                self.menuBlueHexOutlet.transform = CGAffineTransform(translationX: 339, y: -363)
+                self.profileImage.transform = CGAffineTransform(translationX: 339, y: -363)
+                self.nameLabel.transform = CGAffineTransform(translationX: 339, y: -363)
+                self.rating.transform = CGAffineTransform(translationX: 339, y: -363)
+                self.starOutlet.transform = CGAffineTransform(translationX: 339, y: -363)
+                
+            })
+                { (_) in
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
 
     @IBAction func menuHelpButton(_ sender: UIButton) {
@@ -61,7 +94,7 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     // loading animations
     @objc fileprivate func loadingAnimation() {
         print ("animating")
-        UIView.animate(withDuration: 0.25 , delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.25 , delay: 0.3, options: .curveEaseOut, animations: {
             //white hex and attachments animations
             self.bottomWhiteHex.transform = CGAffineTransform(translationX: 0, y: -515)
             self.settingsLabelOutlet.transform = CGAffineTransform(translationX: 0, y: -515)
@@ -83,7 +116,7 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             self.rating.transform = CGAffineTransform(translationX: -339, y: 363)
             self.starOutlet.transform = CGAffineTransform(translationX: -339, y: 363)
         }) { (_) in
-            UIView.animate(withDuration: 0.25 , delay: 0.1, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseOut, animations: {
                 self.topRightHex.alpha = 1
                 self.topLeftHex.alpha = 1
                 self.legalButtonOutlet.alpha = 1
@@ -164,7 +197,7 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         //Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         loadingAnimation()
     }
     
