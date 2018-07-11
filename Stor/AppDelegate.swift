@@ -21,7 +21,7 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUserNotificationCenterDelegate, MessagingDelegate{
 
     var window: UIWindow?
-    static let NOTIFICATION_URL = "//fcm.googleapis.com/v1/projects/stor-database/messages:send HTTP/1.1"
+    static let NOTIFICATION_URL = "https://gcm-http.googleapis.com/gcm/send"
     static var DEVICEID = String()
     static let SERVERKEY = "AAAAc5bW2po:APA91bF5n0a-ubA8Mzv7oEf6lMBI9Q6CBiqOpMGf7V8REIAQBSmFvPZtg8RaBmqOGBsSugd8Mck49K85p-jokRsa0sDPxnJvsYUBaovQemslwu1q3W5wXIdHtIVFePrW2v4ZT7laphMD"
 
@@ -175,6 +175,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         completionHandler()
     }
 
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print(notification)
+        completionHandler([.alert])
+    }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         guard let token = InstanceID.instanceID().token() else {return}

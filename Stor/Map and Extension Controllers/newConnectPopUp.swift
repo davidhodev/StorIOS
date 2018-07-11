@@ -108,7 +108,16 @@ class newConnectPopUp: UIViewController {
 //
 //
                 providerReference.child("potentialConnects").child(user.uid).updateChildValues([user.uid: user.uid, "timeSlotString": timePicker.text, "dropOffTime": timePicker.text, "pickUpTime": pickUpTimePicker.text])
-//
+                
+                
+                let deviceReference = databaseReference.root.child("Providers").child(providerID!).child("personalInfo")
+                deviceReference.observe(.value, with: { (snapshot) in
+                    let dictionary = snapshot.value as? [String: Any]
+                    self.setUpPushNotification(fromDevice: dictionary!["deviceToken"] as! String)
+                })
+                
+                
+                
                 DataManager.shared.menuVC.viewDidLoad()
 //
                 self.dismiss(animated: true, completion: nil)
@@ -122,14 +131,13 @@ class newConnectPopUp: UIViewController {
     }
 
     fileprivate func setUpPushNotification(fromDevice: String){
-        let body = "A user has requested your storage"
-        let title = "Title"
+        let body = globalVariablesViewController.username + " has sent you a request"
         let toDeviceID = fromDevice
         
         var headers:HTTPHeaders = HTTPHeaders()
         headers = ["Content-Type": "application/json", "Authorization": "key=\(AppDelegate.SERVERKEY)"]
-        
-        let notification = ["to":"\(toDeviceID)", "notification":["body":body, "title": title, "badge":1, "sound":"default"]] as [String: Any]
+    
+        let notification = ["to":"\(toDeviceID)", "notification":["body":body, "badge":1, "sound":"default"]] as [String: Any]
         Alamofire.request(AppDelegate.NOTIFICATION_URL as URLConvertible, method: .post as HTTPMethod, parameters: notification, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
             print(response)
         }
