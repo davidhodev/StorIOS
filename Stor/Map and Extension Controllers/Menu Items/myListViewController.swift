@@ -127,6 +127,8 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.providerProfilePicture.layer.masksToBounds = false
             cell.providerProfilePicture.layer.mask = borderLayer
             cell.providerProfilePicture.image = user.providerProfile
+            cell.storagePhoto.contentMode = .scaleAspectFill
+            cell.storagePhoto.layer.masksToBounds = true
             cell.storagePhoto.image = user.storagePhoto
             
             //shadows
