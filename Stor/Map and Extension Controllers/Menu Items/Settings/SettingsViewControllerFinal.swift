@@ -91,6 +91,8 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
             cell.storContactControl.isHidden = true
             cell.deleteAccountButtonControl.isHidden = true
         }
+        // figure out how to animate this rotation transition, need to keep track of the previous cell and animate both and get the cases where one opens and the other closes etc. needs to be easy as to implement in the other tables
+        
         if (cell.contentView.bounds.size.height == 60){
             cell.moreImage.image = UIImage(named: "Expand Arrow")
         }
