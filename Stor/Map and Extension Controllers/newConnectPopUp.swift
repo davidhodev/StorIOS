@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import Alamofire
 
 class newConnectPopUp: UIViewController {
     
@@ -107,7 +108,16 @@ class newConnectPopUp: UIViewController {
 //
 //
                 providerReference.child("potentialConnects").child(user.uid).updateChildValues([user.uid: user.uid, "timeSlotString": timePicker.text, "dropOffTime": timePicker.text, "pickUpTime": pickUpTimePicker.text])
-//
+                
+                
+                let deviceReference = databaseReference.root.child("Providers").child(providerID!).child("personalInfo")
+                deviceReference.observe(.value, with: { (snapshot) in
+                    let dictionary = snapshot.value as? [String: Any]
+                    self.setUpPushNotification(fromDevice: dictionary!["deviceToken"] as! String)
+                })
+                
+                
+                
                 DataManager.shared.menuVC.viewDidLoad()
 //
                 self.dismiss(animated: true, completion: nil)
@@ -120,6 +130,18 @@ class newConnectPopUp: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 
+    fileprivate func setUpPushNotification(fromDevice: String){
+        let body = globalVariablesViewController.username + " has sent you a request"
+        let toDeviceID = fromDevice
+        
+        var headers:HTTPHeaders = HTTPHeaders()
+        headers = ["Content-Type": "application/json", "Authorization": "key=\(AppDelegate.SERVERKEY)"]
+    
+        let notification = ["to":"\(toDeviceID)", "notification":["body":body, "badge":1, "sound":"default"]] as [String: Any]
+        Alamofire.request(AppDelegate.NOTIFICATION_URL as URLConvertible, method: .post as HTTPMethod, parameters: notification, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+            print(response)
+        }
+    }
 
     
     
@@ -151,12 +173,6 @@ class newConnectPopUp: UIViewController {
 //
 //        }
 //    }
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+
 
 }

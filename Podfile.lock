@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.7.2)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -87,6 +88,7 @@ PODS:
   - SwiftRangeSlider (2.0.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.7)
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
@@ -100,6 +102,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - Alamofire
     - Bolts
     - FBSDKCoreKit
     - FBSDKLoginKit
@@ -122,6 +125,7 @@ SPEC REPOS:
     - SwiftRangeSlider
 
 SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   FBSDKCoreKit: 55d7f2ac45d9c4b9b6119f4e43900fe84b9b7b1b
   FBSDKLoginKit: 32ac05c2a59952c363c2e85aafa8f73ba93bcbad
@@ -143,6 +147,6 @@ SPEC CHECKSUMS:
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   SwiftRangeSlider: f86e3b637c961120158fa1a89277c8343845cbe4
 
-PODFILE CHECKSUM: 7c9d29b96c185b0f25a20fce8eceb7f4b20bc3c0
+PODFILE CHECKSUM: d2f63cb3fcdd4e3eaa57a39b617c4d047bb65e42
 
 COCOAPODS: 1.5.0

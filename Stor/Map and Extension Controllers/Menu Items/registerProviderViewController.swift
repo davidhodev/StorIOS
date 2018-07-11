@@ -59,7 +59,7 @@ class registerProviderViewController: UIViewController {
             userReference.observe(.value, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: Any]{
                     print(3)
-                    let registerDataValues = ["Name": dictionary["name"], "SocialSecurity": socialSecurityVerify,"permanentAddress": permanentAddress , "numberOfRatings": 1, "rating": 5, "phone": dictionary["phone"], "profileImage": dictionary["profilePicture"], "backgroundCheck": "pending"]
+                    let registerDataValues = ["Name": dictionary["name"], "SocialSecurity": socialSecurityVerify,"permanentAddress": permanentAddress , "numberOfRatings": 1, "rating": 5, "phone": dictionary["phone"], "profileImage": dictionary["profilePicture"], "backgroundCheck": "pending", "deviceToken": AppDelegate.DEVICEID]
                     databaseReference.child("Providers").child(user.uid).child("personalInfo").updateChildValues(registerDataValues)
                     
                     
