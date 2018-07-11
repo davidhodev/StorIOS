@@ -38,6 +38,7 @@ class registerProviderViewController: UIViewController {
     
     func checkInputs() -> Bool{
         if socialSecurityTextField.text?.count != 9{
+            print(socialSecurityTextField.text?.count)
             print("SSN Not 9 digits")
             return false
         }
