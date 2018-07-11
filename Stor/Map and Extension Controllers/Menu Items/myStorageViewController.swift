@@ -24,6 +24,8 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     var confirmationAddress: String?
     var confirmationProviderID: String?
     var confirmationStorageID: String?
+    var newActivityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    var counter = 0
     
     @IBOutlet weak var pendingFill: UIImageView!
     @IBOutlet weak var currentIsEmpty: UILabel!
@@ -39,6 +41,13 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        newActivityIndicator.center = self.view.center
+        newActivityIndicator.hidesWhenStopped = true
+        newActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(newActivityIndicator)
+        
+        newActivityIndicator.startAnimating()
+        
         myStorageDataManager.shared.storageVC = self
         storageTableView.delegate = self
         storageTableView.dataSource = self
@@ -54,6 +63,11 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if myCurrentStorageUsers.count == 0 {
+            self.newActivityIndicator.stopAnimating()
+        }
+    }
 
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -300,6 +314,13 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         (cell as! myStorageCustomTableViewCell).watchFrameChanges()
+        counter += 1
+        print("COUNTER: ", counter, "MY LIST COUNT: ", myCurrentStorageUsers.count)
+        if counter == myCurrentStorageUsers.count || counter == 8{
+            print("Done")
+            self.newActivityIndicator.stopAnimating()
+        }
+        
     }
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         (cell as! myStorageCustomTableViewCell).ignoreFrameChanges()
