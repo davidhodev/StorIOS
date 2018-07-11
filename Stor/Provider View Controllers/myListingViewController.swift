@@ -11,7 +11,6 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class myListingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var myListing = myListingObject()
     var selectedIndexPath: IndexPath?
     var taken: Bool?
     var exists: Bool?
@@ -26,6 +25,7 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     var phoneRaw: String?
     var dropOffTime: NSMutableAttributedString?
     var pickUpTime: NSMutableAttributedString?
+    var time: NSMutableAttributedString?
     
     @IBOutlet weak var noCurrentListing: UILabel!
     
@@ -346,13 +346,14 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                         self.cubicFeet = cubicFeetAttString
                         
                         if let timeDictionary = dictionary["time"] as? [String: Any]{
-                            let tempDropOff = timeDictionary["dropOffTime"] as? String
-                            let tempPickUp = timeDictionary["pickUpTime"] as? String
+                            let tempTime = timeDictionary["time"] as? String
+//                            let tempPickUp = timeDictionary["pickUpTime"] as? String
                             let timeFont:UIFont? = UIFont(name: "Dosis-Regular", size:14)
-                            let dropOffAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempDropOff!, attributes: [.font: timeFont!])
-                            let pickUpAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempPickUp!, attributes: [.font: timeFont!])
-                            self.dropOffTime = dropOffAttString
-                            self.pickUpTime = pickUpAttString
+                            let timeAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempTime!, attributes: [.font: timeFont!])
+//                            let pickUpAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempPickUp!, attributes: [.font: timeFont!])
+//                            self.dropOffTime = dropOffAttString
+//                            self.pickUpTime = pickUpAttString
+                            self.time = timeAttString
                         }
                         
                         
@@ -442,21 +443,7 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                     if let dictionary = snapshot.value as? [String: Any]{
                         destinationController.descriptionLabel.text = dictionary["Subtitle"] as! String
                         
-                        
-                        
-                        /*
-                         var dimensionsString = String(describing: dictionary["Length"]!!)
-                         dimensionsString += "' x "
-                         dimensionsString += String(describing: dictionary["Width"]!!)
-                         dimensionsString += "'"
-                         let dimensionsTemp = dimensionsString
-                         // maybe change this
-                         let fontDimensions: UIFont? = UIFont(name: "Dosis-Bold", size:16)
-                         let dimensionsAttString:NSMutableAttributedString = NSMutableAttributedString(string: dimensionsTemp, attributes: [.font: fontDimensions!])
-                         self.dimensions = dimensionsAttString
 
-                         
- */
 
                         var cubicFeetNumber = Int(String(describing:dictionary["Length"]!))
                         cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Width"]!))!)

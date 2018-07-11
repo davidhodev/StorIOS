@@ -434,7 +434,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     let providerPrice = Int(round(outputPrice!))
 //                    print(providerPrice)
                     
-                    
+                    if providerPrice < globalVariablesViewController.priceFilter!{
                     
                     if globalVariablesViewController.buttonOn! % 10 == 1{ // Small storage Checked
                         if(sizeFeetSquared! < 25){
@@ -472,6 +472,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         self.providers.append(provider)
                         self.storMapKit.addAnnotation(provider)
                     }
+                }
                 }
             )}
             UIApplication.shared.endIgnoringInteractionEvents()

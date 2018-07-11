@@ -18,6 +18,8 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var buttonIndexPath: Int?
     var exists: Bool?
     var buttonProviderLocation: CLLocationCoordinate2D?
+    var counter = 0
+    var newActivityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     @IBOutlet weak var listIsEmpty: UILabel!
     
@@ -41,12 +43,24 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidAppear(_ animated: Bool) {
         if exists!{
             showSwipeToRemove()
+            
+        }
+        else{
+            self.newActivityIndicator.stopAnimating()
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        newActivityIndicator.center = self.view.center
+        newActivityIndicator.hidesWhenStopped = true
+        newActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(newActivityIndicator)
+        
+        newActivityIndicator.startAnimating()
+        
         myListTableView.delegate = self
         myListTableView.dataSource = self
+        self.listIsEmpty.isHidden = true
         swipeToRemove.alpha = 0
         getMyList()
         // Do any additional setup after loading the view.
@@ -70,6 +84,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             self.myListTableView.isHidden = true
             self.listIsEmpty.isHidden = false
             exists = false
+            
         }
         else{
             self.myListTableView.isHidden = false
@@ -82,6 +97,9 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
+    
+    
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myListTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! myListCustomCell
@@ -187,6 +205,13 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         (cell as! myListCustomCell).watchFrameChanges()
+        counter += 1
+        print("COUNTER: ", counter, "MY LIST COUNT: ", myListUsers.count)
+        if counter == myListUsers.count || counter == 8{
+            print("Done")
+            self.newActivityIndicator.stopAnimating()
+        }
+        
     }
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         (cell as! myListCustomCell).ignoreFrameChanges()
@@ -208,6 +233,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         for cell in myListTableView.visibleCells as! [myListCustomCell] {
             cell.ignoreFrameChanges()
         }
+        counter = 0
         
     }
     

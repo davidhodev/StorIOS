@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import Alamofire
 
 class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -166,6 +167,15 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             cell.declineButton.addTarget(self, action: #selector(self.declineButton(_:)), for: .touchUpInside)
             cell.acceptButton.tag = indexPath.section
             cell.acceptButton.addTarget(self, action: #selector(self.acceptButton(_:)), for: .touchUpInside)
+            
+            cell.confirmPickupLabel.isHidden = true
+            cell.confirmDropoffLabel.isHidden = true
+            cell.confirmPickupButton.isHidden = true
+            cell.confirmDropoffButton.isHidden = true
+            cell.acceptLabel.isHidden = false
+            cell.acceptButton.isHidden = false
+            cell.declineButton.isHidden = false
+            cell.rejectLabel.isHidden = false
         }
         else{
             let user = currentConnects[indexPath.section]
@@ -174,7 +184,10 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             print("PHONE LABEL: ", user.phone)
             cell.phoneLabel.attributedText = user.phone
             
+
             cell.acceptLabel.isHidden = true
+            cell.acceptButton.isHidden = true
+            cell.declineButton.isHidden = true
             cell.rejectLabel.isHidden = true
             
             
@@ -476,6 +489,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             let myStorageID = potentialConnects[buttonIndexPath].storageID
             let realConnect = potentialConnects[buttonIndexPath]
             
+            self.setUpPushNotification(fromDevice: realConnect.deviceToken!)
             
             if let user = Auth.auth().currentUser{
                 let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
@@ -517,6 +531,19 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
         }
         else{
             print(selectorIndex)
+        }
+    }
+    
+    fileprivate func setUpPushNotification(fromDevice: String){
+        let body = globalVariablesViewController.username + " has accepted your storage request."
+        let toDeviceID = fromDevice
+        
+        var headers:HTTPHeaders = HTTPHeaders()
+        headers = ["Content-Type": "application/json", "Authorization": "key=\(AppDelegate.SERVERKEY)"]
+        
+        let notification = ["to":"\(toDeviceID)", "notification":["body":body, "badge":1, "sound":"default"]] as [String: Any]
+        Alamofire.request(AppDelegate.NOTIFICATION_URL as URLConvertible, method: .post as HTTPMethod, parameters: notification, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+            print(response)
         }
     }
     
