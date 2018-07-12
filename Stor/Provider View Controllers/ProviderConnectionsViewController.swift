@@ -397,6 +397,9 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                         user.getName()
     //                    user.getData()
                         self.potentialConnects.append(user)
+                        DispatchQueue.main.async {
+                            self.providerTableView.reloadData()
+                        }
                         self.newActivityIndicator.stopAnimating()
                     }
                 }
