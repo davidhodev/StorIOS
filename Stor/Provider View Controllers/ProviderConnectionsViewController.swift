@@ -20,6 +20,8 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     var confirmationAddress: String?
     var userID: String?
     var confirmationStorageID: String?
+    var newActivityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    var counter = 0
     
     @IBOutlet weak var providerTableView: UITableView!
     @IBOutlet weak var switchProviderTable: UISegmentedControl!
@@ -50,6 +52,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
         
         // switch between current and past images
         if selectorIndex == 0{
+            counter = 0
             currentFill.isHidden = true
             pendingNoFill.isHidden = true
             pendingFill.isHidden = false
@@ -61,6 +64,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             
         }
         else{
+            counter = 0
             currentFill.isHidden = false
             pendingNoFill.isHidden = false
             pendingFill.isHidden = true
@@ -85,6 +89,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                 self.providerTableView.isHidden = true
                 self.noPendingOptionsLabel.isHidden = false
                 self.noCurrentConnectionsLabel.isHidden = true
+                self.newActivityIndicator.stopAnimating()
             }
             else{
                 self.providerTableView.isHidden = false
@@ -97,6 +102,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             self.providerTableView.isHidden = true
             self.noPendingOptionsLabel.isHidden = true
             self.noCurrentConnectionsLabel.isHidden = false
+            self.newActivityIndicator.stopAnimating()
             return 0
         }
         else{
@@ -104,6 +110,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             self.providerTableView.isHidden = false
             self.noPendingOptionsLabel.isHidden = true
             self.noCurrentConnectionsLabel.isHidden = true
+            self.newActivityIndicator.stopAnimating()
             return 1
         }
     }
@@ -300,6 +307,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         (cell as! potentialConnectsTableViewCell).watchFrameChanges()
+        
     }
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         (cell as! potentialConnectsTableViewCell).ignoreFrameChanges()
@@ -335,6 +343,13 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        newActivityIndicator.center = self.view.center
+        newActivityIndicator.hidesWhenStopped = true
+        newActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(newActivityIndicator)
+        
+        newActivityIndicator.startAnimating()
+        
         currentFill.isHidden = true
         pendingNoFill.isHidden = true
         pendingFill.isHidden = false
@@ -382,7 +397,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                         user.getName()
     //                    user.getData()
                         self.potentialConnects.append(user)
-                        
+                        self.newActivityIndicator.stopAnimating()
                     }
                 }
             }

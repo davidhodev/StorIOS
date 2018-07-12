@@ -27,6 +27,9 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     var pickUpTime: NSMutableAttributedString?
     var time: NSMutableAttributedString?
     
+    var newActivityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    var counter = 0
+    
     @IBOutlet weak var noCurrentListing: UILabel!
     
     @IBOutlet weak var myListingTableView: UITableView!
@@ -154,6 +157,13 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        newActivityIndicator.center = self.view.center
+        newActivityIndicator.hidesWhenStopped = true
+        newActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(newActivityIndicator)
+        
+        newActivityIndicator.startAnimating()
+        
         myListingTableView.delegate = self
         myListingTableView.dataSource = self
         self.exists = false
@@ -279,6 +289,7 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                         cubicFeetAttString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:(cubicFeetString.count)-1,length:1))
                         
                         self.cubicFeet = cubicFeetAttString
+                        self.newActivityIndicator.stopAnimating()
                     }
                     
                     
@@ -288,6 +299,9 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                     
                 }
                 
+            }
+            else{
+                self.newActivityIndicator.stopAnimating()
             }
         }, withCancel: nil)
 
@@ -435,6 +449,11 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editListingSegue"{
+            var newActivityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+            newActivityIndicator.center = self.view.center
+            newActivityIndicator.hidesWhenStopped = true
+            newActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            view.addSubview(newActivityIndicator)
             let destinationController = segue.destination as! addListingViewController
             if let user = Auth.auth().currentUser{
                 Database.database().reference().child("Providers").child(user.uid).child("currentStorage").observe(.childAdded, with: { (snapshot) in
@@ -508,7 +527,7 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                             }
                         }
                         
-                        
+                        self.newActivityIndicator.stopAnimating()
 
                     }
                 }, withCancel: nil)
