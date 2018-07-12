@@ -52,19 +52,16 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-<<<<<<< HEAD
         //adding the swipe feature to my List
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.right
         myListView.addGestureRecognizer(swipeLeft)
-=======
         newActivityIndicator.center = self.view.center
         newActivityIndicator.hidesWhenStopped = true
         newActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
         view.addSubview(newActivityIndicator)
         
         newActivityIndicator.startAnimating()
->>>>>>> 1099eee56c05c115f36479e12c8e529511f78409
         
         myListTableView.delegate = self
         myListTableView.dataSource = self

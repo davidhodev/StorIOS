@@ -37,6 +37,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     @IBOutlet weak var pendingFill: UIImageView!
     @IBOutlet weak var currentFill: UIImageView!
     
+    @IBOutlet var connectionsView: UIView!
     
 
     
@@ -364,6 +365,10 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
         
         newActivityIndicator.startAnimating()
         
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.right
+        connectionsView.addGestureRecognizer(swipeLeft)
+        
         currentFill.isHidden = true
         pendingNoFill.isHidden = true
         pendingFill.isHidden = false
@@ -383,6 +388,10 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
         }
 
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func backSwipe(){
+        self.dismiss(animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

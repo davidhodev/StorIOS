@@ -30,6 +30,7 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     var newActivityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     var counter = 0
     
+    @IBOutlet var myListingView: UIView!
     @IBOutlet weak var noCurrentListing: UILabel!
     
     @IBOutlet weak var myListingTableView: UITableView!
@@ -171,6 +172,10 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
         
         newActivityIndicator.startAnimating()
         
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.right
+        myListingView.addGestureRecognizer(swipeLeft)
+        
         myListingTableView.delegate = self
         myListingTableView.dataSource = self
         self.exists = false
@@ -179,6 +184,9 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
         // Do any additional setup after loading the view.
     }
     
+    @objc func backSwipe(){
+        self.dismiss(animated: true, completion: nil)
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let previousIndexPath = selectedIndexPath
