@@ -131,7 +131,14 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
         myListingTableView.backgroundColor = UIColor.clear
         cell.backgroundColor = UIColor.white
         cell.layer.cornerRadius = 27
-        
+        //shadows
+        let shadowPath2 = UIBezierPath(roundedRect: cell.bounds, cornerRadius: 30)
+        cell.layer.masksToBounds = false
+        cell.layer.shadowColor = UIColor(red:0.27, green:0.29, blue:0.36, alpha:1.0).cgColor
+        cell.layer.shadowOffset = CGSize(width: CGFloat(2), height: CGFloat(14.0))
+        cell.layer.shadowOpacity = 0.0275
+        cell.layer.shadowPath = shadowPath2.cgPath
+        cell.cellView.layer.cornerRadius = 27
         return cell
     }
     

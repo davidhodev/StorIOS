@@ -19,6 +19,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var exists: Bool?
     var buttonProviderLocation: CLLocationCoordinate2D?
     
+    @IBOutlet var myListView: UIView!
     @IBOutlet weak var listIsEmpty: UILabel!
     
     @IBOutlet weak var swipeToRemove: UIButton!
@@ -45,13 +46,23 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        //adding the swipe feature to my List
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.right
+        myListView.addGestureRecognizer(swipeLeft)
+        
         myListTableView.delegate = self
         myListTableView.dataSource = self
         swipeToRemove.alpha = 0
         getMyList()
         // Do any additional setup after loading the view.
+        self.reloadInputViews()
     }
     //takes you to the corresponding annotation
+    
+    @objc func backSwipe(){
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.async {

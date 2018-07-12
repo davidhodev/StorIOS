@@ -19,6 +19,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     var confirmationAddress: String?
     var userID: String?
     var confirmationStorageID: String?
+    var reloadCount = 0
     
     @IBOutlet weak var providerTableView: UITableView!
     @IBOutlet weak var switchProviderTable: UISegmentedControl!
@@ -49,6 +50,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
         
         // switch between current and past images
         if selectorIndex == 0{
+            self.reloadCount = 0
             currentFill.isHidden = true
             pendingNoFill.isHidden = true
             pendingFill.isHidden = false
@@ -59,7 +61,9 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             
             
         }
+            
         else{
+            self.reloadCount = 0
             currentFill.isHidden = false
             pendingNoFill.isHidden = false
             pendingFill.isHidden = true
@@ -110,6 +114,14 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = providerTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! potentialConnectsTableViewCell
         cell.cellView.layer.cornerRadius = 27
+        //shadows
+        let shadowPath2 = UIBezierPath(roundedRect: cell.bounds, cornerRadius: 30)
+        cell.layer.masksToBounds = false
+        cell.layer.shadowColor = UIColor(red:0.27, green:0.29, blue:0.36, alpha:1.0).cgColor
+        cell.layer.shadowOffset = CGSize(width: CGFloat(2), height: CGFloat(14.0))
+        cell.layer.shadowOpacity = 0.0275
+        cell.layer.shadowPath = shadowPath2.cgPath
+        cell.cellView.layer.cornerRadius = 27
         cell.callButton.tag = indexPath.section
         cell.callButton.addTarget(self, action: #selector(self.call(_:)), for: .touchUpInside)
         if selectorIndex == 0{
@@ -147,6 +159,13 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                 cell.profileImage.layer.masksToBounds = false
                 cell.profileImage.layer.mask = borderLayer
                 cell.profileImage.image = user.providerProfile
+                
+                if cell.profileImage.image == nil{
+                    DispatchQueue.main.async {
+                        self.providerTableView.reloadData()
+                    }
+                }
+                
                 print(user.dropOff)
                 cell.dropOffTime.text = user.dropOff
                 
@@ -287,11 +306,12 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         (cell as! potentialConnectsTableViewCell).watchFrameChanges()
+        
     }
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         (cell as! potentialConnectsTableViewCell).ignoreFrameChanges()
     }
-    
+
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath == selectedIndexPath{
@@ -369,7 +389,9 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                         user.getName()
     //                    user.getData()
                         self.potentialConnects.append(user)
-                        
+                        DispatchQueue.main.async {
+                            self.providerTableView.reloadData()
+                        }
                     }
                 }
             }
