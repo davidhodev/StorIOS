@@ -21,6 +21,7 @@ struct cellDataForSettings {
 class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
+    @IBOutlet var mySettingsView: UIView!
     @IBOutlet weak var settingsTableView: UITableView!
     //exit button back to the map
     @IBAction func ExitButton(_ sender: UIButton) {
@@ -46,9 +47,16 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.right
+        mySettingsView.addGestureRecognizer(swipeLeft)
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
         tableViewDataSettings = [cellDataForSettings(title: "Notifications", subtitles: ["Push Notifications", "Text Message"]), cellDataForSettings(title: "Privacy Settings", subtitles: ["Allow Stor to Contact you for news and promotions", ""])]
+    }
+    
+    @objc func backSwipe(){
+        self.dismiss(animated: true, completion: nil)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

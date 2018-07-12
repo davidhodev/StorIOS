@@ -12,6 +12,8 @@ import FirebaseDatabase
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet var myLoginView: UIView!
+    
     //instantiate password line
     @IBOutlet weak var line2Image: UIImageView!
     //instantiate email line
@@ -61,6 +63,9 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.right
+        myLoginView.addGestureRecognizer(swipeLeft)
         iconClick = true
         line1Image.image = UIImage.init(named: "Line 2")
         line2Image.image = UIImage.init(named: "Line 2")
@@ -69,6 +74,10 @@ class LoginViewController: UIViewController {
         
         self.hideKeyboardWhenTappedAround()
           
+    }
+    
+    @objc func backSwipe(){
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
     override func didReceiveMemoryWarning() {

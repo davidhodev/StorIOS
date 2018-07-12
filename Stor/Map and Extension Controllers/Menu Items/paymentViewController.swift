@@ -9,14 +9,23 @@
 import UIKit
 
 class paymentViewController: UIViewController {
-
+    
+    @IBOutlet var myPaymentView: UIView!
+    
     @IBAction func ExitButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.right
+        myPaymentView.addGestureRecognizer(swipeLeft)
 
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func backSwipe(){
+        self.dismiss(animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

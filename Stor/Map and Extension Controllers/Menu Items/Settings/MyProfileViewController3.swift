@@ -35,6 +35,7 @@ class MyProfileViewController3: UIViewController {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var revealTextOutlet: UIButton!
+    @IBOutlet var myProfileView: UIView!
     var iconClick : Bool!
     
     @objc fileprivate func infoButtonAnimation(){
@@ -49,6 +50,9 @@ class MyProfileViewController3: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.right
+        myProfileView.addGestureRecognizer(swipeLeft)
         informationButton.alpha = 0
         if let user = Auth.auth().currentUser{
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
@@ -64,6 +68,8 @@ class MyProfileViewController3: UIViewController {
                 }
             })
         }
+        
+        
         // phone long press
         iconClick = true
         let longPhonePressGestureRecog = UILongPressGestureRecognizer(target: self, action: #selector(self.longPhonePress))
@@ -136,6 +142,10 @@ class MyProfileViewController3: UIViewController {
         profileImage.loadProfilePicture()
         // Do any additional setup after loading the view.
     }
+    @objc func backSwipe(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 // hides label, brings up text and done button, enables text to be edited
     @objc func longPhonePress() {
         phoneTextField.isHidden = false

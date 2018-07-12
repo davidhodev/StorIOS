@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -507,6 +507,7 @@
                         <outlet property="line1Image" destination="fK0-aX-7hg" id="tM1-6J-DPJ"/>
                         <outlet property="line2Image" destination="ti7-gu-uLF" id="nH1-Ag-pB7"/>
                         <outlet property="lockImage" destination="KA9-wF-1S1" id="rPI-Ic-OCH"/>
+                        <outlet property="myLoginView" destination="yIu-Gf-y7Y" id="lCd-cy-lnf"/>
                         <outlet property="passwordText" destination="2xr-E7-XX3" id="lZE-V3-9rL"/>
                     </connections>
                 </viewController>
@@ -833,6 +834,7 @@
                         <outlet property="emailTextField" destination="l27-N3-xI1" id="IBw-Z9-MVH"/>
                         <outlet property="errorLabel" destination="Qmf-cc-WbS" id="PPq-df-Rei"/>
                         <outlet property="informationButton" destination="JII-ax-Nip" id="GQ6-sF-AEs"/>
+                        <outlet property="myProfileView" destination="3QB-Z8-MKG" id="3YY-v1-Eqf"/>
                         <outlet property="nameLabel" destination="6Mg-49-joJ" id="sIm-dV-uYG"/>
                         <outlet property="passwordDoneButton" destination="Ofz-6u-qUl" id="QqU-hl-omo"/>
                         <outlet property="passwordLabel" destination="bWA-gA-xZe" id="HOs-Cj-Qc8"/>
@@ -1083,6 +1085,7 @@
                         <viewLayoutGuide key="safeArea" id="VAr-rK-1lG"/>
                     </view>
                     <connections>
+                        <outlet property="mySettingsView" destination="zDt-cr-vqN" id="WoS-D5-WaP"/>
                         <outlet property="settingsTableView" destination="rur-VW-iZb" id="Bcz-oM-8je"/>
                     </connections>
                 </viewController>
@@ -2452,7 +2455,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Connections" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VWI-fB-hzi">
-                                <rect key="frame" x="73.999999999999986" y="62" width="160.66666666666663" height="23"/>
+                                <rect key="frame" x="74.000000000000014" y="62" width="134.33333333333337" height="23"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="23" id="9Rf-Ys-zFV"/>
                                 </constraints>
@@ -2681,13 +2684,13 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJf-3t-e5f">
-                                <rect key="frame" x="285" y="139" width="60.333333333333314" height="21"/>
+                                <rect key="frame" x="285" y="138" width="54" height="23"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Potential" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kav-wS-xXc">
-                                <rect key="frame" x="65" y="139" width="71" height="21"/>
+                                <rect key="frame" x="74" y="138" width="62" height="23"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="18"/>
                                 <color key="textColor" red="0.58431372549019611" green="0.40784313725490196" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -3255,6 +3258,9 @@ Use the Add To List Button on a pin to begin</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eFW-Cm-CVy"/>
                     </view>
+                    <connections>
+                        <outlet property="myPaymentView" destination="zGg-qu-PIs" id="gZf-KH-g9t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UMP-P3-Wsv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
