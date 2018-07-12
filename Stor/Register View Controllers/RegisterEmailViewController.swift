@@ -33,6 +33,7 @@ class RegisterEmailViewController: UIViewController {
     @IBOutlet weak var emailRegisterText: UITextField!
     @IBOutlet weak var passwordRegisterText: UITextField!
     @IBOutlet weak var phoneRegisterText: UITextField!
+    @IBOutlet var registerView: UIView!
     
     //line under email address
     @IBOutlet weak var lineEmail: UIImageView!
@@ -60,6 +61,12 @@ class RegisterEmailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.right
+        registerView.addGestureRecognizer(swipeLeft)
+        
+        
         lineEmail.image = UIImage.init(named: "Line 2")
         linePhone.image = UIImage.init(named: "Line 2")
         linePassword.image = UIImage.init(named: "Line 2")
@@ -76,7 +83,9 @@ class RegisterEmailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    @objc func backSwipe(){
+        self.navigationController?.popToRootViewController(animated: true)
+    }
     
     
 

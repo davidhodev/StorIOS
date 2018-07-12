@@ -29,7 +29,8 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var pendingFill: UIImageView!
     @IBOutlet weak var currentIsEmpty: UILabel!
-
+    @IBOutlet var myStorageView: UIView!
+    
     @IBOutlet weak var storageTableView: UITableView!
     @IBAction func exitButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -48,6 +49,10 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         
         newActivityIndicator.startAnimating()
         
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.right
+        myStorageView.addGestureRecognizer(swipeLeft)
+        
         myStorageDataManager.shared.storageVC = self
         storageTableView.delegate = self
         storageTableView.dataSource = self
@@ -56,6 +61,10 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         myStorageLabel.attributedText = NSMutableAttributedString(string: "My Storage", attributes: [.font:font!])
         getMyStorage()
         
+    }
+    
+    @objc func backSwipe(){
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
