@@ -27,6 +27,7 @@ class providerPotentialUser: NSObject {
     var status: String?
     var pickupTime: String?
     var address: String?
+    var deviceToken: String?
     
     
     func getName(){
@@ -45,6 +46,9 @@ class providerPotentialUser: NSObject {
                     let fontRating: UIFont? = UIFont(name: "Dosis-Medium", size:14)
                     let ratingAttString:NSMutableAttributedString = NSMutableAttributedString(string: ratingTemp, attributes: [.font: fontRating!])
                     self.rating = ratingAttString
+                    
+                    self.deviceToken = String(describing: dictionary["deviceToken"])
+                    
                     
                     let tempPhone = dictionary["phone"] as? String
                     print("TEMP PHONE: ", tempPhone)

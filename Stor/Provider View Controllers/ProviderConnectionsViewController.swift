@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import Alamofire
 
 class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -19,7 +20,8 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     var confirmationAddress: String?
     var userID: String?
     var confirmationStorageID: String?
-    var reloadCount = 0
+    var newActivityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    var counter = 0
     
     @IBOutlet weak var providerTableView: UITableView!
     @IBOutlet weak var switchProviderTable: UISegmentedControl!
@@ -50,7 +52,6 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
         
         // switch between current and past images
         if selectorIndex == 0{
-            self.reloadCount = 0
             currentFill.isHidden = true
             pendingNoFill.isHidden = true
             pendingFill.isHidden = false
@@ -63,7 +64,6 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
         }
             
         else{
-            self.reloadCount = 0
             currentFill.isHidden = false
             pendingNoFill.isHidden = false
             pendingFill.isHidden = true
@@ -88,6 +88,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                 self.providerTableView.isHidden = true
                 self.noPendingOptionsLabel.isHidden = false
                 self.noCurrentConnectionsLabel.isHidden = true
+                self.newActivityIndicator.stopAnimating()
             }
             else{
                 self.providerTableView.isHidden = false
@@ -100,6 +101,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             self.providerTableView.isHidden = true
             self.noPendingOptionsLabel.isHidden = true
             self.noCurrentConnectionsLabel.isHidden = false
+            self.newActivityIndicator.stopAnimating()
             return 0
         }
         else{
@@ -107,6 +109,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             self.providerTableView.isHidden = false
             self.noPendingOptionsLabel.isHidden = true
             self.noCurrentConnectionsLabel.isHidden = true
+            self.newActivityIndicator.stopAnimating()
             return 1
         }
     }
@@ -185,6 +188,15 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             cell.declineButton.addTarget(self, action: #selector(self.declineButton(_:)), for: .touchUpInside)
             cell.acceptButton.tag = indexPath.section
             cell.acceptButton.addTarget(self, action: #selector(self.acceptButton(_:)), for: .touchUpInside)
+            
+            cell.confirmPickupLabel.isHidden = true
+            cell.confirmDropoffLabel.isHidden = true
+            cell.confirmPickupButton.isHidden = true
+            cell.confirmDropoffButton.isHidden = true
+            cell.acceptLabel.isHidden = false
+            cell.acceptButton.isHidden = false
+            cell.declineButton.isHidden = false
+            cell.rejectLabel.isHidden = false
         }
         else{
             let user = currentConnects[indexPath.section]
@@ -193,7 +205,10 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             print("PHONE LABEL: ", user.phone)
             cell.phoneLabel.attributedText = user.phone
             
+
             cell.acceptLabel.isHidden = true
+            cell.acceptButton.isHidden = true
+            cell.declineButton.isHidden = true
             cell.rejectLabel.isHidden = true
             
             
@@ -342,6 +357,13 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        newActivityIndicator.center = self.view.center
+        newActivityIndicator.hidesWhenStopped = true
+        newActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(newActivityIndicator)
+        
+        newActivityIndicator.startAnimating()
+        
         currentFill.isHidden = true
         pendingNoFill.isHidden = true
         pendingFill.isHidden = false
@@ -392,6 +414,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
                         DispatchQueue.main.async {
                             self.providerTableView.reloadData()
                         }
+                        self.newActivityIndicator.stopAnimating()
                     }
                 }
             }
@@ -498,6 +521,7 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             let myStorageID = potentialConnects[buttonIndexPath].storageID
             let realConnect = potentialConnects[buttonIndexPath]
             
+            self.setUpPushNotification(fromDevice: realConnect.deviceToken!)
             
             if let user = Auth.auth().currentUser{
                 let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
@@ -539,6 +563,19 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
         }
         else{
             print(selectorIndex)
+        }
+    }
+    
+    fileprivate func setUpPushNotification(fromDevice: String){
+        let body = globalVariablesViewController.username + " has accepted your storage request."
+        let toDeviceID = fromDevice
+        
+        var headers:HTTPHeaders = HTTPHeaders()
+        headers = ["Content-Type": "application/json", "Authorization": "key=\(AppDelegate.SERVERKEY)"]
+        
+        let notification = ["to":"\(toDeviceID)", "notification":["body":body, "badge":1, "sound":"default"]] as [String: Any]
+        Alamofire.request(AppDelegate.NOTIFICATION_URL as URLConvertible, method: .post as HTTPMethod, parameters: notification, encoding: JSONEncoding.default, headers: headers).responseJSON { (response) in
+            print(response)
         }
     }
     

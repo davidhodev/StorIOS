@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -2595,25 +2595,6 @@ Use the Add To List Button on a pin to begin</string>
                                                             <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RwY-ck-PWZ" userLabel="Report Issue">
-                                                            <rect key="frame" x="183" y="139" width="38" height="42"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="38" id="5Le-oJ-inp"/>
-                                                                <constraint firstAttribute="height" constant="42" id="JfV-Yr-g8g"/>
-                                                            </constraints>
-                                                            <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
-                                                            <state key="normal" image="Report Issue Purple"/>
-                                                        </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Report Issue" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4q-oW-bRS">
-                                                            <rect key="frame" x="229" y="139" width="46" height="42"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="42" id="tbn-bJ-8Mk"/>
-                                                                <constraint firstAttribute="width" constant="46" id="vTi-ut-VsM"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
-                                                            <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drop Off Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTu-xG-Qd4" userLabel="Scheduling Dates">
                                                             <rect key="frame" x="66" y="30.666666666666671" width="84.666666666666686" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
@@ -2637,16 +2618,12 @@ Use the Add To List Button on a pin to begin</string>
                                                         <constraint firstItem="aAV-XF-wzF" firstAttribute="centerY" secondItem="zwG-5n-3r0" secondAttribute="centerY" id="FXz-QZ-Aj5"/>
                                                         <constraint firstItem="53E-js-uhv" firstAttribute="centerY" secondItem="6Tt-uu-wZd" secondAttribute="centerY" id="Fbc-5c-wS2"/>
                                                         <constraint firstItem="tcE-nP-M5f" firstAttribute="centerY" secondItem="joP-dv-qOE" secondAttribute="centerY" id="Ion-vc-YZG"/>
-                                                        <constraint firstItem="zwG-5n-3r0" firstAttribute="top" secondItem="RwY-ck-PWZ" secondAttribute="bottom" constant="-41.333333333333343" id="MLQ-tj-cZ7"/>
                                                         <constraint firstItem="joP-dv-qOE" firstAttribute="top" secondItem="9QF-3L-LQP" secondAttribute="bottom" constant="-42" id="R0k-Yk-3Ga"/>
                                                         <constraint firstItem="fc2-l3-n4F" firstAttribute="leading" secondItem="5NB-qD-bIx" secondAttribute="leading" constant="20" id="V20-fO-XMZ"/>
-                                                        <constraint firstItem="RwY-ck-PWZ" firstAttribute="leading" secondItem="zwG-5n-3r0" secondAttribute="trailing" constant="-38" id="WAU-Vd-tqS"/>
                                                         <constraint firstAttribute="bottom" secondItem="Amt-ct-hIw" secondAttribute="bottom" constant="13.666666666666629" id="WHV-Mj-4fl"/>
                                                         <constraint firstItem="6Tt-uu-wZd" firstAttribute="leading" secondItem="fc2-l3-n4F" secondAttribute="trailing" constant="8" id="g1U-EK-VCK"/>
                                                         <constraint firstItem="fc2-l3-n4F" firstAttribute="centerX" secondItem="Amt-ct-hIw" secondAttribute="centerX" id="g71-jT-sbc"/>
                                                         <constraint firstAttribute="bottom" secondItem="zwG-5n-3r0" secondAttribute="bottom" constant="14" id="guA-kc-Hts"/>
-                                                        <constraint firstItem="K4q-oW-bRS" firstAttribute="centerY" secondItem="zwG-5n-3r0" secondAttribute="centerY" id="jM8-vt-bX1"/>
-                                                        <constraint firstItem="K4q-oW-bRS" firstAttribute="leading" secondItem="zwG-5n-3r0" secondAttribute="trailing" constant="8" id="lWz-GG-01z"/>
                                                         <constraint firstItem="Drf-PV-gIu" firstAttribute="leading" secondItem="5NB-qD-bIx" secondAttribute="leading" constant="27" id="liM-f6-WwP"/>
                                                         <constraint firstItem="zwG-5n-3r0" firstAttribute="leading" secondItem="5NB-qD-bIx" secondAttribute="leading" constant="183" id="uQa-AA-jsb"/>
                                                         <constraint firstItem="6Tt-uu-wZd" firstAttribute="centerY" secondItem="fc2-l3-n4F" secondAttribute="centerY" id="vO5-vg-Itf"/>
@@ -5437,7 +5414,6 @@ Use the Add To List Button on a pin to begin</string>
         <image name="Rectangle 3 Blue" width="321" height="100"/>
         <image name="Rectangle 3 Copy 2" width="334" height="100"/>
         <image name="Reject Connection Button" width="78" height="79"/>
-        <image name="Report Issue Purple" width="78" height="79"/>
         <image name="Request Sent Button" width="135" height="143"/>
         <image name="Schedule Pickup Button" width="78" height="79"/>
         <image name="Search Icon" width="21" height="21"/>

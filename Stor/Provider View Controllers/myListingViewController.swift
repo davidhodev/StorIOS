@@ -25,6 +25,10 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     var phoneRaw: String?
     var dropOffTime: NSMutableAttributedString?
     var pickUpTime: NSMutableAttributedString?
+    var time: NSMutableAttributedString?
+    
+    var newActivityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    var counter = 0
     
     @IBOutlet weak var noCurrentListing: UILabel!
     
@@ -160,6 +164,13 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        newActivityIndicator.center = self.view.center
+        newActivityIndicator.hidesWhenStopped = true
+        newActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(newActivityIndicator)
+        
+        newActivityIndicator.startAnimating()
+        
         myListingTableView.delegate = self
         myListingTableView.dataSource = self
         self.exists = false
@@ -285,6 +296,7 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                         cubicFeetAttString.setAttributes([.font:fontSuper!,.baselineOffset:7], range: NSRange(location:(cubicFeetString.count)-1,length:1))
                         
                         self.cubicFeet = cubicFeetAttString
+                        self.newActivityIndicator.stopAnimating()
                     }
                     
                     
@@ -294,6 +306,9 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                     
                 }
                 
+            }
+            else{
+                self.newActivityIndicator.stopAnimating()
             }
         }, withCancel: nil)
 
@@ -352,13 +367,14 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                         self.cubicFeet = cubicFeetAttString
                         
                         if let timeDictionary = dictionary["time"] as? [String: Any]{
-                            let tempDropOff = timeDictionary["dropOffTime"] as? String
-                            let tempPickUp = timeDictionary["pickUpTime"] as? String
+                            let tempTime = timeDictionary["time"] as? String
+//                            let tempPickUp = timeDictionary["pickUpTime"] as? String
                             let timeFont:UIFont? = UIFont(name: "Dosis-Regular", size:14)
-                            let dropOffAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempDropOff!, attributes: [.font: timeFont!])
-                            let pickUpAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempPickUp!, attributes: [.font: timeFont!])
-                            self.dropOffTime = dropOffAttString
-                            self.pickUpTime = pickUpAttString
+                            let timeAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempTime!, attributes: [.font: timeFont!])
+//                            let pickUpAttString:NSMutableAttributedString = NSMutableAttributedString(string: tempPickUp!, attributes: [.font: timeFont!])
+//                            self.dropOffTime = dropOffAttString
+//                            self.pickUpTime = pickUpAttString
+                            self.time = timeAttString
                         }
                         
                         
@@ -440,6 +456,11 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editListingSegue"{
+            var newActivityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+            newActivityIndicator.center = self.view.center
+            newActivityIndicator.hidesWhenStopped = true
+            newActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            view.addSubview(newActivityIndicator)
             let destinationController = segue.destination as! addListingViewController
             if let user = Auth.auth().currentUser{
                 Database.database().reference().child("Providers").child(user.uid).child("currentStorage").observe(.childAdded, with: { (snapshot) in
@@ -448,21 +469,7 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                     if let dictionary = snapshot.value as? [String: Any]{
                         destinationController.descriptionLabel.text = dictionary["Subtitle"] as! String
                         
-                        
-                        
-                        /*
-                         var dimensionsString = String(describing: dictionary["Length"]!!)
-                         dimensionsString += "' x "
-                         dimensionsString += String(describing: dictionary["Width"]!!)
-                         dimensionsString += "'"
-                         let dimensionsTemp = dimensionsString
-                         // maybe change this
-                         let fontDimensions: UIFont? = UIFont(name: "Dosis-Bold", size:16)
-                         let dimensionsAttString:NSMutableAttributedString = NSMutableAttributedString(string: dimensionsTemp, attributes: [.font: fontDimensions!])
-                         self.dimensions = dimensionsAttString
 
-                         
- */
 
                         var cubicFeetNumber = Int(String(describing:dictionary["Length"]!))
                         cubicFeetNumber = cubicFeetNumber! * (Int(String(describing:dictionary["Width"]!))!)
@@ -527,7 +534,7 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                             }
                         }
                         
-                        
+                        self.newActivityIndicator.stopAnimating()
 
                     }
                 }, withCancel: nil)

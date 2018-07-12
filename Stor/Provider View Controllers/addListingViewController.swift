@@ -29,6 +29,7 @@ class Dates{
 
 class addListingViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
     var uniqueStorageID = NSUUID().uuidString
+    var newActivityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
 
     @IBOutlet weak var profileImage: UIImageView!
     //photos variables
@@ -217,7 +218,18 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Activity Indicator
+        newActivityIndicator.center = self.view.center
+        newActivityIndicator.hidesWhenStopped = true
+        newActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        view.addSubview(newActivityIndicator)
+        
+        newActivityIndicator.startAnimating()
+        
         //feet cubed label hidden
+        
+        
 
         addImageScrollView.delegate = self
         self.addImageScrollView.isPagingEnabled = true
@@ -274,6 +286,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
                     let addressString = String(describing: dictionary["permanentAddress"]!)
                     let addressAttString:NSMutableAttributedString = NSMutableAttributedString(string: addressString, attributes: [.font: fontRating!])
                     self.addressLabel.attributedText = addressAttString
+                    self.newActivityIndicator.stopAnimating()
                     
                 }
             })
