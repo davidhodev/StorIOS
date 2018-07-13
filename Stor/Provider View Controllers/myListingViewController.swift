@@ -124,6 +124,9 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
                 cell.phoneLabel.isHidden = true
                 cell.ratingLabel.isHidden = true
                 cell.profileImage.isHidden = true
+                cell.deleteButton.isHidden = false
+                cell.deleteLabel.isHidden = false
+                cell.deleteButton.addTarget(self, action: #selector(self.deleteListing(_:)), for: .touchUpInside)
                 cell.editListingButton.isHidden = false
                 cell.editListingLabel.isHidden = false
                 cell.editListingButton.addTarget(self, action: #selector(self.editListing(_:)), for: .touchUpInside)
@@ -458,6 +461,39 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
     {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @objc func deleteListing(_ sender:UIButton){
+        if let uid = Auth.auth().currentUser?.uid{
+            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+            let providerReference = databaseReference.root.child("Providers").child(uid).child("currentStorage")
+            
+            databaseReference.root.child("Providers").child(uid).child("currentStorage").observe(.value, with: { (snapshot) in
+//                print(snapshot)
+                for userChild in snapshot.children{
+                    let userSnapshot = userChild as! DataSnapshot
+                    let storageID = userSnapshot.key
+                    if let dictionary = userSnapshot.value as? [String:Any?]{
+                        let connectDictionary = dictionary["potentialConnects"] as? [String: Any]
+                        print("POTENTIAL CONNECTS", connectDictionary)
+                        print("POTENTIAL CONNECTS 2", dictionary["potentialConnects"])
+                        for potentialConnect in (connectDictionary?.keys)!{
+                            let userReference = databaseReference.root.child("Users").child(potentialConnect)
+                            userReference.child("pendingStorage").child(storageID).removeValue()
+                        }
+                    }
+                        
+                }
+            })
+
+            providerReference.removeValue()
+
+        
+            self.exists = false
+            self.myListingTableView.reloadData()
+        }
+    }
+    
+    
     @objc func editListing(_ sender:UIButton){
         print("editListing")
         performSegue(withIdentifier: "editListingSegue", sender: self)
