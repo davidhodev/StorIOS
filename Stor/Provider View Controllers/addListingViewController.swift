@@ -27,7 +27,7 @@ class Dates{
     }
 }
 
-class addListingViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
+class addListingViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate, UITextViewDelegate {
     var uniqueStorageID = NSUUID().uuidString
     var newActivityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
 
@@ -219,6 +219,10 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userDescriptionText!.layer.borderWidth = 1
+        userDescriptionText!.layer.cornerRadius = 15
+        userDescriptionText!.layer.borderColor = UIColor(red:0.58, green:0.41, blue:0.90, alpha:1.0).cgColor
+        
         // Activity Indicator
         newActivityIndicator.center = self.view.center
         newActivityIndicator.hidesWhenStopped = true
@@ -354,6 +358,7 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         descriptionView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
         descriptionView.alpha = 0
         blurView.isHidden = false
+        beginEdittingOutlet.isHidden = false
         UIView.animate(withDuration: 0.3) {
             print(self.blurEffect)
             self.blurView.effect = self.blurEffect
@@ -375,8 +380,13 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         }
     }
 
+    @IBOutlet weak var beginEdittingOutlet: UIButton!
     
-
+    @IBAction func beginEditing(_ sender: UIButton) {
+        userDescriptionText.becomeFirstResponder()
+        beginEdittingOutlet.isHidden = true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -2144,6 +2144,7 @@ Use the Add To List Button on a pin to begin</string>
                     <connections>
                         <outlet property="addImageScrollView" destination="be4-St-dnZ" id="cwF-vO-DjE"/>
                         <outlet property="addressLabel" destination="emg-21-5uq" id="Dn2-pP-RF8"/>
+                        <outlet property="beginEdittingOutlet" destination="IFE-UD-FlU" id="bTh-G4-ECd"/>
                         <outlet property="blurView" destination="Nvf-2i-YT3" id="ugj-4P-dad"/>
                         <outlet property="cubicFeetLabel" destination="RVh-hU-qAQ" id="b8N-Pi-pnc"/>
                         <outlet property="descriptionLabel" destination="Ydd-Nl-90R" id="ixi-ft-gbV"/>
@@ -2314,12 +2315,12 @@ Use the Add To List Button on a pin to begin</string>
                                 <action selector="exitDescription:" destination="iOa-Xt-34d" eventType="touchUpInside" id="oPE-sX-iFU"/>
                             </connections>
                         </button>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Add description here." translatesAutoresizingMaskIntoConstraints="NO" id="ZZZ-nE-Qip">
-                            <rect key="frame" x="26" y="127" width="260" height="145"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZZZ-nE-Qip">
+                            <rect key="frame" x="26" y="127" width="260" height="168"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="260" id="OeZ-sH-VyI"/>
-                                <constraint firstAttribute="height" constant="145" id="sy8-EJ-XMf"/>
+                                <constraint firstAttribute="height" constant="168" id="sy8-EJ-XMf"/>
                             </constraints>
                             <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
@@ -2337,6 +2338,17 @@ Use the Add To List Button on a pin to begin</string>
                             <color key="textColor" red="0.58431372549019611" green="0.40784313725490196" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IFE-UD-FlU">
+                            <rect key="frame" x="25" y="82" width="260" height="168"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
+                            <state key="normal" title="Click to begin editing.">
+                                <color key="titleColor" red="0.58431372550000005" green="0.40784313729999999" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="beginEditing:" destination="iOa-Xt-34d" eventType="touchUpInside" id="H5a-iy-Evt"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -5375,7 +5387,7 @@ Use the Add To List Button on a pin to begin</string>
         <image name="End Date" width="31" height="30"/>
         <image name="Exit Search Button" width="12" height="12"/>
         <image name="Expand Arrow" width="14" height="8"/>
-        <image name="Fill 7 Copy 2" width="171" height="216"/>
+        <image name="Fill 7 Copy 2" width="173" height="85"/>
         <image name="Fill 7 Copy 5CA" width="308" height="192"/>
         <image name="Fill 7 Copy 6" width="375" height="593"/>
         <image name="Filters Icon" width="24" height="20"/>
