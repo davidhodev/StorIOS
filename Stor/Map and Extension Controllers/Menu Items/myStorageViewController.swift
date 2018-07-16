@@ -395,7 +395,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
             destinationController.storageID = self.confirmationStorageID
         }
         if segue.identifier == "confirmPickupSegue"{
-            let destinationController = segue.destination as! confirmDropoffViewController
+            let destinationController = segue.destination as! confirmPickupViewController
             destinationController.address = self.confirmationAddress
             destinationController.providerID = self.confirmationProviderID
             destinationController.storageID = self.confirmationStorageID
@@ -416,7 +416,11 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         print("Schedule Pickup")
     }
     @objc func confirmPickup(_ sender:UIButton) {
-        print("Confirm Pickup")
+        let buttonIndexPath = sender.tag
+        self.confirmationAddress = myCurrentStorageUsers[buttonIndexPath].address
+        self.confirmationProviderID = myCurrentStorageUsers[buttonIndexPath].providerID
+        self.confirmationStorageID = myCurrentStorageUsers[buttonIndexPath].storageID!
+        performSegue(withIdentifier: "confirmPickupSegue", sender: self)
     }
     func refreshUI() { DispatchQueue.main.async { self.storageTableView.reloadData() } }
 }
