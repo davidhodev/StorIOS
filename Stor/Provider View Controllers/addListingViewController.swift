@@ -219,8 +219,8 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userDescriptionText!.layer.borderWidth = 1
-        userDescriptionText!.layer.cornerRadius = 15
+        userDescriptionText!.layer.borderWidth = 0.75
+        userDescriptionText!.layer.cornerRadius = 10
         userDescriptionText!.layer.borderColor = UIColor(red:0.58, green:0.41, blue:0.90, alpha:1.0).cgColor
         
         // Activity Indicator
