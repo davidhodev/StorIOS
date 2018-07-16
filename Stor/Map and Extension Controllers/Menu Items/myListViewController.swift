@@ -277,6 +277,9 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             self.myListUsers.remove(at: indexPath.section)
             self.myListTableView.reloadData()
+            
+            filterManager.shared.mapVC.deletePin()
+            
             completion(true)
         }
 
