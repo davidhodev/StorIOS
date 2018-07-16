@@ -21,9 +21,6 @@ class providerMenuViewController: UIViewController {
     @IBOutlet weak var providerNameLabel: UILabel!
     @IBOutlet weak var providerRatingLabel: UILabel!
     
-    @IBAction func exitButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
     
     @IBAction func exitArea(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
