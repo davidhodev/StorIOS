@@ -46,7 +46,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     // Forgot email/password button hyperlink
     @IBAction func forgotCode(_ sender: UIButton) {
-        openUrl(urlStr: "http://www.google.com")
+        openUrl(urlStr: "https://www.youtube.com/watch?v=FTQbiNvZqaY")
     }
     
     func openUrl(urlStr:String!) {
