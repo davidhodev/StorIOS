@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var myLoginView: UIView!
     
@@ -71,6 +71,8 @@ class LoginViewController: UIViewController {
         line2Image.image = UIImage.init(named: "Line 2")
         letterImage.image = UIImage.init(named: "Combined Shape1")
         lockImage.image = UIImage.init(named: "Combined Shape2")
+        emailText.delegate = self
+        passwordText.delegate = self
         
         self.hideKeyboardWhenTappedAround()
           
@@ -185,6 +187,17 @@ class LoginViewController: UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailText{
+            emailText.resignFirstResponder()
+            passwordText.becomeFirstResponder()
+        }
+        else {
+            login()
+        }
+        return true
     }
 
 
