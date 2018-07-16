@@ -154,6 +154,8 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
             }
         }
         Database.database().reference().child("Providers").child(uid!).child("currentStorage").child(uniqueStorageID).updateChildValues(["Address": addressLabel.text!, "Height": heightFeet!, "Length": lengthFeet!, "Name": nameLabel.text!, "Price": 100000, "Subtitle": descriptionLabel.text!, "Title": "Title", "Width": widthFeet!, "status": "available", "providerStatus": "avaialable"])
+        
+        filterManager.shared.mapVC.fetchProviders()
 
         self.dismiss(animated: true, completion: nil)
         //RELOAD TABLEVIEW
@@ -219,8 +221,8 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userDescriptionText!.layer.borderWidth = 1
-        userDescriptionText!.layer.cornerRadius = 15
+        userDescriptionText!.layer.borderWidth = 0.75
+        userDescriptionText!.layer.cornerRadius = 10
         userDescriptionText!.layer.borderColor = UIColor(red:0.58, green:0.41, blue:0.90, alpha:1.0).cgColor
         
         // Activity Indicator

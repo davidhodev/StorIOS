@@ -412,12 +412,14 @@ class filterViewController: UIViewController {
     }
     
     @IBAction func applyFilterPressed(_ sender: Any) {
-        filterManager.shared.mapVC.filterAnnotations()
+        
         if priceSliderOutlet.value == 250{
-        globalVariablesViewController.priceFilter = Int(10000000)
+            globalVariablesViewController.priceFilter = Int(10000000)
+            filterManager.shared.mapVC.filterAnnotations()
         }
         else{
             globalVariablesViewController.priceFilter = Int(priceSliderOutlet.value)
+            filterManager.shared.mapVC.filterAnnotations()
         }
         self.dismiss(animated: true, completion: nil)
     }

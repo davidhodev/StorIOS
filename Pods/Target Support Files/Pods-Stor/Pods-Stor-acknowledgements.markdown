@@ -820,9 +820,11 @@ standalone and requires a support library to be linked with it.  This
 support library is itself covered by the above license.
 
 
-## SwiftRangeSlider
+## Stripe
 
-Copyright (c) 2016 Brian Corbin <brian.william.corbin@gmail.com>
+The MIT License
+
+Copyright (c) 2011- Stripe, Inc. (https://stripe.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
