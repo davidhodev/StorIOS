@@ -10,13 +10,15 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class registerProviderViewController: UIViewController {
+class registerProviderViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func exitButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        socialSecurityTextField.delegate = self
+        permanentAddressLabel.delegate = self
         self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
@@ -34,6 +36,12 @@ class registerProviderViewController: UIViewController {
             makeProvider()
         }
 
+    }
+    
+    func enterSubmit(){
+        if checkInputs(){
+            makeProvider()
+        }
     }
     
     func checkInputs() -> Bool{
@@ -92,6 +100,17 @@ class registerProviderViewController: UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == permanentAddressLabel{
+            permanentAddressLabel.resignFirstResponder()
+            socialSecurityTextField.becomeFirstResponder()
+        }
+        else{
+            enterSubmit()
+        }
+        return true
     }
     
 }

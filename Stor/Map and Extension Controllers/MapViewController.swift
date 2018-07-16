@@ -444,6 +444,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
     
+    func addPin(annotation: Annotations){
+        self.storMapKit.addAnnotation(annotation)
+    }
     
       
     

@@ -27,7 +27,7 @@ extension String {
     }
 }
 
-class RegisterEmailViewController: UIViewController {
+class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var nameRegisterText: UITextField!
     @IBOutlet weak var emailRegisterText: UITextField!
@@ -65,6 +65,11 @@ class RegisterEmailViewController: UIViewController {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.right
         registerView.addGestureRecognizer(swipeLeft)
+        
+        nameRegisterText.delegate = self
+        emailRegisterText.delegate = self
+        phoneRegisterText.delegate = self
+        passwordRegisterText.delegate = self
         
         
         lineEmail.image = UIImage.init(named: "Line 2")
@@ -181,6 +186,25 @@ class RegisterEmailViewController: UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == nameRegisterText{
+            nameRegisterText.resignFirstResponder()
+            emailRegisterText.becomeFirstResponder()
+        }
+        else if textField == emailRegisterText{
+            emailRegisterText.resignFirstResponder()
+            phoneRegisterText.becomeFirstResponder()
+        }
+        else if textField == phoneRegisterText{
+            phoneRegisterText.resignFirstResponder()
+            passwordRegisterText.becomeFirstResponder()
+        }
+        else{
+            register()
+        }
+        return true
     }
 }
     
