@@ -91,6 +91,7 @@ class BrowseProductsViewController: UITableViewController {
         let checkoutViewController = CheckoutViewController(product: product,
                                                             price: price,
                                                             settings: self.settingsVC.settings)
+//        self.present(checkoutViewController, animated: true, completion: nil)
         self.navigationController?.pushViewController(checkoutViewController, animated: true)
     }
 }
