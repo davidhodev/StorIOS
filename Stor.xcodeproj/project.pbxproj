@@ -39,6 +39,13 @@
 		DB6B0EF920BC7830000CC1D9 /* Annotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6B0EF820BC7830000CC1D9 /* Annotations.swift */; };
 		DB756FE620B5305F00E12D77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905DE20924BAE000F13DB /* AppDelegate.swift */; };
 		DB756FE720B5306600E12D77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905DE20924BAE000F13DB /* AppDelegate.swift */; };
+		DBBB9C5420FE712500CACEFE /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBB9C4D20FE712300CACEFE /* SettingsViewController.swift */; };
+		DBBB9C5520FE712500CACEFE /* CheckoutRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBB9C4E20FE712300CACEFE /* CheckoutRowView.swift */; };
+		DBBB9C5620FE712500CACEFE /* BrowseProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBB9C4F20FE712400CACEFE /* BrowseProductsViewController.swift */; };
+		DBBB9C5720FE712500CACEFE /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBB9C5020FE712400CACEFE /* Buttons.swift */; };
+		DBBB9C5820FE712500CACEFE /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBB9C5120FE712400CACEFE /* CheckoutViewController.swift */; };
+		DBBB9C5920FE712500CACEFE /* MyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBB9C5220FE712400CACEFE /* MyAPIClient.swift */; };
+		DBBB9C5A20FE712500CACEFE /* PaymentContextFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBBB9C5320FE712500CACEFE /* PaymentContextFooterView.swift */; };
 		DBD8FD3320B3791100776FAB /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD8FD3220B3791100776FAB /* LoginViewController.swift */; };
 		DBE2A9C320C8B19B00E052A1 /* myStorageCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9C220C8B19B00E052A1 /* myStorageCustomTableViewCell.swift */; };
 		DBE2A9C720C9D5BF00E052A1 /* myCurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE2A9C620C9D5BF00E052A1 /* myCurrentUser.swift */; };
@@ -117,6 +124,13 @@
 		DB59552820B49F4D001E1AF0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		DB6B0EF620B8C7DB000CC1D9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DB6B0EF820BC7830000CC1D9 /* Annotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotations.swift; sourceTree = "<group>"; };
+		DBBB9C4D20FE712300CACEFE /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		DBBB9C4E20FE712300CACEFE /* CheckoutRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutRowView.swift; sourceTree = "<group>"; };
+		DBBB9C4F20FE712400CACEFE /* BrowseProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseProductsViewController.swift; sourceTree = "<group>"; };
+		DBBB9C5020FE712400CACEFE /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		DBBB9C5120FE712400CACEFE /* CheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		DBBB9C5220FE712400CACEFE /* MyAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAPIClient.swift; sourceTree = "<group>"; };
+		DBBB9C5320FE712500CACEFE /* PaymentContextFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentContextFooterView.swift; sourceTree = "<group>"; };
 		DBD8FD3220B3791100776FAB /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		DBE2A9C220C8B19B00E052A1 /* myStorageCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myStorageCustomTableViewCell.swift; sourceTree = "<group>"; };
 		DBE2A9C620C9D5BF00E052A1 /* myCurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myCurrentUser.swift; sourceTree = "<group>"; };
@@ -264,6 +278,20 @@
 			path = "Menu Items";
 			sourceTree = "<group>";
 		};
+		DBBB9C4C20FE70FD00CACEFE /* Stripe */ = {
+			isa = PBXGroup;
+			children = (
+				DBBB9C4F20FE712400CACEFE /* BrowseProductsViewController.swift */,
+				DBBB9C5020FE712400CACEFE /* Buttons.swift */,
+				DBBB9C4E20FE712300CACEFE /* CheckoutRowView.swift */,
+				DBBB9C5120FE712400CACEFE /* CheckoutViewController.swift */,
+				DBBB9C5220FE712400CACEFE /* MyAPIClient.swift */,
+				DBBB9C5320FE712500CACEFE /* PaymentContextFooterView.swift */,
+				DBBB9C4D20FE712300CACEFE /* SettingsViewController.swift */,
+			);
+			path = Stripe;
+			sourceTree = "<group>";
+		};
 		DBE2A9CB20D1AA0800E052A1 /* Provider View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +333,7 @@
 		DBE905DD20924BAE000F13DB /* Stor */ = {
 			isa = PBXGroup;
 			children = (
+				DBBB9C4C20FE70FD00CACEFE /* Stripe */,
 				DB6B0EF520B8C7C2000CC1D9 /* Extension */,
 				DBF8BCBD20B7887D0080EEF5 /* globalVariablesViewController.swift */,
 				DB3EE96E20B4B1D700CC4174 /* Stor.entitlements */,
@@ -626,7 +655,9 @@
 				041640BC20BDF7C4001BE560 /* myStorageViewController.swift in Sources */,
 				DBE2A9DB20D8792000E052A1 /* providerMyListingCellTableViewCell.swift in Sources */,
 				DBE2A9D120D2DD9900E052A1 /* potentialConnectsTableViewCell.swift in Sources */,
+				DBBB9C5820FE712500CACEFE /* CheckoutViewController.swift in Sources */,
 				571E1B5620C08C0D00E68CA5 /* SettingsViewControllerFinal.swift in Sources */,
+				DBBB9C5520FE712500CACEFE /* CheckoutRowView.swift in Sources */,
 				579D4C5F20BF2D6E0082A86F /* AnnotationPopUp.swift in Sources */,
 				DB6B0EF720B8C7DB000CC1D9 /* Extensions.swift in Sources */,
 				041640BA20BDF775001BE560 /* paymentViewController.swift in Sources */,
@@ -636,23 +667,28 @@
 				DBE2A9C320C8B19B00E052A1 /* myStorageCustomTableViewCell.swift in Sources */,
 				5750DA0F20E1A7D000D43734 /* confirmDropoffViewController.swift in Sources */,
 				DB6B0EF920BC7830000CC1D9 /* Annotations.swift in Sources */,
+				DBBB9C5720FE712500CACEFE /* Buttons.swift in Sources */,
+				DBBB9C5920FE712500CACEFE /* MyAPIClient.swift in Sources */,
 				DBE2A9D320D2E71F00E052A1 /* providerPotentialUser.swift in Sources */,
 				57EC509320C22389009F470F /* newConnectPopUp.swift in Sources */,
 				DB0515D020C84F9A00386902 /* myListUser.swift in Sources */,
 				DB59552920B49F4D001E1AF0 /* MapViewController.swift in Sources */,
 				576FD1E120CB3F72004BA549 /* MyProfileViewController3.swift in Sources */,
 				041640B820BDF66E001BE560 /* myListViewController.swift in Sources */,
+				DBBB9C5620FE712500CACEFE /* BrowseProductsViewController.swift in Sources */,
 				04201CF520C8554500CA477E /* filterViewController.swift in Sources */,
 				04F158A320BCA4C500AAC2ED /* hexagonProfilePicture.swift in Sources */,
 				DBE905DF20924BAE000F13DB /* AppDelegate.swift in Sources */,
 				DBD8FD3320B3791100776FAB /* LoginViewController.swift in Sources */,
 				DBE2A9D720D8708A00E052A1 /* myListingViewController.swift in Sources */,
+				DBBB9C5420FE712500CACEFE /* SettingsViewController.swift in Sources */,
 				DBE2A9D920D875EF00E052A1 /* addListingViewController.swift in Sources */,
 				DB4B5E9820B3474D0050F66E /* RegisterEmailViewController.swift in Sources */,
 				DBE2A9C920D1A99300E052A1 /* registerProviderViewController.swift in Sources */,
 				574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */,
 				DBE2A9CF20D2D94500E052A1 /* ProviderConnectionsViewController.swift in Sources */,
 				5750DA1520E1ACEF00D43734 /* confirmPickupProviderViewController.swift in Sources */,
+				DBBB9C5A20FE712500CACEFE /* PaymentContextFooterView.swift in Sources */,
 				DBF8BCBE20B7887D0080EEF5 /* globalVariablesViewController.swift in Sources */,
 				576A007420B7798100F2174D /* MenuViewController.swift in Sources */,
 				DB0515CE20C7551700386902 /* myListCustomCell.swift in Sources */,
