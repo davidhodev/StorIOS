@@ -74,14 +74,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let handle = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
         let stripeHandled = Stripe.handleURLCallback(with: url)
-        
+
         if (stripeHandled) {
             return true
         }
-        
-        
-        GIDSignIn.sharedInstance().handle(url,sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
-        
+    
+        GIDSignIn.sharedInstance().handle(url, sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
     
         return handle
         

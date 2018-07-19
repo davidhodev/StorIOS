@@ -92,7 +92,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="11" maxX="0.0" maxY="-29"/>
                                 <state key="normal" image="Rectangle 3 Copy 2"/>
                                 <connections>
-                                    <action selector="googleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xVi-62-J2N"/>
+                                    <action selector="googleButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="X9S-Tx-zfn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akH-Mg-Kph">
