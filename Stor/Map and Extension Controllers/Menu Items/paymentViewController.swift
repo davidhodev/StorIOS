@@ -33,7 +33,14 @@ class paymentViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    @IBAction func addPayment(_ sender: Any) {
+        let vc:BrowseProductsViewController = BrowseProductsViewController()
+        let navigationControllee = UINavigationController(rootViewController: vc)
+        self.navigationController?.pushViewController(navigationControllee, animated: true)
+        self.present(navigationControllee, animated: true) {
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
