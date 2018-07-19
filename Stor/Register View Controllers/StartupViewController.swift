@@ -17,7 +17,7 @@ import GoogleSignIn
 class StartupViewController: UIViewController, GIDSignInUIDelegate{
 
     // Instantiate create account button
-    @IBOutlet weak var createAccountButton: UIButton!
+//    @IBOutlet weak var createAccountButton: UIButton!
     
     // Create Button Function
     
@@ -177,7 +177,9 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
     
     // Google button press function
     func handleGoogleButton(){
+        print("CRASH1")
         GIDSignIn.sharedInstance().signIn()
+        print("CRASH2")
         viewDidAppear(true)
     }
     

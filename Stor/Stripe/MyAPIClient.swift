@@ -29,8 +29,9 @@ class MyAPIClient: NSObject, STPEphemeralKeyProvider {
                         completion: @escaping STPErrorBlock) {
         let url = self.baseURL.appendingPathComponent("charge")
         var params: [String: Any] = [
-            "source": result.source.stripeID,
-            "amount": amount
+            "customer": "cus_DFTwhBQpPUaawt", //CUSTOMER ID
+            "amount": amount,
+            "currency": "USD"
         ]
         params["shipping"] = STPAddress.shippingInfoForCharge(with: shippingAddress, shippingMethod: shippingMethod)
         Alamofire.request(url, method: .post, parameters: params)
@@ -44,7 +45,11 @@ class MyAPIClient: NSObject, STPEphemeralKeyProvider {
                 }
         }
     }
-
+    
+    func test(){
+        Stripe.customers.create()
+    }
+    
     func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping STPJSONResponseCompletionBlock) {
         let url = self.baseURL.appendingPathComponent("ephemeral_keys")
         Alamofire.request(url, method: .post, parameters: [
