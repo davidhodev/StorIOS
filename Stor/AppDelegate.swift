@@ -15,6 +15,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 import GoogleSignIn
 import UserNotifications
+import Stripe
 
 
 @UIApplicationMain
@@ -72,6 +73,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
     // Facebook and Google SDK function
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let handle = FBSDKApplicationDelegate.sharedInstance().application(app, open: url, options: options)
+        let stripeHandled = Stripe.handleURLCallback(with: url)
+        
+        if (stripeHandled) {
+            return true
+        }
+        
+        
         GIDSignIn.sharedInstance().handle(url,sourceApplication:options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String, annotation: [:])
         
     
@@ -185,5 +193,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
         guard let token = InstanceID.instanceID().token() else {return}
         AppDelegate.DEVICEID = token
     }
+    
+    // This method is where you handle URL opens if you are using univeral link URLs (eg "https://example.com/stripe_ios_callback")
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+            if let url = userActivity.webpageURL {
+                let stripeHandled = Stripe.handleURLCallback(with: url)
+                
+                if (stripeHandled) {
+                    return true
+                }
+                else {
+                    // This was not a stripe url, do whatever url handling your app
+                    // normally does, if any.
+                }
+            }
+            
+        }
+        return false
+    }
+    
 }
 

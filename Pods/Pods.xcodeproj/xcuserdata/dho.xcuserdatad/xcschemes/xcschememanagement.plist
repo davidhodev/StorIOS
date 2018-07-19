@@ -64,7 +64,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>SwiftRangeSlider.xcscheme</key>
+		<key>Stripe-Stripe.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Stripe.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

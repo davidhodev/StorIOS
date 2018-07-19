@@ -19,6 +19,7 @@ target 'Stor' do
 
 	pod 'GoogleSignIn'
 	pod 'Alamofire', '~> 4.7'
+	pod ‘Stripe’
 
   target 'StorTests' do
     inherit! :search_paths

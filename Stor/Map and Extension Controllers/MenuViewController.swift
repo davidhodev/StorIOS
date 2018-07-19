@@ -82,7 +82,9 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
 
     @IBAction func menuHelpButton(_ sender: UIButton) {
-        openUrl(urlStr: "https://www.mystorapp.com/contact-us-1/")
+        //openUrl(urlStr: "https://www.mystorapp.com/contact-us-1/")
+        openUrl(urlStr: "https://www.youtube.com/watch?v=FTQbiNvZqaY")
+        
     }
     func openUrl(urlStr:String!) {
         

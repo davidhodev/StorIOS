@@ -154,6 +154,8 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
             }
         }
         Database.database().reference().child("Providers").child(uid!).child("currentStorage").child(uniqueStorageID).updateChildValues(["Address": addressLabel.text!, "Height": heightFeet!, "Length": lengthFeet!, "Name": nameLabel.text!, "Price": 100000, "Subtitle": descriptionLabel.text!, "Title": "Title", "Width": widthFeet!, "status": "available", "providerStatus": "avaialable"])
+        
+        filterManager.shared.mapVC.fetchProviders()
 
         self.dismiss(animated: true, completion: nil)
         //RELOAD TABLEVIEW
