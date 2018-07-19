@@ -46,9 +46,9 @@ class MyAPIClient: NSObject, STPEphemeralKeyProvider {
         }
     }
     
-    func test(){
-        Stripe.customers.create()
-    }
+//    func test(){
+//        Stripe.customers.create()
+//    }
     
     func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping STPJSONResponseCompletionBlock) {
         let url = self.baseURL.appendingPathComponent("ephemeral_keys")
