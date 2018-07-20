@@ -59,12 +59,13 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.right
         mySettingsView.addGestureRecognizer(swipeLeft)
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
-        tableViewDataSettings = [cellDataForSettings(title: "Notifications", subtitles: ["Push Notifications", "Text Message"]), cellDataForSettings(title: "Privacy Settings", subtitles: ["Allow Stor to Contact you for news and promotions", ""])]
+        tableViewDataSettings = [cellDataForSettings(title: "Notifications", subtitles: ["Push Notifications"]), cellDataForSettings(title: "Privacy Settings", subtitles: ["Allow Stor to Contact you for news and promotions", ""])]
     }
     
     @objc func backSwipe(){
@@ -85,7 +86,7 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         // make this take in the full array items
         cell.titleLabel.text = tableViewDataSettings[indexPath.section].title
         cell.dropDownOne.text = tableViewDataSettings[indexPath.section].subtitles[0]
-        cell.dropDownTwo.text = tableViewDataSettings[indexPath.section].subtitles[1]
+
         // change the look of cell
         settingsTableView.backgroundColor = UIColor.clear
         cell.backgroundColor = UIColor.white
@@ -100,16 +101,14 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         cell.cellView.layer.cornerRadius = 27
         //changing the switches, if statement is second section
         if (indexPath.section == numberOfSections(in: settingsTableView) - 1){
-            cell.textMessageControl.isHidden = true
+            
             cell.storContactControl.isHidden = false
             cell.pushNotificationsControl.isHidden = true
-            cell.deleteAccountButtonControl.isHidden = false
         }
         else{
-            cell.textMessageControl.isHidden = false
+            
             cell.pushNotificationsControl.isHidden = false
             cell.storContactControl.isHidden = true
-            cell.deleteAccountButtonControl.isHidden = true
         }
         // figure out how to animate this rotation transition, need to keep track of the previous cell and animate both and get the cases where one opens and the other closes etc. needs to be easy as to implement in the other tables
         
@@ -119,6 +118,20 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         else
         {
             cell.moreImage.image = UIImage(named: "Up Arrow")
+        }
+        if globalVariablesViewController.isPushNotificationsOn == 1{
+            cell.pushNotificationsControl.isOn = true
+            UIApplication.shared.registerForRemoteNotifications()
+        }
+        else {
+            cell.pushNotificationsControl.isOn = false
+            UIApplication.shared.unregisterForRemoteNotifications()
+        }
+        if globalVariablesViewController.isStorContactOn == 1{
+            cell.storContactControl.isOn = true
+        }
+        else{
+            cell.storContactControl.isOn = false
         }
         return cell
     }
@@ -159,10 +172,12 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
             return settingsCustomCellTableViewCell.defaultHeight
         }
     }
+    
     //makes space between cells
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return cellSpacingHeight
     }
+    
    //hides the footer/creates space between sections
     func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         view.tintColor = UIColor.clear

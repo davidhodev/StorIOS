@@ -15,15 +15,12 @@ class settingsCustomCellTableViewCell: UITableViewCell {
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var moreImage: UIImageView!
     @IBOutlet weak var dropDownOne: UILabel! // Label
-    @IBOutlet weak var dropDownTwo: UILabel!
     //switch variables
-    @IBOutlet weak var textMessageControl: UISwitch!
     @IBOutlet weak var pushNotificationsControl: UISwitch!
     @IBOutlet weak var storContactControl: UISwitch!
-    @IBOutlet weak var deleteAccountButtonControl: UIButton!
     var shadowLayer: CAShapeLayer!
     
-    class var expandedHeight: CGFloat {get { return 200 }}
+    class var expandedHeight: CGFloat {get { return 150 }}
     class var defaultHeight: CGFloat {get { return 60 }}
     
     func checkHeight(){
@@ -43,6 +40,26 @@ class settingsCustomCellTableViewCell: UITableViewCell {
             isObserving = false
         }
     }
+    
+    @IBAction func pushNotificationsPressed(_ sender: UISwitch) {
+        if pushNotificationsControl.isOn{
+            globalVariablesViewController.isPushNotificationsOn = 1
+        }
+        else{
+            globalVariablesViewController.isPushNotificationsOn = 0
+        }
+    }
+    
+    @IBAction func storContactPressed(_ sender: UISwitch) {
+        if storContactControl.isOn{
+            globalVariablesViewController.isStorContactOn = 1
+        }
+        else{
+            globalVariablesViewController.isStorContactOn = 0
+        }
+    }
+    
+    
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "frame"{

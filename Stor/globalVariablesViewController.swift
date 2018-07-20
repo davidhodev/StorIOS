@@ -18,4 +18,6 @@ class globalVariablesViewController: UIViewController {
     static var currentLocation: CLLocation?
     static var buttonOn: Int?
     static var priceFilter: Int?
+    static var isPushNotificationsOn = 1
+    static var isStorContactOn = 1
 }
