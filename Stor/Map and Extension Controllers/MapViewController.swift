@@ -51,7 +51,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBAction func cancelButtonFunction(_ sender: Any) {
-        textXan.text! = ""
+        if textXan.text! == ""{
+            searchResultsTableView.isHidden = true
+            outOfAuto.isHidden = true
+            cancelButton.isHidden = true
+            self.filterButton.isHidden = false
+        }
+        else{
+            textXan.text! = ""
+        }
     }
     @IBOutlet weak var filterButton: UIButton!
     @IBAction func filterButtonFunction(_ sender: Any) {
