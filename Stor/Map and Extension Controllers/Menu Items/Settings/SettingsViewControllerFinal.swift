@@ -29,15 +29,27 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
     }
     //logout
     @IBAction func logoutButton(_ sender: Any) {
-        try!  Auth.auth().signOut()
-        GIDSignIn.sharedInstance().signOut()
-        let manager = FBSDKLoginManager()
-        manager.logOut()
-        print("signed out")
-        if let vc = self.storyboard?.instantiateInitialViewController() {
-            self.present(vc, animated: true, completion: nil)
-            self.navigationController?.popToViewController(vc, animated: true)
+        
+        let actionSheet = UIAlertController(title: "Are you sure you want to log out?", message: nil, preferredStyle: .actionSheet)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let yes = UIAlertAction(title: "Yes", style: .default) { action in
+            try!  Auth.auth().signOut()
+            GIDSignIn.sharedInstance().signOut()
+            let manager = FBSDKLoginManager()
+            manager.logOut()
+            print("signed out")
+            if let vc = self.storyboard?.instantiateInitialViewController() {
+                self.present(vc, animated: true, completion: nil)
+                self.navigationController?.popToViewController(vc, animated: true)
+            }
         }
+        
+        actionSheet.addAction(yes)
+        actionSheet.addAction(cancel)
+        present(actionSheet, animated: true, completion: nil)
+        
+        
     }
     
     // creating variables for the structure and selection

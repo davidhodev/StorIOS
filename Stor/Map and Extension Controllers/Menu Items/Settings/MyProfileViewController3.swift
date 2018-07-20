@@ -141,6 +141,8 @@ class MyProfileViewController3: UIViewController {
         
         profileImage.loadProfilePicture()
         // Do any additional setup after loading the view.
+        
+        self.hideKeyboardWhenTappedAround()
     }
     @objc func backSwipe(){
         self.dismiss(animated: true, completion: nil)
@@ -150,6 +152,7 @@ class MyProfileViewController3: UIViewController {
     @objc func longPhonePress() {
         phoneTextField.isHidden = false
         phoneTextField.isEnabled = true
+        phoneTextField.becomeFirstResponder()
         phoneLabel.isHidden = true
         phoneDoneButton.isHidden = false
     }
@@ -162,6 +165,7 @@ class MyProfileViewController3: UIViewController {
             phoneTextField.isEnabled = false
             phoneDoneButton.isHidden = true
             errorLabel.isHidden = true
+            phoneTextField.resignFirstResponder()
             
             if let user = Auth.auth().currentUser{
                 let registerDataValues = ["phone": phoneTextField.text ] as [String : Any]
@@ -200,6 +204,7 @@ class MyProfileViewController3: UIViewController {
         emailTextField.isEnabled = true
         emailLabel.isHidden = true
         emailDoneButton.isHidden = false
+        emailTextField.becomeFirstResponder()
     }
     
     @IBAction func emailDoneEditing(_ sender: UIButton) {
@@ -210,6 +215,7 @@ class MyProfileViewController3: UIViewController {
             emailTextField.isEnabled = false
             emailDoneButton.isHidden = true
             errorLabel.isHidden = true
+            emailTextField.resignFirstResponder()
             
             
             if let user = Auth.auth().currentUser{
@@ -243,6 +249,7 @@ class MyProfileViewController3: UIViewController {
         passwordLabel.isHidden = true
         passwordDoneButton.isHidden = false
         revealTextOutlet.isHidden = false
+        passwordTextField.becomeFirstResponder()
     }
     
     @IBAction func passwordDoneEditing(_ sender: UIButton) {
@@ -259,6 +266,7 @@ class MyProfileViewController3: UIViewController {
                 passwordDoneButton.isHidden = true
                 errorLabel.isHidden = true
                 revealTextOutlet.isHidden = true
+                passwordTextField.resignFirstResponder()
                 if let user = Auth.auth().currentUser{
                     let registerDataValues = ["password": passwordTextField.text ] as [String : Any]
                     
@@ -309,5 +317,12 @@ class MyProfileViewController3: UIViewController {
         })]
     }
     
-
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyProfileViewController3.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
