@@ -4681,7 +4681,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="TPW-h4-kma">
-                                <rect key="frame" x="0.0" y="-13" width="173" height="85"/>
+                                <rect key="frame" x="0.0" y="-78" width="173" height="85"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="ZAy-fH-HVD"/>
                                     <constraint firstAttribute="width" constant="173" id="rlY-EC-8Xz"/>
@@ -4741,7 +4741,7 @@ Use the Add To List Button on a pin to begin</string>
                                     <constraint firstAttribute="height" constant="66" id="KOm-LT-qtH"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
-                                <state key="normal" image="Home Icon"/>
+                                <state key="normal" image="White"/>
                                 <connections>
                                     <action selector="registrationBackButton:" destination="JuW-DP-JnX" eventType="touchUpInside" id="MXx-lU-yR6"/>
                                 </connections>
@@ -4751,13 +4751,6 @@ Use the Add To List Button on a pin to begin</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="85" id="9ml-ej-FAG"/>
                                     <constraint firstAttribute="width" constant="134" id="lkk-R5-4zU"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="P4G-xz-ODq">
-                                <rect key="frame" x="0.0" y="-55" width="171" height="101"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="RDg-De-ClZ"/>
-                                    <constraint firstAttribute="width" constant="320" id="ikb-vA-8hf"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QEu-rr-968" userLabel="Line Email">
@@ -4857,15 +4850,6 @@ Use the Add To List Button on a pin to begin</string>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3Z-Zx-OpO">
-                                <rect key="frame" x="65" y="668" width="60" height="66"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="JHq-CC-RN5"/>
-                                    <constraint firstAttribute="width" constant="60" id="zIZ-52-VHg"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
-                                <state key="normal" image="White"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -4895,14 +4879,13 @@ Use the Add To List Button on a pin to begin</string>
                             <constraint firstItem="QEu-rr-968" firstAttribute="top" secondItem="WJ5-Z3-Mo6" secondAttribute="bottom" constant="13" id="NCn-1v-TzB"/>
                             <constraint firstItem="Mnv-VT-Gle" firstAttribute="trailing" secondItem="AZi-9t-sDZ" secondAttribute="trailing" id="Ooq-OR-HBQ"/>
                             <constraint firstItem="nxp-dk-2ve" firstAttribute="leading" secondItem="tCe-Jw-rjE" secondAttribute="trailing" constant="-319" id="QRu-mi-fKX"/>
-                            <constraint firstItem="p3Z-Zx-OpO" firstAttribute="leading" secondItem="1py-ab-JN3" secondAttribute="trailing" constant="-60" id="R6W-DP-Kwv"/>
                             <constraint firstItem="Qwg-7u-TlG" firstAttribute="centerY" secondItem="9Lg-ku-0DZ" secondAttribute="centerY" id="RF2-nm-JGX"/>
                             <constraint firstItem="Mnv-VT-Gle" firstAttribute="trailing" secondItem="q7x-27-ZSY" secondAttribute="trailing" id="RLB-cr-yhs"/>
                             <constraint firstItem="tCe-Jw-rjE" firstAttribute="leading" secondItem="Hpu-7y-dk9" secondAttribute="trailing" constant="-51" id="RLC-Es-1YJ"/>
                             <constraint firstItem="MWq-YP-t4a" firstAttribute="bottom" secondItem="Mnv-VT-Gle" secondAttribute="bottom" constant="34" id="SaS-Fi-3ga"/>
                             <constraint firstItem="QEu-rr-968" firstAttribute="leading" secondItem="tCe-Jw-rjE" secondAttribute="trailing" constant="-319" id="WaZ-SW-EQM"/>
                             <constraint firstItem="HcB-9S-kuw" firstAttribute="leading" secondItem="TsK-Ym-ReJ" secondAttribute="trailing" constant="19" id="WhX-Is-Y7f"/>
-                            <constraint firstItem="Mnv-VT-Gle" firstAttribute="top" secondItem="TPW-h4-kma" secondAttribute="top" constant="57" id="XHj-O9-vN6"/>
+                            <constraint firstItem="Mnv-VT-Gle" firstAttribute="top" secondItem="TPW-h4-kma" secondAttribute="top" constant="122" id="XHj-O9-vN6"/>
                             <constraint firstItem="zqs-mm-DSx" firstAttribute="leading" secondItem="eZb-iR-eql" secondAttribute="trailing" constant="14" id="YTp-x8-PFC"/>
                             <constraint firstItem="TsK-Ym-ReJ" firstAttribute="centerX" secondItem="Hpu-7y-dk9" secondAttribute="centerX" id="aJ3-6e-uph"/>
                             <constraint firstItem="HcB-9S-kuw" firstAttribute="centerY" secondItem="TsK-Ym-ReJ" secondAttribute="centerY" id="arx-ce-U7E"/>
@@ -4915,12 +4898,9 @@ Use the Add To List Button on a pin to begin</string>
                             <constraint firstItem="eZb-iR-eql" firstAttribute="centerX" secondItem="2W8-G5-vfi" secondAttribute="centerX" id="gqa-2b-WDr"/>
                             <constraint firstItem="Mnv-VT-Gle" firstAttribute="top" secondItem="MWq-YP-t4a" secondAttribute="top" constant="44" id="hXK-Ll-d7m"/>
                             <constraint firstItem="2W8-G5-vfi" firstAttribute="leading" secondItem="WJ5-Z3-Mo6" secondAttribute="trailing" constant="-14" id="jWF-gl-jws"/>
-                            <constraint firstAttribute="leading" secondItem="tCe-Jw-rjE" secondAttribute="trailing" constant="-319" id="lGD-3j-vMr"/>
-                            <constraint firstItem="p3Z-Zx-OpO" firstAttribute="top" secondItem="1py-ab-JN3" secondAttribute="bottom" constant="-66" id="m5d-xf-St5"/>
                             <constraint firstItem="2W8-G5-vfi" firstAttribute="top" secondItem="WJ5-Z3-Mo6" secondAttribute="bottom" constant="-13" id="mZG-Fh-lpo"/>
                             <constraint firstItem="9Lg-ku-0DZ" firstAttribute="top" secondItem="tCe-Jw-rjE" secondAttribute="bottom" constant="-91" id="o3d-5z-Umz"/>
                             <constraint firstItem="Mnv-VT-Gle" firstAttribute="top" secondItem="UN2-3a-8ya" secondAttribute="top" constant="43" id="qjZ-cZ-mtd"/>
-                            <constraint firstAttribute="top" secondItem="Hpu-7y-dk9" secondAttribute="bottom" constant="10" id="riM-LC-Ccs"/>
                             <constraint firstItem="E4h-v8-IeS" firstAttribute="leading" secondItem="Mnv-VT-Gle" secondAttribute="leading" id="seM-p3-TXf"/>
                             <constraint firstItem="WJ5-Z3-Mo6" firstAttribute="centerX" secondItem="Hpu-7y-dk9" secondAttribute="centerX" id="tup-ZD-Hmz"/>
                             <constraint firstItem="IJt-0O-GAu" firstAttribute="top" secondItem="2W8-G5-vfi" secondAttribute="bottom" constant="11" id="ud8-PA-LCt"/>
