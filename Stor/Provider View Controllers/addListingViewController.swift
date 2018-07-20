@@ -95,6 +95,8 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         }
         
         
+        
+        
         let uid = Auth.auth().currentUser?.uid
         Database.database().reference().child("Providers").child(uid!).child("personalInfo").observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.exists(){
@@ -109,7 +111,18 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
                         })
                     }
                     else{
-                        self.createListing()
+                        let actionSheet = UIAlertController(title: "Are you sure you want to add this listing?", message: nil, preferredStyle: .actionSheet)
+                        
+                        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                        let yes = UIAlertAction(title: "Yes", style: .default) { action in
+                            self.createListing()
+                        }
+                        
+                        actionSheet.addAction(yes)
+                        actionSheet.addAction(cancel)
+                        self.present(actionSheet, animated: true, completion: nil)
+                        
+                        
                     }
                 }
                 
@@ -158,6 +171,8 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         filterManager.shared.mapVC.fetchProviders()
 
         self.dismiss(animated: true, completion: nil)
+        
+        filterManager.shared.mapVC.reloadMap()
         //RELOAD TABLEVIEW
     }
     //exit button for full page
