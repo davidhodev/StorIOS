@@ -31,6 +31,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var outOfAuto: UIButton!
     
     var newActivityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    var changed = true
 
     @IBAction func outOfAutoComplete(_ sender: Any) {
         searchResultsTableView.isHidden = true
@@ -113,7 +114,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationManager.requestAlwaysAuthorization()
         
         
-        
         // Get Data for the Menu
         if let user = Auth.auth().currentUser{
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
@@ -188,9 +188,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        reCenterShowButton.isHidden = self.storMapKit.isUserLocationVisible
+        reCenterShowButton.isHidden = mapView.isUserLocationVisible
     }
     
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
