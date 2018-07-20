@@ -33,10 +33,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var newActivityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
 
     @IBAction func outOfAutoComplete(_ sender: Any) {
-        searchResultsTableView.isHidden = true
-        outOfAuto.isHidden = true
-        cancelButton.isHidden = true
-        self.filterButton.isHidden = false
+        UIView.animate(withDuration: 0.15 , delay: 0, options: .curveEaseIn, animations: {
+            self.searchResultsTableView.alpha = 0
+            self.cancelButton.alpha = 0
+        }) { (_) in
+            UIView.animate(withDuration: 0.2 , delay: 0, options: .curveEaseIn, animations: {
+                self.outOfAuto.alpha = 0
+            })
+            {(_) in
+                self.searchResultsTableView.isHidden = true
+                self.outOfAuto.isHidden = true
+                self.cancelButton.isHidden = true
+                self.filterButton.isHidden = false
+            }
+        }
     }
     
     // centers the screen back on the user's location
@@ -52,10 +62,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var cancelButton: UIButton!
     @IBAction func cancelButtonFunction(_ sender: Any) {
         if textXan.text! == ""{
-            searchResultsTableView.isHidden = true
-            outOfAuto.isHidden = true
-            cancelButton.isHidden = true
-            self.filterButton.isHidden = false
+//            searchResultsTableView.isHidden = true
+//            outOfAuto.isHidden = true
+//            cancelButton.isHidden = true
+//            self.filterButton.isHidden = false
+            UIView.animate(withDuration: 0.15 , delay: 0, options: .curveEaseIn, animations: {
+                self.searchResultsTableView.alpha = 0
+                self.cancelButton.alpha = 0
+            }) { (_) in
+                UIView.animate(withDuration: 0.2 , delay: 0, options: .curveEaseIn, animations: {
+                    self.outOfAuto.alpha = 0
+                })
+                {(_) in
+                    self.searchResultsTableView.isHidden = true
+                    self.outOfAuto.isHidden = true
+                    self.cancelButton.isHidden = true
+                    self.filterButton.isHidden = false
+                }
+            }
         }
         else{
             textXan.text! = ""
@@ -199,9 +223,20 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         self.searchResultsTableView.isHidden = false
+        self.searchResultsTableView.alpha = 0
         self.outOfAuto.isHidden = false
+        self.outOfAuto.alpha = 0
         self.cancelButton.isHidden = false
+        self.cancelButton.alpha = 0
         self.filterButton.isHidden = true
+        UIView.animate(withDuration: 0.15 , delay: 0, options: .curveEaseOut, animations: {
+            self.outOfAuto.alpha = 1
+        }) { (_) in
+            UIView.animate(withDuration: 0.2 , delay: 0, options: .curveEaseOut, animations: {
+                self.searchResultsTableView.alpha = 1
+                self.cancelButton.alpha = 1
+            })
+        }
     }
     
     //Text Bar Pressed
