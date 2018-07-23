@@ -34,6 +34,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordRegisterText: UITextField!
     @IBOutlet weak var phoneRegisterText: UITextField!
     @IBOutlet var registerView: UIView!
+
     
     //line under email address
     @IBOutlet weak var lineEmail: UIImageView!
