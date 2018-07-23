@@ -93,7 +93,7 @@ class registerProviderViewController: UIViewController, UITextFieldDelegate {
     }
     */
     func hideKeyboardWhenTappedAround() {
-        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterEmailViewController.dismissKeyboard))
+        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(registerProviderViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
