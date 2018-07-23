@@ -161,8 +161,9 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
             }
         }
         else if registerSteps == 3{
-            
-            PhoneAuthProvider.provider().verifyPhoneNumber(phoneRegisterText.text!, uiDelegate: nil) { (verificationID, error) in
+            var inputPhone = "+1"
+            inputPhone += phoneRegisterText.text!
+            PhoneAuthProvider.provider().verifyPhoneNumber(inputPhone, uiDelegate: nil) { (verificationID, error) in
                 if error != nil{
                     print(error)
                     return
