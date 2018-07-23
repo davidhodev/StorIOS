@@ -172,6 +172,8 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 self.phoneVerificationText.alpha = 1
                 self.mainImage.image =  UIImage.init(named: "Phone Icon")
                 self.questionLabel.text = "Verification Stuff"
+                self.phoneRegisterText.resignFirstResponder()
+                self.phoneVerificationText.becomeFirstResponder()
                 self.registerSteps += 1
             }
             
@@ -282,7 +284,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
 //        phonePicture.image = UIImage.init(named: "Phone Icon")
         passwordImage.image = UIImage.init(named: "Combined Shape2")
         
-        self.hideKeyboardWhenTappedAround()
+//        self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
 
@@ -381,15 +383,15 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func hideKeyboardWhenTappedAround() {
-        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterEmailViewController.dismissKeyboard))
-        tap.cancelsTouchesInView = false
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
+//    func hideKeyboardWhenTappedAround() {
+//        let tap:UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RegisterEmailViewController.dismissKeyboard))
+//        tap.cancelsTouchesInView = false
+//        view.addGestureRecognizer(tap)
+//    }
+//
+//    @objc func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == nameRegisterText{
