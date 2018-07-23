@@ -64,12 +64,41 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     // Next Button
     @IBOutlet weak var nextButtonOutlet: UIButton!
     @IBAction func nextButton(_ sender: Any) {
-//        registerSteps += 1
+        nextButtonPressed()
+    }
+    func nextButtonPressed(){
         if registerSteps == 0{
-            self.nameRegisterText.alpha = 0
-            self.emailRegisterText.alpha = 1
-            self.mainImage.image =  UIImage.init(named: "Combined Shape1")
-            self.questionLabel.text = "What's your email?"
+            // fade out text field, icon, line, translate to right at the same time
+            UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
+                self.nameRegisterText.alpha = 0
+                self.mainImage.alpha = 0
+                self.questionLabel.alpha = 0
+                //may change this
+                self.line1.alpha = 0
+                self.line1.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.nameRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.emailRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
+            }) { (_) in
+                // change icons and text
+                UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
+                    self.mainImage.image =  UIImage.init(named: "Combined Shape1")
+                    self.questionLabel.text = "What's your email?"
+                }) { (_) in
+                    UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                        self.emailRegisterText.alpha = 1
+                        self.questionLabel.alpha = 1
+                        self.mainImage.alpha = 1
+                        self.line1.alpha = 1
+                        self.emailRegisterText.transform = self.emailRegisterText.transform.translatedBy(x: -375, y: 0)
+                        self.nameRegisterText.transform = self.emailRegisterText.transform.translatedBy(x: -375, y: 0)
+                        self.mainImage.transform = self.mainImage.transform.translatedBy(x: -375, y: 0)
+                        self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
+                    })
+                }
+            }
+            nameRegisterText.resignFirstResponder()
+            emailRegisterText.becomeFirstResponder()
             registerSteps += 1
             // Animation to bring in Email
         }
@@ -84,18 +113,50 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 }
                 else{
                     if stringArray == nil{
-                        self.emailRegisterText.alpha = 0
-                        self.passwordRegisterText.alpha = 1
-                        self.confirmPasswordRegisterText.alpha = 1
-                        self.mainImage.alpha = 0
-                        self.passwordImage.alpha = 1
-                        self.confirmPasswordImage.alpha = 1
-                        
-                        self.line1.alpha = 0
-                        self.line2.alpha = 1
-                        self.line3.alpha = 1
-                        
-                        self.questionLabel.text = "What's your password?"
+                        UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
+                            self.emailRegisterText.alpha = 0
+                            self.mainImage.alpha = 0
+                            self.questionLabel.alpha = 0
+                            //may change this
+                            self.line1.alpha = 0
+                            self.line1.transform = CGAffineTransform(translationX: 375, y: 0)
+                            self.emailRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                            self.passwordRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                            self.confirmPasswordRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                            self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
+                            self.confirmPasswordImage.transform = CGAffineTransform(translationX: 375, y: 0)
+                            self.passwordImage.transform = CGAffineTransform(translationX: 375, y: 0)
+                            self.line2.transform = CGAffineTransform(translationX: 375, y: 0)
+                            self.line3.transform = CGAffineTransform(translationX: 375, y: 0)
+                        }) { (_) in
+                            // change icons and text
+                            UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
+                                self.questionLabel.text = "What's your password?"
+                                self.passwordImage.image = UIImage(named: "Combined Shape2-1")
+                                self.confirmPasswordImage.image = UIImage(named: "Confirm Password Icon")
+                            }) { (_) in
+                                UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                                    self.questionLabel.alpha = 1
+                                    self.line2.alpha = 1
+                                    self.line3.alpha = 1
+                                    self.passwordRegisterText.alpha = 1
+                                    self.confirmPasswordRegisterText.alpha = 1
+                                    self.passwordImage.alpha = 1
+                                    self.confirmPasswordImage.alpha = 1
+                                    self.emailRegisterText.transform = self.emailRegisterText.transform.translatedBy(x: -375, y: 0)
+                                    self.passwordRegisterText.transform = self.passwordRegisterText.transform.translatedBy(x: -375, y: 0)
+                                    self.confirmPasswordRegisterText.transform = self.confirmPasswordRegisterText.transform.translatedBy(x: -375, y: 0)
+                                    self.mainImage.transform = self.mainImage.transform.translatedBy(x: -375, y: 0)
+                                    self.confirmPasswordImage.transform = self.confirmPasswordImage.transform.translatedBy(x: -375, y: 0)
+                                    self.passwordImage.transform = self.passwordImage.transform.translatedBy(x: -375, y: 0)
+                                    self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
+                                    self.line2.transform = self.line2.transform.translatedBy(x: -375, y: 0)
+                                    self.line3.transform = self.line3.transform.translatedBy(x: -375, y: 0)
+                                })
+                            }
+                        }
+                        self.emailRegisterText.resignFirstResponder()
+                        self.passwordRegisterText.becomeFirstResponder()
                         self.registerSteps += 1
                     }
                     else{
@@ -157,6 +218,9 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 self.line3.alpha = 0
                 
                 self.questionLabel.text = "What's your Phone Number"
+                
+                self.passwordRegisterText.resignFirstResponder()
+                phoneRegisterText.becomeFirstResponder()
                 self.registerSteps += 1
             }
         }
@@ -171,19 +235,99 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
             print("MEH")
         }
         
-//        
-//        if registerSteps == 5{
-//            self.register()
-//        }
+        //
+        //        if registerSteps == 5{
+        //            self.register()
+        //        }
         
         
     }
+    
     
     @IBOutlet weak var backButtonOutlet: UIButton!
     @IBAction func backButton(_ sender: Any) {
         
         if registerSteps == 0{
             self.navigationController?.popToRootViewController(animated: true)
+        }
+        else if registerSteps == 1{
+            //animate out email, animate in name
+            UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
+                self.emailRegisterText.alpha = 0
+                self.mainImage.alpha = 0
+                self.questionLabel.alpha = 0
+                //may change this
+                self.line1.alpha = 0
+                self.line1.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.nameRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.emailRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
+            }) { (_) in
+                // change icons and text
+                UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
+                    self.mainImage.image =  UIImage.init(named: "nameCardIcon")
+                    self.questionLabel.text = "What's your name?"
+                }) { (_) in
+                    UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                        self.nameRegisterText.alpha = 1
+                        self.questionLabel.alpha = 1
+                        self.mainImage.alpha = 1
+                        self.line1.alpha = 1
+                        self.emailRegisterText.transform = self.emailRegisterText.transform.translatedBy(x: -375, y: 0)
+                        self.nameRegisterText.transform = self.nameRegisterText.transform.translatedBy(x: -375, y: 0)
+                        self.mainImage.transform = self.mainImage.transform.translatedBy(x: -375, y: 0)
+                        self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
+                    })
+                }
+            }
+            registerSteps -= 1
+        }
+        else if registerSteps == 2{
+            //animate out passwords, animate in email
+            UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
+                self.emailRegisterText.alpha = 0
+                self.mainImage.alpha = 0
+                self.questionLabel.alpha = 0
+                self.line2.alpha = 0
+                self.line3.alpha = 0
+                self.passwordRegisterText.alpha = 0
+                self.confirmPasswordRegisterText.alpha = 0
+                self.passwordImage.alpha = 0
+                self.confirmPasswordImage.alpha = 0
+                //may change this
+                self.line1.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.emailRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.passwordRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.confirmPasswordRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.confirmPasswordImage.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.passwordImage.transform = CGAffineTransform(translationX: 375, y: 0)
+            }) { (_) in
+                // change icons and text
+                UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
+                    self.questionLabel.text = "What's your email?"
+                }) { (_) in
+                    UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                        self.emailRegisterText.alpha = 1
+                        self.mainImage.alpha = 1
+                        self.questionLabel.alpha = 1
+                        self.line1.alpha = 1
+                        self.emailRegisterText.transform = self.emailRegisterText.transform.translatedBy(x: -375, y: 0)
+                        self.nameRegisterText.transform = self.emailRegisterText.transform.translatedBy(x: -375, y: 0)
+                        self.mainImage.transform = self.mainImage.transform.translatedBy(x: -375, y: 0)
+                        self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
+                    })
+                }
+            }
+            registerSteps -= 1
+        }
+        else if registerSteps == 3{
+            //animate out phone, animate in passwords
+            registerSteps -= 1
+        }
+        else{
+            //animate out phone confirmation, animate in passwords
+            registerSteps -= 1
         }
 //        registerSteps -= 1
         
@@ -216,6 +360,8 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         passwordImage.alpha = 0
         confirmPasswordImage.alpha = 0
         questionLabel.text = "What's your name?"
+        
+        nameRegisterText.becomeFirstResponder()
         
         
         
@@ -337,21 +483,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == nameRegisterText{
-            nameRegisterText.resignFirstResponder()
-            emailRegisterText.becomeFirstResponder()
-        }
-        else if textField == emailRegisterText{
-            emailRegisterText.resignFirstResponder()
-            phoneRegisterText.becomeFirstResponder()
-        }
-        else if textField == phoneRegisterText{
-            phoneRegisterText.resignFirstResponder()
-            passwordRegisterText.becomeFirstResponder()
-        }
-        else{
-            register()
-        }
+        nextButtonPressed()
         return true
     }
 }
