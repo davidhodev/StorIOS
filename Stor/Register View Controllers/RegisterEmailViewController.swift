@@ -38,6 +38,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet var registerView: UIView!
+
     
     var registerSteps = 0
     
