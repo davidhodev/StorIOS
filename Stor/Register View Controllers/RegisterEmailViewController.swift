@@ -34,7 +34,6 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordRegisterText: UITextField!
     @IBOutlet weak var phoneRegisterText: UITextField!
     @IBOutlet weak var confirmPasswordRegisterText: UITextField!
-    @IBOutlet weak var birthdayText: UITextField!
     @IBOutlet weak var phoneVerificationText: UITextField!
     
     
@@ -144,10 +143,10 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 print("String has no Special Characters")
             }
             else{
-                self.birthdayText.alpha = 1
+                self.phoneRegisterText.alpha = 0
                 self.passwordRegisterText.alpha = 0
                 self.confirmPasswordRegisterText.alpha = 0
-                self.mainImage.image =  UIImage.init(named: "Combined Shape1") // Birthday Icon
+                self.mainImage.image =  UIImage.init(named: "Phone Icon") // Birthday Icon
                 self.mainImage.alpha = 1
                 self.passwordImage.alpha = 0
                 self.confirmPasswordImage.alpha = 0
@@ -156,33 +155,25 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 self.line2.alpha = 0
                 self.line3.alpha = 0
                 
-                self.questionLabel.text = "What's your Birthday? (Must be at least 13 to use the app)"
+                self.questionLabel.text = "What's your Phone Number"
                 self.registerSteps += 1
             }
         }
         else if registerSteps == 3{
-            /*
-             if birthdayCheck < 13{
-                print("Yo Birthday must be at least 13")
-             }
-             else{
-             
-             }
- */
-            self.birthdayText.alpha = 0
-            self.phoneRegisterText.alpha = 1
+            self.phoneRegisterText.alpha = 0
+            self.phoneVerificationText.alpha = 1
             self.mainImage.image =  UIImage.init(named: "Phone Icon")
-            self.questionLabel.text = "What's your phone Number?"
+            self.questionLabel.text = "Verification Stuff"
             registerSteps += 1
         }
-        else if registerSteps == 4{
-            
+        else{
+            print("MEH")
         }
         
-        
-        if registerSteps == 5{
-            self.register()
-        }
+//        
+//        if registerSteps == 5{
+//            self.register()
+//        }
         
         
     }
@@ -217,7 +208,6 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         emailRegisterText.alpha = 0
         passwordRegisterText.alpha = 0
         confirmPasswordRegisterText.alpha = 0
-        birthdayText.alpha = 0
         phoneRegisterText.alpha = 0
         phoneVerificationText.alpha = 0
         line2.alpha = 0
