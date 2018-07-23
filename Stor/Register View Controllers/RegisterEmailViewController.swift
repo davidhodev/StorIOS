@@ -143,10 +143,10 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 print("String has no Special Characters")
             }
             else{
-                self.phoneRegisterText.alpha = 0
+                self.phoneRegisterText.alpha = 1
                 self.passwordRegisterText.alpha = 0
                 self.confirmPasswordRegisterText.alpha = 0
-                self.mainImage.image =  UIImage.init(named: "Phone Icon") // Birthday Icon
+                self.mainImage.image =  UIImage.init(named: "Phone Icon")
                 self.mainImage.alpha = 1
                 self.passwordImage.alpha = 0
                 self.confirmPasswordImage.alpha = 0
@@ -160,17 +160,72 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
             }
         }
         else if registerSteps == 3{
-            self.phoneRegisterText.alpha = 0
-            self.phoneVerificationText.alpha = 1
-            self.mainImage.image =  UIImage.init(named: "Phone Icon")
-            self.questionLabel.text = "Verification Stuff"
-            registerSteps += 1
+            
+            PhoneAuthProvider.provider().verifyPhoneNumber(phoneRegisterText.text!, uiDelegate: nil) { (verificationID, error) in
+                if error != nil{
+                    print(error)
+                    return
+                }
+                UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
+                self.phoneRegisterText.alpha = 0
+                self.phoneVerificationText.alpha = 1
+                self.mainImage.image =  UIImage.init(named: "Phone Icon")
+                self.questionLabel.text = "Verification Stuff"
+                self.registerSteps += 1
+            }
+            
+            
         }
         else{
-            print("MEH")
+            let credential = PhoneAuthProvider.provider().credential(withVerificationID: UserDefaults.standard.string(forKey: "authVerificationID")!, verificationCode: phoneVerificationText.text!)
+            
+            print("Credential", credential)
+            print("VERIFICATION ID", UserDefaults.standard.string(forKey: "authVerificationID")!)
+            
+            Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+                if let error = error {
+                    print(error)
+                    return
+                }
+                let user = Auth.auth().currentUser
+                user?.delete { error in
+                    if let error = error {
+                        print(error)
+                    } else {
+                        
+                        print(" Account Deleted")
+                        
+                        guard let nameVerify = self.nameRegisterText.text else {return}
+                        guard let emailVerify = self.emailRegisterText.text else {return}
+                        guard let passwordVerify = self.passwordRegisterText.text else {return}
+                        guard let phoneVerify = self.phoneRegisterText.text else {return}
+                        
+                        let defaultProfilePictureURL = "https://firebasestorage.googleapis.com/v0/b/stor-database.appspot.com/o/Group%202v2.jpeg?alt=media&token=4b1c267b-3b5d-4ad0-b79a-6f149ffa155e"
+                        // Creates User from Firebase
+                        Auth.auth().createUser(withEmail: emailVerify, password: passwordVerify){ user,error in
+                            if (error == nil && user != nil){
+                                let registerDataValues = ["name": nameVerify, "email": emailVerify, "password": passwordVerify, "phone":phoneVerify, "profilePicture": defaultProfilePictureURL, "rating": 5, "numberOfRatings": 1, "deviceToken": AppDelegate.DEVICEID] as [String : Any]
+                                
+                                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                                let userReference = databaseReference.child("Users").child((user?.uid)!)
+                                userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
+                                    if err != nil{
+                                        print(err)
+                                        return
+                                    }
+                                    print("User successfully saved to FIREBASE!")
+                                    
+                                })
+                                self.navigationController?.popToRootViewController(animated: true)
+                            }
+                        }
+                    }
+                }
+            }
+            
         }
         
-//        
+//
 //        if registerSteps == 5{
 //            self.register()
 //        }
