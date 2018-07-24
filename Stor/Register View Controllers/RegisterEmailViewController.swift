@@ -213,20 +213,46 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 print("String has no Special Characters")
             }
             else{
-                self.phoneRegisterText.alpha = 1
-                self.passwordRegisterText.alpha = 0
-                self.confirmPasswordRegisterText.alpha = 0
-                self.mainImage.image =  UIImage.init(named: "Phone Icon")
-                self.mainImage.alpha = 1
-                self.passwordImage.alpha = 0
-                self.confirmPasswordImage.alpha = 0
-                
-                self.line1.alpha = 1
-                self.line2.alpha = 0
-                self.line3.alpha = 0
-                
-                self.questionLabel.text = "What's your Phone Number"
-                
+                UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
+                    self.passwordRegisterText.alpha = 0
+                    self.confirmPasswordRegisterText.alpha = 0
+                    self.confirmPasswordImage.alpha = 0
+                    self.passwordImage.alpha = 0
+                    self.questionLabel.alpha = 0
+                    self.line2.alpha = 0
+                    self.line3.alpha = 0
+                    self.line1.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.line2.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.line3.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.passwordRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.confirmPasswordRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.phoneRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.confirmPasswordImage.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.passwordImage.transform = CGAffineTransform(translationX: 375, y: 0)
+                }) { (_) in
+                    // change icons and text
+                    UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
+                        self.questionLabel.text = "What's your phone number?"
+                        self.mainImage.image =  UIImage.init(named: "Phone Icon")
+                    }) { (_) in
+                        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                            self.questionLabel.alpha = 1
+                            self.line1.alpha = 1
+                            self.mainImage.alpha = 1
+                            self.phoneRegisterText.alpha = 1
+                            self.phoneRegisterText.transform = self.phoneRegisterText.transform.translatedBy(x: -375, y: 0)
+                            self.passwordRegisterText.transform = self.passwordRegisterText.transform.translatedBy(x: -375, y: 0)
+                            self.confirmPasswordRegisterText.transform = self.confirmPasswordRegisterText.transform.translatedBy(x: -375, y: 0)
+                            self.mainImage.transform = self.mainImage.transform.translatedBy(x: -375, y: 0)
+                            self.confirmPasswordImage.transform = self.confirmPasswordImage.transform.translatedBy(x: -375, y: 0)
+                            self.passwordImage.transform = self.passwordImage.transform.translatedBy(x: -375, y: 0)
+                            self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
+                            self.line2.transform = self.line2.transform.translatedBy(x: -375, y: 0)
+                            self.line3.transform = self.line3.transform.translatedBy(x: -375, y: 0)
+                        })
+                    }
+                }
                 self.passwordRegisterText.resignFirstResponder()
                 phoneRegisterText.becomeFirstResponder()
                 self.registerSteps += 1
@@ -390,6 +416,45 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         }
         else if registerSteps == 3{
             //animate out phone, animate in passwords
+            UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
+                self.phoneRegisterText.alpha = 0
+                self.questionLabel.alpha = 0
+                self.line1.alpha = 0
+                self.mainImage.alpha = 0
+                self.line1.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.line2.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.line3.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.passwordRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.confirmPasswordRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.phoneRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.confirmPasswordImage.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.passwordImage.transform = CGAffineTransform(translationX: 375, y: 0)
+            }) { (_) in
+                // change icons and text
+                UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
+                    self.questionLabel.text = "What's your password?"
+                }) { (_) in
+                    UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                        self.questionLabel.alpha = 1
+                        self.line2.alpha = 1
+                        self.line3.alpha = 1
+                        self.passwordRegisterText.alpha = 1
+                        self.confirmPasswordRegisterText.alpha = 1
+                        self.passwordImage.alpha = 1
+                        self.confirmPasswordImage.alpha = 1
+                        self.phoneRegisterText.transform = self.phoneRegisterText.transform.translatedBy(x: -375, y: 0)
+                        self.passwordRegisterText.transform = self.passwordRegisterText.transform.translatedBy(x: -375, y: 0)
+                        self.confirmPasswordRegisterText.transform = self.confirmPasswordRegisterText.transform.translatedBy(x: -375, y: 0)
+                        self.mainImage.transform = self.mainImage.transform.translatedBy(x: -375, y: 0)
+                        self.confirmPasswordImage.transform = self.confirmPasswordImage.transform.translatedBy(x: -375, y: 0)
+                        self.passwordImage.transform = self.passwordImage.transform.translatedBy(x: -375, y: 0)
+                        self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
+                        self.line2.transform = self.line2.transform.translatedBy(x: -375, y: 0)
+                        self.line3.transform = self.line3.transform.translatedBy(x: -375, y: 0)
+                    })
+                }
+            }
             registerSteps -= 1
         }
         else{
