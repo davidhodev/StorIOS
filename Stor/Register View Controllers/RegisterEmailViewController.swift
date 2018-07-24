@@ -259,6 +259,12 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
             }
         }
         else if registerSteps == 3{
+            activityIndicator.center = self.view.center
+            activityIndicator.hidesWhenStopped = true
+            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            view.addSubview(activityIndicator)
+            
+            activityIndicator.startAnimating()
             var inputPhone = "+1"
             inputPhone += phoneRegisterText.text!
             PhoneAuthProvider.provider().verifyPhoneNumber(inputPhone, uiDelegate: nil) { (verificationID, error) in
@@ -266,6 +272,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     print(error)
                     return
                 }
+                self.activityIndicator.stopAnimating()
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
                 UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
                     self.phoneRegisterText.alpha = 0
@@ -302,6 +309,13 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
             
         }
         else{
+            activityIndicator.center = self.view.center
+            activityIndicator.hidesWhenStopped = true
+            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            view.addSubview(activityIndicator)
+            
+            activityIndicator.startAnimating()
+            
             let credential = PhoneAuthProvider.provider().credential(withVerificationID: UserDefaults.standard.string(forKey: "authVerificationID")!, verificationCode: phoneVerificationText.text!)
             
             print("Credential", credential)
@@ -344,6 +358,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                                         return
                                     }
                                     print("User successfully saved to FIREBASE!")
+                                    self.activityIndicator.stopAnimating()
                                     
                                 })
                                 self.navigationController?.popToRootViewController(animated: true)
