@@ -267,10 +267,33 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     return
                 }
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
-                self.phoneRegisterText.alpha = 0
-                self.phoneVerificationText.alpha = 1
-                self.mainImage.image =  UIImage.init(named: "Phone Icon")
-                self.questionLabel.text = "Verification Stuff"
+                UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
+                    self.phoneRegisterText.alpha = 0
+                    self.line1.alpha = 0
+                    self.mainImage.alpha = 0
+                    self.questionLabel.alpha = 0
+                    self.line1.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.phoneRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.phoneVerificationText.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
+                }) { (_) in
+                    // change icons and text
+                    UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
+                        self.questionLabel.text = "Enter the verification code."
+                        self.mainImage.image =  UIImage.init(named: "Text Confirm Icon")
+                    }) { (_) in
+                        UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                            self.questionLabel.alpha = 1
+                            self.line1.alpha = 1
+                            self.mainImage.alpha = 1
+                            self.phoneVerificationText.alpha = 1
+                            self.phoneRegisterText.transform = self.phoneRegisterText.transform.translatedBy(x: -375, y: 0)
+                            self.phoneVerificationText.transform = self.phoneVerificationText.transform.translatedBy(x: -375, y: 0)
+                            self.mainImage.transform = self.mainImage.transform.translatedBy(x: -375, y: 0)
+                            self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
+                        })
+                    }
+                }
                 self.phoneRegisterText.resignFirstResponder()
                 self.phoneVerificationText.becomeFirstResponder()
                 self.registerSteps += 1
@@ -357,6 +380,9 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
                     self.mainImage.image =  UIImage.init(named: "nameCardIcon")
                     self.questionLabel.text = "What's your name?"
+                    //reset if there is error
+                    self.line1.image = UIImage(named: "Line 2")
+                    self.emailRegisterText.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
                 }) { (_) in
                     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                         self.nameRegisterText.alpha = 1
@@ -398,6 +424,15 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 // change icons and text
                 UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
                     self.questionLabel.text = "What's your email?"
+                    //reset if errors
+                    self.mainImage.image = UIImage(named: "Combined Shape1")
+                    self.confirmPasswordImage.image = UIImage(named: "Confirm Password Icon")
+                    self.passwordImage.image = UIImage(named: "Combined Shape2-1")
+                    self.line1.image = UIImage(named: "Line 2")
+                    self.line2.image = UIImage(named: "Line 2")
+                    self.line3.image = UIImage(named: "Line 2")
+                    self.passwordRegisterText.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
+                    self.confirmPasswordRegisterText.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
                 }) { (_) in
                     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                         self.emailRegisterText.alpha = 1
@@ -434,6 +469,16 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 // change icons and text
                 UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
                     self.questionLabel.text = "What's your password?"
+                    //reset if errors
+                    self.mainImage.image = UIImage(named: "Phone Icon")
+                    self.confirmPasswordImage.image = UIImage(named: "Confirm Password Icon")
+                    self.passwordImage.image = UIImage(named: "Combined Shape2-1")
+                    self.line1.image = UIImage(named: "Line 2")
+                    self.line2.image = UIImage(named: "Line 2")
+                    self.line3.image = UIImage(named: "Line 2")
+                    self.passwordRegisterText.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
+                    self.confirmPasswordRegisterText.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
+                    self.phoneRegisterText.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
                 }) { (_) in
                     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                         self.questionLabel.alpha = 1
@@ -458,11 +503,40 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
             registerSteps -= 1
         }
         else{
-            //animate out phone confirmation, animate in passwords
+            //animate out phone confirmation, animate in phone
+            UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
+                self.phoneVerificationText.alpha = 0
+                self.line1.alpha = 0
+                self.mainImage.alpha = 0
+                self.questionLabel.alpha = 0
+                self.line1.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.phoneRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.phoneVerificationText.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
+            }) { (_) in
+                // change icons and text
+                UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
+                    self.questionLabel.text = "What's your phone number?"
+                    self.mainImage.image =  UIImage.init(named: "Phone Icon")
+                    //reset for errors
+                    self.line1.image = UIImage(named: "Line 2")
+                    self.phoneVerificationText.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
+                    self.phoneRegisterText.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
+                }) { (_) in
+                    UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                        self.questionLabel.alpha = 1
+                        self.line1.alpha = 1
+                        self.mainImage.alpha = 1
+                        self.phoneRegisterText.alpha = 1
+                        self.phoneRegisterText.transform = self.phoneRegisterText.transform.translatedBy(x: -375, y: 0)
+                        self.phoneVerificationText.transform = self.phoneVerificationText.transform.translatedBy(x: -375, y: 0)
+                        self.mainImage.transform = self.mainImage.transform.translatedBy(x: -375, y: 0)
+                        self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
+                    })
+                }
+            }
             registerSteps -= 1
         }
-//        registerSteps -= 1
-        
     }
     
     
