@@ -340,9 +340,10 @@ class addListingViewController: UIViewController, UIImagePickerControllerDelegat
         profileImage.loadProfilePicture()
         // Do any additional setup after loading the view.
     }
-    
-    let subviewFrame = CGRect(x: 62.5, y: 92, width: 312, height: 369) // 312 369
-    let subviewFrame2 = CGRect(x: 62.5, y: 92, width: 312, height: 369)
+    //descriptions
+    let subviewFrame = CGRect(x: 62.5, y: 92, width: 312, height: 300) // 312 369
+    //dimensions
+    let subviewFrame2 = CGRect(x: 62.5, y: 92, width: 312, height: 360)
     // animates in dimension pop up and adds blur
     func animateInDimensions() {
         self.view.addSubview(dimensionsView)
