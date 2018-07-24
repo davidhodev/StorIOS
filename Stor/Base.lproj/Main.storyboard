@@ -429,10 +429,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEQ-9q-55h" userLabel="Eye Button">
-                                <rect key="frame" x="300" y="254" width="18" height="13"/>
+                                <rect key="frame" x="300" y="249.66666666666663" width="18" height="18"/>
                                 <accessibility key="accessibilityConfiguration" identifier="lock"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="13" id="1W6-Vd-Y33"/>
+                                    <constraint firstAttribute="height" constant="18" id="1W6-Vd-Y33"/>
                                     <constraint firstAttribute="width" constant="18" id="tBj-9p-aUn"/>
                                 </constraints>
                                 <state key="normal" image="Combined Shape3-1"/>
@@ -486,6 +486,7 @@
                             <constraint firstItem="oKb-Tx-7r6" firstAttribute="leading" secondItem="2xr-E7-XX3" secondAttribute="leading" id="bNj-fu-DR5"/>
                             <constraint firstItem="nCR-5f-YHd" firstAttribute="centerX" secondItem="FnD-Sm-E0K" secondAttribute="centerX" id="dql-f9-lMp"/>
                             <constraint firstItem="iUg-vp-lcF" firstAttribute="leading" secondItem="FnD-Sm-E0K" secondAttribute="leading" constant="28" id="fE9-hI-8X0"/>
+                            <constraint firstItem="zEQ-9q-55h" firstAttribute="centerY" secondItem="KA9-wF-1S1" secondAttribute="centerY" id="iS2-cf-Zki"/>
                             <constraint firstItem="Ufb-3r-sdr" firstAttribute="leading" secondItem="ZcF-jB-fyb" secondAttribute="trailing" constant="-35" id="ic3-zd-Ae1"/>
                             <constraint firstItem="KA9-wF-1S1" firstAttribute="top" secondItem="fK0-aX-7hg" secondAttribute="bottom" constant="36" id="lD7-G5-4yD"/>
                             <constraint firstItem="Aq6-1p-BEW" firstAttribute="top" secondItem="FnD-Sm-E0K" secondAttribute="top" constant="38" id="lFF-A3-jPd"/>
@@ -493,7 +494,6 @@
                             <constraint firstItem="dEx-u4-5SI" firstAttribute="leading" secondItem="nCR-5f-YHd" secondAttribute="trailing" constant="-302" id="o0p-YU-Zq1"/>
                             <constraint firstItem="dEx-u4-5SI" firstAttribute="top" secondItem="ti7-gu-uLF" secondAttribute="bottom" constant="29" id="pGR-rM-HrY"/>
                             <constraint firstItem="zEQ-9q-55h" firstAttribute="leading" secondItem="KA9-wF-1S1" secondAttribute="trailing" constant="237" id="pkl-MQ-rtO"/>
-                            <constraint firstItem="ti7-gu-uLF" firstAttribute="top" secondItem="zEQ-9q-55h" secondAttribute="bottom" constant="16" id="q1q-35-lyg"/>
                             <constraint firstItem="FnD-Sm-E0K" firstAttribute="trailing" secondItem="Aq6-1p-BEW" secondAttribute="trailing" id="qBv-Be-oCw"/>
                             <constraint firstItem="FnD-Sm-E0K" firstAttribute="top" secondItem="ZcF-jB-fyb" secondAttribute="top" constant="57" id="seV-IK-w4B"/>
                             <constraint firstItem="oKb-Tx-7r6" firstAttribute="centerY" secondItem="dEx-u4-5SI" secondAttribute="centerY" id="u5F-aa-Gz1"/>
@@ -5442,7 +5442,7 @@ Use the Add To List Button on a pin to begin</string>
         <image name="Click here for our P" width="102" height="28"/>
         <image name="Combined Shape1" width="15" height="12"/>
         <image name="Combined Shape2" width="14" height="15"/>
-        <image name="Combined Shape3-1" width="18" height="13"/>
+        <image name="Combined Shape3-1" width="18" height="18"/>
         <image name="Confirm Button Purple" width="78" height="79"/>
         <image name="Confirm Password Icon" width="20" height="23"/>
         <image name="Confirmation Bubble" width="346" height="497"/>
