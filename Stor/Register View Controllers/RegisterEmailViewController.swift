@@ -332,7 +332,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
             view.addSubview(activityIndicator)
             
             activityIndicator.startAnimating()
-            UIApplication.shared.beginIgnoringInteractionEvents()()
+            UIApplication.shared.beginIgnoringInteractionEvents()
             
             if agreedToTerms == false{
                 checkBox.borderColor = UIColor.red
