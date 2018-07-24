@@ -65,6 +65,7 @@
 		DBE905F420924BAE000F13DB /* StorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905F320924BAE000F13DB /* StorTests.swift */; };
 		DBE905FF20924BAE000F13DB /* StorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905FE20924BAE000F13DB /* StorUITests.swift */; };
 		DBEA86DF20B4981F00727FCD /* Pods_Stor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEA86E020B4981F00727FCD /* Pods_Stor.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		DBF304862107DC31007AA4E1 /* VKCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF304852107DC31007AA4E1 /* VKCheckbox.swift */; };
 		DBF8BCBE20B7887D0080EEF5 /* globalVariablesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8BCBD20B7887D0080EEF5 /* globalVariablesViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -156,6 +157,7 @@
 		DBE905FE20924BAE000F13DB /* StorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorUITests.swift; sourceTree = "<group>"; };
 		DBE9060020924BAE000F13DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBEA86E020B4981F00727FCD /* Pods_Stor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Stor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBF304852107DC31007AA4E1 /* VKCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKCheckbox.swift; sourceTree = "<group>"; };
 		DBF8BCBD20B7887D0080EEF5 /* globalVariablesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globalVariablesViewController.swift; sourceTree = "<group>"; };
 		E3D320C59051F760CD54268B /* Pods-StorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StorUITests/Pods-StorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FBFB92A62876BD03C1FEC207 /* Pods_StorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				DB6B0EF620B8C7DB000CC1D9 /* Extensions.swift */,
+				DBF304852107DC31007AA4E1 /* VKCheckbox.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -340,8 +343,8 @@
 				DB4B5E9620B346F50050F66E /* Register View Controllers */,
 				57874CA020B78529001F7B3F /* Map and Extension Controllers */,
 				DBE905DE20924BAE000F13DB /* AppDelegate.swift */,
-				DBE2A9CB20D1AA0800E052A1 /* Provider View Controllers */,
 				DBE905E220924BAE000F13DB /* Main.storyboard */,
+				DBE2A9CB20D1AA0800E052A1 /* Provider View Controllers */,
 				04F158A220BCA4C500AAC2ED /* hexagonProfilePicture.swift */,
 				DBE905E520924BAE000F13DB /* Assets.xcassets */,
 				DBE905E720924BAE000F13DB /* LaunchScreen.storyboard */,
@@ -661,6 +664,7 @@
 				DBBB9C5820FE712500CACEFE /* CheckoutViewController.swift in Sources */,
 				571E1B5620C08C0D00E68CA5 /* SettingsViewControllerFinal.swift in Sources */,
 				DBBB9C5520FE712500CACEFE /* CheckoutRowView.swift in Sources */,
+				DBF304862107DC31007AA4E1 /* VKCheckbox.swift in Sources */,
 				579D4C5F20BF2D6E0082A86F /* AnnotationPopUp.swift in Sources */,
 				DB6B0EF720B8C7DB000CC1D9 /* Extensions.swift in Sources */,
 				041640BA20BDF775001BE560 /* paymentViewController.swift in Sources */,
