@@ -41,6 +41,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
 
     
     var registerSteps = 0
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     //line under email address
     @IBOutlet weak var line1: UIImageView!
@@ -97,12 +98,17 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     })
                 }
             }
-            nameRegisterText.resignFirstResponder()
             emailRegisterText.becomeFirstResponder()
             registerSteps += 1
             // Animation to bring in Email
         }
         else if registerSteps == 1{
+            activityIndicator.center = self.view.center
+            activityIndicator.hidesWhenStopped = true
+            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+            view.addSubview(activityIndicator)
+            
+            activityIndicator.startAnimating()
             Auth.auth().fetchProviders(forEmail: emailRegisterText.text!, completion: { (stringArray, error) in
                 if error != nil{
                     print(error)
@@ -110,8 +116,10 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     self.emailRegisterText.attributedPlaceholder = NSAttributedString(string: "E-mail is not in proper format", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
                     self.emailRegisterText.text = ""
                     self.mainImage.image = UIImage.init(named: "Mail Icon Red")
+                    self.activityIndicator.stopAnimating()
                 }
                 else{
+                    self.activityIndicator.stopAnimating()
                     if stringArray == nil{
                         UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
                             self.emailRegisterText.alpha = 0
@@ -155,7 +163,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                                 })
                             }
                         }
-                        self.emailRegisterText.resignFirstResponder()
+                        
                         self.passwordRegisterText.becomeFirstResponder()
                         self.registerSteps += 1
                     }
@@ -252,6 +260,11 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
             
             Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
                 if let error = error {
+                    self.line1.image = UIImage.init(named: "Line 2Red")
+                    self.phoneVerificationText.attributedPlaceholder = NSAttributedString(string: "The verification code is incorrect", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
+                    self.phoneVerificationText.text = ""
+                    self.mainImage.image = UIImage.init(named: "Phone Icon Red")
+                    self.line1.image = UIImage.init(named: "Line 2Red")
                     print(error)
                     return
                 }
@@ -312,6 +325,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 self.nameRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.emailRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
+
             }) { (_) in
                 // change icons and text
                 UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
@@ -330,6 +344,8 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     })
                 }
             }
+            self.emailRegisterText.resignFirstResponder()
+            self.nameRegisterText.becomeFirstResponder()
             registerSteps -= 1
         }
         else if registerSteps == 2{
@@ -369,6 +385,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     })
                 }
             }
+            emailRegisterText.becomeFirstResponder()
             registerSteps -= 1
         }
         else if registerSteps == 3{
@@ -533,7 +550,13 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
 //    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        nextButtonPressed()
+        if (passwordRegisterText.isFirstResponder){
+            passwordRegisterText.resignFirstResponder()
+            confirmPasswordRegisterText.becomeFirstResponder()
+        }
+        else{
+            nextButtonPressed()
+        }
         return true
     }
 }
