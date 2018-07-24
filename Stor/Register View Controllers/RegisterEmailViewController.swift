@@ -41,6 +41,11 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var registerView: UIView!
     @IBOutlet weak var checkBox: VKCheckbox!
     @IBOutlet weak var agreeToTerms: UILabel!
+    //oops mislabeled the first one
+    @IBOutlet weak var greyDash1: UIImageView!
+    @IBOutlet weak var Dash2: UIImageView!
+    @IBOutlet weak var Dash3: UIImageView!
+    @IBOutlet weak var Dash4: UIImageView!
     
     
     var registerSteps = 0
@@ -89,6 +94,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
                     self.mainImage.image =  UIImage.init(named: "Combined Shape1")
                     self.questionLabel.text = "What's your email?"
+                    self.greyDash1.image = UIImage(named: "Blue Dash")
                 }) { (_) in
                     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                         self.emailRegisterText.alpha = 1
@@ -151,6 +157,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                                 self.passwordImage.image = UIImage(named: "Combined Shape2-1")
                                 self.confirmPasswordImage.image = UIImage(named: "Confirm Password Icon")
                                 self.line1.image = UIImage(named: "Line 2")
+                                self.Dash2.image = UIImage(named: "Blue Dash")
                             }) { (_) in
                                 UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                                     self.questionLabel.alpha = 1
@@ -248,6 +255,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
                         self.questionLabel.text = "What's your phone number?"
                         self.mainImage.image =  UIImage.init(named: "Phone Icon")
+                        self.Dash3.image = UIImage(named: "Blue Dash")
                     }) { (_) in
                         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                             self.questionLabel.alpha = 1
@@ -304,6 +312,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
                         self.questionLabel.text = "Enter the verification code."
                         self.mainImage.image =  UIImage.init(named: "Text Confirm Icon")
+                        self.Dash4.image = UIImage(named: "Blue Dash")
                     }) { (_) in
                         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                             self.questionLabel.alpha = 1
@@ -424,6 +433,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     //reset if there is error
                     self.line1.image = UIImage(named: "Line 2")
                     self.emailRegisterText.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
+                    self.greyDash1.image = UIImage(named: "Grey Dash")
                 }) { (_) in
                     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                         self.nameRegisterText.alpha = 1
@@ -476,6 +486,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     self.line3.image = UIImage(named: "Line 2")
                     self.passwordRegisterText.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
                     self.confirmPasswordRegisterText.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
+                    self.Dash2.image = UIImage(named: "Grey Dash")
                 }) { (_) in
                     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                         self.emailRegisterText.alpha = 1
@@ -524,6 +535,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     self.passwordRegisterText.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
                     self.confirmPasswordRegisterText.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
                     self.phoneRegisterText.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
+                    self.Dash3.image = UIImage(named: "Grey Dash")
                 }) { (_) in
                     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                         self.questionLabel.alpha = 1
@@ -569,6 +581,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     self.line1.image = UIImage(named: "Line 2")
                     self.phoneVerificationText.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
                     self.phoneRegisterText.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
+                    self.Dash4.image = UIImage(named: "Grey Dash")
                 }) { (_) in
                     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                         self.questionLabel.alpha = 1
