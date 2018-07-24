@@ -39,9 +39,17 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     var iconClick = true
     
     @IBOutlet var registerView: UIView!
-
+    @IBOutlet weak var checkBox: VKCheckbox!
+    @IBOutlet weak var agreeToTerms: UILabel!
+    //oops mislabeled the first one
+    @IBOutlet weak var greyDash1: UIImageView!
+    @IBOutlet weak var Dash2: UIImageView!
+    @IBOutlet weak var Dash3: UIImageView!
+    @IBOutlet weak var Dash4: UIImageView!
+    
     
     var registerSteps = 0
+    var agreedToTerms = false
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     //line under email address
@@ -86,6 +94,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
                     self.mainImage.image =  UIImage.init(named: "Combined Shape1")
                     self.questionLabel.text = "What's your email?"
+                    self.greyDash1.image = UIImage(named: "Blue Dash")
                 }) { (_) in
                     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                         self.emailRegisterText.alpha = 1
@@ -110,6 +119,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
             view.addSubview(activityIndicator)
             
             activityIndicator.startAnimating()
+            UIApplication.shared.beginIgnoringInteractionEvents()
             Auth.auth().fetchProviders(forEmail: emailRegisterText.text!, completion: { (stringArray, error) in
                 if error != nil{
                     print(error)
@@ -117,9 +127,11 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     self.emailRegisterText.attributedPlaceholder = NSAttributedString(string: "E-mail is not in proper format", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
                     self.emailRegisterText.text = ""
                     self.mainImage.image = UIImage.init(named: "Mail Icon Red")
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     self.activityIndicator.stopAnimating()
                 }
                 else{
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     self.activityIndicator.stopAnimating()
                     if stringArray == nil{
                         UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
@@ -145,6 +157,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                                 self.passwordImage.image = UIImage(named: "Combined Shape2-1")
                                 self.confirmPasswordImage.image = UIImage(named: "Confirm Password Icon")
                                 self.line1.image = UIImage(named: "Line 2")
+                                self.Dash2.image = UIImage(named: "Blue Dash")
                             }) { (_) in
                                 UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                                     self.questionLabel.alpha = 1
@@ -242,6 +255,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
                         self.questionLabel.text = "What's your phone number?"
                         self.mainImage.image =  UIImage.init(named: "Phone Icon")
+                        self.Dash3.image = UIImage(named: "Blue Dash")
                     }) { (_) in
                         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                             self.questionLabel.alpha = 1
@@ -273,6 +287,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
             view.addSubview(activityIndicator)
             
             activityIndicator.startAnimating()
+            UIApplication.shared.beginIgnoringInteractionEvents()
             var inputPhone = "+1"
             inputPhone += phoneRegisterText.text!
             PhoneAuthProvider.provider().verifyPhoneNumber(inputPhone, uiDelegate: nil) { (verificationID, error) in
@@ -281,6 +296,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     return
                 }
                 self.activityIndicator.stopAnimating()
+                UIApplication.shared.endIgnoringInteractionEvents()
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
                 UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
                     self.phoneRegisterText.alpha = 0
@@ -296,6 +312,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
                         self.questionLabel.text = "Enter the verification code."
                         self.mainImage.image =  UIImage.init(named: "Text Confirm Icon")
+                        self.Dash4.image = UIImage(named: "Blue Dash")
                     }) { (_) in
                         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                             self.questionLabel.alpha = 1
@@ -317,59 +334,69 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
             
         }
         else{
+            
             activityIndicator.center = self.view.center
             activityIndicator.hidesWhenStopped = true
             activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
             view.addSubview(activityIndicator)
             
             activityIndicator.startAnimating()
+            UIApplication.shared.beginIgnoringInteractionEvents()
             
-            let credential = PhoneAuthProvider.provider().credential(withVerificationID: UserDefaults.standard.string(forKey: "authVerificationID")!, verificationCode: phoneVerificationText.text!)
-            
-            print("Credential", credential)
-            print("VERIFICATION ID", UserDefaults.standard.string(forKey: "authVerificationID")!)
-            
-            Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
-                if let error = error {
-                    self.line1.image = UIImage.init(named: "Line 2Red")
-                    self.phoneVerificationText.attributedPlaceholder = NSAttributedString(string: "The verification code is incorrect", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
-                    self.phoneVerificationText.text = ""
-                    self.mainImage.image = UIImage.init(named: "Phone Icon Red")
-                    self.line1.image = UIImage.init(named: "Line 2Red")
-                    print(error)
-                    return
-                }
-                let user = Auth.auth().currentUser
-                user?.delete { error in
+            if agreedToTerms == false{
+                checkBox.borderColor = UIColor.red
+                activityIndicator.stopAnimating()
+                UIApplication.shared.endIgnoringInteractionEvents()
+            }
+            else{
+                let credential = PhoneAuthProvider.provider().credential(withVerificationID: UserDefaults.standard.string(forKey: "authVerificationID")!, verificationCode: phoneVerificationText.text!)
+                
+                print("Credential", credential)
+                print("VERIFICATION ID", UserDefaults.standard.string(forKey: "authVerificationID")!)
+                
+                Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
                     if let error = error {
+                        self.line1.image = UIImage.init(named: "Line 2Red")
+                        self.phoneVerificationText.attributedPlaceholder = NSAttributedString(string: "The verification code is incorrect", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
+                        self.phoneVerificationText.text = ""
+                        self.mainImage.image = UIImage.init(named: "Phone Icon Red")
+                        self.line1.image = UIImage.init(named: "Line 2Red")
                         print(error)
-                    } else {
-                        
-                        print(" Account Deleted")
-                        
-                        guard let nameVerify = self.nameRegisterText.text else {return}
-                        guard let emailVerify = self.emailRegisterText.text else {return}
-                        guard let passwordVerify = self.passwordRegisterText.text else {return}
-                        guard let phoneVerify = self.phoneRegisterText.text else {return}
-                        
-                        let defaultProfilePictureURL = "https://firebasestorage.googleapis.com/v0/b/stor-database.appspot.com/o/Group%202v2.jpeg?alt=media&token=4b1c267b-3b5d-4ad0-b79a-6f149ffa155e"
-                        // Creates User from Firebase
-                        Auth.auth().createUser(withEmail: emailVerify, password: passwordVerify){ user,error in
-                            if (error == nil && user != nil){
-                                let registerDataValues = ["name": nameVerify, "email": emailVerify, "password": passwordVerify, "phone":phoneVerify, "profilePicture": defaultProfilePictureURL, "rating": 5, "numberOfRatings": 1, "deviceToken": AppDelegate.DEVICEID] as [String : Any]
-                                
-                                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
-                                let userReference = databaseReference.child("Users").child((user?.uid)!)
-                                userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
-                                    if err != nil{
-                                        print(err)
-                                        return
-                                    }
-                                    print("User successfully saved to FIREBASE!")
-                                    self.activityIndicator.stopAnimating()
+                        return
+                    }
+                    let user = Auth.auth().currentUser
+                    user?.delete { error in
+                        if let error = error {
+                            print(error)
+                        } else {
+                            
+                            print(" Account Deleted")
+                            
+                            guard let nameVerify = self.nameRegisterText.text else {return}
+                            guard let emailVerify = self.emailRegisterText.text else {return}
+                            guard let passwordVerify = self.passwordRegisterText.text else {return}
+                            guard let phoneVerify = self.phoneRegisterText.text else {return}
+                            
+                            let defaultProfilePictureURL = "https://firebasestorage.googleapis.com/v0/b/stor-database.appspot.com/o/Group%202v2.jpeg?alt=media&token=4b1c267b-3b5d-4ad0-b79a-6f149ffa155e"
+                            // Creates User from Firebase
+                            Auth.auth().createUser(withEmail: emailVerify, password: passwordVerify){ user,error in
+                                if (error == nil && user != nil){
+                                    let registerDataValues = ["name": nameVerify, "email": emailVerify, "password": passwordVerify, "phone":phoneVerify, "profilePicture": defaultProfilePictureURL, "rating": 5, "numberOfRatings": 1, "deviceToken": AppDelegate.DEVICEID] as [String : Any]
                                     
-                                })
-                                self.navigationController?.popToRootViewController(animated: true)
+                                    let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                                    let userReference = databaseReference.child("Users").child((user?.uid)!)
+                                    userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
+                                        if err != nil{
+                                            print(err)
+                                            return
+                                        }
+                                        print("User successfully saved to FIREBASE!")
+                                        self.activityIndicator.stopAnimating()
+                                        UIApplication.shared.endIgnoringInteractionEvents()
+                                        
+                                    })
+                                    self.navigationController?.popToRootViewController(animated: true)
+                                }
                             }
                         }
                     }
@@ -406,6 +433,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     //reset if there is error
                     self.line1.image = UIImage(named: "Line 2")
                     self.emailRegisterText.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
+                    self.greyDash1.image = UIImage(named: "Grey Dash")
                 }) { (_) in
                     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                         self.nameRegisterText.alpha = 1
@@ -458,6 +486,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     self.line3.image = UIImage(named: "Line 2")
                     self.passwordRegisterText.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
                     self.confirmPasswordRegisterText.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
+                    self.Dash2.image = UIImage(named: "Grey Dash")
                 }) { (_) in
                     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                         self.emailRegisterText.alpha = 1
@@ -506,6 +535,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     self.passwordRegisterText.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
                     self.confirmPasswordRegisterText.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
                     self.phoneRegisterText.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
+                    self.Dash3.image = UIImage(named: "Grey Dash")
                 }) { (_) in
                     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                         self.questionLabel.alpha = 1
@@ -551,6 +581,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     self.line1.image = UIImage(named: "Line 2")
                     self.phoneVerificationText.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
                     self.phoneRegisterText.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
+                    self.Dash4.image = UIImage(named: "Grey Dash")
                 }) { (_) in
                     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                         self.questionLabel.alpha = 1
@@ -600,6 +631,20 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         nameRegisterText.becomeFirstResponder()
         
         
+        checkBox.line = .thin
+        checkBox.color = UIColor.init(red:0.27, green:0.47, blue:0.91, alpha:1.0)
+        checkBox.borderWidth = 1
+    
+//         Simple checkbox callback
+        checkBox.checkboxValueChangedBlock = {
+            isOn in
+            if isOn{
+                self.agreedToTerms = true
+            }
+            else{
+                self.agreedToTerms = false
+            }
+        }
         
         
         line1.image = UIImage.init(named: "Line 2")
