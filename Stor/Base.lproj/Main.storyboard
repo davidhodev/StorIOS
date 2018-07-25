@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -3913,7 +3913,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdK-rQ-mYB">
-                                <rect key="frame" x="279" y="605" width="60" height="65"/>
+                                <rect key="frame" x="0.0" y="605" width="60" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="M4V-Zr-rQq"/>
                                     <constraint firstAttribute="width" constant="60" id="MKj-Ib-ESF"/>
@@ -3924,7 +3924,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhx-9f-mvD">
-                                <rect key="frame" x="279" y="685" width="60" height="65"/>
+                                <rect key="frame" x="0.0" y="685" width="60" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="6GI-Oc-3ZE"/>
                                     <constraint firstAttribute="height" constant="65" id="uho-kZ-G0r"/>
@@ -3950,7 +3950,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LPh-AA-fL1">
-                                <rect key="frame" x="16" y="131" width="343" height="280"/>
+                                <rect key="frame" x="0.0" y="131" width="343" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="9gf-Jr-Bfb"/>
@@ -3970,14 +3970,14 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-                                <rect key="frame" x="28" y="84" width="20" height="20"/>
+                                <rect key="frame" x="0.0" y="84" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="J0k-Vv-Yda">
-                                <rect key="frame" x="63" y="67" width="251" height="50"/>
+                                <rect key="frame" x="0.0" y="67" width="251" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="251" id="XGg-Ao-Pen"/>
                                     <constraint firstAttribute="height" constant="50" id="d6q-r4-Irt"/>
@@ -3987,7 +3987,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQY-nG-TsQ" userLabel="Filters Button">
-                                <rect key="frame" x="309" y="67" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="67" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="L3E-RY-dIg"/>
                                     <constraint firstAttribute="width" constant="50" id="eAh-Jx-hRY"/>
@@ -3999,7 +3999,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puJ-Ux-Fmn" userLabel="Cancel Button">
-                                <rect key="frame" x="309" y="67" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="67" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="VXo-OA-aiz"/>
                                     <constraint firstAttribute="height" constant="50" id="YpT-dL-62X"/>
@@ -4909,7 +4909,6 @@ Use the Add To List Button on a pin to begin</string>
                                     <constraint firstAttribute="height" constant="20" id="wZE-YV-EcO"/>
                                 </constraints>
                             </view>
-
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Confirm Password Icon" translatesAutoresizingMaskIntoConstraints="NO" id="TsK-Ym-ReJ">
                                 <rect key="frame" x="48" y="286" width="16" height="16"/>
                                 <constraints>
@@ -4921,7 +4920,6 @@ Use the Add To List Button on a pin to begin</string>
                                 <rect key="frame" x="83" y="345.66666666666669" width="220" height="15.333333333333314"/>
                                 <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="12"/>
                                 <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
-
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" alpha="0.20000000000000001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C0J-er-Uuq">
@@ -4938,46 +4936,7 @@ Use the Add To List Button on a pin to begin</string>
                                                 <color key="NSColor" red="0.16471" green="0.15293999999999999" blue="0.34902" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <font key="NSFont" size="12" name="Dosis-Regular"/>
                                                 <real key="NSKern" value="0.40000000000000002"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                    <tabStops>
-                                                        <textTab alignment="left" location="28">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="56">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="84">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="112">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="140">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="168">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="196">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="224">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="252">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="280">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="308">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="336">
-                                                            <options/>
-                                                        </textTab>
-                                                    </tabStops>
-                                                </paragraphStyle>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                 <integer key="NSUnderline" value="1"/>
                                                 <color key="NSUnderlineColor" red="0.16034999999999999" green="0.14701" blue="0.34179999999999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </attributes>
@@ -5009,46 +4968,7 @@ Use the Add To List Button on a pin to begin</string>
                                                 <color key="NSColor" red="0.16471" green="0.15293999999999999" blue="0.34902" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <font key="NSFont" size="12" name="Dosis-Regular"/>
                                                 <real key="NSKern" value="0.40000000000000002"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                    <tabStops>
-                                                        <textTab alignment="left" location="28">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="56">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="84">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="112">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="140">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="168">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="196">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="224">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="252">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="280">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="308">
-                                                            <options/>
-                                                        </textTab>
-                                                        <textTab alignment="left" location="336">
-                                                            <options/>
-                                                        </textTab>
-                                                    </tabStops>
-                                                </paragraphStyle>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                                 <integer key="NSUnderline" value="1"/>
                                                 <color key="NSUnderlineColor" red="0.16034999999999999" green="0.14701" blue="0.34179999999999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </attributes>
@@ -5129,6 +5049,8 @@ Use the Add To List Button on a pin to begin</string>
                         <outlet property="Dash2" destination="S8Z-Hx-e0C" id="RH9-2H-CxQ"/>
                         <outlet property="Dash3" destination="LfQ-PL-Rll" id="x2O-p9-Pho"/>
                         <outlet property="Dash4" destination="gPI-Zj-CbZ" id="qSV-5i-P93"/>
+                        <outlet property="agreeToTerms" destination="7M9-xu-fwC" id="IqY-B4-ty2"/>
+                        <outlet property="andLabel" destination="OfF-r9-3Ie" id="gjc-ng-NZC"/>
                         <outlet property="backButtonOutlet" destination="gOS-Vy-hif" id="0ZI-mm-Kkq"/>
                         <outlet property="checkBox" destination="wd0-ld-xV6" id="AWD-zr-0HL"/>
                         <outlet property="confirmPasswordImage" destination="TsK-Ym-ReJ" id="xnL-Sn-uGN"/>
@@ -5145,9 +5067,11 @@ Use the Add To List Button on a pin to begin</string>
                         <outlet property="passwordRegisterText" destination="nwz-fj-J1B" id="bL8-tD-IJk"/>
                         <outlet property="phoneRegisterText" destination="HcB-9S-kuw" id="N0d-X3-TsL"/>
                         <outlet property="phoneVerificationText" destination="Xu6-LM-67p" id="c51-TD-ph1"/>
+                        <outlet property="privacyPolicyButton" destination="HTJ-uR-x2m" id="TKS-sn-bke"/>
                         <outlet property="questionLabel" destination="rs2-fo-Cbz" id="IdA-lP-gIH"/>
                         <outlet property="registerView" destination="yVb-IX-rsz" id="Kg3-vR-Sd4"/>
                         <outlet property="showTextOutlet" destination="JtL-RW-wMq" id="mue-54-b5F"/>
+                        <outlet property="termsButton" destination="C0J-er-Uuq" id="siK-xC-eBF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Avf-uI-LH6" userLabel="First Responder" sceneMemberID="firstResponder"/>
