@@ -42,6 +42,7 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
     var providerLocation: CLLocationCoordinate2D?
     var userLocation: CLLocation?
     var outputDistance: String?
+    var noPhone = false
     
     
     @IBAction func Exit(_ sender: UIButton) {
@@ -79,6 +80,8 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
     
     // Request Sent button will remove data and hide
     @IBAction func requestSentButtonPressed(_ sender: Any) {
+        
+        
         if let user = Auth.auth().currentUser{
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
             let userReference = databaseReference.root.child("Users").child((user.uid))
@@ -93,6 +96,17 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
             self.connectButton.alpha = 1
         })]
     }
+    
+    @IBAction func connectButtonPressed(_ sender: Any) {
+        print(noPhone)
+        if noPhone == false{
+            performSegue(withIdentifier: "connectPopUp", sender: self)
+        }
+        else{
+            performSegue(withIdentifier: "connectNoPhoneSegue", sender: self)
+        }
+    }
+    
     
 
     
@@ -124,6 +138,15 @@ class AnnotationPopUp: UIViewController, CLLocationManagerDelegate, UIScrollView
                 print(error)
             }
             
+            userReference.observe(.value, with: { (snapshot) in
+                if let dictionary = snapshot.value as? [String: Any]{
+                    let phoneString = String(describing: dictionary["phone"]!)
+                    print("PHONE STRING === ", phoneString)
+                    if  phoneString == "phoneVerify"{
+                        self.noPhone = true
+                    }
+                }
+            })
             userReference.child("pendingStorage").child(storageID!).observeSingleEvent(of: .value, with: { (snapshot) in
                 if snapshot.exists() == true{
                     self.requestSentButton.alpha = 1

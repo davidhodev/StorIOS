@@ -377,7 +377,6 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 
                 print("Credential", credential)
                 print("VERIFICATION ID", UserDefaults.standard.string(forKey: "authVerificationID")!)
-//                PhoneAuthProvider.verifyPhoneNumber(<#T##PhoneAuthProvider#>)
                 Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
                     if let error = error {
                         self.line1.image = UIImage.init(named: "Line 2Red")
@@ -532,6 +531,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         }
         else if registerSteps == 3{
             //animate out phone, animate in passwords
+            self.passwordRegisterText.becomeFirstResponder()
             UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
                 self.phoneRegisterText.alpha = 0
                 self.questionLabel.alpha = 0
