@@ -41,6 +41,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var registerView: UIView!
     @IBOutlet weak var checkBox: VKCheckbox!
     @IBOutlet weak var agreeToTerms: UILabel!
+    
     //oops mislabeled the first one
     @IBOutlet weak var greyDash1: UIImageView!
     @IBOutlet weak var Dash2: UIImageView!
