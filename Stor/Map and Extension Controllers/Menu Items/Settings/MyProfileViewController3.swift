@@ -68,6 +68,14 @@ class MyProfileViewController3: UIViewController {
                 }
             })
         }
+        if let user = Auth.auth().currentUser{
+            print("PROVIDER ID", user.providerData[0].providerID)
+        }
+        // "facebook.com"
+        // "google.com?"
+        // "firebase"
+        // "password"? or phone
+        
         
         
         // phone long press
