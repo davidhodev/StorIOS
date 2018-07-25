@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -4979,12 +4979,23 @@ Use the Add To List Button on a pin to begin</string>
                                     </attributedString>
                                 </state>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You will be sent an SMS verification code to complete your account." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTa-du-9PY">
+                                <rect key="frame" x="83" y="339" width="219" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="219" id="MZA-wI-hqs"/>
+                                    <constraint firstAttribute="height" constant="40" id="hQP-XD-ZaQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="12"/>
+                                <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="gOS-Vy-hif" firstAttribute="centerY" secondItem="ZlZ-BJ-nXO" secondAttribute="centerY" id="18k-Z9-Wjy"/>
                             <constraint firstItem="7M9-xu-fwC" firstAttribute="leading" secondItem="wd0-ld-xV6" secondAttribute="trailing" constant="17" id="1Df-c7-8qe"/>
                             <constraint firstItem="IJt-0O-GAu" firstAttribute="top" secondItem="tCe-Jw-rjE" secondAttribute="bottom" constant="-161" id="1Rc-qQ-KA0"/>
+                            <constraint firstItem="xTa-du-9PY" firstAttribute="top" secondItem="IJt-0O-GAu" secondAttribute="bottom" constant="20" id="2Dp-08-uSp"/>
                             <constraint firstItem="WJ5-Z3-Mo6" firstAttribute="centerX" secondItem="2W8-G5-vfi" secondAttribute="centerX" id="2Ji-tW-uGc"/>
                             <constraint firstItem="FVJ-qr-hAv" firstAttribute="top" secondItem="Mnv-VT-Gle" secondAttribute="top" constant="11" id="2Kz-4P-dYc"/>
                             <constraint firstItem="Xu6-LM-67p" firstAttribute="leading" secondItem="WJ5-Z3-Mo6" secondAttribute="trailing" constant="17" id="2jg-NA-qBN"/>
@@ -5022,6 +5033,7 @@ Use the Add To List Button on a pin to begin</string>
                             <constraint firstItem="tCe-Jw-rjE" firstAttribute="top" secondItem="rs2-fo-Cbz" secondAttribute="bottom" constant="-48" id="Zni-KM-9el"/>
                             <constraint firstItem="Mnv-VT-Gle" firstAttribute="trailing" secondItem="tCe-Jw-rjE" secondAttribute="trailing" constant="15" id="bog-hf-ddx"/>
                             <constraint firstItem="TPW-h4-kma" firstAttribute="leading" secondItem="Mnv-VT-Gle" secondAttribute="leading" id="dCY-BA-04F"/>
+                            <constraint firstItem="xTa-du-9PY" firstAttribute="leading" secondItem="zqs-mm-DSx" secondAttribute="leading" id="dPD-JN-7Rx"/>
                             <constraint firstItem="nwz-fj-J1B" firstAttribute="leading" secondItem="2W8-G5-vfi" secondAttribute="trailing" constant="20" id="dvQ-ZY-Aao"/>
                             <constraint firstItem="Mnv-VT-Gle" firstAttribute="trailing" secondItem="ZlZ-BJ-nXO" secondAttribute="trailing" constant="44" id="e1v-nH-9Vw"/>
                             <constraint firstItem="TsK-Ym-ReJ" firstAttribute="centerX" secondItem="WJ5-Z3-Mo6" secondAttribute="centerX" id="eV3-El-dYJ"/>
