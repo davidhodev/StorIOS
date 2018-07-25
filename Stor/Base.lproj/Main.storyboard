@@ -4654,6 +4654,7 @@ Use the Add To List Button on a pin to begin</string>
                         <outlet property="topRightHex" destination="PbC-YC-bgS" id="62G-8b-Grx"/>
                         <segue destination="Kx1-Fl-5np" kind="presentation" identifier="toProviderMenu" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="ht3-KD-VYk"/>
                         <segue destination="FS2-CZ-y91" kind="showDetail" identifier="toSocialSecuritySegue" id="3ce-0B-jZb"/>
+                        <segue destination="O1n-hC-HNA" kind="presentation" identifier="menuToPhoneSegue" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="bMs-oF-L6k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Yg-HR-Ty7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -5720,6 +5721,7 @@ Use the Add To List Button on a pin to begin</string>
         <image name="remove from list button" width="127" height="131"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="bMs-oF-L6k"/>
         <segue reference="2QV-GR-Qp7"/>
         <segue reference="iCd-uy-vSg"/>
         <segue reference="axh-2K-sWK"/>
