@@ -5093,7 +5093,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zuC-sr-mza">
                                 <rect key="frame" x="47" y="320" width="296" height="30"/>
@@ -5114,13 +5114,19 @@ Use the Add To List Button on a pin to begin</string>
                                 <rect key="frame" x="47" y="554" width="281" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="doneButtonPressend:" destination="O1n-hC-HNA" eventType="touchUpInside" id="WEE-Au-Vmo"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <viewLayoutGuide key="safeArea" id="25d-Xt-7nR"/>
                     </view>
                     <connections>
+                        <outlet property="doneButton" destination="ez7-hW-B4J" id="usd-st-Zxx"/>
                         <outlet property="exitButton" destination="qt8-k8-p3u" id="5Mv-d3-Xmj"/>
+                        <outlet property="phoneField" destination="jYt-O1-MS7" id="tSq-d8-ODY"/>
+                        <outlet property="phoneVerificationText" destination="zuC-sr-mza" id="yVj-cF-dEs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qwW-hK-FJU" userLabel="First Responder" sceneMemberID="firstResponder"/>

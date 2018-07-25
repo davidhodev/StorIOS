@@ -531,6 +531,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         }
         else if registerSteps == 3{
             //animate out phone, animate in passwords
+            self.passwordRegisterText.becomeFirstResponder()
             UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
                 self.phoneRegisterText.alpha = 0
                 self.questionLabel.alpha = 0
