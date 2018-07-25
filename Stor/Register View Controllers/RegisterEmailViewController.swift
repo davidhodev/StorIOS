@@ -314,7 +314,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 UIApplication.shared.endIgnoringInteractionEvents()
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
                 UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
-                    
+                    self.nextButtonOutlet.alpha = 0
                     self.phoneRegisterText.alpha = 0
                     self.line1.alpha = 0
                     self.mainImage.alpha = 0
@@ -325,6 +325,9 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
                     self.checkBox.transform = CGAffineTransform(translationX: 375, y: 0)
                     self.agreeToTerms.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.andLabel.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.termsButton.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.privacyPolicyButton.transform = CGAffineTransform(translationX: 375, y: 0)
                 }) { (_) in
                     // change icons and text
                     UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
@@ -333,10 +336,16 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                         self.Dash4.image = UIImage(named: "Blue Dash")
                         self.line1.image = UIImage(named: "Line 2")
                         self.checkBox.borderColor = UIColor.init(red:0.16, green: 0.15, blue: 0.35, alpha: 1.0)
+                        self.nextButtonOutlet.setImage(<#T##image: UIImage?##UIImage?#>, for: .normal)
                     }) { (_) in
                         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                            //terms and policy things
                             self.agreeToTerms.alpha = 1
+                            self.andLabel.alpha = 1
+                            self.termsButton.alpha = 1
+                            self.privacyPolicyButton.alpha = 1
                             self.checkBox.alpha = 1
+                            self.nextButtonOutlet.alpha = 1
                             self.questionLabel.alpha = 1
                             self.line1.alpha = 1
                             self.mainImage.alpha = 1
@@ -347,6 +356,9 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                             self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
                             self.checkBox.transform = self.checkBox.transform.translatedBy(x: -375, y: 0)
                             self.agreeToTerms.transform = self.agreeToTerms.transform.translatedBy(x: -375, y: 0)
+                            self.termsButton.transform = self.termsButton.transform.translatedBy(x: -375, y: 0)
+                            self.andLabel.transform = self.andLabel.transform.translatedBy(x: -375, y: 0)
+                            self.privacyPolicyButton.transform = self.privacyPolicyButton.transform.translatedBy(x: -375, y: 0)
                         })
                     }
                 }
@@ -596,12 +608,19 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 self.questionLabel.alpha = 0
                 self.checkBox.alpha = 0
                 self.agreeToTerms.alpha = 0
+                self.nextButtonOutlet.alpha = 0
+                self.termsButton.alpha = 0
+                self.andLabel.alpha = 0
+                self.privacyPolicyButton.alpha = 0
                 self.line1.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.phoneRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.phoneVerificationText.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.checkBox.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.agreeToTerms.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.termsButton.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.andLabel.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.privacyPolicyButton.transform = CGAffineTransform(translationX: 375, y: 0)
             }) { (_) in
                 // change icons and text
                 UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
@@ -612,18 +631,24 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     self.phoneVerificationText.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
                     self.phoneRegisterText.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
                     self.Dash4.image = UIImage(named: "Grey Dash")
+                    self.nextButtonOutlet.setImage(#imageLiteral(resourceName: "Button Arrow ->"), for: .normal)
                 }) { (_) in
                     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
                         self.questionLabel.alpha = 1
                         self.line1.alpha = 1
                         self.mainImage.alpha = 1
                         self.phoneRegisterText.alpha = 1
+                        self.nextButtonOutlet.alpha = 1
                         self.phoneRegisterText.transform = self.phoneRegisterText.transform.translatedBy(x: -375, y: 0)
                         self.phoneVerificationText.transform = self.phoneVerificationText.transform.translatedBy(x: -375, y: 0)
                         self.mainImage.transform = self.mainImage.transform.translatedBy(x: -375, y: 0)
                         self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
                         self.checkBox.transform = self.checkBox.transform.translatedBy(x: -375, y: 0)
                         self.agreeToTerms.transform = self.agreeToTerms.transform.translatedBy(x: -375, y: 0)
+                        self.andLabel.transform = self.andLabel.transform.translatedBy(x: -375, y: 0)
+                        self.privacyPolicyButton.transform = self.privacyPolicyButton.transform.translatedBy(x: -375, y: 0)
+                        self.termsButton.transform = self.termsButton.transform.translatedBy(x: -375, y: 0)
+                        
                     })
                 }
             }
