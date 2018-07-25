@@ -66,6 +66,7 @@
 		DBE905FF20924BAE000F13DB /* StorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905FE20924BAE000F13DB /* StorUITests.swift */; };
 		DBEA86DF20B4981F00727FCD /* Pods_Stor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEA86E020B4981F00727FCD /* Pods_Stor.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		DBF304862107DC31007AA4E1 /* VKCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF304852107DC31007AA4E1 /* VKCheckbox.swift */; };
+		DBF304882108FDF1007AA4E1 /* noPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF304872108FDF1007AA4E1 /* noPhoneViewController.swift */; };
 		DBF8BCBE20B7887D0080EEF5 /* globalVariablesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8BCBD20B7887D0080EEF5 /* globalVariablesViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -158,6 +159,7 @@
 		DBE9060020924BAE000F13DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBEA86E020B4981F00727FCD /* Pods_Stor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Stor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBF304852107DC31007AA4E1 /* VKCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKCheckbox.swift; sourceTree = "<group>"; };
+		DBF304872108FDF1007AA4E1 /* noPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noPhoneViewController.swift; sourceTree = "<group>"; };
 		DBF8BCBD20B7887D0080EEF5 /* globalVariablesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globalVariablesViewController.swift; sourceTree = "<group>"; };
 		E3D320C59051F760CD54268B /* Pods-StorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StorUITests/Pods-StorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FBFB92A62876BD03C1FEC207 /* Pods_StorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +225,7 @@
 				579D4C5E20BF2D6E0082A86F /* AnnotationPopUp.swift */,
 				DB6B0EF820BC7830000CC1D9 /* Annotations.swift */,
 				57EC509220C22389009F470F /* newConnectPopUp.swift */,
+				DBF304872108FDF1007AA4E1 /* noPhoneViewController.swift */,
 				DB6B0EFD20BC7F99000CC1D9 /* Menu Items */,
 			);
 			path = "Map and Extension Controllers";
@@ -673,6 +676,7 @@
 				DBE2A9C720C9D5BF00E052A1 /* myCurrentUser.swift in Sources */,
 				DBE2A9C320C8B19B00E052A1 /* myStorageCustomTableViewCell.swift in Sources */,
 				5750DA0F20E1A7D000D43734 /* confirmDropoffViewController.swift in Sources */,
+				DBF304882108FDF1007AA4E1 /* noPhoneViewController.swift in Sources */,
 				DB6B0EF920BC7830000CC1D9 /* Annotations.swift in Sources */,
 				DBBB9C5720FE712500CACEFE /* Buttons.swift in Sources */,
 				DBBB9C5920FE712500CACEFE /* MyAPIClient.swift in Sources */,

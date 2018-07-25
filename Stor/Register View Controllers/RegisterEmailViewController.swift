@@ -377,7 +377,6 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 
                 print("Credential", credential)
                 print("VERIFICATION ID", UserDefaults.standard.string(forKey: "authVerificationID")!)
-//                PhoneAuthProvider.verifyPhoneNumber(<#T##PhoneAuthProvider#>)
                 Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
                     if let error = error {
                         self.line1.image = UIImage.init(named: "Line 2Red")
