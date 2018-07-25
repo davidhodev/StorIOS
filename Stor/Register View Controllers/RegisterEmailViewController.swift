@@ -43,6 +43,13 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var agreeToTerms: UILabel!
     
     //oops mislabeled the first one
+    @IBOutlet weak var termsButton: UIButton!
+    @IBOutlet weak var andLabel: UILabel!
+    @IBOutlet weak var privacyPolicyButton: UIButton!
+    
+    
+    
+    
     @IBOutlet weak var greyDash1: UIImageView!
     @IBOutlet weak var Dash2: UIImageView!
     @IBOutlet weak var Dash3: UIImageView!
@@ -364,13 +371,13 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 checkBox.borderColor = UIColor.red
                 activityIndicator.stopAnimating()
                 UIApplication.shared.endIgnoringInteractionEvents()
-            }
+            } 
             else{
                 let credential = PhoneAuthProvider.provider().credential(withVerificationID: UserDefaults.standard.string(forKey: "authVerificationID")!, verificationCode: phoneVerificationText.text!)
                 
                 print("Credential", credential)
                 print("VERIFICATION ID", UserDefaults.standard.string(forKey: "authVerificationID")!)
-                
+//                PhoneAuthProvider.verifyPhoneNumber(<#T##PhoneAuthProvider#>)
                 Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
                     if let error = error {
                         self.line1.image = UIImage.init(named: "Line 2Red")
@@ -653,6 +660,10 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         showTextOutlet.alpha = 0
         checkBox.alpha = 0
         agreeToTerms.alpha = 0
+        termsButton.alpha = 0
+        andLabel.alpha = 0
+        privacyPolicyButton.alpha = 0
+        
         questionLabel.text = "What's your name?"
         
         nameRegisterText.becomeFirstResponder()
