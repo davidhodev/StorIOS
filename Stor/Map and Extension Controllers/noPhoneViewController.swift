@@ -10,6 +10,12 @@ import UIKit
 
 class noPhoneViewController: UIViewController {
 
+    @IBOutlet weak var exitButton: UIButton!
+    @IBAction func exitButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
