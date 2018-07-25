@@ -133,6 +133,16 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
             let userReference = databaseReference.root.child("Providers").child((user.uid))
             
+            userReference.observe(.value, with: { (snapshot) in
+                if let dictionary = snapshot.value as? [String: Any]{
+                    let phoneString = String(describing: dictionary["phone"]!)
+                    print("PHONE STRING === ", phoneString)
+                    if  phoneString == "phoneVerify"{
+                        self.performSegue(withIdentifier: "menuToPhoneSegue", sender: self)
+                    }
+                }
+            })
+            
             userReference.observeSingleEvent(of: .value, with: { (snapshot) in
                 if snapshot.exists() == true{
                     self.performSegue(withIdentifier: "toProviderMenu", sender: self)

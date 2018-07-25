@@ -64,6 +64,9 @@ class noPhoneViewController: UIViewController {
                             print(err)
                             return
                         }
+                        else{
+                            self.dismiss(animated: true, completion: nil)
+                        }
                     })
                 })
             }
