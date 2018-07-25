@@ -390,7 +390,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         attributedText.accessibilityAssistiveTechnologyFocusedIdentifiers()
         return attributedText
     }
-    
+
     
     
     // Getting Providers Info from database

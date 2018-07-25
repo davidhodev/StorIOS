@@ -632,6 +632,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         
         
         checkBox.line = .thin
+        checkBox.borderColor = UIColor.init(red:0.16, green:0.15, blue:0.35, alpha:1.0)
         checkBox.color = UIColor.init(red:0.27, green:0.47, blue:0.91, alpha:1.0)
         checkBox.borderWidth = 1
     
