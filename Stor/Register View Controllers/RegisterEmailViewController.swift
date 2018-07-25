@@ -212,7 +212,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 self.passwordRegisterText.text = ""
                 self.confirmPasswordRegisterText.text = ""
                 self.passwordImage.image = UIImage.init(named: "Red Lock")
-                self.confirmPasswordImage.image = UIImage.init(named: "Red Lock")
+                self.confirmPasswordImage.image = UIImage.init(named: "Confirm Password Icon Red")
                 self.line2.image = UIImage.init(named: "Line 2Red")
                 self.line3.image = UIImage.init(named: "Line 2Red")
                 
@@ -293,12 +293,20 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
             PhoneAuthProvider.provider().verifyPhoneNumber(inputPhone, uiDelegate: nil) { (verificationID, error) in
                 if error != nil{
                     print(error)
+                    //Phone wrong
+                    self.line1.image = UIImage.init(named: "Line 2Red")
+                    self.phoneRegisterText.attributedPlaceholder = NSAttributedString(string: "Enter a valid number", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
+                    self.phoneRegisterText.text = ""
+                    self.mainImage.image = UIImage(named: "Phone Icon Red")
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.shared.endIgnoringInteractionEvents()
                     return
                 }
                 self.activityIndicator.stopAnimating()
                 UIApplication.shared.endIgnoringInteractionEvents()
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
                 UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
+                    
                     self.phoneRegisterText.alpha = 0
                     self.line1.alpha = 0
                     self.mainImage.alpha = 0
@@ -307,14 +315,20 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     self.phoneRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
                     self.phoneVerificationText.transform = CGAffineTransform(translationX: 375, y: 0)
                     self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.checkBox.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.agreeToTerms.transform = CGAffineTransform(translationX: 375, y: 0)
                 }) { (_) in
                     // change icons and text
                     UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
                         self.questionLabel.text = "Enter the verification code."
                         self.mainImage.image =  UIImage.init(named: "Text Confirm Icon")
                         self.Dash4.image = UIImage(named: "Blue Dash")
+                        self.line1.image = UIImage(named: "Line 2")
+                        self.checkBox.borderColor = UIColor.init(red:0.16, green: 0.15, blue: 0.35, alpha: 1.0)
                     }) { (_) in
                         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                            self.agreeToTerms.alpha = 1
+                            self.checkBox.alpha = 1
                             self.questionLabel.alpha = 1
                             self.line1.alpha = 1
                             self.mainImage.alpha = 1
@@ -323,6 +337,8 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                             self.phoneVerificationText.transform = self.phoneVerificationText.transform.translatedBy(x: -375, y: 0)
                             self.mainImage.transform = self.mainImage.transform.translatedBy(x: -375, y: 0)
                             self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
+                            self.checkBox.transform = self.checkBox.transform.translatedBy(x: -375, y: 0)
+                            self.agreeToTerms.transform = self.agreeToTerms.transform.translatedBy(x: -375, y: 0)
                         })
                     }
                 }
@@ -359,8 +375,10 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                         self.line1.image = UIImage.init(named: "Line 2Red")
                         self.phoneVerificationText.attributedPlaceholder = NSAttributedString(string: "The verification code is incorrect", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
                         self.phoneVerificationText.text = ""
-                        self.mainImage.image = UIImage.init(named: "Phone Icon Red")
+                        self.mainImage.image = UIImage.init(named: "Text Confirm Icon Red")
                         self.line1.image = UIImage.init(named: "Line 2Red")
+                        self.activityIndicator.stopAnimating()
+                        UIApplication.shared.endIgnoringInteractionEvents()
                         print(error)
                         return
                     }
@@ -568,10 +586,14 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 self.line1.alpha = 0
                 self.mainImage.alpha = 0
                 self.questionLabel.alpha = 0
+                self.checkBox.alpha = 0
+                self.agreeToTerms.alpha = 0
                 self.line1.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.phoneRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.phoneVerificationText.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.checkBox.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.agreeToTerms.transform = CGAffineTransform(translationX: 375, y: 0)
             }) { (_) in
                 // change icons and text
                 UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
@@ -592,6 +614,8 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                         self.phoneVerificationText.transform = self.phoneVerificationText.transform.translatedBy(x: -375, y: 0)
                         self.mainImage.transform = self.mainImage.transform.translatedBy(x: -375, y: 0)
                         self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
+                        self.checkBox.transform = self.checkBox.transform.translatedBy(x: -375, y: 0)
+                        self.agreeToTerms.transform = self.agreeToTerms.transform.translatedBy(x: -375, y: 0)
                     })
                 }
             }
@@ -626,6 +650,8 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         passwordImage.alpha = 0
         confirmPasswordImage.alpha = 0
         showTextOutlet.alpha = 0
+        checkBox.alpha = 0
+        agreeToTerms.alpha = 0
         questionLabel.text = "What's your name?"
         
         nameRegisterText.becomeFirstResponder()
@@ -773,15 +799,18 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
+    
     @IBAction func showTextPressed(_ sender: Any) {
         if(iconClick == false) {
             confirmPasswordRegisterText.isSecureTextEntry = false
             passwordRegisterText.isSecureTextEntry = false
+            showTextOutlet.setImage(#imageLiteral(resourceName: "crossed out eye"), for: .normal)
             iconClick = true
         }
         else{
             confirmPasswordRegisterText.isSecureTextEntry = true
             passwordRegisterText.isSecureTextEntry = true
+            showTextOutlet.setImage(#imageLiteral(resourceName: "Combined Shape3-1"), for: .normal)
             iconClick = false
         }
     }
