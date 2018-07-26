@@ -47,6 +47,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var andLabel: UILabel!
     @IBOutlet weak var privacyPolicyButton: UIButton!
     
+    @IBOutlet weak var verificationWarning: UILabel!
     
     
     
@@ -157,7 +158,6 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                             self.passwordImage.transform = CGAffineTransform(translationX: 375, y: 0)
                             self.line2.transform = CGAffineTransform(translationX: 375, y: 0)
                             self.line3.transform = CGAffineTransform(translationX: 375, y: 0)
-                            self.showTextOutlet.transform = CGAffineTransform(translationX: 375, y: 0)
                         }) { (_) in
                             // change icons and text
                             UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
@@ -175,7 +175,6 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                                     self.confirmPasswordRegisterText.alpha = 1
                                     self.passwordImage.alpha = 1
                                     self.confirmPasswordImage.alpha = 1
-                                    self.showTextOutlet.alpha = 1
                                     self.emailRegisterText.transform = self.emailRegisterText.transform.translatedBy(x: -375, y: 0)
                                     self.passwordRegisterText.transform = self.passwordRegisterText.transform.translatedBy(x: -375, y: 0)
                                     self.confirmPasswordRegisterText.transform = self.confirmPasswordRegisterText.transform.translatedBy(x: -375, y: 0)
@@ -185,8 +184,11 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                                     self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
                                     self.line2.transform = self.line2.transform.translatedBy(x: -375, y: 0)
                                     self.line3.transform = self.line3.transform.translatedBy(x: -375, y: 0)
-                                    self.showTextOutlet.transform = self.showTextOutlet.transform.translatedBy(x: -375, y: 0)
-                                })
+                                }) { (_) in
+                                    UIView.animate(withDuration: 0.15, animations: {
+                                        self.showTextOutlet.alpha = 1
+                                    })
+                                }
                             }
                         }
                         
@@ -239,6 +241,9 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 print("String has no Special Characters")
             }
             else{
+                UIView.animate(withDuration: 0.15 , delay: 0, options: .curveEaseIn, animations: {
+                    self.showTextOutlet.alpha = 0
+                }) { (_) in
                 UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
                     self.passwordRegisterText.alpha = 0
                     self.confirmPasswordRegisterText.alpha = 0
@@ -247,7 +252,6 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     self.questionLabel.alpha = 0
                     self.line2.alpha = 0
                     self.line3.alpha = 0
-                    self.showTextOutlet.alpha = 0
                     self.line1.transform = CGAffineTransform(translationX: 375, y: 0)
                     self.line2.transform = CGAffineTransform(translationX: 375, y: 0)
                     self.line3.transform = CGAffineTransform(translationX: 375, y: 0)
@@ -257,7 +261,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
                     self.confirmPasswordImage.transform = CGAffineTransform(translationX: 375, y: 0)
                     self.passwordImage.transform = CGAffineTransform(translationX: 375, y: 0)
-                    self.showTextOutlet.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.verificationWarning.transform = CGAffineTransform(translationX: 375, y: 0)
                 }) { (_) in
                     // change icons and text
                     UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
@@ -266,6 +270,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                         self.Dash3.image = UIImage(named: "Blue Dash")
                     }) { (_) in
                         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                            self.verificationWarning.alpha = 1
                             self.questionLabel.alpha = 1
                             self.line1.alpha = 1
                             self.mainImage.alpha = 1
@@ -279,8 +284,9 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                             self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
                             self.line2.transform = self.line2.transform.translatedBy(x: -375, y: 0)
                             self.line3.transform = self.line3.transform.translatedBy(x: -375, y: 0)
-                            self.showTextOutlet.transform = self.showTextOutlet.transform.translatedBy(x: -375, y: 0)
+                            self.verificationWarning.transform = self.verificationWarning.transform.translatedBy(x: -375, y: 0)
                         })
+                        }
                     }
                 }
                 self.passwordRegisterText.resignFirstResponder()
@@ -314,7 +320,8 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 UIApplication.shared.endIgnoringInteractionEvents()
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
                 UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
-                    
+                    self.verificationWarning.alpha = 0
+                    self.nextButtonOutlet.alpha = 0
                     self.phoneRegisterText.alpha = 0
                     self.line1.alpha = 0
                     self.mainImage.alpha = 0
@@ -325,6 +332,11 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
                     self.checkBox.transform = CGAffineTransform(translationX: 375, y: 0)
                     self.agreeToTerms.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.andLabel.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.termsButton.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.privacyPolicyButton.transform = CGAffineTransform(translationX: 375, y: 0)
+                    self.verificationWarning.transform = CGAffineTransform(translationX: 375, y: 0)
+                    
                 }) { (_) in
                     // change icons and text
                     UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
@@ -333,10 +345,16 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                         self.Dash4.image = UIImage(named: "Blue Dash")
                         self.line1.image = UIImage(named: "Line 2")
                         self.checkBox.borderColor = UIColor.init(red:0.16, green: 0.15, blue: 0.35, alpha: 1.0)
+                        self.nextButtonOutlet.setImage(#imageLiteral(resourceName: "Finish CA Button"), for: .normal)
                     }) { (_) in
                         UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                            //terms and policy things
                             self.agreeToTerms.alpha = 1
+                            self.andLabel.alpha = 1
+                            self.termsButton.alpha = 1
+                            self.privacyPolicyButton.alpha = 1
                             self.checkBox.alpha = 1
+                            self.nextButtonOutlet.alpha = 1
                             self.questionLabel.alpha = 1
                             self.line1.alpha = 1
                             self.mainImage.alpha = 1
@@ -347,6 +365,10 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                             self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
                             self.checkBox.transform = self.checkBox.transform.translatedBy(x: -375, y: 0)
                             self.agreeToTerms.transform = self.agreeToTerms.transform.translatedBy(x: -375, y: 0)
+                            self.termsButton.transform = self.termsButton.transform.translatedBy(x: -375, y: 0)
+                            self.andLabel.transform = self.andLabel.transform.translatedBy(x: -375, y: 0)
+                            self.privacyPolicyButton.transform = self.privacyPolicyButton.transform.translatedBy(x: -375, y: 0)
+                            self.verificationWarning.transform = self.verificationWarning.transform.translatedBy(x: -375, y: 0)
                         })
                     }
                 }
@@ -478,6 +500,9 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         }
         else if registerSteps == 2{
             //animate out passwords, animate in email
+            UIView.animate(withDuration: 0.15 , delay: 0, options: .curveEaseIn, animations: {
+                self.showTextOutlet.alpha = 0
+            }) { (_) in
             UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
                 self.emailRegisterText.alpha = 0
                 self.mainImage.alpha = 0
@@ -487,7 +512,6 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 self.passwordRegisterText.alpha = 0
                 self.confirmPasswordRegisterText.alpha = 0
                 self.passwordImage.alpha = 0
-                self.showTextOutlet.alpha = 0
                 self.confirmPasswordImage.alpha = 0
                 //may change this
                 self.line1.transform = CGAffineTransform(translationX: 375, y: 0)
@@ -497,7 +521,6 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.confirmPasswordImage.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.passwordImage.transform = CGAffineTransform(translationX: 375, y: 0)
-                self.showTextOutlet.transform = CGAffineTransform(translationX: 375, y: 0)
             }) { (_) in
                 // change icons and text
                 UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
@@ -522,9 +545,9 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                         self.nameRegisterText.transform = self.emailRegisterText.transform.translatedBy(x: -375, y: 0)
                         self.mainImage.transform = self.mainImage.transform.translatedBy(x: -375, y: 0)
                         self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
-                        self.showTextOutlet.transform = self.showTextOutlet.transform.translatedBy(x: -375, y: 0)
                     })
                 }
+            }
             }
             emailRegisterText.becomeFirstResponder()
             registerSteps -= 1
@@ -533,6 +556,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
             //animate out phone, animate in passwords
             self.passwordRegisterText.becomeFirstResponder()
             UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
+                self.verificationWarning.alpha = 0
                 self.phoneRegisterText.alpha = 0
                 self.questionLabel.alpha = 0
                 self.line1.alpha = 0
@@ -546,7 +570,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.confirmPasswordImage.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.passwordImage.transform = CGAffineTransform(translationX: 375, y: 0)
-                self.showTextOutlet.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.verificationWarning.transform = CGAffineTransform(translationX: 375, y: 0)
             }) { (_) in
                 // change icons and text
                 UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
@@ -571,18 +595,21 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                         self.confirmPasswordRegisterText.alpha = 1
                         self.passwordImage.alpha = 1
                         self.confirmPasswordImage.alpha = 1
-                        self.showTextOutlet.alpha = 1
                         self.phoneRegisterText.transform = self.phoneRegisterText.transform.translatedBy(x: -375, y: 0)
                         self.passwordRegisterText.transform = self.passwordRegisterText.transform.translatedBy(x: -375, y: 0)
                         self.confirmPasswordRegisterText.transform = self.confirmPasswordRegisterText.transform.translatedBy(x: -375, y: 0)
                         self.mainImage.transform = self.mainImage.transform.translatedBy(x: -375, y: 0)
                         self.confirmPasswordImage.transform = self.confirmPasswordImage.transform.translatedBy(x: -375, y: 0)
                         self.passwordImage.transform = self.passwordImage.transform.translatedBy(x: -375, y: 0)
-                        self.showTextOutlet.transform = self.showTextOutlet.transform.translatedBy(x: -375, y: 0)
                         self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
                         self.line2.transform = self.line2.transform.translatedBy(x: -375, y: 0)
                         self.line3.transform = self.line3.transform.translatedBy(x: -375, y: 0)
-                    })
+                        self.verificationWarning.transform = self.verificationWarning.transform.translatedBy(x: -375, y: 0)
+                    }) { (_) in
+                        UIView.animate(withDuration: 0.15, animations: {
+                            self.showTextOutlet.alpha = 1
+                        })
+                    }
                 }
             }
             registerSteps -= 1
@@ -596,12 +623,20 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 self.questionLabel.alpha = 0
                 self.checkBox.alpha = 0
                 self.agreeToTerms.alpha = 0
+                self.nextButtonOutlet.alpha = 0
+                self.termsButton.alpha = 0
+                self.andLabel.alpha = 0
+                self.privacyPolicyButton.alpha = 0
                 self.line1.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.phoneRegisterText.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.phoneVerificationText.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.mainImage.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.checkBox.transform = CGAffineTransform(translationX: 375, y: 0)
                 self.agreeToTerms.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.termsButton.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.andLabel.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.privacyPolicyButton.transform = CGAffineTransform(translationX: 375, y: 0)
+                self.verificationWarning.transform = CGAffineTransform(translationX: 375, y: 0)
             }) { (_) in
                 // change icons and text
                 UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
@@ -609,21 +644,29 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     self.mainImage.image =  UIImage.init(named: "Phone Icon")
                     //reset for errors
                     self.line1.image = UIImage(named: "Line 2")
-                    self.phoneVerificationText.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
+                    //resets the color and placeholder text
+                    self.phoneVerificationText.attributedPlaceholder = NSAttributedString(string: "Text Verification Code", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
                     self.phoneRegisterText.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 0.78, green: 0.78, blue: 0.80, alpha: 1.0)])
                     self.Dash4.image = UIImage(named: "Grey Dash")
+                    self.nextButtonOutlet.setImage(#imageLiteral(resourceName: "Button Arrow ->"), for: .normal)
                 }) { (_) in
                     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                        self.verificationWarning.alpha = 1
                         self.questionLabel.alpha = 1
                         self.line1.alpha = 1
                         self.mainImage.alpha = 1
                         self.phoneRegisterText.alpha = 1
+                        self.nextButtonOutlet.alpha = 1
                         self.phoneRegisterText.transform = self.phoneRegisterText.transform.translatedBy(x: -375, y: 0)
                         self.phoneVerificationText.transform = self.phoneVerificationText.transform.translatedBy(x: -375, y: 0)
                         self.mainImage.transform = self.mainImage.transform.translatedBy(x: -375, y: 0)
                         self.line1.transform = self.line1.transform.translatedBy(x: -375, y: 0)
                         self.checkBox.transform = self.checkBox.transform.translatedBy(x: -375, y: 0)
                         self.agreeToTerms.transform = self.agreeToTerms.transform.translatedBy(x: -375, y: 0)
+                        self.andLabel.transform = self.andLabel.transform.translatedBy(x: -375, y: 0)
+                        self.privacyPolicyButton.transform = self.privacyPolicyButton.transform.translatedBy(x: -375, y: 0)
+                        self.termsButton.transform = self.termsButton.transform.translatedBy(x: -375, y: 0)
+                         self.verificationWarning.transform = self.verificationWarning.transform.translatedBy(x: -375, y: 0)
                     })
                 }
             }
@@ -648,6 +691,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         passwordRegisterText.delegate = self
         
         // Setting Alphas to 0
+        verificationWarning.alpha = 0
         emailRegisterText.alpha = 0
         passwordRegisterText.alpha = 0
         confirmPasswordRegisterText.alpha = 0
@@ -817,14 +861,34 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         if(iconClick == false) {
             confirmPasswordRegisterText.isSecureTextEntry = false
             passwordRegisterText.isSecureTextEntry = false
-            showTextOutlet.setImage(#imageLiteral(resourceName: "crossed out eye"), for: .normal)
+            UIView.animate(withDuration: 0.1, animations: {
+                self.showTextOutlet.alpha = 0
+            }) { (_) in
+                UIView.animate(withDuration: 0, delay: 0, options: .curveLinear, animations: {
+                    self.showTextOutlet.setImage(#imageLiteral(resourceName: "crossed out eye"), for: .normal)
+                }) { (_) in
+                    UIView.animate(withDuration: 0.1, animations: {
+                    self.showTextOutlet.alpha = 1
+                })
+                }
+            }
             iconClick = true
         }
         else{
             confirmPasswordRegisterText.isSecureTextEntry = true
             passwordRegisterText.isSecureTextEntry = true
-            showTextOutlet.setImage(#imageLiteral(resourceName: "Combined Shape3-1"), for: .normal)
-            iconClick = false
+            UIView.animate(withDuration: 0.1, animations: {
+                self.showTextOutlet.alpha = 0
+                }) { (_) in
+                    UIView.animate(withDuration: 0, delay: 0, options: .curveLinear, animations: {
+                    self.showTextOutlet.setImage(#imageLiteral(resourceName: "Combined Shape3-1"), for: .normal)
+                    }) { (_) in
+                        UIView.animate(withDuration: 0.1, animations: {
+                        self.showTextOutlet.alpha = 1
+                    })
+                }
+            }
+        iconClick = false
         }
     }
 }
