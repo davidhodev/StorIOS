@@ -172,6 +172,11 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         topRightHex.alpha = 0
         sideWhiteHex.alpha = 0
         legalButtonOutlet.alpha = 0
+        settingsLabelOutlet.isUserInteractionEnabled = true
+        myStorageLabelOutlet.isUserInteractionEnabled = true
+        myListLabelOutlet.isUserInteractionEnabled = true
+        providerLabelOutlet.isUserInteractionEnabled = true
+        paymentLabelOutlet.isUserInteractionEnabled = true
         print("Test1")
         self.nameLabel.text = globalVariablesViewController.username
         print("ralet sting", String(describing: globalVariablesViewController.ratingNumber))
@@ -205,9 +210,62 @@ class MenuViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 //        profileImage.layer.addSublayer(borderLayer)
         profileImage.isUserInteractionEnabled = true
         profileImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectImageView)))
+        settingsLabelOutlet.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toSettingsFunction)))
+        paymentLabelOutlet.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toPaymentFunction)))
+        providerLabelOutlet.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toProviderFunction)))
+        myListLabelOutlet.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toMyListFunction)))
+        myStorageLabelOutlet.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(toMyStorageFunction)))
         
         profileImage.loadProfilePicture()
         //Do any additional setup after loading the view.
+    }
+    
+    @objc func toSettingsFunction(){
+        print("test bitch")
+        self.performSegue(withIdentifier: "menuToSettings", sender: self)
+    }
+    
+    @objc func toPaymentFunction(){
+        self.performSegue(withIdentifier: "menuToPayment", sender: self)
+    }
+    
+    @objc func toProviderFunction(){
+        if let user = Auth.auth().currentUser{
+            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+            let userReference = databaseReference.root.child("Providers").child((user.uid))
+            let phoneReference = databaseReference.root.child("Users").child(user.uid)
+            phoneReference.observe(.value, with: { (snapshot) in
+                if let dictionary = snapshot.value as? [String: Any]{
+                    let phoneString = String(describing: dictionary["phone"]!)
+                    print("PHONE STRING === ", phoneString)
+                    if  phoneString == "phoneVerify"{
+                        self.performSegue(withIdentifier: "menuToPhoneSegue", sender: self)
+                    }
+                    else{
+                        userReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                            if snapshot.exists() == true{
+                                self.performSegue(withIdentifier: "toProviderMenu", sender: self)
+                                
+                            }
+                            else{
+                                self.performSegue(withIdentifier: "toSocialSecuritySegue", sender: self)
+                            }
+                        })
+                        { (error) in
+                            print(error)
+                        }
+                    }
+                }
+            })
+        }
+    }
+    
+    @objc func toMyListFunction(){
+        self.performSegue(withIdentifier: "menuToList", sender: self)
+    }
+    
+    @objc func toMyStorageFunction(){
+        self.performSegue(withIdentifier: "menuToStorage", sender: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
