@@ -171,7 +171,15 @@ class MyProfileViewController3: UIViewController {
 //    }
     
     @objc func longEmailPress() {
-        self.performSegue(withIdentifier: "toChangeEmail", sender: self)
+        if typeProvider == "facebook"{
+            
+        }
+        else if typeProvider == "google"{
+            
+        }
+        else{
+            self.performSegue(withIdentifier: "toChangeEmail", sender: self)
+        }
     }
     
 //    @IBAction func emailDoneEditing(_ sender: UIButton) {
@@ -208,7 +216,16 @@ class MyProfileViewController3: UIViewController {
 //    }
     // password press and done button
     @objc func longPasswordPress() {
-        self.performSegue(withIdentifier: "toChangePassword", sender: self)
+        if typeProvider == "facebook"{
+            
+        }
+        else if typeProvider == "google"{
+            
+        }
+        else{
+             self.performSegue(withIdentifier: "toChangePassword", sender: self)
+        }
+       
     }
     
 //    @IBAction func passwordDoneEditing(_ sender: UIButton) {
