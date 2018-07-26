@@ -13,6 +13,8 @@
 		04201CF520C8554500CA477E /* filterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04201CF420C8554500CA477E /* filterViewController.swift */; };
 		04F158A320BCA4C500AAC2ED /* hexagonProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F158A220BCA4C500AAC2ED /* hexagonProfilePicture.swift */; };
 		2B0B7B137B763384068CFD08 /* Pods_StorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83BDF3AB5601AEFA4206A668 /* Pods_StorTests.framework */; };
+		57174304210A731300B9D729 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57174303210A731300B9D729 /* ChangeEmailViewController.swift */; };
+		57174306210A737B00B9D729 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57174305210A737B00B9D729 /* ChangePasswordViewController.swift */; };
 		571E1B5620C08C0D00E68CA5 /* SettingsViewControllerFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571E1B5520C08C0D00E68CA5 /* SettingsViewControllerFinal.swift */; };
 		57499DD820D199CC005112E2 /* Dosis-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964DC20C0CBA0002F4EBD /* Dosis-Light.otf */; };
 		574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574FC7BE20B5F484001AE44F /* TermsViewController.swift */; };
@@ -96,6 +98,8 @@
 		18F4FB721B7B5B1C7D1493B0 /* Pods-Stor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stor/Pods-Stor.debug.xcconfig"; sourceTree = "<group>"; };
 		20873EB433166AE1F0854C26 /* Pods-StorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StorTests/Pods-StorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E5B7ADF60FD9AF861F2989D /* Pods-Stor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stor/Pods-Stor.release.xcconfig"; sourceTree = "<group>"; };
+		57174303210A731300B9D729 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
+		57174305210A737B00B9D729 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		571E1B5520C08C0D00E68CA5 /* SettingsViewControllerFinal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerFinal.swift; sourceTree = "<group>"; };
 		574FC7BE20B5F484001AE44F /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		5750DA0E20E1A7D000D43734 /* confirmDropoffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmDropoffViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 				571E1B5520C08C0D00E68CA5 /* SettingsViewControllerFinal.swift */,
 				DBE6A8B320C5C28B005B1A75 /* settingsCustomTableViewCell.swift */,
 				576FD1E020CB3F72004BA549 /* MyProfileViewController3.swift */,
+				57174303210A731300B9D729 /* ChangeEmailViewController.swift */,
+				57174305210A737B00B9D729 /* ChangePasswordViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -679,6 +685,7 @@
 				DBF304882108FDF1007AA4E1 /* noPhoneViewController.swift in Sources */,
 				DB6B0EF920BC7830000CC1D9 /* Annotations.swift in Sources */,
 				DBBB9C5720FE712500CACEFE /* Buttons.swift in Sources */,
+				57174304210A731300B9D729 /* ChangeEmailViewController.swift in Sources */,
 				DBBB9C5920FE712500CACEFE /* MyAPIClient.swift in Sources */,
 				DBE2A9D320D2E71F00E052A1 /* providerPotentialUser.swift in Sources */,
 				57EC509320C22389009F470F /* newConnectPopUp.swift in Sources */,
@@ -701,6 +708,7 @@
 				5750DA1520E1ACEF00D43734 /* confirmPickupProviderViewController.swift in Sources */,
 				DBBB9C5A20FE712500CACEFE /* PaymentContextFooterView.swift in Sources */,
 				DBF8BCBE20B7887D0080EEF5 /* globalVariablesViewController.swift in Sources */,
+				57174306210A737B00B9D729 /* ChangePasswordViewController.swift in Sources */,
 				576A007420B7798100F2174D /* MenuViewController.swift in Sources */,
 				DB0515CE20C7551700386902 /* myListCustomCell.swift in Sources */,
 				DBE6A8B420C5C28B005B1A75 /* settingsCustomTableViewCell.swift in Sources */,

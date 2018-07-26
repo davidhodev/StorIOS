@@ -21,20 +21,10 @@ class MyProfileViewController3: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
-    @IBOutlet weak var phoneTextField: UITextField!
-    @IBOutlet weak var phoneDoneButton: UIButton!
     @IBOutlet weak var changePhoneButton: UIButton!
-    @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var passwordDoneButton: UIButton!
-    @IBOutlet weak var emailDoneButton: UIButton!
     @IBOutlet weak var changeEmailButton: UIButton!
     @IBOutlet weak var changePasswordButton: UIButton!
     @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet weak var passwordLabel: UILabel!
-    @IBOutlet weak var revealTextOutlet: UIButton!
     @IBOutlet var myProfileView: UIView!
     var iconClick : Bool!
     
@@ -102,27 +92,6 @@ class MyProfileViewController3: UIViewController {
         let outputRating2 = ((globalVariablesViewController.ratingNumber as! Double) * 100).rounded()/100
         self.ratingLabel.text = String(format: "%.2f",  outputRating2)
         
-        //setting phone texts and buttons
-        phoneTextField.isEnabled = false
-        phoneTextField.isHidden = true
-        phoneDoneButton.isHidden = true
-        phoneTextField.text = phoneLabel.text
-        errorLabel.isHidden = true
-        
-        //setting email texts and buttons
-        emailTextField.isEnabled = false
-        emailTextField.isHidden = true
-        emailDoneButton.isHidden = true
-        emailTextField.text = emailLabel.text
-        
-        //setting password texts and buttons
-        passwordTextField.isEnabled = false
-        passwordTextField.isHidden = true
-        confirmPasswordTextField.isEnabled = false
-        confirmPasswordTextField.isHidden = true
-        passwordDoneButton.isHidden = true
-        passwordTextField.text = ""
-        revealTextOutlet.isHidden = true
         
         //Hexagon SHape
         let lineWidth = CGFloat(7.0)
@@ -159,164 +128,132 @@ class MyProfileViewController3: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-// hides label, brings up text and done button, enables text to be edited
+// brings to change phone page
     @objc func longPhonePress() {
-        phoneTextField.isHidden = false
-        phoneTextField.isEnabled = true
-        phoneTextField.becomeFirstResponder()
-        phoneLabel.isHidden = true
-        phoneDoneButton.isHidden = false
+//        self.performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
     }
     
-    @IBAction func phoneDoneEditingButton(_ sender: UIButton) {
-        if (phoneTextField.text?.isPhoneNumber)!{
-            phoneLabel.text = phoneTextField.text
-            phoneLabel.isHidden = false
-            phoneTextField.isHidden = true
-            phoneTextField.isEnabled = false
-            phoneDoneButton.isHidden = true
-            errorLabel.isHidden = true
-            phoneTextField.resignFirstResponder()
-            
-            if let user = Auth.auth().currentUser{
-                let registerDataValues = ["phone": phoneTextField.text ] as [String : Any]
-                
-                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
-                let userReference = databaseReference.root.child("Users").child((user.uid))
-                
-                userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
-                    if err != nil{
-                        print(err)
-                        return
-                    }
-                })
-                
-                databaseReference.child("Providers").child((user.uid)).observeSingleEvent(of: .value, with: { (snapshot) in
-                    if snapshot.exists(){
-                        databaseReference.root.child("Providers").child(user.uid).child("personalInfo").updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
-                            if err != nil{
-                                print(err)
-                                return
-                            }
-                        })
-                    }
-                    
-                })
-            }
-        }
-        else{
-            errorLabel.isHidden = false
-            errorLabel.text = "Invalid Phone Number. Please just enter the 10 digits that is your phone number. "
-        }
-    }
+//    @IBAction func phoneDoneEditingButton(_ sender: UIButton) {
+//        if (phoneTextField.text?.isPhoneNumber)!{
+//            phoneLabel.text = phoneTextField.text
+//            phoneLabel.isHidden = false
+//            phoneTextField.isHidden = true
+//            phoneTextField.isEnabled = false
+//
+//            phoneTextField.resignFirstResponder()
+//
+//            if let user = Auth.auth().currentUser{
+//                let registerDataValues = ["phone": phoneTextField.text ] as [String : Any]
+//
+//                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+//                let userReference = databaseReference.root.child("Users").child((user.uid))
+//
+//                userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
+//                    if err != nil{
+//                        print(err)
+//                        return
+//                    }
+//                })
+//
+//                databaseReference.child("Providers").child((user.uid)).observeSingleEvent(of: .value, with: { (snapshot) in
+//                    if snapshot.exists(){
+//                        databaseReference.root.child("Providers").child(user.uid).child("personalInfo").updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
+//                            if err != nil{
+//                                print(err)
+//                                return
+//                            }
+//                        })
+//                    }
+//
+//                })
+//            }
+//        }
+//    }
     
     @objc func longEmailPress() {
-        emailTextField.isHidden = false
-        emailTextField.isEnabled = true
-        emailLabel.isHidden = true
-        emailDoneButton.isHidden = false
-        emailTextField.becomeFirstResponder()
+        self.performSegue(withIdentifier: "toChangeEmail", sender: self)
     }
     
-    @IBAction func emailDoneEditing(_ sender: UIButton) {
-        if (emailTextField.text?.contains("@") == true){
-            emailLabel.text = emailTextField.text
-            emailLabel.isHidden = false
-            emailTextField.isHidden = true
-            emailTextField.isEnabled = false
-            emailDoneButton.isHidden = true
-            errorLabel.isHidden = true
-            emailTextField.resignFirstResponder()
-            
-            
-            if let user = Auth.auth().currentUser{
-                let registerDataValues = ["email": emailTextField.text ] as [String : Any]
-                
-                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
-                let userReference = databaseReference.root.child("Users").child((user.uid))
-                
-                databaseReference.child("Users").child((user.uid)).observeSingleEvent(of: .value, with: { (snapshot) in
-                    userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
-                        if err != nil{
-                            print(err)
-                            return
-                        }
-                    })
-                })
-            }
-        }
-        else{
-            errorLabel.isHidden = false
-            errorLabel.text = "Invalid Email. Please check your submission."
-        }
-    }
+//    @IBAction func emailDoneEditing(_ sender: UIButton) {
+//        if (emailTextField.text?.contains("@") == true){
+//            emailLabel.text = emailTextField.text
+//            emailLabel.isHidden = false
+//            emailTextField.isHidden = true
+//            emailTextField.isEnabled = false
+//            emailDoneButton.isHidden = true
+//            errorLabel.isHidden = true
+//            emailTextField.resignFirstResponder()
+//
+//
+//            if let user = Auth.auth().currentUser{
+//                let registerDataValues = ["email": emailTextField.text ] as [String : Any]
+//
+//                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+//                let userReference = databaseReference.root.child("Users").child((user.uid))
+//
+//                databaseReference.child("Users").child((user.uid)).observeSingleEvent(of: .value, with: { (snapshot) in
+//                    userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
+//                        if err != nil{
+//                            print(err)
+//                            return
+//                        }
+//                    })
+//                })
+//            }
+//        }
+//        else{
+//            errorLabel.isHidden = false
+//            errorLabel.text = "Invalid Email. Please check your submission."
+//        }
+//    }
     // password press and done button
     @objc func longPasswordPress() {
-        confirmPasswordTextField.text = ""
-        passwordTextField.isHidden = false
-        passwordTextField.isEnabled = true
-        confirmPasswordTextField.isHidden = false
-        confirmPasswordTextField.isEnabled = true
-        passwordLabel.isHidden = true
-        passwordDoneButton.isHidden = false
-        revealTextOutlet.isHidden = false
-        passwordTextField.becomeFirstResponder()
+        self.performSegue(withIdentifier: "toChangePassword", sender: self)
     }
     
-    @IBAction func passwordDoneEditing(_ sender: UIButton) {
-        if (passwordTextField.text == confirmPasswordTextField.text){
-            if ((passwordTextField.text?.count)! < 6){
-                errorLabel.text = "Password contains too few characters."
-                errorLabel.isHidden = false
-            }
-            else {
-                passwordLabel.isHidden = false
-                passwordTextField.isHidden = true
-                confirmPasswordTextField.isHidden = true
-                passwordTextField.isEnabled = false
-                passwordDoneButton.isHidden = true
-                errorLabel.isHidden = true
-                revealTextOutlet.isHidden = true
-                passwordTextField.resignFirstResponder()
-                if let user = Auth.auth().currentUser{
-                    let registerDataValues = ["password": passwordTextField.text ] as [String : Any]
-                    
-                    let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
-                    let userReference = databaseReference.root.child("Users").child((user.uid))
-                    
-                    databaseReference.child("Users").child((user.uid)).observeSingleEvent(of: .value, with: { (snapshot) in
-                        userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
-                            if err != nil{
-                                print(err)
-                                return
-                            }
-                        })
-                    })
-                }
-            }
-        }
-        else{
-            errorLabel.text = "Password entries do not match."
-            errorLabel.isHidden = false
-        }
-    }
+//    @IBAction func passwordDoneEditing(_ sender: UIButton) {
+//        if (passwordTextField.text == confirmPasswordTextField.text){
+//            if ((passwordTextField.text?.count)! < 6){
+//                errorLabel.text = "Password contains too few characters."
+//                errorLabel.isHidden = false
+//            }
+//            else {
+//                passwordLabel.isHidden = false
+//                passwordTextField.isHidden = true
+//                confirmPasswordTextField.isHidden = true
+//                passwordTextField.isEnabled = false
+//                passwordDoneButton.isHidden = true
+//                errorLabel.isHidden = true
+//                revealTextOutlet.isHidden = true
+//                passwordTextField.resignFirstResponder()
+//                if let user = Auth.auth().currentUser{
+//                    let registerDataValues = ["password": passwordTextField.text ] as [String : Any]
+//
+//                    let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+//                    let userReference = databaseReference.root.child("Users").child((user.uid))
+//
+//                    databaseReference.child("Users").child((user.uid)).observeSingleEvent(of: .value, with: { (snapshot) in
+//                        userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
+//                            if err != nil{
+//                                print(err)
+//                                return
+//                            }
+//                        })
+//                    })
+//                }
+//            }
+//        }
+//        else{
+//            errorLabel.text = "Password entries do not match."
+//            errorLabel.isHidden = false
+//        }
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     //change text from secure to not secure
-    @IBAction func revealTextButtonPressed(_ sender: UIButton) {
-        if(iconClick == true) {
-            passwordTextField.isSecureTextEntry = false
-            confirmPasswordTextField.isSecureTextEntry = false
-            iconClick = false
-        } else {
-            passwordTextField.isSecureTextEntry = true
-            confirmPasswordTextField.isSecureTextEntry = true
-            iconClick = true
-        }
-    }
     
     @IBAction func BackButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
