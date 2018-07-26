@@ -4428,7 +4428,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <inset key="imageEdgeInsets" minX="-30" minY="-9" maxX="-30" maxY="-29"/>
                                 <state key="normal" image="Settings Button"/>
                                 <connections>
-                                    <segue destination="tOP-et-CL5" kind="showDetail" id="U2p-Sa-K5q"/>
+                                    <segue destination="tOP-et-CL5" kind="showDetail" identifier="menuToSettings" id="U2p-Sa-K5q"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNB-OK-N5r" userLabel="Payment Button">
@@ -4440,7 +4440,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <inset key="imageEdgeInsets" minX="-21" minY="-10" maxX="-22" maxY="-31"/>
                                 <state key="normal" image="Payment Button"/>
                                 <connections>
-                                    <segue destination="CEF-w8-ebf" kind="showDetail" id="U3C-hh-nYA"/>
+                                    <segue destination="CEF-w8-ebf" kind="showDetail" identifier="menuToPayment" id="U3C-hh-nYA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UY9-bq-0yz" userLabel="Provider Button">
@@ -4464,7 +4464,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <inset key="imageEdgeInsets" minX="-20" minY="-9" maxX="-34" maxY="-30"/>
                                 <state key="normal" title="Button" image="List Button"/>
                                 <connections>
-                                    <segue destination="DIb-zf-3Ve" kind="showDetail" id="HkI-sf-r50"/>
+                                    <segue destination="DIb-zf-3Ve" kind="showDetail" identifier="menuToList" id="HkI-sf-r50"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ie1-Z9-sSB" userLabel="My Storage Button">
@@ -4476,7 +4476,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-19"/>
                                 <state key="normal" image="My Storage Button"/>
                                 <connections>
-                                    <segue destination="M5z-fM-Can" kind="showDetail" id="y4N-7o-eU3"/>
+                                    <segue destination="M5z-fM-Can" kind="showDetail" identifier="menuToStorage" id="y4N-7o-eU3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elM-tc-mA7">
@@ -5726,7 +5726,7 @@ Use the Add To List Button on a pin to begin</string>
         <image name="remove from list button" width="127" height="131"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pCY-c3-1RH"/>
+        <segue reference="bMs-oF-L6k"/>
         <segue reference="2QV-GR-Qp7"/>
         <segue reference="iCd-uy-vSg"/>
         <segue reference="axh-2K-sWK"/>
