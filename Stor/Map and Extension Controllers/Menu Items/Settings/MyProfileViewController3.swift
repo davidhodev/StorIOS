@@ -1,4 +1,4 @@
-//
+ //
 //  MyProfileViewController3.swift
 //  Stor
 //
@@ -14,7 +14,7 @@ class MyProfileViewController3: UIViewController {
     var email: String?
     var phone: String?
     var password: String?
-    
+    var typeProvider: String?
 
     @IBOutlet weak var informationButton: UIButton!
     @IBOutlet weak var profileImage: UIImageView!
@@ -70,14 +70,17 @@ class MyProfileViewController3: UIViewController {
         }
         if let user = Auth.auth().currentUser{
             print("PROVIDER ID", user.providerData[0].providerID)
+            if user.providerData[0].providerID == "facebook.com"{
+                typeProvider = "facebook"
+            }
+            else if user.providerData[0].providerID == "google.com"{
+                typeProvider = "google"
+            }
+            else{
+                typeProvider = "email"
+            }
         }
-        // "facebook.com"
-        // "google.com?"
-        // "firebase"
-        // "password"? or phone
-        
-        
-        
+
         // phone long press
         iconClick = true
         let longPhonePressGestureRecog = UILongPressGestureRecognizer(target: self, action: #selector(self.longPhonePress))
