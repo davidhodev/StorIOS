@@ -13,6 +13,8 @@
 		04201CF520C8554500CA477E /* filterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04201CF420C8554500CA477E /* filterViewController.swift */; };
 		04F158A320BCA4C500AAC2ED /* hexagonProfilePicture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F158A220BCA4C500AAC2ED /* hexagonProfilePicture.swift */; };
 		2B0B7B137B763384068CFD08 /* Pods_StorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83BDF3AB5601AEFA4206A668 /* Pods_StorTests.framework */; };
+		57174304210A731300B9D729 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57174303210A731300B9D729 /* ChangeEmailViewController.swift */; };
+		57174306210A737B00B9D729 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57174305210A737B00B9D729 /* ChangePasswordViewController.swift */; };
 		571E1B5620C08C0D00E68CA5 /* SettingsViewControllerFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571E1B5520C08C0D00E68CA5 /* SettingsViewControllerFinal.swift */; };
 		57499DD820D199CC005112E2 /* Dosis-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964DC20C0CBA0002F4EBD /* Dosis-Light.otf */; };
 		574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574FC7BE20B5F484001AE44F /* TermsViewController.swift */; };
@@ -66,6 +68,7 @@
 		DBE905FF20924BAE000F13DB /* StorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBE905FE20924BAE000F13DB /* StorUITests.swift */; };
 		DBEA86DF20B4981F00727FCD /* Pods_Stor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEA86E020B4981F00727FCD /* Pods_Stor.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		DBF304862107DC31007AA4E1 /* VKCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF304852107DC31007AA4E1 /* VKCheckbox.swift */; };
+		DBF304882108FDF1007AA4E1 /* noPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF304872108FDF1007AA4E1 /* noPhoneViewController.swift */; };
 		DBF8BCBE20B7887D0080EEF5 /* globalVariablesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBF8BCBD20B7887D0080EEF5 /* globalVariablesViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +98,8 @@
 		18F4FB721B7B5B1C7D1493B0 /* Pods-Stor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Stor/Pods-Stor.debug.xcconfig"; sourceTree = "<group>"; };
 		20873EB433166AE1F0854C26 /* Pods-StorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StorTests/Pods-StorTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E5B7ADF60FD9AF861F2989D /* Pods-Stor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stor.release.xcconfig"; path = "Pods/Target Support Files/Pods-Stor/Pods-Stor.release.xcconfig"; sourceTree = "<group>"; };
+		57174303210A731300B9D729 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
+		57174305210A737B00B9D729 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		571E1B5520C08C0D00E68CA5 /* SettingsViewControllerFinal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerFinal.swift; sourceTree = "<group>"; };
 		574FC7BE20B5F484001AE44F /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		5750DA0E20E1A7D000D43734 /* confirmDropoffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmDropoffViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +163,7 @@
 		DBE9060020924BAE000F13DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBEA86E020B4981F00727FCD /* Pods_Stor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Stor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBF304852107DC31007AA4E1 /* VKCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKCheckbox.swift; sourceTree = "<group>"; };
+		DBF304872108FDF1007AA4E1 /* noPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noPhoneViewController.swift; sourceTree = "<group>"; };
 		DBF8BCBD20B7887D0080EEF5 /* globalVariablesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globalVariablesViewController.swift; sourceTree = "<group>"; };
 		E3D320C59051F760CD54268B /* Pods-StorUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-StorUITests/Pods-StorUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FBFB92A62876BD03C1FEC207 /* Pods_StorUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +216,8 @@
 				571E1B5520C08C0D00E68CA5 /* SettingsViewControllerFinal.swift */,
 				DBE6A8B320C5C28B005B1A75 /* settingsCustomTableViewCell.swift */,
 				576FD1E020CB3F72004BA549 /* MyProfileViewController3.swift */,
+				57174303210A731300B9D729 /* ChangeEmailViewController.swift */,
+				57174305210A737B00B9D729 /* ChangePasswordViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -223,6 +231,7 @@
 				579D4C5E20BF2D6E0082A86F /* AnnotationPopUp.swift */,
 				DB6B0EF820BC7830000CC1D9 /* Annotations.swift */,
 				57EC509220C22389009F470F /* newConnectPopUp.swift */,
+				DBF304872108FDF1007AA4E1 /* noPhoneViewController.swift */,
 				DB6B0EFD20BC7F99000CC1D9 /* Menu Items */,
 			);
 			path = "Map and Extension Controllers";
@@ -673,8 +682,10 @@
 				DBE2A9C720C9D5BF00E052A1 /* myCurrentUser.swift in Sources */,
 				DBE2A9C320C8B19B00E052A1 /* myStorageCustomTableViewCell.swift in Sources */,
 				5750DA0F20E1A7D000D43734 /* confirmDropoffViewController.swift in Sources */,
+				DBF304882108FDF1007AA4E1 /* noPhoneViewController.swift in Sources */,
 				DB6B0EF920BC7830000CC1D9 /* Annotations.swift in Sources */,
 				DBBB9C5720FE712500CACEFE /* Buttons.swift in Sources */,
+				57174304210A731300B9D729 /* ChangeEmailViewController.swift in Sources */,
 				DBBB9C5920FE712500CACEFE /* MyAPIClient.swift in Sources */,
 				DBE2A9D320D2E71F00E052A1 /* providerPotentialUser.swift in Sources */,
 				57EC509320C22389009F470F /* newConnectPopUp.swift in Sources */,
@@ -697,6 +708,7 @@
 				5750DA1520E1ACEF00D43734 /* confirmPickupProviderViewController.swift in Sources */,
 				DBBB9C5A20FE712500CACEFE /* PaymentContextFooterView.swift in Sources */,
 				DBF8BCBE20B7887D0080EEF5 /* globalVariablesViewController.swift in Sources */,
+				57174306210A737B00B9D729 /* ChangePasswordViewController.swift in Sources */,
 				576A007420B7798100F2174D /* MenuViewController.swift in Sources */,
 				DB0515CE20C7551700386902 /* myListCustomCell.swift in Sources */,
 				DBE6A8B420C5C28B005B1A75 /* settingsCustomTableViewCell.swift in Sources */,
