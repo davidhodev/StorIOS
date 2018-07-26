@@ -107,17 +107,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
                 let fullName = user?.displayName
                 let email = user?.email
                 let profilePic = GIDSignIn.sharedInstance().currentUser.profile.imageURL(withDimension: 400).absoluteString
-                let phone = user?.phoneNumber
+                var phone: String?
+                if user?.phoneNumber != nil{
+                    phone = user?.phoneNumber
+                }
+                else{
+                    phone = "phoneVerify"
+                }
                 
                 if let user = Auth.auth().currentUser{
-                    let registerDataValues = ["name": fullName, "email": email, "password": user.uid, "phone":phone, "profilePicture": profilePic, "deviceToken": AppDelegate.DEVICEID]
+                    let registerDataValues = ["name": fullName, "email": email, "password": user.uid, "phone":phone, "profilePicture": profilePic, "rating": 5, "numberOfRatings": 1,  "deviceToken": AppDelegate.DEVICEID] as [String : Any]
+                    
+                    //"rating": 5, "numberOfRatings": 1
                     let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
                     let userReference = databaseReference.root.child("Users").child((user.uid))
                     databaseReference.child("Users").child((user.uid)).observeSingleEvent(of: .value, with: { (snapshot) in
+                        print("SNAPSHOT", snapshot)
+                        print("USER ID", user.uid)
                         if snapshot.hasChild("rating"){
                             print("IT HAS A RATING")
                         }
                         else{
+                            print("Here")
                             userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
                                 if err != nil{
                                     print(err)
