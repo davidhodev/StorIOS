@@ -204,6 +204,10 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 //        try!  Auth.auth().signOut()
+//        GIDSignIn.sharedInstance().signOut()
+//        let manager = FBSDKLoginManager()
+//        manager.logOut()
+        
         if let user = Auth.auth().currentUser{
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
             let userReference = databaseReference.root.child("Users").child(user.uid)
