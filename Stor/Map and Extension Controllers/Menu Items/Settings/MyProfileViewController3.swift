@@ -141,6 +141,24 @@ class MyProfileViewController3: UIViewController {
     
 // brings to change phone page
     @objc func longPhonePress() {
+        if let user = Auth.auth().currentUser{
+            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+            let userReference = databaseReference.root.child("Providers").child((user.uid))
+            let phoneReference = databaseReference.root.child("Users").child(user.uid)
+            phoneReference.observe(.value, with: { (snapshot) in
+                if let dictionary = snapshot.value as? [String: Any]{
+                    let phoneString = String(describing: dictionary["phone"]!)
+                    print("PHONE STRING === ", phoneString)
+                    if  phoneString == "phoneVerify"{
+                        self.performSegue(withIdentifier: "profileNoPhone", sender: self)
+                    }
+                    else{
+
+                    }
+                }
+            })
+        }
+ 
 //        self.performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
     }
     
@@ -187,6 +205,8 @@ class MyProfileViewController3: UIViewController {
                 self.facebookPopup.alpha = 1
             })
         }
+            
+        
         else if typeProvider == "google"{
             UIView.animate(withDuration: 0.3, animations: {
                 self.googlePopup.alpha = 1

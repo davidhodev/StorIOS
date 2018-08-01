@@ -30,6 +30,7 @@
 		D1947A535ADA1F3F00BCE349 /* Pods_StorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBFB92A62876BD03C1FEC207 /* Pods_StorUITests.framework */; };
 		DB0515CE20C7551700386902 /* myListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0515CD20C7551700386902 /* myListCustomCell.swift */; };
 		DB0515D020C84F9A00386902 /* myListUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0515CF20C84F9A00386902 /* myListUser.swift */; };
+		DB41FC1E210F9BF70002C1BD /* changePhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB41FC1D210F9BF70002C1BD /* changePhoneViewController.swift */; };
 		DB4964DD20C0CBA9002F4EBD /* Dosis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964D920C0CB9F002F4EBD /* Dosis-Regular.otf */; };
 		DB4964DE20C0CC73002F4EBD /* Dosis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964DA20C0CB9F002F4EBD /* Dosis-Bold.otf */; };
 		DB4B5E9320B339A30050F66E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB4B5E9220B339A20050F66E /* GoogleService-Info.plist */; };
@@ -116,6 +117,7 @@
 		DB0515CD20C7551700386902 /* myListCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myListCustomCell.swift; sourceTree = "<group>"; };
 		DB0515CF20C84F9A00386902 /* myListUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myListUser.swift; sourceTree = "<group>"; };
 		DB3EE96E20B4B1D700CC4174 /* Stor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Stor.entitlements; sourceTree = "<group>"; };
+		DB41FC1D210F9BF70002C1BD /* changePhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changePhoneViewController.swift; sourceTree = "<group>"; };
 		DB4964D620C0CB96002F4EBD /* Dosis-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-ExtraBold.otf"; sourceTree = "<group>"; };
 		DB4964D720C0CB9E002F4EBD /* Dosis-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-Medium.otf"; sourceTree = "<group>"; };
 		DB4964D820C0CB9F002F4EBD /* Dosis-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Dosis-SemiBold.otf"; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				576FD1E020CB3F72004BA549 /* MyProfileViewController3.swift */,
 				57174303210A731300B9D729 /* ChangeEmailViewController.swift */,
 				57174305210A737B00B9D729 /* ChangePasswordViewController.swift */,
+				DB41FC1D210F9BF70002C1BD /* changePhoneViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				DBBB9C5520FE712500CACEFE /* CheckoutRowView.swift in Sources */,
 				DBF304862107DC31007AA4E1 /* VKCheckbox.swift in Sources */,
 				579D4C5F20BF2D6E0082A86F /* AnnotationPopUp.swift in Sources */,
+				DB41FC1E210F9BF70002C1BD /* changePhoneViewController.swift in Sources */,
 				DB6B0EF720B8C7DB000CC1D9 /* Extensions.swift in Sources */,
 				041640BA20BDF775001BE560 /* paymentViewController.swift in Sources */,
 				DBE2A9CD20D1AA2A00E052A1 /* providerMenuViewController.swift in Sources */,
