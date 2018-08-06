@@ -155,21 +155,33 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
                 let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
                 let userReference = databaseReference.root.child("Users").child((user.uid))
                 
+                print(registerDataValues)
+               
+//                userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
+//                    if err != nil{
+//                        print(err)
+//                        return
+//                    }
+//                    print("User successfully saved to FIREBASE!")
+//                })
                 databaseReference.child("Users").child((user.uid)).observeSingleEvent(of: .value, with: { (snapshot) in
+                    print("SNAPSHOT", snapshot)
+                    print("USER ID", user.uid)
                     if snapshot.hasChild("rating"){
+                        let dictionary = snapshot.value as? [String: Any]
                         print("IT HAS A RATING")
-                        print("DEVICE ID", AppDelegate.DEVICEID)
                     }
                     else{
+                        print("Here")
                         userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
                             if err != nil{
                                 print(err)
                                 return
                             }
-                            print("User successfully saved to FIREBASE!")
                         })
                     }
                 })
+                print("12345")
             }
         }
     }
