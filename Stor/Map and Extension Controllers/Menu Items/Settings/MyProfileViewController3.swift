@@ -26,6 +26,10 @@ class MyProfileViewController3: UIViewController {
     @IBOutlet weak var changePasswordButton: UIButton!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet var myProfileView: UIView!
+    
+    @IBOutlet weak var facebookPopup: UIImageView!
+    @IBOutlet weak var googlePopup: UIImageView!
+    
     var iconClick : Bool!
     
     @objc fileprivate func infoButtonAnimation(){
@@ -43,7 +47,14 @@ class MyProfileViewController3: UIViewController {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.right
         myProfileView.addGestureRecognizer(swipeLeft)
-        informationButton.alpha = 0
+        googlePopup.alpha = 0
+        facebookPopup.alpha = 0
+        googlePopup.isUserInteractionEnabled = true
+        facebookPopup.isUserInteractionEnabled = true
+        googlePopup.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(googlePressed)))
+        facebookPopup.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(facebookPressed)))
+        
+        googlePopup.alpha = 0
         if let user = Auth.auth().currentUser{
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
             databaseReference.root.child("Users").child(user.uid).observe(.value, with: { (snapshot) in
@@ -130,6 +141,24 @@ class MyProfileViewController3: UIViewController {
     
 // brings to change phone page
     @objc func longPhonePress() {
+        if let user = Auth.auth().currentUser{
+            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+            let userReference = databaseReference.root.child("Providers").child((user.uid))
+            let phoneReference = databaseReference.root.child("Users").child(user.uid)
+            phoneReference.observe(.value, with: { (snapshot) in
+                if let dictionary = snapshot.value as? [String: Any]{
+                    let phoneString = String(describing: dictionary["phone"]!)
+                    print("PHONE STRING === ", phoneString)
+                    if  phoneString == "phoneVerify"{
+                        self.performSegue(withIdentifier: "profileNoPhone", sender: self)
+                    }
+                    else{
+
+                    }
+                }
+            })
+        }
+ 
 //        self.performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
     }
     
@@ -171,7 +200,21 @@ class MyProfileViewController3: UIViewController {
 //    }
     
     @objc func longEmailPress() {
-        self.performSegue(withIdentifier: "toChangeEmail", sender: self)
+        if typeProvider == "facebook"{
+            UIView.animate(withDuration: 0.3, animations: {
+                self.facebookPopup.alpha = 1
+            })
+        }
+            
+        
+        else if typeProvider == "google"{
+            UIView.animate(withDuration: 0.3, animations: {
+                self.googlePopup.alpha = 1
+            })
+        }
+        else{
+            self.performSegue(withIdentifier: "toChangeEmail", sender: self)
+        }
     }
     
 //    @IBAction func emailDoneEditing(_ sender: UIButton) {
@@ -208,7 +251,20 @@ class MyProfileViewController3: UIViewController {
 //    }
     // password press and done button
     @objc func longPasswordPress() {
-        self.performSegue(withIdentifier: "toChangePassword", sender: self)
+        if typeProvider == "facebook"{
+            UIView.animate(withDuration: 0.3, animations: {
+                self.facebookPopup.alpha = 1
+            })
+        }
+        else if typeProvider == "google"{
+            UIView.animate(withDuration: 0.3, animations: {
+                self.googlePopup.alpha = 1
+            })
+        }
+        else{
+             self.performSegue(withIdentifier: "toChangePassword", sender: self)
+        }
+       
     }
     
 //    @IBAction func passwordDoneEditing(_ sender: UIButton) {
@@ -270,6 +326,20 @@ class MyProfileViewController3: UIViewController {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
+    
+    @objc func facebookPressed(){
+        UIView.animate(withDuration: 0.3, animations: {
+            self.facebookPopup.alpha = 0
+        })
+    }
+    
+    @objc func googlePressed(){
+        UIView.animate(withDuration: 0.3, animations: {
+            self.googlePopup.alpha = 0
+        })
+    }
+    
+    
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
