@@ -56,11 +56,13 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
         self.navigationController?.pushViewController(termsPage, animated: true)
     }
     
-    
+     var activityMonitor:UIActivityIndicatorView = UIActivityIndicatorView ()
     
     
     //When Facebook Button Pressed
     @IBAction func facebookButton(_ sender: Any) {
+        
+        
         handleFacebookButton()
     }
     
@@ -69,6 +71,7 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
         handleGoogleButton()
     }
     
+   
     
     func handleFacebookButton(){
         FBSDKLoginManager().logIn(withReadPermissions: ["email", "public_profile"], from: self){ (result, error) in
@@ -87,24 +90,32 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
                     print ("Facebook login went wrong")
                     return
                 }
+                self.activityMonitor.center = self.view.center
+                self.activityMonitor.hidesWhenStopped = true
+                self.activityMonitor.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+                self.view.addSubview(self.activityMonitor)
+                
+                
+                self.activityMonitor.startAnimating()
                 print ("Logged in With Facebook!")
                 
                 
                 //Get Facebook Info
                 self.getFacebookInfo()
-                self.viewDidAppear(true)
             })
         }
     }
     
     // Get Facebook Info Func
     func getFacebookInfo(){
+        
+        
         var fbName = ""
         var fbEmail = ""
         var fbPhoto = ""
         FBSDKGraphRequest(graphPath: "/me", parameters: ["fields": "id, name, email, picture.type(large)"]).start{ (connection, result, err) in
             if (err != nil){
-                print("Could not get graph request")
+                print(err)
                 return
             }
             print("FBRESULT", result)
@@ -118,12 +129,13 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
             }
             
             if let photo = info["picture"] as? NSDictionary, let fbData = photo["data"] as? NSDictionary, let fbPhotoUrl = fbData["url"] as? String{
-
+                
                 print(fbData)
                 let imageUrl = URL(string: fbPhotoUrl)!
                 let imageData = try! Data(contentsOf: imageUrl)
                 
                 let image = UIImage(data: imageData)
+                print("image:", image)
                 
                 let imageUniqueID = NSUUID().uuidString
                 let storageRef = Storage.storage().reference().child("UserProfileImages").child("\(imageUniqueID).jpeg")
@@ -136,53 +148,65 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
                             print(error)
                             return
                         }
+                        print("UPLOAD DATA", uploadData)
                         
                         storageRef.downloadURL(completion: { (updatedURL, error) in
                             if (error != nil){
                                 print(error)
                                 return
                             }
+                            print("UPDATEDURL:", updatedURL)
+                            print("UPDATEDURL2:", (updatedURL?.absoluteString)!)
                             fbPhoto = (updatedURL?.absoluteString)!
+                            
+                            
+                            let fbUrl = URL(string:fbPhoto)
+                            print("FACEBOOK URL:", fbUrl)
+                            
+                            if let user = Auth.auth().currentUser{
+                                let registerDataValues = ["name": fbName, "email": fbEmail, "password": user.uid, "phone":"phoneVerify", "profilePicture": fbPhoto, "rating": 5, "numberOfRatings": 1, "deviceToken": AppDelegate.DEVICEID] as [String : Any]
+                                
+                                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                                let userReference = databaseReference.root.child("Users").child((user.uid))
+                                
+                                print(registerDataValues)
+                                
+                                
+                                
+                                
+                                databaseReference.child("Users").child((user.uid)).observeSingleEvent(of: .value, with: { (snapshot) in
+                                    print("SNAPSHOT", snapshot)
+                                    print("USER ID", user.uid)
+                                    if snapshot.hasChild("rating"){
+                                        let dictionary = snapshot.value as? [String: Any]
+                                        print("IT HAS A RATING")
+                                        self.viewDidAppear(true)
+                                        
+                                        
+                                    }
+                                    else{
+                                        print("Here")
+                                        userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
+                                            if err != nil{
+                                                print(err)
+                                                return
+                                            }
+                                            print("User Successfully facebook saved to firebase!")
+                                            self.viewDidAppear(true)
+                                            
+                                            
+                                        })
+                                    }
+                                })
+                                print("12345")
+                            }
                         })
                     })
                 }
             }
-            let fbUrl = URL(string:fbPhoto)
             
-            if let user = Auth.auth().currentUser{
-                let registerDataValues = ["name": fbName, "email": fbEmail, "password": user.uid, "phone":"phoneVerify", "profilePicture": fbPhoto, "rating": 5, "numberOfRatings": 1, "deviceToken": AppDelegate.DEVICEID] as [String : Any]
-                
-                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
-                let userReference = databaseReference.root.child("Users").child((user.uid))
-                
-                print(registerDataValues)
-               
-//                userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
-//                    if err != nil{
-//                        print(err)
-//                        return
-//                    }
-//                    print("User successfully saved to FIREBASE!")
-//                })
-                databaseReference.child("Users").child((user.uid)).observeSingleEvent(of: .value, with: { (snapshot) in
-                    print("SNAPSHOT", snapshot)
-                    print("USER ID", user.uid)
-                    if snapshot.hasChild("rating"){
-                        let dictionary = snapshot.value as? [String: Any]
-                        print("IT HAS A RATING")
-                    }
-                    else{
-                        print("Here")
-                        userReference.updateChildValues(registerDataValues, withCompletionBlock: {(err, registerDataValues) in
-                            if err != nil{
-                                print(err)
-                                return
-                            }
-                        })
-                    }
-                })
-                print("12345")
-            }
+            print("FACEBOOK PHOTO:", fbPhoto)
+
         }
     }
     
@@ -219,7 +243,8 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
 //        GIDSignIn.sharedInstance().signOut()
 //        let manager = FBSDKLoginManager()
 //        manager.logOut()
-        
+
+
         if let user = Auth.auth().currentUser{
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
             let userReference = databaseReference.root.child("Users").child(user.uid)
@@ -232,6 +257,7 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
                 globalVariablesViewController.ratingNumber = (dictionary!["rating"] as? NSNumber)!
                 globalVariablesViewController.profilePicString = (dictionary!["profilePicture"] as? String)!
                 }, withCancel: nil)
+            self.activityMonitor.stopAnimating()
 
             performSegue(withIdentifier: "toMapSegue", sender: nil)
         }
