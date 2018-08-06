@@ -56,11 +56,13 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
         self.navigationController?.pushViewController(termsPage, animated: true)
     }
     
-    
+     var activityMonitor:UIActivityIndicatorView = UIActivityIndicatorView ()
     
     
     //When Facebook Button Pressed
     @IBAction func facebookButton(_ sender: Any) {
+        
+        
         handleFacebookButton()
     }
     
@@ -69,7 +71,7 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
         handleGoogleButton()
     }
     
-    var activityMonitor:UIActivityIndicatorView = UIActivityIndicatorView ()
+   
     
     func handleFacebookButton(){
         FBSDKLoginManager().logIn(withReadPermissions: ["email", "public_profile"], from: self){ (result, error) in
@@ -88,6 +90,13 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
                     print ("Facebook login went wrong")
                     return
                 }
+                self.activityMonitor.center = self.view.center
+                self.activityMonitor.hidesWhenStopped = true
+                self.activityMonitor.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
+                self.view.addSubview(self.activityMonitor)
+                
+                
+                self.activityMonitor.startAnimating()
                 print ("Logged in With Facebook!")
                 
                 
@@ -99,12 +108,7 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
     
     // Get Facebook Info Func
     func getFacebookInfo(){
-        self.activityMonitor.center = self.view.center
-        self.activityMonitor.hidesWhenStopped = true
-        self.activityMonitor.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        view.addSubview(self.activityMonitor)
         
-        self.activityMonitor.startAnimating()
         
         var fbName = ""
         var fbEmail = ""
@@ -178,6 +182,7 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
                                         print("IT HAS A RATING")
                                         self.viewDidAppear(true)
                                         
+                                        
                                     }
                                     else{
                                         print("Here")
@@ -189,6 +194,7 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
                                             print("User Successfully facebook saved to firebase!")
                                             self.viewDidAppear(true)
                                             
+                                            
                                         })
                                     }
                                 })
@@ -198,6 +204,7 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
                     })
                 }
             }
+            
             print("FACEBOOK PHOTO:", fbPhoto)
 
         }
@@ -236,14 +243,7 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
 //        GIDSignIn.sharedInstance().signOut()
 //        let manager = FBSDKLoginManager()
 //        manager.logOut()
-        self.activityMonitor.center = self.view.center
-        self.activityMonitor.hidesWhenStopped = true
-        self.activityMonitor.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        view.addSubview(self.activityMonitor)
-        
-        self.activityMonitor.startAnimating()
-        
-        self.activityMonitor.startAnimating()
+
 
         if let user = Auth.auth().currentUser{
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
@@ -257,7 +257,6 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
                 globalVariablesViewController.ratingNumber = (dictionary!["rating"] as? NSNumber)!
                 globalVariablesViewController.profilePicString = (dictionary!["profilePicture"] as? String)!
                 }, withCancel: nil)
-            
             self.activityMonitor.stopAnimating()
 
             performSegue(withIdentifier: "toMapSegue", sender: nil)
