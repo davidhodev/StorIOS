@@ -57,10 +57,15 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
     }
     
     
-    
+    var activityMonitor:UIActivityIndicatorView = UIActivityIndicatorView()
     
     //When Facebook Button Pressed
     @IBAction func facebookButton(_ sender: Any) {
+//        self.activityMonitor.center = self.view.center
+//        self.activityMonitor.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+//        view.addSubview(self.activityMonitor)
+//        self.activityMonitor.startAnimating()
+        CustomLoader.instance.showLoader()
         handleFacebookButton()
     }
     
