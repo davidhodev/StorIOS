@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "stor-database"
+    "default": "stor-database",
+    "storFirebaseFunctions": "stor-database"
   }
 }
