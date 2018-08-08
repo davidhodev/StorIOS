@@ -47,6 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate, UNUser
             }
         }
         
+        // Stripe
+        STPPaymentConfiguration.shared().publishableKey = "pk_test_YiFob2dQ8egZGaTV7iBDgtOz"
         
         
         //Facebook SDK

@@ -24,7 +24,6 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     var confirmationAddress: String?
     var confirmationProviderID: String?
     var confirmationStorageID: String?
-    var newActivityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     var counter = 0
     
     @IBOutlet weak var pendingFill: UIImageView!
@@ -42,12 +41,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        newActivityIndicator.center = self.view.center
-        newActivityIndicator.hidesWhenStopped = true
-        newActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        view.addSubview(newActivityIndicator)
-        
-        newActivityIndicator.startAnimating()
+        CustomLoader.instance.showLoader()
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.right
@@ -74,7 +68,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
     
     override func viewDidAppear(_ animated: Bool) {
         if myCurrentStorageUsers.count == 0 {
-            self.newActivityIndicator.stopAnimating()
+            CustomLoader.instance.hideLoader()
         }
     }
 
@@ -100,9 +94,9 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
        let cell = storageTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! myStorageCustomTableViewCell
         let shadowPath2 = UIBezierPath(roundedRect: cell.bounds, cornerRadius: 25)
         cell.layer.masksToBounds = false
-        cell.layer.shadowColor = UIColor(red:0.27, green:0.29, blue:0.36, alpha:1.0).cgColor
-        cell.layer.shadowOffset = CGSize(width: CGFloat(2), height: CGFloat(14.0))
-        cell.layer.shadowOpacity = 0.0275
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 8)
+        cell.layer.shadowOpacity = 0.025
         cell.layer.shadowPath = shadowPath2.cgPath
         cell.layer.cornerRadius = 27
         cell.cellView.layer.cornerRadius = 27
@@ -327,7 +321,7 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
         print("COUNTER: ", counter, "MY LIST COUNT: ", myCurrentStorageUsers.count)
         if counter == myCurrentStorageUsers.count || counter == 8{
             print("Done")
-            self.newActivityIndicator.stopAnimating()
+            CustomLoader.instance.hideLoader()
         }
         
     }

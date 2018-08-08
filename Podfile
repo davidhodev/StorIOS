@@ -8,10 +8,10 @@ target 'Stor' do
 
   # Pods for Stor
 	pod 'Firebase/Core'
-	pod ‘Firebase/Database’
-	pod ‘Firebase/Auth’
-	pod ‘Firebase/Storage’
-	pod ‘Firebase/Messaging’
+	pod 'Firebase/Database'
+	pod 'Firebase/Auth'
+	pod 'Firebase/Storage'
+	pod 'Firebase/Messaging'
 
 	pod 'FBSDKCoreKit'
 	pod 'FBSDKShareKit'
@@ -19,7 +19,7 @@ target 'Stor' do
 
 	pod 'GoogleSignIn'
 	pod 'Alamofire', '~> 4.7'
-	pod ‘Stripe’
+	pod 'Stripe'
 
   target 'StorTests' do
     inherit! :search_paths

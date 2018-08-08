@@ -56,13 +56,10 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
         self.navigationController?.pushViewController(termsPage, animated: true)
     }
     
-     var activityMonitor:UIActivityIndicatorView = UIActivityIndicatorView ()
     
     
     //When Facebook Button Pressed
     @IBAction func facebookButton(_ sender: Any) {
-        
-        
         handleFacebookButton()
     }
     
@@ -90,13 +87,9 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
                     print ("Facebook login went wrong")
                     return
                 }
-                self.activityMonitor.center = self.view.center
-                self.activityMonitor.hidesWhenStopped = true
-                self.activityMonitor.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
-                self.view.addSubview(self.activityMonitor)
+                // custom activity monitor
+                CustomLoader.instance.showLoader()
                 
-                
-                self.activityMonitor.startAnimating()
                 print ("Logged in With Facebook!")
                 
                 
@@ -257,8 +250,7 @@ class StartupViewController: UIViewController, GIDSignInUIDelegate{
                 globalVariablesViewController.ratingNumber = (dictionary!["rating"] as? NSNumber)!
                 globalVariablesViewController.profilePicString = (dictionary!["profilePicture"] as? String)!
                 }, withCancel: nil)
-            self.activityMonitor.stopAnimating()
-
+            CustomLoader.instance.hideLoader()
             performSegue(withIdentifier: "toMapSegue", sender: nil)
         }
     }
