@@ -4,10 +4,11 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
 const logging = require('@google-cloud/logging')();
-const stripe = require('stripe')(functions.config().stripe.token);
+const stripe = require('stripe')('sk_test_uXJyoxDIEPUdsHXgOd2Mpj1r');
 const currency = functions.config().stripe.currency || 'USD';
-
-
+//
+// [START chargecustomer]
+// Charge the Stripe customer whenever an amount is written to the Realtime database
 exports.createStripeCharge = functions.database.ref('/stripe_customers/{userId}/charges/{id}')
     .onCreate((snap, context) => {
       const val = snap.val();
@@ -125,7 +126,6 @@ function reportError(err, context = {}) {
 function userFacingMessage(error) {
   return error.type ? error.message : 'An error occurred, developers have been alerted';
 }
-
 
 // Old Code
 

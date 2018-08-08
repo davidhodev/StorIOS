@@ -11,8 +11,12 @@
   },
   "dependencies": {
     "@google-cloud/logging": "^2.0.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
     "firebase-admin": "~5.12.1",
     "firebase-functions": "^2.0.2",
+    "pug": "^2.0.3",
     "stripe": "^6.7.0"
   },
   "devDependencies": {
