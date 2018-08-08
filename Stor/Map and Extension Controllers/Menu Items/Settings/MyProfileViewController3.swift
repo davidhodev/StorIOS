@@ -153,7 +153,7 @@ class MyProfileViewController3: UIViewController {
                         self.performSegue(withIdentifier: "profileNoPhone", sender: self)
                     }
                     else{
-
+                        //add in segue to regular phone page CALLED "toChangePhone"
                     }
                 }
             })

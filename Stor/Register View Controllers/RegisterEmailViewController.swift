@@ -59,7 +59,6 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     
     var registerSteps = 0
     var agreedToTerms = false
-    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     //line under email address
     @IBOutlet weak var line1: UIImageView!
@@ -122,12 +121,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
             // Animation to bring in Email
         }
         else if registerSteps == 1{
-            activityIndicator.center = self.view.center
-            activityIndicator.hidesWhenStopped = true
-            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-            view.addSubview(activityIndicator)
-            
-            activityIndicator.startAnimating()
+            CustomLoader.instance.showLoader()
             UIApplication.shared.beginIgnoringInteractionEvents()
             Auth.auth().fetchProviders(forEmail: emailRegisterText.text!, completion: { (stringArray, error) in
                 if error != nil{
@@ -137,11 +131,11 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     self.emailRegisterText.text = ""
                     self.mainImage.image = UIImage.init(named: "Mail Icon Red")
                     UIApplication.shared.endIgnoringInteractionEvents()
-                    self.activityIndicator.stopAnimating()
+                    CustomLoader.instance.hideLoader()
                 }
                 else{
                     UIApplication.shared.endIgnoringInteractionEvents()
-                    self.activityIndicator.stopAnimating()
+                    CustomLoader.instance.hideLoader()
                     if stringArray == nil{
                         UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
                             self.emailRegisterText.alpha = 0
@@ -295,12 +289,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
             }
         }
         else if registerSteps == 3{
-            activityIndicator.center = self.view.center
-            activityIndicator.hidesWhenStopped = true
-            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-            view.addSubview(activityIndicator)
-            
-            activityIndicator.startAnimating()
+            CustomLoader.instance.showLoader()
             UIApplication.shared.beginIgnoringInteractionEvents()
             var inputPhone = "+1"
             inputPhone += phoneRegisterText.text!
@@ -312,11 +301,11 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     self.phoneRegisterText.attributedPlaceholder = NSAttributedString(string: "Enter a valid number", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
                     self.phoneRegisterText.text = ""
                     self.mainImage.image = UIImage(named: "Phone Icon Red")
-                    self.activityIndicator.stopAnimating()
+                    CustomLoader.instance.hideLoader()
                     UIApplication.shared.endIgnoringInteractionEvents()
                     return
                 }
-                self.activityIndicator.stopAnimating()
+                CustomLoader.instance.hideLoader()
                 UIApplication.shared.endIgnoringInteractionEvents()
                 UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
                 UIView.animate(withDuration: 0.3 , delay: 0, options: .curveEaseIn, animations: {
@@ -381,17 +370,12 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         }
         else{
             
-            activityIndicator.center = self.view.center
-            activityIndicator.hidesWhenStopped = true
-            activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-            view.addSubview(activityIndicator)
-            
-            activityIndicator.startAnimating()
+            CustomLoader.instance.showLoader()
             UIApplication.shared.beginIgnoringInteractionEvents()
             
             if agreedToTerms == false{
                 checkBox.borderColor = UIColor.red
-                activityIndicator.stopAnimating()
+                CustomLoader.instance.hideLoader()
                 UIApplication.shared.endIgnoringInteractionEvents()
             } 
             else{
@@ -406,7 +390,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                         self.phoneVerificationText.text = ""
                         self.mainImage.image = UIImage.init(named: "Text Confirm Icon Red")
                         self.line1.image = UIImage.init(named: "Line 2Red")
-                        self.activityIndicator.stopAnimating()
+                        CustomLoader.instance.hideLoader()
                         UIApplication.shared.endIgnoringInteractionEvents()
                         print(error)
                         return
@@ -438,7 +422,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                                             return
                                         }
                                         print("User successfully saved to FIREBASE!")
-                                        self.activityIndicator.stopAnimating()
+                                        CustomLoader.instance.hideLoader()
                                         UIApplication.shared.endIgnoringInteractionEvents()
                                         
                                     })
