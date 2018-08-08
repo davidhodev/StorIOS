@@ -30,7 +30,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var searchResultsTableView: UITableView!
     @IBOutlet weak var outOfAuto: UIButton!
     
-    var newActivityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     var changed = true
 
     @IBAction func outOfAutoComplete(_ sender: Any) {
@@ -117,13 +116,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         searchCompleter.delegate = self
         searchResultsTableView.delegate = self
         searchResultsTableView.dataSource = self
-        //Activity Indicator
-        newActivityIndicator.center = self.view.center
-        newActivityIndicator.hidesWhenStopped = true
-        newActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
-        view.addSubview(newActivityIndicator)
         
-        newActivityIndicator.startAnimating()
+        CustomLoader.instance.showLoader()
         UIApplication.shared.beginIgnoringInteractionEvents()
         self.reCenterShowButton.isHidden = true
         self.searchResultsTableView.layer.cornerRadius = 30
@@ -427,13 +421,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 )}
             }
             UIApplication.shared.endIgnoringInteractionEvents()
-            self.newActivityIndicator.stopAnimating()
+            CustomLoader.instance.hideLoader()
         }, withCancel: nil)
     }
     
     
     func reloadMap(){
-        newActivityIndicator.startAnimating()
+        CustomLoader.instance.showLoader()
+        UIApplication.shared.beginIgnoringInteractionEvents()
         let removedAnnotations = self.storMapKit.annotations
         self.storMapKit.removeAnnotations(removedAnnotations)
         self.providers.removeAll()
@@ -470,7 +465,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     )}
             }
             UIApplication.shared.endIgnoringInteractionEvents()
-            self.newActivityIndicator.stopAnimating()
+            CustomLoader.instance.hideLoader()
         }, withCancel: nil)
     }
     
@@ -485,7 +480,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func deletePin(){
-        newActivityIndicator.startAnimating()
+        CustomLoader.instance.showLoader()
         let removedAnnotations = self.storMapKit.annotations
         self.storMapKit.removeAnnotations(removedAnnotations)
         self.providers.removeAll()
@@ -524,7 +519,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     )}
             }
             UIApplication.shared.endIgnoringInteractionEvents()
-            self.newActivityIndicator.stopAnimating()
+            CustomLoader.instance.hideLoader()
             }
         }, withCancel: nil)
         }
@@ -538,7 +533,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     
     func filterAnnotations(){
-        newActivityIndicator.startAnimating()
+        CustomLoader.instance.showLoader()
         let removedAnnotations = self.storMapKit.annotations
         self.storMapKit.removeAnnotations(removedAnnotations)
         self.providers.removeAll()
@@ -615,13 +610,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 }
             )}
             UIApplication.shared.endIgnoringInteractionEvents()
-            self.newActivityIndicator.stopAnimating()
+            CustomLoader.instance.hideLoader()
             }
         }, withCancel: nil)
-        
-        
-        
-        newActivityIndicator.stopAnimating()
+        CustomLoader.instance.hideLoader()
     }
     
 }

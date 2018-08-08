@@ -14,9 +14,9 @@ class CustomLoader: UIView {
     
     //defining properties of background view
     //chose color that we want
-    var viewColor = UIColor(red: <#T##CGFloat#>, green: <#T##CGFloat#>, blue: <#T##CGFloat#>, alpha: <#T##CGFloat#>)
-    var setAlpha: CGFloat = 0.5
-    var gifName: String = ""
+    var viewColor = UIColor.black
+    var setAlpha: CGFloat = 0
+    var gifName: String = "LoadingAnimationv6"
 
     lazy var transparentView: UIView = {
         let transparentView = UIView(frame: UIScreen.main.bounds)
@@ -33,6 +33,12 @@ class CustomLoader: UIView {
         gifImage.isUserInteractionEnabled = false
         //loading gif, maybe method comes in later
         gifImage.loadGif(name: gifName)
+        //shadows
+        gifImage.layer.shadowColor = UIColor(red:0.27, green:0.47, blue:0.91, alpha:1.0).cgColor
+        gifImage.layer.shadowOffset = CGSize(width: 0, height: 3)
+        gifImage.layer.shadowOpacity = 0.5
+        gifImage.layer.shadowRadius = 5.0
+        gifImage.clipsToBounds = false
         return gifImage
     }()
     

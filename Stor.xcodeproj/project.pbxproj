@@ -25,6 +25,7 @@
 		576A007420B7798100F2174D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576A007320B7798100F2174D /* MenuViewController.swift */; };
 		576FD1E120CB3F72004BA549 /* MyProfileViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576FD1E020CB3F72004BA549 /* MyProfileViewController3.swift */; };
 		576FD1E220CB5276004BA549 /* Dosis-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964D720C0CB9E002F4EBD /* Dosis-Medium.otf */; };
+		578EF160211B649C005B57B2 /* LoadingAnimationv6.gif in Resources */ = {isa = PBXBuildFile; fileRef = 578EF15F211B6494005B57B2 /* LoadingAnimationv6.gif */; };
 		579D4C5F20BF2D6E0082A86F /* AnnotationPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 579D4C5E20BF2D6E0082A86F /* AnnotationPopUp.swift */; };
 		57E32704211A4FE7003D0F0D /* CustomLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E32703211A4FE7003D0F0D /* CustomLoader.swift */; };
 		57E32706211A54A9003D0F0D /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E32705211A54A9003D0F0D /* UIImage+Gif.swift */; };
@@ -111,6 +112,7 @@
 		5750DA1420E1ACEF00D43734 /* confirmPickupProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmPickupProviderViewController.swift; sourceTree = "<group>"; };
 		576A007320B7798100F2174D /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		576FD1E020CB3F72004BA549 /* MyProfileViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController3.swift; sourceTree = "<group>"; };
+		578EF15F211B6494005B57B2 /* LoadingAnimationv6.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LoadingAnimationv6.gif; sourceTree = "<group>"; };
 		579D4C5E20BF2D6E0082A86F /* AnnotationPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationPopUp.swift; sourceTree = "<group>"; };
 		57E32703211A4FE7003D0F0D /* CustomLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoader.swift; sourceTree = "<group>"; };
 		57E32705211A54A9003D0F0D /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
@@ -365,6 +367,7 @@
 				DBE2A9CB20D1AA0800E052A1 /* Provider View Controllers */,
 				04F158A220BCA4C500AAC2ED /* hexagonProfilePicture.swift */,
 				DBE905E520924BAE000F13DB /* Assets.xcassets */,
+				578EF15F211B6494005B57B2 /* LoadingAnimationv6.gif */,
 				DBE905E720924BAE000F13DB /* LaunchScreen.storyboard */,
 				DBE905EA20924BAE000F13DB /* Info.plist */,
 				DB4B5E9220B339A20050F66E /* GoogleService-Info.plist */,
@@ -476,6 +479,9 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 1;
+							};
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
@@ -533,6 +539,7 @@
 				DB4964DD20C0CBA9002F4EBD /* Dosis-Regular.otf in Resources */,
 				DB4B5E9320B339A30050F66E /* GoogleService-Info.plist in Resources */,
 				DBE905E620924BAE000F13DB /* Assets.xcassets in Resources */,
+				578EF160211B649C005B57B2 /* LoadingAnimationv6.gif in Resources */,
 				DBE905E420924BAE000F13DB /* Main.storyboard in Resources */,
 				DB4B5E9E20B34E7C0050F66E /* dosis in Resources */,
 				576FD1E220CB5276004BA549 /* Dosis-Medium.otf in Resources */,

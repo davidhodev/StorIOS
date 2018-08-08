@@ -113,8 +113,8 @@ extension UIImage {
         delay = delayObject as? Double ?? 0
         
         //Changes speed of gif
-        if delay < 0.1 {
-            delay = 0.1 // Make sure they're not too fast
+        if delay < 0.01 {
+            delay = 0.01 // Make sure they're not too fast
         }
 
         return delay

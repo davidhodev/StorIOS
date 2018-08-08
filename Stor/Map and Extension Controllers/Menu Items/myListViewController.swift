@@ -19,7 +19,6 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var exists: Bool?
     var buttonProviderLocation: CLLocationCoordinate2D?
     var counter = 0
-    var newActivityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     @IBOutlet var myListView: UIView!
     @IBOutlet weak var listIsEmpty: UILabel!
@@ -47,7 +46,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         }
         else{
-            self.newActivityIndicator.stopAnimating()
+            CustomLoader.instance.hideLoader()
         }
     }
     override func viewDidLoad() {
@@ -56,12 +55,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.right
         myListView.addGestureRecognizer(swipeLeft)
-        newActivityIndicator.center = self.view.center
-        newActivityIndicator.hidesWhenStopped = true
-        newActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        view.addSubview(newActivityIndicator)
-        
-        newActivityIndicator.startAnimating()
+        CustomLoader.instance.showLoader()
         
         myListTableView.delegate = self
         myListTableView.dataSource = self
@@ -162,9 +156,9 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             //shadows
             let shadowPath2 = UIBezierPath(roundedRect: cell.bounds, cornerRadius: 30)
             cell.layer.masksToBounds = false
-            cell.layer.shadowColor = UIColor(red:0.27, green:0.29, blue:0.36, alpha:1.0).cgColor
-            cell.layer.shadowOffset = CGSize(width: CGFloat(2), height: CGFloat(14.0))
-            cell.layer.shadowOpacity = 0.0275
+            cell.layer.shadowColor = UIColor.black.cgColor
+            cell.layer.shadowOffset = CGSize(width: 0, height: 8)
+            cell.layer.shadowOpacity = 0.025
             cell.layer.shadowPath = shadowPath2.cgPath
             cell.cellView.layer.cornerRadius = 27
             
@@ -219,7 +213,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("COUNTER: ", counter, "MY LIST COUNT: ", myListUsers.count)
         if counter == myListUsers.count || counter == 8{
             print("Done")
-            self.newActivityIndicator.stopAnimating()
+            CustomLoader.instance.hideLoader()
         }
         
     }

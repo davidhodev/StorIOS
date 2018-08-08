@@ -25,7 +25,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // instantiate lock image
     @IBOutlet weak var lockImage: UIImageView!
     
-    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
@@ -63,6 +62,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.right
         myLoginView.addGestureRecognizer(swipeLeft)
@@ -90,15 +90,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     //Making a login function
     func login(){
-        
-        //Activity Indicator
-        activityIndicator.center = self.view.center
-        activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        view.addSubview(activityIndicator)
-        
-        activityIndicator.startAnimating()
-        
+        CustomLoader.instance.showLoader()
         Auth.auth().signIn(withEmail: emailText.text!, password: passwordText.text!){
             user, error in
             if (error != nil){
@@ -168,14 +160,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         globalVariablesViewController.profilePicString = (dictionary!["profilePicture"] as? String)!
                     }, withCancel: nil)
                 }
-                
-                self.activityIndicator.stopAnimating()
+                CustomLoader.instance.hideLoader()
                 print("Successfully logged in")
                 let storyboard:UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let goToMapFromLogin:MapViewController = storyboard.instantiateViewController(withIdentifier:"MapViewController") as! MapViewController
                 self.navigationController?.pushViewController(goToMapFromLogin, animated: true)
             }
-            self.activityIndicator.stopAnimating()
+            CustomLoader.instance.hideLoader()
         }
     }
     
