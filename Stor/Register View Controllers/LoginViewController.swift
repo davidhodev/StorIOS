@@ -25,7 +25,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // instantiate lock image
     @IBOutlet weak var lockImage: UIImageView!
     
+    @IBOutlet weak var showTextOutlet: UIButton!
     
+    @IBOutlet weak var backgroundView: UIImageView!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     
@@ -35,12 +37,35 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     // button function to switch security of text
     @IBAction func revealText(_ sender: UIButton) {
-        if(iconClick == true) {
+        if(iconClick == false) {
             passwordText.isSecureTextEntry = false
-            iconClick = false
-        } else {
-            passwordText.isSecureTextEntry = true
             iconClick = true
+            UIView.animate(withDuration: 0.1, animations: {
+                self.showTextOutlet.alpha = 0
+            }) { (_) in
+                UIView.animate(withDuration: 0, delay: 0, options: .curveLinear, animations: {
+                    self.showTextOutlet.setImage(#imageLiteral(resourceName: "crossed out eye"), for: .normal)
+                }) { (_) in
+                    UIView.animate(withDuration: 0.1, animations: {
+                        self.showTextOutlet.alpha = 1
+                    })
+                }
+            }
+        }
+        else{
+            passwordText.isSecureTextEntry = true
+            iconClick = false
+            UIView.animate(withDuration: 0.1, animations: {
+                self.showTextOutlet.alpha = 0
+            }) { (_) in
+                UIView.animate(withDuration: 0, delay: 0, options: .curveLinear, animations: {
+                    self.showTextOutlet.setImage(#imageLiteral(resourceName: "Combined Shape3-1"), for: .normal)
+                }) { (_) in
+                    UIView.animate(withDuration: 0.1, animations: {
+                        self.showTextOutlet.alpha = 1
+                    })
+                }
+            }
         }
     }
     // Forgot email/password button hyperlink
@@ -66,7 +91,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.right
         myLoginView.addGestureRecognizer(swipeLeft)
-        iconClick = true
+        iconClick = false
         line1Image.image = UIImage.init(named: "Line 2")
         line2Image.image = UIImage.init(named: "Line 2")
         letterImage.image = UIImage.init(named: "Combined Shape1")
@@ -75,7 +100,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordText.delegate = self
         
         self.hideKeyboardWhenTappedAround()
-          
+        
     }
     
     @objc func backSwipe(){
@@ -175,7 +200,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
-    
+
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }

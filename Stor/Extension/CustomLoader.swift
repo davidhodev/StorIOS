@@ -16,7 +16,7 @@ class CustomLoader: UIView {
     //chose color that we want
     var viewColor = UIColor.black
     var setAlpha: CGFloat = 0
-    var gifName: String = "LoadingAnimationv6"
+    var gifName: String = "LoadingAnimationv5"
 
     lazy var transparentView: UIView = {
         let transparentView = UIView(frame: UIScreen.main.bounds)
