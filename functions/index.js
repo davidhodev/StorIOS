@@ -1,4 +1,7 @@
 'use strict';
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
 
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
@@ -6,6 +9,28 @@ admin.initializeApp();
 const logging = require('@google-cloud/logging')();
 const stripe = require('stripe')('sk_test_uXJyoxDIEPUdsHXgOd2Mpj1r');
 const currency = functions.config().stripe.currency || 'USD';
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extend : true
+}));
+
+app.post('/ephemeral_keys', (req, res) => {
+    var customerId = req.body.customer_id;
+    var api_version = req.body.api_version;
+
+    stripe.ephemeralKeys.create(
+        {customer : customerId},
+        {stripe_version : api_version}
+        ).then((key) => {
+            res.status(200).send(key)
+            return
+    }).catch((err) => {
+            console.log(err)
+            res.status(500).end()
+
+    });
+});
 //
 // [START chargecustomer]
 // Charge the Stripe customer whenever an amount is written to the Realtime database
@@ -39,23 +64,24 @@ exports.createStripeCharge = functions.database.ref('/stripe_customers/{userId}/
         });
 // [END chargecustomer]]
 
+
 // When a user is created, register them with Stripe
 exports.createStripeCustomer = functions.auth.user().onCreate((user) => {
   return stripe.customers.create({
     email: user.email,
   }).then((customer) => {
-    return admin.database().ref(`/stripe_customers/${user.uid}/customer_id`).set(customer.id);
+    return admin.database().ref(`/Users/${user.uid}/stripe/stripe_customer_id`).set(customer.id);
   });
 });
 
 // Add a payment source (card) for a user by writing a stripe payment source token to Realtime database
 exports.addPaymentSource = functions.database
-    .ref('/stripe_customers/{userId}/sources/{pushId}/token').onWrite((change, context) => {
+    .ref('/Users/{userId}/stripe/sources/{pushId}/token').onWrite((change, context) => {
       const source = change.after.val();
       if (source === null){
         return null;
       }
-      return admin.database().ref(`/stripe_customers/${context.params.userId}/customer_id`)
+      return admin.database().ref(`/Users/${context.params.userId}/stripe/stripe_customer_id`)
           .once('value').then((snapshot) => {
             return snapshot.val();
           }).then((customer) => {
@@ -68,6 +94,25 @@ exports.addPaymentSource = functions.database
             return reportError(error, {user: context.params.userId});
           });
         });
+// exports.addPaymentSource = functions.database
+//     .ref('/Users/{user.uid}/stripe/sources/{pushID}/token').onWrite((change, context) => {
+//       const source = change.after.val();
+//       if (source === null){
+//         return null;
+//       }
+//       return admin.database().ref(`/Users/${context.params.userId}/stripe/stripe_customer_id`)//`/stripe_customers/${context.params.userId}/customer_id`)
+//           .once('value').then((snapshot) => {
+//             return snapshot.val();
+//           }).then((customer) => {
+//             return stripe.customers.createSource(customer, {source});
+//           }).then((response) => {
+//             return change.after.ref.parent.set(response);
+//           }, (error) => {
+//             return change.after.ref.parent.child('error').set(userFacingMessage(error));
+//           }).then(() => {
+//             return reportError(error, {user: context.params.userId});
+//           });
+//         });
 
 // When a user deletes their account, clean up after them
 exports.cleanupUser = functions.auth.user().onDelete((user) => {
@@ -80,6 +125,49 @@ exports.cleanupUser = functions.auth.user().onDelete((user) => {
         return admin.database().ref(`/stripe_customers/${user.uid}`).remove();
       });
     });
+
+
+// When a user is created, register them with Stripe
+// exports.createStripeCustomer = functions.auth.user().onCreate((user) => {
+//   return stripe.customers.create({
+//     email: user.email,
+//   }).then((customer) => {
+//     return admin.database().ref(`/Users/${user.uid}/stripe/stripe_customer_id`).set(customer.id);
+//   });
+// });
+//
+// // Add a payment source (card) for a user by writing a stripe payment source token to Realtime database
+// exports.addPaymentSource = functions.database
+//     .ref('/Users/{user.uid}/stripe/sources/{pushId}/token').onWrite((change, context) => {
+//       const source = change.after.val();
+//       if (source === null){
+//         return null;
+//       }
+//       return admin.database().ref(`/Users/s${context.params.userId}/stripe/stripe_customer_id`)
+//           .once('value').then((snapshot) => {
+//             return snapshot.val();
+//           }).then((customer) => {
+//             return stripe.customers.createSource(customer, {source});
+//           }).then((response) => {
+//             return change.after.ref.parent.set(response);
+//           }, (error) => {
+//             return change.after.ref.parent.child('error').set(userFacingMessage(error));
+//           }).then(() => {
+//             return reportError(error, {user: context.params.userId});
+//           });
+//         });
+//
+// // When a user deletes their account, clean up after them
+// exports.cleanupUser = functions.auth.user().onDelete((user) => {
+//   return admin.database().ref(`/stripe_customers/${user.uid}`).once('value').then(
+//       (snapshot) => {
+//         return snapshot.val();
+//       }).then((customer) => {
+//         return stripe.customers.del(customer.customer_id);
+//       }).then(() => {
+//         return admin.database().ref(`/stripe_customers/${user.uid}`).remove();
+//       });
+//     });
 
 // To keep on top of errors, we should raise a verbose error report with Stackdriver rather
 // than simply relying on console.error. This will calculate users affected + send you email
