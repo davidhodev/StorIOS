@@ -25,6 +25,7 @@ class paymentViewController: UIViewController, STPAddCardViewControllerDelegate{
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.right
         myPaymentView.addGestureRecognizer(swipeLeft)
+        getCards()
 
         // Do any additional setup after loading the view.
     }
@@ -87,6 +88,23 @@ class paymentViewController: UIViewController, STPAddCardViewControllerDelegate{
 //                dismiss(animated: true)
 //            }
 //        })
+    }
+    
+    func getCards() {
+        
+        if let user = Auth.auth().currentUser{
+            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+            databaseReference.root.child("Users").child(user.uid).child("stripe").child("sources").observe(.value, with: { (snapshot) in
+                for userChild in snapshot.children{
+                    let userSnapshot = userChild as! DataSnapshot
+                    print("USER SNAPSHOT: ", userSnapshot)
+                    let dictionary = userSnapshot.value as? [String: Any]
+                    print("LAST 4", dictionary!["last4"]!)
+                    print("BRAND", dictionary!["brand"]!)
+                }
+            })
+        }
+    
     }
     
     
