@@ -53,7 +53,7 @@
                                 <rect key="frame" x="0.0" y="358" width="170" height="300"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy4" translatesAutoresizingMaskIntoConstraints="NO" id="uGy-bx-NSJ">
-                                <rect key="frame" x="138" y="1" width="169" height="93"/>
+                                <rect key="frame" x="136" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy5_2" translatesAutoresizingMaskIntoConstraints="NO" id="U2q-m4-Bqu">
                                 <rect key="frame" x="224" y="82" width="151" height="323"/>
@@ -66,7 +66,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ED4-zM-ayk">
-                                <rect key="frame" x="0.0" y="-13" width="173" height="85"/>
+                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Bd-4gJ">
                                 <rect key="frame" x="33.666666666666657" y="392" width="177" height="188"/>
@@ -124,7 +124,7 @@
                                 <rect key="frame" x="89.666666666666671" y="701" width="18" height="18"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8m-XB-JUI">
-                                <rect key="frame" x="181.33333333333334" y="563" width="13" height="20.333333333333371"/>
+                                <rect key="frame" x="181.66666666666666" y="563" width="13" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                 <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -142,7 +142,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qe-td-WDg">
-                                <rect key="frame" x="0.0" y="762" width="210" height="12.666666666666629"/>
+                                <rect key="frame" x="0.0" y="762" width="210.33333333333334" height="12.666666666666629"/>
                                 <attributedString key="attributedText">
                                     <fragment content="By tapping any of the buttons you agree to ">
                                         <attributes>
@@ -154,7 +154,7 @@
                                 <color key="highlightedColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <button opaque="NO" alpha="0.20000000000000001" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Stb-V6-Mz7">
-                                <rect key="frame" x="213" y="754" width="162" height="29"/>
+                                <rect key="frame" x="213.33333333333337" y="754" width="161.66666666666663" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="ZIu-SV-FtK"/>
                                 </constraints>
@@ -321,10 +321,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy4" translatesAutoresizingMaskIntoConstraints="NO" id="Ufb-3r-sdr">
-                                <rect key="frame" x="138" y="1" width="169" height="93"/>
+                                <rect key="frame" x="136" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ZcF-jB-fyb">
-                                <rect key="frame" x="0.0" y="-13" width="173" height="85"/>
+                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo Copy Small" translatesAutoresizingMaskIntoConstraints="NO" id="iUg-vp-lcF">
                                 <rect key="frame" x="28" y="55" width="138" height="84"/>
@@ -5275,7 +5275,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zqs-mm-DSx">
-                                <rect key="frame" x="83.333333333333314" y="279.66666666666669" width="233" height="30"/>
+                                <rect key="frame" x="83" y="279" width="233" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="233" id="6wS-ri-0zK"/>
                                     <constraint firstAttribute="height" constant="30" id="olS-CH-Vhh"/>
@@ -5387,10 +5387,10 @@ Use the Add To List Button on a pin to begin</string>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Confirm Password Icon" translatesAutoresizingMaskIntoConstraints="NO" id="TsK-Ym-ReJ">
-                                <rect key="frame" x="48" y="286" width="16" height="16"/>
+                                <rect key="frame" x="49" y="287" width="14" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="16" id="alR-AO-aCo"/>
-                                    <constraint firstAttribute="height" constant="16" id="qSp-F5-QpP"/>
+                                    <constraint firstAttribute="width" constant="14" id="alR-AO-aCo"/>
+                                    <constraint firstAttribute="height" constant="15" id="qSp-F5-QpP"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By clicking here, you have read and agree to our" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7M9-xu-fwC">
@@ -5510,7 +5510,7 @@ Use the Add To List Button on a pin to begin</string>
                             <constraint firstItem="nwz-fj-J1B" firstAttribute="leading" secondItem="2W8-G5-vfi" secondAttribute="trailing" constant="20" id="dvQ-ZY-Aao"/>
                             <constraint firstItem="Mnv-VT-Gle" firstAttribute="trailing" secondItem="ZlZ-BJ-nXO" secondAttribute="trailing" constant="44" id="e1v-nH-9Vw"/>
                             <constraint firstItem="TsK-Ym-ReJ" firstAttribute="centerX" secondItem="WJ5-Z3-Mo6" secondAttribute="centerX" id="eV3-El-dYJ"/>
-                            <constraint firstItem="zqs-mm-DSx" firstAttribute="leading" secondItem="TsK-Ym-ReJ" secondAttribute="trailing" constant="19" id="eqo-E4-k2A"/>
+                            <constraint firstItem="zqs-mm-DSx" firstAttribute="leading" secondItem="TsK-Ym-ReJ" secondAttribute="trailing" constant="20" id="eqo-E4-k2A"/>
                             <constraint firstItem="tCe-Jw-rjE" firstAttribute="top" secondItem="Mnv-VT-Gle" secondAttribute="top" constant="87" id="evM-1R-vYn"/>
                             <constraint firstItem="GV0-8O-Ghi" firstAttribute="leading" secondItem="WJ5-Z3-Mo6" secondAttribute="trailing" constant="17" id="fsU-So-uTJ"/>
                             <constraint firstItem="nwz-fj-J1B" firstAttribute="centerY" secondItem="2W8-G5-vfi" secondAttribute="centerY" id="gKX-Sf-Cfh"/>
@@ -6220,7 +6220,7 @@ Use the Add To List Button on a pin to begin</string>
         <image name="Combined Shape2" width="14" height="15"/>
         <image name="Combined Shape3-1" width="18" height="18"/>
         <image name="Confirm Button Purple" width="78" height="79"/>
-        <image name="Confirm Password Icon" width="15" height="16"/>
+        <image name="Confirm Password Icon" width="14" height="15"/>
         <image name="Confirmation Bubble" width="346" height="497"/>
         <image name="Confirmation Photo Blue" width="252" height="167"/>
         <image name="Confirmation Photo Purple" width="252" height="167"/>
@@ -6238,7 +6238,7 @@ Use the Add To List Button on a pin to begin</string>
         <image name="Exit Search Button" width="12" height="12"/>
         <image name="Expand Arrow" width="14" height="8"/>
         <image name="Facebook Pop Up" width="375" height="171"/>
-        <image name="Fill 7 Copy 2" width="173" height="85"/>
+        <image name="Fill 7 Copy 2" width="171" height="216"/>
         <image name="Fill 7 Copy 3" width="194" height="269"/>
         <image name="Filters Icon" width="24" height="20"/>
         <image name="Filters Pop Up" width="348" height="320"/>
