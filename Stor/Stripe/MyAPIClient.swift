@@ -66,6 +66,7 @@ class MyAPIClient: NSObject, STPEphemeralKeyProvider {
                 case .failure(let error):
                     completion(nil, error)
                 }
+                
         }
     }
 
