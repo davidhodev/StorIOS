@@ -29,7 +29,7 @@ class MyAPIClient: NSObject, STPEphemeralKeyProvider {
                         completion: @escaping STPErrorBlock) {
         let url = self.baseURL.appendingPathComponent("charge")
         var params: [String: Any] = [
-            "customer": "cus_DFTwhBQpPUaawt", //CUSTOMER ID
+            "customer": "cus_DNQS1XWhEOYwXD", //CUSTOMER ID
             "amount": amount,
             "currency": "USD"
         ]
@@ -56,7 +56,7 @@ class MyAPIClient: NSObject, STPEphemeralKeyProvider {
         let url = self.baseURL.appendingPathComponent("ephemeral_keys")
         Alamofire.request(url, method: .post, parameters: [
             "api_version": apiVersion,
-            "customer_id": "cus_DFTwhBQpPUaawt"
+            "customer_id": "cus_DNQS1XWhEOYwXD" // CUstomer ID
             ])
             .validate(statusCode: 200..<300)
             .responseJSON { responseJSON in

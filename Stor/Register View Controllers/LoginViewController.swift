@@ -99,7 +99,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         emailText.delegate = self
         passwordText.delegate = self
         
-        self.hideKeyboardWhenTappedAround()
         
     }
     
