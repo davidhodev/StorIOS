@@ -15,6 +15,11 @@ class ChangeEmailViewController: UIViewController {
     var oldEmailChecked = false
     
 
+    @IBOutlet weak var bottomImageOutlet: UIImageView!
+    @IBOutlet weak var bottomLineOutlet: UIImageView!
+    @IBOutlet weak var topLineOutlet: UIImageView!
+    @IBOutlet weak var topImageOutlet: UIImageView!
+    
     @IBOutlet weak var oldEmail: UITextField! // Means Confirm Email
     @IBOutlet weak var newEmail: UITextField!
     @IBOutlet weak var submitButton: UIButton!
@@ -68,6 +73,10 @@ class ChangeEmailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bottomLineOutlet.image = UIImage(named: "Line 2")
+        topLineOutlet.image = UIImage(named: "Line 2")
+        bottomImageOutlet.image = UIImage(named: "Redo Email")
+        topImageOutlet.image = UIImage(named: "Combined Shape1")
         self.hideKeyboardWhenTappedAround()
 
         // Do any additional setup after loading the view.
