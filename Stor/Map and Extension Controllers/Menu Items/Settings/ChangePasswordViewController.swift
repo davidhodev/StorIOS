@@ -199,7 +199,7 @@ class ChangePasswordViewController: UIViewController {
                                     self.oldPassword.isSecureTextEntry = true
                                     self.newPassword.isSecureTextEntry = true
                                     self.confirmPassword.isSecureTextEntry = true
-                                    self.eyeOutlet.setImage(#imageLiteral(resourceName: "crossed out eye"), for: .normal)
+                                    self.eyeOutlet.setImage(#imageLiteral(resourceName: "Combined Shape3-1"), for: .normal)
                                     self.nextButtonOutlet.isEnabled = false
                                     self.submitButton.isEnabled = true
                                 }) { (_) in
