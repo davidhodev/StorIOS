@@ -23,7 +23,6 @@
 		5750DA1320E1ACC700D43734 /* confirmDropoffProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750DA1220E1ACC700D43734 /* confirmDropoffProviderViewController.swift */; };
 		5750DA1520E1ACEF00D43734 /* confirmPickupProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750DA1420E1ACEF00D43734 /* confirmPickupProviderViewController.swift */; };
 		576A007420B7798100F2174D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576A007320B7798100F2174D /* MenuViewController.swift */; };
-		576B5C5C211CB8890023E10C /* LoadingAnimationv5.gif in Resources */ = {isa = PBXBuildFile; fileRef = 576B5C5B211CB85F0023E10C /* LoadingAnimationv5.gif */; };
 		576FD1E120CB3F72004BA549 /* MyProfileViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576FD1E020CB3F72004BA549 /* MyProfileViewController3.swift */; };
 		576FD1E220CB5276004BA549 /* Dosis-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964D720C0CB9E002F4EBD /* Dosis-Medium.otf */; };
 		578EF160211B649C005B57B2 /* LoadingAnimationv6.gif in Resources */ = {isa = PBXBuildFile; fileRef = 578EF15F211B6494005B57B2 /* LoadingAnimationv6.gif */; };
@@ -31,6 +30,7 @@
 		57E32704211A4FE7003D0F0D /* CustomLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E32703211A4FE7003D0F0D /* CustomLoader.swift */; };
 		57E32706211A54A9003D0F0D /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E32705211A54A9003D0F0D /* UIImage+Gif.swift */; };
 		57EC509320C22389009F470F /* newConnectPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC509220C22389009F470F /* newConnectPopUp.swift */; };
+		57F25AF0211E046300F3940F /* LoadingAnimationv7.gif in Resources */ = {isa = PBXBuildFile; fileRef = 57F25AEF211E046300F3940F /* LoadingAnimationv7.gif */; };
 		D1947A535ADA1F3F00BCE349 /* Pods_StorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBFB92A62876BD03C1FEC207 /* Pods_StorUITests.framework */; };
 		DB0515CE20C7551700386902 /* myListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0515CD20C7551700386902 /* myListCustomCell.swift */; };
 		DB0515D020C84F9A00386902 /* myListUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0515CF20C84F9A00386902 /* myListUser.swift */; };
@@ -112,13 +112,13 @@
 		5750DA1220E1ACC700D43734 /* confirmDropoffProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmDropoffProviderViewController.swift; sourceTree = "<group>"; };
 		5750DA1420E1ACEF00D43734 /* confirmPickupProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmPickupProviderViewController.swift; sourceTree = "<group>"; };
 		576A007320B7798100F2174D /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		576B5C5B211CB85F0023E10C /* LoadingAnimationv5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = LoadingAnimationv5.gif; path = "../../XCode Snippets/LoadingAnimationv5.gif"; sourceTree = "<group>"; };
 		576FD1E020CB3F72004BA549 /* MyProfileViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController3.swift; sourceTree = "<group>"; };
 		578EF15F211B6494005B57B2 /* LoadingAnimationv6.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LoadingAnimationv6.gif; sourceTree = "<group>"; };
 		579D4C5E20BF2D6E0082A86F /* AnnotationPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationPopUp.swift; sourceTree = "<group>"; };
 		57E32703211A4FE7003D0F0D /* CustomLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoader.swift; sourceTree = "<group>"; };
 		57E32705211A54A9003D0F0D /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		57EC509220C22389009F470F /* newConnectPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newConnectPopUp.swift; sourceTree = "<group>"; };
+		57F25AEF211E046300F3940F /* LoadingAnimationv7.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LoadingAnimationv7.gif; sourceTree = "<group>"; };
 		83BDF3AB5601AEFA4206A668 /* Pods_StorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C530B0B3D761ADC198DC431 /* Pods-StorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorUITests/Pods-StorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1E7F08C17DB4E0B3B6B7EEE /* Pods-StorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorTests/Pods-StorTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -369,8 +369,8 @@
 				DBE2A9CB20D1AA0800E052A1 /* Provider View Controllers */,
 				04F158A220BCA4C500AAC2ED /* hexagonProfilePicture.swift */,
 				DBE905E520924BAE000F13DB /* Assets.xcassets */,
+				57F25AEF211E046300F3940F /* LoadingAnimationv7.gif */,
 				578EF15F211B6494005B57B2 /* LoadingAnimationv6.gif */,
-				576B5C5B211CB85F0023E10C /* LoadingAnimationv5.gif */,
 				DBE905E720924BAE000F13DB /* LaunchScreen.storyboard */,
 				DBE905EA20924BAE000F13DB /* Info.plist */,
 				DB4B5E9220B339A20050F66E /* GoogleService-Info.plist */,
@@ -536,11 +536,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				576B5C5C211CB8890023E10C /* LoadingAnimationv5.gif in Resources */,
 				DB4964DE20C0CC73002F4EBD /* Dosis-Bold.otf in Resources */,
 				57499DD820D199CC005112E2 /* Dosis-Light.otf in Resources */,
 				DBE905E920924BAE000F13DB /* LaunchScreen.storyboard in Resources */,
 				DB4964DD20C0CBA9002F4EBD /* Dosis-Regular.otf in Resources */,
+				57F25AF0211E046300F3940F /* LoadingAnimationv7.gif in Resources */,
 				DB4B5E9320B339A30050F66E /* GoogleService-Info.plist in Resources */,
 				DBE905E620924BAE000F13DB /* Assets.xcassets in Resources */,
 				578EF160211B649C005B57B2 /* LoadingAnimationv6.gif in Resources */,
