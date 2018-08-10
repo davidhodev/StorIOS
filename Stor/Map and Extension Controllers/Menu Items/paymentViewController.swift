@@ -75,19 +75,6 @@ class paymentViewController: UIViewController, STPAddCardViewControllerDelegate{
 //            userReference.child("stripe").child("sources").child(stripeSourceID).updateChildValues(["token": token])
         }
         self.dismiss(animated: true, completion: nil)
-//        submitTokenToBackend(token, completion: { (error: Error?) in
-//            if let error = error {
-//                // Show error in add card view controller
-//                completion(error)
-//            }
-//            else {
-//                // Notify add card view controller that token creation was handled successfully
-//                completion(nil)
-//
-//                // Dismiss add card view controller
-//                dismiss(animated: true)
-//            }
-//        })
     }
     
     func getCards() {
@@ -97,10 +84,15 @@ class paymentViewController: UIViewController, STPAddCardViewControllerDelegate{
             databaseReference.root.child("Users").child(user.uid).child("stripe").child("sources").observe(.value, with: { (snapshot) in
                 for userChild in snapshot.children{
                     let userSnapshot = userChild as! DataSnapshot
-                    print("USER SNAPSHOT: ", userSnapshot)
                     let dictionary = userSnapshot.value as? [String: Any]
-                    print("LAST 4", dictionary!["last4"]!)
-                    print("BRAND", dictionary!["brand"]!)
+                    if let brand = dictionary!["brand"]{
+                        print("BRAND", brand)
+                    }
+                    if let last4 = dictionary!["last4"]{
+                        print("LAST 4", last4)
+                    }
+                    
+                    
                 }
             })
         }
