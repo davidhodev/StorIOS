@@ -23,6 +23,7 @@
 		5750DA1320E1ACC700D43734 /* confirmDropoffProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750DA1220E1ACC700D43734 /* confirmDropoffProviderViewController.swift */; };
 		5750DA1520E1ACEF00D43734 /* confirmPickupProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750DA1420E1ACEF00D43734 /* confirmPickupProviderViewController.swift */; };
 		576A007420B7798100F2174D /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576A007320B7798100F2174D /* MenuViewController.swift */; };
+		576B5C5C211CB8890023E10C /* LoadingAnimationv5.gif in Resources */ = {isa = PBXBuildFile; fileRef = 576B5C5B211CB85F0023E10C /* LoadingAnimationv5.gif */; };
 		576FD1E120CB3F72004BA549 /* MyProfileViewController3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576FD1E020CB3F72004BA549 /* MyProfileViewController3.swift */; };
 		576FD1E220CB5276004BA549 /* Dosis-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964D720C0CB9E002F4EBD /* Dosis-Medium.otf */; };
 		578EF160211B649C005B57B2 /* LoadingAnimationv6.gif in Resources */ = {isa = PBXBuildFile; fileRef = 578EF15F211B6494005B57B2 /* LoadingAnimationv6.gif */; };
@@ -111,6 +112,7 @@
 		5750DA1220E1ACC700D43734 /* confirmDropoffProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmDropoffProviderViewController.swift; sourceTree = "<group>"; };
 		5750DA1420E1ACEF00D43734 /* confirmPickupProviderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmPickupProviderViewController.swift; sourceTree = "<group>"; };
 		576A007320B7798100F2174D /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		576B5C5B211CB85F0023E10C /* LoadingAnimationv5.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = LoadingAnimationv5.gif; path = "../../XCode Snippets/LoadingAnimationv5.gif"; sourceTree = "<group>"; };
 		576FD1E020CB3F72004BA549 /* MyProfileViewController3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController3.swift; sourceTree = "<group>"; };
 		578EF15F211B6494005B57B2 /* LoadingAnimationv6.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LoadingAnimationv6.gif; sourceTree = "<group>"; };
 		579D4C5E20BF2D6E0082A86F /* AnnotationPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationPopUp.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 				04F158A220BCA4C500AAC2ED /* hexagonProfilePicture.swift */,
 				DBE905E520924BAE000F13DB /* Assets.xcassets */,
 				578EF15F211B6494005B57B2 /* LoadingAnimationv6.gif */,
+				576B5C5B211CB85F0023E10C /* LoadingAnimationv5.gif */,
 				DBE905E720924BAE000F13DB /* LaunchScreen.storyboard */,
 				DBE905EA20924BAE000F13DB /* Info.plist */,
 				DB4B5E9220B339A20050F66E /* GoogleService-Info.plist */,
@@ -533,6 +536,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				576B5C5C211CB8890023E10C /* LoadingAnimationv5.gif in Resources */,
 				DB4964DE20C0CC73002F4EBD /* Dosis-Bold.otf in Resources */,
 				57499DD820D199CC005112E2 /* Dosis-Light.otf in Resources */,
 				DBE905E920924BAE000F13DB /* LaunchScreen.storyboard in Resources */,
