@@ -21,6 +21,7 @@ struct cellDataForSettings {
 class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
+    @IBOutlet weak var myProfileButtonOutlet: UIButton!
     @IBOutlet var mySettingsView: UIView!
     @IBOutlet weak var settingsTableView: UITableView!
     //exit button back to the map
@@ -66,6 +67,10 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
         tableViewDataSettings = [cellDataForSettings(title: "Notifications", subtitles: ["Push Notifications"]), cellDataForSettings(title: "Privacy Settings", subtitles: ["Allow Stor to Contact you for news and promotions", ""])]
+        myProfileButtonOutlet.layer.borderWidth = 0.5
+        myProfileButtonOutlet.layer.cornerRadius = 30
+        let borderColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha: 0.8)
+        myProfileButtonOutlet.layer.borderColor = borderColor.cgColor
     }
     
     @objc func backSwipe(){
@@ -134,6 +139,10 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         else{
             cell.storContactControl.isOn = false
         }
+        //COLOR OF BORDER
+        cell.layer.borderWidth = 0.5
+        let borderColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha: 0.8)
+        cell.layer.borderColor = borderColor.cgColor
         return cell
     }
     

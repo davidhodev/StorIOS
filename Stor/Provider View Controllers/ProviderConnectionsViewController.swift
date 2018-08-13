@@ -296,6 +296,10 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
         providerTableView.backgroundColor = UIColor.clear
         cell.backgroundColor = UIColor.white
         cell.layer.cornerRadius = 27
+        //COLOR OF BORDER
+        cell.layer.borderWidth = 0.5
+        let borderColor = UIColor(red:0.58, green:0.41, blue:0.90, alpha: 0.8)
+        cell.layer.borderColor = borderColor.cgColor
         return cell
     }
 

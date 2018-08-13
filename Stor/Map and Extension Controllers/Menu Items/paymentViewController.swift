@@ -29,6 +29,14 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = paymentTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! myPaymentCustomTableViewCell
+        
+        let paymentMethod = myPaymentUsers[indexPath.section]
+        cell.last4label.text = paymentMethod.last4 //Change to attributed text
+        
+        paymentTableView.backgroundColor = UIColor.clear
+        cell.backgroundColor = UIColor.white
+        cell.layer.cornerRadius = 30
+        
         let shadowPath2 = UIBezierPath(roundedRect: cell.bounds, cornerRadius: 25)
         cell.layer.masksToBounds = false
         cell.layer.shadowColor = UIColor.black.cgColor
@@ -36,25 +44,70 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.layer.shadowOpacity = 0.025
         cell.layer.shadowPath = shadowPath2.cgPath
         cell.layer.cornerRadius = 27
-        //need to add cell view
-        // cell.cellView.layer.cornerRadius = 27
+        cell.cellView.layer.cornerRadius = 27
+        
+        //COLOR OF BORDER
+        cell.layer.borderWidth = 0.5
+        let borderColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha: 0.8)
+        cell.layer.borderColor = borderColor.cgColor
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (indexPath == selectedIndexPath)
+        {
+            return myPaymentCustomTableViewCell.expandedHeight
+        }
+        else {
+            return myPaymentCustomTableViewCell.defaultHeight
+        }
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    
+    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.clear
+    }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         //add in empty message hiding
         if myPaymentUsers.count == 0{
             self.paymentTableView.isHidden = true
+            // Label
             exists = false
         }
         else{
             self.paymentTableView.isHidden = false
+            // Label
             exists = true
         }
         return myPaymentUsers.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let previousIndexPath = selectedIndexPath
+        if indexPath == selectedIndexPath{
+            selectedIndexPath = nil
+        }
+        else{
+            selectedIndexPath = indexPath
+        }
+        
+        var indexPaths: Array<IndexPath> = []
+        if let previous = previousIndexPath{
+            indexPaths += [previous]
+        }
+        if let current = selectedIndexPath{
+            indexPaths += [current]
+        }
+        if indexPaths.count > 0{
+            tableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
+        }
     }
     
     @IBAction func ExitButton(_ sender: UIButton) {
@@ -72,6 +125,11 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         getCards()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.paymentTableView.reloadData()
+        self.reloadInputViews()
     }
     
     @objc func backSwipe(){
@@ -116,7 +174,6 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
 //            userReference.child("stripe").child("sources").child(stripeSourceID).updateChildValues(["token": token])
         }
         self.dismiss(animated: true, completion: nil)
-        //reload table view
     }
     
     func getCards() {
@@ -126,15 +183,24 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
             databaseReference.root.child("Users").child(user.uid).child("stripe").child("sources").observe(.value, with: { (snapshot) in
                 for userChild in snapshot.children{
                     let userSnapshot = userChild as! DataSnapshot
+                    let paymentMethod = myPaymentUser()
+                    
+                    
                     let dictionary = userSnapshot.value as? [String: Any]
                     if let brand = dictionary!["brand"]{
-                        print("BRAND", brand)
+                        paymentMethod.brand = brand as! String
+                        print(brand)
                     }
                     if let last4 = dictionary!["last4"]{
-                        print("LAST 4", last4)
+                        paymentMethod.last4 = last4 as! String
                     }
-                    
-                    
+                    if let cardID = dictionary!["id"]{
+                        paymentMethod.cardID = cardID as! String
+                    }
+                    self.myPaymentUsers.append(paymentMethod)
+                }
+                DispatchQueue.main.async {
+                    self.paymentTableView.reloadData()
                 }
             })
         }

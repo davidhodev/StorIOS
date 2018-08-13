@@ -95,23 +95,64 @@ exports.addPaymentSource = functions.database
           });
         });
 
+exports.changePaymentSource = functions.database.ref('/Users/{userId}/stripe/defaultCard').onWrite((change, context) => {
+      const source = change.after.val();
+      console.log(source)
+      if (source === null){
+        return "hi1";
+      }
+      return admin.database().ref(`/Users/${context.params.userId}/stripe/stripe_customer_id`).once('value').then((snapshot) => {
+        return snapshot.val();
+      }).then((customer) => {
+        return stripe.customers.update(customer, {default_source: source});
+      }).then((response) => {
+        return;
+      }, (error) => {
+        return change.after.ref.parent.child('error').set(userFacingMessage(error));
+      }).then(() => {
+        return reportError(error, {user: context.params.userId});
+      });
+  });
 
-exports.changeDefaultPayment = functions.database.ref('/Users/{userId}/stripe/sources/{pushId}/default').onWrite(event => {
-          const source = event.data.val();
-          if (source === null) return null;
-          return admin.database().ref(`/Users/${event.params.userId}/stripe/stripe_customer_id`).once('value').then(snapshot => {
-            return snapshot.val();
-          }).then(customer => {
-            return stripe.customers.update(customer, {default_source: source});
-          }).then(response => {
-              return event.data.adminRef.parent.set(response);
-            }, error => {
-              return event.data.adminRef.parent.child('error').set(userFacingMessage(error)).then(() => {
-                // return reportError(error, {user: event.params.userId});
-                consolg.log(error, {user: event.params.userId});
-              });
-          });
+
+exports.deletePaymentSource = functions.database.ref('/Users/{userId}/stripe/sources/{pushId}').onWrite((change, context) => {
+        const source = change.after.val();
+        console.log(source)
+        if (source === null){
+          return "hi1";
+        }
+        return admin.database().ref(`/Users/${context.params.userId}/stripe/stripe_customer_id`).once('value').then((snapshot) => {
+          return snapshot.val();
+        }).then((customer) => {
+          return stripe.customers.update(customer, {default_source: source});
+        }).then((response) => {
+          return;
+        }, (error) => {
+          return change.after.ref.parent.child('error').set(userFacingMessage(error));
+        }).then(() => {
+          return reportError(error, {user: context.params.userId});
         });
+    });         //
+        //   // Attach an asynchronous callback to read the data at our posts reference
+        //   ref.on("value", function(snapshot) {
+        //     console.log(snapshot.val());
+        //     cardID = snapshot.val();
+        //   }, function (errorObject) {
+        //     console.log("The read failed: " + errorObject.code);
+        //   });
+        //   return admin.database().ref(`/Users/${event.params.userId}/stripe/stripe_customer_id`).once('value').then(snapshot => {
+        //     return snapshot.val();
+        //   }).then(customer => {
+        //     return stripe.customers.update(customer, {default_source: cardID});
+        //   }).then(response => {
+        //       return event.data.adminRef.parent.set(response);
+        //     }, error => {
+        //       return event.data.adminRef.parent.child('error').set(userFacingMessage(error)).then(() => {
+        //         // return reportError(error, {user: event.params.userId});
+        //         consolg.log(error, {user: event.params.userId});
+        //       });
+        //   });
+        // });
         // stripe.customers.update('cus_V9T7vofUbZMqpv', {
         //   source: 'tok_visa',
         // });
