@@ -12,8 +12,8 @@ class myPaymentCustomTableViewCell: UITableViewCell {
     
     var isObserving = false;
  
-    @IBOutlet weak var last4label: UILabel!
     @IBOutlet weak var cellView: myPaymentCustomTableViewCell!
+    @IBOutlet weak var last4label: UILabel!
     static var opened = false
     
     class var expandedHeight: CGFloat {get { return 190 }}
@@ -22,6 +22,7 @@ class myPaymentCustomTableViewCell: UITableViewCell {
     
     
     func checkHeight(){
+        print(frame.size.height)
         cellView.isHidden = (frame.size.height < myPaymentCustomTableViewCell.expandedHeight)
     }
     
