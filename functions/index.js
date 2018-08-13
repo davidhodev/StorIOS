@@ -94,6 +94,30 @@ exports.addPaymentSource = functions.database
             return reportError(error, {user: context.params.userId});
           });
         });
+
+
+exports.changeDefaultPayment = functions.database.ref('/Users/{userId}/stripe/sources/{pushId}/default').onWrite(event => {
+          const source = event.data.val();
+          if (source === null) return null;
+          return admin.database().ref(`/Users/${event.params.userId}/stripe/stripe_customer_id`).once('value').then(snapshot => {
+            return snapshot.val();
+          }).then(customer => {
+            return stripe.customers.update(customer, {default_source: source});
+          }).then(response => {
+              return event.data.adminRef.parent.set(response);
+            }, error => {
+              return event.data.adminRef.parent.child('error').set(userFacingMessage(error)).then(() => {
+                // return reportError(error, {user: event.params.userId});
+                consolg.log(error, {user: event.params.userId});
+              });
+          });
+        });
+        // stripe.customers.update('cus_V9T7vofUbZMqpv', {
+        //   source: 'tok_visa',
+        // });
+
+
+
 // exports.addPaymentSource = functions.database
 //     .ref('/Users/{user.uid}/stripe/sources/{pushID}/token').onWrite((change, context) => {
 //       const source = change.after.val();
@@ -249,13 +273,3 @@ exports.makeUppercase = functions.database.ref('/messages/{pushId}/original')
       // Setting an "uppercase" sibling in the Realtime Database returns a Promise.
       return snapshot.ref.parent.child('uppercase').set(uppercase);
     });
-
-
-
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
