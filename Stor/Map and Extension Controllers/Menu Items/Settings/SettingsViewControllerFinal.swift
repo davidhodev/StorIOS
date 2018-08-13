@@ -67,10 +67,6 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
         tableViewDataSettings = [cellDataForSettings(title: "Notifications", subtitles: ["Push Notifications"]), cellDataForSettings(title: "Privacy Settings", subtitles: ["Allow Stor to Contact you for news and promotions", ""])]
-        myProfileButtonOutlet.layer.borderWidth = 0.5
-        myProfileButtonOutlet.layer.cornerRadius = 30
-        let borderColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha: 0.8)
-        myProfileButtonOutlet.layer.borderColor = borderColor.cgColor
     }
     
     @objc func backSwipe(){
@@ -141,7 +137,7 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         }
         //COLOR OF BORDER
         cell.layer.borderWidth = 0.5
-        let borderColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha: 0.8)
+        let borderColor = UIColor(red:0.27, green:0.47, blue:0.91, alpha: 0.3)
         cell.layer.borderColor = borderColor.cgColor
         return cell
     }
