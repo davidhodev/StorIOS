@@ -16,6 +16,8 @@
 		57174304210A731300B9D729 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57174303210A731300B9D729 /* ChangeEmailViewController.swift */; };
 		57174306210A737B00B9D729 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57174305210A737B00B9D729 /* ChangePasswordViewController.swift */; };
 		571E1B5620C08C0D00E68CA5 /* SettingsViewControllerFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571E1B5520C08C0D00E68CA5 /* SettingsViewControllerFinal.swift */; };
+		5743DA722121F8AD00C3C487 /* myPaymentCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5743DA712121F8AD00C3C487 /* myPaymentCustomTableViewCell.swift */; };
+		5743DA742121FC1200C3C487 /* myPaymentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5743DA732121FC1200C3C487 /* myPaymentUser.swift */; };
 		57499DD820D199CC005112E2 /* Dosis-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964DC20C0CBA0002F4EBD /* Dosis-Light.otf */; };
 		574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574FC7BE20B5F484001AE44F /* TermsViewController.swift */; };
 		5750DA0F20E1A7D000D43734 /* confirmDropoffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750DA0E20E1A7D000D43734 /* confirmDropoffViewController.swift */; };
@@ -106,6 +108,8 @@
 		57174303210A731300B9D729 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
 		57174305210A737B00B9D729 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		571E1B5520C08C0D00E68CA5 /* SettingsViewControllerFinal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerFinal.swift; sourceTree = "<group>"; };
+		5743DA712121F8AD00C3C487 /* myPaymentCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myPaymentCustomTableViewCell.swift; sourceTree = "<group>"; };
+		5743DA732121FC1200C3C487 /* myPaymentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myPaymentUser.swift; sourceTree = "<group>"; };
 		574FC7BE20B5F484001AE44F /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		5750DA0E20E1A7D000D43734 /* confirmDropoffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmDropoffViewController.swift; sourceTree = "<group>"; };
 		5750DA1020E1AA0600D43734 /* confirmPickupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = confirmPickupViewController.swift; path = Settings/confirmPickupViewController.swift; sourceTree = "<group>"; };
@@ -297,6 +301,8 @@
 				5750DA0E20E1A7D000D43734 /* confirmDropoffViewController.swift */,
 				5750DA1020E1AA0600D43734 /* confirmPickupViewController.swift */,
 				041640B920BDF775001BE560 /* paymentViewController.swift */,
+				5743DA712121F8AD00C3C487 /* myPaymentCustomTableViewCell.swift */,
+				5743DA732121FC1200C3C487 /* myPaymentUser.swift */,
 				571E1B5920C0C6AB00E68CA5 /* Settings */,
 				DBE2A9C820D1A99300E052A1 /* registerProviderViewController.swift */,
 			);
@@ -707,6 +713,7 @@
 				DB6B0EF920BC7830000CC1D9 /* Annotations.swift in Sources */,
 				DBBB9C5720FE712500CACEFE /* Buttons.swift in Sources */,
 				57174304210A731300B9D729 /* ChangeEmailViewController.swift in Sources */,
+				5743DA742121FC1200C3C487 /* myPaymentUser.swift in Sources */,
 				DBBB9C5920FE712500CACEFE /* MyAPIClient.swift in Sources */,
 				DBE2A9D320D2E71F00E052A1 /* providerPotentialUser.swift in Sources */,
 				57EC509320C22389009F470F /* newConnectPopUp.swift in Sources */,
@@ -732,6 +739,7 @@
 				DBF8BCBE20B7887D0080EEF5 /* globalVariablesViewController.swift in Sources */,
 				57174306210A737B00B9D729 /* ChangePasswordViewController.swift in Sources */,
 				576A007420B7798100F2174D /* MenuViewController.swift in Sources */,
+				5743DA722121F8AD00C3C487 /* myPaymentCustomTableViewCell.swift in Sources */,
 				DB0515CE20C7551700386902 /* myListCustomCell.swift in Sources */,
 				DBE6A8B420C5C28B005B1A75 /* settingsCustomTableViewCell.swift in Sources */,
 				57E32706211A54A9003D0F0D /* UIImage+Gif.swift in Sources */,

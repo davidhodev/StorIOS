@@ -11,17 +11,61 @@ import Stripe
 import FirebaseDatabase
 import FirebaseAuth
 
-class paymentViewController: UIViewController, STPAddCardViewControllerDelegate{
-
+class paymentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, STPAddCardViewControllerDelegate{
     
     
+    @IBOutlet weak var paymentTableView: UITableView!
     @IBOutlet var myPaymentView: UIView!
+    
+    var myPaymentUsers = [myPaymentUser]()
+    var exists: Bool?
+    var selectedIndexPath: IndexPath?
+    
+    var selectorIndex: Int?
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = paymentTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! myPaymentCustomTableViewCell
+        let shadowPath2 = UIBezierPath(roundedRect: cell.bounds, cornerRadius: 25)
+        cell.layer.masksToBounds = false
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 8)
+        cell.layer.shadowOpacity = 0.025
+        cell.layer.shadowPath = shadowPath2.cgPath
+        cell.layer.cornerRadius = 27
+        //need to add cell view
+        // cell.cellView.layer.cornerRadius = 27
+        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        //add in empty message hiding
+        if myPaymentUsers.count == 0{
+            self.paymentTableView.isHidden = true
+            exists = false
+        }
+        else{
+            self.paymentTableView.isHidden = false
+            exists = true
+        }
+        return myPaymentUsers.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
     
     @IBAction func ExitButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        //table view
+        paymentTableView.delegate = self
+        paymentTableView.dataSource = self
+        
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.right
         myPaymentView.addGestureRecognizer(swipeLeft)
@@ -72,7 +116,11 @@ class paymentViewController: UIViewController, STPAddCardViewControllerDelegate{
 //            userReference.child("stripe").child("sources").child(stripeSourceID).updateChildValues(["token": token])
         }
         self.dismiss(animated: true, completion: nil)
+<<<<<<< HEAD
         
+=======
+        //reload table view
+>>>>>>> a59b8828f029acf15e582cada0a6c931bab5a96a
     }
     
     func getCards() {

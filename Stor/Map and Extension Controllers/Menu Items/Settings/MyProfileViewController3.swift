@@ -154,12 +154,11 @@ class MyProfileViewController3: UIViewController {
                     }
                     else{
                         //add in segue to regular phone page CALLED "toChangePhone"
+                        self.performSegue(withIdentifier: "toChangePhone2", sender: self)
                     }
                 }
             })
         }
- 
-//        self.performSegue(withIdentifier: <#T##String#>, sender: <#T##Any?#>)
     }
     
 //    @IBAction func phoneDoneEditingButton(_ sender: UIButton) {
