@@ -108,8 +108,8 @@ NS_ASSUME_NONNULL_BEGIN
             
             CGFloat topOfScreenOffset = CGRectGetMinY(responderFrame);
             CGFloat topOfKeyboardOffset = CGRectGetMinY(responderFrame) - CGRectGetMinY(keyboardFrameInScrollViewCoords);
-            offset.y = ((topOfScreenOffset + topOfKeyboardOffset) / 2) - scrollView.contentInset.top;
-            offset.y = MAX(offset.y, -scrollView.contentInset.top);
+//            offset.y = ((topOfScreenOffset + topOfKeyboardOffset) / 2) - scrollView.contentInset.top;
+//            offset.y = MAX(offset.y, -scrollView.contentInset.top);
             scrollView.contentOffset = offset;
         }
     }

@@ -42,15 +42,10 @@ class paymentViewController: UIViewController, STPAddCardViewControllerDelegate{
     @IBAction func addPayment(_ sender: Any) {
         let addCardViewController = STPAddCardViewController()
         addCardViewController.delegate = self
+        
+            
+        
 
-        // Present add card view controller
-//        self.present(addCardViewController, animated: true, completion: nil)
-        
-//        let navigationController = UINavigationController(rootViewController: addCardViewController)
-//        present(navigationController, animated: true)
-//
-        
-//        let vc:BrowseProductsViewController = BrowseProductsViewController()
         let navigationControllee = UINavigationController(rootViewController: addCardViewController)
         self.navigationController?.pushViewController(navigationControllee, animated: true)
         self.present(navigationControllee, animated: true) {
@@ -63,6 +58,8 @@ class paymentViewController: UIViewController, STPAddCardViewControllerDelegate{
         // Dismiss add card view controller
         dismiss(animated: true)
     }
+    
+    
     func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
         print("MY TOKEN", token)
         let stripeSourceID = NSUUID().uuidString
