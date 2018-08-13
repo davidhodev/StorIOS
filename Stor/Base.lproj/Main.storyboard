@@ -978,7 +978,7 @@
         <!--Change Phone View Controller-->
         <scene sceneID="vya-Zf-9as">
             <objects>
-                <viewController id="yeD-w5-Q7U" customClass="ChangePhoneViewController" sceneMemberID="viewController">
+                <viewController id="yeD-w5-Q7U" customClass="changePhoneViewController" customModule="Stor" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y7W-gE-IRf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1032,7 +1032,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <action selector="submitPressed:" destination="yeD-w5-Q7U" eventType="touchUpInside" id="kG9-Iy-PHM"/>
+                                    <action selector="submitPressed:" destination="yeD-w5-Q7U" eventType="touchUpInside" id="WCG-iK-xNu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbv-Ow-mH4" userLabel="Next Button">
@@ -1043,6 +1043,9 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
                                 <state key="normal" image="Button Arrow -&gt; Large"/>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="yeD-w5-Q7U" eventType="touchUpInside" id="sT0-MP-Zfm"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJo-uT-9MR">
                                 <rect key="frame" x="33" y="77" width="162" height="24"/>
@@ -1128,8 +1131,12 @@
                         <viewLayoutGuide key="safeArea" id="EKK-cO-cdv"/>
                     </view>
                     <connections>
+                        <outlet property="lineOutlet" destination="YnI-iS-DXX" id="pOW-9m-lWV"/>
+                        <outlet property="nextButtonOutlet" destination="lbv-Ow-mH4" id="LZb-ay-ZmM"/>
                         <outlet property="phoneField" destination="cHv-W5-maF" id="eY5-5F-nJy"/>
-                        <outlet property="submitButton" destination="XIe-U0-kQP" id="JQs-yg-HSx"/>
+                        <outlet property="phoneIcon" destination="4Zg-aZ-UUZ" id="Uxu-aO-uVE"/>
+                        <outlet property="phoneVerificationIcon" destination="RjE-VE-tfo" id="FOX-Tl-QBW"/>
+                        <outlet property="submitButton" destination="XIe-U0-kQP" id="FTR-oH-dvQ"/>
                         <outlet property="verificationField" destination="rJO-D0-3Km" id="lnQ-9i-ZYb"/>
                     </connections>
                 </viewController>
@@ -1355,7 +1362,7 @@
                         <segue destination="LpJ-QN-Cpg" kind="presentation" identifier="toChangePassword" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="zrw-M1-L01"/>
                         <segue destination="SmC-ON-Tyu" kind="presentation" identifier="toChangeEmail" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="Xg7-pe-req"/>
                         <segue destination="O1n-hC-HNA" kind="presentation" identifier="profileNoPhone" modalPresentationStyle="currentContext" modalTransitionStyle="crossDissolve" id="PFG-lv-y3n"/>
-                        <segue destination="yeD-w5-Q7U" kind="presentation" identifier="toChangePhone" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="XkF-IJ-M5d"/>
+                        <segue destination="yeD-w5-Q7U" kind="presentation" identifier="toChangePhone2" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="ifB-pz-f3t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SEu-Lc-3Ht" userLabel="First Responder" sceneMemberID="firstResponder"/>
