@@ -94,6 +94,71 @@ exports.addPaymentSource = functions.database
             return reportError(error, {user: context.params.userId});
           });
         });
+
+exports.changePaymentSource = functions.database.ref('/Users/{userId}/stripe/defaultCard').onWrite((change, context) => {
+      const source = change.after.val();
+      console.log(source)
+      if (source === null){
+        return "hi1";
+      }
+      return admin.database().ref(`/Users/${context.params.userId}/stripe/stripe_customer_id`).once('value').then((snapshot) => {
+        return snapshot.val();
+      }).then((customer) => {
+        return stripe.customers.update(customer, {default_source: source});
+      }).then((response) => {
+        return;
+      }, (error) => {
+        return change.after.ref.parent.child('error').set(userFacingMessage(error));
+      }).then(() => {
+        return reportError(error, {user: context.params.userId});
+      });
+  });
+
+
+exports.deletePaymentSource = functions.database.ref('/Users/{userId}/stripe/sources/{pushId}').onWrite((change, context) => {
+        const source = change.after.val();
+        console.log(source)
+        if (source === null){
+          return "hi1";
+        }
+        return admin.database().ref(`/Users/${context.params.userId}/stripe/stripe_customer_id`).once('value').then((snapshot) => {
+          return snapshot.val();
+        }).then((customer) => {
+          return stripe.customers.update(customer, {default_source: source});
+        }).then((response) => {
+          return;
+        }, (error) => {
+          return change.after.ref.parent.child('error').set(userFacingMessage(error));
+        }).then(() => {
+          return reportError(error, {user: context.params.userId});
+        });
+    });         //
+        //   // Attach an asynchronous callback to read the data at our posts reference
+        //   ref.on("value", function(snapshot) {
+        //     console.log(snapshot.val());
+        //     cardID = snapshot.val();
+        //   }, function (errorObject) {
+        //     console.log("The read failed: " + errorObject.code);
+        //   });
+        //   return admin.database().ref(`/Users/${event.params.userId}/stripe/stripe_customer_id`).once('value').then(snapshot => {
+        //     return snapshot.val();
+        //   }).then(customer => {
+        //     return stripe.customers.update(customer, {default_source: cardID});
+        //   }).then(response => {
+        //       return event.data.adminRef.parent.set(response);
+        //     }, error => {
+        //       return event.data.adminRef.parent.child('error').set(userFacingMessage(error)).then(() => {
+        //         // return reportError(error, {user: event.params.userId});
+        //         consolg.log(error, {user: event.params.userId});
+        //       });
+        //   });
+        // });
+        // stripe.customers.update('cus_V9T7vofUbZMqpv', {
+        //   source: 'tok_visa',
+        // });
+
+
+
 // exports.addPaymentSource = functions.database
 //     .ref('/Users/{user.uid}/stripe/sources/{pushID}/token').onWrite((change, context) => {
 //       const source = change.after.val();
@@ -249,13 +314,3 @@ exports.makeUppercase = functions.database.ref('/messages/{pushId}/original')
       // Setting an "uppercase" sibling in the Realtime Database returns a Promise.
       return snapshot.ref.parent.child('uppercase').set(uppercase);
     });
-
-
-
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });

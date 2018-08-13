@@ -16,6 +16,8 @@
 		57174304210A731300B9D729 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57174303210A731300B9D729 /* ChangeEmailViewController.swift */; };
 		57174306210A737B00B9D729 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57174305210A737B00B9D729 /* ChangePasswordViewController.swift */; };
 		571E1B5620C08C0D00E68CA5 /* SettingsViewControllerFinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571E1B5520C08C0D00E68CA5 /* SettingsViewControllerFinal.swift */; };
+		5743DA722121F8AD00C3C487 /* myPaymentCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5743DA712121F8AD00C3C487 /* myPaymentCustomTableViewCell.swift */; };
+		5743DA742121FC1200C3C487 /* myPaymentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5743DA732121FC1200C3C487 /* myPaymentUser.swift */; };
 		57499DD820D199CC005112E2 /* Dosis-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = DB4964DC20C0CBA0002F4EBD /* Dosis-Light.otf */; };
 		574FC7BF20B5F484001AE44F /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574FC7BE20B5F484001AE44F /* TermsViewController.swift */; };
 		5750DA0F20E1A7D000D43734 /* confirmDropoffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5750DA0E20E1A7D000D43734 /* confirmDropoffViewController.swift */; };
@@ -30,6 +32,7 @@
 		57E32704211A4FE7003D0F0D /* CustomLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E32703211A4FE7003D0F0D /* CustomLoader.swift */; };
 		57E32706211A54A9003D0F0D /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E32705211A54A9003D0F0D /* UIImage+Gif.swift */; };
 		57EC509320C22389009F470F /* newConnectPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EC509220C22389009F470F /* newConnectPopUp.swift */; };
+		57F25AF0211E046300F3940F /* LoadingAnimationv7.gif in Resources */ = {isa = PBXBuildFile; fileRef = 57F25AEF211E046300F3940F /* LoadingAnimationv7.gif */; };
 		D1947A535ADA1F3F00BCE349 /* Pods_StorUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBFB92A62876BD03C1FEC207 /* Pods_StorUITests.framework */; };
 		DB0515CE20C7551700386902 /* myListCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0515CD20C7551700386902 /* myListCustomCell.swift */; };
 		DB0515D020C84F9A00386902 /* myListUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0515CF20C84F9A00386902 /* myListUser.swift */; };
@@ -105,6 +108,8 @@
 		57174303210A731300B9D729 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
 		57174305210A737B00B9D729 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		571E1B5520C08C0D00E68CA5 /* SettingsViewControllerFinal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerFinal.swift; sourceTree = "<group>"; };
+		5743DA712121F8AD00C3C487 /* myPaymentCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myPaymentCustomTableViewCell.swift; sourceTree = "<group>"; };
+		5743DA732121FC1200C3C487 /* myPaymentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myPaymentUser.swift; sourceTree = "<group>"; };
 		574FC7BE20B5F484001AE44F /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		5750DA0E20E1A7D000D43734 /* confirmDropoffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = confirmDropoffViewController.swift; sourceTree = "<group>"; };
 		5750DA1020E1AA0600D43734 /* confirmPickupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = confirmPickupViewController.swift; path = Settings/confirmPickupViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +122,7 @@
 		57E32703211A4FE7003D0F0D /* CustomLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLoader.swift; sourceTree = "<group>"; };
 		57E32705211A54A9003D0F0D /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 		57EC509220C22389009F470F /* newConnectPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newConnectPopUp.swift; sourceTree = "<group>"; };
+		57F25AEF211E046300F3940F /* LoadingAnimationv7.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = LoadingAnimationv7.gif; sourceTree = "<group>"; };
 		83BDF3AB5601AEFA4206A668 /* Pods_StorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C530B0B3D761ADC198DC431 /* Pods-StorUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorUITests/Pods-StorUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B1E7F08C17DB4E0B3B6B7EEE /* Pods-StorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-StorTests/Pods-StorTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -295,6 +301,8 @@
 				5750DA0E20E1A7D000D43734 /* confirmDropoffViewController.swift */,
 				5750DA1020E1AA0600D43734 /* confirmPickupViewController.swift */,
 				041640B920BDF775001BE560 /* paymentViewController.swift */,
+				5743DA712121F8AD00C3C487 /* myPaymentCustomTableViewCell.swift */,
+				5743DA732121FC1200C3C487 /* myPaymentUser.swift */,
 				571E1B5920C0C6AB00E68CA5 /* Settings */,
 				DBE2A9C820D1A99300E052A1 /* registerProviderViewController.swift */,
 			);
@@ -367,6 +375,7 @@
 				DBE2A9CB20D1AA0800E052A1 /* Provider View Controllers */,
 				04F158A220BCA4C500AAC2ED /* hexagonProfilePicture.swift */,
 				DBE905E520924BAE000F13DB /* Assets.xcassets */,
+				57F25AEF211E046300F3940F /* LoadingAnimationv7.gif */,
 				578EF15F211B6494005B57B2 /* LoadingAnimationv6.gif */,
 				DBE905E720924BAE000F13DB /* LaunchScreen.storyboard */,
 				DBE905EA20924BAE000F13DB /* Info.plist */,
@@ -537,6 +546,7 @@
 				57499DD820D199CC005112E2 /* Dosis-Light.otf in Resources */,
 				DBE905E920924BAE000F13DB /* LaunchScreen.storyboard in Resources */,
 				DB4964DD20C0CBA9002F4EBD /* Dosis-Regular.otf in Resources */,
+				57F25AF0211E046300F3940F /* LoadingAnimationv7.gif in Resources */,
 				DB4B5E9320B339A30050F66E /* GoogleService-Info.plist in Resources */,
 				DBE905E620924BAE000F13DB /* Assets.xcassets in Resources */,
 				578EF160211B649C005B57B2 /* LoadingAnimationv6.gif in Resources */,
@@ -703,6 +713,7 @@
 				DB6B0EF920BC7830000CC1D9 /* Annotations.swift in Sources */,
 				DBBB9C5720FE712500CACEFE /* Buttons.swift in Sources */,
 				57174304210A731300B9D729 /* ChangeEmailViewController.swift in Sources */,
+				5743DA742121FC1200C3C487 /* myPaymentUser.swift in Sources */,
 				DBBB9C5920FE712500CACEFE /* MyAPIClient.swift in Sources */,
 				DBE2A9D320D2E71F00E052A1 /* providerPotentialUser.swift in Sources */,
 				57EC509320C22389009F470F /* newConnectPopUp.swift in Sources */,
@@ -728,6 +739,7 @@
 				DBF8BCBE20B7887D0080EEF5 /* globalVariablesViewController.swift in Sources */,
 				57174306210A737B00B9D729 /* ChangePasswordViewController.swift in Sources */,
 				576A007420B7798100F2174D /* MenuViewController.swift in Sources */,
+				5743DA722121F8AD00C3C487 /* myPaymentCustomTableViewCell.swift in Sources */,
 				DB0515CE20C7551700386902 /* myListCustomCell.swift in Sources */,
 				DBE6A8B420C5C28B005B1A75 /* settingsCustomTableViewCell.swift in Sources */,
 				57E32706211A54A9003D0F0D /* UIImage+Gif.swift in Sources */,

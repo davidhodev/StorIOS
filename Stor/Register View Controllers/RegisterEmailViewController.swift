@@ -36,7 +36,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var confirmPasswordRegisterText: UITextField!
     @IBOutlet weak var phoneVerificationText: UITextField!
     @IBOutlet weak var showTextOutlet: UIButton!
-    var iconClick = true
+    var iconClick: Bool!
     
     @IBOutlet var registerView: UIView!
     @IBOutlet weak var checkBox: VKCheckbox!
@@ -664,7 +664,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        iconClick = false
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.right
         registerView.addGestureRecognizer(swipeLeft)
@@ -845,6 +845,7 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
         if(iconClick == false) {
             confirmPasswordRegisterText.isSecureTextEntry = false
             passwordRegisterText.isSecureTextEntry = false
+            iconClick = true
             UIView.animate(withDuration: 0.1, animations: {
                 self.showTextOutlet.alpha = 0
             }) { (_) in
@@ -856,11 +857,11 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                 })
                 }
             }
-            iconClick = true
         }
         else{
             confirmPasswordRegisterText.isSecureTextEntry = true
             passwordRegisterText.isSecureTextEntry = true
+            iconClick = false
             UIView.animate(withDuration: 0.1, animations: {
                 self.showTextOutlet.alpha = 0
                 }) { (_) in
@@ -872,7 +873,6 @@ class RegisterEmailViewController: UIViewController, UITextFieldDelegate {
                     })
                 }
             }
-        iconClick = false
         }
     }
 }

@@ -15,48 +15,58 @@ class ChangeEmailViewController: UIViewController {
     var oldEmailChecked = false
     
 
+    @IBOutlet weak var bottomImageOutlet: UIImageView!
+    @IBOutlet weak var bottomLineOutlet: UIImageView!
+    @IBOutlet weak var topLineOutlet: UIImageView!
+    @IBOutlet weak var topImageOutlet: UIImageView!
+    
     @IBOutlet weak var oldEmail: UITextField! // Means Confirm Email
     @IBOutlet weak var newEmail: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     @IBAction func submitButtonPressed(_ sender: Any) {
         if oldEmail.text! != newEmail.text!{
             // Emails don't match
-            
+            self.bottomLineOutlet.image = UIImage(named: "Line 2Red")
+            self.topLineOutlet.image = UIImage(named: "Line 2Red")
+            self.topImageOutlet.image = UIImage(named: "Mail Icon Red")
+            self.bottomImageOutlet.image = UIImage(named: "RedoEmailRed")
+            self.newEmail.text = ""
+            self.oldEmail.text = ""
+            self.newEmail.attributedPlaceholder = NSAttributedString(string: "Confirm Email Address", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
+            self.oldEmail.attributedPlaceholder = NSAttributedString(string: "Entries do not match", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
         }
-//        if oldEmailChecked == false{
-//            if let user = Auth.auth().currentUser{
-//                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
-//                databaseReference.root.child("Users").child(user.uid).observe(.value, with: { (snapshot) in
-//                    print(snapshot)
-//                    if let dictionary = snapshot.value as? [String: Any]{
-//                        let oldEmailString = String(describing: dictionary["email"]!)
-//                        if oldEmailString == self.oldEmail.text!{
-//                            self.oldEmailChecked = true
-//                            // Animate other text Fields
-//                        }
-//                    }
-//                })
-//            }
-//        }
         else{
             if let user = Auth.auth().currentUser{
-                let registerDataValues = ["email": newEmail.text ] as [String : Any]
+                let registerDataValues = ["email": oldEmail.text ] as [String : Any]
                 let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
                 let userReference = databaseReference.root.child("Users").child((user.uid))
                 
-                user.updateEmail(to: newEmail.text!, completion: { (error) in
+                user.updateEmail(to: oldEmail.text!, completion: { (error) in
                     if error != nil{
                         print(error)
                         // Means invalid Email
                         // Do stuff to turn red / make error changes
+                        self.bottomLineOutlet.image = UIImage(named: "Line 2Red")
+                        self.topLineOutlet.image = UIImage(named: "Line 2Red")
+                        self.topImageOutlet.image = UIImage(named: "Mail Icon Red")
+                        self.bottomImageOutlet.image = UIImage(named: "RedoEmailRed")
+                        self.newEmail.text = ""
+                        self.oldEmail.text = ""
+                        self.newEmail.attributedPlaceholder = NSAttributedString(string: "Confirm Email Address", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
+                        self.oldEmail.attributedPlaceholder = NSAttributedString(string: "Invalid email entered", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
                     }
                     else{
                         userReference.updateChildValues(registerDataValues, withCompletionBlock: { (error, registerDataValues) in
                             if error != nil{
                                 print(error)
+                                let alert = UIAlertController(title: "Uh-oh", message: "Please try again. Servers may be busy.", preferredStyle: .alert)
+                                self.present(alert, animated: true, completion:{
+                                    alert.view.superview?.isUserInteractionEnabled = true
+                                    alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+                                })
                                 return
-                                //ERROR CHANGING CHILD VALUE EMAIL IN DATABASE
                             }
+                            self.dismiss(animated: true, completion: nil)
                         })
                     }
                 })
@@ -64,10 +74,17 @@ class ChangeEmailViewController: UIViewController {
         }
     }
     
-    
+    @objc func alertControllerBackgroundTapped()
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bottomLineOutlet.image = UIImage(named: "Line 2")
+        topLineOutlet.image = UIImage(named: "Line 2")
+        bottomImageOutlet.image = UIImage(named: "RedoEmail")
+        topImageOutlet.image = UIImage(named: "Combined Shape1")
         self.hideKeyboardWhenTappedAround()
 
         // Do any additional setup after loading the view.
