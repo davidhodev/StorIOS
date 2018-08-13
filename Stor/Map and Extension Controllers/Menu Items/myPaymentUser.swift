@@ -12,5 +12,7 @@ import FirebaseDatabase
 import CoreLocation
 
 class myPaymentUser: NSObject {
-    
+    var brand: String?
+    var last4: String?
+    var cardID: String?
 }
