@@ -206,6 +206,6 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     
     }
-    
+    //TYPE TYPE TYPE TYOWOTODJDFDDBXNMDMDJ TYPE FJFJS
     
 }
