@@ -98,7 +98,7 @@ NS_ASSUME_NONNULL_BEGIN
         scrollView.scrollIndicatorInsets = scrollIndicatorInsets;
         
         if (!lastResponder || bottomIntersection.size.height <= 0) {
-            scrollView.contentOffset = CGPointMake(0, -scrollView.contentInset.top);
+//            scrollView.contentOffset = CGPointMake(0, -scrollView.contentInset.top);
         }
         else {
             // the keyboard is visible
@@ -110,7 +110,7 @@ NS_ASSUME_NONNULL_BEGIN
             CGFloat topOfKeyboardOffset = CGRectGetMinY(responderFrame) - CGRectGetMinY(keyboardFrameInScrollViewCoords);
 //            offset.y = ((topOfScreenOffset + topOfKeyboardOffset) / 2) - scrollView.contentInset.top;
 //            offset.y = MAX(offset.y, -scrollView.contentInset.top);
-            scrollView.contentOffset = offset;
+//            scrollView.contentOffset = offset;
         }
     }
     

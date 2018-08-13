@@ -213,6 +213,11 @@ class myStorageViewController: UIViewController, UITableViewDataSource, UITableV
 
             storageTableView.backgroundColor = UIColor.clear
             cell.backgroundColor = UIColor.white
+        
+            //COLOR OF BORDER
+            cell.layer.borderWidth = 0.5
+            let borderColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha: 0.8)
+            cell.layer.borderColor = borderColor.cgColor
             return cell
         
     }

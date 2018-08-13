@@ -173,7 +173,10 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             cell.moreImage.image = UIImage(named: "Up Arrow")
         }
         
-    
+        //COLOR OF BORDER
+        cell.layer.borderWidth = 0.5
+        let borderColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha: 0.8)
+        cell.layer.borderColor = borderColor.cgColor
         
         return cell
     }

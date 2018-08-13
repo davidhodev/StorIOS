@@ -147,6 +147,9 @@ class myListingViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.layer.shadowOpacity = 0.025
         cell.layer.shadowPath = shadowPath2.cgPath
         cell.cellView.layer.cornerRadius = 27
+        cell.layer.borderWidth = 0.5
+        let borderColor = UIColor(red:0.58, green:0.41, blue:0.90, alpha: 0.8)
+        cell.layer.borderColor = borderColor.cgColor
         return cell
     }
     

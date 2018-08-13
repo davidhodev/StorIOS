@@ -48,7 +48,7 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         //COLOR OF BORDER
         cell.layer.borderWidth = 0.5
-        let borderColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha:1.0)
+        let borderColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha: 0.8)
         cell.layer.borderColor = borderColor.cgColor
         return cell
     }
@@ -206,6 +206,5 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     
     }
-    //TYPE TYPE TYPE TYOWOTODJDFDDBXNMDMDJ TYPE FJFJS
     
 }
