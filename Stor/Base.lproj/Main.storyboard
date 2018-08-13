@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -53,7 +53,7 @@
                                 <rect key="frame" x="0.0" y="358" width="170" height="300"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy4" translatesAutoresizingMaskIntoConstraints="NO" id="uGy-bx-NSJ">
-                                <rect key="frame" x="136" y="1" width="169" height="93"/>
+                                <rect key="frame" x="138" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy5_2" translatesAutoresizingMaskIntoConstraints="NO" id="U2q-m4-Bqu">
                                 <rect key="frame" x="224" y="82" width="151" height="323"/>
@@ -66,7 +66,7 @@
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ED4-zM-ayk">
-                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
+                                <rect key="frame" x="0.0" y="-13" width="173" height="85"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-Bd-4gJ">
                                 <rect key="frame" x="33.666666666666657" y="392" width="177" height="188"/>
@@ -321,10 +321,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fill7Copy4" translatesAutoresizingMaskIntoConstraints="NO" id="Ufb-3r-sdr">
-                                <rect key="frame" x="136" y="1" width="169" height="93"/>
+                                <rect key="frame" x="138" y="1" width="169" height="93"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fill 7 Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="ZcF-jB-fyb">
-                                <rect key="frame" x="0.0" y="-13" width="171" height="216"/>
+                                <rect key="frame" x="0.0" y="-13" width="173" height="85"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo Copy Small" translatesAutoresizingMaskIntoConstraints="NO" id="iUg-vp-lcF">
                                 <rect key="frame" x="28" y="55" width="138" height="84"/>
@@ -3781,87 +3781,76 @@ Use the Add To List Button on a pin to begin</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xWy-sX-99G" customClass="myPaymentCustomTableViewCell" customModule="Stor" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="312" height="60"/>
+                                                    <rect key="frame" x="0.0" y="60" width="312" height="130"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfu-z3-Qw1">
-                                                            <rect key="frame" x="103" y="20" width="69" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOe-ud-Fuu" userLabel="Set as Primary">
+                                                            <rect key="frame" x="26" y="8" width="172" height="42"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="42" id="STW-nh-nIK"/>
+                                                                <constraint firstAttribute="width" constant="172" id="q04-v3-f8U"/>
+                                                            </constraints>
+                                                            <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
+                                                            <state key="normal" image="Set Primary Button"/>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set as Primary Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WT3-UN-cPZ">
+                                                            <rect key="frame" x="78" y="19" width="120" height="21"/>
+                                                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                                                            <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C2z-Ar-I2P" userLabel="Credit Card Img">
-                                                            <rect key="frame" x="22" y="12" width="46" height="36"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QnW-mY-Wij" userLabel="Delete Card">
+                                                            <rect key="frame" x="26" y="68" width="123" height="42"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="46" id="l4s-oJ-oeM"/>
-                                                                <constraint firstAttribute="height" constant="36" id="weE-OQ-lV3"/>
+                                                                <constraint firstAttribute="width" constant="123" id="Uai-O5-ZIM"/>
+                                                                <constraint firstAttribute="height" constant="42" id="pwy-5f-1iF"/>
                                                             </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTk-b6-LXW">
-                                                            <rect key="frame" x="162" y="20" width="42" height="21"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
+                                                            <state key="normal" image="Delete Card"/>
+                                                        </button>
+                                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbU-vN-phI">
+                                                            <rect key="frame" x="78" y="79" width="71" height="21"/>
+                                                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                                                            <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="C2z-Ar-I2P" firstAttribute="top" secondItem="xWy-sX-99G" secondAttribute="top" constant="12" id="TYn-9r-HnX"/>
-                                                        <constraint firstAttribute="bottom" secondItem="C2z-Ar-I2P" secondAttribute="bottom" constant="12" id="b9E-26-ukG"/>
-                                                        <constraint firstAttribute="width" constant="312" id="vNM-G5-fjV"/>
-                                                        <constraint firstItem="C2z-Ar-I2P" firstAttribute="leading" secondItem="xWy-sX-99G" secondAttribute="leading" constant="22" id="vSZ-fR-igS"/>
+                                                        <constraint firstItem="NbU-vN-phI" firstAttribute="centerY" secondItem="QnW-mY-Wij" secondAttribute="centerY" id="8HE-3L-mXZ"/>
+                                                        <constraint firstItem="NbU-vN-phI" firstAttribute="leading" secondItem="QnW-mY-Wij" secondAttribute="trailing" constant="-71" id="KY0-DC-QOY"/>
+                                                        <constraint firstItem="WT3-UN-cPZ" firstAttribute="centerY" secondItem="ZOe-ud-Fuu" secondAttribute="centerY" id="MAo-um-wJj"/>
+                                                        <constraint firstItem="QnW-mY-Wij" firstAttribute="leading" secondItem="ZOe-ud-Fuu" secondAttribute="leading" id="YSw-Ob-LIg"/>
+                                                        <constraint firstAttribute="height" constant="130" id="cKg-Db-pyc"/>
+                                                        <constraint firstItem="ZOe-ud-Fuu" firstAttribute="leading" secondItem="xWy-sX-99G" secondAttribute="leading" constant="26" id="cS7-eO-tfd"/>
+                                                        <constraint firstItem="QnW-mY-Wij" firstAttribute="top" secondItem="ZOe-ud-Fuu" secondAttribute="bottom" constant="18" id="n2x-b1-g9Z"/>
+                                                        <constraint firstItem="WT3-UN-cPZ" firstAttribute="leading" secondItem="ZOe-ud-Fuu" secondAttribute="trailing" constant="-120" id="qZh-Wy-64U"/>
+                                                        <constraint firstAttribute="width" constant="312" id="sLi-u3-ZaL"/>
+                                                        <constraint firstItem="ZOe-ud-Fuu" firstAttribute="top" secondItem="xWy-sX-99G" secondAttribute="top" constant="8" id="y07-1N-Hbn"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOe-ud-Fuu" userLabel="Set as Primary">
-                                                    <rect key="frame" x="26" y="68" width="172" height="42"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="42" id="STW-nh-nIK"/>
-                                                        <constraint firstAttribute="width" constant="172" id="q04-v3-f8U"/>
-                                                    </constraints>
-                                                    <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
-                                                    <state key="normal" image="Set Primary Button"/>
-                                                    <connections>
-                                                        <action selector="setAsPrimaryPressed:" destination="CEF-w8-ebf" eventType="touchUpInside" id="yXv-KY-NA4"/>
-                                                    </connections>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set as Primary Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WT3-UN-cPZ">
-                                                    <rect key="frame" x="78" y="79" width="120" height="21"/>
-                                                    <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
-                                                    <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfu-z3-Qw1">
+                                                    <rect key="frame" x="103" y="19" width="41.666666666666657" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QnW-mY-Wij" userLabel="Delete Card">
-                                                    <rect key="frame" x="26" y="128" width="123" height="42"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C2z-Ar-I2P" userLabel="Credit Card Img">
+                                                    <rect key="frame" x="22" y="11" width="46" height="36"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="123" id="Uai-O5-ZIM"/>
-                                                        <constraint firstAttribute="height" constant="42" id="pwy-5f-1iF"/>
+                                                        <constraint firstAttribute="width" constant="46" id="l4s-oJ-oeM"/>
+                                                        <constraint firstAttribute="height" constant="36" id="weE-OQ-lV3"/>
                                                     </constraints>
-                                                    <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
-                                                    <state key="normal" image="Delete Card"/>
-                                                    <connections>
-                                                        <action selector="deleteCardPressed:" destination="CEF-w8-ebf" eventType="touchUpInside" id="cWk-1F-oY0"/>
-                                                    </connections>
-                                                </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbU-vN-phI">
-                                                    <rect key="frame" x="78" y="139" width="71" height="21"/>
-                                                    <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
-                                                    <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                </imageView>
                                             </subviews>
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
-                                                <constraint firstItem="WT3-UN-cPZ" firstAttribute="leading" secondItem="ZOe-ud-Fuu" secondAttribute="trailing" constant="-120" id="6aW-gz-meZ"/>
-                                                <constraint firstItem="ZOe-ud-Fuu" firstAttribute="leading" secondItem="RuU-XB-Bu6" secondAttribute="leading" constant="26" id="HXL-CP-CNe"/>
-                                                <constraint firstItem="NbU-vN-phI" firstAttribute="centerY" secondItem="QnW-mY-Wij" secondAttribute="centerY" id="Ndu-Zx-9gF"/>
-                                                <constraint firstAttribute="bottom" secondItem="xWy-sX-99G" secondAttribute="bottom" constant="129.66666666666666" id="S1a-ui-y8q"/>
-                                                <constraint firstItem="WT3-UN-cPZ" firstAttribute="centerY" secondItem="ZOe-ud-Fuu" secondAttribute="centerY" id="WpV-7V-e35"/>
-                                                <constraint firstItem="ZOe-ud-Fuu" firstAttribute="top" secondItem="xWy-sX-99G" secondAttribute="bottom" constant="8" id="YkN-cJ-ccy"/>
-                                                <constraint firstItem="QnW-mY-Wij" firstAttribute="top" secondItem="ZOe-ud-Fuu" secondAttribute="bottom" constant="18" id="aYZ-Av-fUS"/>
+                                                <constraint firstItem="xWy-sX-99G" firstAttribute="top" secondItem="RuU-XB-Bu6" secondAttribute="top" constant="60" id="7fn-yW-MnB"/>
+                                                <constraint firstItem="C2z-Ar-I2P" firstAttribute="leading" secondItem="RuU-XB-Bu6" secondAttribute="leading" constant="22" id="Q3z-DX-vpb"/>
+                                                <constraint firstItem="C2z-Ar-I2P" firstAttribute="top" secondItem="RuU-XB-Bu6" secondAttribute="top" constant="11" id="hzL-yg-azF"/>
+                                                <constraint firstItem="Cfu-z3-Qw1" firstAttribute="top" secondItem="RuU-XB-Bu6" secondAttribute="top" constant="19" id="j6u-Rj-6eM"/>
                                                 <constraint firstItem="xWy-sX-99G" firstAttribute="leading" secondItem="RuU-XB-Bu6" secondAttribute="leading" id="kuf-xO-DvQ"/>
-                                                <constraint firstItem="QnW-mY-Wij" firstAttribute="leading" secondItem="ZOe-ud-Fuu" secondAttribute="leading" id="sIt-4c-Mbv"/>
-                                                <constraint firstItem="NbU-vN-phI" firstAttribute="leading" secondItem="QnW-mY-Wij" secondAttribute="trailing" constant="-71" id="tgg-7Y-DcM"/>
+                                                <constraint firstItem="Cfu-z3-Qw1" firstAttribute="leading" secondItem="C2z-Ar-I2P" secondAttribute="trailing" constant="35" id="pst-EQ-LyP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -4532,7 +4521,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdK-rQ-mYB">
-                                <rect key="frame" x="279" y="605" width="60" height="65"/>
+                                <rect key="frame" x="0.0" y="605" width="60" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="M4V-Zr-rQq"/>
                                     <constraint firstAttribute="width" constant="60" id="MKj-Ib-ESF"/>
@@ -4543,7 +4532,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhx-9f-mvD">
-                                <rect key="frame" x="279" y="685" width="60" height="65"/>
+                                <rect key="frame" x="0.0" y="685" width="60" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="6GI-Oc-3ZE"/>
                                     <constraint firstAttribute="height" constant="65" id="uho-kZ-G0r"/>
@@ -4569,7 +4558,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LPh-AA-fL1">
-                                <rect key="frame" x="16" y="131" width="343" height="280"/>
+                                <rect key="frame" x="0.0" y="131" width="343" height="280"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="9gf-Jr-Bfb"/>
@@ -4589,14 +4578,14 @@ Use the Add To List Button on a pin to begin</string>
                                 </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Search Icon" translatesAutoresizingMaskIntoConstraints="NO" id="EKW-0b-w6x">
-                                <rect key="frame" x="27.666666666666671" y="84" width="20" height="20"/>
+                                <rect key="frame" x="0.0" y="84" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="qgw-qy-jtq"/>
                                     <constraint firstAttribute="width" constant="20" id="rzk-NP-Ev8"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="J0k-Vv-Yda">
-                                <rect key="frame" x="63" y="67" width="251" height="50"/>
+                                <rect key="frame" x="0.0" y="67" width="251" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="251" id="XGg-Ao-Pen"/>
                                     <constraint firstAttribute="height" constant="50" id="d6q-r4-Irt"/>
@@ -4606,7 +4595,7 @@ Use the Add To List Button on a pin to begin</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aQY-nG-TsQ" userLabel="Filters Button">
-                                <rect key="frame" x="309" y="67" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="67" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="L3E-RY-dIg"/>
                                     <constraint firstAttribute="width" constant="50" id="eAh-Jx-hRY"/>
@@ -4618,7 +4607,7 @@ Use the Add To List Button on a pin to begin</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puJ-Ux-Fmn" userLabel="Cancel Button">
-                                <rect key="frame" x="309" y="67" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="67" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="VXo-OA-aiz"/>
                                     <constraint firstAttribute="height" constant="50" id="YpT-dL-62X"/>
@@ -6380,7 +6369,7 @@ Use the Add To List Button on a pin to begin</string>
         <image name="Exit Search Button" width="12" height="12"/>
         <image name="Expand Arrow" width="14" height="8"/>
         <image name="Facebook Pop Up" width="375" height="171"/>
-        <image name="Fill 7 Copy 2" width="171" height="216"/>
+        <image name="Fill 7 Copy 2" width="173" height="85"/>
         <image name="Fill 7 Copy 3" width="194" height="269"/>
         <image name="Filters Icon" width="24" height="20"/>
         <image name="Filters Pop Up" width="348" height="320"/>

@@ -115,8 +115,9 @@ exports.changePaymentSource = functions.database.ref('/Users/{userId}/stripe/def
   });
 
 
-exports.deletePaymentSource = functions.database.ref('/Users/{userId}/stripe/sources/{pushId}').onWrite((change, context) => {
-        const source = change.after.val();
+exports.deleteCard = functions.database
+      .ref('/Users/{userId}/stripe/sources/{pushId}/id').onDelete((change, context) => {
+        const source = change.val();
         console.log(source)
         if (source === null){
           return "hi1";
@@ -124,15 +125,17 @@ exports.deletePaymentSource = functions.database.ref('/Users/{userId}/stripe/sou
         return admin.database().ref(`/Users/${context.params.userId}/stripe/stripe_customer_id`).once('value').then((snapshot) => {
           return snapshot.val();
         }).then((customer) => {
-          return stripe.customers.update(customer, {default_source: source});
+          console.log(customer)
+          return stripe.customers.deleteCard(customer, source);
         }).then((response) => {
           return;
         }, (error) => {
-          return change.after.ref.parent.child('error').set(userFacingMessage(error));
+          return;
         }).then(() => {
-          return reportError(error, {user: context.params.userId});
+          console.log(error);
+          return;
         });
-    });         //
+    });
         //   // Attach an asynchronous callback to read the data at our posts reference
         //   ref.on("value", function(snapshot) {
         //     console.log(snapshot.val());

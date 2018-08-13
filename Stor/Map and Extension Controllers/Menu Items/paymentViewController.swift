@@ -215,5 +215,4 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     }
     
-    
 }
