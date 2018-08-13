@@ -3821,6 +3821,9 @@ Use the Add To List Button on a pin to begin</string>
                                                     </constraints>
                                                     <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
                                                     <state key="normal" image="Set Primary Button"/>
+                                                    <connections>
+                                                        <action selector="setAsPrimaryPressed:" destination="CEF-w8-ebf" eventType="touchUpInside" id="yXv-KY-NA4"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set as Primary Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WT3-UN-cPZ">
                                                     <rect key="frame" x="78" y="79" width="120" height="21"/>
@@ -3836,6 +3839,9 @@ Use the Add To List Button on a pin to begin</string>
                                                     </constraints>
                                                     <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
                                                     <state key="normal" image="Delete Card"/>
+                                                    <connections>
+                                                        <action selector="deleteCardPressed:" destination="CEF-w8-ebf" eventType="touchUpInside" id="cWk-1F-oY0"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbU-vN-phI">
                                                     <rect key="frame" x="78" y="139" width="71" height="21"/>
