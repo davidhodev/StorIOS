@@ -72,6 +72,7 @@ class paymentViewController: UIViewController, STPAddCardViewControllerDelegate{
 //            userReference.child("stripe").child("sources").child(stripeSourceID).updateChildValues(["token": token])
         }
         self.dismiss(animated: true, completion: nil)
+        
     }
     
     func getCards() {
