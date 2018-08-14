@@ -3787,17 +3787,11 @@ Use the Add To List Button on a pin to begin</string>
                                                             <rect key="frame" x="26" y="8" width="172" height="42"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="42" id="STW-nh-nIK"/>
-                                                                <constraint firstAttribute="width" constant="172" id="q04-v3-f8U"/>
+                                                                <constraint firstAttribute="width" constant="172" id="m2e-YI-zF2"/>
                                                             </constraints>
                                                             <inset key="imageEdgeInsets" minX="-20" minY="-10" maxX="-20" maxY="-30"/>
                                                             <state key="normal" image="Set Primary Button"/>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set as Primary Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WT3-UN-cPZ">
-                                                            <rect key="frame" x="78" y="19" width="120" height="21"/>
-                                                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
-                                                            <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QnW-mY-Wij" userLabel="Delete Card">
                                                             <rect key="frame" x="26" y="68" width="123" height="42"/>
                                                             <constraints>
@@ -3811,6 +3805,12 @@ Use the Add To List Button on a pin to begin</string>
                                                             <rect key="frame" x="78" y="79" width="71" height="21"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                                             <color key="textColor" red="0.1647058824" green="0.1529411765" blue="0.34901960780000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set as Primary Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WT3-UN-cPZ">
+                                                            <rect key="frame" x="78" y="19" width="120" height="21"/>
+                                                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
+                                                            <color key="textColor" red="0.16470588235294117" green="0.15294117647058825" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -3829,32 +3829,34 @@ Use the Add To List Button on a pin to begin</string>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfu-z3-Qw1">
-                                                    <rect key="frame" x="103" y="19" width="41.666666666666657" height="21"/>
+                                                    <rect key="frame" x="105" y="19" width="41.666666666666657" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C2z-Ar-I2P" userLabel="Credit Card Img">
-                                                    <rect key="frame" x="22" y="11" width="46" height="36"/>
+                                                    <rect key="frame" x="20" y="15" width="50" height="31"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="46" id="l4s-oJ-oeM"/>
-                                                        <constraint firstAttribute="height" constant="36" id="weE-OQ-lV3"/>
+                                                        <constraint firstAttribute="width" constant="50" id="l4s-oJ-oeM"/>
+                                                        <constraint firstAttribute="height" constant="31" id="weE-OQ-lV3"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <constraints>
                                                 <constraint firstItem="xWy-sX-99G" firstAttribute="top" secondItem="RuU-XB-Bu6" secondAttribute="top" constant="60" id="7fn-yW-MnB"/>
-                                                <constraint firstItem="C2z-Ar-I2P" firstAttribute="leading" secondItem="RuU-XB-Bu6" secondAttribute="leading" constant="22" id="Q3z-DX-vpb"/>
-                                                <constraint firstItem="C2z-Ar-I2P" firstAttribute="top" secondItem="RuU-XB-Bu6" secondAttribute="top" constant="11" id="hzL-yg-azF"/>
+                                                <constraint firstItem="C2z-Ar-I2P" firstAttribute="leading" secondItem="RuU-XB-Bu6" secondAttribute="leading" constant="20" id="Q3z-DX-vpb"/>
+                                                <constraint firstItem="C2z-Ar-I2P" firstAttribute="top" secondItem="RuU-XB-Bu6" secondAttribute="top" constant="15" id="hzL-yg-azF"/>
                                                 <constraint firstItem="Cfu-z3-Qw1" firstAttribute="top" secondItem="RuU-XB-Bu6" secondAttribute="top" constant="19" id="j6u-Rj-6eM"/>
                                                 <constraint firstItem="xWy-sX-99G" firstAttribute="leading" secondItem="RuU-XB-Bu6" secondAttribute="leading" id="kuf-xO-DvQ"/>
                                                 <constraint firstItem="Cfu-z3-Qw1" firstAttribute="leading" secondItem="C2z-Ar-I2P" secondAttribute="trailing" constant="35" id="pst-EQ-LyP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="cellView" destination="xWy-sX-99G" id="n8i-JR-Mkl"/>
+                                            <outlet property="cellView" destination="xWy-sX-99G" id="1L4-mr-a0a"/>
+                                            <outlet property="deleteCardOutlet" destination="QnW-mY-Wij" id="cCh-Rq-QrO"/>
                                             <outlet property="last4label" destination="Cfu-z3-Qw1" id="3uK-kf-IAG"/>
+                                            <outlet property="setAsPrimaryButton" destination="ZOe-ud-Fuu" id="UtX-Ma-kl6"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

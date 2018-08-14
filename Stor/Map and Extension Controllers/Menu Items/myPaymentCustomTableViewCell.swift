@@ -12,8 +12,12 @@ class myPaymentCustomTableViewCell: UITableViewCell {
     
     var isObserving = false;
  
-    @IBOutlet weak var cellView: myPaymentCustomTableViewCell!
+
+    @IBOutlet weak var setAsPrimaryButton: UIButton!
+    @IBOutlet weak var deleteCardOutlet: UIButton!
     @IBOutlet weak var last4label: UILabel!
+
+    @IBOutlet weak var cellView: myPaymentCustomTableViewCell!
     static var opened = false
     
     class var expandedHeight: CGFloat {get { return 190 }}
