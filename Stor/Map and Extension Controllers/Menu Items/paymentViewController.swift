@@ -73,11 +73,27 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @objc func setAsPrimary(_ sender:UIButton){
-        print("Set as primary")
+        let primaryCard = myPaymentUsers[sender.tag].cardID
+        print(primaryCard!, "Set as primary")
+        
+        if let user = Auth.auth().currentUser{
+            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+        databaseReference.root.child("Users").child(user.uid).child("stripe").updateChildValues(["defaultCard": primaryCard!])
+        }
+        paymentTableView.reloadData()
+        
     }
     
     @objc func deleteCard(_ sender:UIButton){
         print("Delete Card")
+        let deleteCard = myPaymentUsers[sender.tag].pushID
+        print(deleteCard!)
+        if let user = Auth.auth().currentUser{
+            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+            databaseReference.root.child("Users").child(user.uid).child("stripe").child("sources").child(deleteCard!).removeValue()
+        }
+        myPaymentUsers.remove(at: sender.tag)
+        paymentTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -153,7 +169,7 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         swipeLeft.direction = UISwipeGestureRecognizerDirection.right
         myPaymentView.addGestureRecognizer(swipeLeft)
         getCards()
-
+        self.reloadInputViews()
         // Do any additional setup after loading the view.
     }
     
@@ -182,9 +198,6 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBAction func addPayment(_ sender: Any) {
         let addCardViewController = STPAddCardViewController()
         addCardViewController.delegate = self
-        
-            
-        
 
         let navigationControllee = UINavigationController(rootViewController: addCardViewController)
         self.navigationController?.pushViewController(navigationControllee, animated: true)
@@ -220,20 +233,23 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
             databaseReference.root.child("Users").child(user.uid).child("stripe").child("sources").observe(.value, with: { (snapshot) in
                 for userChild in snapshot.children{
+                    
                     let userSnapshot = userChild as! DataSnapshot
+                    print("PUSHID", userSnapshot.key)
                     let paymentMethod = myPaymentUser()
                     
+                    paymentMethod.pushID = userSnapshot.key
                     
                     let dictionary = userSnapshot.value as? [String: Any]
                     if let brand = dictionary!["brand"]{
-                        paymentMethod.brand = brand as! String
+                        paymentMethod.brand = brand as? String
                         print(brand)
                     }
                     if let last4 = dictionary!["last4"]{
-                        paymentMethod.last4 = last4 as! String
+                        paymentMethod.last4 = last4 as? String
                     }
                     if let cardID = dictionary!["id"]{
-                        paymentMethod.cardID = cardID as! String
+                        paymentMethod.cardID = cardID as? String
                     }
                     self.myPaymentUsers.append(paymentMethod)
                 }
