@@ -16,7 +16,9 @@ class myPaymentCustomTableViewCell: UITableViewCell {
     @IBOutlet weak var setAsPrimaryButton: UIButton!
     @IBOutlet weak var deleteCardOutlet: UIButton!
     @IBOutlet weak var last4label: UILabel!
-
+    @IBOutlet weak var arrowImageOutlet: UIImageView!
+    @IBOutlet weak var creditCardImageOutlet: UIImageView!
+    
     @IBOutlet weak var cellView: myPaymentCustomTableViewCell!
     static var opened = false
     

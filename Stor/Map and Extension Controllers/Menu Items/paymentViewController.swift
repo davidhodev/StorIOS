@@ -33,8 +33,16 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         // CREDIT TO DREAMSTALE FOR IMAGES https://www.dreamstale.com/purchase-licences/
         
         let paymentMethod = myPaymentUsers[indexPath.section]
-        cell.last4label.text = paymentMethod.last4 //Change to attributed text
+
         
+        // ●
+        var outputLabel = paymentMethod.brand!
+        outputLabel += "    ••••  "
+        outputLabel += paymentMethod.last4!
+        let fontCardLabel:UIFont? = UIFont(name: "Dosis-Medium", size:16)
+        let cardLabelAttString:NSMutableAttributedString = NSMutableAttributedString(string: outputLabel, attributes: [.font: fontCardLabel!])
+        cell.last4label.attributedText = cardLabelAttString
+            
         paymentTableView.backgroundColor = UIColor.clear
         cell.backgroundColor = UIColor.white
         cell.layer.cornerRadius = 30
@@ -48,15 +56,52 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.layer.cornerRadius = 27
         cell.cellView.layer.cornerRadius = 27
         
+        // shadows on credit card image
+        let shadowPath3 = UIBezierPath(roundedRect: cell.creditCardImageOutlet.bounds, cornerRadius: 1)
+        cell.creditCardImageOutlet.layer.masksToBounds = false
+        cell.creditCardImageOutlet.layer.shadowColor = UIColor.black.cgColor
+        cell.creditCardImageOutlet.layer.shadowOffset = CGSize(width: 0, height: 4)
+        cell.creditCardImageOutlet.layer.shadowOpacity = 0.2
+        cell.creditCardImageOutlet.layer.shadowPath = shadowPath3.cgPath
+        
+        
         cell.setAsPrimaryButton.tag = indexPath.section
         cell.setAsPrimaryButton.addTarget(self, action: #selector(self.setAsPrimary(_:)), for: .touchUpInside)
         
         cell.deleteCardOutlet.tag = indexPath.section
         cell.deleteCardOutlet.addTarget(self, action: #selector(self.deleteCard(_:)), for: .touchUpInside)
-        
 
+        if paymentMethod.brand == "Visa"{
+            cell.creditCardImageOutlet.image = UIImage(named: "Visa")
+        }
+        else if paymentMethod.brand == "Mastercard" {
+            cell.creditCardImageOutlet.image = UIImage(named: "MasterCard")
+        }
+        else if paymentMethod.brand == "American Express" {
+            cell.creditCardImageOutlet.image = UIImage(named: "Amex")
+        }
+        else if paymentMethod.brand == "Discover" {
+            cell.creditCardImageOutlet.image = UIImage(named: "Discover")
+        }
+        else if paymentMethod.brand == "Diners Club" {
+            cell.creditCardImageOutlet.image = UIImage(named: "Diners Club")
+        }
+        else if paymentMethod.brand == "JCB" {
+            cell.creditCardImageOutlet.image = UIImage(named: "JCB")
+        }
+        else if paymentMethod.brand == "UnionPay" {
+            cell.creditCardImageOutlet.image = UIImage(named: "UnionPay")
+        }
         
-//        print("CHECK:", paymentMethod.cardID!, defaultCardID)
+        //arrow
+        if (cell.contentView.bounds.size.height.rounded() == 60){
+            cell.arrowImageOutlet.image = UIImage(named: "Expand Arrow")
+        }
+        else
+        {
+            print (cell.contentView.bounds.size.height)
+            cell.arrowImageOutlet.image = UIImage(named: "Up Arrow")
+        }
         
         if paymentMethod.cardID == defaultCardID{
             cell.layer.borderWidth = 0.5
