@@ -184,6 +184,20 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         dismiss(animated: true)
     }
     
+    //delete card code
+    @IBAction func deleteCardPressed(_ sender: UIButton) {
+        
+        
+        
+    }
+    //set as primary, change borders
+    @IBAction func setAsPrimaryPressed(_ sender: UIButton) {
+        
+        
+        
+    }
+    
+    
     
     func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
         print("MY TOKEN", token)
