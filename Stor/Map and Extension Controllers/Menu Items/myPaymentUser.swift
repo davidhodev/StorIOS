@@ -15,4 +15,5 @@ class myPaymentUser: NSObject {
     var brand: String?
     var last4: String?
     var cardID: String?
+    var pushID: String?
 }

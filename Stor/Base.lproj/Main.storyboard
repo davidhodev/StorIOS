@@ -3841,8 +3841,8 @@ Use the Add To List Button on a pin to begin</string>
                                                         <constraint firstAttribute="height" constant="30" id="weE-OQ-lV3"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cBE-RO-NTR">
-                                                    <rect key="frame" x="282" y="26" width="11" height="8"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="18l-pp-ZVd">
+                                                    <rect key="frame" x="273" y="11" width="17" height="18"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
