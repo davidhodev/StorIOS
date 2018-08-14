@@ -54,6 +54,10 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.deleteCardOutlet.tag = indexPath.section
         cell.deleteCardOutlet.addTarget(self, action: #selector(self.deleteCard(_:)), for: .touchUpInside)
         
+
+        
+//        print("CHECK:", paymentMethod.cardID!, defaultCardID)
+        
         if paymentMethod.cardID == defaultCardID{
             cell.layer.borderWidth = 0.5
             let borderColor = UIColor(red:0.3, green:0.85, blue:0.39, alpha: 1)
@@ -222,16 +226,21 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             userReference.child("stripe").child("sources").child(stripeSourceID).updateChildValues(["token":String(describing: token)])
             
+            
 //            userReference.child("stripe").child("sources").child(stripeSourceID).updateChildValues(["token": token])
         }
         self.dismiss(animated: true, completion: nil)
+        print("TOKEN CARD")
+        paymentTableView.reloadData()
     }
     
     func getCards() {
-        
         if let user = Auth.auth().currentUser{
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
             databaseReference.root.child("Users").child(user.uid).child("stripe").child("sources").observe(.value, with: { (snapshot) in
+                // START ACTIVITY MONITOR
+                
+                // FREEZE SCREEN
                 for userChild in snapshot.children{
                     
                     let userSnapshot = userChild as! DataSnapshot
@@ -251,11 +260,19 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                     if let cardID = dictionary!["id"]{
                         paymentMethod.cardID = cardID as? String
                     }
-                    self.myPaymentUsers.append(paymentMethod)
+                    if self.myPaymentUsers.contains(where: {$0.cardID == dictionary!["id"] as? String}) == false{
+                        if dictionary!["last4"] != nil{
+                            print("YO APPENDED")
+                            self.myPaymentUsers.append(paymentMethod)
+                            // SET DEFAULT IF ONE CARD
+                            // END ACTIVITY MONITOR
+                            // END FREEZE SCREEN
+                        }
+                    }
+                    
                 }
-                DispatchQueue.main.async {
-                    self.paymentTableView.reloadData()
-                }
+                
+                self.paymentTableView.reloadData()
             })
         }
     
