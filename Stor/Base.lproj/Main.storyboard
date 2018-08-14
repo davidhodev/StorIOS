@@ -3828,7 +3828,6 @@ Use the Add To List Button on a pin to begin</string>
                                                         <constraint firstItem="ZOe-ud-Fuu" firstAttribute="top" secondItem="xWy-sX-99G" secondAttribute="top" constant="8" id="y07-1N-Hbn"/>
                                                     </constraints>
                                                 </view>
-
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfu-z3-Qw1">
                                                     <rect key="frame" x="105" y="19" width="41.666666666666657" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -3841,6 +3840,10 @@ Use the Add To List Button on a pin to begin</string>
                                                         <constraint firstAttribute="width" constant="50" id="l4s-oJ-oeM"/>
                                                         <constraint firstAttribute="height" constant="31" id="weE-OQ-lV3"/>
                                                     </constraints>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cBE-RO-NTR">
+                                                    <rect key="frame" x="282" y="26" width="11" height="8"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
