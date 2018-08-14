@@ -3842,7 +3842,7 @@ Use the Add To List Button on a pin to begin</string>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="18l-pp-ZVd">
-                                                    <rect key="frame" x="273" y="11" width="17" height="18"/>
+                                                    <rect key="frame" x="269" y="21" width="11" height="8"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
