@@ -12,6 +12,8 @@ class myPaymentCustomTableViewCell: UITableViewCell {
     
     var isObserving = false;
  
+    @IBOutlet weak var setAsPrimaryButton: UIButton!
+    @IBOutlet weak var deleteCardOutlet: UIButton!
     @IBOutlet weak var last4label: UILabel!
     @IBOutlet weak var cellView: myPaymentCustomTableViewCell!
     static var opened = false

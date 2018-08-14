@@ -46,11 +46,25 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.layer.cornerRadius = 27
         cell.cellView.layer.cornerRadius = 27
         
+        cell.setAsPrimaryButton.tag = indexPath.section
+        cell.setAsPrimaryButton.addTarget(self, action: #selector(self.setAsPrimary(_:)), for: .touchUpInside)
+        
+        cell.deleteCardOutlet.tag = indexPath.section
+        cell.deleteCardOutlet.addTarget(self, action: #selector(self.deleteCard(_:)), for: .touchUpInside)
+        
         //COLOR OF BORDER
         cell.layer.borderWidth = 0.5
         let borderColor = UIColor(red:0.27, green:0.47, blue:0.91, alpha: 0.3)
         cell.layer.borderColor = borderColor.cgColor
         return cell
+    }
+    
+    @objc func setAsPrimary(_ sender:UIButton){
+        print("Set as primary")
+    }
+    
+    @objc func deleteCard(_ sender:UIButton){
+        print("Delete Card")
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -160,14 +174,6 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dismiss add card view controller
         dismiss(animated: true)
     }
-    
-    //delete card code
-    @IBAction func deleteCardPressed(_ sender: UIButton) {
-    }
-    //set as primary, change borders
-    @IBAction func setAsPrimaryPressed(_ sender: UIButton) {
-    }
-    
     
     
     func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
