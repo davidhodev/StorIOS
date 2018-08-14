@@ -16,7 +16,7 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var paymentTableView: UITableView!
     @IBOutlet var myPaymentView: UIView!
-    
+    var defaultCardID: String?
     var myPaymentUsers = [myPaymentUser]()
     var exists: Bool?
     var selectedIndexPath: IndexPath?
@@ -29,6 +29,8 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = paymentTableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! myPaymentCustomTableViewCell
+        
+        // CREDIT TO DREAMSTALE FOR IMAGES https://www.dreamstale.com/purchase-licences/
         
         let paymentMethod = myPaymentUsers[indexPath.section]
         cell.last4label.text = paymentMethod.last4 //Change to attributed text
@@ -46,11 +48,36 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.layer.cornerRadius = 27
         cell.cellView.layer.cornerRadius = 27
         
-        //COLOR OF BORDER
-        cell.layer.borderWidth = 0.5
-        let borderColor = UIColor(red:0.27, green:0.47, blue:0.91, alpha: 0.3)
-        cell.layer.borderColor = borderColor.cgColor
-        return cell
+        cell.setAsPrimaryButton.tag = indexPath.section
+        cell.setAsPrimaryButton.addTarget(self, action: #selector(self.setAsPrimary(_:)), for: .touchUpInside)
+        
+        cell.deleteCardOutlet.tag = indexPath.section
+        cell.deleteCardOutlet.addTarget(self, action: #selector(self.deleteCard(_:)), for: .touchUpInside)
+        
+        if paymentMethod.cardID == defaultCardID{
+            cell.layer.borderWidth = 0.5
+            let borderColor = UIColor(red:0.3, green:0.85, blue:0.39, alpha: 1)
+            cell.layer.borderColor = borderColor.cgColor
+            return cell
+        }
+        else{
+        
+            //COLOR OF BORDER
+            cell.layer.borderWidth = 0.5
+            let borderColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha: 0.8)
+            cell.layer.borderColor = borderColor.cgColor
+            return cell
+            
+        }
+        
+    }
+    
+    @objc func setAsPrimary(_ sender:UIButton){
+        print("Set as primary")
+    }
+    
+    @objc func deleteCard(_ sender:UIButton){
+        print("Delete Card")
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -73,6 +100,9 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         view.tintColor = UIColor.clear
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        (cell as! myPaymentCustomTableViewCell).watchFrameChanges()
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         //add in empty message hiding
@@ -128,6 +158,14 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if let user = Auth.auth().currentUser{
+            Database.database().reference().child("Users").child(user.uid).child("stripe").observe(.value, with: { (snapshot) in
+                if let dictionary = snapshot.value as? [String: Any]{
+                    print(dictionary)
+                    self.defaultCardID = dictionary["defaultCard"] as? String
+                }
+            })
+        }
         self.paymentTableView.reloadData()
         self.reloadInputViews()
     }
@@ -160,14 +198,6 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Dismiss add card view controller
         dismiss(animated: true)
     }
-    
-    //delete card code
-    @IBAction func deleteCardPressed(_ sender: UIButton) {
-    }
-    //set as primary, change borders
-    @IBAction func setAsPrimaryPressed(_ sender: UIButton) {
-    }
-    
     
     
     func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {

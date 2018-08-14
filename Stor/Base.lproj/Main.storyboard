@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CGT-cB-mcQ">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -3858,7 +3858,9 @@ Use the Add To List Button on a pin to begin</string>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellView" destination="xWy-sX-99G" id="1L4-mr-a0a"/>
+                                            <outlet property="deleteCardOutlet" destination="QnW-mY-Wij" id="cCh-Rq-QrO"/>
                                             <outlet property="last4label" destination="Cfu-z3-Qw1" id="3uK-kf-IAG"/>
+                                            <outlet property="setAsPrimaryButton" destination="ZOe-ud-Fuu" id="UtX-Ma-kl6"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
