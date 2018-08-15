@@ -266,6 +266,8 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
             indexPaths += [current]
         }
         if indexPaths.count > 0{
+            tableView.beginUpdates()
+            tableView.endUpdates()
             tableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
         }
         paymentTableView.reloadData()
@@ -389,6 +391,18 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                         if dictionary!["last4"] != nil{
                             
                             self.myPaymentUsers.append(paymentMethod)
+                       
+                            databaseReference.root.child("Users").child(user.uid).child("stripe").observeSingleEvent(of: .value, with: { (snapshot) in
+                                if snapshot.hasChild("defaultCard"){
+                                    print("HAS DEFAULT CARD")
+                                    print(dictionary!["id"])
+                                }
+                                else{
+                                databaseReference.root.child("Users").child(user.uid).child("stripe").updateChildValues(["defaultCard": dictionary!["id"]])
+                                }
+                            })
+                            
+                            
                             paymentFilterManager.shared.paymentVC.stopActivityMonitorPayment()
                             // SET DEFAULT IF ONE CARD
                             // END ACTIVITY MONITOR
