@@ -21,6 +21,7 @@ class paymentFilterManager {
 class paymentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, STPAddCardViewControllerDelegate{
     
     
+    @IBOutlet weak var noPaymentsLabel: UILabel!
     @IBOutlet weak var paymentTableView: UITableView!
     @IBOutlet var myPaymentView: UIView!
     var activityMonitor: UIActivityIndicatorView = UIActivityIndicatorView()
@@ -237,12 +238,12 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         //add in empty message hiding
         if myPaymentUsers.count == 0{
             self.paymentTableView.isHidden = true
-            // Label
+            noPaymentsLabel.isHidden = false
             exists = false
         }
         else{
             self.paymentTableView.isHidden = false
-            // Label
+            noPaymentsLabel.isHidden = true
             exists = true
         }
         return myPaymentUsers.count
@@ -276,6 +277,7 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        noPaymentsLabel.isHidden = true
 //        CustomLoader.instance.showLoader()
         //table view
         paymentTableView.delegate = self
