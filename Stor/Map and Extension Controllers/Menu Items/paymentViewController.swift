@@ -74,7 +74,7 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         if paymentMethod.brand == "Visa"{
             cell.creditCardImageOutlet.image = UIImage(named: "Visa")
         }
-        else if paymentMethod.brand == "Mastercard" {
+        else if paymentMethod.brand == "MasterCard" {
             cell.creditCardImageOutlet.image = UIImage(named: "MasterCard")
         }
         else if paymentMethod.brand == "American Express" {
