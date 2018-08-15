@@ -115,16 +115,12 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         }
         // figure out how to animate this rotation transition, need to keep track of the previous cell and animate both and get the cases where one opens and the other closes etc. needs to be easy as to implement in the other tables
         
-        if (cell.bounds.size.height == 60 || cell.cellView.isHidden == true){
-            UIView.animate(withDuration: 0.5 , animations: {
-            cell.moreImage.transform = CGAffineTransform.identity
-            })
+        if (cell.contentView.bounds.size.height == 60){
+            cell.moreImage.image = UIImage(named: "Expand Arrow")
         }
         else
         {
-            UIView.animate(withDuration: 0.5 , animations: {
-                cell.moreImage.transform = CGAffineTransform(rotationAngle: 3.14)
-            })
+            cell.moreImage.image = UIImage(named: "Up Arrow")
         }
 //        if (cell.contentView.isHidden == false) {
 //            UIView.animate(withDuration: 0.5 , animations: {
@@ -184,6 +180,8 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
             indexPaths += [current]
         }
         if indexPaths.count > 0{
+            tableView.beginUpdates()
+            tableView.endUpdates()
             tableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
         }
     }
@@ -197,10 +195,12 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
     // expands and contracts cells when pressed
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath == selectedIndexPath{
+            
             return settingsCustomCellTableViewCell.expandedHeight
         }
         else{
-            return settingsCustomCellTableViewCell.defaultHeight
+            return
+            settingsCustomCellTableViewCell.defaultHeight
         }
     }
     

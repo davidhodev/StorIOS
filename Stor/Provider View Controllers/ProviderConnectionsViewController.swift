@@ -320,6 +320,8 @@ class ProviderConnectionsViewController: UIViewController, UITableViewDelegate, 
             indexPaths += [current]
         }
         if indexPaths.count > 0{
+            tableView.beginUpdates()
+            tableView.endUpdates()
             tableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
         }
     }
