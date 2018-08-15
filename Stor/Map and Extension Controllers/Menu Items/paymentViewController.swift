@@ -11,15 +11,25 @@ import Stripe
 import FirebaseDatabase
 import FirebaseAuth
 
+class paymentFilterManager {
+    
+    static let shared = paymentFilterManager()
+    var paymentVC = paymentViewController()
+}
+
+
 class paymentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, STPAddCardViewControllerDelegate{
     
     
+    @IBOutlet weak var noPaymentsLabel: UILabel!
     @IBOutlet weak var paymentTableView: UITableView!
     @IBOutlet var myPaymentView: UIView!
+    var activityMonitor: UIActivityIndicatorView = UIActivityIndicatorView()
     var defaultCardID: String?
     var myPaymentUsers = [myPaymentUser]()
     var exists: Bool?
     var selectedIndexPath: IndexPath?
+    var counter = 0
     
     var selectorIndex: Int?
     
@@ -36,7 +46,14 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         
         // ●
-        var outputLabel = paymentMethod.brand!
+        var outputLabel = ""
+        if paymentMethod.brand! == "American Express"{
+            outputLabel += "Amex"
+        }
+        else{
+            outputLabel += paymentMethod.brand!
+        }
+        
         outputLabel += "    ••••  "
         outputLabel += paymentMethod.last4!
         let fontCardLabel:UIFont? = UIFont(name: "Dosis-Medium", size:16)
@@ -65,11 +82,7 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.creditCardImageOutlet.layer.shadowPath = shadowPath3.cgPath
         
         
-        cell.setAsPrimaryButton.tag = indexPath.section
-        cell.setAsPrimaryButton.addTarget(self, action: #selector(self.setAsPrimary(_:)), for: .touchUpInside)
         
-        cell.deleteCardOutlet.tag = indexPath.section
-        cell.deleteCardOutlet.addTarget(self, action: #selector(self.deleteCard(_:)), for: .touchUpInside)
 
         if paymentMethod.brand == "Visa"{
             cell.creditCardImageOutlet.image = UIImage(named: "Visa")
@@ -99,18 +112,42 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         else
         {
+            
             print (cell.contentView.bounds.size.height)
             cell.arrowImageOutlet.image = UIImage(named: "Up Arrow")
         }
         
         if paymentMethod.cardID == defaultCardID{
+            cell.setAsPrimaryButton.removeTarget(self, action: #selector(self.setAsPrimary(_:)), for: .touchUpInside)
+            
+            cell.deleteCardOutlet.removeTarget(self, action: #selector(self.deleteCard(_:)), for: .touchUpInside)
+            
+            cell.setAsPrimaryButton.setImage(UIImage(named:"Set Primary Icon Grey"), for: .normal)
+            cell.deleteCardOutlet.setImage(UIImage(named: "Delete Card Icon Grey"), for: .normal)
+            cell.setAsPrimaryButton.tag = indexPath.section
+            cell.deleteCardOutlet.tag = indexPath.section
+            cell.setAsPrimaryButton.addTarget(self, action: #selector(self.primaryForPrimary(_:)), for: .touchUpInside)
+            cell.deleteCardOutlet.addTarget(self, action: #selector(self.deleteForPrimary(_:)), for: .touchUpInside)
+            
             cell.layer.borderWidth = 0.5
             let borderColor = UIColor(red:0.3, green:0.85, blue:0.39, alpha: 1)
             cell.layer.borderColor = borderColor.cgColor
             return cell
         }
         else{
-        
+            cell.setAsPrimaryButton.removeTarget(self, action: #selector(self.primaryForPrimary(_:)), for: .touchUpInside)
+            
+            cell.deleteCardOutlet.removeTarget(self, action: #selector(self.deleteForPrimary(_:)), for: .touchUpInside)
+            
+            
+            cell.setAsPrimaryButton.setImage(UIImage(named:"Set Primary Button"), for: .normal)
+            cell.deleteCardOutlet.setImage(UIImage(named: "Delete Card"), for: .normal)
+            cell.setAsPrimaryButton.tag = indexPath.section
+            cell.setAsPrimaryButton.addTarget(self, action: #selector(self.setAsPrimary(_:)), for: .touchUpInside)
+            
+            cell.deleteCardOutlet.tag = indexPath.section
+            cell.deleteCardOutlet.addTarget(self, action: #selector(self.deleteCard(_:)), for: .touchUpInside)
+            
             //COLOR OF BORDER
             cell.layer.borderWidth = 0.5
             let borderColor = UIColor(red:0.00, green:0.48, blue:1.00, alpha: 0.8)
@@ -123,7 +160,6 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @objc func setAsPrimary(_ sender:UIButton){
         let primaryCard = myPaymentUsers[sender.tag].cardID
-        print(primaryCard!, "Set as primary")
         
         if let user = Auth.auth().currentUser{
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
@@ -137,13 +173,38 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("Delete Card")
         let deleteCard = myPaymentUsers[sender.tag].pushID
         print(deleteCard!)
-        if let user = Auth.auth().currentUser{
-            let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
-            databaseReference.root.child("Users").child(user.uid).child("stripe").child("sources").child(deleteCard!).removeValue()
+        if myPaymentUsers[sender.tag].cardID! != defaultCardID!{
+            if let user = Auth.auth().currentUser{
+                let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
+                databaseReference.root.child("Users").child(user.uid).child("stripe").child("sources").child(deleteCard!).removeValue()
+            }
+            myPaymentUsers.remove(at: sender.tag)
+            paymentTableView.reloadData()
         }
-        myPaymentUsers.remove(at: sender.tag)
-        paymentTableView.reloadData()
     }
+    
+    @objc func primaryForPrimary(_ sender:UIButton){
+        let alert = UIAlertController(title: "Uh-oh", message: "This card is already set as your default card", preferredStyle: .alert)
+        self.present(alert, animated: true, completion:{
+            alert.view.superview?.isUserInteractionEnabled = true
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+        })
+    }
+    
+    @objc func deleteForPrimary(_ sender:UIButton){
+        let alert = UIAlertController(title: "Uh-oh", message: "You can't delete your default card. Please switch your default card before deleting", preferredStyle: .alert)
+        self.present(alert, animated: true, completion:{
+            alert.view.superview?.isUserInteractionEnabled = true
+            alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
+        })
+        print("Delete for Primary")
+    }
+    
+    @objc func alertControllerBackgroundTapped()
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if (indexPath == selectedIndexPath)
@@ -167,18 +228,22 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         (cell as! myPaymentCustomTableViewCell).watchFrameChanges()
+        
     }
+    
+    
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         //add in empty message hiding
         if myPaymentUsers.count == 0{
             self.paymentTableView.isHidden = true
-            // Label
+            noPaymentsLabel.isHidden = false
             exists = false
         }
         else{
             self.paymentTableView.isHidden = false
-            // Label
+            noPaymentsLabel.isHidden = true
             exists = true
         }
         return myPaymentUsers.count
@@ -203,6 +268,8 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         if indexPaths.count > 0{
             tableView.reloadRows(at: indexPaths, with: UITableViewRowAnimation.automatic)
         }
+        paymentTableView.reloadData()
+        self.reloadInputViews()
     }
     
     @IBAction func ExitButton(_ sender: UIButton) {
@@ -210,10 +277,11 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        noPaymentsLabel.isHidden = true
+//        CustomLoader.instance.showLoader()
         //table view
         paymentTableView.delegate = self
         paymentTableView.dataSource = self
-        
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.right
         myPaymentView.addGestureRecognizer(swipeLeft)
@@ -222,17 +290,27 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if (self.isViewLoaded == false){
+            CustomLoader.instance.showLoader()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+//        CustomLoader.instance.hideLoader()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         if let user = Auth.auth().currentUser{
             Database.database().reference().child("Users").child(user.uid).child("stripe").observe(.value, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: Any]{
-                    print(dictionary)
                     self.defaultCardID = dictionary["defaultCard"] as? String
+                    self.paymentTableView.reloadData()
+                    self.reloadInputViews()
                 }
             })
         }
-        self.paymentTableView.reloadData()
-        self.reloadInputViews()
+        
     }
     
     @objc func backSwipe(){
@@ -263,7 +341,7 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
-        print("MY TOKEN", token)
+        paymentFilterManager.shared.paymentVC.activityMonitorPayment()
         let stripeSourceID = NSUUID().uuidString
         if let user = Auth.auth().currentUser{
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
@@ -281,6 +359,8 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func getCards() {
         if let user = Auth.auth().currentUser{
+            
+            
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
             databaseReference.root.child("Users").child(user.uid).child("stripe").child("sources").observe(.value, with: { (snapshot) in
                 // START ACTIVITY MONITOR
@@ -289,7 +369,7 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                 for userChild in snapshot.children{
                     
                     let userSnapshot = userChild as! DataSnapshot
-                    print("PUSHID", userSnapshot.key)
+                    
                     let paymentMethod = myPaymentUser()
                     
                     paymentMethod.pushID = userSnapshot.key
@@ -297,7 +377,7 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                     let dictionary = userSnapshot.value as? [String: Any]
                     if let brand = dictionary!["brand"]{
                         paymentMethod.brand = brand as? String
-                        print(brand)
+                      
                     }
                     if let last4 = dictionary!["last4"]{
                         paymentMethod.last4 = last4 as? String
@@ -307,8 +387,9 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                     }
                     if self.myPaymentUsers.contains(where: {$0.cardID == dictionary!["id"] as? String}) == false{
                         if dictionary!["last4"] != nil{
-                            print("YO APPENDED")
+                            
                             self.myPaymentUsers.append(paymentMethod)
+                            paymentFilterManager.shared.paymentVC.stopActivityMonitorPayment()
                             // SET DEFAULT IF ONE CARD
                             // END ACTIVITY MONITOR
                             // END FREEZE SCREEN
@@ -321,6 +402,15 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
             })
         }
     
+    }
+    func activityMonitorPayment(){
+        print("STARTING ACTIVITY MONITOR")
+        CustomLoader.instance.showLoader()
+    }
+    
+    func stopActivityMonitorPayment(){
+//        activityMonitor.stopAnimating()
+        CustomLoader.instance.hideLoader()
     }
     
 }

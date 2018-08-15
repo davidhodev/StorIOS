@@ -57,9 +57,12 @@ class noPhoneViewController: UIViewController {
                 UIView.animate(withDuration: 0 , delay: 0, options: .curveLinear, animations: {
                     // change icons and text
                     self.nextButtonOutlet.isEnabled = false
-                    self.doneButton.isUserInteractionEnabled = true
+                    self.doneButton.isEnabled = true
+                    self.lineOutlet.image = UIImage(named: "Line 2")
                 }) { (_) in
                     UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
+                        self.phoneField.resignFirstResponder()
+                        self.phoneVerificationText.becomeFirstResponder()
                         self.lineOutlet.alpha = 1
                         self.phoneVerificationText.alpha = 1
                         self.textConfirmIcon.alpha = 1
@@ -130,7 +133,7 @@ class noPhoneViewController: UIViewController {
         self.lineOutlet.image = UIImage(named: "Line 2")
         self.textConfirmIcon.image = UIImage(named: "Text Confirm Icon")
         self.phoneIcon.image = UIImage(named: "Phone Icon")
-        self.hideKeyboardWhenTappedAround()
+//        self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
 
