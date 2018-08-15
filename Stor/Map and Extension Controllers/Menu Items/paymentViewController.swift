@@ -28,6 +28,7 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     var myPaymentUsers = [myPaymentUser]()
     var exists: Bool?
     var selectedIndexPath: IndexPath?
+    var counter = 0
     
     var selectorIndex: Int?
     
@@ -158,7 +159,6 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @objc func setAsPrimary(_ sender:UIButton){
         let primaryCard = myPaymentUsers[sender.tag].cardID
-        print(primaryCard!, "Set as primary")
         
         if let user = Auth.auth().currentUser{
             let databaseReference = Database.database().reference(fromURL: "https://stor-database.firebaseio.com/")
@@ -188,7 +188,6 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
             alert.view.superview?.isUserInteractionEnabled = true
             alert.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped)))
         })
-        print("Primary for Priamry")
     }
     
     @objc func deleteForPrimary(_ sender:UIButton){
@@ -228,7 +227,11 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         (cell as! myPaymentCustomTableViewCell).watchFrameChanges()
+        
     }
+    
+    
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         //add in empty message hiding
@@ -246,7 +249,6 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("INDEX PATH", indexPath.section)
         let previousIndexPath = selectedIndexPath
         if indexPath == selectedIndexPath{
             selectedIndexPath = nil
@@ -274,14 +276,10 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityMonitor.center = self.view.center
-        activityMonitor.hidesWhenStopped = true
-        activityMonitor.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        view.addSubview(activityMonitor)
+//        CustomLoader.instance.showLoader()
         //table view
         paymentTableView.delegate = self
         paymentTableView.dataSource = self
-        
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.right
         myPaymentView.addGestureRecognizer(swipeLeft)
@@ -290,11 +288,20 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if (self.isViewLoaded == false){
+            CustomLoader.instance.showLoader()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+//        CustomLoader.instance.hideLoader()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         if let user = Auth.auth().currentUser{
             Database.database().reference().child("Users").child(user.uid).child("stripe").observe(.value, with: { (snapshot) in
                 if let dictionary = snapshot.value as? [String: Any]{
-                    print(dictionary)
                     self.defaultCardID = dictionary["defaultCard"] as? String
                     self.paymentTableView.reloadData()
                     self.reloadInputViews()
@@ -332,7 +339,6 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
-        print("MY TOKEN", token)
         paymentFilterManager.shared.paymentVC.activityMonitorPayment()
         let stripeSourceID = NSUUID().uuidString
         if let user = Auth.auth().currentUser{
@@ -350,7 +356,6 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func getCards() {
-        paymentFilterManager.shared.paymentVC.activityMonitorPayment()
         if let user = Auth.auth().currentUser{
             
             
@@ -362,7 +367,7 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                 for userChild in snapshot.children{
                     
                     let userSnapshot = userChild as! DataSnapshot
-                    print("PUSHID", userSnapshot.key)
+                    
                     let paymentMethod = myPaymentUser()
                     
                     paymentMethod.pushID = userSnapshot.key
@@ -370,8 +375,7 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                     let dictionary = userSnapshot.value as? [String: Any]
                     if let brand = dictionary!["brand"]{
                         paymentMethod.brand = brand as? String
-                        print(brand)
-                        paymentFilterManager.shared.paymentVC.stopActivityMonitorPayment()
+                      
                     }
                     if let last4 = dictionary!["last4"]{
                         paymentMethod.last4 = last4 as? String
@@ -381,7 +385,7 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
                     }
                     if self.myPaymentUsers.contains(where: {$0.cardID == dictionary!["id"] as? String}) == false{
                         if dictionary!["last4"] != nil{
-                            print("YO APPENDED")
+                            
                             self.myPaymentUsers.append(paymentMethod)
                             paymentFilterManager.shared.paymentVC.stopActivityMonitorPayment()
                             // SET DEFAULT IF ONE CARD
@@ -398,13 +402,13 @@ class paymentViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     }
     func activityMonitorPayment(){
-        activityMonitor.startAnimating()
-        
-//        CustomLoader.instance.showLoader()
+        print("STARTING ACTIVITY MONITOR")
+        CustomLoader.instance.showLoader()
     }
+    
     func stopActivityMonitorPayment(){
-        activityMonitor.stopAnimating()
-//        CustomLoader.instance.hideLoader()
+//        activityMonitor.stopAnimating()
+        CustomLoader.instance.hideLoader()
     }
     
 }

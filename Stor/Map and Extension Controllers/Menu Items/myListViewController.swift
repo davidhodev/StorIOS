@@ -49,13 +49,14 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
             CustomLoader.instance.hideLoader()
         }
     }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //adding the swipe feature to my List
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(backSwipe))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.right
         myListView.addGestureRecognizer(swipeLeft)
-        CustomLoader.instance.showLoader()
         
         myListTableView.delegate = self
         myListTableView.dataSource = self
@@ -214,7 +215,7 @@ class myListViewController: UIViewController, UITableViewDelegate, UITableViewDa
         (cell as! myListCustomCell).watchFrameChanges()
         counter += 1
         print("COUNTER: ", counter, "MY LIST COUNT: ", myListUsers.count)
-        if counter == myListUsers.count || counter == 8{
+        if counter == myListUsers.count || counter > 8{
             print("Done")
             CustomLoader.instance.hideLoader()
         }

@@ -84,6 +84,7 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
     //gives each cell and its header properties
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = settingsTableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! settingsCustomCellTableViewCell
+        (cell ).watchFrameChanges()
         // make this take in the full array items
         cell.titleLabel.text = tableViewDataSettings[indexPath.section].title
         cell.dropDownOne.text = tableViewDataSettings[indexPath.section].subtitles[0]
@@ -114,13 +115,37 @@ class SettingsViewControllerFinal: UIViewController, UITableViewDelegate, UITabl
         }
         // figure out how to animate this rotation transition, need to keep track of the previous cell and animate both and get the cases where one opens and the other closes etc. needs to be easy as to implement in the other tables
         
-        if (cell.contentView.bounds.size.height == 60){
-            cell.moreImage.image = UIImage(named: "Expand Arrow")
+        if (cell.bounds.size.height == 60 || cell.cellView.isHidden == true){
+            UIView.animate(withDuration: 0.5 , animations: {
+            cell.moreImage.transform = CGAffineTransform.identity
+            })
         }
         else
         {
-            cell.moreImage.image = UIImage(named: "Up Arrow")
+            UIView.animate(withDuration: 0.5 , animations: {
+                cell.moreImage.transform = CGAffineTransform(rotationAngle: 3.14)
+            })
         }
+//        if (cell.contentView.isHidden == false) {
+//            UIView.animate(withDuration: 0.5 , animations: {
+//            cell.moreImage.transform = CGAffineTransform.identity
+//            })
+//        }
+//        else if (cell.cellView.isHidden == true && cell.bounds.size.height > 60 ){
+//            UIView.animate(withDuration: 0.5 , animations: {
+//                cell.moreImage.transform = CGAffineTransform.identity
+//            })
+//        }
+//        else if (cell.cellView.isHidden == true && cell.bounds.size.height == 60 ){
+//            UIView.animate(withDuration: 0.5 , animations: {
+//                cell.moreImage.transform = CGAffineTransform(rotationAngle: 3.14)
+//            })
+//        }
+//        else {
+//            UIView.animate(withDuration: 0.5 , animations: {
+//                cell.moreImage.transform = CGAffineTransform(rotationAngle: 3.14)
+//            })
+//        }
         if globalVariablesViewController.isPushNotificationsOn == 1{
             cell.pushNotificationsControl.isOn = true
             UIApplication.shared.registerForRemoteNotifications()

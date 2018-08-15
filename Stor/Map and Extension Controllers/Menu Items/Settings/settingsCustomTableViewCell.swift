@@ -24,7 +24,13 @@ class settingsCustomCellTableViewCell: UITableViewCell {
     class var defaultHeight: CGFloat {get { return 60 }}
     
     func checkHeight(){
-        cellView.isHidden = (frame.size.height < settingsCustomCellTableViewCell.expandedHeight)
+        if (frame.size.height < settingsCustomCellTableViewCell.expandedHeight){
+            cellView.isHidden = true
+        }
+        else{
+            cellView.isHidden = false
+        }
+//        cellView.isHidden = (frame.size.height < settingsCustomCellTableViewCell.expandedHeight)
     }
     
     func watchFrameChanges(){

@@ -56,7 +56,7 @@ class ChangePasswordViewController: UIViewController {
             // Must at least be 6 characters
             self.newPassword.text = ""
             self.confirmPassword.text = ""
-            self.newPassword.attributedPlaceholder = NSAttributedString(string: "Password must be at least six characters", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
+            self.newPassword.attributedPlaceholder = NSAttributedString(string: "Must exceed five characters", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
             self.confirmPassword.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
             self.lineTopOutlet.image = UIImage(named: "Line 2Red")
             self.lineBottomOutlet.image = UIImage(named: "Line 2Red")
@@ -67,7 +67,7 @@ class ChangePasswordViewController: UIViewController {
             print("Must have at least 1 special character")
             self.newPassword.text = ""
             self.confirmPassword.text = ""
-            self.newPassword.attributedPlaceholder = NSAttributedString(string: "Password must have at least one special character", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
+            self.newPassword.attributedPlaceholder = NSAttributedString(string: "Must include one special character", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
             self.confirmPassword.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedStringKey.foregroundColor: UIColor.init(red: 204/340, green: 17/340, blue: 119/340, alpha: 0.3)])
             self.lineTopOutlet.image = UIImage(named: "Line 2Red")
             self.lineBottomOutlet.image = UIImage(named: "Line 2Red")
