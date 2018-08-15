@@ -28,7 +28,6 @@ class myPaymentCustomTableViewCell: UITableViewCell {
     
     
     func checkHeight(){
-        print(frame.size.height)
         cellView.isHidden = (frame.size.height < myPaymentCustomTableViewCell.expandedHeight)
     }
     
